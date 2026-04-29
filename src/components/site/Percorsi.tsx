@@ -85,12 +85,11 @@ const PERCORSI: Record<string, Percorso[]> = {
 
 type FilterId = keyof typeof PERCORSI | "tutti";
 
-const FILTERS: { id: FilterId; label: string; sub: string }[] = [
+const FILTERS: { id: Exclude<FilterId, "tutti">; label: string; sub: string }[] = [
   { id: "lancio", label: "Voglio fare un lancio", sub: "Percorso di Lancio" },
   { id: "business", label: "Voglio lavorare sul mio business", sub: "Business Blueprint" },
   { id: "newsletter", label: "Voglio lanciare una newsletter", sub: "Mentoring + Easy-Mail Pack" },
   { id: "consulenza", label: "Voglio un aiuto veloce", sub: "Consulenza Strategica" },
-  { id: "tutti", label: "Mostrami tutti i percorsi", sub: "Tutti e 5 i percorsi" },
 ];
 
 export function Percorsi() {
@@ -114,17 +113,14 @@ export function Percorsi() {
         </div>
 
         {/* Filter buttons */}
-        <div className="grid sm:grid-cols-2 gap-3 md:gap-4 mb-12 md:mb-16">
+        <div className="grid sm:grid-cols-2 gap-3 md:gap-4 mb-6">
           {FILTERS.map((f) => {
             const isActive = active === f.id;
-            const isWide = f.id === "tutti";
             return (
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
                 className={`group text-left p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
-                  isWide ? "sm:col-span-2" : ""
-                } ${
                   isActive
                     ? "bg-foreground text-background border-foreground shadow-lg -translate-y-0.5"
                     : "bg-surface border-transparent hover:border-foreground/20 hover:-translate-y-0.5"
@@ -154,6 +150,18 @@ export function Percorsi() {
               </button>
             );
           })}
+        </div>
+
+        {/* Show all link */}
+        <div className="mb-12 md:mb-16">
+          <button
+            onClick={() => setActive("tutti")}
+            className={`text-sm underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition ${
+              active === "tutti" ? "text-foreground font-medium" : "text-foreground/60"
+            }`}
+          >
+            {active === "tutti" ? "✓ Stai vedendo tutti i percorsi" : "Mostrami tutti i percorsi →"}
+          </button>
         </div>
 
         <div className="space-y-6 md:space-y-8">
