@@ -117,11 +117,14 @@ export function Percorsi() {
         <div className="grid sm:grid-cols-2 gap-3 md:gap-4 mb-12 md:mb-16">
           {FILTERS.map((f) => {
             const isActive = active === f.id;
+            const isWide = f.id === "tutti";
             return (
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
                 className={`group text-left p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
+                  isWide ? "sm:col-span-2" : ""
+                } ${
                   isActive
                     ? "bg-foreground text-background border-foreground shadow-lg -translate-y-0.5"
                     : "bg-surface border-transparent hover:border-foreground/20 hover:-translate-y-0.5"
