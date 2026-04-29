@@ -34,8 +34,8 @@ function Index() {
       <Hero />
       <ChiSono />
       <Percorsi />
-      <Testimonianze />
       <Newsletter />
+      <Testimonianze />
       <Footer />
     </main>
   );
