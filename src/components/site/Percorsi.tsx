@@ -83,16 +83,22 @@ const PERCORSI: Record<string, Percorso[]> = {
   ],
 };
 
-const FILTERS: { id: keyof typeof PERCORSI; label: string; sub: string }[] = [
+type FilterId = keyof typeof PERCORSI | "tutti";
+
+const FILTERS: { id: FilterId; label: string; sub: string }[] = [
   { id: "lancio", label: "Voglio fare un lancio", sub: "Percorso di Lancio" },
   { id: "business", label: "Voglio lavorare sul mio business", sub: "Business Blueprint" },
   { id: "newsletter", label: "Voglio lanciare una newsletter", sub: "Mentoring + Easy-Mail Pack" },
   { id: "consulenza", label: "Voglio un aiuto veloce", sub: "Consulenza Strategica" },
+  { id: "tutti", label: "Mostrami tutti i percorsi", sub: "Tutti e 5 i percorsi" },
 ];
 
 export function Percorsi() {
-  const [active, setActive] = useState<keyof typeof PERCORSI>("lancio");
-  const items = PERCORSI[active];
+  const [active, setActive] = useState<FilterId>("lancio");
+  const items =
+    active === "tutti"
+      ? Object.values(PERCORSI).flat()
+      : PERCORSI[active];
 
   return (
     <section id="percorsi" className="py-20 md:py-28">
@@ -111,11 +117,14 @@ export function Percorsi() {
         <div className="grid sm:grid-cols-2 gap-3 md:gap-4 mb-12 md:mb-16">
           {FILTERS.map((f) => {
             const isActive = active === f.id;
+            const isWide = f.id === "tutti";
             return (
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
                 className={`group text-left p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
+                  isWide ? "sm:col-span-2" : ""
+                } ${
                   isActive
                     ? "bg-foreground text-background border-foreground shadow-lg -translate-y-0.5"
                     : "bg-surface border-transparent hover:border-foreground/20 hover:-translate-y-0.5"
