@@ -83,16 +83,22 @@ const PERCORSI: Record<string, Percorso[]> = {
   ],
 };
 
-const FILTERS: { id: keyof typeof PERCORSI; label: string; sub: string }[] = [
+type FilterId = keyof typeof PERCORSI | "tutti";
+
+const FILTERS: { id: FilterId; label: string; sub: string }[] = [
   { id: "lancio", label: "Voglio fare un lancio", sub: "Percorso di Lancio" },
   { id: "business", label: "Voglio lavorare sul mio business", sub: "Business Blueprint" },
   { id: "newsletter", label: "Voglio lanciare una newsletter", sub: "Mentoring + Easy-Mail Pack" },
   { id: "consulenza", label: "Voglio un aiuto veloce", sub: "Consulenza Strategica" },
+  { id: "tutti", label: "Mostrami tutti i percorsi", sub: "Tutti e 5 i percorsi" },
 ];
 
 export function Percorsi() {
-  const [active, setActive] = useState<keyof typeof PERCORSI>("lancio");
-  const items = PERCORSI[active];
+  const [active, setActive] = useState<FilterId>("lancio");
+  const items =
+    active === "tutti"
+      ? Object.values(PERCORSI).flat()
+      : PERCORSI[active];
 
   return (
     <section id="percorsi" className="py-20 md:py-28">
