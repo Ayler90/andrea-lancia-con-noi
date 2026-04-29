@@ -45,8 +45,8 @@ export function Testimonianze() {
       <div className="container-narrow">
         <div className="max-w-3xl mb-14 md:mb-20">
           <p className="eyebrow mb-4">03 — Testimonianze</p>
-          <h2 className="h-display text-4xl md:text-5xl">
-            Cosa dicono chi ha lavorato con me
+          <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
+            Cosa dicono <em>chi ha lavorato</em> con me
           </h2>
         </div>
 
