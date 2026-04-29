@@ -109,16 +109,36 @@
 
   .h-display {
     font-family: var(--font-sans);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .h-display em,
+  .h-display .italic-accent {
+    font-style: italic;
     font-weight: 500;
-    letter-spacing: -0.035em;
-    line-height: 1.02;
+    font-family: "Instrument Serif", serif;
+    letter-spacing: -0.02em;
   }
 
   .eyebrow {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     color: var(--color-muted-foreground);
     font-weight: 500;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.75rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.25s ease;
   }
 }

@@ -13,7 +13,7 @@ export function Newsletter() {
         <div className="max-w-3xl mx-auto text-center">
           <p className="eyebrow mb-5 text-primary-foreground/70">04 — Guida gratuita</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Scarica la Guida Gratuita ai Lanci
+            Scarica la <em>Guida Gratuita</em> ai Lanci
           </h2>
           <p className="mt-6 text-lg text-primary-foreground/85 leading-relaxed">
             Una guida pratica per capire come funzionano le fasi di un lancio e come strutturare
