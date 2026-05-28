@@ -28,20 +28,20 @@ export function Nav() {
 
   return (
     <>
-      {/* Announcement banner — normal flow, scrolls with page. Overflow visible so glows can bleed out */}
-      <div ref={bannerRef} className="relative bg-[#C4D9DC]">
-        {/* Three glows — larger, fast, bleed outside banner edges */}
+      {/* Announcement banner — normal flow, scrolls with page. overflow-hidden clips glows at banner edges */}
+      <div ref={bannerRef} className="relative bg-[#C4D9DC] overflow-hidden">
+        {/* Three glows centered vertically, clipped by overflow-hidden, fast movement */}
+        <div
+          className="absolute w-24 h-24 rounded-full blur-2xl pointer-events-none"
+          style={{ backgroundColor: "rgba(21,102,134,0.30)", top: "50%", left: "8%", transform: "translateY(-50%)", animation: "banner-drift-1 3s ease-in-out infinite" }}
+        />
         <div
           className="absolute w-28 h-28 rounded-full blur-2xl pointer-events-none"
-          style={{ backgroundColor: "rgba(21,102,134,0.28)", top: "-50%", left: "10%", animation: "banner-drift-1 4s ease-in-out infinite" }}
+          style={{ backgroundColor: "rgba(21,102,134,0.24)", top: "50%", left: "42%", transform: "translateY(-50%)", animation: "banner-drift-2 4s ease-in-out infinite", animationDelay: "1s" }}
         />
         <div
-          className="absolute w-32 h-32 rounded-full blur-2xl pointer-events-none"
-          style={{ backgroundColor: "rgba(21,102,134,0.22)", top: "-60%", left: "44%", animation: "banner-drift-2 5.5s ease-in-out infinite", animationDelay: "1.5s" }}
-        />
-        <div
-          className="absolute w-24 h-24 rounded-full blur-xl pointer-events-none"
-          style={{ backgroundColor: "rgba(11,71,100,0.30)", top: "-40%", right: "16%", animation: "banner-drift-3 4.5s ease-in-out infinite", animationDelay: "3s" }}
+          className="absolute w-20 h-20 rounded-full blur-xl pointer-events-none"
+          style={{ backgroundColor: "rgba(11,71,100,0.32)", top: "50%", right: "14%", transform: "translateY(-50%)", animation: "banner-drift-3 3.5s ease-in-out infinite", animationDelay: "2s" }}
         />
         <div className="container-narrow py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center relative z-10">
           <p className="text-xs sm:text-sm text-foreground/85 leading-snug">

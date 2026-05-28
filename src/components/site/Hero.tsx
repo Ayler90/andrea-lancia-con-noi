@@ -10,23 +10,28 @@ const AVATARS = [
 export function Hero() {
   return (
     <section id="top" className="pt-24 md:pt-28 relative overflow-hidden">
-      {/* Glow orbs float in the section background, outside and around the card */}
+      {/* Glow orbs in the WHITE padding area — top strip and bottom strip around the card.
+          Section has overflow-hidden so they clip at the section boundary. */}
       <div className="absolute inset-0 pointer-events-none">
+        {/* Top-left — in the top padding strip (above the card) */}
         <div
-          className="absolute w-48 h-48 rounded-full bg-[#156686]/15 blur-3xl"
-          style={{ top: "8%", left: "2%", animation: "orb-drift-1 11s ease-in-out infinite" }}
+          className="absolute w-44 h-44 rounded-full bg-[#156686]/14 blur-3xl"
+          style={{ top: "-2%", left: "4%", animation: "orb-drift-1 11s ease-in-out infinite" }}
         />
+        {/* Top-right — in the top padding strip */}
         <div
-          className="absolute w-40 h-40 rounded-full bg-[#A1C2CF]/20 blur-2xl"
-          style={{ top: "55%", right: "3%", animation: "orb-drift-2 14s ease-in-out infinite", animationDelay: "2s" }}
+          className="absolute w-36 h-36 rounded-full bg-[#C4D9DC]/28 blur-2xl"
+          style={{ top: "-1%", right: "6%", animation: "orb-drift-3 10s ease-in-out infinite", animationDelay: "3s" }}
         />
+        {/* Bottom-left — below the card */}
         <div
-          className="absolute w-44 h-44 rounded-full bg-[#C4D9DC]/25 blur-3xl"
-          style={{ bottom: "5%", left: "15%", animation: "orb-drift-3 12s ease-in-out infinite", animationDelay: "4s" }}
+          className="absolute w-48 h-48 rounded-full bg-[#A1C2CF]/18 blur-3xl"
+          style={{ bottom: "-4%", left: "10%", animation: "orb-drift-2 13s ease-in-out infinite", animationDelay: "1s" }}
         />
+        {/* Bottom-right — below the card */}
         <div
-          className="absolute w-36 h-36 rounded-full bg-[#156686]/12 blur-2xl"
-          style={{ top: "30%", right: "8%", animation: "orb-drift-4 10s ease-in-out infinite", animationDelay: "1s" }}
+          className="absolute w-40 h-40 rounded-full bg-[#156686]/12 blur-2xl"
+          style={{ bottom: "-3%", right: "12%", animation: "orb-drift-4 9s ease-in-out infinite", animationDelay: "5s" }}
         />
       </div>
 
