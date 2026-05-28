@@ -30,7 +30,7 @@ export function Newsletter() {
 
             {/* Content column */}
             <div className="md:col-span-7 p-8 sm:p-10 md:p-14 lg:p-16">
-              <p className="eyebrow mb-5 text-primary-foreground/70">— Guida gratuita</p>
+              <p className="eyebrow mb-5 text-primary-foreground/70">Guida gratuita</p>
               <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
                 Iscriviti alla mia newsletter e scarica la <em>Guida Gratuita ai Lanci</em>
               </h2>

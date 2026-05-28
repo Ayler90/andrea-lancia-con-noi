@@ -44,7 +44,7 @@ export function Testimonianze() {
     <section id="testimonianze" className="py-20 md:py-32 border-t border-border">
       <div className="container-narrow">
         <div className="max-w-3xl mb-14 md:mb-20">
-          <p className="eyebrow mb-4">— Testimonianze</p>
+          <p className="eyebrow mb-4">Testimonianze</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
             Cosa dice chi ha <em>lavorato con me</em>
           </h2>

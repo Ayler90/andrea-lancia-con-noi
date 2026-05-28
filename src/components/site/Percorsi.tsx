@@ -103,7 +103,7 @@ export function Percorsi() {
     <section id="percorsi" className="py-20 md:py-28">
       <div className="container-narrow">
         <div className="max-w-3xl mb-10 md:mb-14">
-          <p className="eyebrow mb-4">02 — Percorsi</p>
+          <p className="eyebrow mb-4">Percorsi</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
             Come posso <em>aiutarti</em>
           </h2>

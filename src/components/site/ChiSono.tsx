@@ -5,7 +5,7 @@ export function ChiSono() {
     <section id="chi-sono" className="py-20 md:py-32">
       <div className="container-narrow grid md:grid-cols-12 gap-10 md:gap-12 items-start">
         <div className="md:col-span-5 md:sticky md:top-32">
-          <p className="eyebrow mb-4">— Chi sono</p>
+          <p className="eyebrow mb-4">Chi sono</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
             Sono Andrea Bonomo, <em>funnel e launch strategist.</em>
           </h2>

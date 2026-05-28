@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import { MouseFollower } from "@/components/site/MouseFollower";
 
 function NotFoundComponent() {
   return (
@@ -28,5 +29,10 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <MouseFollower />
+      <Outlet />
+    </>
+  );
 }

@@ -14,7 +14,7 @@ export function Loghi() {
     <section id="loghi" className="py-16 md:py-20 border-b border-border">
       <div className="container-narrow">
         <p className="text-center text-sm text-foreground/50 uppercase tracking-widest mb-10">
-          Ho collaborato con oltre 90 professionisti in questi settori
+          Ho collaborato con oltre 90 professionisti
         </p>
         {/* Qui verranno inseriti i loghi dei clienti */}
         <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">

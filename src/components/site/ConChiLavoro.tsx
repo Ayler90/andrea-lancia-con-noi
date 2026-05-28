@@ -19,7 +19,7 @@ export function ConChiLavoro() {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           {/* Con chi lavoro */}
           <div>
-            <p className="eyebrow mb-5 text-background/60">— Con chi lavoro</p>
+            <p className="eyebrow mb-5 text-background/60">Con chi lavoro</p>
             <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
               Lavoro al meglio con{" "}
               <em>creator, coach, consulenti e formatori</em> che:
@@ -61,7 +61,7 @@ export function ConChiLavoro() {
 
           {/* Con chi non lavoro */}
           <div className="md:border-l md:border-background/20 md:pl-12 lg:pl-16">
-            <p className="eyebrow mb-5 text-background/60">— Con chi non lavoro</p>
+            <p className="eyebrow mb-5 text-background/60">Con chi non lavoro</p>
             <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
               Non sono la persona giusta <em>se:</em>
             </h2>
