@@ -34,8 +34,11 @@ function Index() {
   return (
     <main className="min-h-screen bg-background">
       <Nav />
-      <Hero />
-      <Loghi />
+      {/* Single overflow-hidden wrapper so hero glow orbs can drift into the logo strip */}
+      <div className="relative overflow-hidden">
+        <Hero />
+        <Loghi />
+      </div>
       <Problema />
       <ChiSono />
       <Percorsi />

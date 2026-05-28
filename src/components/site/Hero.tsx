@@ -9,7 +9,7 @@ const AVATARS = [
 
 export function Hero() {
   return (
-    <section id="top" className="pt-24 md:pt-28 pb-14 md:pb-20 relative overflow-hidden">
+    <section id="top" className="pt-24 md:pt-28 pb-14 md:pb-20 relative">
       {/* Glow orbs — 5x bigger, slow drift across full section */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -31,12 +31,8 @@ export function Hero() {
       </div>
 
       <div className="w-full max-w-[1360px] mx-auto px-3 md:px-5 relative z-10">
-        {/* Glow below the card */}
         <div className="relative">
-          <div className="absolute inset-x-12 -bottom-10 h-28 bg-[#156686]/25 blur-3xl rounded-full pointer-events-none" />
-          <div className="absolute inset-x-32 -bottom-4 h-16 bg-[#C4D9DC]/40 blur-2xl rounded-full pointer-events-none" />
-
-          {/* Gray card — no glow orbs inside */}
+          {/* Gray card */}
           <div className="rounded-3xl md:rounded-[2rem] bg-surface overflow-hidden relative z-10">
             <div className="grid md:grid-cols-12 gap-0 items-stretch">
               {/* Text */}
