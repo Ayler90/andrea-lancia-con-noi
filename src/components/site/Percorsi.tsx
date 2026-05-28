@@ -105,9 +105,9 @@ export function Percorsi() {
         <div className="max-w-3xl mb-10 md:mb-14">
           <p className="eyebrow mb-4">Percorsi</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Come posso <em>aiutarti</em>
+            Come posso <em className="text-[#156686]">aiutarti</em>
           </h2>
-          <p className="mt-6 text-lg text-foreground/70 leading-relaxed">
+          <p className="mt-6 text-sm md:text-base text-foreground/70 leading-relaxed">
             Dimmi su cosa vuoi lavorare e ti mostro il percorso giusto per te.
           </p>
         </div>
@@ -196,7 +196,7 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
             {percorso.title} <em>{percorso.italic}</em>
           </h3>
 
-          <p className="mt-6 text-base md:text-lg text-foreground/75 leading-relaxed max-w-xl">
+          <p className="mt-6 text-sm md:text-base text-foreground/75 leading-relaxed max-w-xl">
             {percorso.desc}
           </p>
 

@@ -24,7 +24,7 @@ export function Nav() {
       <div className="fixed top-0 left-0 right-0 z-50 bg-[#C4D9DC]">
         <div className="container-narrow py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
           <p className="text-xs sm:text-sm text-foreground/85 leading-snug">
-            Scarica la mia guida gratuita ai lanci — una guida di oltre 30 pagine per creare il tuo
+            Scarica la mia guida gratuita ai lanci, una guida di oltre 30 pagine per creare il tuo
             primo, o prossimo, lancio.
           </p>
           <a

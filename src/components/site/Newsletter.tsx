@@ -32,15 +32,16 @@ export function Newsletter() {
             <div className="md:col-span-7 p-8 sm:p-10 md:p-14 lg:p-16">
               <p className="eyebrow mb-5 text-primary-foreground/70">Guida gratuita</p>
               <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-                Iscriviti alla mia newsletter e scarica la <em>Guida Gratuita ai Lanci</em>
+                Iscriviti alla mia newsletter e scarica la{" "}
+                <em className="text-white">Guida Gratuita ai Lanci</em>
               </h2>
-              <p className="mt-6 text-base md:text-lg text-primary-foreground/85 leading-relaxed max-w-xl">
+              <p className="mt-6 text-sm md:text-base text-primary-foreground/85 leading-relaxed max-w-xl">
                 Ho una newsletter che invio ogni venerdì alle 15 — la{" "}
                 <strong className="text-primary-foreground">Fun-Letter</strong> — con strategie,
                 tattiche e consigli legati ai lanci, ai funnel e al dietro le quinte del mio
                 business. È letta da oltre 1.200 persone.
               </p>
-              <p className="mt-4 text-base md:text-lg text-primary-foreground/85 leading-relaxed max-w-xl">
+              <p className="mt-4 text-sm md:text-base text-primary-foreground/85 leading-relaxed max-w-xl">
                 Come regalo per l'iscrizione ricevi subito la{" "}
                 <strong className="text-primary-foreground">Guida Gratuita ai Lanci</strong>, una
                 guida pratica di oltre 30 pagine per capire come funzionano le fasi di un lancio e

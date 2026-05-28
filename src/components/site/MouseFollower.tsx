@@ -14,10 +14,10 @@ export function MouseFollower() {
     };
 
     const animate = () => {
-      currentX += (targetX - currentX) * 0.12;
-      currentY += (targetY - currentY) * 0.12;
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${currentX - 6}px, ${currentY - 6}px)`;
+        dotRef.current.style.transform = `translate(${currentX - 10}px, ${currentY - 10}px)`;
       }
       animId = requestAnimationFrame(animate);
     };
@@ -34,8 +34,12 @@ export function MouseFollower() {
   return (
     <div
       ref={dotRef}
-      className="fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[9999] opacity-50 hidden md:block"
-      style={{ backgroundColor: "#156686" }}
+      className="fixed top-0 left-0 w-5 h-5 rounded-full pointer-events-none z-[9999] hidden md:block"
+      style={{
+        backgroundColor: "#156686",
+        opacity: 0.25,
+        boxShadow: "0 0 12px 4px rgba(21,102,134,0.3)",
+      }}
     />
   );
 }

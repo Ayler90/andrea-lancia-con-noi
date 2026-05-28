@@ -140,5 +140,34 @@
     font-weight: 600;
     letter-spacing: 0.02em;
     transition: all 0.25s ease;
+    box-shadow: 0 4px 18px -2px oklch(0.452 0.067 230.5 / 0.22), 0 2px 6px -1px oklch(0.452 0.067 230.5 / 0.14);
   }
+
+  .cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    padding: 0.625rem 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .cta-ghost:hover {
+    background: oklch(0.18 0.02 230 / 0.06);
+    outline: 1px solid oklch(0.18 0.02 230 / 0.18);
+  }
+}
+
+@keyframes glow-float {
+  0%, 100% { opacity: 0.25; transform: scale(1) translate(0, 0); }
+  33%       { opacity: 0.45; transform: scale(1.12) translate(10px, -8px); }
+  66%       { opacity: 0.3;  transform: scale(0.95) translate(-6px, 12px); }
+}
+
+@keyframes glow-float-alt {
+  0%, 100% { opacity: 0.2;  transform: scale(1) translate(0, 0); }
+  40%       { opacity: 0.4;  transform: scale(1.1) translate(-12px, 8px); }
+  70%       { opacity: 0.28; transform: scale(1.05) translate(8px, -10px); }
 }

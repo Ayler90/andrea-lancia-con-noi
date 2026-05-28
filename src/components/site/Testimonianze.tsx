@@ -46,7 +46,7 @@ export function Testimonianze() {
         <div className="max-w-3xl mb-14 md:mb-20">
           <p className="eyebrow mb-4">Testimonianze</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Cosa dice chi ha <em>lavorato con me</em>
+            Cosa dice chi ha <em className="text-[#156686]">lavorato con me</em>
           </h2>
         </div>
 
@@ -54,7 +54,7 @@ export function Testimonianze() {
           {items.map((t, i) => (
             <div
               key={i}
-              className="break-inside-avoid mb-6 rounded-2xl border border-border bg-background hover:border-primary/30 transition-colors overflow-hidden"
+              className="break-inside-avoid mb-6 rounded-2xl border border-border bg-background hover:border-[#156686]/30 transition-colors overflow-hidden"
             >
               {t.type === "video" && (
                 <div className="relative aspect-video bg-gradient-to-br from-primary to-secondary flex items-center justify-center group cursor-pointer">
@@ -70,9 +70,9 @@ export function Testimonianze() {
               )}
               <div className="p-6">
                 {t.type === "quote" && (
-                  <Quote className="w-6 h-6 text-primary/40 mb-3" strokeWidth={1.5} />
+                  <Quote className="w-6 h-6 text-[#156686]/40 mb-3" strokeWidth={1.5} />
                 )}
-                <p className="text-sm md:text-base leading-relaxed text-foreground/85">
+                <p className="text-xs md:text-sm leading-relaxed text-foreground/85">
                   "{t.text}"
                 </p>
                 <div className="mt-5 pt-5 border-t border-border">
