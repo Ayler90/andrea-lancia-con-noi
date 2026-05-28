@@ -9,38 +9,35 @@ const AVATARS = [
 
 export function Hero() {
   return (
-    <section id="top" className="pt-24 md:pt-28">
-      <div className="w-full max-w-[1360px] mx-auto px-3 md:px-5">
+    <section id="top" className="pt-24 md:pt-28 relative overflow-hidden">
+      {/* Glow orbs float in the section background, outside and around the card */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute w-48 h-48 rounded-full bg-[#156686]/15 blur-3xl"
+          style={{ top: "8%", left: "2%", animation: "orb-drift-1 11s ease-in-out infinite" }}
+        />
+        <div
+          className="absolute w-40 h-40 rounded-full bg-[#A1C2CF]/20 blur-2xl"
+          style={{ top: "55%", right: "3%", animation: "orb-drift-2 14s ease-in-out infinite", animationDelay: "2s" }}
+        />
+        <div
+          className="absolute w-44 h-44 rounded-full bg-[#C4D9DC]/25 blur-3xl"
+          style={{ bottom: "5%", left: "15%", animation: "orb-drift-3 12s ease-in-out infinite", animationDelay: "4s" }}
+        />
+        <div
+          className="absolute w-36 h-36 rounded-full bg-[#156686]/12 blur-2xl"
+          style={{ top: "30%", right: "8%", animation: "orb-drift-4 10s ease-in-out infinite", animationDelay: "1s" }}
+        />
+      </div>
+
+      <div className="w-full max-w-[1360px] mx-auto px-3 md:px-5 relative z-10">
         {/* Glow below the card */}
         <div className="relative">
           <div className="absolute inset-x-12 -bottom-10 h-28 bg-[#156686]/25 blur-3xl rounded-full pointer-events-none" />
           <div className="absolute inset-x-32 -bottom-4 h-16 bg-[#C4D9DC]/40 blur-2xl rounded-full pointer-events-none" />
 
+          {/* Gray card — no glow orbs inside */}
           <div className="rounded-3xl md:rounded-[2rem] bg-surface overflow-hidden relative z-10">
-            {/* Animated glow orbs — stay behind text (no z-index), drift in different directions */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {/* Bottom-left — drifts up-right */}
-              <div
-                className="absolute w-40 h-40 rounded-full bg-[#156686]/18 blur-2xl"
-                style={{ bottom: "8%", left: "5%", animation: "orb-drift-1 10s ease-in-out infinite" }}
-              />
-              {/* Bottom-center — drifts down-left */}
-              <div
-                className="absolute w-36 h-36 rounded-full bg-[#A1C2CF]/25 blur-2xl"
-                style={{ bottom: "20%", left: "30%", animation: "orb-drift-2 13s ease-in-out infinite", animationDelay: "2s" }}
-              />
-              {/* Right-center — drifts left */}
-              <div
-                className="absolute w-44 h-44 rounded-full bg-[#156686]/14 blur-3xl"
-                style={{ top: "40%", right: "5%", animation: "orb-drift-3 11s ease-in-out infinite", animationDelay: "4s" }}
-              />
-              {/* Bottom-right — drifts up-left */}
-              <div
-                className="absolute w-32 h-32 rounded-full bg-[#C4D9DC]/30 blur-2xl"
-                style={{ bottom: "5%", right: "15%", animation: "orb-drift-4 9s ease-in-out infinite", animationDelay: "1s" }}
-              />
-            </div>
-
             <div className="grid md:grid-cols-12 gap-0 items-stretch">
               {/* Text */}
               <div className="md:col-span-7 p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-between min-h-[520px] md:min-h-[620px] relative">
