@@ -5,7 +5,7 @@ const chaosThoughts = [
   { text: "Quante email invio?",                            x: "58%", y: "3%",  delay: "1s"   },
   { text: "Che contenuti dovrei creare?",                   x: "60%", y: "34%", delay: "1.8s" },
   { text: "Quanto le tengo aperte le vendite?",             x: "52%", y: "70%", delay: "0.6s" },
-  { text: "Ma quest'offerta è giusta per il mio pubblico?", x: "0%",  y: "58%", delay: "2.2s" },
+  { text: "Ma quest'offerta è giusta per il mio pubblico?", x: "0%",  y: "55%", delay: "2.2s" },
   { text: "Mi servono o no le ads?",                        x: "22%", y: "85%", delay: "1.4s" },
 ];
 
@@ -34,9 +34,10 @@ function ChaosWidget() {
         </div>
       ))}
 
+      {/* Emoji shifted up slightly so the face (not the cloud) is visually centered */}
       <div
         className="relative z-10 text-7xl md:text-8xl leading-none"
-        style={{ animation: "thought-float 4s ease-in-out 0.5s infinite" }}
+        style={{ animation: "thought-float 4s ease-in-out 0.5s infinite", marginTop: "-2rem" }}
       >
         🤯
       </div>
@@ -118,18 +119,31 @@ export function Problema() {
           </div>
         </div>
 
-        {/* ROW 2: Full-bleed card — image background, text overlay */}
-        <div className="mt-16 md:mt-24 relative rounded-3xl overflow-hidden min-h-[480px] md:min-h-[560px]">
-          <img
-            src={costruiscoImg}
-            alt="Andrea Bonomo"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d4f68]/92 via-[#156686]/75 to-[#156686]/30" />
+        {/* ROW 2: oblique costruisco image LEFT + Clarity text RIGHT */}
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center mt-16 md:mt-24">
 
-          {/* Text inside */}
-          <div className="relative z-10 p-8 sm:p-12 md:p-16 h-full flex flex-col justify-end md:justify-center max-w-xl">
+          {/* Image — oblique, floating, f0f0f0 border, badge */}
+          <div className="flex items-center justify-center">
+            <div
+              className="relative rounded-3xl overflow-hidden border-[6px] border-[#f0f0f0]/80 shadow-2xl w-full max-w-sm"
+              style={{ animation: "img-float 5s ease-in-out infinite" }}
+            >
+              <img
+                src={costruiscoImg}
+                alt="Andrea Bonomo"
+                className="w-full object-cover aspect-[4/5]"
+              />
+              {/* Badge */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-md whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#156686] tracking-wide">
+                  Funnel e Launch Strategist
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Clarity text */}
+          <div>
             <p className="text-sm md:text-base font-semibold text-white mb-3">
               Quello che faccio è questo:
             </p>

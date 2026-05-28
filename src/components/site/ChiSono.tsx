@@ -16,34 +16,26 @@ export function ChiSono() {
     <section id="chi-sono" className="py-20 md:py-32">
       <div className="container-narrow grid md:grid-cols-12 gap-10 md:gap-12 items-start">
 
-        {/* LEFT sticky column */}
-        <div className="md:col-span-5 md:sticky md:top-32">
-          <p className="eyebrow mb-4">Chi sono</p>
-          <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Sono Andrea Bonomo,{" "}
-            <em className="text-[#156686]">funnel e launch strategist.</em>
-          </h2>
-
-          {/* Image: oblique, border, floating, badge */}
-          <div className="mt-10 hidden md:block relative">
-            <div
-              className="relative rounded-2xl overflow-hidden border-[6px] border-[#f0f0f0] shadow-xl max-w-xs"
-              style={{ animation: "img-float 5s ease-in-out infinite" }}
-            >
-              <img
-                src={aereiImg}
-                alt="Andrea Bonomo"
-                loading="lazy"
-                width={1024}
-                height={1024}
-                className="w-full h-full object-cover aspect-square"
-              />
-              {/* Badge inside image */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-md whitespace-nowrap">
-                <p className="text-xs font-semibold text-[#156686] tracking-wide">
-                  Funnel e Launch Strategist
-                </p>
-              </div>
+        {/* LEFT column — full image with text overlay */}
+        <div className="md:col-span-5">
+          <div className="md:sticky md:top-24 relative overflow-hidden rounded-3xl min-h-[480px]">
+            <img
+              src={aereiImg}
+              alt="Andrea Bonomo"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d4f68]/90 via-[#156686]/35 to-transparent" />
+            {/* Text inside */}
+            <div className="relative z-10 flex flex-col justify-end p-8 md:p-10 min-h-[480px]">
+              <p className="eyebrow text-white/60 mb-4">Chi sono</p>
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-white">
+                Sono Andrea Bonomo,{" "}
+                <em className="text-[#C4D9DC]">funnel e launch strategist.</em>
+              </h2>
             </div>
           </div>
         </div>

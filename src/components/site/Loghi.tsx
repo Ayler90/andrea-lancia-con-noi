@@ -17,7 +17,7 @@ export function Loghi() {
     <section id="loghi" className="py-14 md:py-20 border-b border-border overflow-hidden">
       <div className="container-narrow mb-10 text-center">
         <h2 className="h-display text-2xl md:text-3xl lg:text-4xl">
-          Alcuni dei clienti e creator{" "}
+          Alcuni dei clienti e delle realtà{" "}
           <em className="text-[#156686]">con cui ho lavorato</em>
         </h2>
       </div>
