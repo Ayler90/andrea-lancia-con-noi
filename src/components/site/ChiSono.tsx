@@ -1,5 +1,16 @@
 import blob from "@/assets/blob.jpg";
 
+const settori = [
+  "Video making",
+  "Effetti speciali SFX",
+  "Make up",
+  "SMM",
+  "Allattamento",
+  "Trattamenti al viso",
+  "Pavimento pelvico",
+  "Fitness",
+];
+
 export function ChiSono() {
   return (
     <section id="chi-sono" className="py-20 md:py-32">
@@ -24,17 +35,19 @@ export function ChiSono() {
 
         <div className="md:col-span-6 md:col-start-7">
           <p className="text-sm md:text-base leading-relaxed text-foreground/85">
-            Gestisco lanci da oltre 6 anni e, conti alla mano, ne ho gestiti 50+ per coach,
-            consulenti e creator, generando più di 700.000€ di fatturato totale per i miei clienti.
+            Gestisco lanci da <strong>oltre 6 anni</strong> e, conti alla mano, ne ho gestiti{" "}
+            <strong>50+</strong> per coach, consulenti e creator, generando più di{" "}
+            <strong>700.000€ di fatturato totale</strong> per i miei clienti.
           </p>
           <p className="mt-5 text-sm md:text-base leading-relaxed text-foreground/85">
-            Il mio lavoro è semplice: prendo la tua offerta, costruiamo insieme la strategia, e la
-            portiamo sul mercato nel modo più efficace possibile. Senza che tu debba fare tutto da
-            solo.
+            Il mio lavoro è semplice: prendo la tua offerta, costruiamo{" "}
+            <strong>insieme la strategia</strong>, e la portiamo sul mercato nel modo più efficace
+            possibile. Senza che tu debba fare tutto da solo.
           </p>
           <p className="mt-5 text-sm md:text-base leading-relaxed text-foreground/85">
-            Non mi occupo solo della parte tecnica. Ti accompagno in ogni fase, dalla definizione
-            dell'offerta alla chiusura del carrello, così sai sempre dove sei e cosa succederà dopo.
+            Non mi occupo solo della parte tecnica. Ti accompagno{" "}
+            <strong>in ogni fase</strong>, dalla definizione dell'offerta alla chiusura del carrello,
+            così sai sempre dove sei e cosa succederà dopo.
           </p>
 
           <div className="mt-10 grid grid-cols-3 gap-6 md:gap-8 py-8 border-y border-border">
@@ -58,18 +71,24 @@ export function ChiSono() {
             </div>
           </div>
 
-          <p className="mt-8 text-xs text-foreground/60 leading-relaxed">
-            Alcuni settori in cui ho gestito lanci:{" "}
-            <span className="text-foreground/80">
-              Video making · Effetti speciali SFX · Make up · SMM · Allattamento · Trattamenti al
-              viso · Pavimento pelvico · Fitness
-            </span>
-          </p>
+          {/* Settori */}
+          <div className="mt-8">
+            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-4">
+              Alcuni settori in cui ho gestito lanci
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {settori.map((nome) => (
+                <span
+                  key={nome}
+                  className="text-xs font-medium text-[#156686] bg-[#C4D9DC]/30 border border-[#156686]/25 rounded-full px-4 py-1.5"
+                >
+                  {nome}
+                </span>
+              ))}
+            </div>
+          </div>
 
-          <a
-            href="#percorsi"
-            className="cta-ghost text-primary mt-10"
-          >
+          <a href="#percorsi" className="cta-ghost text-primary mt-10">
             Scopri i miei percorsi <span>→</span>
           </a>
         </div>

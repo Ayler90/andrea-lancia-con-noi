@@ -156,8 +156,12 @@
 
   .cta-ghost:hover {
     background: oklch(0.18 0.02 230 / 0.06);
-    outline: 1px solid oklch(0.18 0.02 230 / 0.18);
   }
+}
+
+@keyframes thought-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
 }
 
 @keyframes glow-float {
