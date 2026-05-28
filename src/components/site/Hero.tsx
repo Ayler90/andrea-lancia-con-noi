@@ -17,14 +17,18 @@ export function Hero() {
             <div className="md:col-span-7 p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-between min-h-[520px] md:min-h-[620px]">
               <div />
 
-              <h1 className="h-display text-[2rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] mt-10 md:mt-0 leading-[1.05]">
-                Faccio lanci e costruisco funnel di vendita.{" "}
-                <em>Lanciamo la tua prossima offerta?</em>
+              <h1 className="h-display mt-10 md:mt-0 leading-[1.1]">
+                <span className="block text-[1.5rem] sm:text-[1.75rem] md:text-[2.25rem] lg:text-[2.5rem] text-foreground/70 font-medium">
+                  Faccio lanci e costruisco funnel di vendita.
+                </span>
+                <em className="block text-[2rem] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] mt-2">
+                  Lanciamo la tua prossima offerta?
+                </em>
               </h1>
 
-              <div className="mt-10 md:mt-12">
+              <div className="mt-6 md:mt-8">
                 <p className="text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                  Lo so che lanciare ti spaventa — ci sono mille cose da controllare e non sai da
+                  Lo so che lanciare ti spaventa, ci sono mille cose da controllare e non sai da
                   dove iniziare. Facciamolo insieme: mi occupo io della parte tecnica e strategica,
                   tu ci metti creatività ed energia. Zero stress, zero ansia.
                 </p>
