@@ -4,12 +4,14 @@ import trentinoSocialTank from "@/assets/logo-home-pagex2-trentino social tank.p
 import logoBwb from "@/assets/logo.BWB8mVrQ.svg";
 import unscripted from "@/assets/unscripted-logo (2).png";
 
+// Old logos have opaque/dark content — simple grayscale is fine
+// New logos (grace, unscripted) have white content on transparent bg — need brightness(0) to become visible
 const logos = [
-  { src: gionsnow,          alt: "GionSnow" },
-  { src: grace,             alt: "Grace" },
-  { src: trentinoSocialTank, alt: "Trentino Social Tank" },
-  { src: logoBwb,           alt: "BWB" },
-  { src: unscripted,        alt: "Unscripted" },
+  { src: gionsnow,           alt: "GionSnow",            bright: false },
+  { src: trentinoSocialTank, alt: "Trentino Social Tank", bright: false },
+  { src: logoBwb,            alt: "24 Ore Business School", bright: false },
+  { src: grace,              alt: "Grace",                bright: true  },
+  { src: unscripted,         alt: "Unscripted",           bright: true  },
 ];
 
 export function Loghi() {
@@ -30,19 +32,19 @@ export function Loghi() {
 
         <div
           className="flex gap-16 md:gap-24 items-center"
-          style={{
-            width: "max-content",
-            animation: "logo-marquee 18s linear infinite",
-          }}
+          style={{ width: "max-content", animation: "logo-marquee 18s linear infinite" }}
         >
-          {/* Duplicate logos for seamless loop */}
           {[...logos, ...logos].map((logo, i) => (
             <div key={i} className="flex-shrink-0 w-[160px] h-[52px] flex items-center justify-center">
               <img
                 src={logo.src}
                 alt={logo.alt}
                 className="max-h-full max-w-full object-contain"
-                style={{ filter: "grayscale(100%) brightness(0) opacity(0.38)" }}
+                style={{
+                  filter: logo.bright
+                    ? "grayscale(100%) brightness(0) opacity(0.38)"
+                    : "grayscale(100%) opacity(0.45)",
+                }}
               />
             </div>
           ))}
