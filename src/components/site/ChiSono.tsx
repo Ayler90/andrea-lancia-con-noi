@@ -24,7 +24,11 @@ export function ChiSono() {
           width={1024}
           height={1024}
           className="absolute inset-0 w-full h-full object-contain object-bottom"
+          style={{ transform: "translateY(-40px)" }}
         />
+        {/* White gradient fade at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+          style={{ background: "linear-gradient(to top, white 30%, transparent)" }} />
         {/* Text overlaid at bottom */}
         <div className="absolute bottom-0 left-0 right-0 pb-8 px-8 md:px-12">
           <p className="eyebrow text-[#156686]/70 mb-2">Chi sono</p>
@@ -47,11 +51,6 @@ export function ChiSono() {
             Il mio lavoro è semplice: prendo la tua offerta, costruiamo{" "}
             <strong>insieme la strategia</strong>, e la portiamo sul mercato nel modo più efficace
             possibile. Senza che tu debba fare tutto da solo.
-          </p>
-          <p className="mt-5 text-sm md:text-base leading-relaxed text-foreground/85">
-            Non mi occupo solo della parte tecnica. Ti accompagno{" "}
-            <strong>in ogni fase</strong>, dalla definizione dell'offerta alla chiusura del carrello,
-            così sai sempre dove sei e cosa succederà dopo.
           </p>
 
           {/* Stats box */}
