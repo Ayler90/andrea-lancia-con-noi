@@ -9,7 +9,7 @@ const AVATARS = [
 
 export function Hero() {
   return (
-    <section id="top" className="pt-24 md:pt-28 relative overflow-hidden">
+    <section id="top" className="pt-24 md:pt-28 pb-14 md:pb-20 relative overflow-hidden">
       {/* Glow orbs — 5x bigger, slow drift across full section */}
       <div className="absolute inset-0 pointer-events-none">
         <div
