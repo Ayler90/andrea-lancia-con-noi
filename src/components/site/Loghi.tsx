@@ -37,13 +37,14 @@ export function Loghi() {
         >
           {/* Duplicate logos for seamless loop */}
           {[...logos, ...logos].map((logo, i) => (
-            <img
-              key={i}
-              src={logo.src}
-              alt={logo.alt}
-              className="h-10 md:h-12 w-auto object-contain flex-shrink-0"
-              style={{ filter: "grayscale(100%) opacity(0.45)" }}
-            />
+            <div key={i} className="flex-shrink-0 w-[160px] h-[52px] flex items-center justify-center">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="max-h-full max-w-full object-contain"
+                style={{ filter: "grayscale(100%) brightness(0) opacity(0.38)" }}
+              />
+            </div>
           ))}
         </div>
       </div>
