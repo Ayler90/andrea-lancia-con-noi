@@ -1,11 +1,10 @@
 import heroImg from "@/assets/Foto al telefono.jpg";
+import av1 from "@/assets/489209743_1013582267367313_7979056182020525523_n.jpg";
+import av2 from "@/assets/611355146_18053563283679070_9100361660993615423_n.jpg";
+import av3 from "@/assets/631692874_18511332868073523_2990688616745288258_n.jpg";
+import av4 from "@/assets/658145434_18521514847079426_4575213628711787897_n.jpg";
 
-const AVATARS = [
-  { initials: "AB", bg: "bg-[#156686]" },
-  { initials: "MC", bg: "bg-[#A1C2CF]" },
-  { initials: "GR", bg: "bg-[#C4D9DC]" },
-  { initials: "LS", bg: "bg-[#6C9FA8]" },
-];
+const AVATARS = [av1, av2, av3, av4];
 
 export function Hero() {
   return (
@@ -75,13 +74,13 @@ export function Hero() {
                   {/* Social proof strip */}
                   <div className="mt-8 flex items-center gap-4">
                     <div className="flex items-center">
-                      {AVATARS.map((a, i) => (
+                      {AVATARS.map((src, i) => (
                         <div
                           key={i}
-                          className={`w-9 h-9 rounded-full ${a.bg} border-2 border-surface flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0`}
+                          className="w-9 h-9 rounded-full border-2 border-surface overflow-hidden flex-shrink-0"
                           style={{ marginLeft: i > 0 ? "-10px" : "0", zIndex: AVATARS.length - i }}
                         >
-                          {a.initials}
+                          <img src={src} alt="" className="w-full h-full object-cover" />
                         </div>
                       ))}
                     </div>

@@ -18,7 +18,7 @@ export function ChiSono() {
 
         {/* LEFT column — full image with text overlay */}
         <div className="md:col-span-5">
-          <div className="md:sticky md:top-24 relative overflow-hidden rounded-3xl min-h-[480px]">
+          <div className="md:sticky md:top-24 relative overflow-hidden min-h-[480px]">
             <img
               src={aereiImg}
               alt="Andrea Bonomo"
