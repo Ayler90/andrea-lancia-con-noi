@@ -100,7 +100,7 @@ export function Percorsi() {
       : PERCORSI[active];
 
   return (
-    <section id="percorsi" className="py-20 md:py-28">
+    <section id="percorsi" className="py-20 md:py-28 bg-[#f0f0f0]">
       <div className="container-narrow">
         <div className="max-w-3xl mb-10 md:mb-14">
           <p className="eyebrow mb-4">Percorsi</p>

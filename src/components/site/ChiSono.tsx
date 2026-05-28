@@ -16,18 +16,9 @@ export function ChiSono() {
     <section id="chi-sono" className="py-20 md:py-32">
       <div className="container-narrow grid md:grid-cols-12 gap-10 md:gap-12 items-start">
 
-        {/* LEFT column — text on top, image below */}
+        {/* LEFT column — image full column, text overlaid at bottom */}
         <div className="md:col-span-5">
-          <div className="md:sticky md:top-24 flex flex-col gap-8">
-            {/* Text */}
-            <div>
-              <p className="eyebrow text-[#156686]/70 mb-4">Chi sono</p>
-              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
-                Sono Andrea Bonomo,{" "}
-                <em className="text-[#156686]">funnel e launch strategist.</em>
-              </h2>
-            </div>
-            {/* Image — no background PNG, large */}
+          <div className="md:sticky md:top-24 relative">
             <img
               src={aereiImg}
               alt="Andrea Bonomo con gli aerei"
@@ -36,6 +27,14 @@ export function ChiSono() {
               height={1024}
               className="w-full object-contain"
             />
+            {/* Text overlaid at bottom of image */}
+            <div className="absolute bottom-0 left-0 right-0 pb-4 px-2">
+              <p className="eyebrow text-[#156686]/70 mb-2">Chi sono</p>
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl leading-tight">
+                Sono Andrea Bonomo,{" "}
+                <em className="text-[#156686]">funnel e launch strategist.</em>
+              </h2>
+            </div>
           </div>
         </div>
 
