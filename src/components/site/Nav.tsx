@@ -66,12 +66,14 @@ export function Nav() {
             : "bg-transparent"
         }`}
       >
-        <div className="container-narrow flex items-center justify-between h-16 md:h-20">
-          <a href="#top" className="text-base md:text-lg font-medium tracking-tight">
+        <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
+          {/* Left: logo */}
+          <a href="#top" className="text-base md:text-lg font-medium tracking-tight justify-self-start">
             Andrea Bonomo
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Center: nav links */}
+          <nav className="hidden md:flex items-center justify-center gap-8">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -83,15 +85,24 @@ export function Nav() {
             ))}
           </nav>
 
-          <button
-            aria-label="Menu"
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-          >
-            <span className={`block w-5 h-px bg-foreground transition-transform ${open ? "translate-y-[6px] rotate-45" : ""}`} />
-            <span className={`block w-5 h-px bg-foreground transition-opacity ${open ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-px bg-foreground transition-transform ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
-          </button>
+          {/* Right: CTA button + mobile hamburger */}
+          <div className="flex items-center justify-end gap-3">
+            <a
+              href="#contatti"
+              className="hidden md:inline-flex pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-xs px-4 py-2"
+            >
+              Prenota la call conoscitiva →
+            </a>
+            <button
+              aria-label="Menu"
+              onClick={() => setOpen((v) => !v)}
+              className="md:hidden flex flex-col gap-1.5 p-2"
+            >
+              <span className={`block w-5 h-px bg-foreground transition-transform ${open ? "translate-y-[6px] rotate-45" : ""}`} />
+              <span className={`block w-5 h-px bg-foreground transition-opacity ${open ? "opacity-0" : ""}`} />
+              <span className={`block w-5 h-px bg-foreground transition-transform ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
+            </button>
+          </div>
         </div>
 
         {open && (
