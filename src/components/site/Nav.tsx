@@ -30,9 +30,18 @@ export function Nav() {
     <>
       {/* Announcement banner — normal flow, scrolls with page */}
       <div ref={bannerRef} className="relative bg-[#C4D9DC] overflow-hidden">
+        {/* Three small blue glows drifting in different directions */}
         <div
-          className="absolute top-0 h-full w-[40%] bg-white/30 blur-xl rounded-full pointer-events-none"
-          style={{ animation: "banner-glow-move 3.5s ease-in-out infinite" }}
+          className="absolute w-10 h-10 rounded-full blur-md pointer-events-none"
+          style={{ backgroundColor: "rgba(21,102,134,0.22)", top: "10%", left: "12%", animation: "banner-drift-1 9s ease-in-out infinite" }}
+        />
+        <div
+          className="absolute w-12 h-12 rounded-full blur-md pointer-events-none"
+          style={{ backgroundColor: "rgba(21,102,134,0.18)", top: "5%", left: "48%", animation: "banner-drift-2 12s ease-in-out infinite", animationDelay: "3s" }}
+        />
+        <div
+          className="absolute w-8 h-8 rounded-full blur-md pointer-events-none"
+          style={{ backgroundColor: "rgba(11,71,100,0.25)", top: "15%", right: "18%", animation: "banner-drift-3 10s ease-in-out infinite", animationDelay: "5s" }}
         />
         <div className="container-narrow py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center relative z-10">
           <p className="text-xs sm:text-sm text-foreground/85 leading-snug">

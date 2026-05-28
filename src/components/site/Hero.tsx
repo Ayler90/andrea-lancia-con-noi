@@ -17,23 +17,27 @@ export function Hero() {
           <div className="absolute inset-x-32 -bottom-4 h-16 bg-[#C4D9DC]/40 blur-2xl rounded-full pointer-events-none" />
 
           <div className="rounded-3xl md:rounded-[2rem] bg-surface overflow-hidden relative z-10">
-            {/* Animated glow orbs */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl md:rounded-[2rem]">
+            {/* Animated glow orbs — stay behind text (no z-index), drift in different directions */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              {/* Bottom-left — drifts up-right */}
               <div
-                className="absolute w-72 h-72 rounded-full bg-[#156686]/12 blur-3xl top-[-20px] left-[-20px]"
-                style={{ animation: "glow-float 7s ease-in-out infinite" }}
+                className="absolute w-40 h-40 rounded-full bg-[#156686]/18 blur-2xl"
+                style={{ bottom: "8%", left: "5%", animation: "orb-drift-1 10s ease-in-out infinite" }}
               />
+              {/* Bottom-center — drifts down-left */}
               <div
-                className="absolute w-56 h-56 rounded-full bg-[#C4D9DC]/30 blur-2xl top-[10%] left-[30%]"
-                style={{ animation: "glow-float-alt 9s ease-in-out infinite", animationDelay: "2s" }}
+                className="absolute w-36 h-36 rounded-full bg-[#A1C2CF]/25 blur-2xl"
+                style={{ bottom: "20%", left: "30%", animation: "orb-drift-2 13s ease-in-out infinite", animationDelay: "2s" }}
               />
+              {/* Right-center — drifts left */}
               <div
-                className="absolute w-80 h-80 rounded-full bg-[#A1C2CF]/15 blur-3xl bottom-[-40px] left-[15%]"
-                style={{ animation: "glow-float 11s ease-in-out infinite", animationDelay: "4s" }}
+                className="absolute w-44 h-44 rounded-full bg-[#156686]/14 blur-3xl"
+                style={{ top: "40%", right: "5%", animation: "orb-drift-3 11s ease-in-out infinite", animationDelay: "4s" }}
               />
+              {/* Bottom-right — drifts up-left */}
               <div
-                className="absolute w-44 h-44 rounded-full bg-[#156686]/10 blur-2xl bottom-[20%] left-[50%]"
-                style={{ animation: "glow-float-alt 8s ease-in-out infinite", animationDelay: "1s" }}
+                className="absolute w-32 h-32 rounded-full bg-[#C4D9DC]/30 blur-2xl"
+                style={{ bottom: "5%", right: "15%", animation: "orb-drift-4 9s ease-in-out infinite", animationDelay: "1s" }}
               />
             </div>
 

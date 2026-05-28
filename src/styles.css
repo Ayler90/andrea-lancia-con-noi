@@ -217,3 +217,51 @@
   40%       { opacity: 0.4;  transform: scale(1.1) translate(-12px, 8px); }
   70%       { opacity: 0.28; transform: scale(1.05) translate(8px, -10px); }
 }
+
+/* Hero orb drifts — each moves in a clearly different direction */
+@keyframes orb-drift-1 {
+  0%   { transform: translate(0px, 0px); }
+  20%  { transform: translate(38px, -22px); }
+  45%  { transform: translate(18px, -46px); }
+  70%  { transform: translate(-20px, -28px); }
+  100% { transform: translate(0px, 0px); }
+}
+@keyframes orb-drift-2 {
+  0%   { transform: translate(0px, 0px); }
+  25%  { transform: translate(-32px, 24px); }
+  55%  { transform: translate(14px, 40px); }
+  80%  { transform: translate(30px, 10px); }
+  100% { transform: translate(0px, 0px); }
+}
+@keyframes orb-drift-3 {
+  0%   { transform: translate(0px, 0px); }
+  30%  { transform: translate(-40px, -14px); }
+  60%  { transform: translate(-24px, 28px); }
+  85%  { transform: translate(12px, 18px); }
+  100% { transform: translate(0px, 0px); }
+}
+@keyframes orb-drift-4 {
+  0%   { transform: translate(0px, 0px); }
+  35%  { transform: translate(28px, 32px); }
+  65%  { transform: translate(-18px, 20px); }
+  90%  { transform: translate(-30px, -10px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+/* Banner micro-glows */
+@keyframes banner-drift-1 {
+  0%, 100% { transform: translate(0px, 0px); }
+  33%       { transform: translate(22px, -6px); }
+  66%       { transform: translate(-16px, 8px); }
+}
+@keyframes banner-drift-2 {
+  0%, 100% { transform: translate(0px, 0px); }
+  40%       { transform: translate(-20px, 10px); }
+  75%       { transform: translate(14px, -10px); }
+}
+@keyframes banner-drift-3 {
+  0%, 100% { transform: translate(0px, 0px); }
+  30%       { transform: translate(16px, 8px); }
+  60%       { transform: translate(-12px, -8px); }
+  85%       { transform: translate(10px, 4px); }
+}
