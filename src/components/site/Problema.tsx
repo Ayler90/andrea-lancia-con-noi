@@ -1,13 +1,12 @@
-import heroImg from "@/assets/hero-andrea.jpg";
+import costruiscoImg from "@/assets/Foto mentre costruisco.jpg";
 
 const chaosThoughts = [
-  { text: "Quante email?",      x: "5%",  y: "8%",  delay: "0s"   },
-  { text: "Webinar?",           x: "62%", y: "4%",  delay: "1s"   },
-  { text: "Landing page?",      x: "72%", y: "35%", delay: "1.8s" },
-  { text: "Ads?",               x: "68%", y: "65%", delay: "0.6s" },
-  { text: "Contenuti?",         x: "3%",  y: "60%", delay: "2.2s" },
-  { text: "Strategia?",         x: "22%", y: "82%", delay: "1.4s" },
-  { text: "Come vendo?",        x: "50%", y: "80%", delay: "0.3s" },
+  { text: "Devo fare o no un webinar?",                x: "2%",  y: "6%",  delay: "0s"   },
+  { text: "Quante email invio?",                       x: "58%", y: "3%",  delay: "1s"   },
+  { text: "Che contenuti dovrei creare?",              x: "64%", y: "34%", delay: "1.8s" },
+  { text: "Quanto le tengo aperte le vendite?",        x: "55%", y: "68%", delay: "0.6s" },
+  { text: "Ma quest'offerta è giusta per il mio pubblico?", x: "0%", y: "58%", delay: "2.2s" },
+  { text: "Mi servono o no le ads?",                   x: "28%", y: "85%", delay: "1.4s" },
 ];
 
 const clarityItems = [
@@ -24,45 +23,25 @@ function ChaosWidget() {
       {chaosThoughts.map((t) => (
         <div
           key={t.text}
-          className="absolute text-xs font-medium text-white/65 bg-white/10 border border-white/20 rounded-xl px-3 py-1.5 backdrop-blur-sm whitespace-nowrap"
+          className="absolute text-xs font-medium text-white/65 bg-white/10 border border-white/20 rounded-xl px-3 py-1.5 backdrop-blur-sm"
           style={{
             left: t.x,
             top: t.y,
             animation: `thought-float 3.5s ease-in-out ${t.delay} infinite`,
+            maxWidth: "48%",
           }}
         >
           {t.text}
         </div>
       ))}
 
-      {/* Person SVG */}
-      <svg
-        viewBox="0 0 200 260"
-        className="w-32 md:w-40 relative z-10"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+      {/* Central emoji */}
+      <div
+        className="relative z-10 text-7xl md:text-8xl"
+        style={{ animation: "thought-float 4s ease-in-out 0.5s infinite" }}
       >
-        {/* Head */}
-        <circle cx="100" cy="60" r="32" stroke="rgba(255,255,255,0.55)" strokeWidth="2.5" />
-        {/* Face — confused expression */}
-        <circle cx="89"  cy="56" r="3" fill="rgba(255,255,255,0.6)" />
-        <circle cx="111" cy="56" r="3" fill="rgba(255,255,255,0.6)" />
-        <path d="M 88 72 Q 100 65 112 72" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinecap="round" />
-        {/* Sweat drop */}
-        <ellipse cx="120" cy="48" rx="4" ry="6" fill="rgba(196,217,220,0.5)" />
-        {/* Body */}
-        <line x1="100" y1="92"  x2="100" y2="170" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Arms raised in frustration */}
-        <line x1="100" y1="120" x2="62"  y2="95"  stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="100" y1="120" x2="138" y2="95"  stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Legs */}
-        <line x1="100" y1="170" x2="78"  y2="220" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="100" y1="170" x2="122" y2="220" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Chaotic lines from head */}
-        <line x1="100" y1="28" x2="100" y2="12" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="3 3" />
-        <line x1="75"  y1="38" x2="60"  y2="26" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="3 3" />
-        <line x1="125" y1="38" x2="140" y2="26" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeDasharray="3 3" />
-      </svg>
+        🤯
+      </div>
     </div>
   );
 }
@@ -79,6 +58,14 @@ export function Problema() {
         <div
           className="absolute w-64 h-64 rounded-full blur-3xl bottom-0 left-1/4"
           style={{ backgroundColor: "rgba(161,194,207,0.10)", animation: "glow-float-alt 12s ease-in-out infinite", animationDelay: "3s" }}
+        />
+        <div
+          className="absolute w-96 h-96 rounded-full blur-3xl top-1/3 -left-20"
+          style={{ backgroundColor: "rgba(196,217,220,0.08)", animation: "glow-float 14s ease-in-out infinite", animationDelay: "6s" }}
+        />
+        <div
+          className="absolute w-56 h-56 rounded-full blur-2xl bottom-1/4 right-1/4"
+          style={{ backgroundColor: "rgba(255,255,255,0.05)", animation: "glow-float-alt 9s ease-in-out infinite", animationDelay: "1.5s" }}
         />
       </div>
 
@@ -133,18 +120,15 @@ export function Problema() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="my-16 h-px bg-white/15" />
-
         {/* ROW 2: Andrea's photo LEFT + Clarity text RIGHT */}
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center mt-16 md:mt-24">
           <div className="relative">
             <div
               className="absolute inset-0 rounded-3xl blur-2xl"
               style={{ backgroundColor: "rgba(196,217,220,0.15)" }}
             />
             <img
-              src={heroImg}
+              src={costruiscoImg}
               alt="Andrea Bonomo"
               className="relative w-full max-w-sm mx-auto rounded-3xl object-cover aspect-[4/5]"
             />
@@ -180,7 +164,7 @@ export function Problema() {
               </a>
               <a
                 href="#testimonianze"
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors flex items-center gap-2"
+                className="text-sm font-medium text-white/80 border border-white/35 hover:border-white/70 hover:text-white transition-all flex items-center gap-2 px-5 py-2.5 rounded-full"
               >
                 Leggi le recensioni →
               </a>

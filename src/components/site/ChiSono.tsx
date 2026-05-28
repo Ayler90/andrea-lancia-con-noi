@@ -1,4 +1,4 @@
-import blob from "@/assets/blob.jpg";
+import aereiImg from "@/assets/Foto con aerei.jpg";
 
 const settori = [
   "Video making",
@@ -23,12 +23,12 @@ export function ChiSono() {
           </h2>
           <div className="mt-10 hidden md:block relative aspect-square max-w-xs">
             <img
-              src={blob}
+              src={aereiImg}
               alt=""
               loading="lazy"
               width={1024}
               height={1024}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover rounded-2xl"
             />
           </div>
         </div>
@@ -50,7 +50,11 @@ export function ChiSono() {
             così sai sempre dove sei e cosa succederà dopo.
           </p>
 
-          <div className="mt-10 grid grid-cols-3 gap-6 md:gap-8 py-8 border-y border-border">
+          {/* Stats box */}
+          <div
+            className="mt-10 grid grid-cols-3 gap-6 md:gap-8 py-8 px-6 rounded-2xl bg-[#156686]/8 border border-[#156686]/15"
+            style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}
+          >
             <div>
               <p className="h-display text-3xl md:text-4xl text-[#156686]">50+</p>
               <p className="text-xs text-muted-foreground mt-2 uppercase tracking-wider">
@@ -88,8 +92,11 @@ export function ChiSono() {
             </div>
           </div>
 
-          <a href="#percorsi" className="cta-ghost text-primary mt-10">
-            Scopri i miei percorsi <span>→</span>
+          <a
+            href="#percorsi"
+            className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 mt-10 inline-flex"
+          >
+            Scopri i miei percorsi →
           </a>
         </div>
       </div>

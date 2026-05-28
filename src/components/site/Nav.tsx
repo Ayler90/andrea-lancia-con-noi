@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   { href: "#chi-sono", label: "Chi sono" },
@@ -10,22 +10,34 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const update = () => {
+      setScrolled(window.scrollY > 12);
+      if (bannerRef.current && navRef.current) {
+        const rect = bannerRef.current.getBoundingClientRect();
+        navRef.current.style.top = `${Math.max(0, rect.bottom)}px`;
+      }
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
     <>
-      {/* Announcement banner */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#C4D9DC]">
-        <div className="container-narrow py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
+      {/* Announcement banner — normal flow, scrolls with page */}
+      <div ref={bannerRef} className="relative bg-[#C4D9DC] overflow-hidden">
+        <div
+          className="absolute top-0 h-full w-[40%] bg-white/30 blur-xl rounded-full pointer-events-none"
+          style={{ animation: "banner-glow-move 3.5s ease-in-out infinite" }}
+        />
+        <div className="container-narrow py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center relative z-10">
           <p className="text-xs sm:text-sm text-foreground/85 leading-snug">
-            Scarica la mia guida gratuita ai lanci, una guida di oltre 30 pagine per creare il tuo
-            primo, o prossimo, lancio.
+            Scarica la mia <strong>Guida Gratuita ai Lanci</strong>, una guida di oltre 30 pagine
+            per creare il tuo primo, o prossimo, lancio.
           </p>
           <a
             href="#newsletter"
@@ -36,14 +48,14 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Main nav */}
+      {/* Main nav — fixed, top adjusts dynamically as banner scrolls */}
       <header
-        className={`fixed left-0 right-0 z-40 transition-all duration-300 top-[var(--banner-h,52px)] ${
+        ref={navRef}
+        className={`fixed left-0 right-0 z-40 transition-colors duration-300 ${
           scrolled
             ? "bg-background/85 backdrop-blur-md border-b border-border"
             : "bg-transparent"
         }`}
-        style={{ "--banner-h": "52px" } as React.CSSProperties}
       >
         <div className="container-narrow flex items-center justify-between h-16 md:h-20">
           <a href="#top" className="text-base md:text-lg font-medium tracking-tight">
