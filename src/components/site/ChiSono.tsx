@@ -13,33 +13,31 @@ const settori = [
 
 export function ChiSono() {
   return (
-    <section id="chi-sono" className="py-20 md:py-32">
-      <div className="container-narrow grid md:grid-cols-12 gap-10 md:gap-12 items-start">
+    <section id="chi-sono" className="relative min-h-screen flex flex-col md:flex-row">
 
-        {/* LEFT column — image full column, text overlaid at bottom */}
-        <div className="md:col-span-5">
-          <div className="md:sticky md:top-24 relative">
-            <img
-              src={aereiImg}
-              alt="Andrea Bonomo con gli aerei"
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="w-full object-contain"
-            />
-            {/* Text overlaid at bottom of image */}
-            <div className="absolute bottom-0 left-0 right-0 pb-4 px-2">
-              <p className="eyebrow text-[#156686]/70 mb-2">Chi sono</p>
-              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl leading-tight">
-                Sono Andrea Bonomo,{" "}
-                <em className="text-[#156686]">funnel e launch strategist.</em>
-              </h2>
-            </div>
-          </div>
+      {/* LEFT column — flush to left edge, full section height, image bottom-anchored */}
+      <div className="relative md:w-5/12 min-h-[60vw] md:min-h-screen flex-shrink-0">
+        <img
+          src={aereiImg}
+          alt="Andrea Bonomo con gli aerei"
+          loading="lazy"
+          width={1024}
+          height={1024}
+          className="absolute inset-0 w-full h-full object-contain object-bottom"
+        />
+        {/* Text overlaid at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 pb-8 px-8 md:px-12">
+          <p className="eyebrow text-[#156686]/70 mb-2">Chi sono</p>
+          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl leading-tight">
+            Sono Andrea Bonomo,{" "}
+            <em className="text-[#156686]">funnel e launch strategist.</em>
+          </h2>
         </div>
+      </div>
 
-        {/* RIGHT column */}
-        <div className="md:col-span-6 md:col-start-7">
+      {/* RIGHT column — padded, vertically centered */}
+      <div className="flex-1 flex items-center py-20 md:py-32 pr-5 md:pr-10 lg:pr-16 pl-8 md:pl-12 lg:pl-16">
+        <div className="w-full max-w-xl">
           <p className="text-sm md:text-base leading-relaxed text-foreground/85">
             Gestisco lanci da <strong>oltre 6 anni</strong> e, conti alla mano, ne ho gestiti{" "}
             <strong>50+</strong> per coach, consulenti e creator, generando più di{" "}
@@ -109,3 +107,4 @@ export function ChiSono() {
     </section>
   );
 }
+
