@@ -86,9 +86,9 @@ const PERCORSI: Record<string, Percorso[]> = {
 type FilterId = keyof typeof PERCORSI | "tutti";
 
 const FILTERS: { id: Exclude<FilterId, "tutti">; label: string; sub: string }[] = [
-  { id: "lancio", label: "Voglio fare un lancio", sub: "Percorso di Lancio" },
-  { id: "business", label: "Voglio lavorare sul mio business", sub: "Business Blueprint" },
+  { id: "lancio", label: "Voglio lanciare la mia offerta", sub: "Percorso di Lancio + Calendario di Lancio" },
   { id: "newsletter", label: "Voglio lanciare una newsletter", sub: "Mentoring + Easy-Mail Pack" },
+  { id: "business", label: "Voglio lavorare a 360° sul mio business", sub: "Business Blueprint" },
   { id: "consulenza", label: "Voglio un aiuto veloce", sub: "Consulenza Strategica" },
 ];
 

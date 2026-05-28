@@ -30,22 +30,28 @@ export function Newsletter() {
 
             {/* Content column */}
             <div className="md:col-span-7 p-8 sm:p-10 md:p-14 lg:p-16">
-              <p className="eyebrow mb-5 text-primary-foreground/70">
-                03 — Guida gratuita
-              </p>
+              <p className="eyebrow mb-5 text-primary-foreground/70">— Guida gratuita</p>
               <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-                Scarica la <em>Guida</em> ai Lanci
+                Iscriviti alla mia newsletter e scarica la <em>Guida Gratuita ai Lanci</em>
               </h2>
               <p className="mt-6 text-base md:text-lg text-primary-foreground/85 leading-relaxed max-w-xl">
-                Una guida pratica per capire come funzionano le fasi di un lancio e
-                come strutturare il tuo — che sia il primo o il prossimo. Gratuita.
+                Ho una newsletter che invio ogni venerdì alle 15 — la{" "}
+                <strong className="text-primary-foreground">Fun-Letter</strong> — con strategie,
+                tattiche e consigli legati ai lanci, ai funnel e al dietro le quinte del mio
+                business. È letta da oltre 1.200 persone.
+              </p>
+              <p className="mt-4 text-base md:text-lg text-primary-foreground/85 leading-relaxed max-w-xl">
+                Come regalo per l'iscrizione ricevi subito la{" "}
+                <strong className="text-primary-foreground">Guida Gratuita ai Lanci</strong>, una
+                guida pratica di oltre 30 pagine per capire come funzionano le fasi di un lancio e
+                come strutturare il tuo, che sia il primo o il prossimo.
               </p>
 
               <ul className="mt-8 space-y-3 max-w-lg">
                 {[
                   "Le 4 fasi di un lancio che converte",
                   "Errori comuni da evitare al primo lancio",
-                  "Template ed esempi reali",
+                  "Strumenti gratuiti consigliati per il tuo lancio",
                 ].map((b) => (
                   <li
                     key={b}
@@ -87,8 +93,8 @@ export function Newsletter() {
               )}
 
               <p className="mt-6 text-xs text-primary-foreground/65 max-w-md leading-relaxed">
-                Iscrivendoti riceverai anche la Fun-Letter, la newsletter settimanale
-                su lanci, email marketing e business online.
+                Iscrivendoti riceverai anche la Fun-Letter ogni venerdì. Niente spam, solo
+                contenuti utili. Puoi disiscriverti in qualsiasi momento.
               </p>
             </div>
           </div>

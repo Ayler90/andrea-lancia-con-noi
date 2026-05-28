@@ -1,54 +1,82 @@
 export function ConChiLavoro() {
-  const items = [
-    "Hai già un'audience che ti segue",
-    "Vendi più di un prodotto digitale",
-    "Hai già lanciato almeno una volta",
-    "Vuoi vendite costanti, non solo lanci continui",
+  const siLavora = [
+    "Hanno già un'audience attiva e che risponde",
+    "Vendono più di un prodotto digitale o servizio",
+    "Hanno già lanciato almeno una volta",
+    "Vogliono vendite costanti, non solo lanci continui",
+  ];
+
+  const nonLavora = [
+    "Cerchi risultati immediati facendo il minimo possibile. I lanci richiedono preparazione, strategia e tempo.",
+    "Non sei disposto a metterti in gioco. Il mio lavoro è guidarti, ma l'energia e la presenza le devi mettere tu.",
+    "Fai network marketing. Non è il mio campo e non ho gli strumenti giusti per aiutarti.",
+    "Hai un e-commerce di prodotti fisici. Lavoro esclusivamente con infoprodotti, servizi e percorsi digitali.",
   ];
 
   return (
     <section id="con-chi-lavoro" className="py-20 md:py-28 bg-foreground text-background">
       <div className="container-narrow">
-        <div className="max-w-4xl">
-          <p className="eyebrow mb-5 text-background/60">— Con chi lavoro</p>
-          <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Con chi <em>lavoro</em>
-          </h2>
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+          {/* Con chi lavoro */}
+          <div>
+            <p className="eyebrow mb-5 text-background/60">— Con chi lavoro</p>
+            <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
+              Lavoro al meglio con{" "}
+              <em>creator, coach, consulenti e formatori</em> che:
+            </h2>
 
-          <p className="mt-10 text-lg md:text-xl text-background/85 leading-relaxed">
-            Lavoro al meglio con creator e formatori che:
-          </p>
+            <ul className="mt-8 space-y-4">
+              {siLavora.map((it) => (
+                <li
+                  key={it}
+                  className="flex items-start gap-4 text-base md:text-lg text-background/90"
+                >
+                  <span className="mt-2.5 w-2 h-2 bg-secondary flex-shrink-0" />
+                  {it}
+                </li>
+              ))}
+            </ul>
 
-          <ul className="mt-8 space-y-4 max-w-2xl">
-            {items.map((it) => (
-              <li
-                key={it}
-                className="flex items-start gap-4 text-lg md:text-xl text-background/90"
+            <div className="mt-10 space-y-4 text-base md:text-lg text-background/80 leading-relaxed">
+              <p>
+                Se stai lanciando il tuo primo corso ma hai un pubblico molto ristretto o non sei
+                ancora posizionato, probabilmente non sono la persona giusta — ma posso consigliarti
+                colleghi per aiutarti in questa prima fase.
+              </p>
+              <p>
+                Ma se hai già costruito qualcosa di solido, hai già ottenuto i primi risultati e
+                vuoi creare un sistema di lancio efficace, allora dovremmo parlarne.
+              </p>
+            </div>
+
+            <div className="mt-10">
+              <a
+                href="#contatti"
+                className="pill bg-background text-foreground hover:bg-secondary hover:text-background hover:-translate-y-0.5"
               >
-                <span className="mt-3 w-2 h-2 bg-secondary flex-shrink-0" />
-                {it}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-12 space-y-5 max-w-2xl text-lg md:text-xl text-background/85 leading-relaxed">
-            <p>
-              Se stai lanciando il tuo <em className="font-display italic font-normal">primo</em>{" "}
-              corso, probabilmente non sono la persona giusta.
-            </p>
-            <p>
-              Ma se hai già costruito qualcosa di solido e vuoi un sistema di vendita all'altezza,
-              dovremmo parlarne.
-            </p>
+                Prenota la call conoscitiva →
+              </a>
+            </div>
           </div>
 
-          <div className="mt-12">
-            <a
-              href="#contatti"
-              className="pill bg-background text-foreground hover:bg-secondary hover:text-background hover:-translate-y-0.5"
-            >
-              Parliamone →
-            </a>
+          {/* Con chi non lavoro */}
+          <div className="md:border-l md:border-background/20 md:pl-12 lg:pl-16">
+            <p className="eyebrow mb-5 text-background/60">— Con chi non lavoro</p>
+            <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
+              Non sono la persona giusta <em>se:</em>
+            </h2>
+
+            <ul className="mt-8 space-y-6">
+              {nonLavora.map((it) => (
+                <li
+                  key={it}
+                  className="flex items-start gap-4 text-base md:text-lg text-background/75"
+                >
+                  <span className="mt-2.5 w-2 h-2 border border-background/40 flex-shrink-0" />
+                  {it}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

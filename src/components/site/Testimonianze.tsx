@@ -41,12 +41,12 @@ const items = [
 
 export function Testimonianze() {
   return (
-    <section className="py-20 md:py-32 border-t border-border">
+    <section id="testimonianze" className="py-20 md:py-32 border-t border-border">
       <div className="container-narrow">
         <div className="max-w-3xl mb-14 md:mb-20">
-          <p className="eyebrow mb-4">03 — Testimonianze</p>
+          <p className="eyebrow mb-4">— Testimonianze</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Cosa dicono <em>chi ha lavorato</em> con me
+            Cosa dice chi ha <em>lavorato con me</em>
           </h2>
         </div>
 

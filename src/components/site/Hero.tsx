@@ -11,28 +11,28 @@ export function Hero() {
               <p className="eyebrow">Funnel & Launch Strategist</p>
 
               <h1 className="h-display text-[2.25rem] sm:text-5xl md:text-[3.75rem] lg:text-[4.5rem] mt-10 md:mt-0">
-                Pronto a fare il tuo prossimo lancio,{" "}
-                <em>senza ansia</em> e senza stress?
+                Faccio lanci e costruisco funnel di vendita.{" "}
+                <em>Lanciamo la tua prossima offerta?</em>
               </h1>
 
               <div className="mt-10 md:mt-12">
                 <p className="text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed">
-                  Sono Andrea Bonomo, Funnel e Launch Strategist. Aiuto freelance e
-                  solopreneur a lanciare video corsi, percorsi e servizi online — con una
-                  strategia chiara, email marketing e contenuti che funzionano.
+                  Lo so che lanciare ti spaventa — ci sono mille cose da controllare e non sai da
+                  dove iniziare. Facciamolo insieme: mi occupo io della parte tecnica e strategica,
+                  tu ci metti creatività ed energia. Zero stress, zero ansia.
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
                   <a
                     href="#percorsi"
                     className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
                   >
-                    Scopri i percorsi
+                    Scopri i miei percorsi
                   </a>
                   <a
                     href="#newsletter"
                     className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors group"
                   >
-                    Scarica la guida gratuita
+                    Scarica la guida gratuita ai lanci
                     <span className="transition-transform group-hover:translate-x-1">→</span>
                   </a>
                 </div>
@@ -49,7 +49,7 @@ export function Hero() {
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute top-5 right-5 px-4 py-2 rounded-full bg-background/90 backdrop-blur-sm text-xs font-medium">
-                ✦ 80+ professionisti
+                ✦ 90+ professionisti
               </div>
             </div>
           </div>
