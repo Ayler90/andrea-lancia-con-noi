@@ -126,8 +126,9 @@ export function Problema() {
           <div className="flex items-center justify-center">
             <div className="relative">
               {/* White glow below the image */}
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-64 h-32 bg-white/20 blur-3xl rounded-full pointer-events-none" />
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-40 h-20 bg-white/15 blur-2xl rounded-full pointer-events-none" />
+              <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 w-80 h-40 bg-white/50 blur-3xl rounded-full pointer-events-none" />
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-56 h-28 bg-white/60 blur-2xl rounded-full pointer-events-none" />
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-32 h-16 bg-white/70 blur-xl rounded-full pointer-events-none" />
 
               <div
                 className="relative rounded-3xl overflow-hidden border-[6px] border-[#f0f0f0]/80 shadow-2xl w-full max-w-sm"

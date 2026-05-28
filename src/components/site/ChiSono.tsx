@@ -1,4 +1,4 @@
-import aereiImg from "@/assets/Foto con aerei.jpg";
+import aereiImg from "@/assets/Foto con aerei senza sfondo.png";
 
 const settori = [
   "Video making",
@@ -16,27 +16,26 @@ export function ChiSono() {
     <section id="chi-sono" className="py-20 md:py-32">
       <div className="container-narrow grid md:grid-cols-12 gap-10 md:gap-12 items-start">
 
-        {/* LEFT column — full image with text overlay */}
+        {/* LEFT column — text on top, image below */}
         <div className="md:col-span-5">
-          <div className="md:sticky md:top-24 relative overflow-hidden min-h-[480px]">
+          <div className="md:sticky md:top-24 flex flex-col gap-8">
+            {/* Text */}
+            <div>
+              <p className="eyebrow text-[#156686]/70 mb-4">Chi sono</p>
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
+                Sono Andrea Bonomo,{" "}
+                <em className="text-[#156686]">funnel e launch strategist.</em>
+              </h2>
+            </div>
+            {/* Image — no background PNG, large */}
             <img
               src={aereiImg}
-              alt="Andrea Bonomo"
+              alt="Andrea Bonomo con gli aerei"
               loading="lazy"
               width={1024}
               height={1024}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="w-full object-contain"
             />
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d4f68]/90 via-[#156686]/35 to-transparent" />
-            {/* Text inside */}
-            <div className="relative z-10 flex flex-col justify-end p-8 md:p-10 min-h-[480px]">
-              <p className="eyebrow text-white/60 mb-4">Chi sono</p>
-              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-white">
-                Sono Andrea Bonomo,{" "}
-                <em className="text-[#C4D9DC]">funnel e launch strategist.</em>
-              </h2>
-            </div>
           </div>
         </div>
 
