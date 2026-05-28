@@ -1,16 +1,48 @@
+import gionsnow from "@/assets/01_LOGO_GionSnow_Positivo (2).png";
+import grace from "@/assets/logo-grace.webp";
+import trentinoSocialTank from "@/assets/logo-home-pagex2-trentino social tank.png";
+import logoBwb from "@/assets/logo.BWB8mVrQ.svg";
+import unscripted from "@/assets/unscripted-logo (2).png";
+
+const logos = [
+  { src: gionsnow,          alt: "GionSnow" },
+  { src: grace,             alt: "Grace" },
+  { src: trentinoSocialTank, alt: "Trentino Social Tank" },
+  { src: logoBwb,           alt: "BWB" },
+  { src: unscripted,        alt: "Unscripted" },
+];
+
 export function Loghi() {
   return (
-    <section id="loghi" className="py-14 md:py-18 border-b border-border">
-      <div className="container-narrow">
-        <p className="text-center text-sm text-foreground/40 uppercase tracking-widest mb-10">
-          Ho collaborato con oltre 90 professionisti — i loghi dei clienti verranno inseriti qui
-        </p>
-        {/* Placeholder grid per i loghi */}
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-30">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div
+    <section id="loghi" className="py-14 md:py-20 border-b border-border overflow-hidden">
+      <div className="container-narrow mb-10 text-center">
+        <h2 className="h-display text-2xl md:text-3xl lg:text-4xl">
+          Alcuni dei clienti e creator{" "}
+          <em className="text-[#156686]">con cui ho lavorato</em>
+        </h2>
+      </div>
+
+      {/* Marquee track */}
+      <div className="relative">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+
+        <div
+          className="flex gap-16 md:gap-24 items-center"
+          style={{
+            width: "max-content",
+            animation: "logo-marquee 18s linear infinite",
+          }}
+        >
+          {/* Duplicate logos for seamless loop */}
+          {[...logos, ...logos].map((logo, i) => (
+            <img
               key={i}
-              className="w-24 h-10 bg-foreground/20 rounded-md"
+              src={logo.src}
+              alt={logo.alt}
+              className="h-10 md:h-12 w-auto object-contain flex-shrink-0"
+              style={{ filter: "grayscale(100%) opacity(0.45)" }}
             />
           ))}
         </div>

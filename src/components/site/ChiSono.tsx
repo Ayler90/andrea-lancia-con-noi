@@ -15,24 +15,40 @@ export function ChiSono() {
   return (
     <section id="chi-sono" className="py-20 md:py-32">
       <div className="container-narrow grid md:grid-cols-12 gap-10 md:gap-12 items-start">
+
+        {/* LEFT sticky column */}
         <div className="md:col-span-5 md:sticky md:top-32">
           <p className="eyebrow mb-4">Chi sono</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
             Sono Andrea Bonomo,{" "}
             <em className="text-[#156686]">funnel e launch strategist.</em>
           </h2>
-          <div className="mt-10 hidden md:block relative aspect-square max-w-xs">
-            <img
-              src={aereiImg}
-              alt=""
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="w-full h-full object-cover rounded-2xl"
-            />
+
+          {/* Image: oblique, border, floating, badge */}
+          <div className="mt-10 hidden md:block relative">
+            <div
+              className="relative rounded-2xl overflow-hidden border-[6px] border-[#f0f0f0] shadow-xl max-w-xs"
+              style={{ animation: "img-float 5s ease-in-out infinite" }}
+            >
+              <img
+                src={aereiImg}
+                alt="Andrea Bonomo"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="w-full h-full object-cover aspect-square"
+              />
+              {/* Badge inside image */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-md whitespace-nowrap">
+                <p className="text-xs font-semibold text-[#156686] tracking-wide">
+                  Funnel e Launch Strategist
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
+        {/* RIGHT column */}
         <div className="md:col-span-6 md:col-start-7">
           <p className="text-sm md:text-base leading-relaxed text-foreground/85">
             Gestisco lanci da <strong>oltre 6 anni</strong> e, conti alla mano, ne ho gestiti{" "}

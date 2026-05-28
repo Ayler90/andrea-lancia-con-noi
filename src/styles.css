@@ -148,16 +148,18 @@
   .pill::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -120%;
-    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
+    width: 110%;
     height: 200%;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.22) 0%, transparent 65%);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.12) 40%, transparent 70%);
     pointer-events: none;
+    opacity: 0;
   }
 
   .pill:hover::before {
-    animation: pill-glow-sweep 1.5s ease-in-out infinite;
+    animation: pill-glow-pulse 1.8s ease-in-out infinite;
   }
 
   .cta-ghost {
@@ -176,11 +178,20 @@
   }
 }
 
-@keyframes pill-glow-sweep {
-  0%   { left: -120%; opacity: 0; }
-  15%  { opacity: 1; }
-  85%  { opacity: 1; }
-  100% { left: 160%; opacity: 0; }
+@keyframes pill-glow-pulse {
+  0%, 100% { opacity: 0;   transform: translate(-50%, -50%) scale(0.4); }
+  40%       { opacity: 1;   transform: translate(-50%, -50%) scale(1);   }
+  70%       { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+@keyframes logo-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes img-float {
+  0%, 100% { transform: rotate(-2deg) translateY(0px); }
+  50%       { transform: rotate(-2deg) translateY(-6px); }
 }
 
 @keyframes banner-glow-move {
