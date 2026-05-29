@@ -8,6 +8,7 @@ import { Percorsi } from "@/components/site/Percorsi";
 import { ConChiLavoro } from "@/components/site/ConChiLavoro";
 import { Newsletter } from "@/components/site/Newsletter";
 import { Testimonianze } from "@/components/site/Testimonianze";
+import { CallConoscitiva } from "@/components/site/CallConoscitiva";
 import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/")({
@@ -45,6 +46,7 @@ function Index() {
       <ConChiLavoro />
       <Newsletter />
       <Testimonianze />
+      <CallConoscitiva />
       <Footer />
     </main>
   );
