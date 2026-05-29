@@ -182,10 +182,9 @@
 /* Filter button: SVG animated border + mouse glow */
 .filter-btn {
   position: relative;
-  overflow: hidden;
   background: white;
   box-shadow: 0 0 0 1.5px #d4d4d4;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
 .filter-btn.is-active {
@@ -193,18 +192,8 @@
   box-shadow: 0 0 0 1.5px #156686;
 }
 
-.filter-btn-rect {
-  x: 1.5px;
-  y: 1.5px;
-  width: calc(100% - 3px);
-  height: calc(100% - 3px);
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.82s linear;
-}
-
-.filter-btn:hover:not(.is-active) .filter-btn-rect {
-  stroke-dashoffset: 0;
+.filter-btn:hover:not(.is-active) {
+  box-shadow: 0 0 0 1.5px #156686;
 }
 
 
