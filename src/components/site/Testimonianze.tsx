@@ -30,12 +30,28 @@ const items = [r1, f1, r2, f2, r3, f3, r4, f4, r5, f5, r6, f6, r7, f7, r8, f8, r
 
 export function Testimonianze() {
   return (
-    <section id="testimonianze" className="py-20 md:py-32">
-      <div className="container-narrow">
+    <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden">
+      {/* Background glow */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          width: "900px",
+          height: "900px",
+          borderRadius: "50%",
+          background: "#156686",
+          opacity: 0.12,
+          filter: "blur(120px)",
+          top: "20%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          animation: "orb-drift-1 32s ease-in-out infinite",
+        }}
+      />
+      <div className="container-narrow relative z-10">
         <div className="max-w-3xl mb-14 md:mb-20">
-          <p className="eyebrow mb-4">Testimonianze</p>
+          <p className="eyebrow mb-4">Parole che mi riempiono il cuore ❤️</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Cosa dice chi ha <em className="text-[#156686]">lavorato con me</em>
+            Cosa dice chi ha lavorato <em className="text-[#156686]">con me</em>
           </h2>
         </div>
 
