@@ -363,22 +363,23 @@ export function ClaritySection() {
           </div>
 
           {/* 4 cards in a row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 relative z-10 justify-items-center">
             {clarityItems.map((item, i) => (
               <div
                 key={item}
                 ref={el => { cardRefs.current[i] = el; }}
-                className="rounded-2xl px-4 py-4"
+                className="rounded-2xl px-3 py-3 w-full"
                 style={{
+                  maxWidth: 210,
                   border: "1px solid rgba(21,102,134,0.14)",
                   background: "rgba(21,102,134,0.04)",
                 }}
               >
-                <span className="text-[10px] font-bold tracking-widest uppercase block mb-2"
+                <span className="text-[10px] font-bold tracking-widest uppercase block mb-1.5"
                   style={{ color: "rgba(21,102,134,0.45)" }}>
                   {`0${i + 1}`}
                 </span>
-                <p className="text-sm font-medium leading-snug text-foreground/80">{item}</p>
+                <p className="text-xs font-medium leading-snug text-foreground/80">{item}</p>
               </div>
             ))}
           </div>
