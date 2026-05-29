@@ -31,22 +31,24 @@ export function ConChiLavoro() {
     <section id="con-chi-lavoro" className="py-20 md:py-28 bg-foreground text-background relative overflow-hidden">
       {/* Background orbs */}
       <div
-        className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, oklch(0.685 0.045 215 / 0.5) 0%, transparent 65%)",
-          filter: "blur(30px)",
-          top: "5%",
-          left: "0%",
+          background: "#6C9FA8",
+          opacity: 0.35,
+          filter: "blur(100px)",
+          top: "-10%",
+          left: "-10%",
           animation: "orb-drift-1 28s ease-in-out infinite",
         }}
       />
       <div
-        className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, oklch(0.452 0.067 230 / 0.45) 0%, transparent 65%)",
-          filter: "blur(30px)",
-          bottom: "0%",
-          right: "5%",
+          background: "#156686",
+          opacity: 0.3,
+          filter: "blur(100px)",
+          bottom: "-10%",
+          right: "-5%",
           animation: "orb-drift-2 34s ease-in-out infinite",
         }}
       />
