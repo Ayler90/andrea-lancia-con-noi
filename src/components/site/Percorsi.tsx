@@ -132,7 +132,7 @@ export function Percorsi() {
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
-                style={{ transition: "transform 0.4s cubic-bezier(0.34, 1.3, 0.64, 1), box-shadow 0.4s ease, background-color 0.3s ease, color 0.3s ease" }}
+                style={{ transition: "transform 0.3s cubic-bezier(0.34, 1.3, 0.64, 1)" }}
                 className={`filter-btn group text-left p-5 md:p-6 rounded-2xl ${
                   isActive
                     ? "is-active text-white shadow-lg scale-[1.02] -translate-y-0.5"
