@@ -203,24 +203,6 @@
   stroke-dashoffset: 0;
 }
 
-.filter-btn::before {
-  content: '';
-  position: absolute;
-  top: var(--filter-glow-y, 50%);
-  left: var(--filter-glow-x, 50%);
-  transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(21,102,134,0.18) 0%, transparent 65%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.filter-btn:hover:not(.is-active)::before {
-  opacity: 1;
-}
 
 @keyframes pill-glow-pulse {
   0%, 100% { opacity: 0;   transform: translate(-50%, -50%) scale(0.4); }

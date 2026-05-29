@@ -86,8 +86,8 @@ const PERCORSI: Record<string, Percorso[]> = {
 type FilterId = keyof typeof PERCORSI | "tutti";
 
 const FILTERS: { id: Exclude<FilterId, "tutti">; label: string; sub: string }[] = [
-  { id: "lancio", label: "Voglio lanciare la mia offerta", sub: "Percorso di Lancio + Calendario di Lancio" },
-  { id: "newsletter", label: "Voglio lanciare una newsletter", sub: "Mentoring + Easy-Mail Pack" },
+  { id: "lancio", label: "Voglio lanciare la mia offerta", sub: "Percorso di Lancio | Calendario di Lancio" },
+  { id: "newsletter", label: "Voglio lanciare una newsletter", sub: "Mentoring | Easy-Mail Pack" },
   { id: "business", label: "Voglio lavorare a 360° sul mio business", sub: "Business Blueprint" },
   { id: "consulenza", label: "Voglio un aiuto veloce", sub: "Consulenza Strategica" },
 ];
@@ -190,7 +190,9 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
       >
         <div className="md:col-span-7 p-8 sm:p-10 md:p-14 lg:p-16 flex flex-col">
           <div className="flex items-center justify-between gap-4 flex-wrap">
-            <span className="text-sm font-mono text-primary">— {percorso.n}</span>
+            <span className="h-display text-4xl md:text-5xl font-bold text-foreground/15 border border-foreground/15 rounded-xl w-14 h-14 flex items-center justify-center flex-shrink-0">
+              {percorso.n}
+            </span>
             <span className="text-xs uppercase tracking-[0.18em] text-foreground/60 font-medium">
               {percorso.tag}
             </span>
@@ -216,7 +218,7 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
           <div className="mt-auto pt-10">
             <a
               href="#contatti"
-              className="pill bg-foreground text-background hover:bg-primary hover:-translate-y-0.5"
+              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
             >
               {percorso.cta} →
             </a>
