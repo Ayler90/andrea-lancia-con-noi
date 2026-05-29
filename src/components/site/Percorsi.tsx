@@ -132,10 +132,10 @@ export function Percorsi() {
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
-                className={`filter-btn group text-left p-5 md:p-6 rounded-2xl transition-all duration-300 ${
+                className={`filter-btn group text-left p-5 md:p-6 rounded-2xl transition-all duration-500 ease-out ${
                   isActive
-                    ? "is-active text-white shadow-lg -translate-y-0.5"
-                    : "text-foreground hover:-translate-y-0.5"
+                    ? "is-active text-white shadow-lg scale-[1.03] -translate-y-1"
+                    : "text-foreground hover:scale-[1.02] hover:-translate-y-0.5"
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
