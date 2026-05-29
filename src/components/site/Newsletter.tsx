@@ -1,5 +1,7 @@
-import { useEffect } from "react";
-import guidaMockup from "@/assets/guida-mockup.jpg";
+import { useEffect, useState } from "react";
+import guidaImg1 from "@/assets/Img guida ai lanci.png";
+import guidaImg2 from "@/assets/Img guida ai lanci 2.png";
+import guidaImg3 from "@/assets/Img guida ai lanci 3.png";
 
 const ML_FORM_HTML = `
 <div id="mlb2-41923213" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41923213">
@@ -48,6 +50,8 @@ const ML_FORM_HTML = `
 `;
 
 export function Newsletter() {
+  const [showTooltip, setShowTooltip] = useState(false);
+
   useEffect(() => {
     (window as any).ml_webform_success_41923213 = function () {
       const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
@@ -64,28 +68,37 @@ export function Newsletter() {
       document.body.appendChild(script);
       fetch("https://assets.mailerlite.com/jsonp/17207/forms/188785133042534099/takel").catch(() => {});
     }
+
+    const timer = setTimeout(() => {
+      const btn = document.querySelector("#mlb2-41923213 .ml-form-embedSubmit button.primary");
+      if (!btn) return;
+      btn.addEventListener("click", () => {
+        const name = document.querySelector('#mlb2-41923213 input[name="fields[name]"]') as HTMLInputElement | null;
+        const email = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
+        if (!name?.value?.trim() || !email?.value?.trim()) {
+          setShowTooltip(true);
+          setTimeout(() => setShowTooltip(false), 3000);
+        }
+      });
+    }, 1200);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section id="newsletter" className="py-20 md:py-28">
       <div className="container-narrow">
-        <div className="bg-primary text-primary-foreground rounded-3xl md:rounded-[2rem] overflow-hidden relative">
+        <div className="bg-primary text-primary-foreground rounded-3xl md:rounded-[2rem] overflow-visible relative">
           <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-secondary/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-secondary/15 blur-3xl pointer-events-none" />
 
           <div className="grid md:grid-cols-12 gap-0 items-center relative">
-            {/* Mockup */}
+            {/* Stacked guide images */}
             <div className="md:col-span-5 p-8 sm:p-10 md:p-12 lg:p-14 flex items-center justify-center">
-              <div className="relative w-full max-w-md">
-                <div className="absolute inset-0 bg-secondary/30 blur-3xl rounded-full" />
-                <img
-                  src={guidaMockup}
-                  alt="Mockup della Guida Gratuita ai Lanci"
-                  loading="lazy"
-                  width={1024}
-                  height={1280}
-                  className="relative w-full h-auto drop-shadow-2xl rounded-2xl rotate-[-4deg] hover:rotate-0 transition-transform duration-500"
-                />
+              <div className="guide-stack w-full max-w-[280px]" style={{ height: "340px" }}>
+                <img src={guidaImg3} alt="Guida Gratuita ai Lanci pagina 3" loading="lazy" className="guide-img guide-img-1" />
+                <img src={guidaImg2} alt="Guida Gratuita ai Lanci pagina 2" loading="lazy" className="guide-img guide-img-2" />
+                <img src={guidaImg1} alt="Guida Gratuita ai Lanci"          loading="lazy" className="guide-img guide-img-3" />
               </div>
             </div>
 
@@ -122,10 +135,29 @@ export function Newsletter() {
                 ))}
               </ul>
 
-              <div
-                className="mt-10 max-w-xl"
-                dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }}
-              />
+              {/* Form + tooltip */}
+              <div className="mt-10 max-w-xl relative">
+                <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
+
+                {showTooltip && (
+                  <div className="absolute left-0 pointer-events-none z-20"
+                    style={{ bottom: "calc(100% - 3.5rem)" }}>
+                    <div className="relative bg-white text-foreground text-sm font-medium px-4 py-3 rounded-2xl shadow-lg border border-border">
+                      Inserisci il tuo nome e la tua email per iscriverti!
+                      {/* tail pointing down */}
+                      <span
+                        className="absolute left-8 -bottom-2 w-0 h-0 block"
+                        style={{
+                          borderLeft: "8px solid transparent",
+                          borderRight: "8px solid transparent",
+                          borderTop: "8px solid white",
+                          filter: "drop-shadow(0 1px 0 oklch(0.9 0.005 230))",
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
