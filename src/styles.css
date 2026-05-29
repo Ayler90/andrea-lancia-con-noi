@@ -184,7 +184,22 @@
   position: relative;
   background: white;
   box-shadow: 0 0 0 1.5px #d4d4d4;
-  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: calc(1rem + 1.5px);
+  border: 1.5px solid #156686;
+  clip-path: inset(0 100% 0 0 round calc(1rem + 1.5px));
+  transition: clip-path 0.55s ease;
+  pointer-events: none;
+}
+
+.filter-btn:hover:not(.is-active)::before {
+  clip-path: inset(0 0% 0 0 round calc(1rem + 1.5px));
 }
 
 .filter-btn.is-active {
@@ -192,8 +207,8 @@
   box-shadow: 0 0 0 1.5px #156686;
 }
 
-.filter-btn:hover:not(.is-active) {
-  box-shadow: 0 0 0 1.5px #156686;
+.filter-btn.is-active::before {
+  display: none;
 }
 
 
