@@ -18,24 +18,76 @@ const clarityItems = [
 ];
 
 function ChaosWidget() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const bubbleRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const mouseRef = useRef({ x: -9999, y: -9999 });
+  const smoothMouseRef = useRef({ x: -9999, y: -9999 });
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const onMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+    const onLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
+    container.addEventListener("mousemove", onMove);
+    container.addEventListener("mouseleave", onLeave);
+
+    let animId: number;
+    const animate = () => {
+      const sm = smoothMouseRef.current;
+      sm.x += (mouseRef.current.x - sm.x) * 0.06;
+      sm.y += (mouseRef.current.y - sm.y) * 0.06;
+
+      const cW = container.offsetWidth;
+      const cH = container.offsetHeight;
+
+      bubbleRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const t = chaosThoughts[i];
+        const bx = (parseFloat(t.x) / 100) * cW + el.offsetWidth / 2;
+        const by = (parseFloat(t.y) / 100) * cH + el.offsetHeight / 2;
+        const dx = sm.x - bx;
+        const dy = sm.y - by;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const R = 200;
+        const pull = 38 * Math.exp(-(dist * dist) / (2 * R * R));
+        el.style.transform = `translate(${(dx / dist) * pull}px, ${(dy / dist) * pull}px)`;
+      });
+
+      animId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      container.removeEventListener("mousemove", onMove);
+      container.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full h-72 md:h-96 flex items-center justify-center select-none">
-      {chaosThoughts.map((t) => (
+    <div ref={containerRef} className="relative w-full h-72 md:h-96 flex items-center justify-center select-none">
+      {chaosThoughts.map((t, i) => (
+        // Outer div: handles mouse-attraction transform (no CSS animation)
+        // Inner div: handles float animation (uses transform:translateY independently)
         <div
           key={t.text}
-          className="absolute text-xs font-medium text-white/65 bg-white/10 border border-white/20 rounded-xl px-3 py-1.5 backdrop-blur-sm"
-          style={{
-            left: t.x,
-            top: t.y,
-            animation: `thought-float 3.5s ease-in-out ${t.delay} infinite`,
-            maxWidth: "46%",
-          }}
+          ref={el => { bubbleRefs.current[i] = el; }}
+          className="absolute"
+          style={{ left: t.x, top: t.y, maxWidth: "46%" }}
         >
-          {t.text}
+          <div
+            className="text-xs font-medium text-white/65 bg-white/10 border border-white/20 rounded-xl px-3 py-1.5 backdrop-blur-sm"
+            style={{ animation: `thought-float 3.5s ease-in-out ${t.delay} infinite` }}
+          >
+            {t.text}
+          </div>
         </div>
       ))}
 
-      {/* Emoji shifted up slightly so the face (not the cloud) is visually centered */}
       <div
         className="relative z-10 text-7xl md:text-8xl leading-none"
         style={{ animation: "thought-float 4s ease-in-out 0.5s infinite", marginTop: "-2rem" }}

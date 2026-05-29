@@ -182,8 +182,8 @@
 /* Animated border wipe — shared by filter buttons and review cards */
 /* Pencil-circle draw animation */
 .pencil-circle-path {
-  stroke-dasharray: 1060;
-  stroke-dashoffset: 1060;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
   transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
 }
 .pencil-drawn .pencil-circle-path {
