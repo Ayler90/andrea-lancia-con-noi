@@ -43,12 +43,12 @@ export function Testimonianze() {
           {items.map((src, i) => (
             <div
               key={i}
-              className="break-inside-avoid mb-5 rounded-2xl overflow-hidden border border-border hover:border-[#156686]/30 transition-colors"
+              className="break-inside-avoid mb-5 rounded-2xl overflow-hidden border border-border hover:border-[#156686]/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
             >
               <img
                 src={src}
                 alt={`Recensione ${i + 1}`}
-                loading="lazy"
+                loading="eager"
                 className="w-full h-auto block"
               />
             </div>
