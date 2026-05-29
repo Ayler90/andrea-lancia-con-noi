@@ -29,29 +29,71 @@ import f12 from "@/assets/Feedback di vendita 12.png";
 // Interleave the two groups so the masonry looks varied
 const items = [r1, f1, r2, f2, r3, f3, r4, f4, r5, f5, r6, f6, r7, f7, r8, f8, r9, f9, r10, f10, r11, f11, r12, f12, r13];
 
-function DistortedGrid() {
+type Star = {
+  bx: number; by: number;   // base position
+  cx: number; cy: number;   // current (animated) position
+  r: number;                // outer radius of sparkle
+  opacity: number;
+  phase: number;            // for twinkle
+  speed: number;            // lerp speed
+};
+
+function drawSparkle(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, opacity: number) {
+  ctx.save();
+  ctx.globalAlpha = opacity;
+  ctx.fillStyle = "#156686";
+  ctx.beginPath();
+  const pts = 4;
+  for (let i = 0; i < pts * 2; i++) {
+    const angle = (i * Math.PI) / pts - Math.PI / 2;
+    const rad   = i % 2 === 0 ? r : r * 0.3;
+    const px = x + Math.cos(angle) * rad;
+    const py = y + Math.sin(angle) * rad;
+    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function StarField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext("2d")!;
-    const GRID = 56;
+
     let mouseX = -9999, mouseY = -9999;
-    let smoothX = -9999, smoothY = -9999;
     let animId: number;
+    let stars: Star[] = [];
+
+    const buildStars = () => {
+      const w = canvas.width, h = canvas.height;
+      stars = Array.from({ length: 220 }, () => {
+        const bx = Math.random() * w;
+        const by = Math.random() * h;
+        return {
+          bx, by, cx: bx, cy: by,
+          r:       Math.random() * 3.5 + 1,
+          opacity: Math.random() * 0.35 + 0.12,
+          phase:   Math.random() * Math.PI * 2,
+          speed:   Math.random() * 0.055 + 0.025,
+        };
+      });
+    };
 
     const resize = () => {
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+      buildStars();
     };
     resize();
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
     const section = canvas.parentElement!;
-    const onMove = (e: MouseEvent) => {
+    const onMove  = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
@@ -60,41 +102,25 @@ function DistortedGrid() {
     section.addEventListener("mousemove", onMove);
     section.addEventListener("mouseleave", onLeave);
 
-    const distort = (x: number, y: number) => {
-      const dx = smoothX - x, dy = smoothY - y;
-      const dist2 = dx * dx + dy * dy;
-      const radius = 180;
-      const strength = 0.28;
-      const falloff = Math.exp(-dist2 / (2 * radius * radius));
-      return { x: x + dx * strength * falloff, y: y + dy * strength * falloff };
-    };
-
+    let t = 0;
     const draw = () => {
-      smoothX += (mouseX - smoothX) * 0.08;
-      smoothY += (mouseY - smoothY) * 0.08;
-
+      t += 0.012;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = "rgba(21,102,134,0.10)";
-      ctx.lineWidth = 1;
 
-      const cols = Math.ceil(canvas.width  / GRID) + 1;
-      const rows = Math.ceil(canvas.height / GRID) + 1;
+      for (const s of stars) {
+        const dx   = mouseX - s.bx;
+        const dy   = mouseY - s.by;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const R    = 220;
+        const pull = 38 * Math.exp(-(dist * dist) / (2 * R * R));
+        const tx   = s.bx + (dx / dist) * pull;
+        const ty   = s.by + (dy / dist) * pull;
 
-      for (let i = 0; i <= cols; i++) {
-        ctx.beginPath();
-        for (let j = 0; j <= rows; j++) {
-          const p = distort(i * GRID, j * GRID);
-          j === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
-        }
-        ctx.stroke();
-      }
-      for (let j = 0; j <= rows; j++) {
-        ctx.beginPath();
-        for (let i = 0; i <= cols; i++) {
-          const p = distort(i * GRID, j * GRID);
-          i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
-        }
-        ctx.stroke();
+        s.cx += (tx - s.cx) * s.speed;
+        s.cy += (ty - s.cy) * s.speed;
+
+        const twinkle = 0.75 + 0.25 * Math.sin(t * 1.8 + s.phase);
+        drawSparkle(ctx, s.cx, s.cy, s.r * twinkle, s.opacity * twinkle);
       }
 
       animId = requestAnimationFrame(draw);
@@ -115,7 +141,7 @@ function DistortedGrid() {
 export function Testimonianze() {
   return (
     <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden">
-      <DistortedGrid />
+      <StarField />
       {/* White fade top */}
       <div className="absolute inset-x-0 top-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
       {/* White fade bottom */}
