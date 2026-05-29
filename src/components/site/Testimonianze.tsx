@@ -31,23 +31,29 @@ const items = [r1, f1, r2, f2, r3, f3, r4, f4, r5, f5, r6, f6, r7, f7, r8, f8, r
 export function Testimonianze() {
   return (
     <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden">
-      {/* Background glow */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: "1000px",
-          height: "1000px",
-          borderRadius: "50%",
-          background: "#6C9FA8",
-          opacity: 0.35,
-          filter: "blur(100px)",
-          top: "30%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 0,
-          animation: "orb-drift-2 36s ease-in-out infinite",
-        }}
-      />
+      {/* Background glows */}
+      {[
+        { color: "#6C9FA8", top: "15%",  left: "20%",  anim: "orb-drift-1 14s ease-in-out infinite" },
+        { color: "#156686", top: "45%",  left: "65%",  anim: "orb-drift-2 11s ease-in-out infinite" },
+        { color: "#6C9FA8", top: "65%",  left: "35%",  anim: "orb-drift-3 16s ease-in-out infinite" },
+      ].map((g, i) => (
+        <div
+          key={i}
+          className="absolute pointer-events-none"
+          style={{
+            width: "500px",
+            height: "500px",
+            borderRadius: "50%",
+            background: g.color,
+            opacity: 0.35,
+            filter: "blur(100px)",
+            top: g.top,
+            left: g.left,
+            zIndex: 0,
+            animation: g.anim,
+          }}
+        />
+      ))}
       <div className="container-narrow relative z-10">
         <div className="max-w-3xl mb-14 md:mb-20">
           <p className="eyebrow mb-4">Parole che mi riempiono il cuore ❤️</p>
