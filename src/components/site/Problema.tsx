@@ -226,9 +226,11 @@ export function ClaritySection() {
 
   const startRipples = () => {
     if (rippleTimer.current) return;
+    // Fire one immediately, then continue at interval
+    setRipples(prev => [...prev.slice(-5), ++rippleCounter.current]);
     rippleTimer.current = setInterval(() => {
       setRipples(prev => [...prev.slice(-5), ++rippleCounter.current]);
-    }, 550);
+    }, 700);
   };
   const stopRipples = () => {
     if (rippleTimer.current) { clearInterval(rippleTimer.current); rippleTimer.current = null; }
@@ -397,8 +399,9 @@ export function ClaritySection() {
                   key={id}
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{
-                    boxShadow: "0 0 0 3px rgba(21,102,134,0.18), 0 0 22px 10px rgba(21,102,134,0.10)",
-                    animation: "ripple-out 2s ease-out forwards",
+                    background: "rgba(21,102,134,0.10)",
+                    filter: "blur(16px)",
+                    animation: "ripple-out 3s ease-out forwards",
                   }}
                   onAnimationEnd={() => setRipples(prev => prev.filter(r => r !== id))}
                 />
