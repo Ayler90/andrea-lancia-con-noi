@@ -1,43 +1,32 @@
-import { Play, Instagram, Quote } from "lucide-react";
+import r1  from "@/assets/Recensione Google My Business.png";
+import r2  from "@/assets/Recensione Google My Business 2.png";
+import r3  from "@/assets/Recensione Google My Business 3.png";
+import r4  from "@/assets/Recensione Google My Business 4.png";
+import r5  from "@/assets/Recensione Google My Business 5.png";
+import r6  from "@/assets/Recensione Google My Business 6.png";
+import r7  from "@/assets/Recensione Google My Business 7.png";
+import r8  from "@/assets/Recensione Google My Business 8.png";
+import r9  from "@/assets/Recensione Google My Business 9.png";
+import r10 from "@/assets/Recensione Google My Business 10.png";
+import r11 from "@/assets/Recensione Google My Business 11.png";
+import r12 from "@/assets/Recensione Google My Business 12.png";
+import r13 from "@/assets/Recensione Google My Business 13.png";
 
-const items = [
-  {
-    type: "video",
-    name: "Giulia M.",
-    role: "Coach & Formatrice",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Il primo lancio strutturato della mia carriera.",
-  },
-  {
-    type: "quote",
-    name: "Marco R.",
-    role: "Founder, Studio Creativo",
-    text: "Ho dimezzato l'ansia del lancio e raddoppiato i risultati. Lorem ipsum dolor sit amet consectetur.",
-  },
-  {
-    type: "instagram",
-    name: "@chiarafit",
-    role: "Personal Trainer",
-    text: "Dopo Easy-Mail Pack la mia newsletter è cambiata totalmente. Lorem ipsum dolor sit amet.",
-  },
-  {
-    type: "quote",
-    name: "Anna T.",
-    role: "Consulente HR",
-    text: "Strategia chiara, email che convertono, zero improvvisazione. Lorem ipsum dolor sit amet adipiscing.",
-  },
-  {
-    type: "video",
-    name: "Davide P.",
-    role: "Course Creator",
-    text: "Il percorso più completo che abbia mai seguito sui lanci. Lorem ipsum dolor sit amet.",
-  },
-  {
-    type: "instagram",
-    name: "@elenacopy",
-    role: "Copywriter",
-    text: "Lavorare con Andrea ha cambiato il mio approccio alle offerte. Lorem ipsum dolor.",
-  },
-];
+import f1  from "@/assets/Feedback di vendita.jpg";
+import f2  from "@/assets/Feedback di vendita 2.jpg";
+import f3  from "@/assets/Feedback di vendita 3.jpg";
+import f4  from "@/assets/Feedback di vendita 4.jpg";
+import f5  from "@/assets/Feedback di vendita 5.png";
+import f6  from "@/assets/Feedback di vendita 6.png";
+import f7  from "@/assets/Feedback di vendita 7.png";
+import f8  from "@/assets/Feedback di vendita 8.png";
+import f9  from "@/assets/Feedback di vendita 9.png";
+import f10 from "@/assets/Feedback di vendita 10.png";
+import f11 from "@/assets/Feedback di vendita 11.png";
+import f12 from "@/assets/Feedback di vendita 12.png";
+
+// Interleave the two groups so the masonry looks varied
+const items = [r1, f1, r2, f2, r3, f3, r4, f4, r5, f5, r6, f6, r7, f7, r8, f8, r9, f9, r10, f10, r11, f11, r12, f12, r13];
 
 export function Testimonianze() {
   return (
@@ -50,36 +39,18 @@ export function Testimonianze() {
           </h2>
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
-          {items.map((t, i) => (
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+          {items.map((src, i) => (
             <div
               key={i}
-              className="break-inside-avoid mb-6 rounded-2xl border border-border bg-background hover:border-[#156686]/30 transition-colors overflow-hidden"
+              className="break-inside-avoid mb-5 rounded-2xl overflow-hidden border border-border hover:border-[#156686]/30 transition-colors"
             >
-              {t.type === "video" && (
-                <div className="relative aspect-video bg-gradient-to-br from-primary to-secondary flex items-center justify-center group cursor-pointer">
-                  <div className="w-14 h-14 rounded-full bg-background/95 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 text-primary fill-primary ml-0.5" />
-                  </div>
-                </div>
-              )}
-              {t.type === "instagram" && (
-                <div className="aspect-square bg-surface flex items-center justify-center">
-                  <Instagram className="w-10 h-10 text-secondary" strokeWidth={1.25} />
-                </div>
-              )}
-              <div className="p-6">
-                {t.type === "quote" && (
-                  <Quote className="w-6 h-6 text-[#156686]/40 mb-3" strokeWidth={1.5} />
-                )}
-                <p className="text-xs md:text-sm leading-relaxed text-foreground/85">
-                  "{t.text}"
-                </p>
-                <div className="mt-5 pt-5 border-t border-border">
-                  <p className="text-sm font-medium">{t.name}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{t.role}</p>
-                </div>
-              </div>
+              <img
+                src={src}
+                alt={`Recensione ${i + 1}`}
+                loading="lazy"
+                className="w-full h-auto block"
+              />
             </div>
           ))}
         </div>
