@@ -143,7 +143,7 @@ export function Problema() {
           Conosco perfettamente il tuo{" "}
           <em className="text-[#C4D9DC]">problema con i lanci</em>
           <svg viewBox="0 0 600 130" aria-hidden="true" className="absolute pointer-events-none"
-            style={{ top: "-24%", left: "-7%", width: "114%", height: "152%", overflow: "visible" }}>
+            style={{ top: "-38%", left: "-11%", width: "122%", height: "185%", overflow: "visible" }}>
             <defs>
               <filter id="pencil-rough">
                 <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="5" result="noise" />
