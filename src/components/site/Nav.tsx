@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import logoImg from "@/assets/logo.BWB8mVrQ.svg";
+import logoImg from "@/assets/Logo-Grigio (1).png";
 
 const links = [
   { href: "#chi-sono", label: "Chi sono" },
@@ -71,7 +71,7 @@ export function Nav() {
           {/* Left: logo */}
           <a href="#top" className="justify-self-start flex items-center">
             <span className="bg-[#156686] rounded-xl px-3 py-2 inline-flex items-center">
-              <img src={logoImg} alt="Andrea Bonomo" className="h-7 w-auto" />
+              <img src={logoImg} alt="Andrea Bonomo" className="h-7 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
             </span>
           </a>
 
