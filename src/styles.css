@@ -307,28 +307,29 @@
 .guide-stack { position: relative; }
 .guide-stack .guide-img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
-  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1);
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.25));
+  border-radius: 12px;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
 }
-.guide-stack .guide-img-1 { transform: rotate(-5deg) translateX(-10px) translateY(10px); z-index: 1; }
-.guide-stack .guide-img-2 { transform: rotate(0deg) translateY(0px);                    z-index: 2; }
-.guide-stack .guide-img-3 { transform: rotate(5deg)  translateX(10px) translateY(-10px); z-index: 3; }
+.guide-stack .guide-img-1 { transform: rotate(-3deg) translateY(18px);  z-index: 1; }
+.guide-stack .guide-img-2 { transform: rotate(0deg)  translateY(0px);   z-index: 2; }
+.guide-stack .guide-img-3 { transform: rotate(3deg)  translateY(-18px); z-index: 3; }
 
-.guide-stack:hover .guide-img-1 { animation: guide-float-l 3.2s ease-in-out 0.55s infinite; }
-.guide-stack:hover .guide-img-2 { animation: guide-float-c 3s   ease-in-out 0.55s infinite; }
-.guide-stack:hover .guide-img-3 { animation: guide-float-r 3.6s ease-in-out 0.7s  infinite; }
+.guide-stack:hover .guide-img-1 { animation: guide-float-top 3.2s ease-in-out 0.7s infinite; }
+.guide-stack:hover .guide-img-2 { animation: guide-float-mid 3s   ease-in-out 0.7s infinite; }
+.guide-stack:hover .guide-img-3 { animation: guide-float-bot 3.6s ease-in-out 0.85s infinite; }
 
-@keyframes guide-float-l {
-  0%, 100% { transform: rotate(-18deg) translateX(-72px) translateY(14px); }
-  50%       { transform: rotate(-18deg) translateX(-72px) translateY(5px);  }
+@keyframes guide-float-top {
+  0%, 100% { transform: rotate(-5deg) translateY(-90px); }
+  50%       { transform: rotate(-5deg) translateY(-100px); }
 }
-@keyframes guide-float-c {
-  0%, 100% { transform: rotate(0deg) translateY(-18px); }
-  50%       { transform: rotate(0deg) translateY(-26px); }
+@keyframes guide-float-mid {
+  0%, 100% { transform: rotate(0deg) translateY(0px); }
+  50%       { transform: rotate(0deg) translateY(-8px); }
 }
-@keyframes guide-float-r {
-  0%, 100% { transform: rotate(18deg) translateX(72px) translateY(14px); }
-  50%       { transform: rotate(18deg) translateX(72px) translateY(5px);  }
+@keyframes guide-float-bot {
+  0%, 100% { transform: rotate(5deg) translateY(90px); }
+  50%       { transform: rotate(5deg) translateY(80px); }
 }
 
 /* MailerLite form embed */

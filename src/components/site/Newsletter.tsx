@@ -4,12 +4,13 @@ import guidaImg2 from "@/assets/Img guida ai lanci 2.png";
 import guidaImg3 from "@/assets/Img guida ai lanci 3.png";
 
 const ML_FORM_HTML = `
+<iframe name="ml-submit-hidden" id="ml-submit-hidden" style="display:none"></iframe>
 <div id="mlb2-41923213" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41923213">
   <div class="ml-form-align-center">
     <div class="ml-form-embedWrapper embedForm">
       <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
         <div class="ml-form-embedContent"><h4></h4></div>
-        <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/17207/forms/188785133042534099/subscribe" data-code="" method="post" target="_blank">
+        <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/17207/forms/188785133042534099/subscribe" data-code="" method="post" target="ml-submit-hidden">
           <div class="ml-form-formContent">
             <div class="ml-form-fieldRow">
               <div class="ml-field-group ml-field-name ml-validate-required">
@@ -70,17 +71,29 @@ export function Newsletter() {
     }
 
     const timer = setTimeout(() => {
-      const btn = document.querySelector("#mlb2-41923213 .ml-form-embedSubmit button.primary");
-      if (!btn) return;
-      btn.addEventListener("click", () => {
-        const name = document.querySelector('#mlb2-41923213 input[name="fields[name]"]') as HTMLInputElement | null;
-        const email = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
+      const form = document.querySelector("#mlb2-41923213 form.ml-block-form") as HTMLFormElement | null;
+      if (!form) return;
+
+      form.addEventListener("submit", (e) => {
+        const name  = form.querySelector('input[name="fields[name]"]')  as HTMLInputElement | null;
+        const email = form.querySelector('input[name="fields[email]"]') as HTMLInputElement | null;
+
         if (!name?.value?.trim() || !email?.value?.trim()) {
+          e.preventDefault();
           setShowTooltip(true);
           setTimeout(() => setShowTooltip(false), 3000);
+          return;
         }
+
+        // Let it submit to hidden iframe, then show success
+        setTimeout(() => {
+          const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
+          const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form")    as HTMLElement | null;
+          if (success) success.style.display = "block";
+          if (formRow) formRow.style.display  = "none";
+        }, 1200);
       });
-    }, 1200);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, []);
