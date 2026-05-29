@@ -72,41 +72,36 @@ export function Newsletter() {
     }
 
     const timer = setTimeout(() => {
-      const form = document.querySelector("#mlb2-41923213 form.ml-block-form") as HTMLFormElement | null;
-      if (!form) return;
+      const submitBtn  = document.querySelector("#mlb2-41923213 button.primary") as HTMLButtonElement | null;
+      const nameInput  = document.querySelector('#mlb2-41923213 input[name="fields[name]"]')  as HTMLInputElement | null;
+      const emailInput = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
 
-      form.addEventListener("submit", (e) => {
-        const name  = form.querySelector('input[name="fields[name]"]')  as HTMLInputElement | null;
-        const email = form.querySelector('input[name="fields[email]"]') as HTMLInputElement | null;
+      if (!submitBtn) return;
 
-        const nameEmpty  = !name?.value?.trim();
-        const emailEmpty = !email?.value?.trim();
+      submitBtn.addEventListener("click", (e) => {
+        const nameEmpty  = !nameInput?.value?.trim();
+        const emailEmpty = !emailInput?.value?.trim();
 
         if (nameEmpty || emailEmpty) {
           e.preventDefault();
+          e.stopPropagation();
 
-          if (nameEmpty && name) {
-            name.classList.add("field-error");
-            name.addEventListener("input", () => name.classList.remove("field-error"), { once: true });
+          if (nameEmpty && nameInput) {
+            nameInput.classList.add("field-error");
+            nameInput.addEventListener("input", () => nameInput.classList.remove("field-error"), { once: true });
           }
-          if (emailEmpty && email) {
-            email.classList.add("field-error");
-            email.addEventListener("input", () => email.classList.remove("field-error"), { once: true });
+          if (emailEmpty && emailInput) {
+            emailInput.classList.add("field-error");
+            emailInput.addEventListener("input", () => emailInput.classList.remove("field-error"), { once: true });
           }
 
           if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-          setShowTooltip(true);
-          hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
-          return;
+          setShowTooltip(false);
+          requestAnimationFrame(() => {
+            setShowTooltip(true);
+            hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
+          });
         }
-
-        // Let it submit to hidden iframe, then show success
-        setTimeout(() => {
-          const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
-          const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form")    as HTMLElement | null;
-          if (success) success.style.display = "block";
-          if (formRow) formRow.style.display  = "none";
-        }, 1200);
       });
     }, 600);
 
@@ -133,16 +128,17 @@ export function Newsletter() {
                 <div className="guide-wrapper guide-wrapper-3">
                   <img src={guidaImg1} alt="Guida Gratuita ai Lanci" loading="lazy" className="guide-img" />
                 </div>
-              </div>
-              {/* Social proof badge */}
-              <div className="mt-6 flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 w-fit mx-auto">
-                <span className="relative flex-shrink-0 w-2 h-2">
-                  <span className="absolute inset-0 rounded-full bg-green-400 opacity-70 blur-[3px]" />
-                  <span className="relative block w-2 h-2 rounded-full bg-green-400" />
-                </span>
-                <span className="text-xs font-medium text-primary-foreground/85 tracking-wide whitespace-nowrap">
-                  +1.200 iscritti · Guida Gratuita ai Lanci
-                </span>
+                {/* Social proof badge — overlaid at bottom */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 px-3 py-2 rounded-full whitespace-nowrap"
+                  style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.22)" }}>
+                  <span className="relative flex-shrink-0 w-2 h-2">
+                    <span className="absolute inset-0 rounded-full bg-green-400 blur-[3px] opacity-80" />
+                    <span className="relative block w-2 h-2 rounded-full bg-green-400" />
+                  </span>
+                  <span className="text-xs font-medium text-primary-foreground/90 tracking-wide">
+                    +1.200 iscritti · Guida Gratuita ai Lanci
+                  </span>
+                </div>
               </div>
             </div>
 
