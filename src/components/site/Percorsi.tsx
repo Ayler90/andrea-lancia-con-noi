@@ -189,7 +189,7 @@ export function Percorsi() {
 function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boolean }) {
   return (
     <article
-      className={`${percorso.bg} rounded-3xl md:rounded-[2rem] overflow-hidden group animate-in fade-in slide-in-from-bottom-4 duration-500`}
+      className={`${percorso.bg} rounded-3xl md:rounded-[2rem] overflow-hidden group animate-in fade-in slide-in-from-bottom-4 duration-500 transition-transform hover:-translate-y-1.5`}
     >
       <div
         className={`grid md:grid-cols-12 gap-0 items-stretch ${
