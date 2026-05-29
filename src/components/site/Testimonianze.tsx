@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import r1  from "@/assets/Recensione Google My Business.png";
 import r2  from "@/assets/Recensione Google My Business 2.png";
 import r3  from "@/assets/Recensione Google My Business 3.png";
@@ -28,17 +29,93 @@ import f12 from "@/assets/Feedback di vendita 12.png";
 // Interleave the two groups so the masonry looks varied
 const items = [r1, f1, r2, f2, r3, f3, r4, f4, r5, f5, r6, f6, r7, f7, r8, f8, r9, f9, r10, f10, r11, f11, r12, f12, r13];
 
+function DistortedGrid() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d")!;
+    const GRID = 56;
+    let mouseX = -9999, mouseY = -9999;
+    let smoothX = -9999, smoothY = -9999;
+    let animId: number;
+
+    const resize = () => {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+
+    const section = canvas.parentElement!;
+    const onMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
+    const onLeave = () => { mouseX = -9999; mouseY = -9999; };
+    section.addEventListener("mousemove", onMove);
+    section.addEventListener("mouseleave", onLeave);
+
+    const distort = (x: number, y: number) => {
+      const dx = smoothX - x, dy = smoothY - y;
+      const dist2 = dx * dx + dy * dy;
+      const radius = 180;
+      const strength = 0.28;
+      const falloff = Math.exp(-dist2 / (2 * radius * radius));
+      return { x: x + dx * strength * falloff, y: y + dy * strength * falloff };
+    };
+
+    const draw = () => {
+      smoothX += (mouseX - smoothX) * 0.08;
+      smoothY += (mouseY - smoothY) * 0.08;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "rgba(21,102,134,0.10)";
+      ctx.lineWidth = 1;
+
+      const cols = Math.ceil(canvas.width  / GRID) + 1;
+      const rows = Math.ceil(canvas.height / GRID) + 1;
+
+      for (let i = 0; i <= cols; i++) {
+        ctx.beginPath();
+        for (let j = 0; j <= rows; j++) {
+          const p = distort(i * GRID, j * GRID);
+          j === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+      }
+      for (let j = 0; j <= rows; j++) {
+        ctx.beginPath();
+        for (let i = 0; i <= cols; i++) {
+          const p = distort(i * GRID, j * GRID);
+          i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+      }
+
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      ro.disconnect();
+      section.removeEventListener("mousemove", onMove);
+      section.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
+}
+
 export function Testimonianze() {
   return (
-    <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden"
-      style={{
-        backgroundImage: `
-          linear-gradient(rgba(21,102,134,0.07) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(21,102,134,0.07) 1px, transparent 1px)
-        `,
-        backgroundSize: "56px 56px",
-      }}
-    >
+    <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden">
+      <DistortedGrid />
       {/* White fade top */}
       <div className="absolute inset-x-0 top-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
       {/* White fade bottom */}
