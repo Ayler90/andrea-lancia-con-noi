@@ -67,6 +67,7 @@ function StarField() {
     let mouseX = -9999, mouseY = -9999;
     let smoothMouseX = -9999, smoothMouseY = -9999;
     let mouseActive = false;
+    let pullStrength = 0;
 
     const buildStars = () => {
       stars = Array.from({ length: 200 }, () => ({
@@ -95,13 +96,12 @@ function StarField() {
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
       if (!mouseActive) {
-        // Snap on first entry so there's no delay
         smoothMouseX = mouseX;
         smoothMouseY = mouseY;
         mouseActive = true;
       }
     };
-    const onLeave = () => { mouseX = -9999; mouseY = -9999; mouseActive = false; };
+    const onLeave = () => { mouseActive = false; };
     section.addEventListener("mousemove", onMove);
     section.addEventListener("mouseleave", onLeave);
 
@@ -114,6 +114,9 @@ function StarField() {
       // Smoothly interpolate toward the actual mouse position
       smoothMouseX += (mouseX - smoothMouseX) * 0.035;
       smoothMouseY += (mouseY - smoothMouseY) * 0.035;
+
+      // Ease pull strength in/out so entry and exit are never abrupt
+      pullStrength += ((mouseActive ? 1 : 0) - pullStrength) * 0.05;
 
       for (const s of stars) {
         // Autonomous drift
@@ -132,7 +135,7 @@ function StarField() {
         const dy   = smoothMouseY - s.cy;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
         const R    = 280;
-        const pull = 18 * Math.exp(-(dist * dist) / (2 * R * R));
+        const pull = 18 * Math.exp(-(dist * dist) / (2 * R * R)) * pullStrength;
         const drawX = s.cx + (dx / dist) * pull;
         const drawY = s.cy + (dy / dist) * pull;
 
