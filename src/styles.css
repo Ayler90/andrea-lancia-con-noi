@@ -222,7 +222,11 @@
   position: relative;
   background: white;
   box-shadow: 0 0 0 1.5px #d4d4d4;
-  transition: transform 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filter-btn:not(.is-active):hover {
+  transform: scale(1.015) translateY(-2px);
 }
 
 .filter-btn::before {
@@ -243,6 +247,7 @@
 .filter-btn.is-active {
   background: #156686;
   box-shadow: 0 0 0 1.5px #156686;
+  transform: scale(1.02) translateY(-3px);
 }
 
 .filter-btn.is-active::before {

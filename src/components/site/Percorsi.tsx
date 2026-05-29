@@ -132,11 +132,10 @@ export function Percorsi() {
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
-                style={{ transition: "transform 0.3s cubic-bezier(0.34, 1.3, 0.64, 1)" }}
                 className={`filter-btn group text-left p-5 md:p-6 rounded-2xl ${
                   isActive
-                    ? "is-active text-white shadow-lg scale-[1.02] -translate-y-0.5"
-                    : "text-foreground hover:scale-[1.015] hover:-translate-y-0.5"
+                    ? "is-active text-white"
+                    : "text-foreground"
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
