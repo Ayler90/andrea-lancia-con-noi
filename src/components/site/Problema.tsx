@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import costruiscoImg from "@/assets/Foto mentre costruisco.jpg";
 
 const chaosThoughts = [
@@ -216,10 +216,24 @@ export function Problema() {
 // ─── Clarity Section (white bg, follows Problema) ────────────────────────────
 
 export function ClaritySection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const svgRef       = useRef<SVGSVGElement>(null);
-  const imageRef     = useRef<HTMLDivElement>(null);
-  const cardRefs     = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef  = useRef<HTMLDivElement>(null);
+  const svgRef        = useRef<SVGSVGElement>(null);
+  const imageRef      = useRef<HTMLDivElement>(null);
+  const cardRefs      = useRef<(HTMLDivElement | null)[]>([]);
+  const rippleTimer   = useRef<ReturnType<typeof setInterval> | null>(null);
+  const rippleCounter = useRef(0);
+  const [ripples, setRipples] = useState<number[]>([]);
+
+  const startRipples = () => {
+    if (rippleTimer.current) return;
+    rippleTimer.current = setInterval(() => {
+      setRipples(prev => [...prev.slice(-5), ++rippleCounter.current]);
+    }, 550);
+  };
+  const stopRipples = () => {
+    if (rippleTimer.current) { clearInterval(rippleTimer.current); rippleTimer.current = null; }
+  };
+  useEffect(() => () => stopRipples(), []);
 
   const draw = useCallback(() => {
     const svg       = svgRef.current;
@@ -356,7 +370,7 @@ export function ClaritySection() {
         </div>
 
         {/* Diagram */}
-        <div ref={containerRef} className="relative pb-2 overflow-hidden">
+        <div ref={containerRef} className="relative pt-4 pb-2">
           <svg
             ref={svgRef}
             overflow="hidden"
@@ -366,16 +380,33 @@ export function ClaritySection() {
 
           {/* Round image — top center */}
           <div className="flex justify-center mb-14 relative z-10">
-            <div
-              ref={imageRef}
-              className="rounded-full overflow-hidden"
-              style={{
-                width: 220, height: 220,
-                border: "5px solid rgba(21,102,134,0.25)",
-                boxShadow: "0 0 48px 12px rgba(21,102,134,0.08), 0 4px 24px rgba(0,0,0,0.07)",
-              }}
-            >
-              <img src={costruiscoImg} alt="Andrea Bonomo" className="w-full h-full object-cover" />
+            {/* Wrapper holds ripple rings + image together */}
+            <div className="relative flex items-center justify-center" style={{ width: 220, height: 220 }}>
+              {/* Ripple rings */}
+              {ripples.map(id => (
+                <span
+                  key={id}
+                  className="absolute inset-0 rounded-full pointer-events-none"
+                  style={{
+                    border: "2px solid rgba(21,102,134,0.45)",
+                    animation: "ripple-out 1.6s ease-out forwards",
+                  }}
+                  onAnimationEnd={() => setRipples(prev => prev.filter(r => r !== id))}
+                />
+              ))}
+              <div
+                ref={imageRef}
+                className="rounded-full overflow-hidden cursor-pointer"
+                onMouseEnter={startRipples}
+                onMouseLeave={stopRipples}
+                style={{
+                  width: 220, height: 220,
+                  border: "5px solid rgba(21,102,134,0.25)",
+                  boxShadow: "0 0 48px 12px rgba(21,102,134,0.08), 0 4px 24px rgba(0,0,0,0.07)",
+                }}
+              >
+                <img src={costruiscoImg} alt="Andrea Bonomo" className="w-full h-full object-cover" />
+              </div>
             </div>
           </div>
 
