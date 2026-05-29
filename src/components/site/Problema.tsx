@@ -399,22 +399,24 @@ export function ClaritySection() {
                   key={id}
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{
-                    background: "rgba(21,102,134,0.10)",
-                    filter: "blur(16px)",
+                    background: "rgba(21,102,134,0.12)",
+                    filter: "blur(14px)",
                     animation: "ripple-out 3s ease-out forwards",
+                    zIndex: 0,
                   }}
                   onAnimationEnd={() => setRipples(prev => prev.filter(r => r !== id))}
                 />
               ))}
               <div
                 ref={imageRef}
-                className="rounded-full overflow-hidden"
+                className="rounded-full overflow-hidden relative"
                 onMouseEnter={startRipples}
                 onMouseLeave={stopRipples}
                 style={{
                   width: 220, height: 220,
                   border: "5px solid rgba(21,102,134,0.25)",
                   boxShadow: "0 0 48px 12px rgba(21,102,134,0.08), 0 4px 24px rgba(0,0,0,0.07)",
+                  zIndex: 1,
                 }}
               >
                 <img src={costruiscoImg} alt="Andrea Bonomo" className="w-full h-full object-cover" />
