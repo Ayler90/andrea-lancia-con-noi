@@ -29,7 +29,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["Strategia di lancio personalizzata", "Email di pre lancio e lancio", "Landing & sales page", "Gestione completa Ads"],
       cta: "Candidati al percorso",
       image: p1,
-      bg: "bg-[#A1C2CF]",
+      bg: "bg-[#C4D9DC]",
     },
     {
       n: "02",
@@ -40,7 +40,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["Calendario di lancio strutturato", "Script email pronti all'uso", "Timeline fase per fase", "Accesso immediato"],
       cta: "Acquista il calendario ora",
       image: p2,
-      bg: "bg-[#B4CDD8]",
+      bg: "bg-[#C4D9DC]",
     },
   ],
   business: [
@@ -53,7 +53,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["2 call mensili 1:1 da 90 minuti", "Supporto WhatsApp continuativo", "Check di 30 minuti prenotabili entro 24 ore", "Template e strategia personalizzata"],
       cta: "Candidati a Business Blueprint",
       image: p3,
-      bg: "bg-[#93BBCA]",
+      bg: "bg-[#C4D9DC]",
     },
   ],
   newsletter: [
@@ -66,7 +66,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["Tone of voice, struttura e argomenti", "Setup tecnico completo", "Calendario editoriale mensile", "3 sessioni 1:1 da 90 minuti e supporto WhatsApp"],
       cta: "Candidati al mentoring",
       image: p4,
-      bg: "bg-[#AACAD4]",
+      bg: "bg-[#C4D9DC]",
     },
     {
       n: "05",
@@ -77,7 +77,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["90 video lezioni", "Template email pronti", "Casi studio reali", "Accesso a vita"],
       cta: "Acquista ora il video corso",
       image: p5,
-      bg: "bg-[#BDD4DC]",
+      bg: "bg-[#C4D9DC]",
     },
   ],
   consulenza: [
@@ -90,7 +90,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["Audit del tuo funnel", "Piano d'azione concreto", "Registrazione della call", "Report scritto"],
       cta: "Prenota la consulenza",
       image: p6,
-      bg: "bg-[#99C0CC]",
+      bg: "bg-[#C4D9DC]",
     },
   ],
 };
