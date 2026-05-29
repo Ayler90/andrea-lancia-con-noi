@@ -1,10 +1,10 @@
 import { useState } from "react";
-import p1 from "@/assets/p1-launch.jpg";
-import p2 from "@/assets/guida-mockup.jpg";
-import p3 from "@/assets/p2-blueprint.jpg";
-import p4 from "@/assets/p3-newsletter.jpg";
-import p5 from "@/assets/p4-easymail.jpg";
-import p6 from "@/assets/p5-consulenza.jpg";
+import p1 from "@/assets/Percorso di lancio.jpg";
+import p2 from "@/assets/Calendario di lancio.jpg";
+import p3 from "@/assets/Business blueprint.jpg";
+import p4 from "@/assets/Mentoring newsletter.jpg";
+import p5 from "@/assets/Easy-mail pack.jpg";
+import p6 from "@/assets/Consulenza strategica.jpg";
 
 type Percorso = {
   n: string;
@@ -22,25 +22,25 @@ const PERCORSI: Record<string, Percorso[]> = {
   lancio: [
     {
       n: "01",
-      tag: "Done for you · 3-4 mesi",
-      title: "Percorso di",
-      italic: "Lancio",
-      desc: "Ti seguo in ogni fase del lancio: strategia, email, pagine, sponsorizzate. Done for you, fatto bene.",
-      bullets: ["Strategia di lancio personalizzata", "Email sequence complete", "Landing & sales page", "Setup Meta Ads"],
+      tag: "Percorso 1:1 · 3-4 mesi",
+      title: "Pronti, partenza,",
+      italic: "lancio!",
+      desc: "Ti seguo in ogni fase di lancio e mi occupo io di tutta la parte strategica e tecnica: strategia di lancio, ottimizzazione offerta, ads, email, pagine di iscrizione e di vendita, checkout, automazioni.",
+      bullets: ["Strategia di lancio personalizzata", "Email di pre lancio e lancio", "Landing & sales page", "Gestione completa Ads"],
       cta: "Scopri il percorso",
       image: p1,
-      bg: "bg-[oklch(0.93_0.025_220)]",
+      bg: "bg-[oklch(0.92_0.03_225)]",
     },
     {
       n: "02",
-      tag: "Template · Self-paced",
+      tag: "Template Notion Scaricabile",
       title: "Calendario di",
       italic: "Lancio",
       desc: "Il template completo per organizzare il tuo lancio in autonomia: calendario settimana per settimana e script delle email pronti da usare.",
       bullets: ["Calendario di lancio strutturato", "Script email pronti all'uso", "Timeline fase per fase", "Accesso immediato"],
       cta: "Scopri il calendario",
       image: p2,
-      bg: "bg-[oklch(0.94_0.02_260)]",
+      bg: "bg-[oklch(0.94_0.025_215)]",
     },
   ],
   business: [
@@ -50,34 +50,34 @@ const PERCORSI: Record<string, Percorso[]> = {
       title: "Business",
       italic: "Blueprint",
       desc: "Un percorso annuale insieme a me e Davide, specializzato in offerte e business. Lavoriamo su comunicazione, offerte, funnel, newsletter e lanci.",
-      bullets: ["Call mensili 1:1", "Supporto WhatsApp continuativo", "Q&A live mensili", "Community privata"],
+      bullets: ["2 call mensili 1:1 da 90 minuti", "Supporto WhatsApp continuativo", "Check di 30 minuti prenotabili entro 24 ore", "Template e strategia personalizzata"],
       cta: "Scopri Business Blueprint",
       image: p3,
-      bg: "bg-[oklch(0.95_0.04_85)]",
+      bg: "bg-[oklch(0.93_0.04_205)]",
     },
   ],
   newsletter: [
     {
       n: "04",
-      tag: "Mentoring · 30-45 giorni",
+      tag: "Percorso 1:1 · 30-45 giorni",
       title: "Mentoring",
       italic: "Newsletter",
-      desc: "Crei la tua newsletter da zero in 30-45 giorni, con il mio supporto strategico e sessioni 1:1.",
-      bullets: ["Posizionamento e tone of voice", "Setup tecnico completo", "Calendario editoriale", "Sessioni 1:1 dedicate"],
+      desc: "Creiamo e lanciamo la tua newsletter da zero in 30-45 giorni, con il mio supporto strategico e 3 sessioni 1:1 da 90 minuti.",
+      bullets: ["Tone of voice, struttura e argomenti", "Setup tecnico completo", "Calendario editoriale mensile", "3 sessioni 1:1 da 90 minuti e supporto WhatsApp"],
       cta: "Scopri il mentoring",
       image: p4,
-      bg: "bg-[oklch(0.94_0.015_60)]",
+      bg: "bg-[oklch(0.94_0.03_220)]",
     },
     {
       n: "05",
-      tag: "Video corso · self-paced",
+      tag: "Video corso registrato",
       title: "Easy-Mail",
       italic: "Pack",
       desc: "Il video corso completo su email marketing e lanci. 90 lezioni per imparare a usare l'email nei tuoi lanci.",
       bullets: ["90 video lezioni", "Template email pronti", "Casi studio reali", "Accesso a vita"],
       cta: "Scopri Easy-Mail Pack",
       image: p5,
-      bg: "bg-[oklch(0.93_0.03_150)]",
+      bg: "bg-[oklch(0.95_0.02_210)]",
     },
   ],
   consulenza: [
@@ -90,7 +90,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["Audit del tuo funnel", "Piano d'azione concreto", "Registrazione della call", "Report scritto"],
       cta: "Prenota la consulenza",
       image: p6,
-      bg: "bg-[oklch(0.92_0.025_30)]",
+      bg: "bg-[oklch(0.92_0.035_215)]",
     },
   ],
 };
