@@ -21,7 +21,7 @@ const sito = [
 
 export function Footer() {
   return (
-    <footer id="contatti" style={{ backgroundColor: "#1B2F52" }} className="text-white">
+    <footer id="contatti" data-cursor-light style={{ backgroundColor: "#1B2F52" }} className="text-white">
       <div className="container-narrow py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
 
