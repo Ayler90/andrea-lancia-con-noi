@@ -125,17 +125,18 @@ export function Percorsi() {
         </div>
 
         {/* Filter buttons */}
-        <div className="grid sm:grid-cols-2 gap-3 md:gap-4 mb-6">
+        <div className="grid sm:grid-cols-2 gap-5 md:gap-6 mb-6">
           {FILTERS.map((f) => {
             const isActive = active === f.id;
             return (
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
-                className={`filter-btn group text-left p-5 md:p-6 rounded-2xl transition-all duration-500 ease-out ${
+                style={{ transition: "transform 0.4s cubic-bezier(0.34, 1.3, 0.64, 1), box-shadow 0.4s ease, background-color 0.3s ease, color 0.3s ease" }}
+                className={`filter-btn group text-left p-5 md:p-6 rounded-2xl ${
                   isActive
-                    ? "is-active text-white shadow-lg scale-[1.03] -translate-y-1"
-                    : "text-foreground hover:scale-[1.02] hover:-translate-y-0.5"
+                    ? "is-active text-white shadow-lg scale-[1.02] -translate-y-0.5"
+                    : "text-foreground hover:scale-[1.015] hover:-translate-y-0.5"
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
