@@ -190,16 +190,16 @@
 .filter-btn::before {
   content: '';
   position: absolute;
-  inset: -1.5px;
-  border-radius: calc(1rem + 1.5px);
-  border: 1.5px solid #156686;
-  clip-path: inset(0 100% 0 0 round calc(1rem + 1.5px));
+  inset: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0 0 1.5px #156686;
+  clip-path: inset(-2px calc(100% + 2px) -2px -2px round calc(1rem + 1.5px));
   transition: clip-path 0.55s ease;
   pointer-events: none;
 }
 
 .filter-btn:hover:not(.is-active)::before {
-  clip-path: inset(0 0% 0 0 round calc(1rem + 1.5px));
+  clip-path: inset(-2px -2px -2px -2px round calc(1rem + 1.5px));
 }
 
 .filter-btn.is-active {
