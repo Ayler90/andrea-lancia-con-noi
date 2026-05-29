@@ -43,7 +43,7 @@ export function Testimonianze() {
           {items.map((src, i) => (
             <div
               key={i}
-              className="break-inside-avoid mb-5 rounded-2xl overflow-hidden border border-border hover:border-[#156686]/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+              className="border-wipe break-inside-avoid mb-5 rounded-2xl overflow-hidden hover:scale-[1.02]"
             >
               <img
                 src={src}
