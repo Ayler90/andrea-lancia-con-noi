@@ -66,6 +66,7 @@ function StarField() {
     let stars: Star[] = [];
     let mouseX = -9999, mouseY = -9999;
     let smoothMouseX = -9999, smoothMouseY = -9999;
+    let mouseActive = false;
 
     const buildStars = () => {
       stars = Array.from({ length: 200 }, () => ({
@@ -93,8 +94,14 @@ function StarField() {
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
+      if (!mouseActive) {
+        // Snap on first entry so there's no delay
+        smoothMouseX = mouseX;
+        smoothMouseY = mouseY;
+        mouseActive = true;
+      }
     };
-    const onLeave = () => { mouseX = -9999; mouseY = -9999; };
+    const onLeave = () => { mouseX = -9999; mouseY = -9999; mouseActive = false; };
     section.addEventListener("mousemove", onMove);
     section.addEventListener("mouseleave", onLeave);
 
