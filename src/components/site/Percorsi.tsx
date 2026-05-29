@@ -1,9 +1,10 @@
 import { useState } from "react";
 import p1 from "@/assets/p1-launch.jpg";
-import p2 from "@/assets/p2-blueprint.jpg";
-import p3 from "@/assets/p3-newsletter.jpg";
-import p4 from "@/assets/p4-easymail.jpg";
-import p5 from "@/assets/p5-consulenza.jpg";
+import p2 from "@/assets/guida-mockup.jpg";
+import p3 from "@/assets/p2-blueprint.jpg";
+import p4 from "@/assets/p3-newsletter.jpg";
+import p5 from "@/assets/p4-easymail.jpg";
+import p6 from "@/assets/p5-consulenza.jpg";
 
 type Percorso = {
   n: string;
@@ -30,54 +31,65 @@ const PERCORSI: Record<string, Percorso[]> = {
       image: p1,
       bg: "bg-[oklch(0.93_0.025_220)]",
     },
+    {
+      n: "02",
+      tag: "Template · Self-paced",
+      title: "Calendario di",
+      italic: "Lancio",
+      desc: "Il template completo per organizzare il tuo lancio in autonomia: calendario settimana per settimana e script delle email pronti da usare.",
+      bullets: ["Calendario di lancio strutturato", "Script email pronti all'uso", "Timeline fase per fase", "Accesso immediato"],
+      cta: "Scopri il calendario",
+      image: p2,
+      bg: "bg-[oklch(0.94_0.02_260)]",
+    },
   ],
   business: [
     {
-      n: "02",
+      n: "03",
       tag: "Mentorship · 12 mesi",
       title: "Business",
       italic: "Blueprint",
       desc: "Un percorso annuale insieme a me e Davide, specializzato in offerte e business. Lavoriamo su comunicazione, offerte, funnel, newsletter e lanci.",
       bullets: ["Call mensili 1:1", "Supporto WhatsApp continuativo", "Q&A live mensili", "Community privata"],
       cta: "Scopri Business Blueprint",
-      image: p2,
+      image: p3,
       bg: "bg-[oklch(0.95_0.04_85)]",
     },
   ],
   newsletter: [
     {
-      n: "03",
+      n: "04",
       tag: "Mentoring · 30-45 giorni",
       title: "Mentoring",
       italic: "Newsletter",
       desc: "Crei la tua newsletter da zero in 30-45 giorni, con il mio supporto strategico e sessioni 1:1.",
       bullets: ["Posizionamento e tone of voice", "Setup tecnico completo", "Calendario editoriale", "Sessioni 1:1 dedicate"],
       cta: "Scopri il mentoring",
-      image: p3,
+      image: p4,
       bg: "bg-[oklch(0.94_0.015_60)]",
     },
     {
-      n: "04",
+      n: "05",
       tag: "Video corso · self-paced",
       title: "Easy-Mail",
       italic: "Pack",
       desc: "Il video corso completo su email marketing e lanci. 90 lezioni per imparare a usare l'email nei tuoi lanci.",
       bullets: ["90 video lezioni", "Template email pronti", "Casi studio reali", "Accesso a vita"],
       cta: "Scopri Easy-Mail Pack",
-      image: p4,
+      image: p5,
       bg: "bg-[oklch(0.93_0.03_150)]",
     },
   ],
   consulenza: [
     {
-      n: "05",
+      n: "06",
       tag: "1:1 · 90 minuti",
       title: "Consulenza",
       italic: "Strategica",
       desc: "90 minuti 1:1 su un problema specifico del tuo lancio o funnel. Con registrazione e report finale.",
       bullets: ["Audit del tuo funnel", "Piano d'azione concreto", "Registrazione della call", "Report scritto"],
       cta: "Prenota la consulenza",
-      image: p5,
+      image: p6,
       bg: "bg-[oklch(0.92_0.025_30)]",
     },
   ],
