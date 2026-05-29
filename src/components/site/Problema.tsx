@@ -19,41 +19,56 @@ const clarityItems = [
 
 function ChaosWidget() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const bubbleRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const mouseRef = useRef({ x: -9999, y: -9999 });
-  const smoothMouseRef = useRef({ x: -9999, y: -9999 });
+  const bubbleRefs   = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Local mutable state — no need for refs visible outside this effect
+    const mouse  = { x: 0, y: 0 };
+    const smooth = { x: 0, y: 0 };
+    let isActive    = false;
+    let pullStrength = 0; // 0 → 1, eased in/out separately
+
     const onMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
-      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      if (!isActive) {
+        // Snap smooth position on first entry so there's no initial delay
+        smooth.x = mouse.x;
+        smooth.y = mouse.y;
+        isActive = true;
+      }
     };
-    const onLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
+    const onLeave = () => { isActive = false; };
     container.addEventListener("mousemove", onMove);
     container.addEventListener("mouseleave", onLeave);
 
     let animId: number;
     const animate = () => {
-      const sm = smoothMouseRef.current;
-      sm.x += (mouseRef.current.x - sm.x) * 0.06;
-      sm.y += (mouseRef.current.y - sm.y) * 0.06;
+      if (isActive) {
+        smooth.x    += (mouse.x - smooth.x) * 0.08;
+        smooth.y    += (mouse.y - smooth.y) * 0.08;
+        pullStrength += (1 - pullStrength) * 0.08; // ease in
+      } else {
+        pullStrength += (0 - pullStrength) * 0.05; // ease out (slower = smoother release)
+      }
 
       const cW = container.offsetWidth;
       const cH = container.offsetHeight;
 
       bubbleRefs.current.forEach((el, i) => {
         if (!el) return;
-        const t = chaosThoughts[i];
-        const bx = (parseFloat(t.x) / 100) * cW + el.offsetWidth / 2;
+        const t  = chaosThoughts[i];
+        const bx = (parseFloat(t.x) / 100) * cW + el.offsetWidth  / 2;
         const by = (parseFloat(t.y) / 100) * cH + el.offsetHeight / 2;
-        const dx = sm.x - bx;
-        const dy = sm.y - by;
+        const dx = smooth.x - bx;
+        const dy = smooth.y - by;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const R = 200;
-        const pull = 38 * Math.exp(-(dist * dist) / (2 * R * R));
+        const R    = 200;
+        const pull = 36 * Math.exp(-(dist * dist) / (2 * R * R)) * pullStrength;
         el.style.transform = `translate(${(dx / dist) * pull}px, ${(dy / dist) * pull}px)`;
       });
 
