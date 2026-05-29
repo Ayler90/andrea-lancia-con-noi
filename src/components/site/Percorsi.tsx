@@ -103,9 +103,9 @@ export function Percorsi() {
     <section id="percorsi" className="py-20 md:py-28 bg-[#f0f0f0]">
       <div className="container-narrow">
         <div className="max-w-3xl mb-10 md:mb-14">
-          <p className="eyebrow mb-4">Percorsi</p>
+          <p className="eyebrow mb-4">I miei percorsi</p>
           <h2 className="h-display text-4xl md:text-5xl lg:text-6xl">
-            Come posso <em className="text-[#156686]">aiutarti</em>
+            Ecco come possiamo <em className="text-[#156686]">lavorare insieme</em>
           </h2>
           <p className="mt-6 text-sm md:text-base text-foreground/70 leading-relaxed">
             Dimmi su cosa vuoi lavorare e ti mostro il percorso giusto per te.
@@ -120,10 +120,10 @@ export function Percorsi() {
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
-                className={`group text-left p-5 md:p-6 rounded-2xl border transition-all duration-300 ${
+                className={`filter-btn group text-left p-5 md:p-6 rounded-2xl transition-all duration-300 ${
                   isActive
-                    ? "bg-foreground text-background border-foreground shadow-lg -translate-y-0.5"
-                    : "bg-surface border-transparent hover:border-foreground/20 hover:-translate-y-0.5"
+                    ? "is-active text-white shadow-lg -translate-y-0.5"
+                    : "text-foreground hover:-translate-y-0.5"
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -133,7 +133,7 @@ export function Percorsi() {
                     </p>
                     <p
                       className={`text-xs mt-1.5 uppercase tracking-[0.15em] ${
-                        isActive ? "text-background/60" : "text-foreground/50"
+                        isActive ? "text-white/60" : "text-foreground/50"
                       }`}
                     >
                       → {f.sub}

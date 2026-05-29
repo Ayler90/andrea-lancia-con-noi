@@ -179,6 +179,53 @@
   }
 }
 
+/* Filter button: animated border + mouse glow */
+@property --filter-sweep {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.filter-btn {
+  --filter-sweep: 0deg;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    conic-gradient(from 270deg, #156686 var(--filter-sweep), #d4d4d4 var(--filter-sweep)) border-box;
+  transition: --filter-sweep 0s, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.filter-btn:hover:not(.is-active) {
+  --filter-sweep: 360deg;
+  transition: --filter-sweep 0.65s ease-out, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.filter-btn.is-active {
+  background: #156686 !important;
+  border-color: #156686;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: var(--filter-glow-y, 50%);
+  left: var(--filter-glow-x, 50%);
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(21,102,134,0.18) 0%, transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.filter-btn:hover:not(.is-active)::before {
+  opacity: 1;
+}
+
 @keyframes pill-glow-pulse {
   0%, 100% { opacity: 0;   transform: translate(-50%, -50%) scale(0.4); }
   40%       { opacity: 1;   transform: translate(-50%, -50%) scale(1);   }

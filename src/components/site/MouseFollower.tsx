@@ -21,8 +21,17 @@ export function MouseFollower() {
         pill.style.setProperty("--pill-glow-y", `${y}%`);
       }
 
+      const filterBtn = (e.target as Element).closest?.(".filter-btn") as HTMLElement | null;
+      if (filterBtn) {
+        const rect = filterBtn.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        filterBtn.style.setProperty("--filter-glow-x", `${x}%`);
+        filterBtn.style.setProperty("--filter-glow-y", `${y}%`);
+      }
+
       if (dotRef.current) {
-        dotRef.current.style.opacity = pill ? "0" : "0.25";
+        dotRef.current.style.opacity = (pill || filterBtn) ? "0" : "0.25";
       }
     };
 
