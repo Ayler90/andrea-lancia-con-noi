@@ -28,8 +28,27 @@ function FloatingEmoji({ emoji, glowColor }: { emoji: string; glowColor: string 
 
 export function ConChiLavoro() {
   return (
-    <section id="con-chi-lavoro" className="py-20 md:py-28 bg-foreground text-background">
-      <div className="container-narrow">
+    <section id="con-chi-lavoro" className="py-20 md:py-28 bg-foreground text-background relative overflow-hidden">
+      {/* Background orbs */}
+      <div
+        className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, oklch(0.685 0.045 215 / 0.18) 0%, transparent 70%)",
+          top: "10%",
+          left: "5%",
+          animation: "orb-drift-1 28s ease-in-out infinite",
+        }}
+      />
+      <div
+        className="absolute w-[420px] h-[420px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, oklch(0.452 0.067 230 / 0.15) 0%, transparent 70%)",
+          bottom: "5%",
+          right: "10%",
+          animation: "orb-drift-2 34s ease-in-out infinite",
+        }}
+      />
+      <div className="container-narrow relative z-10">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
 
           {/* Con chi lavoro — white card */}
@@ -91,7 +110,7 @@ export function ConChiLavoro() {
           </div>
 
         </div>
-      </div>
+        </div>
     </section>
   );
 }
