@@ -20,6 +20,10 @@ export function MouseFollower() {
         pill.style.setProperty("--pill-glow-x", `${x}%`);
         pill.style.setProperty("--pill-glow-y", `${y}%`);
       }
+
+      if (dotRef.current) {
+        dotRef.current.style.opacity = pill ? "0" : "0.25";
+      }
     };
 
     const animate = () => {

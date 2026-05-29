@@ -13,10 +13,11 @@ const settori = [
 
 export function ChiSono() {
   return (
-    <section id="chi-sono" className="relative min-h-screen flex flex-col md:flex-row">
+    <section id="chi-sono" className="py-20 md:py-28">
+      <div className="max-w-[1360px] mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-10 md:gap-16 items-center">
 
-      {/* LEFT column — flush to left edge, full section height, image bottom-anchored */}
-      <div className="relative md:w-5/12 min-h-[60vw] md:min-h-screen flex-shrink-0">
+      {/* LEFT column — image anchored at bottom, slightly shrunk for centering */}
+      <div className="relative md:w-[38%] flex-shrink-0 min-h-[460px] md:min-h-[620px] w-full">
         <img
           src={aereiImg}
           alt="Andrea Bonomo con gli aerei"
@@ -39,8 +40,8 @@ export function ChiSono() {
         </div>
       </div>
 
-      {/* RIGHT column — padded, vertically centered */}
-      <div className="flex-1 flex items-center py-20 md:py-32 pr-5 md:pr-10 lg:pr-16 pl-8 md:pl-12 lg:pl-16">
+      {/* RIGHT column */}
+      <div className="flex-1">
         <div className="w-full max-w-xl">
           <p className="text-sm md:text-base leading-relaxed text-foreground/85">
             Gestisco lanci da <strong>oltre 6 anni</strong> e, conti alla mano, ne ho gestiti{" "}
@@ -102,6 +103,7 @@ export function ChiSono() {
             Scopri i miei percorsi →
           </a>
         </div>
+      </div>
       </div>
     </section>
   );
