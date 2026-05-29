@@ -11,6 +11,15 @@ export function MouseFollower() {
     const onMove = (e: MouseEvent) => {
       targetX = e.clientX;
       targetY = e.clientY;
+
+      const pill = (e.target as Element).closest?.(".pill") as HTMLElement | null;
+      if (pill) {
+        const rect = pill.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        pill.style.setProperty("--pill-glow-x", `${x}%`);
+        pill.style.setProperty("--pill-glow-y", `${y}%`);
+      }
     };
 
     const animate = () => {

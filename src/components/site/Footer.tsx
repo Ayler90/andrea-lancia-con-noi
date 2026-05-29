@@ -1,4 +1,5 @@
 import { Instagram, Mail } from "lucide-react";
+import logoImg from "@/assets/logo.BWB8mVrQ.svg";
 
 const links = [
   { href: "#chi-sono", label: "Chi sono" },
@@ -13,8 +14,10 @@ export function Footer() {
       <div className="container-narrow py-14 md:py-20">
         <div className="grid md:grid-cols-3 gap-10 items-start">
           <div>
-            <p className="text-base font-medium tracking-tight">Andrea Bonomo</p>
-            <p className="text-sm text-muted-foreground mt-1">Funnel e Launch Strategist</p>
+            <span className="bg-[#156686] rounded-xl px-3 py-2 inline-flex items-center">
+              <img src={logoImg} alt="Andrea Bonomo" className="h-7 w-auto" />
+            </span>
+            <p className="text-sm text-muted-foreground mt-3">Funnel e Launch Strategist</p>
           </div>
 
           <nav className="flex flex-wrap gap-x-6 gap-y-2 md:justify-center">

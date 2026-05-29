@@ -24,11 +24,11 @@ export function ChiSono() {
           width={1024}
           height={1024}
           className="absolute inset-0 w-full h-full object-contain object-bottom"
-          style={{ transform: "translateY(-40px)" }}
+          style={{ transform: "translateY(-15%)" }}
         />
         {/* White gradient fade at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-          style={{ background: "linear-gradient(to top, white 30%, transparent)" }} />
+        <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
+          style={{ background: "linear-gradient(to top, white 45%, rgba(255,255,255,0.7) 65%, transparent)" }} />
         {/* Text overlaid at bottom */}
         <div className="absolute bottom-0 left-0 right-0 pb-8 px-8 md:px-12">
           <p className="eyebrow text-[#156686]/70 mb-2">Chi sono</p>

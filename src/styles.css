@@ -148,18 +148,19 @@
   .pill::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.4);
-    width: 110%;
-    height: 200%;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.12) 40%, transparent 70%);
+    top: var(--pill-glow-y, 50%);
+    left: var(--pill-glow-x, 50%);
+    transform: translate(-50%, -50%);
+    width: 140%;
+    height: 220%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 45%, transparent 70%);
     pointer-events: none;
     opacity: 0;
+    transition: opacity 0.15s ease;
   }
 
   .pill:hover::before {
-    animation: pill-glow-pulse 1.8s ease-in-out infinite;
+    opacity: 1;
   }
 
   .cta-ghost {
