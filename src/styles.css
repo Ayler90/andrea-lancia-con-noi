@@ -194,9 +194,13 @@
 }
 
 .filter-btn-rect {
+  x: 1.5px;
+  y: 1.5px;
+  width: calc(100% - 3px);
+  height: calc(100% - 3px);
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.65s linear;
+  transition: stroke-dashoffset 0.82s linear;
 }
 
 .filter-btn:hover:not(.is-active) .filter-btn-rect {
