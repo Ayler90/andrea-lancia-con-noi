@@ -191,15 +191,15 @@
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 1rem;
+  border-radius: var(--radius-2xl);
   box-shadow: 0 0 0 1.5px #156686;
-  clip-path: inset(-2px calc(100% + 2px) -2px -2px round calc(1rem + 1.5px));
+  clip-path: inset(-2px calc(100% + 2px) -2px -2px round calc(var(--radius-2xl) + 1.5px));
   transition: clip-path 0.55s ease;
   pointer-events: none;
 }
 
 .filter-btn:hover:not(.is-active)::before {
-  clip-path: inset(-2px -2px -2px -2px round calc(1rem + 1.5px));
+  clip-path: inset(-2px -2px -2px -2px round calc(var(--radius-2xl) + 1.5px));
 }
 
 .filter-btn.is-active {
