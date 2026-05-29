@@ -306,7 +306,17 @@ export function ClaritySection() {
       const dot = document.createElementNS(NS, "circle");
       dot.setAttribute("r", "4");
       dot.setAttribute("fill", "#156686");
-      dot.setAttribute("opacity", "0.65");
+      dot.setAttribute("opacity", "0");
+
+      // Keep dot invisible until its animateMotion begins, then snap to full opacity
+      const showAnim = document.createElementNS(NS, "animate");
+      showAnim.setAttribute("attributeName", "opacity");
+      showAnim.setAttribute("from", "0.65");
+      showAnim.setAttribute("to",   "0.65");
+      showAnim.setAttribute("dur",  "0.001s");
+      showAnim.setAttribute("begin", `${delay}s`);
+      showAnim.setAttribute("fill", "freeze");
+      dot.appendChild(showAnim);
 
       const motion = document.createElementNS(NS, "animateMotion");
       motion.setAttribute("dur",         `${dur}s`);
