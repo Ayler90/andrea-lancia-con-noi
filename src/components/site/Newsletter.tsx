@@ -55,18 +55,34 @@ export function Newsletter() {
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const form = document.querySelector("#mlb2-41923213 form.ml-block-form") as HTMLFormElement | null;
-    const nameInput  = document.querySelector('#mlb2-41923213 input[name="fields[name]"]')  as HTMLInputElement | null;
-    const emailInput = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
+    // Success callback invoked by MailerLite after successful submission
+    (window as any).ml_webform_success_41923213 = function () {
+      const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
+      const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form") as HTMLElement | null;
+      if (success) success.style.display = "block";
+      if (formRow) formRow.style.display = "none";
+    };
 
-    if (!form) return;
+    // Load MailerLite script (handles actual AJAX submission)
+    if (!document.getElementById("ml-webforms-script")) {
+      const script = document.createElement("script");
+      script.id = "ml-webforms-script";
+      script.src = "https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b";
+      script.type = "text/javascript";
+      document.body.appendChild(script);
+    }
 
+    // Attach validation in capture phase so it runs before MailerLite's own handler
     const handleSubmit = (e: Event) => {
+      const nameInput  = document.querySelector('#mlb2-41923213 input[name="fields[name]"]')  as HTMLInputElement | null;
+      const emailInput = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
+
       const nameEmpty  = !nameInput?.value?.trim();
       const emailEmpty = !emailInput?.value?.trim();
 
       if (nameEmpty || emailEmpty) {
         e.preventDefault();
+        e.stopImmediatePropagation();
 
         if (nameEmpty && nameInput) {
           nameInput.classList.add("field-error");
@@ -83,20 +99,18 @@ export function Newsletter() {
           setShowTooltip(true);
           hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
         });
-        return;
       }
-
-      // Valid: native form posts to hidden iframe — show success after short delay
-      setTimeout(() => {
-        const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
-        const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form")    as HTMLElement | null;
-        if (success) success.style.display = "block";
-        if (formRow) formRow.style.display  = "none";
-      }, 1500);
     };
 
-    form.addEventListener("submit", handleSubmit);
-    return () => form.removeEventListener("submit", handleSubmit);
+    // Wait for MailerLite to render the form, then attach on the document in capture phase
+    const timer = setTimeout(() => {
+      document.addEventListener("submit", handleSubmit, true);
+    }, 800);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("submit", handleSubmit, true);
+    };
   }, []);
 
   return (
