@@ -99,6 +99,14 @@ export function Newsletter() {
           setShowTooltip(true);
           hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
         });
+      } else {
+        // Validation passed — show success after MailerLite's AJAX round-trip
+        setTimeout(() => {
+          const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
+          const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form")    as HTMLElement | null;
+          if (success) success.style.display = "block";
+          if (formRow) formRow.style.display  = "none";
+        }, 1800);
       }
     };
 
