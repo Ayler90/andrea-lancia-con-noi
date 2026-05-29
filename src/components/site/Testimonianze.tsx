@@ -41,7 +41,7 @@ const items = [
 
 export function Testimonianze() {
   return (
-    <section id="testimonianze" className="py-20 md:py-32 border-t border-border">
+    <section id="testimonianze" className="py-20 md:py-32">
       <div className="container-narrow">
         <div className="max-w-3xl mb-14 md:mb-20">
           <p className="eyebrow mb-4">Testimonianze</p>
