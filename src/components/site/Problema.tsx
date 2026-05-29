@@ -388,8 +388,8 @@ export function ClaritySection() {
                   key={id}
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{
-                    border: "2px solid rgba(21,102,134,0.45)",
-                    animation: "ripple-out 1.6s ease-out forwards",
+                    boxShadow: "0 0 0 3px rgba(21,102,134,0.18), 0 0 22px 10px rgba(21,102,134,0.10)",
+                    animation: "ripple-out 2s ease-out forwards",
                   }}
                   onAnimationEnd={() => setRipples(prev => prev.filter(r => r !== id))}
                 />
