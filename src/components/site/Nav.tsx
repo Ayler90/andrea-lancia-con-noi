@@ -61,11 +61,16 @@ export function Nav() {
       {/* Main nav — fixed, top adjusts dynamically as banner scrolls */}
       <header
         ref={navRef}
-        className={`fixed left-0 right-0 z-40 transition-colors duration-300 ${
-          scrolled
-            ? "bg-background/85 backdrop-blur-md border-b border-border"
-            : "bg-transparent"
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
+          scrolled ? "border-b" : "bg-transparent"
         }`}
+        style={scrolled ? {
+          backgroundColor: "rgba(255,255,255,0.60)",
+          backdropFilter:  "blur(18px) saturate(180%)",
+          WebkitBackdropFilter: "blur(18px) saturate(180%)",
+          borderColor:     "rgba(255,255,255,0.55)",
+          boxShadow:       "inset 0 1px 0 rgba(255,255,255,0.75), 0 4px 24px rgba(0,0,0,0.07)",
+        } : undefined}
       >
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: logo */}
@@ -107,7 +112,15 @@ export function Nav() {
         </div>
 
         {open && (
-          <div className="md:hidden border-t border-border bg-background">
+          <div
+            className="md:hidden border-t"
+            style={{
+              backgroundColor: "rgba(255,255,255,0.72)",
+              backdropFilter:  "blur(18px) saturate(180%)",
+              WebkitBackdropFilter: "blur(18px) saturate(180%)",
+              borderColor:     "rgba(255,255,255,0.55)",
+            }}
+          >
             <nav className="container-narrow flex flex-col py-4">
               {links.map((l) => (
                 <a
