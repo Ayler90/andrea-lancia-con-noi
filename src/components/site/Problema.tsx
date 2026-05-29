@@ -306,17 +306,16 @@ export function ClaritySection() {
       const dot = document.createElementNS(NS, "circle");
       dot.setAttribute("r", "4");
       dot.setAttribute("fill", "#156686");
-      dot.setAttribute("opacity", "0");
+      dot.setAttribute("opacity", "0.65");
+      dot.setAttribute("display", "none");
 
-      // Keep dot invisible until its animateMotion begins, then snap to full opacity
-      const showAnim = document.createElementNS(NS, "animate");
-      showAnim.setAttribute("attributeName", "opacity");
-      showAnim.setAttribute("from", "0.65");
-      showAnim.setAttribute("to",   "0.65");
-      showAnim.setAttribute("dur",  "0.001s");
-      showAnim.setAttribute("begin", `${delay}s`);
-      showAnim.setAttribute("fill", "freeze");
-      dot.appendChild(showAnim);
+      // Show the dot only when its motion begins, preventing the (0,0) ghost
+      const showSet = document.createElementNS(NS, "set");
+      showSet.setAttribute("attributeName", "display");
+      showSet.setAttribute("to",    "inline");
+      showSet.setAttribute("begin", `${delay}s`);
+      showSet.setAttribute("fill",  "freeze");
+      dot.appendChild(showSet);
 
       const motion = document.createElementNS(NS, "animateMotion");
       motion.setAttribute("dur",         `${dur}s`);
@@ -406,7 +405,7 @@ export function ClaritySection() {
               ))}
               <div
                 ref={imageRef}
-                className="rounded-full overflow-hidden cursor-pointer"
+                className="rounded-full overflow-hidden"
                 onMouseEnter={startRipples}
                 onMouseLeave={stopRipples}
                 style={{
