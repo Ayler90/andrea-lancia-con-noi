@@ -319,7 +319,7 @@
 
 .guide-img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  border-radius: 18px;
+  border-radius: 8px;
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
 }
 .guide-stack:hover .guide-wrapper-1 .guide-img { animation: guide-gentle-float 3.4s ease-in-out 0s infinite; }
