@@ -2,12 +2,15 @@ import { useCallback, useEffect, useRef } from "react";
 import costruiscoImg from "@/assets/Foto mentre costruisco.jpg";
 
 const chaosThoughts = [
-  { text: "Devo fare o no un webinar?",                     x: "2%",  y: "5%",  delay: "0s"   },
-  { text: "Quante email invio?",                            x: "58%", y: "3%",  delay: "1s"   },
-  { text: "Che contenuti dovrei creare?",                   x: "60%", y: "34%", delay: "1.8s" },
-  { text: "Quanto le tengo aperte le vendite?",             x: "52%", y: "70%", delay: "0.6s" },
-  { text: "Ma quest'offerta è giusta per il mio pubblico?", x: "0%",  y: "55%", delay: "2.2s" },
-  { text: "Mi servono o no le ads?",                        x: "22%", y: "85%", delay: "1.4s" },
+  { text: "Devo fare o no un webinar?",                          x: "2%",  y: "5%",  delay: "0s"   },
+  { text: "Quante email invio?",                                 x: "58%", y: "3%",  delay: "1s"   },
+  { text: "Che contenuti dovrei creare?",                        x: "60%", y: "34%", delay: "1.8s" },
+  { text: "Quanto le tengo aperte le vendite?",                  x: "52%", y: "70%", delay: "0.6s" },
+  { text: "Ma quest'offerta è giusta per il mio pubblico?",      x: "0%",  y: "55%", delay: "2.2s" },
+  { text: "Mi servono o no le ads?",                             x: "22%", y: "85%", delay: "1.4s" },
+  { text: "Come la strutturo la pagina di vendita?",             x: "55%", y: "82%", delay: "0.9s" },
+  { text: "Come faccio iscrivere le persone al pre lancio?",     x: "3%",  y: "78%", delay: "2.5s" },
+  { text: "Quanto deve durare il pre lancio?",                   x: "30%", y: "2%",  delay: "1.6s" },
 ];
 
 export const clarityItems = [
