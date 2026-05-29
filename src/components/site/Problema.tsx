@@ -326,7 +326,7 @@ export function ClaritySection() {
 
   return (
     <section className="py-20 md:py-28 bg-white">
-      <div className="container-narrow">
+      <div style={{ width: "100%", maxWidth: 1440, marginInline: "auto", paddingInline: "2rem" }}>
         {/* Title + subtitle — centered */}
         <div className="mb-12 md:mb-16 text-center">
           <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-5">
