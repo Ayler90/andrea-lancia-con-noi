@@ -188,25 +188,35 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
           reverse ? "md:[&>*:first-child]:order-2" : ""
         }`}
       >
-        <div className="md:col-span-7 p-8 sm:p-10 md:p-14 lg:p-16 flex flex-col">
-          <div className="flex items-center justify-between gap-4 flex-wrap">
-            <span className="h-display text-4xl md:text-5xl font-bold text-foreground/15 border border-foreground/15 rounded-xl w-14 h-14 flex items-center justify-center flex-shrink-0">
-              {percorso.n}
-            </span>
+        <div className="md:col-span-7 p-8 sm:p-10 md:p-14 lg:p-16 flex flex-col relative overflow-hidden">
+          {/* Huge background number */}
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-4 h-display leading-none select-none pointer-events-none"
+            style={{
+              fontSize: "clamp(180px, 22vw, 340px)",
+              color: "transparent",
+              WebkitTextStroke: "1.5px rgba(0,0,0,0.07)",
+            }}
+          >
+            {percorso.n}
+          </span>
+
+          <div className="flex items-center justify-end gap-4 flex-wrap relative z-10">
             <span className="text-xs uppercase tracking-[0.18em] text-foreground/60 font-medium">
               {percorso.tag}
             </span>
           </div>
 
-          <h3 className="h-display text-4xl md:text-5xl lg:text-6xl mt-8 md:mt-12">
+          <h3 className="h-display text-4xl md:text-5xl lg:text-6xl mt-8 md:mt-12 relative z-10">
             {percorso.title} <em>{percorso.italic}</em>
           </h3>
 
-          <p className="mt-6 text-sm md:text-base text-foreground/75 leading-relaxed max-w-xl">
+          <p className="mt-6 text-sm md:text-base text-foreground/75 leading-relaxed max-w-xl relative z-10">
             {percorso.desc}
           </p>
 
-          <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3 max-w-xl">
+          <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3 max-w-xl relative z-10">
             {percorso.bullets.map((b) => (
               <li key={b} className="flex items-start gap-3 text-sm text-foreground/85">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
@@ -215,7 +225,7 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
             ))}
           </ul>
 
-          <div className="mt-auto pt-10">
+          <div className="mt-auto pt-10 relative z-10">
             <a
               href="#contatti"
               className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
