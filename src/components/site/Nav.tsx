@@ -70,9 +70,7 @@ export function Nav() {
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: logo */}
           <a href="#top" className="justify-self-start flex items-center">
-            <span className="bg-[#156686] rounded-xl px-3 py-2 inline-flex items-center">
-              <img src={logoImg} alt="Andrea Bonomo" className="h-7 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
-            </span>
+            <img src={logoImg} alt="Andrea Bonomo" className="h-10 w-auto" style={{ filter: "brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(500%) hue-rotate(162deg) brightness(90%)" }} />
           </a>
 
           {/* Center: nav links */}

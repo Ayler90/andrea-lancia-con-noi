@@ -14,9 +14,7 @@ export function Footer() {
       <div className="container-narrow py-14 md:py-20">
         <div className="grid md:grid-cols-3 gap-10 items-start">
           <div>
-            <span className="bg-[#156686] rounded-xl px-3 py-2 inline-flex items-center">
-              <img src={logoImg} alt="Andrea Bonomo" className="h-7 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
-            </span>
+            <img src={logoImg} alt="Andrea Bonomo" className="h-10 w-auto" style={{ filter: "brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(500%) hue-rotate(162deg) brightness(90%)" }} />
             <p className="text-sm text-muted-foreground mt-3">Funnel e Launch Strategist</p>
           </div>
 
