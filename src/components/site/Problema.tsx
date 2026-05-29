@@ -47,7 +47,7 @@ function ChaosWidget() {
 }
 
 export function Problema() {
-  const circleSpanRef = useRef<HTMLSpanElement>(null);
+  const circleSpanRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     const el = circleSpanRef.current;
@@ -84,34 +84,35 @@ export function Problema() {
 
       <div className="container-narrow relative z-10">
         {/* Heading */}
-        <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-white max-w-2xl mb-16">
+        <h2
+          ref={circleSpanRef}
+          className="h-display text-3xl md:text-4xl lg:text-5xl text-white max-w-2xl mb-16 relative"
+        >
           Conosco perfettamente il tuo{" "}
-          <span ref={circleSpanRef} className="relative inline-block">
-            <em className="text-[#C4D9DC]">problema con i lanci</em>
-            <svg
-              viewBox="0 0 440 72"
-              aria-hidden="true"
-              className="absolute pointer-events-none"
-              style={{ top: "-18%", left: "-4%", width: "108%", height: "136%", overflow: "visible" }}
-            >
-              <defs>
-                <filter id="pencil-rough">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" seed="3" result="noise" />
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
-                </filter>
-              </defs>
-              <path
-                d="M 14,36 C 22,8 98,-2 220,2 C 340,-1 416,10 425,36 C 416,62 338,72 220,72 C 100,72 20,62 14,36 Z"
-                fill="none"
-                stroke="#C4D9DC"
-                strokeWidth="2.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                filter="url(#pencil-rough)"
-                className="pencil-circle-path"
-              />
-            </svg>
-          </span>
+          <em className="text-[#C4D9DC]">problema con i lanci</em>
+          <svg
+            viewBox="0 0 600 130"
+            aria-hidden="true"
+            className="absolute pointer-events-none"
+            style={{ top: "-10%", left: "-3%", width: "106%", height: "120%", overflow: "visible" }}
+          >
+            <defs>
+              <filter id="pencil-rough">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="5" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+            </defs>
+            <path
+              d="M 16,65 C 24,14 130,-4 300,2 C 470,-2 578,16 585,65 C 576,114 464,130 300,128 C 136,128 22,112 16,65 Z"
+              fill="none"
+              stroke="#C4D9DC"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              filter="url(#pencil-rough)"
+              className="pencil-circle-path"
+            />
+          </svg>
         </h2>
 
         {/* ROW 1: Problem text LEFT + Chaos widget RIGHT */}
