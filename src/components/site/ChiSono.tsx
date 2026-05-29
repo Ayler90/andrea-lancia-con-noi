@@ -14,29 +14,34 @@ const settori = [
 export function ChiSono() {
   return (
     <section id="chi-sono" className="py-20 md:py-28">
-      <div className="max-w-[1360px] mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+      <div className="max-w-[1360px] mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-6 md:gap-8 items-center">
 
-      {/* LEFT column — image anchored at bottom, slightly shrunk for centering */}
-      <div className="relative md:w-[38%] flex-shrink-0 min-h-[460px] md:min-h-[620px] w-full">
-        <img
-          src={aereiImg}
-          alt="Andrea Bonomo con gli aerei"
-          loading="lazy"
-          width={1024}
-          height={1024}
-          className="absolute inset-0 w-full h-full object-contain object-bottom"
-          style={{ transform: "translateY(-15%)" }}
-        />
-        {/* White gradient fade at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
-          style={{ background: "linear-gradient(to top, white 45%, rgba(255,255,255,0.7) 65%, transparent)" }} />
-        {/* Text overlaid at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 pb-8 px-8 md:px-12">
-          <p className="eyebrow text-[#156686]/70 mb-2">Chi sono</p>
-          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl leading-tight">
-            Sono Andrea Bonomo,{" "}
-            <em className="text-[#156686]">funnel e launch strategist.</em>
-          </h2>
+      {/* LEFT column */}
+      <div className="md:w-[45%] flex-shrink-0 w-full flex flex-col">
+        {/* "Chi sono" above the image */}
+        <p className="eyebrow text-[#156686]/70 mb-4 px-2">Chi sono</p>
+
+        {/* Image container */}
+        <div className="relative min-h-[460px] md:min-h-[640px]">
+          <img
+            src={aereiImg}
+            alt="Andrea Bonomo con gli aerei"
+            loading="lazy"
+            width={1024}
+            height={1024}
+            className="absolute inset-0 w-full h-full object-contain object-bottom"
+            style={{ transform: "translateY(-15%)" }}
+          />
+          {/* White gradient fade at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
+            style={{ background: "linear-gradient(to top, white 45%, rgba(255,255,255,0.7) 65%, transparent)" }} />
+          {/* Title overlaid at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 pb-8 px-2">
+            <h2 className="h-display text-3xl md:text-4xl lg:text-5xl leading-tight">
+              Sono Andrea Bonomo,{" "}
+              <em className="text-[#156686]">funnel e launch strategist.</em>
+            </h2>
+          </div>
         </div>
       </div>
 
