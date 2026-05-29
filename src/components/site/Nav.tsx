@@ -61,7 +61,7 @@ export function Nav() {
       {/* Main nav — fixed, top adjusts dynamically as banner scrolls */}
       <header
         ref={navRef}
-        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed left-0 right-0 z-40 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
           scrolled ? "border-b" : "bg-transparent"
         }`}
         style={scrolled ? {
