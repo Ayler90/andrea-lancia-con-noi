@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 export function CallConoscitiva() {
   useEffect(() => {
-    // Avoid double-loading if already present
     if (document.getElementById("cal-embed-script")) return;
 
     const script = document.createElement("script");
@@ -35,6 +34,20 @@ export function CallConoscitiva() {
       });
     `;
     document.head.appendChild(script);
+
+    // Hide Cal.com branding element injected outside the iframe
+    const mo = new MutationObserver(() => {
+      const container = document.getElementById("my-cal-inline-call-conoscitiva-gratuita");
+      if (!container) return;
+      // Branding is typically a sibling or child anchor/div linking to cal.com
+      const targets = document.querySelectorAll<HTMLElement>(
+        'a[href*="cal.com?"][target="_blank"], [data-cal-embed-footer], .cal-embed__footer'
+      );
+      targets.forEach((el) => { el.style.display = "none"; });
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => mo.disconnect();
   }, []);
 
   return (
@@ -47,10 +60,27 @@ export function CallConoscitiva() {
           </h2>
         </div>
 
-        <div
-          id="my-cal-inline-call-conoscitiva-gratuita"
-          style={{ width: "100%", height: "100%", overflow: "scroll", minHeight: 600 }}
-        />
+        {/* Wrapper clips any Cal.com footer branding that renders below the iframe */}
+        <div className="relative">
+          <div
+            id="my-cal-inline-call-conoscitiva-gratuita"
+            style={{ width: "100%", height: "100%", overflow: "scroll", minHeight: 600 }}
+          />
+          {/* White strip over the Cal.com watermark at the bottom of the embed */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 48,
+              background: "white",
+              pointerEvents: "none",
+              zIndex: 10,
+            }}
+          />
+        </div>
       </div>
     </section>
   );
