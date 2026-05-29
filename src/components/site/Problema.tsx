@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import costruiscoImg from "@/assets/Foto mentre costruisco.jpg";
 
 const chaosThoughts = [
@@ -46,6 +47,19 @@ function ChaosWidget() {
 }
 
 export function Problema() {
+  const circleSpanRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = circleSpanRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { el.classList.add("pencil-drawn"); observer.disconnect(); } },
+      { threshold: 0.6 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="problema" className="py-20 md:py-32 bg-[#156686] relative overflow-hidden" data-cursor-light>
       {/* Ambient glows */}
@@ -72,7 +86,32 @@ export function Problema() {
         {/* Heading */}
         <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-white max-w-2xl mb-16">
           Conosco perfettamente il tuo{" "}
-          <em className="text-[#C4D9DC]">problema con i lanci</em>
+          <span ref={circleSpanRef} className="relative inline-block">
+            <em className="text-[#C4D9DC]">problema con i lanci</em>
+            <svg
+              viewBox="0 0 440 72"
+              aria-hidden="true"
+              className="absolute pointer-events-none"
+              style={{ top: "-18%", left: "-4%", width: "108%", height: "136%", overflow: "visible" }}
+            >
+              <defs>
+                <filter id="pencil-rough">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" seed="3" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+              </defs>
+              <path
+                d="M 14,36 C 22,8 98,-2 220,2 C 340,-1 416,10 425,36 C 416,62 338,72 220,72 C 100,72 20,62 14,36 Z"
+                fill="none"
+                stroke="#C4D9DC"
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                filter="url(#pencil-rough)"
+                className="pencil-circle-path"
+              />
+            </svg>
+          </span>
         </h2>
 
         {/* ROW 1: Problem text LEFT + Chaos widget RIGHT */}

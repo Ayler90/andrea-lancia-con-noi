@@ -180,6 +180,16 @@
 }
 
 /* Animated border wipe — shared by filter buttons and review cards */
+/* Pencil-circle draw animation */
+.pencil-circle-path {
+  stroke-dasharray: 1060;
+  stroke-dashoffset: 1060;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+.pencil-drawn .pencil-circle-path {
+  stroke-dashoffset: 0;
+}
+
 .border-wipe {
   position: relative;
   box-shadow: 0 0 0 1.5px #d4d4d4;
