@@ -36,8 +36,8 @@ export function ConChiLavoro() {
           background: "#6C9FA8",
           opacity: 0.35,
           filter: "blur(100px)",
-          top: "-10%",
-          left: "-10%",
+          bottom: "-20%",
+          left: "5%",
           animation: "orb-drift-1 28s ease-in-out infinite",
         }}
       />
@@ -47,8 +47,8 @@ export function ConChiLavoro() {
           background: "#156686",
           opacity: 0.3,
           filter: "blur(100px)",
-          bottom: "-10%",
-          right: "-5%",
+          bottom: "-15%",
+          right: "10%",
           animation: "orb-drift-2 34s ease-in-out infinite",
         }}
       />
