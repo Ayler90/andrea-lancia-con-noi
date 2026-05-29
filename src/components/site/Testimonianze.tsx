@@ -35,16 +35,17 @@ export function Testimonianze() {
       <div
         className="absolute pointer-events-none"
         style={{
-          width: "900px",
-          height: "900px",
+          width: "1000px",
+          height: "1000px",
           borderRadius: "50%",
-          background: "#156686",
-          opacity: 0.12,
-          filter: "blur(120px)",
-          top: "20%",
+          background: "#6C9FA8",
+          opacity: 0.35,
+          filter: "blur(100px)",
+          top: "30%",
           left: "50%",
           transform: "translateX(-50%)",
-          animation: "orb-drift-1 32s ease-in-out infinite",
+          zIndex: 0,
+          animation: "orb-drift-2 36s ease-in-out infinite",
         }}
       />
       <div className="container-narrow relative z-10">
