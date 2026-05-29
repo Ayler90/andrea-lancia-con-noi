@@ -73,7 +73,7 @@ export function ConChiLavoro() {
           </div>
 
           {/* Con chi non lavoro — dark, no box */}
-          <div>
+          <div className="pt-8 md:pt-10">
             <FloatingEmoji emoji="❌" glowColor="rgba(220,50,50,0.4)" />
             <p className="eyebrow mb-5 text-background/60">Con chi non lavoro</p>
             <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
