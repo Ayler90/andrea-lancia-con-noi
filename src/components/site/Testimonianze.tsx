@@ -64,6 +64,7 @@ function StarField() {
     const ctx = canvas.getContext("2d")!;
     let animId: number;
     let stars: Star[] = [];
+    let mouseX = -9999, mouseY = -9999;
 
     const buildStars = () => {
       stars = Array.from({ length: 200 }, () => ({
@@ -86,6 +87,16 @@ function StarField() {
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
+    const section = canvas.parentElement!;
+    const onMove  = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
+    const onLeave = () => { mouseX = -9999; mouseY = -9999; };
+    section.addEventListener("mousemove", onMove);
+    section.addEventListener("mouseleave", onLeave);
+
     let t = 0;
     const draw = () => {
       t += 0.012;
@@ -93,7 +104,7 @@ function StarField() {
       const W = canvas.width, H = canvas.height;
 
       for (const s of stars) {
-        // Slowly wander direction
+        // Autonomous drift
         s.angle += (Math.random() - 0.5) * 0.04;
         s.cx    += Math.cos(s.angle) * s.driftSpeed;
         s.cy    += Math.sin(s.angle) * s.driftSpeed;
@@ -104,15 +115,29 @@ function StarField() {
         if (s.cy < -20)    s.cy = H + 20;
         if (s.cy > H + 20) s.cy = -20;
 
+        // Mouse attraction on top of drift position
+        const dx   = mouseX - s.cx;
+        const dy   = mouseY - s.cy;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const R    = 200;
+        const pull = 45 * Math.exp(-(dist * dist) / (2 * R * R));
+        const drawX = s.cx + (dx / dist) * pull;
+        const drawY = s.cy + (dy / dist) * pull;
+
         const twinkle = 0.75 + 0.25 * Math.sin(t * 1.6 + s.phase);
-        drawSparkle(ctx, s.cx, s.cy, s.r * twinkle, s.opacity * twinkle);
+        drawSparkle(ctx, drawX, drawY, s.r * twinkle, s.opacity * twinkle);
       }
 
       animId = requestAnimationFrame(draw);
     };
     draw();
 
-    return () => { cancelAnimationFrame(animId); ro.disconnect(); };
+    return () => {
+      cancelAnimationFrame(animId);
+      ro.disconnect();
+      section.removeEventListener("mousemove", onMove);
+      section.removeEventListener("mouseleave", onLeave);
+    };
   }, []);
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
