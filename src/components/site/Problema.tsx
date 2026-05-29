@@ -235,11 +235,26 @@ export function ClaritySection() {
     const imgCy = iRect.top  - cRect.top  + iRect.height / 2;
     const imgR  = iRect.width / 2;
 
-    const centers = cardRefs.current.map(el => {
+    // Returns the point on a rectangle's border that lies on the line from (fromX,fromY) to the rect center
+    const edgePt = (cx: number, cy: number, hw: number, hh: number, fromX: number, fromY: number, gap = 6) => {
+      const fdx = fromX - cx;
+      const fdy = fromY - cy;
+      const sx  = fdx !== 0 ? (hw + gap) / Math.abs(fdx) : Infinity;
+      const sy  = fdy !== 0 ? (hh + gap) / Math.abs(fdy) : Infinity;
+      const s   = Math.min(sx, sy);
+      return { x: cx + s * fdx, y: cy + s * fdy };
+    };
+
+    const cards = cardRefs.current.map(el => {
       if (!el) return null;
       const r = el.getBoundingClientRect();
-      return { x: r.left - cRect.left + r.width / 2, y: r.top - cRect.top + r.height / 2 };
-    }).filter(Boolean) as { x: number; y: number }[];
+      return {
+        x:  r.left - cRect.left + r.width  / 2,
+        y:  r.top  - cRect.top  + r.height / 2,
+        hw: r.width  / 2,
+        hh: r.height / 2,
+      };
+    }).filter(Boolean) as { x: number; y: number; hw: number; hh: number }[];
 
     let idx = 0;
     const addSegment = (x1: number, y1: number, x2: number, y2: number, dur: number, delay: number) => {
@@ -279,21 +294,26 @@ export function ClaritySection() {
       svg.appendChild(dot);
     };
 
-    // Image → each card (4 lines)
-    centers.forEach((cc, i) => {
+    // Image → each card (4 lines) — start at image edge, end at card border
+    cards.forEach((cc, i) => {
       const angle = Math.atan2(cc.y - imgCy, cc.x - imgCx);
+      const end   = edgePt(cc.x, cc.y, cc.hw, cc.hh, imgCx, imgCy);
       addSegment(
-        imgCx + Math.cos(angle) * (imgR + 4),
-        imgCy + Math.sin(angle) * (imgR + 4),
-        cc.x, cc.y,
-        6 + i * 0.4,   // ~50% slower than before
+        imgCx + Math.cos(angle) * (imgR + 6),
+        imgCy + Math.sin(angle) * (imgR + 6),
+        end.x, end.y,
+        6 + i * 0.4,
         i * 0.5
       );
     });
 
-    // Card → next card (3 sequential lines)
-    for (let i = 0; i < centers.length - 1; i++) {
-      addSegment(centers[i].x, centers[i].y, centers[i + 1].x, centers[i + 1].y, 7 + i * 0.4, i * 0.6 + 2);
+    // Card → next card (3 sequential lines) — edge to edge
+    for (let i = 0; i < cards.length - 1; i++) {
+      const a    = cards[i];
+      const b    = cards[i + 1];
+      const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
+      const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
+      addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, i * 0.6 + 2);
     }
   }, []);
 
@@ -307,12 +327,12 @@ export function ClaritySection() {
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="container-narrow">
-        {/* Title + subtitle */}
-        <div className="mb-12 md:mb-16">
-          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-foreground max-w-2xl mb-5">
+        {/* Title + subtitle — centered */}
+        <div className="mb-12 md:mb-16 text-center">
+          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-5">
             Quello che faccio è questo
           </h2>
-          <p className="text-sm md:text-base text-foreground/65 leading-relaxed max-w-2xl">
+          <p className="text-sm md:text-base text-foreground/65 leading-relaxed max-w-2xl mx-auto">
             Ti guido nel tuo lancio,{" "}
             <strong className="text-foreground/85">togliendoti il peso</strong> di gestire la parte tecnica e
             strategica e accompagnandoti in ogni fase, così sai sempre dove sei e cosa succederà dopo.
