@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import logoImg from "@/assets/Logo-Grigio (1).png";
 
 const links = [
-  { href: "#chi-sono", label: "Chi sono" },
-  { href: "#percorsi", label: "Percorsi" },
-  { href: "#newsletter", label: "Newsletter" },
-  { href: "#contatti", label: "Contatti" },
+  { href: "#chi-sono",     label: "Chi sono" },
+  { href: "#percorsi",     label: "I miei percorsi" },
+  { href: "#newsletter",   label: "Guida gratuita ai lanci" },
+  { href: "#testimonianze", label: "Recensioni" },
 ];
 
 export function Nav() {
