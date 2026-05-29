@@ -1,60 +1,107 @@
-import { Instagram, Mail } from "lucide-react";
 import logoImg from "@/assets/Logo-Grigio (1).png";
 
-const links = [
-  { href: "#chi-sono", label: "Chi sono" },
-  { href: "#percorsi", label: "Percorsi" },
-  { href: "#newsletter", label: "Newsletter" },
-  { href: "#contatti", label: "Contatti" },
+const percorsi = [
+  { href: "#percorsi", label: "Percorso di Lancio" },
+  { href: "#percorsi", label: "Business Blueprint" },
+  { href: "#percorsi", label: "Mentoring Newsletter" },
+  { href: "#percorsi", label: "Consulenza Strategica" },
+];
+
+const corsi = [
+  { href: "#percorsi", label: "Easy-Mail Pack" },
+  { href: "#percorsi", label: "Calendario di Lancio" },
+];
+
+const legal = [
+  { href: "#chi-sono",     label: "Chi sono" },
+  { href: "#percorsi",     label: "I miei percorsi" },
+  { href: "#newsletter",   label: "Guida gratuita ai lanci" },
+  { href: "#testimonianze", label: "Recensioni" },
+  { href: "#contatti",     label: "Contatti" },
 ];
 
 export function Footer() {
   return (
-    <footer id="contatti" className="border-t border-border bg-background">
-      <div className="container-narrow py-14 md:py-20">
-        <div className="grid md:grid-cols-3 gap-10 items-start">
-          <div>
-            <img src={logoImg} alt="Andrea Bonomo" className="h-10 w-auto" style={{ filter: "brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(500%) hue-rotate(162deg) brightness(90%)" }} />
-            <p className="text-sm text-muted-foreground mt-3">Funnel e Launch Strategist</p>
+    <footer id="contatti" className="bg-foreground text-background">
+      <div className="container-narrow py-16 md:py-20">
+        <div className="grid md:grid-cols-12 gap-10 md:gap-8">
+
+          {/* Logo + motto */}
+          <div className="md:col-span-4">
+            <img
+              src={logoImg}
+              alt="Andrea Bonomo"
+              className="h-9 w-auto mb-5"
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
+            <p className="text-sm text-background/70 leading-relaxed max-w-xs">
+              Lanciamo la tua prossima offerta,<br />senza ansia e senza stress.
+            </p>
           </div>
 
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 md:justify-center">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-sm text-foreground/80 hover:text-primary transition-colors"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex md:justify-end gap-3">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition"
-            >
-              <Instagram className="w-4 h-4" />
-            </a>
-            <a
-              href="mailto:hello@andreabonomo.it"
-              aria-label="Email"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
+          {/* Percorsi */}
+          <div className="md:col-span-3 md:col-start-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/40 mb-5">Percorsi</p>
+            <ul className="space-y-3">
+              {percorsi.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-sm text-background/75 hover:text-background transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Corsi e template */}
+          <div className="md:col-span-3 md:col-start-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/40 mb-5">Corsi e Template</p>
+            <ul className="space-y-3">
+              {corsi.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-sm text-background/75 hover:text-background transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/40 mt-8 mb-5">Sito</p>
+            <ul className="space-y-3">
+              {legal.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-sm text-background/75 hover:text-background transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </div>
 
-      <div className="border-t border-border">
-        <div className="container-narrow py-6 text-xs text-muted-foreground flex flex-col md:flex-row gap-2 md:justify-between">
-          <p>© 2026 Andrea Bonomo — P.IVA [placeholder]</p>
-          <p>Made with care in Italy</p>
+      {/* Bottom bar */}
+      <div className="border-t border-background/10">
+        <div className="container-narrow py-6 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-background/40">
+          <p>© 2026 Andrea Bonomo — P.IVA 04815800232</p>
+          <div className="flex gap-5">
+            <a
+              href="https://www.iubenda.com/privacy-policy/31182601"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-background/70 transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="https://www.iubenda.com/privacy-policy/31182601/cookie-policy"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-background/70 transition-colors"
+            >
+              Cookie Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>
