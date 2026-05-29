@@ -75,8 +75,8 @@ function StarField() {
         const by = Math.random() * h;
         return {
           bx, by, cx: bx, cy: by,
-          r:       Math.random() * 3.5 + 1,
-          opacity: Math.random() * 0.35 + 0.12,
+          r:       Math.random() * 7 + 3,
+          opacity: Math.random() * 0.45 + 0.25,
           phase:   Math.random() * Math.PI * 2,
           speed:   Math.random() * 0.055 + 0.025,
         };
