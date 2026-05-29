@@ -123,7 +123,7 @@ export function Newsletter() {
 
   return (
     <section id="newsletter" className="py-20 md:py-28 px-4 md:px-8 lg:px-12">
-      <div className="bg-primary text-primary-foreground rounded-3xl md:rounded-[2rem] overflow-hidden relative max-w-[1600px] mx-auto">
+      <div className="bg-primary text-primary-foreground rounded-3xl md:rounded-[2rem] overflow-hidden relative max-w-[1600px] mx-auto" data-cursor-light>
           <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-secondary/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-secondary/15 blur-3xl pointer-events-none" />
 

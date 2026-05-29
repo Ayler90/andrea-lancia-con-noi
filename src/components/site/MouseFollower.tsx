@@ -12,7 +12,8 @@ export function MouseFollower() {
       targetX = e.clientX;
       targetY = e.clientY;
 
-      const pill = (e.target as Element).closest?.(".pill") as HTMLElement | null;
+      const el = e.target as Element;
+      const pill = el.closest?.(".pill") as HTMLElement | null;
       if (pill) {
         const rect = pill.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -22,7 +23,12 @@ export function MouseFollower() {
       }
 
       if (dotRef.current) {
-        dotRef.current.style.opacity = pill ? "0" : "0.25";
+        const isLight = !!el.closest("[data-cursor-light]");
+        dotRef.current.style.backgroundColor = isLight ? "#f0f0f0" : "#156686";
+        dotRef.current.style.boxShadow = isLight
+          ? "0 0 12px 4px rgba(240,240,240,0.25)"
+          : "0 0 12px 4px rgba(21,102,134,0.3)";
+        dotRef.current.style.opacity = pill ? "0" : "0.6";
       }
     };
 
@@ -52,6 +58,7 @@ export function MouseFollower() {
         backgroundColor: "#156686",
         opacity: 0.25,
         boxShadow: "0 0 12px 4px rgba(21,102,134,0.3)",
+        transition: "background-color 0.3s ease, box-shadow 0.3s ease",
       }}
     />
   );

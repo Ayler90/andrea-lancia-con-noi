@@ -28,7 +28,7 @@ function FloatingEmoji({ emoji, glowColor }: { emoji: string; glowColor: string 
 
 export function ConChiLavoro() {
   return (
-    <section id="con-chi-lavoro" className="py-20 md:py-28 bg-foreground text-background relative overflow-hidden">
+    <section id="con-chi-lavoro" className="py-20 md:py-28 bg-foreground text-background relative overflow-hidden" data-cursor-light>
       {/* Background orbs */}
       <div
         className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
