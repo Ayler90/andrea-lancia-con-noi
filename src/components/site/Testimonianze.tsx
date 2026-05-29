@@ -30,12 +30,12 @@ import f12 from "@/assets/Feedback di vendita 12.png";
 const items = [r1, f1, r2, f2, r3, f3, r4, f4, r5, f5, r6, f6, r7, f7, r8, f8, r9, f9, r10, f10, r11, f11, r12, f12, r13];
 
 type Star = {
-  bx: number; by: number;   // base position
-  cx: number; cy: number;   // current (animated) position
-  r: number;                // outer radius of sparkle
+  cx: number; cy: number;
+  r: number;
   opacity: number;
-  phase: number;            // for twinkle
-  speed: number;            // lerp speed
+  phase: number;
+  angle: number;       // current drift direction
+  driftSpeed: number;  // px per frame
 };
 
 function drawSparkle(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, opacity: number) {
@@ -45,11 +45,10 @@ function drawSparkle(ctx: CanvasRenderingContext2D, x: number, y: number, r: num
   ctx.beginPath();
   const pts = 4;
   for (let i = 0; i < pts * 2; i++) {
-    const angle = (i * Math.PI) / pts - Math.PI / 2;
-    const rad   = i % 2 === 0 ? r : r * 0.3;
-    const px = x + Math.cos(angle) * rad;
-    const py = y + Math.sin(angle) * rad;
-    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    const a   = (i * Math.PI) / pts - Math.PI / 2;
+    const rad = i % 2 === 0 ? r : r * 0.3;
+    i === 0 ? ctx.moveTo(x + Math.cos(a) * rad, y + Math.sin(a) * rad)
+            : ctx.lineTo(x + Math.cos(a) * rad, y + Math.sin(a) * rad);
   }
   ctx.closePath();
   ctx.fill();
@@ -63,24 +62,19 @@ function StarField() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
-
-    let mouseX = -9999, mouseY = -9999;
     let animId: number;
     let stars: Star[] = [];
 
     const buildStars = () => {
-      const w = canvas.width, h = canvas.height;
-      stars = Array.from({ length: 220 }, () => {
-        const bx = Math.random() * w;
-        const by = Math.random() * h;
-        return {
-          bx, by, cx: bx, cy: by,
-          r:       Math.random() * 7 + 3,
-          opacity: Math.random() * 0.45 + 0.25,
-          phase:   Math.random() * Math.PI * 2,
-          speed:   Math.random() * 0.055 + 0.025,
-        };
-      });
+      stars = Array.from({ length: 200 }, () => ({
+        cx:         Math.random() * canvas.width,
+        cy:         Math.random() * canvas.height,
+        r:          Math.random() * 7 + 3,
+        opacity:    Math.random() * 0.45 + 0.25,
+        phase:      Math.random() * Math.PI * 2,
+        angle:      Math.random() * Math.PI * 2,
+        driftSpeed: Math.random() * 0.35 + 0.08,
+      }));
     };
 
     const resize = () => {
@@ -92,34 +86,25 @@ function StarField() {
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
-    const section = canvas.parentElement!;
-    const onMove  = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    };
-    const onLeave = () => { mouseX = -9999; mouseY = -9999; };
-    section.addEventListener("mousemove", onMove);
-    section.addEventListener("mouseleave", onLeave);
-
     let t = 0;
     const draw = () => {
       t += 0.012;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const W = canvas.width, H = canvas.height;
 
       for (const s of stars) {
-        const dx   = mouseX - s.bx;
-        const dy   = mouseY - s.by;
-        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const R    = 220;
-        const pull = 38 * Math.exp(-(dist * dist) / (2 * R * R));
-        const tx   = s.bx + (dx / dist) * pull;
-        const ty   = s.by + (dy / dist) * pull;
+        // Slowly wander direction
+        s.angle += (Math.random() - 0.5) * 0.04;
+        s.cx    += Math.cos(s.angle) * s.driftSpeed;
+        s.cy    += Math.sin(s.angle) * s.driftSpeed;
 
-        s.cx += (tx - s.cx) * s.speed;
-        s.cy += (ty - s.cy) * s.speed;
+        // Wrap around edges
+        if (s.cx < -20)    s.cx = W + 20;
+        if (s.cx > W + 20) s.cx = -20;
+        if (s.cy < -20)    s.cy = H + 20;
+        if (s.cy > H + 20) s.cy = -20;
 
-        const twinkle = 0.75 + 0.25 * Math.sin(t * 1.8 + s.phase);
+        const twinkle = 0.75 + 0.25 * Math.sin(t * 1.6 + s.phase);
         drawSparkle(ctx, s.cx, s.cy, s.r * twinkle, s.opacity * twinkle);
       }
 
@@ -127,12 +112,7 @@ function StarField() {
     };
     draw();
 
-    return () => {
-      cancelAnimationFrame(animId);
-      ro.disconnect();
-      section.removeEventListener("mousemove", onMove);
-      section.removeEventListener("mouseleave", onLeave);
-    };
+    return () => { cancelAnimationFrame(animId); ro.disconnect(); };
   }, []);
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
@@ -147,29 +127,6 @@ export function Testimonianze() {
       {/* White fade bottom */}
       <div className="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
 
-      {/* Background glows */}
-      {[
-        { color: "#6C9FA8", top: "15%",  left: "20%",  anim: "orb-drift-1 14s ease-in-out infinite" },
-        { color: "#156686", top: "45%",  left: "65%",  anim: "orb-drift-2 11s ease-in-out infinite" },
-        { color: "#6C9FA8", top: "65%",  left: "35%",  anim: "orb-drift-3 16s ease-in-out infinite" },
-      ].map((g, i) => (
-        <div
-          key={i}
-          className="absolute pointer-events-none"
-          style={{
-            width: "500px",
-            height: "500px",
-            borderRadius: "50%",
-            background: g.color,
-            opacity: 0.35,
-            filter: "blur(100px)",
-            top: g.top,
-            left: g.left,
-            zIndex: 0,
-            animation: g.anim,
-          }}
-        />
-      ))}
       <div className="container-narrow relative z-10">
         <div className="max-w-3xl mb-14 md:mb-20">
           <p className="eyebrow mb-4">Parole che mi riempiono il cuore ❤️</p>
