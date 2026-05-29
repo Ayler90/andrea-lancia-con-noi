@@ -3,15 +3,15 @@ import grace from "@/assets/logo-grace.webp";
 import trentinoSocialTank from "@/assets/logo-home-pagex2-trentino social tank.png";
 import logoBwb from "@/assets/logo.BWB8mVrQ.svg";
 import unscripted from "@/assets/unscripted-logo (2).png";
+import marketers from "@/assets/logo-marketersworld-by-wearemarketers-81902c5f2da2.e635ff3518d2d634.png";
 
-// Old logos have opaque/dark content — simple grayscale is fine
-// New logos (grace, unscripted) have white content on transparent bg — need brightness(0) to become visible
 const logos = [
   { src: gionsnow,           alt: "GionSnow",            bright: false },
   { src: trentinoSocialTank, alt: "Trentino Social Tank", bright: false },
   { src: logoBwb,            alt: "24 Ore Business School", bright: false },
   { src: grace,              alt: "Grace",                bright: true  },
   { src: unscripted,         alt: "Unscripted",           bright: true  },
+  { src: marketers,          alt: "Marketers World",      bright: false },
 ];
 
 export function Loghi() {
@@ -20,7 +20,7 @@ export function Loghi() {
       <div className="container-narrow mb-10 text-center">
         <h2 className="h-display text-2xl md:text-3xl lg:text-4xl">
           Alcuni dei clienti e delle realtà{" "}
-          <em className="text-[#156686]">con cui ho lavorato</em>
+          <em className="text-[#156686]">con cui ho collaborato</em>
         </h2>
       </div>
 
