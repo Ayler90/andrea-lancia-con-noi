@@ -221,6 +221,10 @@ export function ClaritySection() {
 
     const cRect = container.getBoundingClientRect();
     const iRect = img.getBoundingClientRect();
+
+    // Skip if layout hasn't settled yet
+    if (iRect.width === 0 || iRect.height === 0) return;
+
     const W = cRect.width;
     const H = cRect.height;
 
@@ -248,6 +252,7 @@ export function ClaritySection() {
     const cards = cardRefs.current.map(el => {
       if (!el) return null;
       const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return null; // skip if not laid out yet
       return {
         x:  r.left - cRect.left + r.width  / 2,
         y:  r.top  - cRect.top  + r.height / 2,
@@ -255,6 +260,9 @@ export function ClaritySection() {
         hh: r.height / 2,
       };
     }).filter(Boolean) as { x: number; y: number; hw: number; hh: number }[];
+
+    // Abort if any card isn't ready
+    if (cards.length !== cardRefs.current.length) return;
 
     let idx = 0;
     const addSegment = (x1: number, y1: number, x2: number, y2: number, dur: number, delay: number) => {
@@ -318,7 +326,7 @@ export function ClaritySection() {
   }, []);
 
   useEffect(() => {
-    const t  = setTimeout(draw, 100);
+    const t  = setTimeout(draw, 200);
     const ro = new ResizeObserver(draw);
     if (containerRef.current) ro.observe(containerRef.current);
     return () => { clearTimeout(t); ro.disconnect(); };
@@ -343,6 +351,7 @@ export function ClaritySection() {
         <div ref={containerRef} className="relative pb-2 overflow-hidden">
           <svg
             ref={svgRef}
+            overflow="hidden"
             className="absolute inset-0 w-full h-full pointer-events-none"
             style={{ zIndex: 0 }}
           />
