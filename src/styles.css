@@ -182,24 +182,24 @@
 /* Animated border wipe — shared by filter buttons and review cards */
 .border-wipe {
   position: relative;
-  box-shadow: 0 0 0 1px oklch(0.9 0.005 230);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 0 1.5px #d4d4d4;
+  transition: transform 0.3s ease;
 }
 
 .border-wipe::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: inherit;
+  border-radius: var(--radius-2xl);
   box-shadow: 0 0 0 1.5px #156686;
-  clip-path: inset(-2px calc(100% + 2px) -2px -2px round inherit);
+  clip-path: inset(-2px calc(100% + 2px) -2px -2px round calc(var(--radius-2xl) + 1.5px));
   transition: clip-path 0.55s ease;
   pointer-events: none;
   z-index: 1;
 }
 
 .border-wipe:hover::before {
-  clip-path: inset(-2px -2px -2px -2px round inherit);
+  clip-path: inset(-2px -2px -2px -2px round calc(var(--radius-2xl) + 1.5px));
 }
 
 /* Filter button: SVG animated border + mouse glow */
