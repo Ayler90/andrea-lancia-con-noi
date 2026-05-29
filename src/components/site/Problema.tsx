@@ -3,19 +3,19 @@ import costruiscoImg from "@/assets/Foto mentre costruisco.jpg";
 
 const chaosThoughts = [
   // row 1
-  { text: "Devo fare o no un webinar?",                          x: "1%",  y: "2%",  delay: "0s"   },
-  { text: "Quante email invio?",                                 x: "63%", y: "2%",  delay: "1s"   },
+  { text: "Devo fare o no un webinar?",                          x: "2%",  y: "2%",  delay: "0s"   },
+  { text: "Quante email invio?",                                 x: "58%", y: "2%",  delay: "1s"   },
   // row 2
-  { text: "Quanto deve durare il pre lancio?",                   x: "28%", y: "20%", delay: "1.6s" },
-  { text: "Che contenuti dovrei creare?",                        x: "61%", y: "22%", delay: "1.8s" },
+  { text: "Quanto deve durare il pre lancio?",                   x: "2%",  y: "21%", delay: "1.6s" },
+  { text: "Che contenuti dovrei creare?",                        x: "58%", y: "21%", delay: "1.8s" },
   // row 3 (emoji row — kept clear in the center)
-  { text: "Ma quest'offerta è giusta per il mio pubblico?",      x: "1%",  y: "46%", delay: "2.2s" },
-  { text: "Mi servono o no le ads?",                             x: "62%", y: "48%", delay: "1.4s" },
+  { text: "Ma quest'offerta è giusta per il mio pubblico?",      x: "2%",  y: "44%", delay: "2.2s" },
+  { text: "Mi servono o no le ads?",                             x: "58%", y: "44%", delay: "1.4s" },
   // row 4
-  { text: "Come faccio iscrivere le persone al pre lancio?",     x: "1%",  y: "70%", delay: "2.5s" },
-  { text: "Quanto le tengo aperte le vendite?",                  x: "55%", y: "68%", delay: "0.6s" },
+  { text: "Come faccio iscrivere le persone al pre lancio?",     x: "2%",  y: "67%", delay: "2.5s" },
+  { text: "Quanto le tengo aperte le vendite?",                  x: "58%", y: "67%", delay: "0.6s" },
   // row 5
-  { text: "Come la strutturo la pagina di vendita?",             x: "28%", y: "88%", delay: "0.9s" },
+  { text: "Come la strutturo la pagina di vendita?",             x: "28%", y: "87%", delay: "0.9s" },
 ];
 
 export const clarityItems = [
@@ -95,7 +95,7 @@ function ChaosWidget() {
           key={t.text}
           ref={el => { bubbleRefs.current[i] = el; }}
           className="absolute"
-          style={{ left: t.x, top: t.y, maxWidth: "46%" }}
+          style={{ left: t.x, top: t.y, maxWidth: "40%" }}
         >
           <div
             className="text-xs font-medium text-white/65 bg-white/10 border border-white/20 rounded-xl px-3 py-1.5 backdrop-blur-sm"
@@ -360,7 +360,7 @@ export function ClaritySection() {
         {/* Title + subtitle — centered */}
         <div className="mb-12 md:mb-16 text-center">
           <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-5">
-            Quello che faccio è questo
+            Quello che faccio è <em className="text-[#156686]">questo</em>
           </h2>
           <p className="text-sm md:text-base text-foreground/65 leading-relaxed max-w-2xl mx-auto">
             Ti guido nel tuo lancio,{" "}
