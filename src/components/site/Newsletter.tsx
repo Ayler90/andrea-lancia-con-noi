@@ -55,57 +55,48 @@ export function Newsletter() {
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    (window as any).ml_webform_success_41923213 = function () {
-      const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
-      const form = document.querySelector(".ml-subscribe-form-41923213 .row-form") as HTMLElement | null;
-      if (success) success.style.display = "block";
-      if (form) form.style.display = "none";
+    const form = document.querySelector("#mlb2-41923213 form.ml-block-form") as HTMLFormElement | null;
+    const nameInput  = document.querySelector('#mlb2-41923213 input[name="fields[name]"]')  as HTMLInputElement | null;
+    const emailInput = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
+
+    if (!form) return;
+
+    const handleSubmit = (e: Event) => {
+      const nameEmpty  = !nameInput?.value?.trim();
+      const emailEmpty = !emailInput?.value?.trim();
+
+      if (nameEmpty || emailEmpty) {
+        e.preventDefault();
+
+        if (nameEmpty && nameInput) {
+          nameInput.classList.add("field-error");
+          nameInput.addEventListener("input", () => nameInput.classList.remove("field-error"), { once: true });
+        }
+        if (emailEmpty && emailInput) {
+          emailInput.classList.add("field-error");
+          emailInput.addEventListener("input", () => emailInput.classList.remove("field-error"), { once: true });
+        }
+
+        if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+        setShowTooltip(false);
+        requestAnimationFrame(() => {
+          setShowTooltip(true);
+          hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
+        });
+        return;
+      }
+
+      // Valid: native form posts to hidden iframe — show success after short delay
+      setTimeout(() => {
+        const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
+        const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form")    as HTMLElement | null;
+        if (success) success.style.display = "block";
+        if (formRow) formRow.style.display  = "none";
+      }, 1500);
     };
 
-    if (!document.getElementById("ml-webforms-script")) {
-      const script = document.createElement("script");
-      script.id = "ml-webforms-script";
-      script.src = "https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b";
-      script.type = "text/javascript";
-      document.body.appendChild(script);
-      fetch("https://assets.mailerlite.com/jsonp/17207/forms/188785133042534099/takel").catch(() => {});
-    }
-
-    const timer = setTimeout(() => {
-      const submitBtn  = document.querySelector("#mlb2-41923213 button.primary") as HTMLButtonElement | null;
-      const nameInput  = document.querySelector('#mlb2-41923213 input[name="fields[name]"]')  as HTMLInputElement | null;
-      const emailInput = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
-
-      if (!submitBtn) return;
-
-      submitBtn.addEventListener("click", (e) => {
-        const nameEmpty  = !nameInput?.value?.trim();
-        const emailEmpty = !emailInput?.value?.trim();
-
-        if (nameEmpty || emailEmpty) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          if (nameEmpty && nameInput) {
-            nameInput.classList.add("field-error");
-            nameInput.addEventListener("input", () => nameInput.classList.remove("field-error"), { once: true });
-          }
-          if (emailEmpty && emailInput) {
-            emailInput.classList.add("field-error");
-            emailInput.addEventListener("input", () => emailInput.classList.remove("field-error"), { once: true });
-          }
-
-          if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-          setShowTooltip(false);
-          requestAnimationFrame(() => {
-            setShowTooltip(true);
-            hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
-          });
-        }
-      });
-    }, 600);
-
-    return () => clearTimeout(timer);
+    form.addEventListener("submit", handleSubmit);
+    return () => form.removeEventListener("submit", handleSubmit);
   }, []);
 
   return (
@@ -129,13 +120,13 @@ export function Newsletter() {
                   <img src={guidaImg1} alt="Guida Gratuita ai Lanci" loading="lazy" className="guide-img" />
                 </div>
                 {/* Social proof badge — overlaid at bottom */}
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 px-3 py-2 rounded-full whitespace-nowrap"
-                  style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.22)" }}>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 px-3.5 py-2 rounded-full whitespace-nowrap"
+                  style={{ background: "rgba(12,35,48,0.72)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.15)" }}>
                   <span className="relative flex-shrink-0 w-2 h-2">
                     <span className="absolute inset-0 rounded-full bg-green-400 blur-[3px] opacity-80" />
                     <span className="relative block w-2 h-2 rounded-full bg-green-400" />
                   </span>
-                  <span className="text-xs font-medium text-primary-foreground/90 tracking-wide">
+                  <span className="text-xs font-semibold text-white/90 tracking-wide">
                     +1.200 iscritti · Guida Gratuita ai Lanci
                   </span>
                 </div>
