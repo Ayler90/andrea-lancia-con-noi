@@ -30,7 +30,20 @@ const items = [r1, f1, r2, f2, r3, f3, r4, f4, r5, f5, r6, f6, r7, f7, r8, f8, r
 
 export function Testimonianze() {
   return (
-    <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden">
+    <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden"
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(21,102,134,0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(21,102,134,0.07) 1px, transparent 1px)
+        `,
+        backgroundSize: "56px 56px",
+      }}
+    >
+      {/* White fade top */}
+      <div className="absolute inset-x-0 top-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
+      {/* White fade bottom */}
+      <div className="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
+
       {/* Background glows */}
       {[
         { color: "#6C9FA8", top: "15%",  left: "20%",  anim: "orb-drift-1 14s ease-in-out infinite" },
