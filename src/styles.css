@@ -313,9 +313,9 @@
 .guide-wrapper-2 { transform: rotate(0deg)  translateY(0px);   z-index: 2; }
 .guide-wrapper-3 { transform: rotate(3deg)  translateY(-18px); z-index: 3; }
 
-.guide-stack:hover .guide-wrapper-1 { transform: rotate(-5deg) translateY(-85px); }
+.guide-stack:hover .guide-wrapper-1 { transform: rotate(-5deg) translateY(-160px); }
 .guide-stack:hover .guide-wrapper-2 { transform: rotate(0deg)  translateY(0px); }
-.guide-stack:hover .guide-wrapper-3 { transform: rotate(5deg)  translateY(85px); }
+.guide-stack:hover .guide-wrapper-3 { transform: rotate(5deg)  translateY(160px); }
 
 .guide-img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
