@@ -65,6 +65,7 @@ function StarField() {
     let animId: number;
     let stars: Star[] = [];
     let mouseX = -9999, mouseY = -9999;
+    let smoothMouseX = -9999, smoothMouseY = -9999;
 
     const buildStars = () => {
       stars = Array.from({ length: 200 }, () => ({
@@ -103,6 +104,10 @@ function StarField() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const W = canvas.width, H = canvas.height;
 
+      // Smoothly interpolate toward the actual mouse position
+      smoothMouseX += (mouseX - smoothMouseX) * 0.035;
+      smoothMouseY += (mouseY - smoothMouseY) * 0.035;
+
       for (const s of stars) {
         // Autonomous drift
         s.angle += (Math.random() - 0.5) * 0.04;
@@ -115,9 +120,9 @@ function StarField() {
         if (s.cy < -20)    s.cy = H + 20;
         if (s.cy > H + 20) s.cy = -20;
 
-        // Mouse attraction on top of drift position
-        const dx   = mouseX - s.cx;
-        const dy   = mouseY - s.cy;
+        // Mouse attraction using smoothed position
+        const dx   = smoothMouseX - s.cx;
+        const dy   = smoothMouseY - s.cy;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
         const R    = 280;
         const pull = 18 * Math.exp(-(dist * dist) / (2 * R * R));
