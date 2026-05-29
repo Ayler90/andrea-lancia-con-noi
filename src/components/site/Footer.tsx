@@ -17,17 +17,16 @@ const sito = [
   { href: "#percorsi",      label: "I miei percorsi" },
   { href: "#newsletter",    label: "Guida gratuita ai lanci" },
   { href: "#testimonianze", label: "Recensioni" },
-  { href: "#contatti",      label: "Contatti" },
 ];
 
 export function Footer() {
   return (
     <footer id="contatti" style={{ backgroundColor: "#1B2F52" }} className="text-white">
       <div className="container-narrow py-16 md:py-20">
-        <div className="grid md:grid-cols-12 gap-10 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
 
           {/* Logo + motto */}
-          <div className="md:col-span-4">
+          <div>
             <img
               src={logoImg}
               alt="Andrea Bonomo"
@@ -39,9 +38,9 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Percorsi */}
-          <div className="md:col-span-3 md:col-start-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-5">Percorsi</p>
+          {/* Percorsi e Consulenze */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-5">Percorsi e Consulenze</p>
             <ul className="space-y-3">
               {percorsi.map((l) => (
                 <li key={l.label}>
@@ -53,8 +52,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Corsi e Template + Sito */}
-          <div className="md:col-span-3 md:col-start-10">
+          {/* Corsi e Template */}
+          <div>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-5">Corsi e Template</p>
             <ul className="space-y-3">
               {corsi.map((l) => (
@@ -65,7 +64,11 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mt-8 mb-5">Sito</p>
+          </div>
+
+          {/* Sito */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-5">Sito</p>
             <ul className="space-y-3">
               {sito.map((l) => (
                 <li key={l.label}>
