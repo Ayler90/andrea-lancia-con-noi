@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import guidaImg1 from "@/assets/Img guida ai lanci.png";
 import guidaImg2 from "@/assets/Img guida ai lanci 2.png";
 import guidaImg3 from "@/assets/Img guida ai lanci 3.png";
@@ -52,6 +52,7 @@ const ML_FORM_HTML = `
 
 export function Newsletter() {
   const [showTooltip, setShowTooltip] = useState(false);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     (window as any).ml_webform_success_41923213 = function () {
@@ -78,10 +79,24 @@ export function Newsletter() {
         const name  = form.querySelector('input[name="fields[name]"]')  as HTMLInputElement | null;
         const email = form.querySelector('input[name="fields[email]"]') as HTMLInputElement | null;
 
-        if (!name?.value?.trim() || !email?.value?.trim()) {
+        const nameEmpty  = !name?.value?.trim();
+        const emailEmpty = !email?.value?.trim();
+
+        if (nameEmpty || emailEmpty) {
           e.preventDefault();
+
+          if (nameEmpty && name) {
+            name.classList.add("field-error");
+            name.addEventListener("input", () => name.classList.remove("field-error"), { once: true });
+          }
+          if (emailEmpty && email) {
+            email.classList.add("field-error");
+            email.addEventListener("input", () => email.classList.remove("field-error"), { once: true });
+          }
+
+          if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
           setShowTooltip(true);
-          setTimeout(() => setShowTooltip(false), 3000);
+          hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
           return;
         }
 
@@ -109,9 +124,25 @@ export function Newsletter() {
             {/* Stacked guide images */}
             <div className="md:col-span-5 p-8 sm:p-10 md:p-12 lg:p-14 flex items-center justify-center">
               <div className="guide-stack w-full max-w-[280px]" style={{ height: "340px" }}>
-                <img src={guidaImg3} alt="Guida Gratuita ai Lanci pagina 3" loading="lazy" className="guide-img guide-img-1" />
-                <img src={guidaImg2} alt="Guida Gratuita ai Lanci pagina 2" loading="lazy" className="guide-img guide-img-2" />
-                <img src={guidaImg1} alt="Guida Gratuita ai Lanci"          loading="lazy" className="guide-img guide-img-3" />
+                <div className="guide-wrapper guide-wrapper-1">
+                  <img src={guidaImg3} alt="Guida Gratuita ai Lanci pagina 3" loading="lazy" className="guide-img" />
+                </div>
+                <div className="guide-wrapper guide-wrapper-2">
+                  <img src={guidaImg2} alt="Guida Gratuita ai Lanci pagina 2" loading="lazy" className="guide-img" />
+                </div>
+                <div className="guide-wrapper guide-wrapper-3">
+                  <img src={guidaImg1} alt="Guida Gratuita ai Lanci" loading="lazy" className="guide-img" />
+                </div>
+              </div>
+              {/* Social proof badge */}
+              <div className="mt-6 flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 w-fit mx-auto">
+                <span className="relative flex-shrink-0 w-2 h-2">
+                  <span className="absolute inset-0 rounded-full bg-green-400 opacity-70 blur-[3px]" />
+                  <span className="relative block w-2 h-2 rounded-full bg-green-400" />
+                </span>
+                <span className="text-xs font-medium text-primary-foreground/85 tracking-wide whitespace-nowrap">
+                  +1.200 iscritti · Guida Gratuita ai Lanci
+                </span>
               </div>
             </div>
 
