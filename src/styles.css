@@ -179,32 +179,28 @@
   }
 }
 
-/* Filter button: animated border + mouse glow */
-@property --filter-sweep {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
+/* Filter button: SVG animated border + mouse glow */
 .filter-btn {
-  --filter-sweep: 0deg;
   position: relative;
   overflow: hidden;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(white, white) padding-box,
-    conic-gradient(from 270deg, #156686 var(--filter-sweep), #d4d4d4 var(--filter-sweep)) border-box;
-  transition: --filter-sweep 0s, transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.filter-btn:hover:not(.is-active) {
-  --filter-sweep: 360deg;
-  transition: --filter-sweep 0.65s ease-out, transform 0.25s ease, box-shadow 0.25s ease;
+  background: white;
+  box-shadow: 0 0 0 1.5px #d4d4d4;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .filter-btn.is-active {
-  background: #156686 !important;
-  border-color: #156686;
+  background: #156686;
+  box-shadow: 0 0 0 1.5px #156686;
+}
+
+.filter-btn-rect {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.65s linear;
+}
+
+.filter-btn:hover:not(.is-active) .filter-btn-rect {
+  stroke-dashoffset: 0;
 }
 
 .filter-btn::before {

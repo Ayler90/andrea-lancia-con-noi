@@ -126,6 +126,10 @@ export function Percorsi() {
                     : "text-foreground hover:-translate-y-0.5"
                 }`}
               >
+                {/* SVG border — draws clockwise from left on hover */}
+                <svg aria-hidden="true" className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                  <rect className="filter-btn-rect" x="0" y="0" width="100%" height="100%" rx="16" ry="16" fill="none" stroke="#156686" strokeWidth="4" pathLength="1" />
+                </svg>
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-base md:text-lg font-semibold leading-tight">
