@@ -20,9 +20,8 @@ export function Nav() {
   }, []);
 
   return (
-    // Sticky wrapper — banner + nav always stack together, no JS positioning needed
-    <div className="sticky top-0 z-50">
-      {/* Announcement banner */}
+    <>
+      {/* Announcement banner — normal flow, scrolls away */}
       <div className="bg-[#C4D9DC]">
         <div className="container-narrow py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
           <p className="text-xs sm:text-sm text-foreground/85 leading-snug">
@@ -38,9 +37,9 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Main nav */}
+      {/* Main nav — sticky, sits just below the banner then sticks at top */}
       <header
-        className={`transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
+        className={`sticky top-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
           scrolled ? "border-b" : "bg-transparent"
         }`}
         style={scrolled ? {
@@ -115,6 +114,6 @@ export function Nav() {
           </div>
         )}
       </header>
-    </div>
+    </>
   );
 }
