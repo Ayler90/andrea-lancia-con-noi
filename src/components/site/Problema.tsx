@@ -340,11 +340,11 @@ export function ClaritySection() {
         </div>
 
         {/* Diagram */}
-        <div ref={containerRef} className="relative pb-2">
+        <div ref={containerRef} className="relative pb-2 overflow-hidden">
           <svg
             ref={svgRef}
             className="absolute inset-0 w-full h-full pointer-events-none"
-            style={{ overflow: "visible", zIndex: 0 }}
+            style={{ zIndex: 0 }}
           />
 
           {/* Round image — top center */}
