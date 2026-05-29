@@ -119,8 +119,8 @@ function StarField() {
         const dx   = mouseX - s.cx;
         const dy   = mouseY - s.cy;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const R    = 200;
-        const pull = 45 * Math.exp(-(dist * dist) / (2 * R * R));
+        const R    = 280;
+        const pull = 18 * Math.exp(-(dist * dist) / (2 * R * R));
         const drawX = s.cx + (dx / dist) * pull;
         const drawY = s.cy + (dy / dist) * pull;
 
