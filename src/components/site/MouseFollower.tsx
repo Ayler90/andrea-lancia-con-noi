@@ -23,7 +23,14 @@ export function MouseFollower() {
       }
 
       if (dotRef.current) {
-        const isLight = !!el.closest("[data-cursor-light]");
+        // Walk up DOM to find whichever cursor hint is closest
+        let node: Element | null = el;
+        let isLight = false;
+        while (node) {
+          if (node.hasAttribute("data-cursor-dark"))  { isLight = false; break; }
+          if (node.hasAttribute("data-cursor-light")) { isLight = true;  break; }
+          node = node.parentElement;
+        }
         dotRef.current.style.backgroundColor = isLight ? "#f0f0f0" : "#156686";
         dotRef.current.style.boxShadow = isLight
           ? "0 0 12px 4px rgba(240,240,240,0.25)"

@@ -56,7 +56,7 @@ export function ConChiLavoro() {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
 
           {/* Con chi lavoro — white card */}
-          <div className="bg-white text-foreground rounded-3xl p-8 md:p-10">
+          <div className="bg-white text-foreground rounded-3xl p-8 md:p-10" data-cursor-dark>
             <FloatingEmoji emoji="✅" glowColor="rgba(21,102,134,0.4)" />
             <p className="eyebrow mb-5 text-foreground/50">Con chi lavoro</p>
             <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">

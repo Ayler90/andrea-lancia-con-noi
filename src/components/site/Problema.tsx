@@ -47,7 +47,7 @@ function ChaosWidget() {
 
 export function Problema() {
   return (
-    <section id="problema" className="py-20 md:py-32 bg-[#156686] relative overflow-hidden">
+    <section id="problema" className="py-20 md:py-32 bg-[#156686] relative overflow-hidden" data-cursor-light>
       {/* Ambient glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div
