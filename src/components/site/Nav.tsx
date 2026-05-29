@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import logoImg from "@/assets/Logo-Grigio (1).png";
 
 const links = [
@@ -11,27 +11,19 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const bannerRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const update = () => {
-      setScrolled(window.scrollY > 12);
-      if (bannerRef.current && navRef.current) {
-        const rect = bannerRef.current.getBoundingClientRect();
-        navRef.current.style.top = `${Math.max(0, rect.bottom)}px`;
-      }
-    };
+    const update = () => setScrolled(window.scrollY > 12);
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
-    <>
-      {/* Announcement banner — normal flow, scrolls with page. overflow-hidden clips glows at banner edges */}
-      <div ref={bannerRef} className="relative bg-[#C4D9DC] overflow-hidden">
-        {/* Three glows — 5x bigger, slow drift, clipped by overflow-hidden */}
+    // Sticky wrapper — banner + nav always stack together, no JS positioning needed
+    <div className="sticky top-0 z-50">
+      {/* Announcement banner */}
+      <div className="relative bg-[#C4D9DC] overflow-hidden">
         <div
           className="absolute w-[480px] h-[480px] rounded-full blur-3xl pointer-events-none"
           style={{ backgroundColor: "rgba(21,102,134,0.28)", top: "50%", left: "6%", transform: "translateY(-50%)", animation: "banner-drift-1 18s ease-in-out infinite" }}
@@ -58,18 +50,17 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Main nav — fixed, top adjusts dynamically as banner scrolls */}
+      {/* Main nav */}
       <header
-        ref={navRef}
-        className={`fixed left-0 right-0 z-40 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
+        className={`transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
           scrolled ? "border-b" : "bg-transparent"
         }`}
         style={scrolled ? {
-          backgroundColor: "rgba(255,255,255,0.60)",
-          backdropFilter:  "blur(18px) saturate(180%)",
+          backgroundColor:      "rgba(255,255,255,0.60)",
+          backdropFilter:       "blur(18px) saturate(180%)",
           WebkitBackdropFilter: "blur(18px) saturate(180%)",
-          borderColor:     "rgba(255,255,255,0.55)",
-          boxShadow:       "inset 0 1px 0 rgba(255,255,255,0.75), 0 4px 24px rgba(0,0,0,0.07)",
+          borderColor:          "rgba(255,255,255,0.55)",
+          boxShadow:            "inset 0 1px 0 rgba(255,255,255,0.75), 0 4px 24px rgba(0,0,0,0.07)",
         } : undefined}
       >
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
@@ -115,10 +106,10 @@ export function Nav() {
           <div
             className="md:hidden border-t"
             style={{
-              backgroundColor: "rgba(255,255,255,0.72)",
-              backdropFilter:  "blur(18px) saturate(180%)",
+              backgroundColor:      "rgba(255,255,255,0.72)",
+              backdropFilter:       "blur(18px) saturate(180%)",
               WebkitBackdropFilter: "blur(18px) saturate(180%)",
-              borderColor:     "rgba(255,255,255,0.55)",
+              borderColor:          "rgba(255,255,255,0.55)",
             }}
           >
             <nav className="container-narrow flex flex-col py-4">
@@ -136,6 +127,6 @@ export function Nav() {
           </div>
         )}
       </header>
-    </>
+    </div>
   );
 }
