@@ -1,7 +1,7 @@
 import logoImg from "@/assets/Logo-Grigio (1).png";
 
 const percorsi = [
-  { href: "#percorsi", label: "Percorso di Lancio" },
+  { href: "#percorsi", label: "Pronti, Partenza, Lancio" },
   { href: "#percorsi", label: "Business Blueprint" },
   { href: "#percorsi", label: "Mentoring Newsletter" },
   { href: "#percorsi", label: "Consulenza Strategica" },
@@ -12,17 +12,17 @@ const corsi = [
   { href: "#percorsi", label: "Calendario di Lancio" },
 ];
 
-const legal = [
-  { href: "#chi-sono",     label: "Chi sono" },
-  { href: "#percorsi",     label: "I miei percorsi" },
-  { href: "#newsletter",   label: "Guida gratuita ai lanci" },
+const sito = [
+  { href: "#chi-sono",      label: "Chi sono" },
+  { href: "#percorsi",      label: "I miei percorsi" },
+  { href: "#newsletter",    label: "Guida gratuita ai lanci" },
   { href: "#testimonianze", label: "Recensioni" },
-  { href: "#contatti",     label: "Contatti" },
+  { href: "#contatti",      label: "Contatti" },
 ];
 
 export function Footer() {
   return (
-    <footer id="contatti" className="bg-foreground text-background">
+    <footer id="contatti" style={{ backgroundColor: "#1B2F52" }} className="text-white">
       <div className="container-narrow py-16 md:py-20">
         <div className="grid md:grid-cols-12 gap-10 md:gap-8">
 
@@ -31,21 +31,21 @@ export function Footer() {
             <img
               src={logoImg}
               alt="Andrea Bonomo"
-              className="h-9 w-auto mb-5"
+              className="h-14 w-auto mb-6"
               style={{ filter: "brightness(0) invert(1)" }}
             />
-            <p className="text-sm text-background/70 leading-relaxed max-w-xs">
+            <p className="text-sm text-white/65 leading-relaxed max-w-xs">
               Lanciamo la tua prossima offerta,<br />senza ansia e senza stress.
             </p>
           </div>
 
           {/* Percorsi */}
           <div className="md:col-span-3 md:col-start-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/40 mb-5">Percorsi</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-5">Percorsi</p>
             <ul className="space-y-3">
               {percorsi.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-background/75 hover:text-background transition-colors">
+                  <a href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
                     {l.label}
                   </a>
                 </li>
@@ -53,23 +53,23 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Corsi e template */}
+          {/* Corsi e Template + Sito */}
           <div className="md:col-span-3 md:col-start-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/40 mb-5">Corsi e Template</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mb-5">Corsi e Template</p>
             <ul className="space-y-3">
               {corsi.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-background/75 hover:text-background transition-colors">
+                  <a href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
                     {l.label}
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/40 mt-8 mb-5">Sito</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40 mt-8 mb-5">Sito</p>
             <ul className="space-y-3">
-              {legal.map((l) => (
+              {sito.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-background/75 hover:text-background transition-colors">
+                  <a href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
                     {l.label}
                   </a>
                 </li>
@@ -81,15 +81,15 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-background/10">
-        <div className="container-narrow py-6 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-background/40">
-          <p>© 2026 Andrea Bonomo — P.IVA 04815800232</p>
+      <div className="border-t border-white/10">
+        <div className="container-narrow py-6 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-xs text-white/40">
+          <p>© 2026 Andrea Bonomo - P.IVA 04815800232</p>
           <div className="flex gap-5">
             <a
               href="https://www.iubenda.com/privacy-policy/31182601"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-background/70 transition-colors"
+              className="hover:text-white/70 transition-colors"
             >
               Privacy Policy
             </a>
@@ -97,7 +97,7 @@ export function Footer() {
               href="https://www.iubenda.com/privacy-policy/31182601/cookie-policy"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-background/70 transition-colors"
+              className="hover:text-white/70 transition-colors"
             >
               Cookie Policy
             </a>
