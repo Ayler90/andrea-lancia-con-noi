@@ -11,7 +11,7 @@ const logos = [
   { src: logoBwb,            alt: "24 Ore Business School", bright: false },
   { src: grace,              alt: "Grace",                bright: true  },
   { src: unscripted,         alt: "Unscripted",           bright: true  },
-  { src: marketers,          alt: "Marketers World",      bright: false },
+  { src: marketers,          alt: "Marketers World",      bright: true  },
 ];
 
 export function Loghi() {
