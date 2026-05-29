@@ -2,15 +2,20 @@ import { useCallback, useEffect, useRef } from "react";
 import costruiscoImg from "@/assets/Foto mentre costruisco.jpg";
 
 const chaosThoughts = [
-  { text: "Devo fare o no un webinar?",                          x: "2%",  y: "5%",  delay: "0s"   },
-  { text: "Quante email invio?",                                 x: "58%", y: "3%",  delay: "1s"   },
-  { text: "Che contenuti dovrei creare?",                        x: "60%", y: "34%", delay: "1.8s" },
-  { text: "Quanto le tengo aperte le vendite?",                  x: "52%", y: "70%", delay: "0.6s" },
-  { text: "Ma quest'offerta è giusta per il mio pubblico?",      x: "0%",  y: "55%", delay: "2.2s" },
-  { text: "Mi servono o no le ads?",                             x: "22%", y: "85%", delay: "1.4s" },
-  { text: "Come la strutturo la pagina di vendita?",             x: "55%", y: "82%", delay: "0.9s" },
-  { text: "Come faccio iscrivere le persone al pre lancio?",     x: "3%",  y: "78%", delay: "2.5s" },
-  { text: "Quanto deve durare il pre lancio?",                   x: "30%", y: "2%",  delay: "1.6s" },
+  // row 1
+  { text: "Devo fare o no un webinar?",                          x: "1%",  y: "2%",  delay: "0s"   },
+  { text: "Quante email invio?",                                 x: "63%", y: "2%",  delay: "1s"   },
+  // row 2
+  { text: "Quanto deve durare il pre lancio?",                   x: "28%", y: "20%", delay: "1.6s" },
+  { text: "Che contenuti dovrei creare?",                        x: "61%", y: "22%", delay: "1.8s" },
+  // row 3 (emoji row — kept clear in the center)
+  { text: "Ma quest'offerta è giusta per il mio pubblico?",      x: "1%",  y: "46%", delay: "2.2s" },
+  { text: "Mi servono o no le ads?",                             x: "62%", y: "48%", delay: "1.4s" },
+  // row 4
+  { text: "Come faccio iscrivere le persone al pre lancio?",     x: "1%",  y: "70%", delay: "2.5s" },
+  { text: "Quanto le tengo aperte le vendite?",                  x: "55%", y: "68%", delay: "0.6s" },
+  // row 5
+  { text: "Come la strutturo la pagina di vendita?",             x: "28%", y: "88%", delay: "0.9s" },
 ];
 
 export const clarityItems = [
@@ -84,7 +89,7 @@ function ChaosWidget() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full h-72 md:h-96 flex items-center justify-center select-none">
+    <div ref={containerRef} className="relative w-full h-[420px] md:h-[520px] flex items-center justify-center select-none">
       {chaosThoughts.map((t, i) => (
         <div
           key={t.text}
