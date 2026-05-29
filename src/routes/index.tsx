@@ -15,13 +15,13 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Andrea Bonomo — Funnel e Launch Strategist" },
+      { title: "Andrea Bonomo - Funnel e Launch Strategist" },
       {
         name: "description",
         content:
           "Aiuto freelance e solopreneur a lanciare video corsi, percorsi e servizi online con strategia, email marketing e contenuti che funzionano.",
       },
-      { property: "og:title", content: "Andrea Bonomo — Funnel e Launch Strategist" },
+      { property: "og:title", content: "Andrea Bonomo - Funnel e Launch Strategist" },
       {
         property: "og:description",
         content:
