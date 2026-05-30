@@ -31,3 +31,6 @@ dist-ssr
 *.sln
 *.sw?
 logo-preview.html
+generate-logos.mjs
+logo-light.png
+logo-dark.png
