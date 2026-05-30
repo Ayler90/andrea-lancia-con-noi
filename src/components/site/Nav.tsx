@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import logoLight from "@/assets/logo-andrea-bonomo-light.svg";
-import logoDark  from "@/assets/logo-andrea-bonomo-dark.svg";
+import logoLight from "@/assets/logolight.svg";
+import logoDark  from "@/assets/logodark.svg";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 
 const links = [
