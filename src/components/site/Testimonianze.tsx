@@ -195,13 +195,6 @@ export function Testimonianze() {
             ))}
           </div>
 
-          {/* Gradient fade at bottom when collapsed */}
-          {!expanded && (
-            <div
-              className="absolute inset-x-0 bottom-0 h-96 pointer-events-none"
-              style={{ background: "linear-gradient(to top, white 55%, transparent)" }}
-            />
-          )}
         </div>
 
         {/* Expand / collapse button */}
