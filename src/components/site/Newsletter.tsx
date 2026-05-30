@@ -53,6 +53,7 @@ const ML_FORM_HTML = `
 export function Newsletter() {
   const [showTooltip, setShowTooltip] = useState(false);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [fanned, setFanned] = useState(false);
 
   // Dismiss tooltip on any click outside the form
   useEffect(() => {
@@ -144,7 +145,11 @@ export function Newsletter() {
           <div className="grid md:grid-cols-12 gap-0 items-center relative">
             {/* Stacked guide images */}
             <div className="md:col-span-5 p-8 sm:p-10 md:p-12 lg:p-14 flex items-center justify-center">
-              <div className="guide-stack w-full md:max-w-[350px]" style={{ height: "425px" }}>
+              <div
+                className={`guide-stack w-full md:max-w-[350px]${fanned ? " is-fanned" : ""}`}
+                style={{ height: "425px" }}
+                onClick={() => setFanned(v => !v)}
+              >
                 <div className="guide-wrapper guide-wrapper-1">
                   <img src={guidaImg3} alt="Guida Gratuita ai Lanci pagina 3" loading="lazy" className="guide-img" />
                 </div>

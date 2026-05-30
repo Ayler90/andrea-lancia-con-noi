@@ -400,25 +400,32 @@
   border-radius: 8px;
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
 }
-.guide-stack:hover .guide-wrapper-1 .guide-img { animation: guide-gentle-float 3.4s ease-in-out 0s infinite; }
-.guide-stack:hover .guide-wrapper-2 .guide-img { animation: guide-gentle-float 3s   ease-in-out 0.5s infinite; }
-.guide-stack:hover .guide-wrapper-3 .guide-img { animation: guide-gentle-float 3.8s ease-in-out 0.9s infinite; }
+/* Float always — both resting and fanned states, desktop and mobile */
+.guide-wrapper-1 .guide-img { animation: guide-gentle-float 3.4s ease-in-out 0s     infinite; }
+.guide-wrapper-2 .guide-img { animation: guide-gentle-float 3s   ease-in-out 0.5s   infinite; }
+.guide-wrapper-3 .guide-img { animation: guide-gentle-float 3.8s ease-in-out 0.9s   infinite; }
 
 @keyframes guide-gentle-float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-10px); }
 }
 
-/* Mobile: guide stack — portrait images, horizontal fan on tap */
+/* Mobile: portrait images, click-toggled fan via .is-fanned class */
 @media (max-width: 767px) {
   .guide-stack {
     height: 210px !important;
     max-width: 150px !important;
     margin: 0 auto;
+    cursor: pointer;
   }
-  .guide-stack:hover .guide-wrapper-1 { transform: rotate(-20deg) translateX(-55px); }
-  .guide-stack:hover .guide-wrapper-2 { transform: rotate(0deg)   translateX(0);     }
-  .guide-stack:hover .guide-wrapper-3 { transform: rotate(20deg)  translateX(55px);  }
+  /* Neutralise any iOS :hover trigger so only .is-fanned drives the fan */
+  .guide-stack:hover .guide-wrapper-1 { transform: rotate(-3deg) translateY(18px);  }
+  .guide-stack:hover .guide-wrapper-2 { transform: rotate(0deg)  translateY(0px);   }
+  .guide-stack:hover .guide-wrapper-3 { transform: rotate(3deg)  translateY(-18px); }
+  /* Fan open state */
+  .guide-stack.is-fanned .guide-wrapper-1 { transform: rotate(-20deg) translateX(-55px); }
+  .guide-stack.is-fanned .guide-wrapper-2 { transform: rotate(0deg)   translateX(0);     }
+  .guide-stack.is-fanned .guide-wrapper-3 { transform: rotate(20deg)  translateX(55px);  }
 }
 
 /* Red border on empty required fields */

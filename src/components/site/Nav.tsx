@@ -59,7 +59,7 @@ export function Nav() {
           backdropFilter:       "blur(18px) saturate(180%)",
           WebkitBackdropFilter: "blur(18px) saturate(180%)",
           borderColor:          "rgba(255,255,255,0.55)",
-          boxShadow:            "inset 0 1px 0 rgba(255,255,255,0.75), 0 4px 24px rgba(0,0,0,0.07)",
+          boxShadow:            "inset 0 1px 0 rgba(255,255,255,0.20), 0 4px 24px rgba(0,0,0,0.07)",
         } : undefined}
       >
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
