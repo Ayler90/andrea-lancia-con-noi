@@ -7,6 +7,7 @@ import p5 from "@/assets/Easy-mail pack.jpg";
 import p6 from "@/assets/Consulenza strategica.jpg";
 
 type Percorso = {
+  slug: string;
   n: string;
   tag: string;
   title: string;
@@ -14,6 +15,7 @@ type Percorso = {
   desc: string;
   bullets: string[];
   cta: string;
+  ctaHref: string;
   image: string;
   bg: string;
 };
@@ -21,6 +23,7 @@ type Percorso = {
 const PERCORSI: Record<string, Percorso[]> = {
   lancio: [
     {
+      slug: "pronti-partenza-lancio",
       n: "01",
       tag: "Percorso 1:1 · 3-4 mesi",
       title: "Pronti, partenza,",
@@ -28,10 +31,12 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "Ti seguo in ogni fase di lancio e mi occupo io di tutta la parte strategica e tecnica: strategia di lancio, ottimizzazione offerta, ads, email, pagine di iscrizione e di vendita, checkout, automazioni.",
       bullets: ["Strategia di lancio personalizzata", "Email di pre lancio e lancio", "Landing & sales page", "Gestione completa Ads"],
       cta: "Candidati al percorso",
+      ctaHref: "https://tally.so/r/3xpOGv",
       image: p1,
       bg: "bg-[#C4D9DC]",
     },
     {
+      slug: "calendario-lancio",
       n: "02",
       tag: "Template Notion Scaricabile",
       title: "Calendario di",
@@ -39,12 +44,14 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "Il template completo per organizzare il tuo lancio in autonomia: calendario settimana per settimana e script delle email pronti da usare.",
       bullets: ["Calendario di lancio strutturato", "Script email pronti all'uso", "Timeline fase per fase", "Accesso immediato"],
       cta: "Acquista il calendario ora",
+      ctaHref: "https://andreabonomo.it/scarica-calendario-lancio/",
       image: p2,
       bg: "bg-[#C4D9DC]",
     },
   ],
   business: [
     {
+      slug: "business-blueprint",
       n: "03",
       tag: "Mentorship · 12 mesi",
       title: "Business",
@@ -52,12 +59,14 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "Un percorso annuale insieme a me e Davide, specializzato in offerte e business. Lavoriamo su comunicazione, offerte, funnel, newsletter e lanci.",
       bullets: ["2 call mensili 1:1 da 90 minuti", "Supporto WhatsApp continuativo", "Check di 30 minuti prenotabili entro 24 ore", "Template e strategia personalizzata"],
       cta: "Candidati a Business Blueprint",
+      ctaHref: "https://www.notion.so/andreabonomo/Business-Blueprint-Costruiamo-il-tuo-Sistema-Imprenditoriale-32078a4a6bcc800d81fff8783e432d6f?source=copy_link",
       image: p3,
       bg: "bg-[#C4D9DC]",
     },
   ],
   newsletter: [
     {
+      slug: "mentoring-newsletter",
       n: "04",
       tag: "Percorso 1:1 · 30-45 giorni",
       title: "Mentoring",
@@ -65,10 +74,12 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "Creiamo e lanciamo la tua newsletter da zero in 30-45 giorni, con il mio supporto strategico e 3 sessioni 1:1 da 90 minuti.",
       bullets: ["Tone of voice, struttura e argomenti", "Setup tecnico completo", "Calendario editoriale mensile", "3 sessioni 1:1 da 90 minuti e supporto WhatsApp"],
       cta: "Candidati al mentoring",
+      ctaHref: "https://www.notion.so/andreabonomo/Lanciamo-insieme-la-tua-newsletter-31278a4a6bcc80119cb6f9bb8f7d1bd7?source=copy_link",
       image: p4,
       bg: "bg-[#C4D9DC]",
     },
     {
+      slug: "easy-mail-pack",
       n: "05",
       tag: "Video corso registrato",
       title: "Easy-Mail",
@@ -76,12 +87,14 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "Il video corso completo su email marketing e lanci. 90 lezioni per imparare a usare l'email nei tuoi lanci.",
       bullets: ["90 video lezioni", "Template email pronti", "Casi studio reali", "Accesso a vita"],
       cta: "Acquista ora il video corso",
+      ctaHref: "https://andreabonomo.systeme.io/iscriviti-easy-mail-pack",
       image: p5,
       bg: "bg-[#C4D9DC]",
     },
   ],
   consulenza: [
     {
+      slug: "consulenza-strategica",
       n: "06",
       tag: "1:1 · 90 minuti",
       title: "Consulenza",
@@ -89,6 +102,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "90 minuti 1:1 su un problema specifico del tuo lancio o funnel. Con registrazione e report finale.",
       bullets: ["Audit del tuo funnel", "Piano d'azione concreto", "Registrazione della call", "Report scritto"],
       cta: "Prenota la consulenza",
+      ctaHref: "https://cal.com/andreabonomo-mktg/consulenza-strategica",
       image: p6,
       bg: "bg-[#C4D9DC]",
     },
@@ -198,6 +212,7 @@ export function Percorsi() {
 function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boolean }) {
   return (
     <article
+      id={`percorso-${percorso.slug}`}
       className={`${percorso.bg} rounded-3xl md:rounded-[2rem] overflow-hidden group animate-in fade-in slide-in-from-bottom-4 duration-500 transition-transform hover:-translate-y-1.5`}
     >
       <div
@@ -244,7 +259,9 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
 
           <div className="mt-auto pt-10 relative z-10">
             <a
-              href="#contatti"
+              href={percorso.ctaHref}
+              target="_blank"
+              rel="noreferrer"
               className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
             >
               {percorso.cta} →

@@ -1,19 +1,26 @@
 import logoImg from "@/assets/Logo-Grigio (1).png";
 
 const percorsi = [
-  { filter: "lancio",     label: "Pronti, Partenza, Lancio" },
-  { filter: "business",   label: "Business Blueprint" },
-  { filter: "newsletter", label: "Mentoring Newsletter" },
-  { filter: "consulenza", label: "Consulenza Strategica" },
+  { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
+  { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
+  { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
+  { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
 ];
 
 const corsi = [
-  { filter: "newsletter", label: "Easy-Mail Pack" },
-  { filter: "lancio",     label: "Calendario di Lancio" },
+  { filter: "newsletter", slug: "easy-mail-pack",   label: "Easy-Mail Pack" },
+  { filter: "lancio",     slug: "calendario-lancio", label: "Calendario di Lancio" },
 ];
 
-function goToPercorso(filter: string) {
+function goToPercorso(e: React.MouseEvent, filter: string, slug: string) {
+  e.preventDefault();
   window.dispatchEvent(new CustomEvent("percorso-select", { detail: filter }));
+  // Wait one frame for React to re-render the correct percorso boxes, then scroll
+  setTimeout(() => {
+    const el = document.getElementById(`percorso-${slug}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    else document.getElementById("percorsi")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 60);
 }
 
 const sito = [
@@ -33,7 +40,7 @@ export function Footer() {
       <div className="container-narrow py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
 
-          {/* Logo + motto */}
+          {/* Logo + motto + Instagram */}
           <div>
             <img
               src={logoImg}
@@ -41,9 +48,22 @@ export function Footer() {
               className="h-14 w-auto mb-6"
               style={{ filter: "brightness(0) invert(1)" }}
             />
-            <p className="text-sm text-white/65 leading-relaxed max-w-xs">
+            <p className="text-sm text-white/65 leading-relaxed max-w-xs mb-5">
               Lanciamo la tua prossima offerta,<br />senza ansia e senza stress.
             </p>
+            <a
+              href="https://www.instagram.com/andreabonomo_mktg/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+              @andreabonomo_mktg
+            </a>
           </div>
 
           {/* Percorsi e Consulenze */}
@@ -53,8 +73,8 @@ export function Footer() {
               {percorsi.map((l) => (
                 <li key={l.label}>
                   <a
-                    href="#percorsi"
-                    onClick={() => goToPercorso(l.filter)}
+                    href={`#percorso-${l.slug}`}
+                    onClick={(e) => goToPercorso(e, l.filter, l.slug)}
                     className="text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {l.label}
@@ -71,8 +91,8 @@ export function Footer() {
               {corsi.map((l) => (
                 <li key={l.label}>
                   <a
-                    href="#percorsi"
-                    onClick={() => goToPercorso(l.filter)}
+                    href={`#percorso-${l.slug}`}
+                    onClick={(e) => goToPercorso(e, l.filter, l.slug)}
                     className="text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {l.label}

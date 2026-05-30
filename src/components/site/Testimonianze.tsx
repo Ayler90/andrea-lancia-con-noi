@@ -198,8 +198,8 @@ export function Testimonianze() {
           {/* Gradient fade at bottom when collapsed */}
           {!expanded && (
             <div
-              className="absolute inset-x-0 bottom-0 h-72 pointer-events-none"
-              style={{ background: "linear-gradient(to top, white 45%, transparent)" }}
+              className="absolute inset-x-0 bottom-0 h-96 pointer-events-none"
+              style={{ background: "linear-gradient(to top, white 55%, transparent)" }}
             />
           )}
         </div>
@@ -208,7 +208,7 @@ export function Testimonianze() {
         <div className="flex justify-center mt-10">
           <button
             onClick={() => setExpanded(v => !v)}
-            className="cta-ghost text-foreground"
+            className="pill border border-[#156686] text-[#156686] hover:bg-[#156686] hover:text-white transition-colors duration-200 font-medium"
           >
             {expanded ? "Mostra meno ↑" : "Leggi tutte le recensioni →"}
           </button>
