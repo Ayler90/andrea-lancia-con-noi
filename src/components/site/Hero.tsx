@@ -12,23 +12,23 @@ export function Hero() {
       {/* Glow orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute w-[325px] h-[325px] rounded-full bg-[#156686]/30 blur-3xl"
+          className="absolute w-[650px] h-[650px] rounded-full bg-[#156686]/30 blur-3xl"
           style={{ top: "5%", left: "3%", animation: "orb-drift-1 22s ease-in-out infinite" }}
         />
         <div
-          className="absolute w-[300px] h-[300px] rounded-full bg-[#A1C2CF]/35 blur-3xl"
+          className="absolute w-[600px] h-[600px] rounded-full bg-[#A1C2CF]/35 blur-3xl"
           style={{ bottom: "8%", right: "4%", animation: "orb-drift-2 26s ease-in-out infinite", animationDelay: "4s" }}
         />
         <div
-          className="absolute w-[275px] h-[275px] rounded-full bg-[#C4D9DC]/40 blur-3xl"
+          className="absolute w-[550px] h-[550px] rounded-full bg-[#C4D9DC]/40 blur-3xl"
           style={{ top: "3%", right: "5%", animation: "orb-drift-3 24s ease-in-out infinite", animationDelay: "8s" }}
         />
         <div
-          className="absolute w-[250px] h-[250px] rounded-full bg-[#156686]/25 blur-3xl"
+          className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/25 blur-3xl"
           style={{ bottom: "5%", left: "8%", animation: "orb-drift-4 20s ease-in-out infinite", animationDelay: "6s" }}
         />
         <div
-          className="absolute w-[225px] h-[225px] rounded-full bg-[#6C9FA8]/30 blur-3xl"
+          className="absolute w-[450px] h-[450px] rounded-full bg-[#6C9FA8]/30 blur-3xl"
           style={{ top: "45%", left: "45%", animation: "orb-drift-1 18s ease-in-out infinite", animationDelay: "12s" }}
         />
       </div>
