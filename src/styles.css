@@ -396,7 +396,7 @@
 .guide-stack:hover .guide-wrapper-3 { transform: rotate(5deg)  translateY(160px); }
 
 .guide-img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
   border-radius: 8px;
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
 }
@@ -408,6 +408,16 @@
 @keyframes guide-gentle-float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-10px); }
+}
+
+/* Desktop: enforce portrait container so images stay vertical */
+@media (min-width: 768px) {
+  .guide-stack {
+    width: 260px !important;
+    max-width: 260px !important;
+    height: 390px !important;
+    margin: 0 auto;
+  }
 }
 
 /* Mobile: portrait images, click-toggled fan via .is-fanned class */

@@ -144,7 +144,7 @@ export function Newsletter() {
 
           <div className="grid md:grid-cols-12 gap-0 items-center relative">
             {/* Stacked guide images */}
-            <div className="md:col-span-5 p-8 sm:p-10 md:p-12 lg:p-14 flex items-center justify-center">
+            <div className="md:col-span-5 pt-16 px-8 pb-8 sm:p-10 md:p-12 lg:p-14 flex items-center justify-center">
               <div
                 className={`guide-stack w-full md:max-w-[350px]${fanned ? " is-fanned" : ""}`}
                 style={{ height: "425px" }}
