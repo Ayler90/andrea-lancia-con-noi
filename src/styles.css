@@ -407,16 +407,16 @@
   50%       { transform: translateY(-10px); }
 }
 
-/* Mobile: guide stack — horizontal fan on tap */
+/* Mobile: guide stack — portrait images, horizontal fan on tap */
 @media (max-width: 767px) {
   .guide-stack {
-    height: 220px !important;
-    max-width: 300px !important;
+    height: 210px !important;
+    max-width: 150px !important;
     margin: 0 auto;
   }
-  .guide-stack:hover .guide-wrapper-1 { transform: rotate(-20deg) translateX(-80px); }
+  .guide-stack:hover .guide-wrapper-1 { transform: rotate(-20deg) translateX(-55px); }
   .guide-stack:hover .guide-wrapper-2 { transform: rotate(0deg)   translateX(0);     }
-  .guide-stack:hover .guide-wrapper-3 { transform: rotate(20deg)  translateX(80px);  }
+  .guide-stack:hover .guide-wrapper-3 { transform: rotate(20deg)  translateX(55px);  }
 }
 
 /* Red border on empty required fields */
