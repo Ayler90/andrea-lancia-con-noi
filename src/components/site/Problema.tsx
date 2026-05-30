@@ -25,7 +25,7 @@ export const clarityItems = [
     tags: ["COMPETITOR", "PUBBLICO", "OFFERTA", "MERCATO"],
   },
   {
-    badge: "Strategia di lancio e calendario",
+    badge: "Strategia di lancio",
     desc: "Ho la strategia di lancio personalizzata per la tua offerta e il calendario con tutte le deadline.",
     tags: ["STRATEGIA DI LANCIO", "CALENDARIO", "TEMPISTICHE"],
   },
@@ -239,6 +239,9 @@ export function ClaritySection() {
   const rippleTimer   = useRef<ReturnType<typeof setInterval> | null>(null);
   const rippleCounter = useRef(0);
   const [ripples, setRipples] = useState<number[]>([]);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const svgLineRefs = useRef<SVGLineElement[]>([]);
+  const svgDotRefs  = useRef<SVGCircleElement[]>([]);
 
   const startRipples = () => {
     if (rippleTimer.current) return;
@@ -304,6 +307,8 @@ export function ClaritySection() {
     // Abort if any card isn't ready
     if (cards.length !== cardRefs.current.length) return;
 
+    svgLineRefs.current = [];
+    svgDotRefs.current  = [];
     let idx = 0;
     const addSegment = (x1: number, y1: number, x2: number, y2: number, dur: number, delay: number) => {
       const pid = `cs-${idx++}`;
@@ -314,6 +319,7 @@ export function ClaritySection() {
       line.setAttribute("stroke", "rgba(21,102,134,0.18)");
       line.setAttribute("stroke-width", "1.2");
       svg.appendChild(line);
+      svgLineRefs.current.push(line);
 
       const pathEl = document.createElementNS(NS, "path");
       pathEl.setAttribute("id", pid);
@@ -349,6 +355,7 @@ export function ClaritySection() {
       motion.appendChild(mpath);
       dot.appendChild(motion);
       svg.appendChild(dot);
+      svgDotRefs.current.push(dot);
     };
 
     // Image → each card (4 lines) — start at image edge, end at card border
@@ -380,6 +387,29 @@ export function ClaritySection() {
     if (containerRef.current) ro.observe(containerRef.current);
     return () => { clearTimeout(t); ro.disconnect(); };
   }, [draw]);
+
+  // Update SVG line/dot opacity based on hovered card
+  useEffect(() => {
+    const lines = svgLineRefs.current;
+    const dots  = svgDotRefs.current;
+    if (!lines.length) return;
+    // Segments 0-3: image → card[i]
+    // Segments 4-6: card[i] → card[i+1]
+    lines.forEach((line, seg) => {
+      let active: boolean;
+      if (hoveredCard === null) {
+        active = true;
+      } else if (seg < 4) {
+        active = seg === hoveredCard;
+      } else {
+        const cardIdx = seg - 4; // 0→cards 0&1, 1→cards 1&2, 2→cards 2&3
+        active = hoveredCard === cardIdx || hoveredCard === cardIdx + 1;
+      }
+      line.setAttribute("stroke",  active ? "rgba(21,102,134,0.45)" : "rgba(21,102,134,0.06)");
+      line.setAttribute("stroke-width", active ? "1.6" : "0.8");
+      if (dots[seg]) dots[seg].setAttribute("opacity", active ? "0.9" : "0.15");
+    });
+  }, [hoveredCard]);
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -417,7 +447,7 @@ export function ClaritySection() {
                   style={{
                     background: "rgba(21,102,134,0.12)",
                     filter: "blur(14px)",
-                    animation: "ripple-out 3s ease-out forwards",
+                    animation: "ripple-out 4s ease-out forwards",
                     zIndex: 0,
                   }}
                   onAnimationEnd={() => setRipples(prev => prev.filter(r => r !== id))}
@@ -447,10 +477,14 @@ export function ClaritySection() {
                 key={item.badge}
                 ref={el => { cardRefs.current[i] = el; }}
                 className="rounded-2xl px-4 py-4 w-full flex flex-col gap-2"
+                onMouseEnter={() => setHoveredCard(i)}
+                onMouseLeave={() => setHoveredCard(null)}
                 style={{
                   maxWidth: 240,
                   border: "1px solid rgba(21,102,134,0.14)",
                   background: "rgba(21,102,134,0.04)",
+                  opacity: hoveredCard !== null && hoveredCard !== i ? 0.35 : 1,
+                  transition: "opacity 0.2s ease",
                 }}
               >
                 {/* Number */}
@@ -459,17 +493,22 @@ export function ClaritySection() {
                   {`0${i + 1}`}
                 </span>
                 {/* Badge */}
-                <span className="self-start text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full"
-                  style={{ background: "rgba(21,102,134,0.12)", color: "rgba(21,102,134,0.9)" }}>
+                <span className="self-start text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1"
+                  style={{
+                    background: "rgba(21,102,134,0.10)",
+                    color: "rgba(21,102,134,0.9)",
+                    border: "1px solid rgba(21,102,134,0.30)",
+                  }}>
+                  <span style={{ color: "#22c55e", fontSize: "8px", lineHeight: 1 }}>●</span>
                   {item.badge}
                 </span>
                 {/* Description */}
-                <p className="text-[11px] leading-snug text-foreground/65">{item.desc}</p>
+                <p className="text-xs leading-snug text-foreground/70">{item.desc}</p>
                 {/* Micro tags */}
                 <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1">
-                  {item.tags.map((tag, ti) => (
-                    <span key={tag} className="text-[9px] font-bold tracking-widest"
-                      style={{ color: ti === 0 ? "rgba(21,102,134,0.55)" : "rgba(21,102,134,0.35)" }}>
+                  {item.tags.map(tag => (
+                    <span key={tag} className="text-[10px] font-bold tracking-widest"
+                      style={{ color: "rgba(21,102,134,0.65)" }}>
                       {tag}
                     </span>
                   ))}
