@@ -1,4 +1,4 @@
-import lightLogoImg from "@/assets/lighlogo.svg";
+import { LogoText } from "./LogoText";
 
 const percorsi = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
@@ -42,11 +42,7 @@ export function Footer() {
 
           {/* Logo + motto + Instagram */}
           <div>
-            <img
-              src={lightLogoImg}
-              alt="Andrea Bonomo"
-              className="h-8 w-auto mb-6"
-            />
+            <div className="mb-6"><LogoText dark /></div>
             <p className="text-sm text-white/65 leading-relaxed max-w-xs mb-5">
               Lanciamo la tua prossima offerta,<br />senza ansia e senza stress.
             </p>

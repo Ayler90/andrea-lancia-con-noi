@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
-import darkLogoImg from "@/assets/Darklogo.svg";
-import lightLogoImg from "@/assets/lighlogo.svg";
+import { LogoText } from "./LogoText";
 
 const links = [
   { href: "#chi-sono",      label: "Chi sono" },
@@ -72,7 +71,7 @@ export function Nav() {
               aria-hidden="true"
               className="w-8 h-8 rounded-full object-cover flex-shrink-0"
             />
-            <img src={darkLogoImg} alt="Andrea Bonomo" className="h-9 w-auto flex-shrink-0" />
+            <LogoText />
           </a>
 
           {/* Center: nav links (desktop only) */}
@@ -126,7 +125,7 @@ export function Nav() {
                 aria-hidden="true"
                 className="w-8 h-8 rounded-full object-cover flex-shrink-0"
               />
-              <img src={lightLogoImg} alt="Andrea Bonomo" className="h-9 w-auto flex-shrink-0" />
+              <LogoText dark />
             </a>
             <div />
             <div className="flex justify-end">
