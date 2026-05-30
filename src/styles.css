@@ -176,7 +176,8 @@
   }
 
   .cta-ghost:hover {
-    background: oklch(0.18 0.02 230 / 0.13);
+    background: #156686;
+    color: white;
     transform: translateY(-1px);
   }
 }
