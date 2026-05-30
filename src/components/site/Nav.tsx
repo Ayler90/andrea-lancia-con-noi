@@ -11,6 +11,12 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
+  const [closing, setClosing]   = useState(false);
+
+  const closeMenu = () => {
+    setClosing(true);
+    setTimeout(() => { setOpen(false); setClosing(false); }, 280);
+  };
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 12);
@@ -107,7 +113,7 @@ export function Nav() {
       {open && (
         <div
           className="fixed inset-0 z-[200] flex flex-col md:hidden"
-          style={{ backgroundColor: "#156686", animation: "mobile-menu-in 0.3s ease both" }}
+          style={{ backgroundColor: "#156686", animation: `${closing ? "mobile-menu-out" : "mobile-menu-in"} 0.28s ease both` }}
         >
           {/* Top row: logo + close — same layout as the nav bar */}
           <div className="container-narrow grid grid-cols-3 items-center h-16 flex-shrink-0">
@@ -120,7 +126,7 @@ export function Nav() {
             <div />
             <div className="flex justify-end">
               <button
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
                 aria-label="Chiudi menu"
                 className="text-white/80 hover:text-white transition-colors p-2 -mr-1"
               >
@@ -132,14 +138,14 @@ export function Nav() {
             </div>
           </div>
 
-          {/* Nav links — large */}
-          <nav className="flex flex-col px-7 pt-10 gap-8 overflow-y-auto">
+          {/* Nav links */}
+          <nav className="flex flex-col px-7 pt-10 gap-6 overflow-y-auto">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                onClick={() => setOpen(false)}
-                className="h-display text-[2.6rem] font-bold text-white leading-none hover:text-white/75 transition-colors"
+                onClick={closeMenu}
+                className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors"
               >
                 {l.label}
               </a>
@@ -150,7 +156,7 @@ export function Nav() {
           <div className="mt-auto px-7 pb-14 pt-8">
             <a
               href="#prenota"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
               className="pill bg-white text-[#156686] font-semibold text-base block text-center"
             >
               Prenota la call conoscitiva →
