@@ -28,7 +28,7 @@ export function Footer() {
     <footer id="contatti" data-cursor-light style={{ backgroundColor: "#1B2F52" }} className="text-white relative overflow-hidden">
       {/* Moving glow orb */}
       <div className="absolute pointer-events-none"
-        style={{ width: 680, height: 680, borderRadius: "50%", background: "radial-gradient(circle, rgba(108,159,168,0.50) 0%, transparent 70%)", filter: "blur(60px)", animation: "footer-glow 8s ease-in-out infinite", top: "10%", left: "20%" }}
+        style={{ width: 680, height: 680, borderRadius: "50%", background: "radial-gradient(circle, rgba(108,159,168,0.50) 0%, transparent 70%)", filter: "blur(60px)", animation: "footer-glow 12s linear infinite", top: "10%", left: "20%" }}
       />
       <div className="container-narrow py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
