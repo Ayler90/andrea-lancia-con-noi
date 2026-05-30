@@ -32,7 +32,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["Strategia di lancio personalizzata", "Email di pre lancio e lancio", "Landing & sales page", "Gestione completa Ads"],
       cta: "Candidati al percorso",
       ctaHref: "https://tally.so/r/3xpOGv",
-      image: p1,
+      image: p2,
       bg: "bg-[#C4D9DC]",
     },
     {
@@ -45,7 +45,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["Calendario di lancio strutturato", "Script email pronti all'uso", "Timeline fase per fase", "Accesso immediato"],
       cta: "Acquista il calendario ora",
       ctaHref: "https://andreabonomo.it/scarica-calendario-lancio/",
-      image: p2,
+      image: p1,
       bg: "bg-[#C4D9DC]",
     },
   ],
