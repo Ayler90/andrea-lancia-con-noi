@@ -25,11 +25,10 @@ export function Loghi() {
       </div>
 
       {/* Marquee track */}
-      <div className="relative">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
-
+      <div
+        className="relative overflow-hidden"
+        style={{ maskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)" }}
+      >
         <div
           className="flex gap-16 md:gap-24 items-center"
           style={{ width: "max-content", animation: "logo-marquee 18s linear infinite" }}
