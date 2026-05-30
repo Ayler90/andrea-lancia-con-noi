@@ -21,7 +21,7 @@ const chaosThoughts = [
 export const clarityItems = [
   {
     badge: "Analisi iniziale",
-    desc: "L'analisi iniziale è il fondamento di ogni lancio, per creare una strategia che sia veramente efficace",
+    desc: "L'analisi iniziale è il fondamento di ogni lancio, per creare una strategia che sia veramente efficace.",
     tags: ["COMPETITOR", "PUBBLICO", "OFFERTA", "MERCATO"],
   },
   {
@@ -31,12 +31,12 @@ export const clarityItems = [
   },
   {
     badge: "Contenuti",
-    desc: "Creo per te le email di lancio, le pagine di iscrizione e vendita, le meta ads e le automazioni per vendere durante il lancio",
+    desc: "Creo per te le email di lancio, le pagine di iscrizione e vendita, le meta ads e le automazioni per vendere durante il lancio.",
     tags: ["CONTENUTI", "EMAIL", "SOCIAL", "PAGINE"],
   },
   {
     badge: "Si lancia",
-    desc: "È arrivato finalmente il momento di aprire il pre lancio e arrivare fino al lancio (e dopo). Ti seguo dall'inizio alla fine, con un'analisi dei dati continua",
+    desc: "È arrivato finalmente il momento di aprire il pre lancio e arrivare fino al lancio (e dopo). Ti seguo dall'inizio alla fine, con un'analisi dei dati continua.",
     tags: ["PRE LANCIO", "LANCIO", "DATI", "VENDITA"],
   },
 ];

@@ -198,8 +198,8 @@ export function Testimonianze() {
           {/* Gradient fade at bottom when collapsed */}
           {!expanded && (
             <div
-              className="absolute inset-x-0 bottom-0 h-48 pointer-events-none"
-              style={{ background: "linear-gradient(to top, white 30%, transparent)" }}
+              className="absolute inset-x-0 bottom-0 h-72 pointer-events-none"
+              style={{ background: "linear-gradient(to top, white 45%, transparent)" }}
             />
           )}
         </div>
