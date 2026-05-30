@@ -165,7 +165,7 @@ export function Testimonianze() {
   const visible = expanded ? items : items.slice(0, PREVIEW_COUNT);
 
   return (
-    <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden">
+    <section id="testimonianze" className="pt-4 md:pt-8 pb-20 md:pb-32 relative overflow-hidden">
       <StarField />
       {/* White fade top */}
       <div className="absolute inset-x-0 top-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
@@ -182,7 +182,7 @@ export function Testimonianze() {
 
         {/* Grid with bottom fade when collapsed */}
         <div className="relative">
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [column-fill:_balance] px-4">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [column-fill:_balance] px-1">
             {visible.map((src, i) => (
               <div key={i} className="border-wipe break-inside-avoid mb-5 rounded-2xl">
                 <img

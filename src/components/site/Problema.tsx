@@ -360,26 +360,26 @@ export function ClaritySection() {
       svgDotRefs.current.push(dot);
     };
 
-    // Image → each card (4 lines) — start at image edge, end at card border
-    cards.forEach((cc, i) => {
+    // Image → card[0] only (segment 0)
+    {
+      const cc    = cards[0];
       const angle = Math.atan2(cc.y - imgCy, cc.x - imgCx);
       const end   = edgePt(cc.x, cc.y, cc.hw, cc.hh, imgCx, imgCy);
       addSegment(
         imgCx + Math.cos(angle) * (imgR + 6),
         imgCy + Math.sin(angle) * (imgR + 6),
         end.x, end.y,
-        6 + i * 0.4,
-        i * 0.5
+        6, 0
       );
-    });
+    }
 
-    // Card → next card (3 sequential lines) — edge to edge
+    // Sequential: card[i] → card[i+1] (segments 1–3)
     for (let i = 0; i < cards.length - 1; i++) {
       const a    = cards[i];
       const b    = cards[i + 1];
       const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
       const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
-      addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, i * 0.6 + 2);
+      addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, i * 0.6 + 0.8);
     }
   }, []);
 
@@ -390,9 +390,12 @@ export function ClaritySection() {
     return () => { clearTimeout(t); ro.disconnect(); };
   }, [draw]);
 
-  // Scroll-based card activation: highlight the card whose center is closest to viewport center
+  // Scroll-based card activation (mobile only — on desktop all cards are in a row at the same height)
   useEffect(() => {
     const update = () => {
+      // On desktop (md breakpoint = 768px), disable scroll highlight
+      if (window.innerWidth >= 768) { setActiveCard(null); return; }
+
       const container = containerRef.current;
       if (container) {
         const r = container.getBoundingClientRect();
@@ -413,8 +416,12 @@ export function ClaritySection() {
       setActiveCard(closest >= 0 ? closest : null);
     };
     window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
     update();
-    return () => window.removeEventListener("scroll", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   // Update SVG line/dot opacity based on active card
@@ -422,17 +429,18 @@ export function ClaritySection() {
     const lines = svgLineRefs.current;
     const dots  = svgDotRefs.current;
     if (!lines.length) return;
-    // Segments 0-3: image → card[i]
-    // Segments 4-6: card[i] → card[i+1]
+    // Segment 0: image → card[0]
+    // Segment 1: card[0] → card[1]
+    // Segment 2: card[1] → card[2]
+    // Segment 3: card[2] → card[3]
     lines.forEach((line, seg) => {
       let active: boolean;
       if (activeCard === null) {
         active = true;
-      } else if (seg < 4) {
-        active = seg === activeCard;
+      } else if (seg === 0) {
+        active = activeCard === 0;
       } else {
-        const cardIdx = seg - 4;
-        active = activeCard === cardIdx || activeCard === cardIdx + 1;
+        active = activeCard === seg - 1 || activeCard === seg;
       }
       line.setAttribute("stroke",  active ? "rgba(21,102,134,0.45)" : "rgba(21,102,134,0.06)");
       line.setAttribute("stroke-width", active ? "1.6" : "0.8");
@@ -499,13 +507,13 @@ export function ClaritySection() {
             </div>
           </div>
 
-          {/* 4 cards stacked vertically */}
-          <div className="flex flex-col gap-4 max-w-3xl mx-auto relative z-10">
+          {/* Cards: 1 col on mobile (vertical stack), 4 cols on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5 relative z-10 md:justify-items-center">
             {clarityItems.map((item, i) => (
               <div
                 key={item.badge}
                 ref={el => { cardRefs.current[i] = el; }}
-                className="rounded-2xl px-5 py-5 w-full flex items-start gap-6"
+                className="rounded-2xl px-4 py-4 w-full flex flex-col gap-2 md:max-w-[240px]"
                 style={{
                   border: "1px solid rgba(21,102,134,0.14)",
                   background: "rgba(21,102,134,0.04)",
@@ -513,39 +521,33 @@ export function ClaritySection() {
                   transition: "opacity 0.35s ease",
                 }}
               >
-                {/* Left: number + badge */}
-                <div className="flex-shrink-0 flex flex-col gap-2 w-36">
-                  <span className="text-[10px] font-bold tracking-widest uppercase"
-                    style={{ color: "rgba(21,102,134,0.4)" }}>
-                    {`0${i + 1}`}
-                  </span>
-                  <span className="self-start text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1"
-                    style={{
-                      background: "rgba(21,102,134,0.10)",
-                      color: "rgba(21,102,134,0.9)",
-                      border: "1px solid rgba(21,102,134,0.30)",
-                    }}>
-                    <span style={{ color: "#22c55e", fontSize: "8px", lineHeight: 1 }}>●</span>
-                    {item.badge}
-                  </span>
-                </div>
-                {/* Right: description + tags */}
-                <div className="flex flex-col gap-2 flex-1 min-w-0">
-                  <p className="text-sm leading-relaxed text-foreground/70">{item.desc}</p>
-                  <div className="flex flex-wrap gap-x-1 gap-y-0.5 items-center">
-                    {item.tags.map((tag, ti) => (
-                      <span key={tag} className="flex items-center gap-x-1">
-                        {ti > 0 && (
-                          <span className="text-[10px] font-bold"
-                            style={{ color: "rgba(21,102,134,0.35)" }}>·</span>
-                        )}
-                        <span className="text-[10px] font-bold tracking-widest"
-                          style={{ color: "rgba(21,102,134,0.65)" }}>
-                          {tag}
-                        </span>
+                <span className="text-[10px] font-bold tracking-widest uppercase"
+                  style={{ color: "rgba(21,102,134,0.4)" }}>
+                  {`0${i + 1}`}
+                </span>
+                <span className="self-start text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1"
+                  style={{
+                    background: "rgba(21,102,134,0.10)",
+                    color: "rgba(21,102,134,0.9)",
+                    border: "1px solid rgba(21,102,134,0.30)",
+                  }}>
+                  <span style={{ color: "#22c55e", fontSize: "8px", lineHeight: 1 }}>●</span>
+                  {item.badge}
+                </span>
+                <p className="text-xs leading-snug text-foreground/70">{item.desc}</p>
+                <div className="flex flex-wrap gap-x-1 gap-y-0.5 mt-1 items-center">
+                  {item.tags.map((tag, ti) => (
+                    <span key={tag} className="flex items-center gap-x-1">
+                      {ti > 0 && (
+                        <span className="text-[10px] font-bold"
+                          style={{ color: "rgba(21,102,134,0.35)" }}>·</span>
+                      )}
+                      <span className="text-[10px] font-bold tracking-widest"
+                        style={{ color: "rgba(21,102,134,0.65)" }}>
+                        {tag}
                       </span>
-                    ))}
-                  </div>
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
