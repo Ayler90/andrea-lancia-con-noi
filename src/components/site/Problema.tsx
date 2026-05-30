@@ -239,7 +239,7 @@ export function ClaritySection() {
   const rippleTimer   = useRef<ReturnType<typeof setInterval> | null>(null);
   const rippleCounter = useRef(0);
   const [ripples, setRipples] = useState<number[]>([]);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
   const svgLineRefs = useRef<SVGLineElement[]>([]);
   const svgDotRefs  = useRef<SVGCircleElement[]>([]);
 
@@ -390,7 +390,34 @@ export function ClaritySection() {
     return () => { clearTimeout(t); ro.disconnect(); };
   }, [draw]);
 
-  // Update SVG line/dot opacity based on hovered card
+  // Scroll-based card activation: highlight the card whose center is closest to viewport center
+  useEffect(() => {
+    const update = () => {
+      const container = containerRef.current;
+      if (container) {
+        const r = container.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) {
+          setActiveCard(null);
+          return;
+        }
+      }
+      const vpCenter = window.innerHeight / 2;
+      let closest = -1;
+      let closestDist = Infinity;
+      cardRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const dist = Math.abs(r.top + r.height / 2 - vpCenter);
+        if (dist < closestDist) { closestDist = dist; closest = i; }
+      });
+      setActiveCard(closest >= 0 ? closest : null);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  // Update SVG line/dot opacity based on active card
   useEffect(() => {
     const lines = svgLineRefs.current;
     const dots  = svgDotRefs.current;
@@ -399,19 +426,19 @@ export function ClaritySection() {
     // Segments 4-6: card[i] → card[i+1]
     lines.forEach((line, seg) => {
       let active: boolean;
-      if (hoveredCard === null) {
+      if (activeCard === null) {
         active = true;
       } else if (seg < 4) {
-        active = seg === hoveredCard;
+        active = seg === activeCard;
       } else {
-        const cardIdx = seg - 4; // 0→cards 0&1, 1→cards 1&2, 2→cards 2&3
-        active = hoveredCard === cardIdx || hoveredCard === cardIdx + 1;
+        const cardIdx = seg - 4;
+        active = activeCard === cardIdx || activeCard === cardIdx + 1;
       }
       line.setAttribute("stroke",  active ? "rgba(21,102,134,0.45)" : "rgba(21,102,134,0.06)");
       line.setAttribute("stroke-width", active ? "1.6" : "0.8");
       if (dots[seg]) dots[seg].setAttribute("opacity", active ? "0.9" : "0.15");
     });
-  }, [hoveredCard]);
+  }, [activeCard]);
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -472,54 +499,53 @@ export function ClaritySection() {
             </div>
           </div>
 
-          {/* 4 cards in a row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 relative z-10 justify-items-center">
+          {/* 4 cards stacked vertically */}
+          <div className="flex flex-col gap-4 max-w-3xl mx-auto relative z-10">
             {clarityItems.map((item, i) => (
               <div
                 key={item.badge}
                 ref={el => { cardRefs.current[i] = el; }}
-                className="rounded-2xl px-4 py-4 w-full flex flex-col gap-2"
-                onMouseEnter={() => setHoveredCard(i)}
-                onMouseLeave={() => setHoveredCard(null)}
+                className="rounded-2xl px-5 py-5 w-full flex items-start gap-6"
                 style={{
-                  maxWidth: 240,
                   border: "1px solid rgba(21,102,134,0.14)",
                   background: "rgba(21,102,134,0.04)",
-                  opacity: hoveredCard !== null && hoveredCard !== i ? 0.35 : 1,
+                  opacity: activeCard !== null && activeCard !== i ? 0.35 : 1,
                   transition: "opacity 0.35s ease",
                 }}
               >
-                {/* Number */}
-                <span className="text-[10px] font-bold tracking-widest uppercase"
-                  style={{ color: "rgba(21,102,134,0.4)" }}>
-                  {`0${i + 1}`}
-                </span>
-                {/* Badge */}
-                <span className="self-start text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1"
-                  style={{
-                    background: "rgba(21,102,134,0.10)",
-                    color: "rgba(21,102,134,0.9)",
-                    border: "1px solid rgba(21,102,134,0.30)",
-                  }}>
-                  <span style={{ color: "#22c55e", fontSize: "8px", lineHeight: 1 }}>●</span>
-                  {item.badge}
-                </span>
-                {/* Description */}
-                <p className="text-xs leading-snug text-foreground/70">{item.desc}</p>
-                {/* Micro tags */}
-                <div className="flex flex-wrap gap-x-1 gap-y-0.5 mt-1 items-center">
-                  {item.tags.map((tag, ti) => (
-                    <span key={tag} className="flex items-center gap-x-1">
-                      {ti > 0 && (
-                        <span className="text-[10px] font-bold"
-                          style={{ color: "rgba(21,102,134,0.35)" }}>·</span>
-                      )}
-                      <span className="text-[10px] font-bold tracking-widest"
-                        style={{ color: "rgba(21,102,134,0.65)" }}>
-                        {tag}
+                {/* Left: number + badge */}
+                <div className="flex-shrink-0 flex flex-col gap-2 w-36">
+                  <span className="text-[10px] font-bold tracking-widest uppercase"
+                    style={{ color: "rgba(21,102,134,0.4)" }}>
+                    {`0${i + 1}`}
+                  </span>
+                  <span className="self-start text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1"
+                    style={{
+                      background: "rgba(21,102,134,0.10)",
+                      color: "rgba(21,102,134,0.9)",
+                      border: "1px solid rgba(21,102,134,0.30)",
+                    }}>
+                    <span style={{ color: "#22c55e", fontSize: "8px", lineHeight: 1 }}>●</span>
+                    {item.badge}
+                  </span>
+                </div>
+                {/* Right: description + tags */}
+                <div className="flex flex-col gap-2 flex-1 min-w-0">
+                  <p className="text-sm leading-relaxed text-foreground/70">{item.desc}</p>
+                  <div className="flex flex-wrap gap-x-1 gap-y-0.5 items-center">
+                    {item.tags.map((tag, ti) => (
+                      <span key={tag} className="flex items-center gap-x-1">
+                        {ti > 0 && (
+                          <span className="text-[10px] font-bold"
+                            style={{ color: "rgba(21,102,134,0.35)" }}>·</span>
+                        )}
+                        <span className="text-[10px] font-bold tracking-widest"
+                          style={{ color: "rgba(21,102,134,0.65)" }}>
+                          {tag}
+                        </span>
                       </span>
-                    </span>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

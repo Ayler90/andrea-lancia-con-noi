@@ -182,7 +182,7 @@ export function Testimonianze() {
 
         {/* Grid with bottom fade when collapsed */}
         <div className="relative">
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [column-fill:_balance] px-1">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [column-fill:_balance] px-4">
             {visible.map((src, i) => (
               <div key={i} className="border-wipe break-inside-avoid mb-5 rounded-2xl">
                 <img
