@@ -16,7 +16,7 @@ const logos = [
 
 export function Loghi() {
   return (
-    <section id="loghi" className="pb-14 md:pb-20 border-b border-border overflow-hidden">
+    <section id="loghi" className="pb-14 md:pb-20 border-b border-border overflow-hidden bg-background">
       <div className="container-narrow mb-10 text-center">
         <h2 className="h-display text-2xl md:text-3xl lg:text-4xl">
           Alcuni dei clienti e delle realtà{" "}
