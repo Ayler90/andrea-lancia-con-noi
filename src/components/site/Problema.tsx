@@ -311,6 +311,20 @@ export function ClaritySection() {
     svgLineRefs.current = [];
     svgDotRefs.current  = [];
     let idx = 0;
+
+    // Static line only (no animated dot) — used for card-to-card on mobile
+    const addStaticLine = (x1: number, y1: number, x2: number, y2: number) => {
+      const line = document.createElementNS(NS, "line");
+      line.setAttribute("x1", String(x1)); line.setAttribute("y1", String(y1));
+      line.setAttribute("x2", String(x2)); line.setAttribute("y2", String(y2));
+      line.setAttribute("stroke", "rgba(21,102,134,0.18)");
+      line.setAttribute("stroke-width", "1.2");
+      line.setAttribute("style", "transition: stroke 0.35s ease, stroke-width 0.35s ease, opacity 0.35s ease");
+      svg.appendChild(line);
+      svgLineRefs.current.push(line);
+      svgDotRefs.current.push(null as any); // keep index alignment with svgLineRefs
+    };
+
     const addSegment = (x1: number, y1: number, x2: number, y2: number, dur: number, delay: number) => {
       const pid = `cs-${idx++}`;
 
@@ -375,12 +389,13 @@ export function ClaritySection() {
           end.x, end.y, 6, 0.05
         );
       }
+      // Card-to-card: static lines only (no animated dot) so they don't look like image→box2/3/4
       for (let i = 0; i < cards.length - 1; i++) {
         const a    = cards[i];
         const b    = cards[i + 1];
         const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
         const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
-        addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, 0.05);
+        addStaticLine(from.x, from.y, to.x, to.y);
       }
     } else {
       // Desktop: image → each card (segments 0–3), then sequential (segments 4–6)
@@ -465,7 +480,7 @@ export function ClaritySection() {
       }
       line.setAttribute("stroke",  active ? "rgba(21,102,134,0.45)" : "rgba(21,102,134,0.06)");
       line.setAttribute("stroke-width", active ? "1.6" : "0.8");
-      if (dots[seg]) dots[seg].setAttribute("opacity", active ? "0.9" : "0.15");
+      if (dots[seg] != null) dots[seg].setAttribute("opacity", active ? "0.9" : "0.15");
     });
   }, [hoveredCard, activeCard]);
 
@@ -529,7 +544,7 @@ export function ClaritySection() {
           </div>
 
           {/* Cards: 1 col on mobile (vertical stack), 4 cols on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-5 relative z-10 md:justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-20 md:gap-5 relative z-10 md:justify-items-center">
             {clarityItems.map((item, i) => (
               <div
                 key={item.badge}
