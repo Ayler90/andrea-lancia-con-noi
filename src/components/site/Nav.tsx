@@ -109,24 +109,27 @@ export function Nav() {
           className="fixed inset-0 z-[200] flex flex-col md:hidden"
           style={{ backgroundColor: "#156686", animation: "mobile-menu-in 0.3s ease both" }}
         >
-          {/* Top row: logo + close button */}
-          <div className="flex items-center justify-between px-6 h-16 flex-shrink-0">
+          {/* Top row: logo + close — same layout as the nav bar */}
+          <div className="container-narrow grid grid-cols-3 items-center h-16 flex-shrink-0">
             <img
               src={logoImg}
               alt="Andrea Bonomo"
-              className="h-9 w-auto"
+              className="h-9 w-auto justify-self-start"
               style={{ filter: "brightness(0) invert(1)" }}
             />
-            <button
-              onClick={() => setOpen(false)}
-              aria-label="Chiudi menu"
-              className="text-white/80 hover:text-white transition-colors p-2"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
+            <div />
+            <div className="flex justify-end">
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Chiudi menu"
+                className="text-white/80 hover:text-white transition-colors p-2 -mr-1"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* Nav links — large */}
