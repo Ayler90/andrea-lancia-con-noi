@@ -15,7 +15,7 @@ export function Nav() {
 
   const closeMenu = () => {
     setClosing(true);
-    setTimeout(() => { setOpen(false); setClosing(false); }, 280);
+    setTimeout(() => { setOpen(false); setClosing(false); }, 150);
   };
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export function Nav() {
             {/* Hamburger — 3 lines, right-aligned */}
             <button
               aria-label={open ? "Chiudi menu" : "Apri menu"}
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => open ? closeMenu() : setOpen(true)}
               className="md:hidden flex flex-col justify-center gap-[5px] p-2 -mr-1 z-[300] relative"
             >
               <span className="block w-6 h-[2px] bg-foreground rounded-full" />
@@ -113,7 +113,7 @@ export function Nav() {
       {open && (
         <div
           className="fixed inset-0 z-[200] flex flex-col md:hidden"
-          style={{ backgroundColor: "#156686", animation: `${closing ? "mobile-menu-out" : "mobile-menu-in"} 0.28s ease both` }}
+          style={{ backgroundColor: "#156686", animation: `${closing ? "mobile-menu-out" : "mobile-menu-in"} 0.15s ease both` }}
         >
           {/* Top row: logo + close — same layout as the nav bar */}
           <div className="container-narrow grid grid-cols-3 items-center h-16 flex-shrink-0">

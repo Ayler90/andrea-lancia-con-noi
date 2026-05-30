@@ -54,6 +54,20 @@ export function Newsletter() {
   const [showTooltip, setShowTooltip] = useState(false);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Dismiss tooltip on any click outside the form
+  useEffect(() => {
+    if (!showTooltip) return;
+    const dismiss = (e: MouseEvent) => {
+      const form = document.getElementById("mlb2-41923213");
+      if (!form?.contains(e.target as Node)) {
+        setShowTooltip(false);
+        if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+      }
+    };
+    document.addEventListener("mousedown", dismiss);
+    return () => document.removeEventListener("mousedown", dismiss);
+  }, [showTooltip]);
+
   useEffect(() => {
     // Success callback invoked by MailerLite after successful submission
     (window as any).ml_webform_success_41923213 = function () {

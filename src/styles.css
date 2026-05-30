@@ -365,12 +365,12 @@
 }
 
 @keyframes mobile-menu-in {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes mobile-menu-out {
   from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 0; transform: translateY(8px); }
 }
 
 @keyframes ripple-out {
@@ -407,15 +407,16 @@
   50%       { transform: translateY(-10px); }
 }
 
-/* Mobile: guide stack — keep fan/oblique effect, just scale it down */
+/* Mobile: guide stack — horizontal fan on tap */
 @media (max-width: 767px) {
   .guide-stack {
     height: 220px !important;
-    max-width: 190px !important;
+    max-width: 300px !important;
     margin: 0 auto;
   }
-  .guide-stack:hover .guide-wrapper-1 { transform: rotate(-5deg) translateY(-90px); }
-  .guide-stack:hover .guide-wrapper-3 { transform: rotate(5deg)  translateY(90px); }
+  .guide-stack:hover .guide-wrapper-1 { transform: rotate(-20deg) translateX(-80px); }
+  .guide-stack:hover .guide-wrapper-2 { transform: rotate(0deg)   translateX(0);     }
+  .guide-stack:hover .guide-wrapper-3 { transform: rotate(20deg)  translateX(80px);  }
 }
 
 /* Red border on empty required fields */
