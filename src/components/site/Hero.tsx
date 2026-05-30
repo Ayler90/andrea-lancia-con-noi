@@ -8,7 +8,7 @@ const AVATARS = [av1, av2, av3, av4];
 
 export function Hero() {
   return (
-    <section id="top" className="pt-24 md:pt-28 pb-14 md:pb-20 relative">
+    <section id="top" className="pt-6 md:pt-8 pb-14 md:pb-20 relative">
       {/* Glow orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div
