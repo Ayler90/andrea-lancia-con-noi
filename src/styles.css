@@ -166,6 +166,7 @@
   .cta-ghost {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     font-size: 0.8125rem;
     font-weight: 500;
@@ -174,6 +175,7 @@
     color: var(--color-foreground);
     background: oklch(0.18 0.02 230 / 0.07);
     transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    text-align: center;
   }
 
   .cta-ghost:hover {
@@ -403,6 +405,40 @@
 @keyframes guide-gentle-float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-10px); }
+}
+
+/* Mobile: guide images become a horizontal scrolling row */
+@media (max-width: 767px) {
+  .guide-stack {
+    display: flex !important;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    height: 170px !important;
+    max-width: 100% !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-right: 8px;
+  }
+  .guide-stack::-webkit-scrollbar { display: none; }
+  .guide-stack .guide-wrapper {
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 115px;
+    height: 160px;
+    transform: none !important;
+    transition: none !important;
+  }
+  .guide-stack:hover .guide-wrapper-1,
+  .guide-stack:hover .guide-wrapper-2,
+  .guide-stack:hover .guide-wrapper-3 { transform: none !important; }
+  .guide-stack .guide-img {
+    position: relative !important;
+    inset: auto !important;
+    width: 100%;
+    height: 100%;
+    animation: none !important;
+  }
 }
 
 /* Red border on empty required fields */

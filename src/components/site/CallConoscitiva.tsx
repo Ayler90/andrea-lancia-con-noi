@@ -66,7 +66,7 @@ export function CallConoscitiva() {
             id="my-cal-inline-call-conoscitiva-gratuita"
             style={{ width: "100%", height: "100%", overflow: "scroll", minHeight: 600 }}
           />
-          {/* White strip over the Cal.com watermark at the bottom of the embed */}
+          {/* Thin strip covers only the 1-line Cal.com watermark text */}
           <div
             aria-hidden="true"
             style={{
@@ -74,7 +74,7 @@ export function CallConoscitiva() {
               bottom: 0,
               left: 0,
               right: 0,
-              height: 48,
+              height: 18,
               background: "white",
               pointerEvents: "none",
               zIndex: 10,

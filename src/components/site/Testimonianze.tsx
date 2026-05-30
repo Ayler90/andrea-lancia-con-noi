@@ -198,7 +198,7 @@ export function Testimonianze() {
         </div>
 
         {/* Expand / collapse button */}
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-10 relative z-20">
           <button
             onClick={() => setExpanded(v => !v)}
             className="pill border border-[#156686] text-[#156686] hover:bg-[#156686] hover:text-white transition-colors duration-200 font-medium"
