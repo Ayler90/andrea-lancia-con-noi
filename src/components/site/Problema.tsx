@@ -507,11 +507,17 @@ export function ClaritySection() {
                 {/* Description */}
                 <p className="text-xs leading-snug text-foreground/70">{item.desc}</p>
                 {/* Micro tags */}
-                <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1">
-                  {item.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-bold tracking-widest"
-                      style={{ color: "rgba(21,102,134,0.65)" }}>
-                      {tag}
+                <div className="flex flex-wrap gap-x-1 gap-y-0.5 mt-1 items-center">
+                  {item.tags.map((tag, ti) => (
+                    <span key={tag} className="flex items-center gap-x-1">
+                      {ti > 0 && (
+                        <span className="text-[10px] font-bold"
+                          style={{ color: "rgba(21,102,134,0.35)" }}>·</span>
+                      )}
+                      <span className="text-[10px] font-bold tracking-widest"
+                        style={{ color: "rgba(21,102,134,0.65)" }}>
+                        {tag}
+                      </span>
                     </span>
                   ))}
                 </div>
