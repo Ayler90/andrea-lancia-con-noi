@@ -318,6 +318,7 @@ export function ClaritySection() {
       line.setAttribute("x2", String(x2)); line.setAttribute("y2", String(y2));
       line.setAttribute("stroke", "rgba(21,102,134,0.18)");
       line.setAttribute("stroke-width", "1.2");
+      line.setAttribute("style", "transition: stroke 0.35s ease, stroke-width 0.35s ease, opacity 0.35s ease");
       svg.appendChild(line);
       svgLineRefs.current.push(line);
 
@@ -332,6 +333,7 @@ export function ClaritySection() {
       dot.setAttribute("fill", "#156686");
       dot.setAttribute("opacity", "0.65");
       dot.setAttribute("display", "none");
+      dot.setAttribute("style", "transition: opacity 0.35s ease");
 
       // Show the dot only when its motion begins, preventing the (0,0) ghost
       const showSet = document.createElementNS(NS, "set");
@@ -484,7 +486,7 @@ export function ClaritySection() {
                   border: "1px solid rgba(21,102,134,0.14)",
                   background: "rgba(21,102,134,0.04)",
                   opacity: hoveredCard !== null && hoveredCard !== i ? 0.35 : 1,
-                  transition: "opacity 0.2s ease",
+                  transition: "opacity 0.35s ease",
                 }}
               >
                 {/* Number */}
