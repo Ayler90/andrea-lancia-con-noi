@@ -51,7 +51,7 @@ export function CallConoscitiva() {
   }, []);
 
   return (
-    <section id="prenota" className="py-20 md:py-28 bg-white">
+    <section id="prenota" className="py-20 md:py-28 bg-white" style={{ scrollMarginTop: "80px" }}>
       <div className="container-narrow">
         <div className="max-w-3xl mb-12 md:mb-16">
           <p className="eyebrow mb-4">Prenota la call conoscitiva con me</p>
