@@ -19,10 +19,26 @@ const chaosThoughts = [
 ];
 
 export const clarityItems = [
-  "Strategia di lancio su misura per la tua offerta",
-  "Calendario step-by-step con ogni azione da fare",
-  "Email, contenuti e pagine di vendita già pronti",
-  "Supporto in ogni fase, dalla partenza alla chiusura",
+  {
+    badge: "Analisi iniziale",
+    desc: "L'analisi iniziale è il fondamento di ogni lancio, per creare una strategia che sia veramente efficace",
+    tags: ["COMPETITOR", "PUBBLICO", "OFFERTA", "MERCATO"],
+  },
+  {
+    badge: "Strategia di lancio e calendario",
+    desc: "Ho la strategia di lancio personalizzata per la tua offerta e il calendario con tutte le deadline.",
+    tags: ["STRATEGIA DI LANCIO", "CALENDARIO", "TEMPISTICHE"],
+  },
+  {
+    badge: "Contenuti",
+    desc: "Creo per te le email di lancio, le pagine di iscrizione e vendita, le meta ads e le automazioni per vendere durante il lancio",
+    tags: ["CONTENUTI", "EMAIL", "SOCIAL", "PAGINE"],
+  },
+  {
+    badge: "Si lancia",
+    desc: "È arrivato finalmente il momento di aprire il pre lancio e arrivare fino al lancio (e dopo). Ti seguo dall'inizio alla fine, con un'analisi dei dati continua",
+    tags: ["PRE LANCIO", "LANCIO", "DATI", "VENDITA"],
+  },
 ];
 
 function ChaosWidget() {
@@ -428,20 +444,36 @@ export function ClaritySection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 relative z-10 justify-items-center">
             {clarityItems.map((item, i) => (
               <div
-                key={item}
+                key={item.badge}
                 ref={el => { cardRefs.current[i] = el; }}
-                className="rounded-2xl px-3 py-3 w-full"
+                className="rounded-2xl px-4 py-4 w-full flex flex-col gap-2"
                 style={{
-                  maxWidth: 210,
+                  maxWidth: 240,
                   border: "1px solid rgba(21,102,134,0.14)",
                   background: "rgba(21,102,134,0.04)",
                 }}
               >
-                <span className="text-[10px] font-bold tracking-widest uppercase block mb-1.5"
-                  style={{ color: "rgba(21,102,134,0.45)" }}>
+                {/* Number */}
+                <span className="text-[10px] font-bold tracking-widest uppercase"
+                  style={{ color: "rgba(21,102,134,0.4)" }}>
                   {`0${i + 1}`}
                 </span>
-                <p className="text-xs font-medium leading-snug text-foreground/80">{item}</p>
+                {/* Badge */}
+                <span className="self-start text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full"
+                  style={{ background: "rgba(21,102,134,0.12)", color: "rgba(21,102,134,0.9)" }}>
+                  {item.badge}
+                </span>
+                {/* Description */}
+                <p className="text-[11px] leading-snug text-foreground/65">{item.desc}</p>
+                {/* Micro tags */}
+                <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1">
+                  {item.tags.map((tag, ti) => (
+                    <span key={tag} className="text-[9px] font-bold tracking-widest"
+                      style={{ color: ti === 0 ? "rgba(21,102,134,0.55)" : "rgba(21,102,134,0.35)" }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
