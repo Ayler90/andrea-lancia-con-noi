@@ -1,24 +1,7 @@
 import React, { useEffect, useState } from "react";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
-
-const logoStyle: React.CSSProperties = {
-  fontFamily: "'Outfit', sans-serif",
-  fontWeight: 700,
-  fontSize: "13px",
-  letterSpacing: "0.22em",
-  textTransform: "uppercase" as const,
-  lineHeight: 1,
-  whiteSpace: "nowrap" as const,
-};
-
-function LogoText({ dark }: { dark?: boolean }) {
-  return (
-    <span style={logoStyle}>
-      <span style={{ color: dark ? "rgba(255,255,255,0.40)" : "rgba(12,35,48,0.35)" }}>ANDREA </span>
-      <span style={{ color: dark ? "#C4D9DC" : "#156686" }}>BONOMO</span>
-    </span>
-  );
-}
+import darkLogoImg from "@/assets/Darklogo.svg";
+import lightLogoImg from "@/assets/lighlogo.svg";
 
 const links = [
   { href: "#chi-sono",      label: "Chi sono" },
@@ -89,7 +72,7 @@ export function Nav() {
               aria-hidden="true"
               className="w-8 h-8 rounded-full object-cover flex-shrink-0"
             />
-            <LogoText />
+            <img src={darkLogoImg} alt="Andrea Bonomo" className="h-6 w-auto flex-shrink-0" />
           </a>
 
           {/* Center: nav links (desktop only) */}
@@ -143,7 +126,7 @@ export function Nav() {
                 aria-hidden="true"
                 className="w-8 h-8 rounded-full object-cover flex-shrink-0"
               />
-              <LogoText dark />
+              <img src={lightLogoImg} alt="Andrea Bonomo" className="h-6 w-auto flex-shrink-0" />
             </a>
             <div />
             <div className="flex justify-end">
