@@ -65,18 +65,17 @@ export function Nav() {
       >
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: avatar + logo */}
-          <a href="#top" className="justify-self-start flex items-center gap-2.5">
+          <a href="#top" className="justify-self-start flex items-center gap-2.5 min-w-0">
             <img
               src={avatarImg}
               alt=""
               aria-hidden="true"
               className="w-8 h-8 rounded-full object-cover flex-shrink-0"
-              style={{ boxShadow: "0 0 0 1.5px rgba(21,102,134,0.18)" }}
             />
             <img
               src={logoLight}
               alt="Andrea Bonomo"
-              className="h-7 w-auto"
+              className="h-5 w-auto flex-shrink-0"
             />
           </a>
 
@@ -130,12 +129,11 @@ export function Nav() {
                 alt=""
                 aria-hidden="true"
                 className="w-8 h-8 rounded-full object-cover flex-shrink-0"
-                style={{ boxShadow: "0 0 0 1.5px rgba(255,255,255,0.25)" }}
               />
               <img
                 src={logoDark}
                 alt="Andrea Bonomo"
-                className="h-7 w-auto"
+                className="h-5 w-auto flex-shrink-0"
               />
             </a>
             <div />
