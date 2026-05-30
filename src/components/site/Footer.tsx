@@ -1,16 +1,20 @@
 import logoImg from "@/assets/Logo-Grigio (1).png";
 
 const percorsi = [
-  { href: "#percorsi", label: "Pronti, Partenza, Lancio" },
-  { href: "#percorsi", label: "Business Blueprint" },
-  { href: "#percorsi", label: "Mentoring Newsletter" },
-  { href: "#percorsi", label: "Consulenza Strategica" },
+  { filter: "lancio",     label: "Pronti, Partenza, Lancio" },
+  { filter: "business",   label: "Business Blueprint" },
+  { filter: "newsletter", label: "Mentoring Newsletter" },
+  { filter: "consulenza", label: "Consulenza Strategica" },
 ];
 
 const corsi = [
-  { href: "#percorsi", label: "Easy-Mail Pack" },
-  { href: "#percorsi", label: "Calendario di Lancio" },
+  { filter: "newsletter", label: "Easy-Mail Pack" },
+  { filter: "lancio",     label: "Calendario di Lancio" },
 ];
+
+function goToPercorso(filter: string) {
+  window.dispatchEvent(new CustomEvent("percorso-select", { detail: filter }));
+}
 
 const sito = [
   { href: "#chi-sono",      label: "Chi sono" },
@@ -48,7 +52,11 @@ export function Footer() {
             <ul className="space-y-3">
               {percorsi.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                  <a
+                    href="#percorsi"
+                    onClick={() => goToPercorso(l.filter)}
+                    className="text-sm text-white/70 hover:text-white transition-colors"
+                  >
                     {l.label}
                   </a>
                 </li>
@@ -62,7 +70,11 @@ export function Footer() {
             <ul className="space-y-3">
               {corsi.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                  <a
+                    href="#percorsi"
+                    onClick={() => goToPercorso(l.filter)}
+                    className="text-sm text-white/70 hover:text-white transition-colors"
+                  >
                     {l.label}
                   </a>
                 </li>

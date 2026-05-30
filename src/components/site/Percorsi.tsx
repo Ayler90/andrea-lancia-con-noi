@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import p1 from "@/assets/Percorso di lancio.jpg";
 import p2 from "@/assets/Calendario di lancio.jpg";
 import p3 from "@/assets/Business blueprint.jpg";
@@ -106,6 +106,15 @@ const FILTERS: { id: Exclude<FilterId, "tutti">; label: string; sub: string }[] 
 
 export function Percorsi() {
   const [active, setActive] = useState<FilterId>("lancio");
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      setActive((e as CustomEvent<FilterId>).detail);
+    };
+    window.addEventListener("percorso-select", handler);
+    return () => window.removeEventListener("percorso-select", handler);
+  }, []);
+
   const items =
     active === "tutti"
       ? Object.values(PERCORSI).flat()
