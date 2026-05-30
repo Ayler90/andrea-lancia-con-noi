@@ -389,13 +389,13 @@ export function ClaritySection() {
           end.x, end.y, 6, 0.05
         );
       }
-      // Card-to-card: static lines only (no animated dot) so they don't look like image→box2/3/4
+      // Card-to-card: animated dots between consecutive boxes
       for (let i = 0; i < cards.length - 1; i++) {
         const a    = cards[i];
         const b    = cards[i + 1];
         const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
         const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
-        addStaticLine(from.x, from.y, to.x, to.y);
+        addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, 0.05);
       }
     } else {
       // Desktop: image → each card (segments 0–3), then sequential (segments 4–6)
