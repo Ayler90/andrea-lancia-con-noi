@@ -34,3 +34,6 @@ logo-preview.html
 generate-logos.mjs
 logo-light.png
 logo-dark.png
+generate-logos-svg.mjs
+logo-light.svg
+logo-dark.svg
