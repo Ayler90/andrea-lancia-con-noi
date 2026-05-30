@@ -361,25 +361,45 @@ export function ClaritySection() {
       svgDotRefs.current.push(dot);
     };
 
-    // Image → each card (segments 0–3) — all dots appear immediately (begin=0.05s)
-    cards.forEach((cc, i) => {
-      const angle = Math.atan2(cc.y - imgCy, cc.x - imgCx);
-      const end   = edgePt(cc.x, cc.y, cc.hw, cc.hh, imgCx, imgCy);
-      addSegment(
-        imgCx + Math.cos(angle) * (imgR + 6),
-        imgCy + Math.sin(angle) * (imgR + 6),
-        end.x, end.y,
-        6 + i * 0.4, 0.05
-      );
-    });
+    const isMobile = window.innerWidth < 768;
 
-    // Card → next card (segments 4–6)
-    for (let i = 0; i < cards.length - 1; i++) {
-      const a    = cards[i];
-      const b    = cards[i + 1];
-      const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
-      const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
-      addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, 0.05);
+    if (isMobile) {
+      // Mobile: image → card[0] only (segment 0), then sequential (segments 1–3)
+      {
+        const cc    = cards[0];
+        const angle = Math.atan2(cc.y - imgCy, cc.x - imgCx);
+        const end   = edgePt(cc.x, cc.y, cc.hw, cc.hh, imgCx, imgCy);
+        addSegment(
+          imgCx + Math.cos(angle) * (imgR + 6),
+          imgCy + Math.sin(angle) * (imgR + 6),
+          end.x, end.y, 6, 0.05
+        );
+      }
+      for (let i = 0; i < cards.length - 1; i++) {
+        const a    = cards[i];
+        const b    = cards[i + 1];
+        const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
+        const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
+        addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, 0.05);
+      }
+    } else {
+      // Desktop: image → each card (segments 0–3), then sequential (segments 4–6)
+      cards.forEach((cc, i) => {
+        const angle = Math.atan2(cc.y - imgCy, cc.x - imgCx);
+        const end   = edgePt(cc.x, cc.y, cc.hw, cc.hh, imgCx, imgCy);
+        addSegment(
+          imgCx + Math.cos(angle) * (imgR + 6),
+          imgCy + Math.sin(angle) * (imgR + 6),
+          end.x, end.y, 6 + i * 0.4, 0.05
+        );
+      });
+      for (let i = 0; i < cards.length - 1; i++) {
+        const a    = cards[i];
+        const b    = cards[i + 1];
+        const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
+        const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
+        addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, 0.05);
+      }
     }
   }, []);
 
@@ -429,17 +449,19 @@ export function ClaritySection() {
     const lines = svgLineRefs.current;
     const dots  = svgDotRefs.current;
     if (!lines.length) return;
-    // Segments 0–3: image → card[i]   Segments 4–6: card[i] → card[i+1]
-    const card = window.innerWidth >= 768 ? hoveredCard : activeCard;
+    const isMobile = window.innerWidth < 768;
+    const card = isMobile ? activeCard : hoveredCard;
     lines.forEach((line, seg) => {
       let active: boolean;
       if (card === null) {
         active = true;
-      } else if (seg < 4) {
-        active = seg === card;
+      } else if (isMobile) {
+        // 4 segments: 0=image→card0, 1=card0→card1, 2=card1→card2, 3=card2→card3
+        active = seg === 0 ? card === 0 : (card === seg - 1 || card === seg);
       } else {
-        const ci = seg - 4;
-        active = card === ci || card === ci + 1;
+        // 7 segments: 0-3=image→card[i], 4-6=card[i]→card[i+1]
+        if (seg < 4) { active = seg === card; }
+        else { const ci = seg - 4; active = card === ci || card === ci + 1; }
       }
       line.setAttribute("stroke",  active ? "rgba(21,102,134,0.45)" : "rgba(21,102,134,0.06)");
       line.setAttribute("stroke-width", active ? "1.6" : "0.8");
@@ -507,7 +529,7 @@ export function ClaritySection() {
           </div>
 
           {/* Cards: 1 col on mobile (vertical stack), 4 cols on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-5 relative z-10 md:justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-5 relative z-10 md:justify-items-center">
             {clarityItems.map((item, i) => (
               <div
                 key={item.badge}
