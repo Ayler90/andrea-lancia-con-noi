@@ -76,7 +76,7 @@ export function Nav() {
             <img
               src={logoLight}
               alt="Andrea Bonomo"
-              className="h-5 w-auto"
+              className="h-7 w-auto"
             />
           </a>
 
@@ -135,7 +135,7 @@ export function Nav() {
               <img
                 src={logoDark}
                 alt="Andrea Bonomo"
-                className="h-5 w-auto"
+                className="h-7 w-auto"
               />
             </a>
             <div />
