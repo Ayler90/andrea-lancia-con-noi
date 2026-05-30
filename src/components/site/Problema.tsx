@@ -239,7 +239,8 @@ export function ClaritySection() {
   const rippleTimer   = useRef<ReturnType<typeof setInterval> | null>(null);
   const rippleCounter = useRef(0);
   const [ripples, setRipples] = useState<number[]>([]);
-  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null); // desktop hover
+  const [activeCard,  setActiveCard]  = useState<number | null>(null); // mobile scroll
   const svgLineRefs = useRef<SVGLineElement[]>([]);
   const svgDotRefs  = useRef<SVGCircleElement[]>([]);
 
@@ -360,26 +361,25 @@ export function ClaritySection() {
       svgDotRefs.current.push(dot);
     };
 
-    // Image → card[0] only (segment 0)
-    {
-      const cc    = cards[0];
+    // Image → each card (segments 0–3) — all dots appear immediately (begin=0.05s)
+    cards.forEach((cc, i) => {
       const angle = Math.atan2(cc.y - imgCy, cc.x - imgCx);
       const end   = edgePt(cc.x, cc.y, cc.hw, cc.hh, imgCx, imgCy);
       addSegment(
         imgCx + Math.cos(angle) * (imgR + 6),
         imgCy + Math.sin(angle) * (imgR + 6),
         end.x, end.y,
-        6, 0
+        6 + i * 0.4, 0.05
       );
-    }
+    });
 
-    // Sequential: card[i] → card[i+1] (segments 1–3)
+    // Card → next card (segments 4–6)
     for (let i = 0; i < cards.length - 1; i++) {
       const a    = cards[i];
       const b    = cards[i + 1];
       const from = edgePt(a.x, a.y, a.hw, a.hh, b.x, b.y);
       const to   = edgePt(b.x, b.y, b.hw, b.hh, a.x, a.y);
-      addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, i * 0.6 + 0.8);
+      addSegment(from.x, from.y, to.x, to.y, 7 + i * 0.4, 0.05);
     }
   }, []);
 
@@ -424,29 +424,28 @@ export function ClaritySection() {
     };
   }, []);
 
-  // Update SVG line/dot opacity based on active card
+  // Update SVG line/dot opacity — desktop uses hoveredCard, mobile uses activeCard
   useEffect(() => {
     const lines = svgLineRefs.current;
     const dots  = svgDotRefs.current;
     if (!lines.length) return;
-    // Segment 0: image → card[0]
-    // Segment 1: card[0] → card[1]
-    // Segment 2: card[1] → card[2]
-    // Segment 3: card[2] → card[3]
+    // Segments 0–3: image → card[i]   Segments 4–6: card[i] → card[i+1]
+    const card = window.innerWidth >= 768 ? hoveredCard : activeCard;
     lines.forEach((line, seg) => {
       let active: boolean;
-      if (activeCard === null) {
+      if (card === null) {
         active = true;
-      } else if (seg === 0) {
-        active = activeCard === 0;
+      } else if (seg < 4) {
+        active = seg === card;
       } else {
-        active = activeCard === seg - 1 || activeCard === seg;
+        const ci = seg - 4;
+        active = card === ci || card === ci + 1;
       }
       line.setAttribute("stroke",  active ? "rgba(21,102,134,0.45)" : "rgba(21,102,134,0.06)");
       line.setAttribute("stroke-width", active ? "1.6" : "0.8");
       if (dots[seg]) dots[seg].setAttribute("opacity", active ? "0.9" : "0.15");
     });
-  }, [activeCard]);
+  }, [hoveredCard, activeCard]);
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -514,10 +513,15 @@ export function ClaritySection() {
                 key={item.badge}
                 ref={el => { cardRefs.current[i] = el; }}
                 className="rounded-2xl px-4 py-4 w-full flex flex-col gap-2 md:max-w-[240px]"
+                onMouseEnter={() => setHoveredCard(i)}
+                onMouseLeave={() => setHoveredCard(null)}
                 style={{
                   border: "1px solid rgba(21,102,134,0.14)",
                   background: "rgba(21,102,134,0.04)",
-                  opacity: activeCard !== null && activeCard !== i ? 0.35 : 1,
+                  opacity: (() => {
+                    const card = window.innerWidth >= 768 ? hoveredCard : activeCard;
+                    return card !== null && card !== i ? 0.35 : 1;
+                  })(),
                   transition: "opacity 0.35s ease",
                 }}
               >
