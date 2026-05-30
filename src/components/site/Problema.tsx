@@ -532,8 +532,7 @@ export function ClaritySection() {
             className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 font-semibold">
             Scopri i miei percorsi
           </a>
-          <a href="#testimonianze"
-            className="text-sm font-medium text-foreground/65 border border-border hover:border-foreground/30 hover:text-foreground transition-all flex items-center gap-2 px-5 py-2.5 rounded-full">
+          <a href="#testimonianze" className="cta-ghost text-foreground">
             Leggi le recensioni →
           </a>
         </div>

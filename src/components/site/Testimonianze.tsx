@@ -208,7 +208,7 @@ export function Testimonianze() {
         <div className="flex justify-center mt-10">
           <button
             onClick={() => setExpanded(v => !v)}
-            className="pill border border-[#156686] text-[#156686] hover:bg-[#156686] hover:text-white transition-colors duration-200 font-medium"
+            className="cta-ghost text-foreground"
           >
             {expanded ? "Mostra meno ↑" : "Leggi tutte le recensioni →"}
           </button>
