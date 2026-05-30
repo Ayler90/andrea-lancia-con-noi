@@ -407,38 +407,15 @@
   50%       { transform: translateY(-10px); }
 }
 
-/* Mobile: guide images become a horizontal scrolling row */
+/* Mobile: guide stack — keep fan/oblique effect, just scale it down */
 @media (max-width: 767px) {
   .guide-stack {
-    display: flex !important;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 10px;
-    height: 170px !important;
-    max-width: 100% !important;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-right: 8px;
+    height: 220px !important;
+    max-width: 190px !important;
+    margin: 0 auto;
   }
-  .guide-stack::-webkit-scrollbar { display: none; }
-  .guide-stack .guide-wrapper {
-    position: relative !important;
-    inset: auto !important;
-    flex: 0 0 115px;
-    height: 160px;
-    transform: none !important;
-    transition: none !important;
-  }
-  .guide-stack:hover .guide-wrapper-1,
-  .guide-stack:hover .guide-wrapper-2,
-  .guide-stack:hover .guide-wrapper-3 { transform: none !important; }
-  .guide-stack .guide-img {
-    position: relative !important;
-    inset: auto !important;
-    width: 100%;
-    height: 100%;
-    animation: none !important;
-  }
+  .guide-stack:hover .guide-wrapper-1 { transform: rotate(-5deg) translateY(-90px); }
+  .guide-stack:hover .guide-wrapper-3 { transform: rotate(5deg)  translateY(90px); }
 }
 
 /* Red border on empty required fields */
