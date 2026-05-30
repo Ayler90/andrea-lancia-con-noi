@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import logoImg from "@/assets/Logo-Grigio (1).png";
+import logoLight from "@/assets/logo-andrea-bonomo-light.svg";
+import logoDark  from "@/assets/logo-andrea-bonomo-dark.svg";
+import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 
 const links = [
   { href: "#chi-sono",      label: "Chi sono" },
@@ -25,7 +27,6 @@ export function Nav() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
-  // Lock body scroll when overlay is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -63,13 +64,19 @@ export function Nav() {
         } : undefined}
       >
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
-          {/* Left: logo */}
-          <a href="#top" className="justify-self-start flex items-center">
+          {/* Left: avatar + logo */}
+          <a href="#top" className="justify-self-start flex items-center gap-2.5">
             <img
-              src={logoImg}
+              src={avatarImg}
+              alt=""
+              aria-hidden="true"
+              className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+              style={{ boxShadow: "0 0 0 1.5px rgba(21,102,134,0.18)" }}
+            />
+            <img
+              src={logoLight}
               alt="Andrea Bonomo"
-              className="h-10 w-auto"
-              style={{ filter: "brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(500%) hue-rotate(162deg) brightness(90%)" }}
+              className="h-5 w-auto"
             />
           </a>
 
@@ -95,7 +102,7 @@ export function Nav() {
               Prenota la call conoscitiva →
             </a>
 
-            {/* Hamburger — 3 lines, right-aligned */}
+            {/* Hamburger */}
             <button
               aria-label={open ? "Chiudi menu" : "Apri menu"}
               onClick={() => open ? closeMenu() : setOpen(true)}
@@ -115,14 +122,22 @@ export function Nav() {
           className="fixed inset-0 z-[200] flex flex-col md:hidden"
           style={{ backgroundColor: "#156686", animation: `${closing ? "mobile-menu-out" : "mobile-menu-in"} 0.15s ease both` }}
         >
-          {/* Top row: logo + close — same layout as the nav bar */}
+          {/* Top row: avatar + dark logo + close */}
           <div className="container-narrow grid grid-cols-3 items-center h-16 flex-shrink-0">
-            <img
-              src={logoImg}
-              alt="Andrea Bonomo"
-              className="h-9 w-auto justify-self-start"
-              style={{ filter: "brightness(0) invert(1)" }}
-            />
+            <a href="#top" onClick={closeMenu} className="flex items-center gap-2.5">
+              <img
+                src={avatarImg}
+                alt=""
+                aria-hidden="true"
+                className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+                style={{ boxShadow: "0 0 0 1.5px rgba(255,255,255,0.25)" }}
+              />
+              <img
+                src={logoDark}
+                alt="Andrea Bonomo"
+                className="h-5 w-auto"
+              />
+            </a>
             <div />
             <div className="flex justify-end">
               <button
