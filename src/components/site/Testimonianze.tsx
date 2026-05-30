@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import r1  from "@/assets/Recensione Google My Business.png";
 import r2  from "@/assets/Recensione Google My Business 2.png";
 import r3  from "@/assets/Recensione Google My Business 3.png";
@@ -158,7 +158,12 @@ function StarField() {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
 }
 
+const PREVIEW_COUNT = 9;
+
 export function Testimonianze() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? items : items.slice(0, PREVIEW_COUNT);
+
   return (
     <section id="testimonianze" className="pt-10 md:pt-14 pb-20 md:pb-32 relative overflow-hidden">
       <StarField />
@@ -175,20 +180,38 @@ export function Testimonianze() {
           </h2>
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
-          {items.map((src, i) => (
+        {/* Grid with bottom fade when collapsed */}
+        <div className="relative">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+            {visible.map((src, i) => (
+              <div key={i} className="border-wipe break-inside-avoid mb-5 rounded-2xl">
+                <img
+                  src={src}
+                  alt={`Recensione ${i + 1}`}
+                  loading="eager"
+                  className="w-full h-auto block rounded-2xl"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Gradient fade at bottom when collapsed */}
+          {!expanded && (
             <div
-              key={i}
-              className="border-wipe break-inside-avoid mb-5 rounded-2xl"
-            >
-              <img
-                src={src}
-                alt={`Recensione ${i + 1}`}
-                loading="eager"
-                className="w-full h-auto block rounded-2xl"
-              />
-            </div>
-          ))}
+              className="absolute inset-x-0 bottom-0 h-48 pointer-events-none"
+              style={{ background: "linear-gradient(to top, white 30%, transparent)" }}
+            />
+          )}
+        </div>
+
+        {/* Expand / collapse button */}
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => setExpanded(v => !v)}
+            className="pill border border-[#156686] text-[#156686] hover:bg-[#156686] hover:text-white transition-colors duration-200 font-medium"
+          >
+            {expanded ? "Mostra meno ↑" : "Leggi tutte le recensioni →"}
+          </button>
         </div>
       </div>
     </section>

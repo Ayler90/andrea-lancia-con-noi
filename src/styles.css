@@ -329,6 +329,13 @@
 }
 
 /* Banner micro-glows */
+@keyframes footer-glow {
+  0%, 100% { transform: translate(0px,   0px);   }
+  25%       { transform: translate(180px, 60px);  }
+  50%       { transform: translate(100px, 120px); }
+  75%       { transform: translate(-80px, 50px);  }
+}
+
 @keyframes banner-drift-1 {
   0%, 100% { transform: translate(0px, 0px); }
   33%       { transform: translate(22px, -6px); }
