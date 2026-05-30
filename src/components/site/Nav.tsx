@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import logoImg from "@/assets/Logo-Grigio (1).png";
 
 const links = [
-  { href: "#chi-sono",     label: "Chi sono" },
-  { href: "#percorsi",     label: "I miei percorsi" },
-  { href: "#newsletter",   label: "Guida gratuita ai lanci" },
+  { href: "#chi-sono",      label: "Chi sono" },
+  { href: "#percorsi",      label: "I miei percorsi" },
+  { href: "#newsletter",    label: "Guida gratuita ai lanci" },
   { href: "#testimonianze", label: "Recensioni" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]         = useState(false);
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 12);
@@ -19,9 +19,15 @@ export function Nav() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
+  // Lock body scroll when overlay is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <>
-      {/* Announcement banner — normal flow, scrolls away */}
+      {/* Announcement banner */}
       <div className="bg-[#C4D9DC]">
         <div className="container-narrow py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
           <p className="text-xs sm:text-sm text-foreground/85 leading-snug">
@@ -37,7 +43,7 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Main nav — sticky, sits just below the banner then sticks at top */}
+      {/* Main nav */}
       <header
         className={`sticky top-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
           scrolled ? "border-b" : "bg-transparent"
@@ -53,10 +59,15 @@ export function Nav() {
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: logo */}
           <a href="#top" className="justify-self-start flex items-center">
-            <img src={logoImg} alt="Andrea Bonomo" className="h-10 w-auto" style={{ filter: "brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(500%) hue-rotate(162deg) brightness(90%)" }} />
+            <img
+              src={logoImg}
+              alt="Andrea Bonomo"
+              className="h-10 w-auto"
+              style={{ filter: "brightness(0) saturate(100%) invert(34%) sepia(60%) saturate(500%) hue-rotate(162deg) brightness(90%)" }}
+            />
           </a>
 
-          {/* Center: nav links */}
+          {/* Center: nav links (desktop only) */}
           <nav className="hidden md:flex items-center justify-center gap-6">
             {links.map((l) => (
               <a
@@ -69,7 +80,7 @@ export function Nav() {
             ))}
           </nav>
 
-          {/* Right: CTA button + mobile hamburger */}
+          {/* Right: CTA (desktop) + hamburger (mobile) */}
           <div className="flex items-center justify-end gap-3">
             <a
               href="#prenota"
@@ -77,43 +88,73 @@ export function Nav() {
             >
               Prenota la call conoscitiva →
             </a>
+
+            {/* Hamburger — 3 lines, right-aligned */}
             <button
-              aria-label="Menu"
+              aria-label={open ? "Chiudi menu" : "Apri menu"}
               onClick={() => setOpen((v) => !v)}
-              className="md:hidden flex flex-col gap-1.5 p-2"
+              className="md:hidden flex flex-col justify-center gap-[5px] p-2 -mr-1 z-[300] relative"
             >
-              <span className={`block w-5 h-px bg-foreground transition-transform ${open ? "translate-y-[6px] rotate-45" : ""}`} />
-              <span className={`block w-5 h-px bg-foreground transition-opacity ${open ? "opacity-0" : ""}`} />
-              <span className={`block w-5 h-px bg-foreground transition-transform ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
+              <span className="block w-6 h-[2px] bg-foreground rounded-full" />
+              <span className="block w-6 h-[2px] bg-foreground rounded-full" />
+              <span className="block w-4 h-[2px] bg-foreground rounded-full" />
             </button>
           </div>
         </div>
-
-        {open && (
-          <div
-            className="md:hidden border-t"
-            style={{
-              backgroundColor:      "rgba(255,255,255,0.72)",
-              backdropFilter:       "blur(18px) saturate(180%)",
-              WebkitBackdropFilter: "blur(18px) saturate(180%)",
-              borderColor:          "rgba(255,255,255,0.55)",
-            }}
-          >
-            <nav className="container-narrow flex flex-col py-4">
-              {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="py-3 text-base text-foreground/90 hover:text-[#156686]"
-                >
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
       </header>
+
+      {/* Fullscreen mobile overlay */}
+      {open && (
+        <div
+          className="fixed inset-0 z-[200] flex flex-col md:hidden"
+          style={{ backgroundColor: "#156686", animation: "mobile-menu-in 0.3s ease both" }}
+        >
+          {/* Top row: logo + close button */}
+          <div className="flex items-center justify-between px-6 h-16 flex-shrink-0">
+            <img
+              src={logoImg}
+              alt="Andrea Bonomo"
+              className="h-9 w-auto"
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Chiudi menu"
+              className="text-white/80 hover:text-white transition-colors p-2"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Nav links — large */}
+          <nav className="flex flex-col px-7 pt-10 gap-8 overflow-y-auto">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="h-display text-[2.6rem] font-bold text-white leading-none hover:text-white/75 transition-colors"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Bottom CTA */}
+          <div className="mt-auto px-7 pb-14 pt-8">
+            <a
+              href="#prenota"
+              onClick={() => setOpen(false)}
+              className="pill bg-white text-[#156686] font-semibold text-base block text-center"
+            >
+              Prenota la call conoscitiva →
+            </a>
+          </div>
+        </div>
+      )}
     </>
   );
 }
