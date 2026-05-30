@@ -72,7 +72,7 @@ export function Nav() {
           {/* Right: CTA button + mobile hamburger */}
           <div className="flex items-center justify-end gap-3">
             <a
-              href="#contatti"
+              href="#prenota"
               className="hidden md:inline-flex pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-xs px-4 py-2"
             >
               Prenota la call conoscitiva →
