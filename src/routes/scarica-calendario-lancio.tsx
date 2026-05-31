@@ -3,6 +3,8 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import React, { useState } from "react";
 import coverImg from "@/assets/Immagine-Calendario-di-Lancio (2) - copertina.png";
+import imgCalendario from "@/assets/calendario-di-lancio-img1.png";
+import imgPianoEditoriale from "@/assets/piano-editoriale.png";
 
 export const Route = createFileRoute("/scarica-calendario-lancio")({
   component: ScaricaCalendarioLancio,
@@ -162,7 +164,7 @@ function ScaricaCalendarioLancio() {
                 <span style={{ color: "#156686" }}>Calendario di <em>Lancio</em></span>{" "}🚀
               </h1>
 
-              <p className="text-sm md:text-base text-foreground/75 leading-relaxed mb-8 max-w-lg">
+              <p className="text-sm md:text-base text-foreground/65 leading-relaxed mb-8 max-w-lg">
                 Il template Notion che ti dà un <strong>calendario visivo del lancio</strong> e un <strong>piano editoriale completo</strong> per ogni fase. Smetti di lanciare a caso, inizia a lanciare con strategia.
               </p>
 
@@ -207,35 +209,41 @@ function ScaricaCalendarioLancio() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Un Template Notion. Due Calendari. Zero Stress di Lancio.
           </h2>
-          <p className="text-white/75 text-base max-w-xl mx-auto mb-14">
+          <p className="text-sm md:text-base text-foreground/65 leading-relaxed max-w-2xl mx-auto mb-14">
             Tutto quello che ti serve per pianificare il tuo lancio, in un unico posto.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-            {/* Card 1 */}
-            <div className="bg-white/10 backdrop-blur rounded-2xl p-6">
-              <h3 className="text-white font-bold text-lg mb-2">📅 Calendario Visivo del Lancio</h3>
-              <p className="text-white/70 text-sm leading-relaxed mb-5">
-                Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
-              </p>
-              <img
-                src={IMG_BASE + "calendario-di-lancio-1.png"}
-                alt="Vista calendario del lancio"
-                className="w-full rounded-xl shadow-md object-cover"
-              />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
+            {/* Card 1 + image */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white/10 backdrop-blur rounded-2xl p-6 w-full">
+                <h3 className="text-white font-bold text-lg mb-2">📅 Calendario Visivo del Lancio</h3>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
+                </p>
+              </div>
+              {/* Connector */}
+              <div className="flex flex-col items-center gap-0 my-1">
+                <div className="w-px h-6 bg-white/30" />
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M5 6L0 0h10L5 6z" fill="rgba(255,255,255,0.3)"/></svg>
+              </div>
+              <img src={imgCalendario} alt="Vista calendario del lancio" className="w-full rounded-xl shadow-lg" />
             </div>
 
-            {/* Card 2 */}
-            <div className="bg-white/10 backdrop-blur rounded-2xl p-6">
-              <h3 className="text-white font-bold text-lg mb-2">📝 Piano Editoriale Completo</h3>
-              <p className="text-white/70 text-sm leading-relaxed mb-5">
-                Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
-              </p>
-              <img
-                src={IMG_BASE + "calendario-di-lancio-3.png"}
-                alt="Piano editoriale del lancio"
-                className="w-full rounded-xl shadow-md object-cover"
-              />
+            {/* Card 2 + image */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white/10 backdrop-blur rounded-2xl p-6 w-full">
+                <h3 className="text-white font-bold text-lg mb-2">📝 Piano Editoriale Completo</h3>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
+                </p>
+              </div>
+              {/* Connector */}
+              <div className="flex flex-col items-center gap-0 my-1">
+                <div className="w-px h-6 bg-white/30" />
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M5 6L0 0h10L5 6z" fill="rgba(255,255,255,0.3)"/></svg>
+              </div>
+              <img src={imgPianoEditoriale} alt="Piano editoriale del lancio" className="w-full rounded-xl shadow-lg" />
             </div>
           </div>
         </div>
