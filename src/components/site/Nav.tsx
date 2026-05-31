@@ -194,7 +194,13 @@ export function Nav() {
                     {p.href ? (
                       <a
                         href={p.href}
-                        onClick={closeMenu}
+                        onClick={(e) => {
+                          if (window.location.pathname === p.href) {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                          closeMenu();
+                        }}
                         className="text-left text-sm font-medium text-white/60 hover:text-white/90 transition-colors leading-snug"
                       >
                         {p.label}

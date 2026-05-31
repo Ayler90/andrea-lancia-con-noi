@@ -93,7 +93,16 @@ export function Footer() {
               {corsi.map((l) => (
                 <li key={l.label}>
                   {l.href ? (
-                    <a href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                    <a
+                      href={l.href}
+                      onClick={(e) => {
+                        if (window.location.pathname === l.href) {
+                          e.preventDefault();
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                      }}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
                       {l.label}
                     </a>
                   ) : (
