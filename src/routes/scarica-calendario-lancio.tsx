@@ -127,24 +127,30 @@ function Carousel() {
 
 function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
   return (
-    <div className={`filter-btn rounded-2xl${open ? " is-active" : ""}`}>
+    <div className={`filter-btn faq-item rounded-2xl${open ? " is-active" : ""}`} style={{ transition: "box-shadow 0.35s ease, transform 0.35s ease" }}>
       <button
         onClick={onToggle}
-        className={`w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base${open ? " text-white" : ""}`}
+        className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base text-foreground"
       >
         {q}
         <svg
           width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
-          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0, marginLeft: 16 }}
+          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.35s ease", flexShrink: 0, marginLeft: 16 }}
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
-      {open && (
-        <div className="px-6 pb-5 text-sm text-white/80 leading-relaxed">
+      <div
+        style={{
+          maxHeight: open ? "300px" : "0px",
+          overflow: "hidden",
+          transition: "max-height 0.4s ease",
+        }}
+      >
+        <div className="px-6 pb-5 text-sm text-foreground/65 leading-relaxed">
           {a}
         </div>
-      )}
+      </div>
     </div>
   );
 }

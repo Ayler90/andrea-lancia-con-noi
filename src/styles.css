@@ -262,6 +262,17 @@
   display: none;
 }
 
+/* FAQ accordion: active = teal border only, white background */
+.faq-item.is-active {
+  background: white;
+  box-shadow: 0 0 0 1.5px #156686;
+  transform: none;
+}
+.faq-item.is-active::before {
+  display: block;
+  clip-path: inset(-2px -2px -2px -2px round calc(var(--radius-2xl) + 1.5px));
+}
+
 
 @keyframes pill-glow-pulse {
   0%, 100% { opacity: 0;   transform: translate(-50%, -50%) scale(0.4); }
