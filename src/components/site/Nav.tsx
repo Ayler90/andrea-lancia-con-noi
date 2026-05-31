@@ -169,7 +169,7 @@ export function Nav() {
           </div>
 
           {/* Nav links */}
-          <nav className="flex flex-col px-7 pt-6 gap-6 overflow-y-auto pb-10">
+          <nav className="flex-1 min-h-0 flex flex-col px-7 pt-6 gap-6 overflow-y-auto pb-6">
 
             {/* Chi sono */}
             <a href="/#chi-sono" onClick={closeMenu}
