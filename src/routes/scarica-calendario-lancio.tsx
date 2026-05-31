@@ -225,7 +225,7 @@ function ScaricaCalendarioLancio() {
             {/* Card 1 + line + image */}
             <div className="flex flex-col items-center">
               <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "#EEF3F5", border: "1px solid rgba(196,217,220,0.5)" }}>
-                <h3 className="font-bold text-lg mb-2 text-[#156686]">📅 Calendario Visivo del Lancio</h3>
+                <h3 className="font-bold text-lg mb-2 text-foreground">📅 Calendario <em className="text-[#156686]">Visivo</em> del Lancio</h3>
                 <p className="text-sm text-foreground/85 leading-relaxed">
                   Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
                 </p>
@@ -252,7 +252,7 @@ function ScaricaCalendarioLancio() {
             {/* Card 2 + line + image */}
             <div className="flex flex-col items-center">
               <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "#EEF3F5", border: "1px solid rgba(196,217,220,0.5)" }}>
-                <h3 className="font-bold text-lg mb-2 text-[#156686]">📝 Piano Editoriale Completo</h3>
+                <h3 className="font-bold text-lg mb-2 text-foreground">📝 Piano Editoriale <em className="text-[#156686]">Completo</em></h3>
                 <p className="text-sm text-foreground/85 leading-relaxed">
                   Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
                 </p>
