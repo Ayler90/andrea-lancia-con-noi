@@ -530,6 +530,10 @@
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+@keyframes text-glow-float {
+  0%, 100% { background-position: 50% 160%; }
+  50%       { background-position: 50% -60%; }
+}
 
 #mlb2-41923213 .ml-form-successBody {
   padding: 1.5rem;

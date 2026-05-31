@@ -9,18 +9,19 @@ function NotFoundComponent() {
       <Nav />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-24 text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#156686] mb-4">Errore 404</p>
-        <h1
-          className="h-display font-bold mb-6"
-          style={{
-            fontSize: "clamp(2.5rem, 8vw, 6rem)",
-            lineHeight: 1.1,
-            background: "radial-gradient(ellipse at 50% 120%, #7dd4e8 0%, #156686 35%, #0c2330 68%)",
+        <h1 className="h-display font-bold mb-6" style={{ fontSize: "clamp(1.8rem, 5vw, 3.5rem)", lineHeight: 1.2 }}>
+          <span>🤔 </span>
+          <span style={{
+            background: "radial-gradient(ellipse at 50% 50%, #a8e6f0 0%, #156686 35%, #0c2330 65%)",
+            backgroundSize: "100% 300%",
+            backgroundPosition: "50% 160%",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-          }}
-        >
-          🤔 mmm, questa pagina non c'è.
+            animation: "text-glow-float 3.5s ease-in-out infinite",
+          }}>
+            mmm, questa pagina non c'è.
+          </span>
         </h1>
         <p className="text-base md:text-lg text-foreground/60 max-w-md mb-10 leading-relaxed">
           La pagina che stai cercando non esiste o è stata spostata.<br />
