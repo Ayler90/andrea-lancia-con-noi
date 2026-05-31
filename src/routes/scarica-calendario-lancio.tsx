@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import React, { useState } from "react";
-import coverImg from "@/assets/Calendario di lancio.jpg";
+import coverImg from "@/assets/Immagine-Calendario-di-Lancio (2) - copertina.png";
 
 export const Route = createFileRoute("/scarica-calendario-lancio")({
   component: ScaricaCalendarioLancio,
@@ -147,26 +147,19 @@ function ScaricaCalendarioLancio() {
 
       {/* ── HERO ── */}
       <section className="pt-16 pb-16 md:pt-24 md:pb-20 px-4">
-        <div className="container-narrow max-w-5xl mx-auto">
+        <div className="mx-auto w-full max-w-6xl">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
             {/* Left: copy */}
             <div className="flex-1 min-w-0">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-xs font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+              <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
                 Template Notion · Accesso Immediato
               </div>
 
-              <h1 className="h-display leading-[1.1] mb-6">
-                <span className="block text-[1.625rem] sm:text-[2rem] md:text-[2.375rem] font-bold">
-                  Acquista il
-                </span>
-                <em className="block text-[2.25rem] sm:text-[2.875rem] md:text-[3.5rem] not-italic font-bold" style={{ color: "#156686" }}>
-                  Calendario di
-                </em>
-                <span className="block text-[2.25rem] sm:text-[2.875rem] md:text-[3.5rem] font-bold">
-                  <em style={{ fontStyle: "italic" }}>Lancio</em> 🚀
-                </span>
+              <h1 className="h-display font-bold leading-[1.1] mb-6 text-[clamp(2rem,4.5vw,3.25rem)] whitespace-nowrap">
+                Acquista il{" "}
+                <span style={{ color: "#156686" }}>Calendario di <em>Lancio</em></span>{" "}🚀
               </h1>
 
               <p className="text-base md:text-lg text-foreground/65 leading-relaxed mb-8 max-w-lg">
