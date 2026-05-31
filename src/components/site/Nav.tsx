@@ -169,7 +169,7 @@ export function Nav() {
           </div>
 
           {/* Nav links */}
-          <nav className="flex flex-col px-7 pt-10 gap-6 overflow-y-auto pb-4">
+          <nav className="flex flex-col px-7 pt-10 gap-6 overflow-y-auto pb-10">
 
             {/* Chi sono */}
             <a href="/#chi-sono" onClick={closeMenu}
@@ -201,7 +201,7 @@ export function Nav() {
             <a href="/#newsletter" onClick={closeMenu}
               className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors flex items-center gap-3 flex-wrap">
               Guida gratuita ai lanci
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/15 text-white px-2.5 py-1 rounded-full leading-none">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest bg-white/15 text-white px-2.5 py-1 rounded-full leading-none">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(52,211,153,0.8)" }} />
                 Gratis
               </span>
