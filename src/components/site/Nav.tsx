@@ -41,10 +41,11 @@ export function Nav() {
             per creare il tuo primo, o prossimo, lancio.
           </p>
           <a
-            href="#newsletter"
-            className="flex-shrink-0 text-xs font-semibold bg-foreground text-background px-4 py-1.5 rounded-full hover:bg-[#156686] hover:text-white transition-colors whitespace-nowrap"
+            href="/#newsletter"
+            className="flex-shrink-0 inline-flex items-center gap-1 text-xs font-semibold bg-primary text-primary-foreground px-4 py-1.5 rounded-full hover:bg-primary/90 transition-colors whitespace-nowrap"
           >
-            Scarica ora →
+            Scarica ora
+            <span style={{ display: "inline-block", animation: "arrow-nudge 2.4s ease-in-out infinite" }}>→</span>
           </a>
         </div>
       </div>

@@ -535,6 +535,13 @@
   50%       { background-position: 150% 50%; }
 }
 
+@keyframes arrow-nudge {
+  0%,  35%, 100% { transform: translateX(0); }
+  10%            { transform: translateX(5px); }
+  20%            { transform: translateX(0); }
+  30%            { transform: translateX(5px); }
+}
+
 #mlb2-41923213 .ml-form-successBody {
   padding: 1.5rem;
   background: rgba(255,255,255,0.1);
