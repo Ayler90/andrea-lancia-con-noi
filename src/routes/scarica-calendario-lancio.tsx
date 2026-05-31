@@ -125,13 +125,12 @@ function Carousel() {
   );
 }
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
+function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
   return (
-    <div className="filter-btn rounded-2xl">
+    <div className={`filter-btn rounded-2xl${open ? " is-active" : ""}`}>
       <button
-        onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base"
+        onClick={onToggle}
+        className={`w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base${open ? " text-white" : ""}`}
       >
         {q}
         <svg
@@ -142,11 +141,44 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         </svg>
       </button>
       {open && (
-        <div className="px-6 pb-5 text-sm text-foreground/65 leading-relaxed">
+        <div className="px-6 pb-5 text-sm text-white/80 leading-relaxed">
           {a}
         </div>
       )}
     </div>
+  );
+}
+
+function FaqSection() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  return (
+    <section className="py-16 md:py-20 px-4">
+      <div className="container-narrow max-w-4xl mx-auto">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3 text-center">Hai dubbi?</p>
+        <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-10 text-center">Domande frequenti</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <FaqItem
+              key={faq.q}
+              q={faq.q}
+              a={faq.a}
+              open={activeIndex === i}
+              onToggle={() => setActiveIndex(activeIndex === i ? null : i)}
+            />
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <a
+            href={PURCHASE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-8 py-3.5 inline-flex"
+          >
+            Acquista ora a 2,99€ →
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -369,27 +401,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-16 md:py-20 px-4">
-        <div className="container-narrow max-w-4xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3 text-center">Hai dubbi?</p>
-          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-10 text-center">Domande frequenti</h2>
-          <div className="space-y-4">
-            {faqs.map((faq) => (
-              <FaqItem key={faq.q} q={faq.q} a={faq.a} />
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <a
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-8 py-3.5 inline-flex"
-            >
-              Acquista ora a 2,99€ →
-            </a>
-          </div>
-        </div>
-      </section>
+      <FaqSection />
 
       {/* ── CHI SONO ── */}
       <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} />
