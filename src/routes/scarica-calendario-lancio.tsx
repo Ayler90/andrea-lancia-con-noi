@@ -209,33 +209,31 @@ function ScaricaCalendarioLancio() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Un Template Notion. Due Calendari. Zero Stress di Lancio.
           </h2>
-          <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-14" style={{ color: "#146686" }}>
+          <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-14" style={{ color: "#f0f0f0" }}>
             Tutto quello che ti serve per pianificare il tuo lancio, in un unico posto.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
             {/* Card 1 + image */}
-            <div className="flex flex-col items-center">
-              <div className="rounded-2xl p-6 w-full" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)" }}>
+            <div className="flex flex-col gap-8">
+              <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)" }}>
                 <h3 className="text-white font-bold text-lg mb-2">📅 Calendario Visivo del Lancio</h3>
                 <p className="text-white/80 text-sm leading-relaxed">
                   Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
                 </p>
               </div>
-              <div className="w-px h-8 bg-white/30 my-1" />
-              <img src={imgCalendario} alt="Vista calendario del lancio" className="w-full rounded-xl" style={{ animation: "img-float 5s ease-in-out infinite", boxShadow: "0 0 32px rgba(20,102,134,0.25)" }} />
+              <img src={imgCalendario} alt="Vista calendario del lancio" className="w-full rounded-xl" style={{ animation: "img-float 5s ease-in-out infinite", filter: "drop-shadow(0 24px 32px rgba(20,102,134,0.45))" }} />
             </div>
 
             {/* Card 2 + image */}
-            <div className="flex flex-col items-center">
-              <div className="rounded-2xl p-6 w-full" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)" }}>
+            <div className="flex flex-col gap-8">
+              <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)" }}>
                 <h3 className="text-white font-bold text-lg mb-2">📝 Piano Editoriale Completo</h3>
                 <p className="text-white/80 text-sm leading-relaxed">
                   Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
                 </p>
               </div>
-              <div className="w-px h-8 bg-white/30 my-1" />
-              <img src={imgPianoEditoriale} alt="Piano editoriale del lancio" className="w-full rounded-xl" style={{ animation: "img-float 5s ease-in-out infinite 0.8s", boxShadow: "0 0 32px rgba(20,102,134,0.25)" }} />
+              <img src={imgPianoEditoriale} alt="Piano editoriale del lancio" className="w-full rounded-xl" style={{ animation: "img-float 5s ease-in-out infinite", animationDelay: "0.8s", filter: "drop-shadow(0 24px 32px rgba(20,102,134,0.45))" }} />
             </div>
           </div>
         </div>
