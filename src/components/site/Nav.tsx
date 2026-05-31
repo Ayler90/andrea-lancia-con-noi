@@ -3,10 +3,10 @@ import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 import { LogoText } from "./LogoText";
 
 const links = [
-  { href: "#chi-sono",      label: "Chi sono" },
-  { href: "#percorsi",      label: "I miei percorsi" },
-  { href: "#newsletter",    label: "Guida gratuita ai lanci" },
-  { href: "#testimonianze", label: "Recensioni" },
+  { href: "/#chi-sono",      label: "Chi sono" },
+  { href: "/#percorsi",      label: "I miei percorsi" },
+  { href: "/#newsletter",    label: "Guida gratuita ai lanci" },
+  { href: "/#testimonianze", label: "Recensioni" },
 ];
 
 export function Nav() {
@@ -64,7 +64,7 @@ export function Nav() {
       >
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: avatar + logo */}
-          <a href="#top" className="justify-self-start flex items-center gap-2.5 min-w-0">
+          <a href="/" className="justify-self-start flex items-center gap-2.5 min-w-0">
             <img
               src={avatarImg}
               alt=""
@@ -90,7 +90,7 @@ export function Nav() {
           {/* Right: CTA (desktop) + hamburger (mobile) */}
           <div className="flex items-center justify-end gap-3 col-start-3">
             <a
-              href="#prenota"
+              href="/#prenota"
               className="hidden md:inline-flex pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-xs px-4 py-2"
             >
               Prenota la call conoscitiva →
@@ -118,7 +118,7 @@ export function Nav() {
         >
           {/* Top row: avatar + dark logo + close */}
           <div className="container-narrow grid grid-cols-3 items-center h-16 flex-shrink-0">
-            <a href="#top" onClick={closeMenu} className="flex items-center gap-2.5">
+            <a href="/" onClick={closeMenu} className="flex items-center gap-2.5">
               <img
                 src={avatarImg}
                 alt=""
@@ -159,7 +159,7 @@ export function Nav() {
           {/* Bottom CTA */}
           <div className="mt-auto px-7 pb-14 pt-8">
             <a
-              href="#prenota"
+              href="/#prenota"
               onClick={closeMenu}
               className="pill bg-white text-[#156686] font-semibold text-base block text-center"
             >
