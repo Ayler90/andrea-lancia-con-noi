@@ -25,10 +25,10 @@ function goToPercorso(e: React.MouseEvent, filter: string, slug: string) {
 }
 
 const sito = [
-  { href: "#chi-sono",      label: "Chi sono" },
-  { href: "#percorsi",      label: "I miei percorsi" },
-  { href: "#newsletter",    label: "Guida gratuita ai lanci" },
-  { href: "#testimonianze", label: "Recensioni" },
+  { href: "/#chi-sono",      label: "Chi sono" },
+  { href: "/#percorsi",      label: "I miei percorsi" },
+  { href: "/#newsletter",    label: "Guida gratuita ai lanci" },
+  { href: "/#testimonianze", label: "Recensioni" },
 ];
 
 export function Footer() {

@@ -16,6 +16,7 @@ type Percorso = {
   bullets: string[];
   cta: string;
   ctaHref: string;
+  external?: boolean;
   image: string;
   bg: string;
 };
@@ -44,7 +45,8 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "Il template completo per organizzare il tuo lancio in autonomia: calendario settimana per settimana e script delle email pronti da usare.",
       bullets: ["Calendario di lancio strutturato", "Script email pronti all'uso", "Timeline fase per fase", "Accesso immediato"],
       cta: "Acquista il calendario ora",
-      ctaHref: "https://andreabonomo.it/scarica-calendario-lancio/",
+      ctaHref: "/scarica-calendario-lancio",
+      external: false,
       image: p1,
       bg: "bg-[#C4D9DC]",
     },
@@ -260,8 +262,7 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
           <div className="mt-auto pt-10 relative z-10">
             <a
               href={percorso.ctaHref}
-              target="_blank"
-              rel="noreferrer"
+              {...(percorso.external !== false && { target: "_blank", rel: "noreferrer" })}
               className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
             >
               {percorso.cta} →
