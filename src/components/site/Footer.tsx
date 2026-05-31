@@ -1,4 +1,5 @@
 import { LogoText } from "./LogoText";
+import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 
 const percorsi = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
@@ -42,7 +43,10 @@ export function Footer() {
 
           {/* Logo + motto + Instagram */}
           <div>
-            <div className="mb-6"><LogoText dark /></div>
+            <div className="flex items-center gap-2.5 mb-6">
+              <img src={avatarImg} alt="" aria-hidden="true" className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+              <LogoText dark />
+            </div>
             <p className="text-sm text-white/65 leading-relaxed max-w-xs mb-5">
               Lanciamo la tua prossima offerta,<br />senza ansia e senza stress.
             </p>
