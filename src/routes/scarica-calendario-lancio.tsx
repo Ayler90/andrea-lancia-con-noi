@@ -140,11 +140,11 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
-      {open && (
+      <div style={{ maxHeight: open ? "300px" : "0px", overflow: "hidden", transition: open ? "max-height 0.4s ease" : "none" }}>
         <div className="px-6 pb-5 text-sm text-foreground/65 leading-relaxed">
           {a}
         </div>
-      )}
+      </div>
     </div>
   );
 }
