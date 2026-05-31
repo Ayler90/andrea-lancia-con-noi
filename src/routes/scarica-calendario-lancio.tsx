@@ -215,7 +215,7 @@ function ScaricaCalendarioLancio() {
       <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Un Template Notion. Due Calendari. Zero Stress di Lancio.
+            Un Template Notion. Due Calendari. Zero Stress di <em className="h-display" style={{ color: "#C4D9DC" }}>Lancio.</em>
           </h2>
           <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-14" style={{ color: "#f0f0f0" }}>
             Tutto quello che ti serve per pianificare il tuo lancio, in un unico posto.
@@ -225,7 +225,7 @@ function ScaricaCalendarioLancio() {
             {/* Card 1 + line + image */}
             <div className="flex flex-col items-center">
               <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "#EEF3F5", border: "1px solid rgba(196,217,220,0.5)" }}>
-                <h3 className="font-bold text-lg mb-2 text-foreground">📅 Calendario <em className="text-[#156686]">Visivo</em> del Lancio</h3>
+                <h3 className="font-bold text-lg mb-2 text-foreground">📅 Calendario Visivo del Lancio</h3>
                 <p className="text-sm text-foreground/85 leading-relaxed">
                   Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
                 </p>
@@ -252,7 +252,7 @@ function ScaricaCalendarioLancio() {
             {/* Card 2 + line + image */}
             <div className="flex flex-col items-center">
               <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "#EEF3F5", border: "1px solid rgba(196,217,220,0.5)" }}>
-                <h3 className="font-bold text-lg mb-2 text-foreground">📝 Piano Editoriale <em className="text-[#156686]">Completo</em></h3>
+                <h3 className="font-bold text-lg mb-2 text-foreground">📝 Piano Editoriale Completo</h3>
                 <p className="text-sm text-foreground/85 leading-relaxed">
                   Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
                 </p>
