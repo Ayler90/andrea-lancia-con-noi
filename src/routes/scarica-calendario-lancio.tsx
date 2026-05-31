@@ -212,26 +212,26 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── FEATURES BAND ── */}
-      <section className="py-16 md:py-20 px-4 bg-[#f0f7f9]">
+      <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Un Template Notion. Due Calendari. Zero Stress di Lancio.
           </h2>
-          <p className="text-sm md:text-base text-foreground/85 leading-relaxed max-w-2xl mx-auto mb-14">
+          <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-14" style={{ color: "#f0f0f0" }}>
             Tutto quello che ti serve per pianificare il tuo lancio, in un unico posto.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
             {/* Card 1 + line + image */}
             <div className="flex flex-col items-center">
-              <div className="w-full rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15">
-                <h3 className="font-bold text-lg mb-2 text-foreground">📅 Calendario Visivo del Lancio</h3>
-                <p className="text-sm text-foreground/85 leading-relaxed">
+              <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)", backdropFilter: "blur(8px)" }}>
+                <h3 className="font-bold text-lg mb-2 text-white">📅 Calendario Visivo del Lancio</h3>
+                <p className="text-sm text-white/80 leading-relaxed">
                   Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
                 </p>
               </div>
               {/* Connector */}
-              <div className="w-px h-10 bg-[#156686]/30" />
+              <div className="w-px h-16 bg-white/30 my-2" />
               {/* Image + glow */}
               <div className="relative w-full">
                 <img
@@ -251,14 +251,14 @@ function ScaricaCalendarioLancio() {
 
             {/* Card 2 + line + image */}
             <div className="flex flex-col items-center">
-              <div className="w-full rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15">
-                <h3 className="font-bold text-lg mb-2 text-foreground">📝 Piano Editoriale Completo</h3>
-                <p className="text-sm text-foreground/85 leading-relaxed">
+              <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)", backdropFilter: "blur(8px)" }}>
+                <h3 className="font-bold text-lg mb-2 text-white">📝 Piano Editoriale Completo</h3>
+                <p className="text-sm text-white/80 leading-relaxed">
                   Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
                 </p>
               </div>
               {/* Connector */}
-              <div className="w-px h-10 bg-[#156686]/30" />
+              <div className="w-px h-16 bg-white/30 my-2" />
               {/* Image + glow, tilted right */}
               <div className="relative w-full" style={{ transform: "rotate(3deg) translateY(12px)" }}>
                 <img
