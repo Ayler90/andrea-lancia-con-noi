@@ -164,7 +164,7 @@ function ScaricaCalendarioLancio() {
                 <span style={{ color: "#156686" }}>Calendario di <em>Lancio</em></span>{" "}🚀
               </h1>
 
-              <p className="text-sm md:text-base text-foreground/65 leading-relaxed mb-8 max-w-lg">
+              <p className="text-sm md:text-base text-foreground/85 leading-relaxed mb-8 max-w-lg">
                 Il template Notion che ti dà un <strong>calendario visivo del lancio</strong> e un <strong>piano editoriale completo</strong> per ogni fase. Smetti di lanciare a caso, inizia a lanciare con strategia.
               </p>
 
@@ -204,7 +204,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── TEAL BAND ── */}
-      <section style={{ backgroundColor: "#6C9FA8" }} className="py-16 md:py-20 px-4">
+      <section style={{ backgroundColor: "#146686" }} className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Un Template Notion. Due Calendari. Zero Stress di Lancio.
