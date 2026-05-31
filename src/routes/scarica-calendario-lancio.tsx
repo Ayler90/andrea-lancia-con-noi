@@ -128,10 +128,10 @@ function Carousel() {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border border-foreground/10 rounded-xl overflow-hidden">
+    <div className="filter-btn rounded-2xl overflow-hidden">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base hover:bg-foreground/[0.03] transition-colors"
+        className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base"
       >
         {q}
         <svg
@@ -363,21 +363,12 @@ function ScaricaCalendarioLancio() {
         </div>
       </section>
 
-      {/* ── CHI SONO ── */}
-      <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} />
-
-      {/* ── TESTIMONIANZE ── */}
-      <Testimonianze />
-
-      {/* ── NEWSLETTER ── */}
-      <Newsletter />
-
       {/* ── FAQ ── */}
       <section className="py-16 md:py-20 px-4">
-        <div className="container-narrow max-w-2xl mx-auto">
+        <div className="container-narrow max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3 text-center">Hai dubbi?</p>
           <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-10 text-center">Domande frequenti</h2>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {faqs.map((faq) => (
               <FaqItem key={faq.q} q={faq.q} a={faq.a} />
             ))}
@@ -394,6 +385,15 @@ function ScaricaCalendarioLancio() {
           </div>
         </div>
       </section>
+
+      {/* ── CHI SONO ── */}
+      <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} />
+
+      {/* ── TESTIMONIANZE ── */}
+      <Testimonianze />
+
+      {/* ── NEWSLETTER ── */}
+      <Newsletter />
 
       <Footer />
     </div>
