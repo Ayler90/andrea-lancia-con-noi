@@ -224,7 +224,7 @@ function ScaricaCalendarioLancio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
             {/* Card 1 + line + image */}
             <div className="flex flex-col items-center">
-              <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)", backdropFilter: "blur(8px)" }}>
+              <div className="w-full rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15" style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}>
                 <h3 className="font-bold text-lg mb-2 text-white">📅 Calendario Visivo del Lancio</h3>
                 <p className="text-sm text-white/80 leading-relaxed">
                   Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
@@ -251,7 +251,7 @@ function ScaricaCalendarioLancio() {
 
             {/* Card 2 + line + image */}
             <div className="flex flex-col items-center">
-              <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)", backdropFilter: "blur(8px)" }}>
+              <div className="w-full rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15" style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}>
                 <h3 className="font-bold text-lg mb-2 text-white">📝 Piano Editoriale Completo</h3>
                 <p className="text-sm text-white/80 leading-relaxed">
                   Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
