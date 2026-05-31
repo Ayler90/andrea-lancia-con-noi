@@ -169,7 +169,7 @@ export function Nav() {
           </div>
 
           {/* Nav links */}
-          <nav className="flex-1 min-h-0 flex flex-col px-7 pt-6 gap-6 overflow-y-auto pb-6">
+          <nav className="flex-1 min-h-0 flex flex-col px-7 pt-4 gap-4 overflow-y-auto pb-4">
 
             {/* Chi sono */}
             <a href="/#chi-sono" onClick={closeMenu}
@@ -183,7 +183,7 @@ export function Nav() {
                 className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors">
                 I miei percorsi
               </a>
-              <ul className="mt-3.5 flex flex-col gap-2.5 pl-4 border-l-2 border-white/20 ml-1">
+              <ul className="mt-2 flex flex-col gap-1.5 pl-4 border-l-2 border-white/20 ml-1">
                 {percorsiSub.map((p) => (
                   <li key={p.slug}>
                     <button
