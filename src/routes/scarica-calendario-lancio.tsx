@@ -78,7 +78,7 @@ function Carousel() {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto">
-      <div className="overflow-hidden rounded-2xl shadow-xl">
+      <div className="overflow-hidden rounded-lg shadow-xl">
         <img
           src={carouselImages[current].src}
           alt={carouselImages[current].alt}
