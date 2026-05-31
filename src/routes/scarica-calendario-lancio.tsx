@@ -337,20 +337,21 @@ function ScaricaCalendarioLancio() {
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
         <div className="container-narrow max-w-6xl mx-auto relative z-10">
-          <div className="flex items-start gap-6 md:gap-10">
+          <div className="relative max-w-4xl mx-auto">
 
-            {/* Annotation — visible only on desktop, outside the white card */}
-            <div className="hidden md:flex flex-col items-end pt-14 w-44 flex-shrink-0" data-cursor-light>
-              <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.3, textAlign: "right", display: "block" }}>
+            {/* Annotation — absolutely to the left of the centered card */}
+            <div className="hidden md:block absolute right-full top-8 pr-6 w-48" data-cursor-light>
+              <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.35, display: "block", transform: "rotate(-6deg)", transformOrigin: "center top" }}>
                 Pronto a organizzare al meglio i tuoi lanci?
               </span>
-              <svg width="70" height="44" viewBox="0 0 70 44" fill="none" className="mt-2" style={{ transform: "scaleX(-1)" }}>
-                <path d="M66 4 C55 2, 20 2, 6 36" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
-                <path d="M14 30 L6 36 L16 38" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              {/* Arrow: starts below text, goes down then curves right toward cover image */}
+              <svg width="90" height="70" viewBox="0 0 90 70" fill="none" className="mt-2 ml-8">
+                <path d="M 20 4 C 18 22, 22 42, 82 62" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <path d="M 70 54 L 82 62 L 74 52" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
               </svg>
             </div>
 
-          <div className="flex-1 bg-white rounded-xl overflow-hidden px-10 md:px-14 pt-12 pb-12" data-cursor-dark>
+          <div className="bg-white rounded-xl overflow-hidden px-10 md:px-14 pt-12 pb-12" data-cursor-dark>
 
             {/* Top: image left + header right */}
             <div className="flex items-start gap-8 mb-10">
@@ -410,7 +411,7 @@ function ScaricaCalendarioLancio() {
               </div>
             </div>
           </div>
-          </div>{/* end flex wrapper */}
+          </div>{/* end relative card wrapper */}
         </div>
       </section>
 
