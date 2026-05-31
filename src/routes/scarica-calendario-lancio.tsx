@@ -327,7 +327,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── PURCHASE ── */}
-      <section id="form" className="py-16 md:py-20 px-4 bg-foreground relative overflow-hidden" data-cursor-light>
+      <section id="form" className="py-16 md:py-20 px-2 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
         {/* Glow orbs */}
         <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
           style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
@@ -364,14 +364,17 @@ function ScaricaCalendarioLancio() {
             <div className="bg-white rounded-xl overflow-hidden" data-cursor-dark>
 
               {/* ── MOBILE layout: single centered column ── */}
-              <div className="md:hidden px-8 pt-6 pb-10 text-center">
-                <img src={coverImg} alt="Anteprima Calendario di Lancio" className="w-44 mx-auto mb-3" style={{ animation: "img-float 5s ease-in-out infinite" }} />
-                <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
-                  Accesso immediato
+              <div className="md:hidden pt-6 pb-10 text-center">
+                <div className="px-12">
+                  <img src={coverImg} alt="Anteprima Calendario di Lancio" className="w-44 mx-auto mb-3" style={{ animation: "img-float 5s ease-in-out infinite" }} />
+                  <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+                    Accesso immediato
+                  </div>
+                  <h2 className="h-display text-3xl mb-1">Calendario di <em className="text-[#156686]">Lancio</em></h2>
+                  <p className="text-foreground/60 text-sm mb-7">Template Notion – accesso immediato dopo l'acquisto</p>
                 </div>
-                <h2 className="h-display text-3xl mb-1">Calendario di <em className="text-[#156686]">Lancio</em></h2>
-                <p className="text-foreground/60 text-sm mb-7">Template Notion – accesso immediato dopo l'acquisto</p>
+                <div className="px-8">
                 <div className="flex items-baseline gap-2 justify-center mb-10">
                   <span className="text-5xl font-bold text-[#156686]">2,99€</span>
                   <span className="text-foreground/40 text-sm">una tantum</span>
@@ -388,6 +391,7 @@ function ScaricaCalendarioLancio() {
                   Acquista ora a 2,99€ →
                 </a>
                 <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro. Accesso immediato.</p>
+                </div>
               </div>
 
               {/* ── DESKTOP layout: image+header top, checklist|divider|price bottom ── */}
