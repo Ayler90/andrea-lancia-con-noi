@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
+import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
   id: '/scarica-calendario-lancio',
   path: '/scarica-calendario-lancio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EasyMailPackRoute = EasyMailPackRouteImport.update({
+  id: '/easy-mail-pack',
+  path: '/easy-mail-pack',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/scarica-calendario-lancio'
+  fullPaths: '/' | '/easy-mail-pack' | '/scarica-calendario-lancio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/scarica-calendario-lancio'
-  id: '__root__' | '/' | '/scarica-calendario-lancio'
+  to: '/' | '/easy-mail-pack' | '/scarica-calendario-lancio'
+  id: '__root__' | '/' | '/easy-mail-pack' | '/scarica-calendario-lancio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EasyMailPackRoute: typeof EasyMailPackRoute
   ScaricaCalendarioLancioRoute: typeof ScaricaCalendarioLancioRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/scarica-calendario-lancio'
       fullPath: '/scarica-calendario-lancio'
       preLoaderRoute: typeof ScaricaCalendarioLancioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/easy-mail-pack': {
+      id: '/easy-mail-pack'
+      path: '/easy-mail-pack'
+      fullPath: '/easy-mail-pack'
+      preLoaderRoute: typeof EasyMailPackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EasyMailPackRoute: EasyMailPackRoute,
   ScaricaCalendarioLancioRoute: ScaricaCalendarioLancioRoute,
 }
 export const routeTree = rootRouteImport
