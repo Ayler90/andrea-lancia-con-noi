@@ -13,6 +13,10 @@ const percorsiSub = [
 
 function goToPercorso(filter: string, slug: string, onClose: () => void) {
   onClose();
+  if (window.location.pathname !== "/") {
+    window.location.href = "/#percorsi";
+    return;
+  }
   window.dispatchEvent(new CustomEvent("percorso-select", { detail: filter }));
   setTimeout(() => {
     const el = document.getElementById(`percorso-${slug}`);

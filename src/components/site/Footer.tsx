@@ -15,8 +15,11 @@ const corsi = [
 
 function goToPercorso(e: React.MouseEvent, filter: string, slug: string) {
   e.preventDefault();
+  if (window.location.pathname !== "/") {
+    window.location.href = "/#percorsi";
+    return;
+  }
   window.dispatchEvent(new CustomEvent("percorso-select", { detail: filter }));
-  // Wait one frame for React to re-render the correct percorso boxes, then scroll
   setTimeout(() => {
     const el = document.getElementById(`percorso-${slug}`);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
