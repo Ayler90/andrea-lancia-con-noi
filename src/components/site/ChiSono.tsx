@@ -51,7 +51,7 @@ export function ChiSono() {
           <p className="text-sm md:text-base leading-relaxed text-foreground/85">
             Gestisco lanci da <strong>oltre 6 anni</strong> e, conti alla mano, ne ho gestiti{" "}
             <strong>50+</strong> per coach, consulenti e creator, generando più di{" "}
-            <strong>700.000€ di fatturato totale</strong> per i miei clienti.
+            <strong>500.000€ di fatturato totale</strong> per i miei clienti.
           </p>
           <p className="mt-5 text-sm md:text-base leading-relaxed text-foreground/85">
             Il mio lavoro è semplice: prendo la tua offerta, costruiamo{" "}
@@ -77,7 +77,7 @@ export function ChiSono() {
               </p>
             </div>
             <div>
-              <p className="h-display text-3xl md:text-4xl text-[#156686]">700k€</p>
+              <p className="h-display text-3xl md:text-4xl text-[#156686]">500k€</p>
               <p className="text-xs text-muted-foreground mt-2 uppercase tracking-wider">
                 Fatturato generato
               </p>
