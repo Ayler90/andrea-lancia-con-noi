@@ -14,7 +14,7 @@ const settori = [
 export function ChiSono({ ctaText = "Scopri i miei percorsi →", ctaHref = "#percorsi" }: { ctaText?: string; ctaHref?: string }) {
   return (
     <section id="chi-sono" className="py-20 md:py-28">
-      <div className="max-w-[1360px] mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+      <div className="max-w-[1360px] mx-auto px-6 md:px-8 flex flex-col md:flex-row gap-6 md:gap-8 items-center">
 
       {/* LEFT column */}
       <div className="md:w-[45%] flex-shrink-0 w-full flex flex-col">
