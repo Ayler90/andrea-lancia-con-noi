@@ -192,19 +192,19 @@ export function Nav() {
                 {percorsiSub.map((p) => (
                   <li key={p.slug}>
                     {p.href ? (
-                      <a
-                        href={p.href}
-                        onClick={(e) => {
-                          if (window.location.pathname === p.href) {
-                            e.preventDefault();
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }
+                      <button
+                        onClick={() => {
                           closeMenu();
+                          if (window.location.pathname === p.href) {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          } else {
+                            window.location.href = p.href!;
+                          }
                         }}
                         className="text-left text-sm font-medium text-white/60 hover:text-white/90 transition-colors leading-snug"
                       >
                         {p.label}
-                      </a>
+                      </button>
                     ) : (
                       <button
                         onClick={() => goToPercorso(p.filter, p.slug, closeMenu)}

@@ -93,18 +93,18 @@ export function Footer() {
               {corsi.map((l) => (
                 <li key={l.label}>
                   {l.href ? (
-                    <a
-                      href={l.href}
-                      onClick={(e) => {
+                    <button
+                      onClick={() => {
                         if (window.location.pathname === l.href) {
-                          e.preventDefault();
                           window.scrollTo({ top: 0, behavior: "smooth" });
+                        } else {
+                          window.location.href = l.href!;
                         }
                       }}
                       className="text-sm text-white/70 hover:text-white transition-colors"
                     >
                       {l.label}
-                    </a>
+                    </button>
                   ) : (
                     <a
                       href={`#percorso-${l.slug}`}
