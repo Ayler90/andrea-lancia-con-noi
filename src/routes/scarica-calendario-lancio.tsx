@@ -325,39 +325,46 @@ function ScaricaCalendarioLancio() {
               </div>
             </div>
 
-            <div className="text-center">
-              {/* Price */}
-              <div className="flex items-baseline gap-2 justify-center mb-6">
-                <span className="text-6xl font-bold text-[#156686]">2,99€</span>
-                <span className="text-foreground/40 text-sm">una tantum</span>
+            <div className="flex flex-col md:flex-row gap-0 mt-2">
+              {/* Left: what you get */}
+              <div className="flex-1 pr-8">
+                <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
+                <ul className="space-y-2">
+                  {[
+                    "Template Notion duplicabile",
+                    "Calendario visivo del lancio (Board + Timeline)",
+                    "Piano editoriale per email, social e contenuti",
+                    "Istruzioni per personalizzarlo in 10 minuti",
+                    "Aggiornamenti futuri inclusi",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                      <CheckIcon />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              {/* What you get */}
-              <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
-              <ul className="space-y-2 mb-8 inline-block text-left">
-                {[
-                  "Template Notion duplicabile",
-                  "Calendario visivo del lancio (Board + Timeline)",
-                  "Piano editoriale per email, social e contenuti",
-                  "Istruzioni per personalizzarlo in 10 minuti",
-                  "Aggiornamenti futuri inclusi",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                    <CheckIcon />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              {/* Vertical divider */}
+              <div className="hidden md:block w-px bg-foreground/10 mx-2 self-stretch" />
+              <div className="block md:hidden h-px bg-foreground/10 my-6" />
 
-              <a
-                href={PURCHASE_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 w-full text-center block"
-              >
-                Acquista ora a 2,99€ →
-              </a>
-              <p className="text-xs text-foreground/40 text-center mt-3">Pagamento sicuro. Accesso immediato.</p>
+              {/* Right: price + CTA */}
+              <div className="md:w-64 flex-shrink-0 pl-8 flex flex-col justify-center">
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="text-5xl font-bold text-[#156686]">2,99€</span>
+                </div>
+                <span className="text-foreground/40 text-sm mb-6">una tantum</span>
+                <a
+                  href={PURCHASE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 text-center block"
+                >
+                  Acquista ora a 2,99€ →
+                </a>
+                <p className="text-xs text-foreground/40 text-center mt-3">Pagamento sicuro.</p>
+              </div>
             </div>
           </div>
         </div>
