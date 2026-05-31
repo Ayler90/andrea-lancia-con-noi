@@ -5,6 +5,11 @@ import React, { useState } from "react";
 import coverImg from "@/assets/Immagine-Calendario-di-Lancio (2) - copertina.png";
 import imgCalendario from "@/assets/calendario-di-lancio-img1.png";
 import imgPianoEditoriale from "@/assets/piano-editoriale.png";
+import carousel1 from "@/assets/calendario-di-lancio-1.png";
+import carousel2 from "@/assets/calendario-di-lancio-2.png";
+import carousel3 from "@/assets/calendario-di-lancio-3.png";
+import carousel4 from "@/assets/calendario-di-lancio-4.png";
+import carousel5 from "@/assets/calendario-di-lancio-5.png";
 
 export const Route = createFileRoute("/scarica-calendario-lancio")({
   component: ScaricaCalendarioLancio,
@@ -26,15 +31,14 @@ export const Route = createFileRoute("/scarica-calendario-lancio")({
   }),
 });
 
-const IMG_BASE = "https://academy.andreabonomo.it/wp-content/uploads/2025/03/";
 const PURCHASE_URL = "https://andreabonomo.systeme.io/completa-acquisto-calendario-lancio";
 
 const carouselImages = [
-  { src: IMG_BASE + "calendario-di-lancio-1.png", alt: "Calendario di lancio – schermata 1" },
-  { src: IMG_BASE + "calendario-di-lancio-2.png", alt: "Calendario di lancio – schermata 2" },
-  { src: IMG_BASE + "calendario-di-lancio-3.png", alt: "Calendario di lancio – schermata 3" },
-  { src: IMG_BASE + "calendario-di-lancio-4.png", alt: "Calendario di lancio – schermata 4" },
-  { src: IMG_BASE + "calendario-di-lancio-5.png", alt: "Calendario di lancio – schermata 5" },
+  { src: carousel1, alt: "Calendario di lancio – schermata 1" },
+  { src: carousel2, alt: "Calendario di lancio – schermata 2" },
+  { src: carousel3, alt: "Calendario di lancio – schermata 3" },
+  { src: carousel4, alt: "Calendario di lancio – schermata 4" },
+  { src: carousel5, alt: "Calendario di lancio – schermata 5" },
 ];
 
 const reviewImages = [
@@ -282,7 +286,7 @@ function ScaricaCalendarioLancio() {
       {/* ── CAROUSEL ── */}
       <section className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Dentro al template</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Dai un'occhiata al template</p>
           <h2 className="text-2xl md:text-3xl font-bold mb-12">Guarda come è fatto</h2>
           <Carousel />
         </div>
