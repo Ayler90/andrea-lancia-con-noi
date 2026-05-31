@@ -10,7 +10,7 @@ const percorsi = [
 
 const corsi = [
   { filter: "newsletter", slug: "easy-mail-pack",   label: "Easy-Mail Pack" },
-  { filter: "lancio",     slug: "calendario-lancio", label: "Calendario di Lancio" },
+  { filter: "lancio",     slug: "calendario-lancio", label: "Calendario di Lancio", href: "/scarica-calendario-lancio" },
 ];
 
 function goToPercorso(e: React.MouseEvent, filter: string, slug: string) {
@@ -24,14 +24,14 @@ function goToPercorso(e: React.MouseEvent, filter: string, slug: string) {
   }, 60);
 }
 
-const sito = [
-  { href: "/#chi-sono",      label: "Chi sono" },
-  { href: "/#percorsi",      label: "I miei percorsi" },
-  { href: "/#newsletter",    label: "Guida gratuita ai lanci" },
-  { href: "/#testimonianze", label: "Recensioni" },
-];
-
 export function Footer() {
+  const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
+  const sito = [
+    { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
+    { href: "/#percorsi",                                             label: "I miei percorsi" },
+    { href: isCalendarioPage ? "#newsletter"    : "/#newsletter",    label: "Guida gratuita ai lanci" },
+    { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
+  ];
   return (
     <footer id="contatti" data-cursor-light style={{ backgroundColor: "#1B2F52" }} className="text-white relative overflow-hidden">
       {/* Moving glow orb */}
@@ -89,13 +89,19 @@ export function Footer() {
             <ul className="space-y-3">
               {corsi.map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={`#percorso-${l.slug}`}
-                    onClick={(e) => goToPercorso(e, l.filter, l.slug)}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </a>
+                  {l.href ? (
+                    <a href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                      {l.label}
+                    </a>
+                  ) : (
+                    <a
+                      href={`#percorso-${l.slug}`}
+                      onClick={(e) => goToPercorso(e, l.filter, l.slug)}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

@@ -2,16 +2,9 @@ import React, { useEffect, useState } from "react";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 import { LogoText } from "./LogoText";
 
-const links = [
-  { href: "/#chi-sono",      label: "Chi sono" },
-  { href: "/#percorsi",      label: "I miei percorsi" },
-  { href: "/#newsletter",    label: "Guida gratuita ai lanci", badge: "Gratis" },
-  { href: "/#testimonianze", label: "Recensioni" },
-];
-
 const percorsiSub = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
-  { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio" },
+  { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", href: "/scarica-calendario-lancio" },
   { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
   { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
   { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
@@ -32,6 +25,14 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
   const [closing, setClosing]   = useState(false);
+
+  const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
+  const links = [
+    { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
+    { href: "/#percorsi",                                             label: "I miei percorsi" },
+    { href: isCalendarioPage ? "#newsletter"    : "/#newsletter",    label: "Guida gratuita ai lanci", badge: "Gratis" },
+    { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
+  ];
 
   const closeMenu = () => {
     setClosing(true);
@@ -172,7 +173,7 @@ export function Nav() {
           <nav className="flex-1 min-h-0 flex flex-col px-7 pt-4 gap-4 overflow-y-auto pb-4">
 
             {/* Chi sono */}
-            <a href="/#chi-sono" onClick={closeMenu}
+            <a href={isCalendarioPage ? "#chi-sono" : "/#chi-sono"} onClick={closeMenu}
               className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors">
               Chi sono
             </a>
@@ -186,19 +187,29 @@ export function Nav() {
               <ul className="mt-2 flex flex-col gap-1.5 pl-4 border-l-2 border-white/20 ml-1">
                 {percorsiSub.map((p) => (
                   <li key={p.slug}>
-                    <button
-                      onClick={() => goToPercorso(p.filter, p.slug, closeMenu)}
-                      className="text-left text-sm font-medium text-white/60 hover:text-white/90 transition-colors leading-snug"
-                    >
-                      {p.label}
-                    </button>
+                    {p.href ? (
+                      <a
+                        href={p.href}
+                        onClick={closeMenu}
+                        className="text-left text-sm font-medium text-white/60 hover:text-white/90 transition-colors leading-snug"
+                      >
+                        {p.label}
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => goToPercorso(p.filter, p.slug, closeMenu)}
+                        className="text-left text-sm font-medium text-white/60 hover:text-white/90 transition-colors leading-snug"
+                      >
+                        {p.label}
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Guida gratuita ai lanci + badge */}
-            <a href="/#newsletter" onClick={closeMenu}
+            <a href={isCalendarioPage ? "#newsletter" : "/#newsletter"} onClick={closeMenu}
               className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors flex items-center gap-3 flex-wrap">
               Guida gratuita ai lanci
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest bg-white/15 text-white px-2.5 py-1 rounded-full leading-none">
@@ -208,7 +219,7 @@ export function Nav() {
             </a>
 
             {/* Recensioni */}
-            <a href="/#testimonianze" onClick={closeMenu}
+            <a href={isCalendarioPage ? "#testimonianze" : "/#testimonianze"} onClick={closeMenu}
               className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors">
               Recensioni
             </a>
