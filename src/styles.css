@@ -531,8 +531,8 @@
   100% { transform: rotate(360deg); }
 }
 @keyframes text-glow-float {
-  0%, 100% { background-position: 50% 160%; }
-  50%       { background-position: 50% -60%; }
+  0%, 100% { background-position: -50% 50%; }
+  50%       { background-position: 150% 50%; }
 }
 
 #mlb2-41923213 .ml-form-successBody {

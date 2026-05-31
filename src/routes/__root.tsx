@@ -13,8 +13,8 @@ function NotFoundComponent() {
           <span>🤔 </span>
           <span style={{
             background: "radial-gradient(ellipse at 50% 50%, #a8e6f0 0%, #156686 35%, #0c2330 65%)",
-            backgroundSize: "100% 300%",
-            backgroundPosition: "50% 160%",
+            backgroundSize: "300% 100%",
+            backgroundPosition: "-50% 50%",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
