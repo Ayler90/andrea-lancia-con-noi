@@ -18,6 +18,7 @@ type Percorso = {
   cta: string;
   ctaHref: string;
   external?: boolean;
+  directPurchase?: boolean;
   image: string;
   bg: string;
 };
@@ -91,6 +92,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       bullets: ["90 video lezioni", "Template email pronti", "Casi studio reali", "Accesso a vita"],
       cta: "Acquista ora il video corso",
       ctaHref: "https://andreabonomo.systeme.io/iscriviti-easy-mail-pack",
+      directPurchase: true,
       image: p5,
       bg: "bg-[#C4D9DC]",
     },
@@ -264,7 +266,7 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
             <a
               href={percorso.ctaHref}
               {...(percorso.external !== false && { target: "_blank", rel: "noreferrer" })}
-              onClick={() => posthog.capture("percorso_cta_click", { slug: percorso.slug, source: "homepage" })}
+              onClick={() => posthog.capture(percorso.directPurchase ? "acquisto_cta_click" : "percorso_cta_click", { slug: percorso.slug, source: "homepage" })}
               className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
             >
               {percorso.cta} →
