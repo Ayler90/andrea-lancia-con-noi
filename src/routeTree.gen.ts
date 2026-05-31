@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
+  id: '/scarica-calendario-lancio',
+  path: '/scarica-calendario-lancio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/scarica-calendario-lancio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/scarica-calendario-lancio'
+  id: '__root__' | '/' | '/scarica-calendario-lancio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ScaricaCalendarioLancioRoute: typeof ScaricaCalendarioLancioRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/scarica-calendario-lancio': {
+      id: '/scarica-calendario-lancio'
+      path: '/scarica-calendario-lancio'
+      fullPath: '/scarica-calendario-lancio'
+      preLoaderRoute: typeof ScaricaCalendarioLancioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ScaricaCalendarioLancioRoute: ScaricaCalendarioLancioRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
