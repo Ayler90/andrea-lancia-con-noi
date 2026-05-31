@@ -51,16 +51,16 @@ export function Nav() {
 
       {/* Main nav */}
       <header
-        className={`sticky top-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ${
-          scrolled ? "border-b" : "bg-transparent"
-        }`}
-        style={scrolled ? {
-          backgroundColor:      "rgba(255,255,255,0.60)",
-          backdropFilter:       "blur(18px) saturate(180%)",
-          WebkitBackdropFilter: "blur(18px) saturate(180%)",
-          borderColor:          "rgba(255,255,255,0.55)",
-          boxShadow:            "inset 0 1px 0 rgba(255,255,255,0.20), 0 4px 24px rgba(0,0,0,0.07)",
-        } : undefined}
+        className="sticky top-0 z-50 border-b transition-[box-shadow] duration-300"
+        style={{
+          backgroundColor:      "rgba(255,255,255,0.72)",
+          backdropFilter:       "saturate(180%) blur(24px)",
+          WebkitBackdropFilter: "saturate(180%) blur(24px)",
+          borderColor:          "rgba(209,213,219,0.45)",
+          boxShadow:            scrolled
+            ? "inset 0 1px 0 rgba(255,255,255,0.30), 0 4px 32px rgba(0,0,0,0.08)"
+            : "inset 0 1px 0 rgba(255,255,255,0.30)",
+        }}
       >
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: avatar + logo */}
