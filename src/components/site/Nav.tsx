@@ -11,6 +11,7 @@ const links = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [scrollY, setScrollY]   = useState(0);
   const [open, setOpen]         = useState(false);
   const [closing, setClosing]   = useState(false);
 
@@ -20,7 +21,7 @@ export function Nav() {
   };
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 12);
+    const update = () => { setScrolled(window.scrollY > 12); setScrollY(window.scrollY); };
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
@@ -51,7 +52,7 @@ export function Nav() {
 
       {/* Main nav */}
       <header
-        className="sticky top-0 z-50 border-b transition-[box-shadow] duration-300"
+        className="sticky top-0 z-50 border-b overflow-hidden transition-[box-shadow] duration-300"
         style={{
           backgroundColor:      "rgba(255,255,255,0.72)",
           backdropFilter:       "saturate(180%) blur(24px)",
@@ -62,7 +63,18 @@ export function Nav() {
             : "inset 0 1px 0 rgba(255,255,255,0.30)",
         }}
       >
-        <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
+        {/* Iridescent reflection layer */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(105deg, rgba(255,50,100,0.13) 0%, rgba(255,160,0,0.10) 16%, rgba(180,255,50,0.08) 32%, rgba(0,230,160,0.11) 48%, rgba(0,160,255,0.13) 64%, rgba(160,0,255,0.11) 80%, rgba(255,50,100,0.13) 100%)",
+            backgroundSize: "200% 100%",
+            backgroundPositionX: `${(scrollY * 0.06) % 200}%`,
+            mixBlendMode: "overlay",
+          }}
+        />
+        <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20 relative">
           {/* Left: avatar + logo */}
           <a href="#top" className="justify-self-start flex items-center gap-2.5 min-w-0">
             <img
