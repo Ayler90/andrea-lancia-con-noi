@@ -302,60 +302,59 @@ function ScaricaCalendarioLancio() {
         <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
-        <div className="container-narrow max-w-4xl mx-auto relative z-10">
-          <div className="bg-white rounded-3xl overflow-hidden" data-cursor-dark>
-            <div className="flex flex-col md:flex-row">
-              {/* Left: cover image */}
-              <div className="md:w-[42%] flex-shrink-0 bg-[#EEF3F5] flex items-center justify-center p-8">
-                <img
-                  src={coverImg}
-                  alt="Anteprima Calendario di Lancio"
-                  className="w-full"
-                  style={{ animation: "img-float 5s ease-in-out infinite" }}
-                />
-              </div>
+        <div className="container-narrow max-w-3xl mx-auto relative z-10">
+          <div className="bg-white rounded-2xl overflow-hidden px-8 pt-10 pb-8" data-cursor-dark>
 
-              {/* Right: pricing content */}
-              <div className="flex-1 px-8 pt-10 pb-8 flex flex-col justify-center">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-5 self-start">
+            {/* Top: image left + header right */}
+            <div className="flex items-start gap-6 mb-6">
+              <img
+                src={coverImg}
+                alt="Anteprima Calendario di Lancio"
+                className="w-28 md:w-36 flex-shrink-0"
+                style={{ animation: "img-float 5s ease-in-out infinite" }}
+              />
+              <div>
+                <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
                   Accesso immediato
                 </div>
-                <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-2">Calendario di <em className="text-[#156686]">Lancio</em></h2>
-                <p className="text-foreground/60 text-sm mb-5">Template Notion — accesso immediato dopo l'acquisto</p>
-                <div className="flex items-baseline gap-2 mb-6">
-                  <span className="text-4xl font-bold text-[#156686]">2,99€</span>
-                  <span className="text-foreground/40 text-sm">una tantum</span>
-                </div>
-
-                <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
-                <ul className="space-y-2 mb-8">
-                  {[
-                    "Template Notion duplicabile",
-                    "Calendario visivo del lancio (Board + Timeline)",
-                    "Piano editoriale per email, social e contenuti",
-                    "Istruzioni per personalizzarlo in 10 minuti",
-                    "Aggiornamenti futuri inclusi",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={PURCHASE_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 w-full text-center block"
-                >
-                  Acquista ora a 2,99€ →
-                </a>
-                <p className="text-xs text-foreground/40 text-center mt-3">Pagamento sicuro. Accesso immediato.</p>
+                <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-1">Calendario di <em className="text-[#156686]">Lancio</em></h2>
+                <p className="text-foreground/60 text-sm">Template Notion – accesso immediato dopo l'acquisto</p>
               </div>
             </div>
+
+            {/* Price */}
+            <div className="flex items-baseline gap-2 mb-6">
+              <span className="text-4xl font-bold text-[#156686]">2,99€</span>
+              <span className="text-foreground/40 text-sm">una tantum</span>
+            </div>
+
+            {/* What you get */}
+            <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
+            <ul className="space-y-2 mb-8">
+              {[
+                "Template Notion duplicabile",
+                "Calendario visivo del lancio (Board + Timeline)",
+                "Piano editoriale per email, social e contenuti",
+                "Istruzioni per personalizzarlo in 10 minuti",
+                "Aggiornamenti futuri inclusi",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={PURCHASE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 w-full text-center block"
+            >
+              Acquista ora a 2,99€ →
+            </a>
+            <p className="text-xs text-foreground/40 text-center mt-3">Pagamento sicuro. Accesso immediato.</p>
           </div>
         </div>
       </section>
