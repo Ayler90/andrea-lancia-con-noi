@@ -241,10 +241,10 @@ function ScaricaCalendarioLancio() {
                   style={{ animation: "img-float 5s ease-in-out infinite" }}
                 />
                 <div style={{
-                  position: "absolute", bottom: -40, left: "50%", transform: "translateX(-50%)",
-                  width: "85%", height: 100,
-                  background: "radial-gradient(circle, rgba(255,255,255,0.55) 0%, transparent 70%)",
-                  filter: "blur(28px)", zIndex: 0,
+                  position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+                  width: "90%", height: "80%",
+                  background: "radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 65%)",
+                  filter: "blur(32px)", zIndex: 0,
                 }} />
               </div>
             </div>
@@ -268,10 +268,10 @@ function ScaricaCalendarioLancio() {
                   style={{ animation: "img-float 5s ease-in-out infinite", animationDelay: "0.8s" }}
                 />
                 <div style={{
-                  position: "absolute", bottom: -40, left: "50%", transform: "translateX(-50%)",
-                  width: "85%", height: 100,
-                  background: "radial-gradient(circle, rgba(255,255,255,0.55) 0%, transparent 70%)",
-                  filter: "blur(28px)", zIndex: 0,
+                  position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+                  width: "90%", height: "80%",
+                  background: "radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 65%)",
+                  filter: "blur(32px)", zIndex: 0,
                 }} />
               </div>
             </div>

@@ -276,7 +276,7 @@
 
 @keyframes img-float {
   0%, 100% { transform: rotate(-2deg) translateY(0px); }
-  50%       { transform: rotate(-2deg) translateY(-6px); }
+  50%       { transform: rotate(-2deg) translateY(-18px); }
 }
 
 @keyframes banner-glow-move {
