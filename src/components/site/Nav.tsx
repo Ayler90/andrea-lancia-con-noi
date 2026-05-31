@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 import { LogoText } from "./LogoText";
+import posthog from "posthog-js";
 
 const percorsiSub = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
@@ -122,6 +123,7 @@ export function Nav() {
           <div className="flex items-center justify-end gap-3 col-start-3">
             <a
               href="/#prenota"
+              onClick={() => posthog.capture("nav_cta_prenota_call", { position: "desktop" })}
               className="hidden md:inline-flex pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-xs px-4 py-2"
             >
               Prenota la call conoscitiva →
@@ -240,7 +242,7 @@ export function Nav() {
           <div className="mt-auto px-7 pb-14 pt-8">
             <a
               href="/#prenota"
-              onClick={closeMenu}
+              onClick={() => { posthog.capture("nav_cta_prenota_call", { position: "mobile" }); closeMenu(); }}
               className="pill bg-white text-[#156686] font-semibold text-base block text-center"
             >
               Prenota la call conoscitiva →

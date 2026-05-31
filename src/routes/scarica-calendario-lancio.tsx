@@ -5,6 +5,7 @@ import { ChiSono } from "@/components/site/ChiSono";
 import { Testimonianze } from "@/components/site/Testimonianze";
 import { Newsletter } from "@/components/site/Newsletter";
 import React, { useState } from "react";
+import posthog from "posthog-js";
 import coverImg from "@/assets/Immagine-Calendario-di-Lancio (2) - copertina.png";
 import imgCalendario from "@/assets/calendario-di-lancio-img1.png";
 import imgPianoEditoriale from "@/assets/piano-editoriale.png";
@@ -170,6 +171,7 @@ function FaqSection() {
         <div className="mt-12 text-center">
           <a
             href="#form"
+            onClick={() => posthog.capture("calendario_cta_faq")}
             className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-8 py-3.5 inline-flex"
           >
             Acquista ora a 2,99€ →
@@ -230,6 +232,7 @@ function ScaricaCalendarioLancio() {
 
               <a
                 href="#form"
+                onClick={() => posthog.capture("calendario_cta_hero")}
                 className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 inline-flex"
               >
                 Acquista ora a 2,99€ →
@@ -387,7 +390,7 @@ function ScaricaCalendarioLancio() {
                     ))}
                   </ul>
                 </div>
-                <a href={PURCHASE_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 block w-full text-center whitespace-nowrap">
+                <a href={PURCHASE_URL} target="_blank" rel="noreferrer" onClick={() => posthog.capture("calendario_cta_acquista", { position: "mobile" })} className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 block w-full text-center whitespace-nowrap">
                   Acquista ora a 2,99€ →
                 </a>
                 <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro. Accesso immediato.</p>
@@ -420,7 +423,7 @@ function ScaricaCalendarioLancio() {
                   <div className="w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
                     <span className="text-5xl font-bold text-[#156686]">2,99€</span>
                     <span className="text-foreground/40 text-sm mt-1 mb-8">una tantum</span>
-                    <a href={PURCHASE_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 text-center block w-full">
+                    <a href={PURCHASE_URL} target="_blank" rel="noreferrer" onClick={() => posthog.capture("calendario_cta_acquista", { position: "desktop" })} className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 text-center block w-full">
                       Acquista ora a 2,99€ →
                     </a>
                     <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro.</p>
@@ -437,7 +440,7 @@ function ScaricaCalendarioLancio() {
       <FaqSection />
 
       {/* ── CHI SONO ── */}
-      <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} />
+      <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} onCtaClick={() => posthog.capture("calendario_cta_chi_sono")} />
 
       {/* ── TESTIMONIANZE ── */}
       <Testimonianze />
