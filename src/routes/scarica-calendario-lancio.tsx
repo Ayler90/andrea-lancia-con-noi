@@ -224,7 +224,7 @@ function ScaricaCalendarioLancio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
             {/* Card 1 + line + image */}
             <div className="flex flex-col items-center">
-              <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "rgba(21,102,134,0.08)", border: "1px solid rgba(21,102,134,0.15)", backdropFilter: "blur(8px)" }}>
+              <div className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)", backdropFilter: "blur(8px)" }}>
                 <h3 className="font-bold text-lg mb-2 text-white">📅 Calendario Visivo del Lancio</h3>
                 <p className="text-sm text-white/80 leading-relaxed">
                   Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
@@ -241,10 +241,10 @@ function ScaricaCalendarioLancio() {
                   style={{ animation: "img-float 5s ease-in-out infinite" }}
                 />
                 <div style={{
-                  position: "absolute", bottom: -16, left: "50%", transform: "translateX(-50%)",
-                  width: "70%", height: 40,
-                  background: "radial-gradient(ellipse, rgba(255,255,255,0.9) 0%, transparent 70%)",
-                  filter: "blur(10px)", zIndex: 0,
+                  position: "absolute", bottom: -40, left: "50%", transform: "translateX(-50%)",
+                  width: "85%", height: 100,
+                  background: "radial-gradient(circle, rgba(255,255,255,0.55) 0%, transparent 70%)",
+                  filter: "blur(28px)", zIndex: 0,
                 }} />
               </div>
             </div>
@@ -268,10 +268,10 @@ function ScaricaCalendarioLancio() {
                   style={{ animation: "img-float 5s ease-in-out infinite", animationDelay: "0.8s" }}
                 />
                 <div style={{
-                  position: "absolute", bottom: -16, left: "50%", transform: "translateX(-50%)",
-                  width: "70%", height: 40,
-                  background: "radial-gradient(ellipse, rgba(255,255,255,0.9) 0%, transparent 70%)",
-                  filter: "blur(10px)", zIndex: 0,
+                  position: "absolute", bottom: -40, left: "50%", transform: "translateX(-50%)",
+                  width: "85%", height: 100,
+                  background: "radial-gradient(circle, rgba(255,255,255,0.55) 0%, transparent 70%)",
+                  filter: "blur(28px)", zIndex: 0,
                 }} />
               </div>
             </div>
