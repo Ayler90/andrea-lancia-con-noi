@@ -542,8 +542,8 @@
   100% { transform: rotate(360deg); }
 }
 @keyframes text-glow-float {
-  0%, 100% { background-position: -50% 50%; }
-  50%       { background-position: 150% 50%; }
+  0%, 100% { background-position: -100% 50%; }
+  50%       { background-position: 200% 50%; }
 }
 
 @keyframes arrow-nudge {
