@@ -169,9 +169,7 @@ function FaqSection() {
         </div>
         <div className="mt-12 text-center">
           <a
-            href={PURCHASE_URL}
-            target="_blank"
-            rel="noreferrer"
+            href="#form"
             className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-8 py-3.5 inline-flex"
           >
             Acquista ora a 2,99€ →
