@@ -342,8 +342,21 @@ function ScaricaCalendarioLancio() {
         <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
-        <div className="container-narrow max-w-5xl mx-auto relative z-10">
-          <div className="bg-white rounded-xl overflow-hidden px-10 md:px-14 pt-12 pb-12" data-cursor-dark>
+        <div className="container-narrow max-w-6xl mx-auto relative z-10">
+          <div className="flex items-start gap-6 md:gap-10">
+
+            {/* Annotation — visible only on desktop, outside the white card */}
+            <div className="hidden md:flex flex-col items-end pt-14 w-44 flex-shrink-0" data-cursor-light>
+              <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.3, textAlign: "right", display: "block" }}>
+                Pronto a organizzare al meglio i tuoi lanci?
+              </span>
+              <svg width="70" height="44" viewBox="0 0 70 44" fill="none" className="mt-2" style={{ transform: "scaleX(-1)" }}>
+                <path d="M66 4 C55 2, 20 2, 6 36" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <path d="M14 30 L6 36 L16 38" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
+            </div>
+
+          <div className="flex-1 bg-white rounded-xl overflow-hidden px-10 md:px-14 pt-12 pb-12" data-cursor-dark>
 
             {/* Top: image left + header right */}
             <div className="flex items-start gap-8 mb-10">
@@ -389,16 +402,6 @@ function ScaricaCalendarioLancio() {
 
               {/* Right: price + CTA */}
               <div className="md:w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
-                {/* Handwritten annotation */}
-                <div className="relative self-start mb-4 ml-2">
-                  <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.25rem", color: "#3ecf8e", lineHeight: 1.2, display: "block" }}>
-                    Pronto a organizzare<br />al meglio i tuoi lanci?
-                  </span>
-                  <svg width="60" height="36" viewBox="0 0 60 36" fill="none" className="mt-1 ml-auto mr-4" style={{ transform: "rotate(10deg)" }}>
-                    <path d="M4 4 C10 2, 40 2, 54 28" stroke="#3ecf8e" strokeWidth="2" strokeLinecap="round" fill="none"/>
-                    <path d="M46 24 L54 28 L50 18" stroke="#3ecf8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  </svg>
-                </div>
                 <span className="text-5xl font-bold text-[#156686]">2,99€</span>
                 <span className="text-foreground/40 text-sm mt-1 mb-8">una tantum</span>
                 <a
@@ -413,6 +416,7 @@ function ScaricaCalendarioLancio() {
               </div>
             </div>
           </div>
+          </div>{/* end flex wrapper */}
         </div>
       </section>
 
