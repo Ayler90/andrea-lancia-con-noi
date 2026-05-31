@@ -305,10 +305,10 @@ function ScaricaCalendarioLancio() {
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
         <div className="container-narrow max-w-3xl mx-auto relative z-10">
-          <div className="bg-white rounded-xl overflow-hidden px-8 pt-10 pb-8" data-cursor-dark>
+          <div className="bg-white rounded-xl overflow-hidden px-10 md:px-14 pt-12 pb-12" data-cursor-dark>
 
             {/* Top: image left + header right */}
-            <div className="flex items-start gap-6 mb-6">
+            <div className="flex items-start gap-8 mb-10">
               <img
                 src={coverImg}
                 alt="Anteprima Calendario di Lancio"
@@ -320,16 +320,16 @@ function ScaricaCalendarioLancio() {
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
                   Accesso immediato
                 </div>
-                <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-1">Calendario di <em className="text-[#156686]">Lancio</em></h2>
+                <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-2">Calendario di <em className="text-[#156686]">Lancio</em></h2>
                 <p className="text-foreground/60 text-sm">Template Notion – accesso immediato dopo l'acquisto</p>
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-0 mt-2">
+            <div className="flex flex-col md:flex-row gap-0">
               {/* Left: what you get */}
-              <div className="flex-1 pr-8">
-                <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
-                <ul className="space-y-2">
+              <div className="flex-1 pr-12">
+                <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-5">Cosa ricevi</p>
+                <ul className="space-y-3">
                   {[
                     "Template Notion duplicabile",
                     "Calendario visivo del lancio (Board + Timeline)",
@@ -346,24 +346,22 @@ function ScaricaCalendarioLancio() {
               </div>
 
               {/* Vertical divider */}
-              <div className="hidden md:block w-px bg-foreground/10 mx-2 self-stretch" />
-              <div className="block md:hidden h-px bg-foreground/10 my-6" />
+              <div className="hidden md:block w-px bg-foreground/10 mx-4 self-stretch" />
+              <div className="block md:hidden h-px bg-foreground/10 my-8" />
 
               {/* Right: price + CTA */}
-              <div className="md:w-64 flex-shrink-0 pl-8 flex flex-col justify-center">
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-5xl font-bold text-[#156686]">2,99€</span>
-                </div>
-                <span className="text-foreground/40 text-sm mb-6">una tantum</span>
+              <div className="md:w-64 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
+                <span className="text-5xl font-bold text-[#156686]">2,99€</span>
+                <span className="text-foreground/40 text-sm mt-1 mb-8">una tantum</span>
                 <a
                   href={PURCHASE_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 text-center block"
+                  className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 text-center block w-full"
                 >
                   Acquista ora a 2,99€ →
                 </a>
-                <p className="text-xs text-foreground/40 text-center mt-3">Pagamento sicuro.</p>
+                <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro.</p>
               </div>
             </div>
           </div>
