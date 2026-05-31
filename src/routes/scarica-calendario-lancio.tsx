@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import React, { useState } from "react";
+import coverImg from "@/assets/Calendario di lancio.jpg";
 
 export const Route = createFileRoute("/scarica-calendario-lancio")({
   component: ScaricaCalendarioLancio,
@@ -145,33 +146,47 @@ function ScaricaCalendarioLancio() {
       <Nav />
 
       {/* ── HERO ── */}
-      <section className="pt-20 pb-16 md:pt-28 md:pb-20 px-4">
+      <section className="pt-16 pb-16 md:pt-24 md:pb-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
             {/* Left: copy */}
             <div className="flex-1 min-w-0">
-              <span className="inline-block text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] bg-[#156686]/10 px-3 py-1 rounded-full mb-5">
-                Template Notion
-              </span>
-              <h1 className="text-[clamp(2rem,5vw,3rem)] font-bold leading-tight mb-5">
-                Acquista il <span style={{ color: "#156686" }}>Calendario di Lancio</span> 🚀
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-xs font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+                Template Notion · Accesso Immediato
+              </div>
+
+              <h1 className="h-display leading-[1.1] mb-6">
+                <span className="block text-[1.625rem] sm:text-[2rem] md:text-[2.375rem] font-bold">
+                  Acquista il
+                </span>
+                <em className="block text-[2.25rem] sm:text-[2.875rem] md:text-[3.5rem] not-italic font-bold" style={{ color: "#156686" }}>
+                  Calendario di
+                </em>
+                <span className="block text-[2.25rem] sm:text-[2.875rem] md:text-[3.5rem] font-bold">
+                  <em style={{ fontStyle: "italic" }}>Lancio</em> 🚀
+                </span>
               </h1>
+
               <p className="text-base md:text-lg text-foreground/65 leading-relaxed mb-8 max-w-lg">
-                Il template Notion che ti dà un <strong>calendario visivo del lancio</strong> e un <strong>piano editoriale completo</strong> per ogni fase. Smetti di lanciare a caso — inizia a lanciare con strategia.
+                Il template Notion che ti dà un <strong>calendario visivo del lancio</strong> e un <strong>piano editoriale completo</strong> per ogni fase. Smetti di lanciare a caso, inizia a lanciare con strategia.
               </p>
+
               <ul className="space-y-3 mb-8">
                 {[
                   "Calendario visivo con tutte le fasi del lancio",
                   "Piano editoriale per email, social e contenuti",
-                  "Pronto all'uso: duplica e compila",
+                  "Pronto all'uso, duplica e compila",
                   "Funziona con Notion gratuito",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                  <li key={item} className="flex items-start gap-2.5 text-base text-foreground/80">
                     <CheckIcon />
                     {item}
                   </li>
                 ))}
               </ul>
+
               <a
                 href="#form"
                 className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 inline-flex"
@@ -180,12 +195,13 @@ function ScaricaCalendarioLancio() {
               </a>
             </div>
 
-            {/* Right: hero image */}
-            <div className="flex-1 min-w-0 w-full">
+            {/* Right: floating hero image */}
+            <div className="flex-1 min-w-0 w-full flex items-center justify-center">
               <img
-                src={IMG_BASE + "Immagine-Calendario-di-Lancio.png"}
+                src={coverImg}
                 alt="Anteprima del template Calendario di Lancio"
-                className="w-full rounded-2xl shadow-xl object-cover"
+                className="w-full rounded-2xl shadow-2xl object-cover"
+                style={{ animation: "img-float 5s ease-in-out infinite" }}
               />
             </div>
           </div>
