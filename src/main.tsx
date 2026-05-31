@@ -4,6 +4,12 @@ import { RouterProvider } from "@tanstack/react-router";
 import { getRouter } from "./router";
 import "./styles.css";
 import faviconSrc from "@/assets/Foto profilo IG - Favicon.jpg";
+import posthog from "posthog-js";
+
+posthog.init("phc_yXpufJkfsapN4qcb8jkoTNxet4ZMNjYJE9y38hoGfJEX", {
+  api_host: "https://eu.i.posthog.com",
+  person_profiles: "identified_only",
+});
 
 // Draw a circular favicon via canvas so the browser tab shows a round avatar
 const _img = new Image();
