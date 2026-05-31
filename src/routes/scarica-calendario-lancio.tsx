@@ -218,7 +218,7 @@ function ScaricaCalendarioLancio() {
       {/* ── FEATURES BAND ── */}
       <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
-          <h2 className="h-display text-2xl md:text-3xl text-white mb-3">
+          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-white mb-3">
             Un Template Notion. Due Calendari. <em style={{ color: "#C4D9DC" }}>Zero Stress di Lancio.</em>
           </h2>
           <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-14" style={{ color: "#f0f0f0" }}>
@@ -287,7 +287,7 @@ function ScaricaCalendarioLancio() {
       <section className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Dai un'occhiata al template</p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-12">Guarda come è fatto</h2>
+          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-12">Guarda come è fatto</h2>
           <Carousel />
         </div>
       </section>
@@ -299,7 +299,7 @@ function ScaricaCalendarioLancio() {
             {/* Header */}
             <div className="px-8 pt-10 pb-8 border-b border-foreground/8">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Disponibile subito</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">Calendario di Lancio</h2>
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-2">Calendario di Lancio</h2>
               <p className="text-foreground/60 text-sm">Template Notion — accesso immediato dopo l'acquisto</p>
               <div className="mt-5 flex items-baseline gap-2">
                 <span className="text-4xl font-bold text-[#156686]">2,99€</span>
@@ -343,7 +343,7 @@ function ScaricaCalendarioLancio() {
       <section className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Cosa dicono</p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-12">Chi l'ha già usato</h2>
+          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-12">Chi l'ha già usato</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {reviewImages.map((img) => (
               <img
@@ -370,7 +370,7 @@ function ScaricaCalendarioLancio() {
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Chi sono</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Ciao, sono Andrea 👋</h2>
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-4">Ciao, sono Andrea 👋</h2>
               <p className="text-foreground/65 text-base leading-relaxed mb-4">
                 Sono un <strong>Funnel e Launch Strategist</strong>. Aiuto freelance e solopreneur a lanciare video corsi, percorsi e servizi online con strategia, email marketing e contenuti che funzionano.
               </p>
@@ -386,7 +386,7 @@ function ScaricaCalendarioLancio() {
       <section className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-2xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3 text-center">Hai dubbi?</p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-10 text-center">Domande frequenti</h2>
+          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-10 text-center">Domande frequenti</h2>
           <div className="space-y-3">
             {faqs.map((faq) => (
               <FaqItem key={faq.q} q={faq.q} a={faq.a} />
