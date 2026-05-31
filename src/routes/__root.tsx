@@ -1,24 +1,32 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { MouseFollower } from "@/components/site/MouseFollower";
+import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="flex flex-col min-h-screen">
+      <Nav />
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-24 text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#156686] mb-4">Errore 404</p>
+        <h1
+          className="h-display font-bold text-foreground mb-6"
+          style={{ fontSize: "clamp(3rem, 10vw, 7rem)", lineHeight: 1 }}
+        >
+          Pagina non trovata.
+        </h1>
+        <p className="text-base md:text-lg text-foreground/60 max-w-md mb-10 leading-relaxed">
+          La pagina che stai cercando non esiste o è stata spostata.<br />
+          Torna alla home per continuare.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
-      </div>
+        <Link
+          to="/"
+          className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3"
+        >
+          Torna alla home →
+        </Link>
+      </main>
+      <Footer />
     </div>
   );
 }
