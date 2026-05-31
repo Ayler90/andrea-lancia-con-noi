@@ -344,10 +344,10 @@ function ScaricaCalendarioLancio() {
               <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.35, display: "block", transform: "rotate(-6deg)", transformOrigin: "center top" }}>
                 Pronto a organizzare al meglio i tuoi lanci?
               </span>
-              {/* Arrow: starts below text, goes down then curves right toward cover image */}
-              <svg width="90" height="70" viewBox="0 0 90 70" fill="none" className="mt-2 ml-8">
-                <path d="M 20 4 C 18 22, 22 42, 82 62" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
-                <path d="M 70 54 L 82 62 L 74 52" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              {/* Arrow: drops down from text then sweeps right toward cover image */}
+              <svg width="80" height="75" viewBox="0 0 80 75" fill="none" className="mt-1 ml-6">
+                <path d="M 25 4 C 24 28, 20 50, 72 68" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <path d="M 60 60 L 72 68 L 62 76" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
               </svg>
             </div>
 
