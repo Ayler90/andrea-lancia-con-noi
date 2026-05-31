@@ -323,38 +323,40 @@ function ScaricaCalendarioLancio() {
               </div>
             </div>
 
-            {/* Price */}
-            <div className="flex items-baseline gap-2 mb-6">
-              <span className="text-4xl font-bold text-[#156686]">2,99€</span>
-              <span className="text-foreground/40 text-sm">una tantum</span>
+            <div className="max-w-md mx-auto w-full">
+              {/* Price */}
+              <div className="flex items-baseline gap-2 mb-6">
+                <span className="text-4xl font-bold text-[#156686]">2,99€</span>
+                <span className="text-foreground/40 text-sm">una tantum</span>
+              </div>
+
+              {/* What you get */}
+              <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
+              <ul className="space-y-2 mb-8">
+                {[
+                  "Template Notion duplicabile",
+                  "Calendario visivo del lancio (Board + Timeline)",
+                  "Piano editoriale per email, social e contenuti",
+                  "Istruzioni per personalizzarlo in 10 minuti",
+                  "Aggiornamenti futuri inclusi",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={PURCHASE_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 w-full text-center block"
+              >
+                Acquista ora a 2,99€ →
+              </a>
+              <p className="text-xs text-foreground/40 text-center mt-3">Pagamento sicuro. Accesso immediato.</p>
             </div>
-
-            {/* What you get */}
-            <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
-            <ul className="space-y-2 mb-8">
-              {[
-                "Template Notion duplicabile",
-                "Calendario visivo del lancio (Board + Timeline)",
-                "Piano editoriale per email, social e contenuti",
-                "Istruzioni per personalizzarlo in 10 minuti",
-                "Aggiornamenti futuri inclusi",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 w-full text-center block"
-            >
-              Acquista ora a 2,99€ →
-            </a>
-            <p className="text-xs text-foreground/40 text-center mt-3">Pagamento sicuro. Accesso immediato.</p>
           </div>
         </div>
       </section>
