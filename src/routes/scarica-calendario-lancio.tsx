@@ -128,7 +128,7 @@ function Carousel() {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="filter-btn rounded-2xl overflow-hidden">
+    <div className="filter-btn rounded-2xl">
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base"
