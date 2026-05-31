@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { ChiSono } from "@/components/site/ChiSono";
+import { Testimonianze } from "@/components/site/Testimonianze";
+import { Newsletter } from "@/components/site/Newsletter";
 import React, { useState } from "react";
 import coverImg from "@/assets/Immagine-Calendario-di-Lancio (2) - copertina.png";
 import imgCalendario from "@/assets/calendario-di-lancio-img1.png";
@@ -341,7 +343,7 @@ function ScaricaCalendarioLancio() {
                   "Aggiornamenti futuri inclusi",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <CheckIcon />
                     {item}
                   </li>
                 ))}
@@ -361,26 +363,14 @@ function ScaricaCalendarioLancio() {
         </div>
       </section>
 
-      {/* ── REVIEWS ── */}
-      <section className="py-16 md:py-20 px-4">
-        <div className="container-narrow max-w-5xl mx-auto text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Cosa dicono</p>
-          <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-12">Chi l'ha già usato</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {reviewImages.map((img) => (
-              <img
-                key={img.src}
-                src={img.src}
-                alt={img.alt}
-                className="w-full rounded-2xl shadow-md object-cover"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── CHI SONO ── */}
       <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} />
+
+      {/* ── TESTIMONIANZE ── */}
+      <Testimonianze />
+
+      {/* ── NEWSLETTER ── */}
+      <Newsletter />
 
       {/* ── FAQ ── */}
       <section className="py-16 md:py-20 px-4">
