@@ -242,9 +242,9 @@ function ScaricaCalendarioLancio() {
                 />
                 <div style={{
                   position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-                  width: "90%", height: "80%",
-                  background: "radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 65%)",
-                  filter: "blur(32px)", zIndex: 0,
+                  width: "120%", height: "120%",
+                  background: "radial-gradient(circle, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.3) 40%, transparent 70%)",
+                  filter: "blur(40px)", zIndex: 0,
                 }} />
               </div>
             </div>
@@ -269,9 +269,9 @@ function ScaricaCalendarioLancio() {
                 />
                 <div style={{
                   position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-                  width: "90%", height: "80%",
-                  background: "radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 65%)",
-                  filter: "blur(32px)", zIndex: 0,
+                  width: "120%", height: "120%",
+                  background: "radial-gradient(circle, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.3) 40%, transparent 70%)",
+                  filter: "blur(40px)", zIndex: 0,
                 }} />
               </div>
             </div>
