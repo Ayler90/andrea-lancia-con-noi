@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
+import { ChiSono } from "@/components/site/ChiSono";
 import React, { useState } from "react";
 import coverImg from "@/assets/Immagine-Calendario-di-Lancio (2) - copertina.png";
 import imgCalendario from "@/assets/calendario-di-lancio-img1.png";
@@ -232,7 +233,7 @@ function ScaricaCalendarioLancio() {
               <div data-cursor-dark className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "#EEF3F5", border: "1px solid rgba(196,217,220,0.5)" }}>
                 <h3 className="font-bold text-lg mb-2 text-foreground">📅 Calendario Visivo del Lancio</h3>
                 <p className="text-sm text-foreground/85 leading-relaxed">
-                  Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione — tutto organizzato in una vista calendario chiara e intuitiva.
+                  Visualizza l'intero lancio in un colpo d'occhio. Ogni fase, ogni giorno, ogni azione: tutto organizzato in una vista calendario chiara e intuitiva.
                 </p>
               </div>
               {/* Connector */}
@@ -259,7 +260,7 @@ function ScaricaCalendarioLancio() {
               <div data-cursor-dark className="w-full rounded-2xl py-8 px-6" style={{ backgroundColor: "#EEF3F5", border: "1px solid rgba(196,217,220,0.5)" }}>
                 <h3 className="font-bold text-lg mb-2 text-foreground">📝 Piano Editoriale Completo</h3>
                 <p className="text-sm text-foreground/85 leading-relaxed">
-                  Email, post social, reel, storie — per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
+                  Email, post social, reel, storie: per ogni pezzo di contenuto hai già suggeriti il formato, l'obiettivo e il testo di partenza.
                 </p>
               </div>
               {/* Connector */}
@@ -377,30 +378,8 @@ function ScaricaCalendarioLancio() {
         </div>
       </section>
 
-      {/* ── ABOUT ANDREA ── */}
-      <section className="py-16 md:py-20 px-4 bg-[#f0f7f9]">
-        <div className="container-narrow max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-            <div className="flex-shrink-0">
-              <img
-                src="https://academy.andreabonomo.it/wp-content/uploads/2025/02/Andrea-Bonomo-Foto.jpg"
-                alt="Andrea Bonomo"
-                className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover shadow-lg"
-              />
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Chi sono</p>
-              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-4">Ciao, sono Andrea 👋</h2>
-              <p className="text-foreground/65 text-base leading-relaxed mb-4">
-                Sono un <strong>Funnel e Launch Strategist</strong>. Aiuto freelance e solopreneur a lanciare video corsi, percorsi e servizi online con strategia, email marketing e contenuti che funzionano.
-              </p>
-              <p className="text-foreground/65 text-base leading-relaxed">
-                Ho creato questo template per risolvere il problema che vedevo in tutti i miei clienti: sapevano <em>cosa</em> fare, ma non <em>quando</em> farlo. Il Calendario di Lancio risolve esattamente questo.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── CHI SONO ── */}
+      <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} />
 
       {/* ── FAQ ── */}
       <section className="py-16 md:py-20 px-4">

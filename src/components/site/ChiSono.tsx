@@ -11,7 +11,7 @@ const settori = [
   "Fitness",
 ];
 
-export function ChiSono() {
+export function ChiSono({ ctaText = "Scopri i miei percorsi →", ctaHref = "#percorsi" }: { ctaText?: string; ctaHref?: string }) {
   return (
     <section id="chi-sono" className="py-20 md:py-28">
       <div className="max-w-[1360px] mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-6 md:gap-8 items-center">
@@ -102,10 +102,10 @@ export function ChiSono() {
           </div>
 
           <a
-            href="#percorsi"
+            href={ctaHref}
             className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 mt-10 inline-flex"
           >
-            Scopri i miei percorsi →
+            {ctaText}
           </a>
         </div>
       </div>
