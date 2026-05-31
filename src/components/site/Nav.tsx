@@ -68,10 +68,10 @@ export function Nav() {
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "linear-gradient(105deg, rgba(255,50,100,0.13) 0%, rgba(255,160,0,0.10) 16%, rgba(180,255,50,0.08) 32%, rgba(0,230,160,0.11) 48%, rgba(0,160,255,0.13) 64%, rgba(160,0,255,0.11) 80%, rgba(255,50,100,0.13) 100%)",
+            background: "linear-gradient(105deg, rgba(255,50,120,0.28) 0%, rgba(255,160,0,0.22) 16%, rgba(100,220,80,0.18) 32%, rgba(0,210,180,0.24) 48%, rgba(0,140,255,0.28) 64%, rgba(160,0,255,0.24) 80%, rgba(255,50,120,0.28) 100%)",
             backgroundSize: "200% 100%",
             backgroundPositionX: `${(scrollY * 0.06) % 200}%`,
-            mixBlendMode: "overlay",
+            mixBlendMode: "color",
           }}
         />
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20 relative">
