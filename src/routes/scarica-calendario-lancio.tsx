@@ -209,7 +209,7 @@ function ScaricaCalendarioLancio() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Un Template Notion. Due Calendari. Zero Stress di Lancio.
           </h2>
-          <p className="text-sm md:text-base text-foreground/65 leading-relaxed max-w-2xl mx-auto mb-14">
+          <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-14" style={{ color: "#146686" }}>
             Tutto quello che ti serve per pianificare il tuo lancio, in un unico posto.
           </p>
 
@@ -227,7 +227,7 @@ function ScaricaCalendarioLancio() {
                 <div className="w-px h-6 bg-white/30" />
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M5 6L0 0h10L5 6z" fill="rgba(255,255,255,0.3)"/></svg>
               </div>
-              <img src={imgCalendario} alt="Vista calendario del lancio" className="w-full rounded-xl shadow-lg" />
+              <img src={imgCalendario} alt="Vista calendario del lancio" className="w-full rounded-xl" style={{ boxShadow: "0 0 32px rgba(20,102,134,0.25)" }} />
             </div>
 
             {/* Card 2 + image */}
@@ -243,7 +243,7 @@ function ScaricaCalendarioLancio() {
                 <div className="w-px h-6 bg-white/30" />
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M5 6L0 0h10L5 6z" fill="rgba(255,255,255,0.3)"/></svg>
               </div>
-              <img src={imgPianoEditoriale} alt="Piano editoriale del lancio" className="w-full rounded-xl shadow-lg" />
+              <img src={imgPianoEditoriale} alt="Piano editoriale del lancio" className="w-full rounded-xl" style={{ boxShadow: "0 0 32px rgba(20,102,134,0.25)" }} />
             </div>
           </div>
         </div>
