@@ -336,7 +336,7 @@ function ScaricaCalendarioLancio() {
         <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
-        <div className="container-narrow max-w-3xl mx-auto relative z-10">
+        <div className="container-narrow max-w-5xl mx-auto relative z-10">
           <div className="bg-white rounded-xl overflow-hidden px-10 md:px-14 pt-12 pb-12" data-cursor-dark>
 
             {/* Top: image left + header right */}
@@ -382,7 +382,17 @@ function ScaricaCalendarioLancio() {
               <div className="block md:hidden h-px bg-foreground/10 my-8" />
 
               {/* Right: price + CTA */}
-              <div className="md:w-64 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
+              <div className="md:w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
+                {/* Handwritten annotation */}
+                <div className="relative self-start mb-4 ml-2">
+                  <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.25rem", color: "#3ecf8e", lineHeight: 1.2, display: "block" }}>
+                    Pronto a organizzare<br />al meglio i tuoi lanci?
+                  </span>
+                  <svg width="60" height="36" viewBox="0 0 60 36" fill="none" className="mt-1 ml-auto mr-4" style={{ transform: "rotate(10deg)" }}>
+                    <path d="M4 4 C10 2, 40 2, 54 28" stroke="#3ecf8e" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                    <path d="M46 24 L54 28 L50 18" stroke="#3ecf8e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  </svg>
+                </div>
                 <span className="text-5xl font-bold text-[#156686]">2,99€</span>
                 <span className="text-foreground/40 text-sm mt-1 mb-8">una tantum</span>
                 <a
