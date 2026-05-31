@@ -334,82 +334,98 @@ function ScaricaCalendarioLancio() {
         <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
-        <div className="container-narrow max-w-6xl mx-auto relative z-10">
-          <div className="relative max-w-4xl mx-auto">
+        <div className="container-narrow max-w-4xl mx-auto relative z-10">
 
-            {/* Annotation — absolutely to the left of the centered card */}
+          {/* Mobile annotation — above the card */}
+          <div className="block md:hidden mb-6 pl-2" data-cursor-light>
+            <div style={{ transform: "rotate(-6deg)", transformOrigin: "left top" }}>
+              <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.35, display: "block" }}>
+                Pronto a organizzare al meglio i tuoi lanci?
+              </span>
+              <svg width="80" height="70" viewBox="0 0 80 70" fill="none" className="mt-1 ml-4">
+                <path d="M 20 4 C 18 28, 18 48, 72 64" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <path d="M 60 56 L 72 64 L 62 72" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+
+          <div className="relative">
+            {/* Desktop annotation — absolute left of card */}
             <div className="hidden md:block absolute right-full top-8 pr-6 w-48" data-cursor-light>
               <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.35, display: "block", transform: "rotate(-6deg)", transformOrigin: "center top" }}>
                 Pronto a organizzare al meglio i tuoi lanci?
               </span>
-              {/* Arrow: drops down from text then sweeps right toward cover image */}
               <svg width="80" height="75" viewBox="0 0 80 75" fill="none" className="mt-1 ml-6">
                 <path d="M 25 4 C 24 28, 20 50, 72 68" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
                 <path d="M 60 60 L 72 68 L 62 76" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
               </svg>
             </div>
 
-          <div className="bg-white rounded-xl overflow-hidden px-10 md:px-14 pt-12 pb-12" data-cursor-dark>
+            <div className="bg-white rounded-xl overflow-hidden" data-cursor-dark>
 
-            {/* Top: image left + header right */}
-            <div className="flex items-start gap-8 mb-10">
-              <img
-                src={coverImg}
-                alt="Anteprima Calendario di Lancio"
-                className="w-28 md:w-36 flex-shrink-0"
-                style={{ animation: "img-float 5s ease-in-out infinite" }}
-              />
-              <div>
+              {/* ── MOBILE layout: single centered column ── */}
+              <div className="md:hidden px-8 pt-10 pb-10 text-center">
+                <img src={coverImg} alt="Anteprima Calendario di Lancio" className="w-44 mx-auto mb-6" style={{ animation: "img-float 5s ease-in-out infinite" }} />
                 <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
                   Accesso immediato
                 </div>
-                <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-2">Calendario di <em className="text-[#156686]">Lancio</em></h2>
-                <p className="text-foreground/60 text-sm">Template Notion – accesso immediato dopo l'acquisto</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-0">
-              {/* Left: what you get */}
-              <div className="flex-1 pr-12">
-                <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-5">Cosa ricevi</p>
-                <ul className="space-y-3">
-                  {[
-                    "Template Notion duplicabile",
-                    "Calendario visivo del lancio (Board + Timeline)",
-                    "Piano editoriale per email, social e contenuti",
-                    "Istruzioni per personalizzarlo in 10 minuti",
-                    "Aggiornamenti futuri inclusi",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                      <CheckIcon />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Vertical divider */}
-              <div className="hidden md:block w-px bg-foreground/10 mx-4 self-stretch" />
-              <div className="block md:hidden h-px bg-foreground/10 my-8" />
-
-              {/* Right: price + CTA */}
-              <div className="md:w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
-                <span className="text-5xl font-bold text-[#156686]">2,99€</span>
-                <span className="text-foreground/40 text-sm mt-1 mb-8">una tantum</span>
-                <a
-                  href={PURCHASE_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 text-center block w-full"
-                >
+                <h2 className="h-display text-3xl mb-2">Calendario di <em className="text-[#156686]">Lancio</em></h2>
+                <p className="text-foreground/60 text-sm mb-5">Template Notion – accesso immediato dopo l'acquisto</p>
+                <div className="flex items-baseline gap-2 justify-center mb-8">
+                  <span className="text-5xl font-bold text-[#156686]">2,99€</span>
+                  <span className="text-foreground/40 text-sm">una tantum</span>
+                </div>
+                <div className="text-left max-w-xs mx-auto mb-8">
+                  <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
+                  <ul className="space-y-3">
+                    {["Template Notion duplicabile","Calendario visivo del lancio (Board + Timeline)","Piano editoriale per email, social e contenuti","Istruzioni per personalizzarlo in 10 minuti","Aggiornamenti futuri inclusi"].map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80"><CheckIcon />{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <a href={PURCHASE_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 block w-full text-center">
                   Acquista ora a 2,99€ →
                 </a>
-                <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro.</p>
+                <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro. Accesso immediato.</p>
               </div>
+
+              {/* ── DESKTOP layout: image+header top, checklist|divider|price bottom ── */}
+              <div className="hidden md:block px-14 pt-12 pb-12">
+                <div className="flex items-start gap-8 mb-10">
+                  <img src={coverImg} alt="Anteprima Calendario di Lancio" className="w-36 flex-shrink-0" style={{ animation: "img-float 5s ease-in-out infinite" }} />
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-4">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+                      Accesso immediato
+                    </div>
+                    <h2 className="h-display text-4xl lg:text-5xl mb-2">Calendario di <em className="text-[#156686]">Lancio</em></h2>
+                    <p className="text-foreground/60 text-sm">Template Notion – accesso immediato dopo l'acquisto</p>
+                  </div>
+                </div>
+                <div className="flex gap-0">
+                  <div className="flex-1 pr-12">
+                    <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-5">Cosa ricevi</p>
+                    <ul className="space-y-3">
+                      {["Template Notion duplicabile","Calendario visivo del lancio (Board + Timeline)","Piano editoriale per email, social e contenuti","Istruzioni per personalizzarlo in 10 minuti","Aggiornamenti futuri inclusi"].map((item) => (
+                        <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80"><CheckIcon />{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-px bg-foreground/10 mx-4 self-stretch" />
+                  <div className="w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
+                    <span className="text-5xl font-bold text-[#156686]">2,99€</span>
+                    <span className="text-foreground/40 text-sm mt-1 mb-8">una tantum</span>
+                    <a href={PURCHASE_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-sm px-6 py-3 text-center block w-full">
+                      Acquista ora a 2,99€ →
+                    </a>
+                    <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro.</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
-          </div>{/* end relative card wrapper */}
         </div>
       </section>
 
