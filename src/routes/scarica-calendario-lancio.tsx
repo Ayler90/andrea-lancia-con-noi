@@ -365,7 +365,7 @@ function ScaricaCalendarioLancio() {
 
               {/* ── MOBILE layout: single centered column ── */}
               <div className="md:hidden pt-6 pb-10 text-center">
-                <div className="px-12">
+                <div className="px-5">
                   <img src={coverImg} alt="Anteprima Calendario di Lancio" className="w-44 mx-auto mb-3" style={{ animation: "img-float 5s ease-in-out infinite" }} />
                   <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
