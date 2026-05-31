@@ -342,9 +342,9 @@ function ScaricaCalendarioLancio() {
               <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.35, display: "block" }}>
                 Pronto a organizzare al meglio i tuoi lanci?
               </span>
-              <svg width="80" height="70" viewBox="0 0 80 70" fill="none" className="mt-1 ml-4">
-                <path d="M 20 4 C 18 28, 18 48, 72 64" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
-                <path d="M 60 56 L 72 64 L 62 72" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              <svg width="50" height="55" viewBox="0 0 50 55" fill="none" className="mt-2 ml-2">
+                <path d="M 25 4 C 22 20, 28 36, 25 48" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <path d="M 17 40 L 25 52 L 33 40" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
               </svg>
             </div>
           </div>
@@ -364,15 +364,15 @@ function ScaricaCalendarioLancio() {
             <div className="bg-white rounded-xl overflow-hidden" data-cursor-dark>
 
               {/* ── MOBILE layout: single centered column ── */}
-              <div className="md:hidden px-8 pt-10 pb-10 text-center">
-                <img src={coverImg} alt="Anteprima Calendario di Lancio" className="w-44 mx-auto mb-6" style={{ animation: "img-float 5s ease-in-out infinite" }} />
-                <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-4">
+              <div className="md:hidden px-8 pt-6 pb-10 text-center">
+                <img src={coverImg} alt="Anteprima Calendario di Lancio" className="w-44 mx-auto mb-3" style={{ animation: "img-float 5s ease-in-out infinite" }} />
+                <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
                   Accesso immediato
                 </div>
-                <h2 className="h-display text-3xl mb-2">Calendario di <em className="text-[#156686]">Lancio</em></h2>
-                <p className="text-foreground/60 text-sm mb-5">Template Notion – accesso immediato dopo l'acquisto</p>
-                <div className="flex items-baseline gap-2 justify-center mb-8">
+                <h2 className="h-display text-3xl mb-1">Calendario di <em className="text-[#156686]">Lancio</em></h2>
+                <p className="text-foreground/60 text-sm mb-7">Template Notion – accesso immediato dopo l'acquisto</p>
+                <div className="flex items-baseline gap-2 justify-center mb-10">
                   <span className="text-5xl font-bold text-[#156686]">2,99€</span>
                   <span className="text-foreground/40 text-sm">una tantum</span>
                 </div>
@@ -384,7 +384,7 @@ function ScaricaCalendarioLancio() {
                     ))}
                   </ul>
                 </div>
-                <a href={PURCHASE_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 block w-full text-center">
+                <a href={PURCHASE_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 block w-full text-center whitespace-nowrap">
                   Acquista ora a 2,99€ →
                 </a>
                 <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro. Accesso immediato.</p>
