@@ -186,7 +186,7 @@ function ScaricaCalendarioLancio() {
       <Nav />
 
       {/* ── HERO ── */}
-      <section className="pt-16 pb-16 md:pt-24 md:pb-20 px-4 relative overflow-hidden">
+      <section className="pt-16 pb-16 md:pt-24 md:pb-20 px-6 md:px-4 relative overflow-hidden">
         {/* Glow orbs */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/25 blur-3xl"
@@ -221,8 +221,8 @@ function ScaricaCalendarioLancio() {
                   "Pronto all'uso, duplica e compila",
                   "Funziona con Notion gratuito",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-foreground/85">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                    <CheckIcon />
                     {item}
                   </li>
                 ))}
