@@ -148,8 +148,16 @@ function ScaricaCalendarioLancio() {
       <Nav />
 
       {/* ── HERO ── */}
-      <section className="pt-16 pb-16 md:pt-24 md:pb-20 px-4">
-        <div className="mx-auto w-full max-w-6xl">
+      <section className="pt-16 pb-16 md:pt-24 md:pb-20 px-4 relative overflow-hidden">
+        {/* Glow orbs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/25 blur-3xl"
+            style={{ top: "0%", left: "-5%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
+          <div className="absolute w-[450px] h-[450px] rounded-full bg-[#A1C2CF]/30 blur-3xl"
+            style={{ bottom: "0%", right: "-5%", animation: "orb-drift-2 26s ease-in-out infinite", animationDelay: "5s" }} />
+        </div>
+
+        <div className="mx-auto w-full max-w-6xl relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
             {/* Left: copy */}
             <div className="flex-1 min-w-0">
@@ -159,7 +167,7 @@ function ScaricaCalendarioLancio() {
                 Template Notion · Accesso Immediato
               </div>
 
-              <h1 className="h-display font-bold leading-[1.1] mb-6 text-[clamp(2rem,4.5vw,3.25rem)] whitespace-nowrap">
+              <h1 className="h-display font-bold leading-[1.1] mb-6 text-[clamp(2rem,4.5vw,3.25rem)]">
                 Acquista il{" "}
                 <span style={{ color: "#156686" }}>Calendario di <em>Lancio</em></span>{" "}🚀
               </h1>
