@@ -5,9 +5,28 @@ import { LogoText } from "./LogoText";
 const links = [
   { href: "/#chi-sono",      label: "Chi sono" },
   { href: "/#percorsi",      label: "I miei percorsi" },
-  { href: "/#newsletter",    label: "Guida gratuita ai lanci" },
+  { href: "/#newsletter",    label: "Guida gratuita ai lanci", badge: "Gratis" },
   { href: "/#testimonianze", label: "Recensioni" },
 ];
+
+const percorsiSub = [
+  { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
+  { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio" },
+  { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
+  { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
+  { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
+  { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack" },
+];
+
+function goToPercorso(filter: string, slug: string, onClose: () => void) {
+  onClose();
+  window.dispatchEvent(new CustomEvent("percorso-select", { detail: filter }));
+  setTimeout(() => {
+    const el = document.getElementById(`percorso-${slug}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    else document.getElementById("percorsi")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 200);
+}
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,9 +100,15 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
+                className="inline-flex items-center gap-1.5 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
               >
                 {l.label}
+                {l.badge && (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full leading-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                    {l.badge}
+                  </span>
+                )}
               </a>
             ))}
           </nav>
@@ -144,17 +169,50 @@ export function Nav() {
           </div>
 
           {/* Nav links */}
-          <nav className="flex flex-col px-7 pt-10 gap-6 overflow-y-auto">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={closeMenu}
-                className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors"
-              >
-                {l.label}
+          <nav className="flex flex-col px-7 pt-10 gap-6 overflow-y-auto pb-4">
+
+            {/* Chi sono */}
+            <a href="/#chi-sono" onClick={closeMenu}
+              className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors">
+              Chi sono
+            </a>
+
+            {/* I miei percorsi + sub-items */}
+            <div>
+              <a href="/#percorsi" onClick={closeMenu}
+                className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors">
+                I miei percorsi
               </a>
-            ))}
+              <ul className="mt-3.5 flex flex-col gap-2.5 pl-4 border-l-2 border-white/20 ml-1">
+                {percorsiSub.map((p) => (
+                  <li key={p.slug}>
+                    <button
+                      onClick={() => goToPercorso(p.filter, p.slug, closeMenu)}
+                      className="text-left text-sm font-medium text-white/60 hover:text-white/90 transition-colors leading-snug"
+                    >
+                      {p.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Guida gratuita ai lanci + badge */}
+            <a href="/#newsletter" onClick={closeMenu}
+              className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors flex items-center gap-3 flex-wrap">
+              Guida gratuita ai lanci
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/15 text-white px-2.5 py-1 rounded-full leading-none">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(52,211,153,0.8)" }} />
+                Gratis
+              </span>
+            </a>
+
+            {/* Recensioni */}
+            <a href="/#testimonianze" onClick={closeMenu}
+              className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors">
+              Recensioni
+            </a>
+
           </nav>
 
           {/* Bottom CTA */}
