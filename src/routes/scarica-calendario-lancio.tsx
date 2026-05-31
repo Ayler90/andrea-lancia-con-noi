@@ -204,7 +204,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── TEAL BAND ── */}
-      <section style={{ backgroundColor: "#146686" }} className="py-16 md:py-20 px-4">
+      <section style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Un Template Notion. Due Calendari. Zero Stress di Lancio.
