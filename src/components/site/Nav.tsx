@@ -14,6 +14,7 @@ const percorsiSub = [
 
 function goToPercorso(filter: string, slug: string, onClose: () => void) {
   onClose();
+  posthog.capture("percorso_cta_click", { slug, source: "nav_mobile" });
   if (window.location.pathname !== "/") {
     window.location.href = "/#percorsi";
     return;
@@ -197,6 +198,7 @@ export function Nav() {
                       <button
                         onClick={() => {
                           closeMenu();
+                          posthog.capture("percorso_cta_click", { slug: p.slug, source: "nav_mobile" });
                           if (window.location.pathname === p.href) {
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           } else {

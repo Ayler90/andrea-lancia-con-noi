@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import posthog from "posthog-js";
 import p1 from "@/assets/Percorso di lancio.jpg";
 import p2 from "@/assets/Calendario di lancio.jpg";
 import p3 from "@/assets/Business blueprint.jpg";
@@ -263,6 +264,7 @@ function PercorsoBlock({ percorso, reverse }: { percorso: Percorso; reverse: boo
             <a
               href={percorso.ctaHref}
               {...(percorso.external !== false && { target: "_blank", rel: "noreferrer" })}
+              onClick={() => posthog.capture("percorso_cta_click", { slug: percorso.slug, source: "homepage" })}
               className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
             >
               {percorso.cta} →

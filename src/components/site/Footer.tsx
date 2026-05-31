@@ -1,5 +1,6 @@
 import { LogoText } from "./LogoText";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
+import posthog from "posthog-js";
 
 const percorsi = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
@@ -15,6 +16,7 @@ const corsi = [
 
 function goToPercorso(e: React.MouseEvent, filter: string, slug: string) {
   e.preventDefault();
+  posthog.capture("percorso_cta_click", { slug, source: "footer" });
   if (window.location.pathname !== "/") {
     window.location.href = "/#percorsi";
     return;
@@ -95,6 +97,7 @@ export function Footer() {
                   {l.href ? (
                     <button
                       onClick={() => {
+                        posthog.capture("percorso_cta_click", { slug: l.slug, source: "footer" });
                         if (window.location.pathname === l.href) {
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         } else {
