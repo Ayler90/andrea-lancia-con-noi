@@ -214,8 +214,8 @@ function ScaricaCalendarioLancio() {
       {/* ── FEATURES BAND ── */}
       <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Un Template Notion. Due Calendari. Zero Stress di <em className="h-display" style={{ color: "#C4D9DC" }}>Lancio.</em>
+          <h2 className="h-display text-2xl md:text-3xl text-white mb-3">
+            Un Template Notion. Due Calendari. Zero Stress di <em style={{ color: "#C4D9DC" }}>Lancio.</em>
           </h2>
           <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-14" style={{ color: "#f0f0f0" }}>
             Tutto quello che ti serve per pianificare il tuo lancio, in un unico posto.
