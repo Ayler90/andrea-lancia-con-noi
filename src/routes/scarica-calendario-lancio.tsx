@@ -323,16 +323,16 @@ function ScaricaCalendarioLancio() {
               </div>
             </div>
 
-            <div className="max-w-md mx-auto w-full">
+            <div className="text-center">
               {/* Price */}
-              <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-4xl font-bold text-[#156686]">2,99€</span>
+              <div className="flex items-baseline gap-2 justify-center mb-6">
+                <span className="text-6xl font-bold text-[#156686]">2,99€</span>
                 <span className="text-foreground/40 text-sm">una tantum</span>
               </div>
 
               {/* What you get */}
               <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
-              <ul className="space-y-2 mb-8">
+              <ul className="space-y-2 mb-8 inline-block text-left">
                 {[
                   "Template Notion duplicabile",
                   "Calendario visivo del lancio (Board + Timeline)",
