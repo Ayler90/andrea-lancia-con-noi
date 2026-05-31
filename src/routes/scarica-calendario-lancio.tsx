@@ -305,7 +305,7 @@ function ScaricaCalendarioLancio() {
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
         <div className="container-narrow max-w-3xl mx-auto relative z-10">
-          <div className="bg-white rounded-2xl overflow-hidden px-8 pt-10 pb-8" data-cursor-dark>
+          <div className="bg-white rounded-xl overflow-hidden px-8 pt-10 pb-8" data-cursor-dark>
 
             {/* Top: image left + header right */}
             <div className="flex items-start gap-6 mb-6">
