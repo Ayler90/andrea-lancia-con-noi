@@ -308,9 +308,9 @@ function EasyMailPack() {
           </div>
 
         </div>
-      </section>
 
-      <Loghi />
+        <Loghi noBorder />
+      </section>
 
       {/* ── PROBLEMA ──────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
