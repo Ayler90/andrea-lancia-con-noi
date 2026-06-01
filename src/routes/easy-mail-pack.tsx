@@ -91,7 +91,11 @@ function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suf
     return () => observer.disconnect();
   }, [target, duration]);
 
-  return <span ref={ref}>{value}{suffix}</span>;
+  return (
+    <span ref={ref} style={{ display: "inline-block", minWidth: `${String(target).length + suffix.length}ch`, fontVariantNumeric: "tabular-nums" }}>
+      {value}{suffix}
+    </span>
+  );
 }
 
 // ── FAQ Accordion ─────────────────────────────────────────────────────────────
@@ -298,7 +302,7 @@ function EasyMailPack() {
                   </div>
                 )}
                 <div key={s.label} className="text-center min-w-[100px]">
-                  <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
+                  <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontVariantNumeric: "tabular-nums", minWidth: "2.5ch" }}>
                     <CountUp target={s.target} suffix={s.suffix} />
                   </p>
                   <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
