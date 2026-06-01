@@ -9,7 +9,7 @@ function NotFoundComponent() {
       <Nav />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-24 text-center">
         <p className="eyebrow text-[#156686]/70 mb-6">Aiuto, forse c'è un problema.</p>
-        <p className="h-display font-bold mb-6" style={{ fontSize: "clamp(1.2rem, 3.5vw, 2.2rem)", lineHeight: 1.2 }}>
+        <h1 className="h-display font-bold mb-6" style={{ fontSize: "clamp(1.8rem, 5vw, 3.5rem)", lineHeight: 1.1 }}>
           <span>🤔 </span>
           <span style={{
             background: "radial-gradient(circle, #c8eef5 0%, #156686 40%, #0c2330 75%)",
@@ -22,7 +22,7 @@ function NotFoundComponent() {
           }}>
             mmm, questa pagina non c'è.
           </span>
-        </p>
+        </h1>
         <p className="text-foreground/65 max-w-xl mb-10 leading-relaxed" style={{ fontSize: "16px" }}>
           Sembra che ci sia qualche problema con la pagina o che proprio non esista. Controlla di avere scritto bene la pagina nella barra degli indirizzi oppure clicca sul pulsante qui sotto per tornare in home.
         </p>
