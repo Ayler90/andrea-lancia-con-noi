@@ -206,8 +206,8 @@ function EasyMailPack() {
         <div className="container-narrow relative">
           {/* social proof badge */}
           <div className="flex justify-center mb-6">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#156686]/20 text-xs font-semibold uppercase tracking-widest text-[#156686]"
-              style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.10)" }}>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest text-[#156686]"
+              style={{ backgroundColor: "#ffffff", border: "1px solid rgba(0,0,0,0.10)", boxShadow: "0 2px 12px -2px rgba(21,102,134,0.10)" }}>
               Oltre 150 studenti · Video Corso Completo
             </div>
           </div>
