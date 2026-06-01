@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import posthog from "posthog-js";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -59,6 +59,39 @@ function PlaceholderImg({ label, className = "" }: { label: string; className?: 
       {label}
     </div>
   );
+}
+
+// ── CountUp ───────────────────────────────────────────────────────────────────
+
+function CountUp({ target, suffix = "", duration = 1400 }: { target: number; suffix?: string; duration?: number }) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            setValue(Math.round(ease * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return <span ref={ref}>{value}{suffix}</span>;
 }
 
 // ── FAQ Accordion ─────────────────────────────────────────────────────────────
@@ -250,30 +283,18 @@ function EasyMailPack() {
             <img src={coverImg} alt="Easy-Mail Pack copertina" className="w-full rounded-2xl object-cover" />
           </div>
 
-          {/* 4 feature bullets */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {/* stats row with count-up */}
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              "Impara ad usare l'email marketing nei tuoi lanci",
-              "Dai vita alla tua newsletter",
-              "Crea moduli di iscrizione",
-              "Sfrutta le automazioni come un pro",
-            ].map((b) => (
-              <div key={b} className="flex items-start gap-2 text-sm text-foreground/85">
-                <CheckIcon />
-                <span>{b}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* stats row — outside the box */}
-          <div className="mt-10 flex items-center justify-center gap-12 flex-wrap">
-            {[
-              { n: "80+", label: "Lezioni" },
-              { n: "5", label: "Ore di formazione" },
-              { n: "2", label: "Bonus inclusi" },
+              { target: 80, suffix: "+", label: "Lezioni" },
+              { target: 5,  suffix: "",  label: "Ore di formazione" },
+              { target: 2,  suffix: "",  label: "Bonus inclusi" },
+              { target: 21, suffix: "",  label: "Template" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>{s.n}</p>
+                <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
+                  <CountUp target={s.target} suffix={s.suffix} />
+                </p>
                 <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
               </div>
             ))}
