@@ -78,7 +78,7 @@ function CountUp({ target, suffix = "", duration = 1400 }: { target: number; suf
           const start = performance.now();
           const tick = (now: number) => {
             const progress = Math.min((now - start) / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 3);
+            const ease = 1 - Math.pow(1 - progress, 6);
             setValue(Math.round(ease * target));
             if (progress < 1) requestAnimationFrame(tick);
           };
@@ -286,10 +286,10 @@ function EasyMailPack() {
           {/* stats row with count-up */}
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              { target: 80, suffix: "+", label: "Lezioni" },
+              { target: 90, suffix: "+", label: "Lezioni" },
+              { target: 21, suffix: "",  label: "Template" },
               { target: 5,  suffix: "",  label: "Ore di formazione" },
               { target: 2,  suffix: "",  label: "Bonus inclusi" },
-              { target: 21, suffix: "",  label: "Template" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
