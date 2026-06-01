@@ -206,16 +206,13 @@ function EasyMailPack() {
         <div className="container-narrow relative">
           {/* social proof badge */}
           <div className="flex justify-center mb-6">
-            <div className="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white border border-[#156686]/15"
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#156686]/20 text-xs font-semibold uppercase tracking-widest text-[#156686]"
               style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.10)" }}>
-              <div className="flex -space-x-2">
-                {[1,2,3,4,5].map((n) => (
-                  <div key={n} className="w-7 h-7 rounded-full border-2 border-white bg-[#156686]/15 flex items-center justify-center text-[10px] font-semibold text-[#156686]/60 flex-shrink-0">
-                    {n}
-                  </div>
-                ))}
-              </div>
-              <span className="text-sm font-semibold text-foreground/70">Oltre 150 studenti</span>
+              <span className="relative flex-shrink-0 w-2 h-2">
+                <span className="absolute inset-0 rounded-full bg-green-400 blur-[3px] opacity-80" />
+                <span className="relative block w-2 h-2 rounded-full bg-green-400" />
+              </span>
+              Oltre 150 studenti · Video Corso Completo
             </div>
           </div>
 
