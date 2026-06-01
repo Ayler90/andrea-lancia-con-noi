@@ -20,7 +20,7 @@ const logos = [
 
 export function Loghi({ noBorder = false }: { noBorder?: boolean }) {
   return (
-    <section id="loghi" className={`pb-14 md:pb-20 overflow-hidden bg-background${noBorder ? "" : " border-b border-border"}`}>
+    <section id="loghi" className={`overflow-hidden bg-background${noBorder ? " pt-14 md:pt-20" : " py-14 md:py-20 border-b border-border"}`}>
       <div className="container-narrow mb-10 text-center">
         <h2 className="h-display text-2xl md:text-3xl lg:text-4xl">
           Alcuni dei clienti e delle realtà{" "}
