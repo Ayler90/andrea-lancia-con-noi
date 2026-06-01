@@ -63,7 +63,7 @@ function PlaceholderImg({ label, className = "" }: { label: string; className?: 
 
 // ── CountUp ───────────────────────────────────────────────────────────────────
 
-function CountUp({ target, suffix = "", duration = 3200 }: { target: number; suffix?: string; duration?: number }) {
+function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suffix?: string; duration?: number }) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -294,7 +294,7 @@ function EasyMailPack() {
               <>
                 {i > 0 && (
                   <div key={`dot-${i}`} className="hidden md:flex items-center flex-shrink-0 mx-10">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#156686]/30" />
+                    <span className="w-px h-8 bg-[#156686]/30" />
                   </div>
                 )}
                 <div key={s.label} className="text-center min-w-[100px]">
