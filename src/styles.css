@@ -579,3 +579,117 @@
   position: absolute; width: 1px; height: 1px; padding: 0;
   margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;
 }
+
+/* ── Cookiebot banner overrides ───────────────────────────────────────── */
+#CybotCookiebotDialog,
+#CybotCookiebotDialog * {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+}
+
+#CybotCookiebotDialog {
+  border-radius: 1.5rem !important;
+  box-shadow: 0 8px 40px rgba(12,35,48,0.18) !important;
+  border: 1px solid rgba(21,102,134,0.12) !important;
+  padding: 2rem !important;
+}
+
+/* Hide Cookiebot logo */
+#CybotCookiebotDialogPoweredByText,
+#CybotCookiebotDialogPoweredbyLink,
+.CybotCookiebotDialogPoweredByText,
+#CybotCookiebotDialogPoweredby,
+a[href*="cookiebot.com"] img,
+#CybotCookiebotDialogFooter a[href*="cookiebot"] {
+  display: none !important;
+}
+
+/* Title */
+#CybotCookiebotDialogHeader,
+#CybotCookiebotDialogBodyContentTitle {
+  font-weight: 800 !important;
+  color: oklch(0.18 0.02 230) !important;
+}
+
+/* Body text */
+#CybotCookiebotDialogBodyContentText,
+#CybotCookiebotDialogBodyContentText p,
+.CybotCookiebotDialogBodyLevelButtonDescription {
+  color: oklch(0.18 0.02 230) !important;
+  opacity: 0.75;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+}
+
+/* All buttons — base pill style */
+.CybotCookiebotDialogBodyButton,
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll,
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection,
+#CybotCookiebotDialogBodyButtonDecline,
+#CybotCookiebotDialogBodyLevelButtonCustomize {
+  border-radius: 9999px !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  padding: 0.625rem 1.5rem !important;
+  cursor: pointer !important;
+  transition: opacity 0.15s, transform 0.15s !important;
+  border: none !important;
+}
+
+/* Primary — "Accetta tutti" */
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll {
+  background: #156686 !important;
+  color: #ffffff !important;
+}
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Secondary — "Consenti selezione" */
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection {
+  background: transparent !important;
+  color: #156686 !important;
+  border: 1.5px solid #156686 !important;
+}
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection:hover {
+  background: rgba(21,102,134,0.06) !important;
+}
+
+/* Tertiary — "Rifiuta" / "Personalizza" */
+#CybotCookiebotDialogBodyButtonDecline,
+#CybotCookiebotDialogBodyLevelButtonCustomize {
+  background: transparent !important;
+  color: oklch(0.18 0.02 230) !important;
+  opacity: 0.6 !important;
+  border: 1.5px solid rgba(21,102,134,0.25) !important;
+}
+#CybotCookiebotDialogBodyButtonDecline:hover,
+#CybotCookiebotDialogBodyLevelButtonCustomize:hover {
+  opacity: 0.85 !important;
+}
+
+/* Toggle sliders — teal */
+.CybotCookiebotDialogBodyLevelButtonSlider {
+  background-color: rgba(21,102,134,0.2) !important;
+}
+input:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
+  background-color: #156686 !important;
+}
+
+/* Category tab active state */
+.CybotCookiebotDialogBodyLevelButtonIllustration {
+  color: #156686 !important;
+}
+#CybotCookiebotDialogNav .CybotCookiebotDialogNavItemLink.CybotCookiebotDialogNavItemLinkSelected,
+#CybotCookiebotDialogNav .CybotCookiebotDialogNavItemLink:hover {
+  color: #156686 !important;
+  border-bottom-color: #156686 !important;
+}
+
+/* Links */
+#CybotCookiebotDialog a,
+#CybotCookiebotDialog a:visited {
+  color: #156686 !important;
+}
+/* ── end Cookiebot overrides ──────────────────────────────────────────── */
