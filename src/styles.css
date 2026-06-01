@@ -49,7 +49,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: var(--foreground);
 
-  --primary: oklch(0.452 0.067 230.5);        /* #156686 */
+  --primary: #156686;
   --primary-foreground: oklch(1 0 0);
 
   --secondary: oklch(0.685 0.045 215);        /* #6C9FA8 */
