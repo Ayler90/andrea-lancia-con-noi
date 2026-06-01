@@ -78,7 +78,7 @@ function CountUp({ target, suffix = "", duration = 1400 }: { target: number; suf
           const start = performance.now();
           const tick = (now: number) => {
             const progress = Math.min((now - start) / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 6);
+            const ease = 1 - Math.pow(1 - progress, 12);
             setValue(Math.round(ease * target));
             if (progress < 1) requestAnimationFrame(tick);
           };
