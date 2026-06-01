@@ -153,9 +153,7 @@ export function Footer() {
               Privacy Policy
             </a>
             <a
-              href="https://www.iubenda.com/privacy-policy/31182601/cookie-policy"
-              target="_blank"
-              rel="noreferrer"
+              href="/cookie-policy"
               className="hover:text-white/70 transition-colors"
             >
               Cookie Policy

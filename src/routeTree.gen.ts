@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
 import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
@@ -23,6 +24,11 @@ const EasyMailPackRoute = EasyMailPackRouteImport.update({
   path: '/easy-mail-pack',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,43 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/easy-mail-pack' | '/scarica-calendario-lancio'
+  fullPaths:
+    | '/'
+    | '/cookie-policy'
+    | '/easy-mail-pack'
+    | '/scarica-calendario-lancio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/easy-mail-pack' | '/scarica-calendario-lancio'
-  id: '__root__' | '/' | '/easy-mail-pack' | '/scarica-calendario-lancio'
+  to: '/' | '/cookie-policy' | '/easy-mail-pack' | '/scarica-calendario-lancio'
+  id:
+    | '__root__'
+    | '/'
+    | '/cookie-policy'
+    | '/easy-mail-pack'
+    | '/scarica-calendario-lancio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
   EasyMailPackRoute: typeof EasyMailPackRoute
   ScaricaCalendarioLancioRoute: typeof ScaricaCalendarioLancioRoute
 }
@@ -75,6 +94,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EasyMailPackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +113,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
   EasyMailPackRoute: EasyMailPackRoute,
   ScaricaCalendarioLancioRoute: ScaricaCalendarioLancioRoute,
 }
