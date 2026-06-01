@@ -76,7 +76,13 @@ export function Newsletter() {
       const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form") as HTMLElement | null;
       if (success) success.style.display = "block";
       if (formRow) formRow.style.display = "none";
-      (window as any).fbq?.("track", "Lead");
+      const eventId = (window as any).__ml_lead_event_id;
+      (window as any).fbq?.("track", "Lead", {}, { eventID: eventId });
+      fetch("/api/meta-capi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ event_name: "Lead", event_id: eventId }),
+      }).catch(() => {});
     };
 
     // Load MailerLite script (handles actual AJAX submission)
@@ -116,13 +122,28 @@ export function Newsletter() {
           hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
         });
       } else {
+        // Generate a shared event_id for Pixel + CAPI deduplication
+        const eventId = crypto.randomUUID();
+        (window as any).__ml_lead_event_id = eventId;
         // Validation passed — show success after MailerLite's AJAX round-trip
         setTimeout(() => {
           const success = document.querySelector(".ml-subscribe-form-41923213 .row-success") as HTMLElement | null;
           const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form")    as HTMLElement | null;
           if (success) success.style.display = "block";
           if (formRow) formRow.style.display  = "none";
-          (window as any).fbq?.("track", "Lead");
+          const nameInput  = document.querySelector('#mlb2-41923213 input[name="fields[name]"]')  as HTMLInputElement | null;
+          const emailInput = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
+          (window as any).fbq?.("track", "Lead", {}, { eventID: eventId });
+          fetch("/api/meta-capi", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              event_name: "Lead",
+              event_id: eventId,
+              email: emailInput?.value ?? "",
+              name: nameInput?.value ?? "",
+            }),
+          }).catch(() => {});
         }, 1800);
       }
     };
