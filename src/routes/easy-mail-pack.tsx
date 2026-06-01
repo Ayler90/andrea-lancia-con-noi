@@ -284,7 +284,7 @@ function EasyMailPack() {
           </div>
 
           {/* stats row with count-up */}
-          <div className="mt-10 flex items-center justify-center max-w-4xl mx-auto flex-wrap gap-y-6">
+          <div className="mt-10 flex items-stretch justify-center max-w-4xl mx-auto flex-wrap gap-y-8">
             {[
               { target: 90, suffix: "+", label: "Lezioni" },
               { target: 21, suffix: "",  label: "Template" },
@@ -293,9 +293,11 @@ function EasyMailPack() {
             ].map((s, i) => (
               <>
                 {i > 0 && (
-                  <span key={`dot-${i}`} className="hidden md:block w-1 h-1 rounded-full bg-[#156686]/30 flex-shrink-0 mx-6" />
+                  <div key={`dot-${i}`} className="hidden md:flex items-center flex-shrink-0 mx-10">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#156686]/30" />
+                  </div>
                 )}
-                <div key={s.label} className="text-center">
+                <div key={s.label} className="text-center min-w-[100px]">
                   <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
                     <CountUp target={s.target} suffix={s.suffix} />
                   </p>
