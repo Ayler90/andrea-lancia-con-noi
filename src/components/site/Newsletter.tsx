@@ -76,6 +76,7 @@ export function Newsletter() {
       const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form") as HTMLElement | null;
       if (success) success.style.display = "block";
       if (formRow) formRow.style.display = "none";
+      (window as any).fbq?.("track", "Lead");
     };
 
     // Load MailerLite script (handles actual AJAX submission)
@@ -121,6 +122,7 @@ export function Newsletter() {
           const formRow = document.querySelector(".ml-subscribe-form-41923213 .row-form")    as HTMLElement | null;
           if (success) success.style.display = "block";
           if (formRow) formRow.style.display  = "none";
+          (window as any).fbq?.("track", "Lead");
         }, 1800);
       }
     };
