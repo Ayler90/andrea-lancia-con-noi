@@ -63,7 +63,7 @@ function PlaceholderImg({ label, className = "" }: { label: string; className?: 
 
 // ── CountUp ───────────────────────────────────────────────────────────────────
 
-function CountUp({ target, suffix = "", duration = 1400 }: { target: number; suffix?: string; duration?: number }) {
+function CountUp({ target, suffix = "", duration = 3200 }: { target: number; suffix?: string; duration?: number }) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
