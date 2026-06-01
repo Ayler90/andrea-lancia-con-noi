@@ -251,8 +251,8 @@ function EasyMailPack() {
           </div>
 
           {/* platform screenshot + checklist */}
-          <div className="mt-10 max-w-4xl mx-auto rounded-2xl border border-[#156686]/10 overflow-hidden"
-            style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.12)" }}>
+          <div className="mt-10 max-w-4xl mx-auto rounded-2xl overflow-hidden"
+            style={{ background: "#156686", boxShadow: "0 4px 32px -4px rgba(21,102,134,0.30)" }}>
             <div className="grid md:grid-cols-2 gap-0 items-center">
               <div className="overflow-hidden">
                 <img src={screenshotLezione1} alt="Lezione 1 – Easy-Mail Pack" className="w-full h-full object-cover" />
@@ -264,8 +264,8 @@ function EasyMailPack() {
                   "Crea moduli di iscrizione",
                   "Sfrutta le automazioni come un pro",
                 ].map((b) => (
-                  <div key={b} className="flex items-start gap-2 text-sm text-foreground/85">
-                    <CheckIcon />
+                  <div key={b} className="flex items-start gap-2 text-sm text-white/90">
+                    <CheckIcon color="#C4D9DC" />
                     <span>{b}</span>
                   </div>
                 ))}
