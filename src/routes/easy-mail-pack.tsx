@@ -6,6 +6,10 @@ import { Footer } from "@/components/site/Footer";
 import { ChiSono } from "@/components/site/ChiSono";
 import { Newsletter } from "@/components/site/Newsletter";
 import coverImg from "@/assets/Easy-mail pack.jpg";
+import screenshotLezione1 from "@/assets/p4-easymail.jpg";
+import logoCavalieri from "@/assets/cavalieri digitali logo.png";
+import logoTrentino from "@/assets/logo-home-pagex2-trentino social tank.png";
+import logoConfCommercio from "@/assets/Logo confcommercio padova.png";
 
 export const Route = createFileRoute("/easy-mail-pack")({
   component: EasyMailPack,
@@ -202,8 +206,18 @@ function EasyMailPack() {
           style={{ top: "5%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
 
         <div className="container-narrow relative">
-          {/* eyebrow */}
-          <p className="eyebrow text-[#156686]/70 mb-5 text-center">Video Corso Completo</p>
+          {/* social proof badge */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            {/* avatar stack placeholders */}
+            <div className="flex -space-x-2">
+              {[1,2,3,4,5].map((n) => (
+                <div key={n} className="w-8 h-8 rounded-full border-2 border-white bg-[#156686]/15 flex items-center justify-center text-[10px] font-semibold text-[#156686]/60 flex-shrink-0">
+                  {n}
+                </div>
+              ))}
+            </div>
+            <span className="text-sm font-semibold text-foreground/70">Oltre 150 studenti</span>
+          </div>
 
           {/* headline */}
           <h1 className="h-display font-bold text-center max-w-3xl mx-auto"
@@ -213,7 +227,7 @@ function EasyMailPack() {
           </h1>
 
           <p className="mt-6 text-sm md:text-base text-foreground/65 text-center max-w-xl mx-auto leading-relaxed">
-            Non sei ancora bravo nel marketing via email nei tuoi lanci e nei tuoi lavori di newsletter, ma puoi esserlo grazie a Easy-Mail Pack.
+            Easy-Mail Pack è il video corso completo, super pratico, per freelance e solopreneur, che vogliono inserire l'email marketing nel loro ecosistema e far crescere il loro business.
           </p>
 
           {/* CTAs */}
@@ -232,18 +246,18 @@ function EasyMailPack() {
             </a>
           </div>
 
-          {/* product mockup placeholder */}
+          {/* product cover */}
           <div className="mt-14 max-w-3xl mx-auto">
-            <PlaceholderImg label="Mockup prodotto (laptop + tablet + telefono)" className="w-full aspect-[16/7]" />
+            <img src={coverImg} alt="Easy-Mail Pack copertina" className="w-full rounded-2xl object-cover" style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.18)" }} />
           </div>
 
           {/* 4 feature bullets */}
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
               "Impara ad usare l'email marketing nei tuoi lanci",
-              "Dai vita alla tua lista email",
+              "Dai vita alla tua newsletter",
               "Crea moduli di iscrizione",
-              "Ottimizza le automazioni",
+              "Sfrutta le automazioni come un pro",
             ].map((b) => (
               <div key={b} className="flex items-start gap-2 text-sm text-foreground/85">
                 <CheckIcon />
@@ -252,32 +266,43 @@ function EasyMailPack() {
             ))}
           </div>
 
-          {/* platform screenshot */}
-          <div className="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden border border-[#156686]/10"
-            style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.12)" }}>
-            <PlaceholderImg label="Screenshot piattaforma corso / dashboard" className="w-full aspect-video" />
-          </div>
-
-          {/* stats row */}
-          <div className="mt-8 flex items-center justify-center gap-8 flex-wrap">
-            {[
-              { n: "80+", label: "Lezioni" },
-              { n: "5", label: "Ore di formazione" },
-              { n: "2", label: "Bonus inclusi" },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-3xl font-bold text-[#156686]">{s.n}</p>
-                <p className="text-xs text-foreground/65 mt-0.5">{s.label}</p>
-              </div>
-            ))}
+          {/* platform screenshot + stats */}
+          <div className="mt-12 max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+            <div className="rounded-2xl overflow-hidden border border-[#156686]/10"
+              style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.12)" }}>
+              <img src={screenshotLezione1} alt="Lezione 1 – Easy-Mail Pack" className="w-full object-cover" />
+            </div>
+            <div className="flex flex-col gap-8 justify-center">
+              {[
+                { n: "80+", label: "Lezioni" },
+                { n: "5", label: "Ore di formazione" },
+                { n: "2", label: "Bonus inclusi" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p className="text-4xl font-bold text-[#156686]">{s.n}</p>
+                  <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* collaborazioni */}
           <div className="mt-14 text-center">
-            <p className="eyebrow text-foreground/40 mb-6">Ho collaborato con</p>
-            <div className="flex items-center justify-center gap-8 flex-wrap opacity-50 grayscale">
-              {["Trentino Social Tank", "Business School", "Cavalieri Digitali"].map((l) => (
-                <span key={l} className="text-sm font-semibold text-foreground/60">{l}</span>
+            <p className="eyebrow text-foreground/40 mb-8">Ho collaborato con</p>
+            <div className="flex items-center justify-center gap-10 flex-wrap">
+              {[
+                { src: logoTrentino, alt: "Trentino Social Tank", bright: false },
+                { src: logoCavalieri, alt: "Cavalieri Digitali", bright: false },
+                { src: logoConfCommercio, alt: "Confcommercio Padova", bright: false },
+              ].map((logo) => (
+                <div key={logo.alt} className="h-10 flex items-center justify-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-h-full max-w-[160px] object-contain"
+                    style={{ filter: "grayscale(100%) opacity(0.45)" }}
+                  />
+                </div>
               ))}
             </div>
           </div>

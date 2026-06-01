@@ -4,14 +4,18 @@ import trentinoSocialTank from "@/assets/logo-home-pagex2-trentino social tank.p
 import logoBwb from "@/assets/logo.BWB8mVrQ.svg";
 import unscripted from "@/assets/unscripted-logo (2).png";
 import marketers from "@/assets/logo-marketersworld-by-wearemarketers-81902c5f2da2.e635ff3518d2d634.png";
+import cavalieri from "@/assets/cavalieri digitali logo.png";
+import confcommercio from "@/assets/Logo confcommercio padova.png";
 
 const logos = [
-  { src: gionsnow,           alt: "GionSnow",            bright: false },
-  { src: trentinoSocialTank, alt: "Trentino Social Tank", bright: false },
+  { src: gionsnow,           alt: "GionSnow",              bright: false },
+  { src: trentinoSocialTank, alt: "Trentino Social Tank",  bright: false },
   { src: logoBwb,            alt: "24 Ore Business School", bright: false },
-  { src: grace,              alt: "Grace",                bright: true  },
-  { src: unscripted,         alt: "Unscripted",           bright: true  },
-  { src: marketers,          alt: "Marketers World",      bright: true  },
+  { src: cavalieri,          alt: "Cavalieri Digitali",    bright: false },
+  { src: confcommercio,      alt: "Confcommercio Padova",  bright: false },
+  { src: grace,              alt: "Grace",                 bright: true  },
+  { src: unscripted,         alt: "Unscripted",            bright: true  },
+  { src: marketers,          alt: "Marketers World",       bright: true  },
 ];
 
 export function Loghi() {
