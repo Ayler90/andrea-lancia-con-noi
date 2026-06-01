@@ -250,41 +250,41 @@ function EasyMailPack() {
             <img src={coverImg} alt="Easy-Mail Pack copertina" className="w-full rounded-2xl object-cover" />
           </div>
 
-          {/* 4 feature bullets */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[
-              "Impara ad usare l'email marketing nei tuoi lanci",
-              "Dai vita alla tua newsletter",
-              "Crea moduli di iscrizione",
-              "Sfrutta le automazioni come un pro",
-            ].map((b) => (
-              <div key={b} className="flex items-start gap-2 text-sm text-foreground/85">
-                <CheckIcon />
-                <span>{b}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* platform screenshot + stats */}
-          <div className="mt-12 max-w-4xl mx-auto rounded-2xl border border-[#156686]/10 overflow-hidden"
+          {/* platform screenshot + checklist */}
+          <div className="mt-10 max-w-4xl mx-auto rounded-2xl border border-[#156686]/10 overflow-hidden"
             style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.12)" }}>
             <div className="grid md:grid-cols-2 gap-0 items-center">
               <div className="overflow-hidden">
                 <img src={screenshotLezione1} alt="Lezione 1 – Easy-Mail Pack" className="w-full h-full object-cover" />
               </div>
-              <div className="flex flex-col gap-8 justify-center p-10">
+              <div className="flex flex-col gap-4 justify-center p-10">
                 {[
-                  { n: "80+", label: "Lezioni" },
-                  { n: "5", label: "Ore di formazione" },
-                  { n: "2", label: "Bonus inclusi" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <p className="text-4xl font-bold text-[#156686]">{s.n}</p>
-                    <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
+                  "Impara ad usare l'email marketing nei tuoi lanci",
+                  "Dai vita alla tua newsletter",
+                  "Crea moduli di iscrizione",
+                  "Sfrutta le automazioni come un pro",
+                ].map((b) => (
+                  <div key={b} className="flex items-start gap-2 text-sm text-foreground/85">
+                    <CheckIcon />
+                    <span>{b}</span>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* stats row — outside the box */}
+          <div className="mt-10 flex items-center justify-center gap-12 flex-wrap">
+            {[
+              { n: "80+", label: "Lezioni" },
+              { n: "5", label: "Ore di formazione" },
+              { n: "2", label: "Bonus inclusi" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>{s.n}</p>
+                <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
+              </div>
+            ))}
           </div>
 
         </div>
