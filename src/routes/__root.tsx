@@ -8,19 +8,17 @@ function NotFoundComponent() {
     <div className="flex flex-col min-h-screen">
       <Nav />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-24 text-center">
-        <h1 className="h-display font-bold mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3.5rem)", lineHeight: 1.2 }}>
-          Aiuto, forse c'è un problema.
-        </h1>
+        <p className="eyebrow text-[#156686] mb-6">Aiuto, forse c'è un problema.</p>
         <p className="h-display font-bold mb-6" style={{ fontSize: "clamp(1.2rem, 3.5vw, 2.2rem)", lineHeight: 1.2 }}>
           <span>🤔 </span>
           <span style={{
-            background: "radial-gradient(circle, #a8e6f0 0%, #156686 30%, #0c2330 65%)",
+            background: "radial-gradient(circle, #c8eef5 0%, #156686 40%, #0c2330 75%)",
             backgroundSize: "400% 400%",
             backgroundPosition: "-100% 50%",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-            animation: "text-glow-float 9s ease-in-out infinite",
+            animation: "text-glow-float 18s ease-in-out infinite",
           }}>
             mmm, questa pagina non c'è.
           </span>
