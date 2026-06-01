@@ -6,8 +6,8 @@ import { Footer } from "@/components/site/Footer";
 import { ChiSono } from "@/components/site/ChiSono";
 import { Newsletter } from "@/components/site/Newsletter";
 import { Loghi } from "@/components/site/Loghi";
-import coverImg from "@/assets/Easy-mail pack.jpg";
-import screenshotLezione1 from "@/assets/p4-easymail.jpg";
+import coverImg from "@/assets/copertina-easy-mail-pack-videocorso.png";
+import screenshotLezione1 from "@/assets/Lezione 1 easy mail pack.png";
 
 export const Route = createFileRoute("/easy-mail-pack")({
   component: EasyMailPack,
@@ -208,10 +208,6 @@ function EasyMailPack() {
           <div className="flex justify-center mb-6">
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#156686]/20 text-xs font-semibold uppercase tracking-widest text-[#156686]"
               style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.10)" }}>
-              <span className="relative flex-shrink-0 w-2 h-2">
-                <span className="absolute inset-0 rounded-full bg-green-400 blur-[3px] opacity-80" />
-                <span className="relative block w-2 h-2 rounded-full bg-green-400" />
-              </span>
               Oltre 150 studenti · Video Corso Completo
             </div>
           </div>
