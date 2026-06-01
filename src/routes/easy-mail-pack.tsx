@@ -197,13 +197,15 @@ function EasyMailPack() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden py-20 md:py-28 px-4">
-        {/* glow orbs */}
+        {/* glow orbs — z-index 0 so they sit behind all content */}
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
-          style={{ top: "-10%", left: "-8%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
+          style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />
         <div className="absolute w-[400px] h-[400px] rounded-full bg-[#6C9FA8]/15 blur-3xl pointer-events-none"
-          style={{ top: "5%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
+          style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
+          style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />
 
-        <div className="container-narrow relative">
+        <div className="container-narrow relative" style={{ zIndex: 1 }}>
           {/* social proof badge */}
           <div className="flex justify-center mb-6">
             <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
@@ -245,7 +247,7 @@ function EasyMailPack() {
 
           {/* product cover */}
           <div className="mt-14 max-w-3xl mx-auto">
-            <img src={coverImg} alt="Easy-Mail Pack copertina" className="w-full rounded-2xl object-cover" style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.18)" }} />
+            <img src={coverImg} alt="Easy-Mail Pack copertina" className="w-full rounded-2xl object-cover" />
           </div>
 
           {/* 4 feature bullets */}
