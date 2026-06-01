@@ -440,7 +440,7 @@ function ScaricaCalendarioLancio() {
       <FaqSection />
 
       {/* ── CHI SONO ── */}
-      <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref={PURCHASE_URL} onCtaClick={() => posthog.capture("calendario_cta_chi_sono")} />
+      <ChiSono ctaText="Acquista ora il Calendario di Lancio →" ctaHref="#form" onCtaClick={() => posthog.capture("calendario_cta_chi_sono")} />
 
       {/* ── TESTIMONIANZE ── */}
       <Testimonianze />
