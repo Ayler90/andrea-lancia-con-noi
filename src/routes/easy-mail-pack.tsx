@@ -5,11 +5,9 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { ChiSono } from "@/components/site/ChiSono";
 import { Newsletter } from "@/components/site/Newsletter";
+import { Loghi } from "@/components/site/Loghi";
 import coverImg from "@/assets/Easy-mail pack.jpg";
 import screenshotLezione1 from "@/assets/p4-easymail.jpg";
-import logoCavalieri from "@/assets/cavalieri digitali logo.png";
-import logoTrentino from "@/assets/logo-home-pagex2-trentino social tank.png";
-import logoConfCommercio from "@/assets/Logo confcommercio padova.png";
 
 export const Route = createFileRoute("/easy-mail-pack")({
   component: EasyMailPack,
@@ -207,16 +205,18 @@ function EasyMailPack() {
 
         <div className="container-narrow relative">
           {/* social proof badge */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            {/* avatar stack placeholders */}
-            <div className="flex -space-x-2">
-              {[1,2,3,4,5].map((n) => (
-                <div key={n} className="w-8 h-8 rounded-full border-2 border-white bg-[#156686]/15 flex items-center justify-center text-[10px] font-semibold text-[#156686]/60 flex-shrink-0">
-                  {n}
-                </div>
-              ))}
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-full bg-white border border-[#156686]/15"
+              style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.10)" }}>
+              <div className="flex -space-x-2">
+                {[1,2,3,4,5].map((n) => (
+                  <div key={n} className="w-7 h-7 rounded-full border-2 border-white bg-[#156686]/15 flex items-center justify-center text-[10px] font-semibold text-[#156686]/60 flex-shrink-0">
+                    {n}
+                  </div>
+                ))}
+              </div>
+              <span className="text-sm font-semibold text-foreground/70">Oltre 150 studenti</span>
             </div>
-            <span className="text-sm font-semibold text-foreground/70">Oltre 150 studenti</span>
           </div>
 
           {/* headline */}
@@ -267,47 +267,31 @@ function EasyMailPack() {
           </div>
 
           {/* platform screenshot + stats */}
-          <div className="mt-12 max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-            <div className="rounded-2xl overflow-hidden border border-[#156686]/10"
-              style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.12)" }}>
-              <img src={screenshotLezione1} alt="Lezione 1 – Easy-Mail Pack" className="w-full object-cover" />
-            </div>
-            <div className="flex flex-col gap-8 justify-center">
-              {[
-                { n: "80+", label: "Lezioni" },
-                { n: "5", label: "Ore di formazione" },
-                { n: "2", label: "Bonus inclusi" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <p className="text-4xl font-bold text-[#156686]">{s.n}</p>
-                  <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
-                </div>
-              ))}
+          <div className="mt-12 max-w-4xl mx-auto rounded-2xl border border-[#156686]/10 overflow-hidden"
+            style={{ boxShadow: "0 4px 32px -4px rgba(21,102,134,0.12)" }}>
+            <div className="grid md:grid-cols-2 gap-0 items-center">
+              <div className="overflow-hidden">
+                <img src={screenshotLezione1} alt="Lezione 1 – Easy-Mail Pack" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex flex-col gap-8 justify-center p-10">
+                {[
+                  { n: "80+", label: "Lezioni" },
+                  { n: "5", label: "Ore di formazione" },
+                  { n: "2", label: "Bonus inclusi" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <p className="text-4xl font-bold text-[#156686]">{s.n}</p>
+                    <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* collaborazioni */}
-          <div className="mt-14 text-center">
-            <p className="eyebrow text-foreground/40 mb-8">Ho collaborato con</p>
-            <div className="flex items-center justify-center gap-10 flex-wrap">
-              {[
-                { src: logoTrentino, alt: "Trentino Social Tank", bright: false },
-                { src: logoCavalieri, alt: "Cavalieri Digitali", bright: false },
-                { src: logoConfCommercio, alt: "Confcommercio Padova", bright: false },
-              ].map((logo) => (
-                <div key={logo.alt} className="h-10 flex items-center justify-center">
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="max-h-full max-w-[160px] object-contain"
-                    style={{ filter: "grayscale(100%) opacity(0.45)" }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
+
+      <Loghi />
 
       {/* ── PROBLEMA ──────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
