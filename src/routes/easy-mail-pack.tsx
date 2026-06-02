@@ -552,11 +552,13 @@ function EasyMailPack() {
                 {/* phone shell — thin aluminum-style border like iPhone 17 */}
                 <div className="relative rounded-[3rem] p-[2px] z-10"
                   style={{ background: "linear-gradient(160deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.15) 100%)", boxShadow: "0 40px 90px -16px rgba(12,35,48,0.5)" }}>
-                  <div className="rounded-[2.9rem] bg-[#0c2330] p-[4px]" style={{ boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.07)" }}>
-                  {/* dynamic island */}
-                  <div className="mx-auto mb-2 w-20 h-5 bg-black rounded-full" />
-                  {/* screen */}
-                  <div className="rounded-[2rem] overflow-hidden bg-[#f9fafb]" style={{ minHeight: 480 }}>
+                  <div className="rounded-[2.9rem] bg-[#0c2330] p-[3px]" style={{ boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.07)" }}>
+                  {/* screen — dynamic island is inside the screen like real iPhone */}
+                  <div className="rounded-[2.75rem] overflow-hidden bg-[#f9fafb]" style={{ minHeight: 480 }}>
+                  {/* dynamic island — inside screen */}
+                  <div className="flex justify-center pt-3 pb-1 bg-[#f9fafb]">
+                    <div className="w-24 h-[18px] bg-[#0c2330] rounded-full" />
+                  </div>
 
                     {/* IG header */}
                     <div className="bg-white px-4 pt-4 pb-3 flex items-center justify-between border-b border-gray-100">
