@@ -777,7 +777,7 @@ function EasyMailPack() {
         <div className="container-narrow">
           <p className="eyebrow text-[#156686]/70 mb-4 text-center">Per chi è Easy-Mail Pack?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Easy-Mail Pack è perfetto per te <em className="text-[#156686]">se sei:</em>
+            Easy-Mail Pack è <em className="text-[#156686]">perfetto per te</em> se sei:
           </h2>
           <div className="grid md:grid-cols-3 gap-5">
             {[
