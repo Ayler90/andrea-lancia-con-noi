@@ -367,7 +367,7 @@ function EasyMailPack() {
           </div>
 
           {/* lesson images row — full width */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 -mx-4 md:-mx-8 px-4 md:px-8">
+          <div className="grid grid-cols-2 gap-4">
             {[
               { src: lezione2, badge: "Crea la tua lista e mantienila attiva" },
               { src: lezione3, badge: "Configura le piattaforme, anche se parti da 0" },
@@ -376,10 +376,9 @@ function EasyMailPack() {
             ].map(({ src, badge }) => (
               <div key={badge} className="relative rounded-2xl overflow-hidden aspect-video">
                 <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
-                {/* badge overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                  <span className="inline-block text-white text-[11px] md:text-xs font-semibold leading-snug">
+                {/* badge — same style as hero above-the-fold badge */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="inline-flex items-center border border-white/30 bg-white/15 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
                     {badge}
                   </span>
                 </div>
