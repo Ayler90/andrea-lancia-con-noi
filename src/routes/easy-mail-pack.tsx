@@ -708,8 +708,12 @@ function EasyMailPack() {
       </section>
 
       {/* ── PERCHÉ EASY-MAIL PACK ESISTE ──────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
-        <div className="container-narrow">
+      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5] relative overflow-hidden">
+        <div className="absolute w-[600px] h-[600px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
+          style={{ top: "-10%", left: "-8%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/15 blur-3xl pointer-events-none"
+          style={{ bottom: "-15%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
+        <div className="container-narrow relative">
           <p className="eyebrow text-[#156686]/70 mb-4">La soluzione</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
             Ecco perché <em className="text-[#156686]">Easy-Mail Pack</em> esiste.
