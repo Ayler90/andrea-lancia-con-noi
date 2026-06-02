@@ -403,29 +403,30 @@
   100% { transform: scale(1); }
 }
 
-/* Arrow points DOWN (tooltip is above) — pivot at bottom, sways L/R */
-@keyframes tooltip-float-arrowdown {
-  0%,100% { transform: scale(1) rotate(0deg) translateX(0); }
-  30%     { transform: scale(1) rotate(-2.5deg) translateX(-5px); }
-  70%     { transform: scale(1) rotate(2.5deg) translateX(5px); }
+/* Arrow points RIGHT (tooltip left of image) — pivot at right, sways U/D */
+@keyframes tooltip-float-arrowright {
+  0%,100% { transform: scale(1) rotate(0deg) translateY(0); }
+  30%     { transform: scale(1) rotate(-2deg) translateY(-5px); }
+  70%     { transform: scale(1) rotate(2deg) translateY(5px); }
 }
 
-/* Arrow points UP (tooltip is below) — pivot at top, sways L/R */
-@keyframes tooltip-float-arrowup {
-  0%,100% { transform: scale(1) rotate(0deg) translateX(0); }
-  30%     { transform: scale(1) rotate(2.5deg) translateX(5px); }
-  70%     { transform: scale(1) rotate(-2.5deg) translateX(-5px); }
+/* Arrow points LEFT (tooltip right of image) — pivot at left, sways U/D */
+@keyframes tooltip-float-arrowleft {
+  0%,100% { transform: scale(1) rotate(0deg) translateY(0); }
+  30%     { transform: scale(1) rotate(2deg) translateY(5px); }
+  70%     { transform: scale(1) rotate(-2deg) translateY(-5px); }
 }
 
-.tooltip-bubble { opacity: 1; }
+.tooltip-bubble { opacity: 0; }
+.group:hover .tooltip-bubble { opacity: 1; }
 
-.tooltip-bubble.tooltip-arrow-down {
+.group:hover .tooltip-bubble.tooltip-arrow-right {
   animation: tooltip-pop 0.85s ease forwards,
-             tooltip-float-arrowdown 4s ease-in-out 0.85s infinite;
+             tooltip-float-arrowright 4s ease-in-out 0.85s infinite;
 }
-.tooltip-bubble.tooltip-arrow-up {
+.group:hover .tooltip-bubble.tooltip-arrow-left {
   animation: tooltip-pop 0.85s ease forwards,
-             tooltip-float-arrowup 4.5s ease-in-out 0.85s infinite;
+             tooltip-float-arrowleft 4.5s ease-in-out 0.85s infinite;
 }
 
 /* Guida stacked images — two-level: wrapper spreads, img floats */

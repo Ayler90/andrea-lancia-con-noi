@@ -234,62 +234,12 @@ function LessonList() {
 
 type CardPos = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 
-const TILT: Record<CardPos, string> = {
-  "top-left": "-4deg", "top-right": "3deg", "bottom-left": "-3deg", "bottom-right": "4deg",
-};
-
 function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; tooltip: string; pos: CardPos }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
-  const [tipStyle, setTipStyle] = useState<React.CSSProperties>({});
-  const [arrowUp, setArrowUp] = useState(pos === "bottom-left" || pos === "bottom-right");
-
   const isLeft = pos === "top-left" || pos === "bottom-left";
-  const isDefaultAbove = pos === "top-left" || pos === "top-right";
-
-  const handleMouseEnter = () => {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) { setHovered(true); return; }
-
-    const tooltipH = 160;
-    const gap = 20;
-    let s: React.CSSProperties;
-    let up: boolean;
-
-    if (isDefaultAbove && rect.top < tooltipH + gap) {
-      // anchor tooltip just below the visible top edge of the card (fixed)
-      s = {
-        position: "fixed",
-        top: rect.top + gap,
-        ...(isLeft ? { left: rect.left } : { right: window.innerWidth - rect.right }),
-      };
-      up = false; // arrow points down toward the image (tooltip is above viewport edge)
-    } else if (!isDefaultAbove && window.innerHeight - rect.bottom < tooltipH + gap) {
-      // anchor tooltip just above the visible bottom edge of the card (fixed)
-      s = {
-        position: "fixed",
-        bottom: window.innerHeight - rect.bottom + gap,
-        ...(isLeft ? { left: rect.left } : { right: window.innerWidth - rect.right }),
-      };
-      up = true; // arrow points up
-    } else {
-      // default: absolute above/below the card
-      s = isDefaultAbove
-        ? { position: "absolute", bottom: "100%", marginBottom: "20px", ...(isLeft ? { left: 0 } : { right: 0 }) }
-        : { position: "absolute", top: "100%", marginTop: "20px", ...(isLeft ? { left: 0 } : { right: 0 }) };
-      up = !isDefaultAbove;
-    }
-
-    setTipStyle(s);
-    setArrowUp(up);
-    setHovered(true);
-  };
+  const tilt = isLeft ? "-3deg" : "3deg";
 
   return (
-    <div ref={cardRef} className="group relative" style={{ isolation: "isolate" }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <div className="group relative" style={{ isolation: "isolate" }}>
       <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
         <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
@@ -299,25 +249,30 @@ function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; 
         </div>
       </div>
 
-      {/* tooltip */}
-      <div
-        className={`${arrowUp ? "tooltip-arrow-up" : "tooltip-arrow-down"} z-50 pointer-events-none w-64 ${hovered ? "tooltip-bubble" : "hidden"}`}
-        style={{ ...tipStyle, rotate: TILT[pos], transformOrigin: arrowUp ? "top center" : "bottom center" }}
-      >
-        {arrowUp && (
-          <div className="flex justify-center">
-            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
+      {/* tooltip — left column: appears to the LEFT; right column: to the RIGHT */}
+      {isLeft ? (
+        <div
+          className="tooltip-bubble tooltip-arrow-right absolute right-full top-1/2 -translate-y-1/2 mr-5 z-30 pointer-events-none flex items-center"
+          style={{ rotate: tilt, transformOrigin: "right center" }}
+        >
+          <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-60 leading-relaxed">
+            {tooltip}
           </div>
-        )}
-        <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl leading-relaxed">
-          {tooltip}
+          {/* arrow pointing right toward image */}
+          <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderLeft: "9px solid #0c2330", flexShrink: 0 }} />
         </div>
-        {!arrowUp && (
-          <div className="flex justify-center">
-            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
+      ) : (
+        <div
+          className="tooltip-bubble tooltip-arrow-left absolute left-full top-1/2 -translate-y-1/2 ml-5 z-30 pointer-events-none flex items-center"
+          style={{ rotate: tilt, transformOrigin: "left center" }}
+        >
+          {/* arrow pointing left toward image */}
+          <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderRight: "9px solid #0c2330", flexShrink: 0 }} />
+          <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-60 leading-relaxed">
+            {tooltip}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
