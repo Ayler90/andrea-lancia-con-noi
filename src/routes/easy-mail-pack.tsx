@@ -252,10 +252,10 @@ function EasyMailPack() {
           <div className="flex justify-center mb-6">
             <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
               <div className="flex -space-x-2 flex-shrink-0">
-                {[studenteEmp, studenteEmp1, studenteEmp2, studenteEmp3, studenteEmp4].map((src, i) => (
+                {[studenteEmp, studenteEmp1, studenteEmp2, studenteEmp3, studenteEmp4].map((src, i, arr) => (
                   <img key={i} src={src} alt={`Studente ${i + 1}`}
                     className="w-9 h-9 rounded-full border-2 object-cover flex-shrink-0"
-                    style={{ borderColor: "var(--surface)" }} />
+                    style={{ borderColor: "var(--surface)", zIndex: arr.length - i }} />
                 ))}
               </div>
               Oltre 150 studenti · Video Corso Completo
@@ -284,7 +284,7 @@ function EasyMailPack() {
             >
               Iscriviti ora →
             </a>
-            <a href="#lezioni" className="cta-ghost text-sm px-6 py-3 whitespace-nowrap">
+            <a href="#lezioni" className="cta-ghost text-base px-8 py-3.5 whitespace-nowrap">
               Guarda i contenuti ↓
             </a>
           </div>
