@@ -8,6 +8,11 @@ import { Newsletter } from "@/components/site/Newsletter";
 import { Loghi } from "@/components/site/Loghi";
 import coverImg from "@/assets/copertina-easy-mail-pack-videocorso.png";
 import screenshotLezione1 from "@/assets/Lezione 1 easy mail pack.png";
+import studenteEmp from "@/assets/studente emp.jpeg";
+import studenteEmp1 from "@/assets/studente emp 1.jpeg";
+import studenteEmp2 from "@/assets/studente emp 2.png";
+import studenteEmp3 from "@/assets/studente emp 3.jpeg";
+import studenteEmp4 from "@/assets/studente emp 4.jpeg";
 
 export const Route = createFileRoute("/easy-mail-pack")({
   component: EasyMailPack,
@@ -247,8 +252,10 @@ function EasyMailPack() {
           <div className="flex justify-center mb-6">
             <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
               <div className="flex -space-x-1.5 flex-shrink-0">
-                {[1,2,3,4,5].map((n) => (
-                  <div key={n} className="w-5 h-5 rounded-full border border-[#156686]/30 bg-[#156686]/15 flex-shrink-0" />
+                {[studenteEmp, studenteEmp1, studenteEmp2, studenteEmp3, studenteEmp4].map((src, i) => (
+                  <img key={i} src={src} alt={`Studente ${i + 1}`}
+                    className="w-6 h-6 rounded-full border-2 object-cover flex-shrink-0"
+                    style={{ borderColor: "rgba(21,102,134,0.2)" }} />
                 ))}
               </div>
               Oltre 150 studenti · Video Corso Completo
