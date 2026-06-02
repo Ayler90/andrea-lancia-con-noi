@@ -373,23 +373,27 @@ function EasyMailPack() {
                 src: lezione2,
                 badge: "Crea la tua lista e mantienila attiva",
                 tooltip: "L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc).",
+                pos: "top-left" as const,
               },
               {
                 src: lezione3,
                 badge: "Configura le piattaforme, anche se parti da 0",
                 tooltip: "Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno.",
+                pos: "right" as const,
               },
               {
                 src: lezione4,
                 badge: "Profila chi si iscrive alle tue liste",
                 tooltip: "Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro).",
+                pos: "left" as const,
               },
               {
                 src: lezione5,
                 badge: "Crea strategie di lancio con le email",
                 tooltip: "Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare.",
+                pos: "bottom-right" as const,
               },
-            ].map(({ src, badge, tooltip }) => (
+            ].map(({ src, badge, tooltip, pos }) => (
               <div key={badge} className="group relative" style={{ isolation: "isolate" }}>
                 {/* card */}
                 <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
@@ -401,14 +405,47 @@ function EasyMailPack() {
                   </div>
                 </div>
 
-                {/* tooltip bubble — appears below, outside the card */}
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 z-30 pointer-events-none flex flex-col items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {/* arrow pointing up */}
-                  <div style={{ width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderBottom: "8px solid #0c2330" }} />
-                  <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[220px] text-center leading-snug">
-                    {tooltip}
+                {/* tooltip — angolo in alto a sinistra, fuori dall'immagine */}
+                {pos === "top-left" && (
+                  <div className="absolute bottom-full left-0 mb-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-bottom-left">
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                      {tooltip}
+                    </div>
+                    <div className="ml-5" style={{ width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid #0c2330" }} />
                   </div>
-                </div>
+                )}
+
+                {/* tooltip — metà bordo destro, fuori dall'immagine */}
+                {pos === "right" && (
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-left flex items-center gap-0">
+                    <div style={{ width: 0, height: 0, borderTop: "8px solid transparent", borderBottom: "8px solid transparent", borderRight: "8px solid #0c2330" }} />
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                      {tooltip}
+                    </div>
+                  </div>
+                )}
+
+                {/* tooltip — metà bordo sinistro, fuori dall'immagine */}
+                {pos === "left" && (
+                  <div className="absolute right-full top-1/2 -translate-y-1/2 mr-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-right flex items-center gap-0">
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                      {tooltip}
+                    </div>
+                    <div style={{ width: 0, height: 0, borderTop: "8px solid transparent", borderBottom: "8px solid transparent", borderLeft: "8px solid #0c2330" }} />
+                  </div>
+                )}
+
+                {/* tooltip — angolo in basso a destra, fuori dall'immagine */}
+                {pos === "bottom-right" && (
+                  <div className="absolute top-full right-0 mt-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-top-right">
+                    <div className="mr-5 flex justify-end">
+                      <div style={{ width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderBottom: "8px solid #0c2330" }} />
+                    </div>
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                      {tooltip}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
