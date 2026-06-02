@@ -8,6 +8,10 @@ import { Newsletter } from "@/components/site/Newsletter";
 import { Loghi } from "@/components/site/Loghi";
 import coverImg from "@/assets/copertina-easy-mail-pack-videocorso.png";
 import screenshotLezione1 from "@/assets/Lezione 1 easy mail pack.png";
+import lezione2 from "@/assets/lezione 2.png";
+import lezione3 from "@/assets/lezione 3.png";
+import lezione4 from "@/assets/lezione 4.png";
+import lezione5 from "@/assets/lezione 5.png";
 import studenteEmp from "@/assets/studente emp.jpeg";
 import studenteEmp1 from "@/assets/studente emp 1.jpeg";
 import studenteEmp2 from "@/assets/studente emp 2.png";
@@ -362,14 +366,41 @@ function EasyMailPack() {
             </div>
           </div>
 
-          {/* image placeholders row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Immagine 1", "Immagine 2", "Immagine 3", "Immagine 4"].map((label) => (
-              <div key={label} className="rounded-2xl aspect-[4/5] flex items-center justify-center text-white/30 text-xs font-medium border border-white/10"
-                style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
-                {label}
+          {/* lesson images row — full width */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 -mx-4 md:-mx-8 px-4 md:px-8">
+            {[
+              { src: lezione2, badge: "Crea la tua lista e mantienila attiva" },
+              { src: lezione3, badge: "Configura le piattaforme, anche se parti da 0" },
+              { src: lezione4, badge: "Profila chi si iscrive alle tue liste" },
+              { src: lezione5, badge: "Crea strategie di lancio con le email" },
+            ].map(({ src, badge }) => (
+              <div key={badge} className="relative rounded-2xl overflow-hidden aspect-video">
+                <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
+                {/* badge overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                  <span className="inline-block text-white text-[11px] md:text-xs font-semibold leading-snug">
+                    {badge}
+                  </span>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={PURCHASE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap"
+              onClick={() => trackCta("problema-iscriviti")}
+            >
+              Iscriviti ora →
+            </a>
+            <a href="#lezioni" className="cta-ghost text-white whitespace-nowrap">
+              Guarda i contenuti ↓
+            </a>
           </div>
         </div>
       </section>
