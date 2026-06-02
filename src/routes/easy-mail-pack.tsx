@@ -369,18 +369,45 @@ function EasyMailPack() {
           {/* lesson images row — full width */}
           <div className="grid grid-cols-2 gap-4">
             {[
-              { src: lezione2, badge: "Crea la tua lista e mantienila attiva" },
-              { src: lezione3, badge: "Configura le piattaforme, anche se parti da 0" },
-              { src: lezione4, badge: "Profila chi si iscrive alle tue liste" },
-              { src: lezione5, badge: "Crea strategie di lancio con le email" },
-            ].map(({ src, badge }) => (
-              <div key={badge} className="group relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 hover:scale-[1.03]" style={{ isolation: "isolate" }}>
-                <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
-                {/* badge — centred, same teal style as above-the-fold hero badge */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
-                  <span className="inline-flex items-center border border-[#C4D9DC]/60 bg-[#156686]/80 text-[#C4D9DC] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
-                    {badge}
-                  </span>
+              {
+                src: lezione2,
+                badge: "Crea la tua lista e mantienila attiva",
+                tooltip: "L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc).",
+              },
+              {
+                src: lezione3,
+                badge: "Configura le piattaforme, anche se parti da 0",
+                tooltip: "Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno.",
+              },
+              {
+                src: lezione4,
+                badge: "Profila chi si iscrive alle tue liste",
+                tooltip: "Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro).",
+              },
+              {
+                src: lezione5,
+                badge: "Crea strategie di lancio con le email",
+                tooltip: "Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare.",
+              },
+            ].map(({ src, badge, tooltip }) => (
+              <div key={badge} className="group relative" style={{ isolation: "isolate" }}>
+                {/* card */}
+                <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
+                  <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
+                    <span className="inline-flex items-center border border-[#C4D9DC]/60 bg-[#156686]/80 text-[#C4D9DC] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
+                      {badge}
+                    </span>
+                  </div>
+                </div>
+
+                {/* tooltip bubble — appears below, outside the card */}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 z-30 pointer-events-none flex flex-col items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* arrow pointing up */}
+                  <div style={{ width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderBottom: "8px solid #0c2330" }} />
+                  <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[220px] text-center leading-snug">
+                    {tooltip}
+                  </div>
                 </div>
               </div>
             ))}
