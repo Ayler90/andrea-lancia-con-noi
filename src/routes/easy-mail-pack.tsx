@@ -779,13 +779,13 @@ function EasyMailPack() {
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Creato per chi lavora <em className="text-[#156686]">in autonomia online.</em>
           </h2>
-          <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-5">
             {[
               {
                 emoji: "💼",
                 delay: "0s",
                 title: "Freelance",
-                tags: ["Clienti diretti", "Indipendenza", "Passaparola"],
+                tags: ["Clienti diretti", "Indipendenza", "Libertà"],
                 paragraphs: [
                   "Se sei un libero professionista che si affida ai social per trovare clienti, Easy-Mail Pack ti aiuta a creare una lista email su cui hai il controllo completo.",
                   "Così non devi più dipendere dall'algoritmo di Instagram o da piattaforme che cambiano continuamente.",
@@ -834,8 +834,7 @@ function EasyMailPack() {
                 <div className="mt-6 pt-5 border-t border-[#156686]/15 flex flex-wrap gap-x-3 gap-y-1">
                   {card.tags.map((tag, i) => (
                     <span key={tag} className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686]/70">
-                      {i > 0 && <span className="text-[#156686]/30">·</span>}
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#156686]/50 inline-block" />
+                      {i > 0 && <span className="text-[#156686]/30 mx-0.5">·</span>}
                       {tag}
                     </span>
                   ))}
