@@ -392,6 +392,12 @@
   100% { transform: scale(3.8); opacity: 0;    }
 }
 
+@keyframes phone-float {
+  0%, 100% { transform: rotate(-6deg) translateY(0px); }
+  40%       { transform: rotate(-6deg) translateY(-10px); }
+  70%       { transform: rotate(-6deg) translateY(-5px); }
+}
+
 @keyframes tooltip-pop {
   0%   { transform: scale(0); }
   28%  { transform: scale(1.12); }

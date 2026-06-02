@@ -40,6 +40,113 @@ export const Route = createFileRoute("/easy-mail-pack")({
 
 const PURCHASE_URL = "https://corsi.andreabonomo.it/iscriviti-ora-base";
 
+// ── Instagram mockup sub-components ─────────────────────────────────────────
+
+const INSIGHTS = [
+  { label: "Copertura",       from: 8200, to: -67, suffix: "%", prefix: "↓ " },
+  { label: "Interazioni",     from: 4300, to: -89, suffix: "%", prefix: "↓ " },
+  { label: "Nuovi follower",  from: 120,  to: 3,   suffix: "",  prefix: "+" },
+];
+
+function InsightsBar() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [vals, setVals] = useState(INSIGHTS.map(i => i.from));
+  const [triggered, setTriggered] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !triggered) {
+        setTriggered(true);
+        INSIGHTS.forEach((ins, idx) => {
+          const duration = 1800;
+          const start = performance.now();
+          const from = ins.from;
+          const to = ins.to;
+          const tick = (now: number) => {
+            const p = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            setVals(prev => {
+              const next = [...prev];
+              next[idx] = Math.round(from + (to - from) * ease);
+              return next;
+            });
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          setTimeout(() => requestAnimationFrame(tick), idx * 250);
+        });
+      }
+    }, { threshold: 0.4 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [triggered]);
+
+  return (
+    <div ref={ref} className="bg-[#0c2330] mx-3 rounded-xl px-4 py-3 mb-3">
+      <p className="text-[10px] text-white/50 uppercase tracking-widest mb-2">Insights ultimi 30 giorni</p>
+      <div className="grid grid-cols-3 gap-2">
+        {INSIGHTS.map((ins, i) => (
+          <div key={ins.label} className="text-center">
+            <p className="text-[13px] font-bold text-red-400">
+              {ins.prefix}{Math.abs(vals[i])}{ins.suffix}
+            </p>
+            <p className="text-[9px] text-white/40 leading-tight mt-0.5">{ins.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const CHART_POINTS = "0,8 28,9 56,7 84,18 112,28 140,40 168,43 200,46";
+
+function MiniChart({ label, id, delay = 0 }: { label: string; id: string; delay?: number }) {
+  const ref = useRef<SVGPolylineElement>(null);
+  const fillRef = useRef<SVGPolylineElement>(null);
+  const [triggered, setTriggered] = useState(false);
+
+  useEffect(() => {
+    const lineEl = ref.current;
+    if (!lineEl) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !triggered) {
+        setTriggered(true);
+        const totalLen = lineEl.getTotalLength?.() ?? 300;
+        lineEl.style.strokeDasharray = `${totalLen}`;
+        lineEl.style.strokeDashoffset = `${totalLen}`;
+        lineEl.style.transition = `stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1) ${delay}s`;
+        requestAnimationFrame(() => { lineEl.style.strokeDashoffset = "0"; });
+        if (fillRef.current) {
+          fillRef.current.style.opacity = "0";
+          fillRef.current.style.transition = `opacity 1.4s ease ${delay + 0.3}s`;
+          requestAnimationFrame(() => { if (fillRef.current) fillRef.current.style.opacity = "1"; });
+        }
+      }
+    }, { threshold: 0.3 });
+    obs.observe(lineEl);
+    return () => obs.disconnect();
+  }, [triggered, delay]);
+
+  return (
+    <div className="mx-3 mb-3 bg-white rounded-xl px-3 py-2.5 border border-gray-100">
+      <p className="text-[9px] text-gray-400 uppercase tracking-widest mb-1.5">{label}</p>
+      <svg viewBox="0 0 200 50" className="w-full h-9">
+        <defs>
+          <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#ef4444" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <polyline ref={fillRef} points={`${CHART_POINTS} 200,50 0,50`}
+          fill={`url(#${id})`} style={{ opacity: 0 }} />
+        <polyline ref={ref} points={CHART_POINTS}
+          fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function CheckIcon({ color = "#156686" }: { color?: string }) {
@@ -438,7 +545,7 @@ function EasyMailPack() {
 
             {/* ── Phone mockup ─────────────────────────────── */}
             <div className="flex justify-center">
-              <div className="relative w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom" }}>
+              <div className="relative w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
                 {/* glow blob behind phone */}
                 <div className="absolute -inset-10 rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(196,217,220,0.55) 0%, rgba(255,255,255,0.25) 50%, transparent 75%)", filter: "blur(24px)", zIndex: 0 }} />
@@ -477,55 +584,13 @@ function EasyMailPack() {
                       </div>
                     </div>
 
-                    {/* insights bar — negative */}
-                    <div className="bg-[#0c2330] mx-3 rounded-xl px-4 py-3 mb-3">
-                      <p className="text-[10px] text-white/50 uppercase tracking-widest mb-2">Insights ultimi 30 giorni</p>
-                      <div className="grid grid-cols-3 gap-2">
-                        {[
-                          { label: "Copertura", value: "↓ 67%", bad: true },
-                          { label: "Interazioni", value: "↓ 89%", bad: true },
-                          { label: "Nuovi follower", value: "+3", bad: true },
-                        ].map(({ label, value }) => (
-                          <div key={label} className="text-center">
-                            <p className="text-[13px] font-bold text-red-400">{value}</p>
-                            <p className="text-[9px] text-white/40 leading-tight mt-0.5">{label}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    {/* insights bar — animated countdown */}
+                    <InsightsBar />
 
-                    {/* posts grid */}
-                    <div className="grid grid-cols-3 gap-0.5 mx-3 mb-3">
-                      {[
-                        { views: "892",  bg: "bg-[#C4D9DC]/60" },
-                        { views: "1.2K", bg: "bg-[#A1C2CF]/50" },
-                        { views: "341",  bg: "bg-[#156686]/20" },
-                        { views: "78",   bg: "bg-[#C4D9DC]/40" },
-                        { views: "2.1K", bg: "bg-[#A1C2CF]/30" },
-                        { views: "210",  bg: "bg-[#156686]/15" },
-                      ].map(({ views, bg }, i) => (
-                        <div key={i} className={`aspect-square rounded-sm ${bg} flex items-end justify-end p-1`}>
-                          <span className="text-[8px] font-semibold text-[#0c2330]/50">{views}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* reach trend mini chart */}
-                    <div className="mx-3 mb-3 bg-white rounded-xl px-3 py-3 border border-gray-100">
-                      <p className="text-[9px] text-gray-400 uppercase tracking-widest mb-2">Andamento copertura</p>
-                      <svg viewBox="0 0 200 50" className="w-full h-10">
-                        <polyline points="0,10 30,12 60,8 90,20 120,30 150,42 180,44 200,46"
-                          fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <polyline points="0,10 30,12 60,8 90,20 120,30 150,42 180,44 200,46 200,50 0,50"
-                          fill="url(#redFade)" />
-                        <defs>
-                          <linearGradient id="redFade" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#ef4444" stopOpacity="0.25" />
-                            <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
+                    {/* 3 animated charts */}
+                    <MiniChart label="Reach" id="reachFade" />
+                    <MiniChart label="Interazioni" id="interFade" delay={0.3} />
+                    <MiniChart label="Nuovi follower" id="follFade" delay={0.6} />
 
                   </div>{/* screen */}
                   </div>{/* inner bg */}
