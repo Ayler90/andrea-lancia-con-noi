@@ -683,7 +683,7 @@ function EasyMailPack() {
                     style={{ backgroundColor: box.glow }} />
                 </div>
 
-                <h3 className="font-semibold text-[#0c2330] text-base md:text-lg mb-5 leading-snug">
+                <h3 className="font-semibold text-[#0c2330] text-lg md:text-xl mb-5 leading-snug">
                   {box.title}
                 </h3>
                 <ul className="space-y-3">
