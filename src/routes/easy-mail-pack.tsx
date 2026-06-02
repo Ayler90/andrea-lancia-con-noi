@@ -47,7 +47,7 @@ const ANIM_DURATION = 3000; // ms — shared by both countdowns and charts
 const INSIGHTS = [
   { label: "Copertura",      to: -67, suffix: "%", prefix: "↓ " },
   { label: "Interazioni",    to: -89, suffix: "%", prefix: "↓ " },
-  { label: "Nuovi follower", to: 3,   suffix: "",  prefix: "+" },
+  { label: "Visite profilo", to: -54, suffix: "%", prefix: "↓ " },
 ];
 
 function InsightsBar() {
@@ -103,7 +103,7 @@ function InsightsBar() {
 const CHARTS = [
   { label: "Reach",        id: "reachFade",  points: "0,6 20,4 40,10 60,7 80,15 100,12 120,24 140,32 160,38 180,42 200,46" },
   { label: "Interazioni",  id: "interFade",  points: "0,8 18,5 36,14 54,9 72,20 90,17 108,28 126,22 144,36 170,41 200,46" },
-  { label: "Nuovi follower", id: "follFade", points: "0,5 25,12 45,8 65,18 82,14 100,26 118,30 138,25 158,38 180,44 200,46" },
+  { label: "Visite profilo", id: "follFade", points: "0,5 25,12 45,8 65,18 82,14 100,26 118,30 138,25 158,38 180,44 200,46" },
 ];
 
 function MiniChart({ label, id, points }: { label: string; id: string; points: string }) {
