@@ -186,7 +186,7 @@ Per CTA secondarie su sfondo chiaro — **stessa dimensione del pill**:
 <div className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
   {/* emoji fluttuante con glow teal sotto */}
   <div className="relative inline-block mb-5">
-    <div className="text-3xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>
+    <div className="text-4xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>
       🚀
     </div>
     <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-4 blur-lg rounded-full pointer-events-none"
