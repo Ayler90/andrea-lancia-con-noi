@@ -235,8 +235,12 @@ function LessonList() {
 type CardPos = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 
 function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; tooltip: string; pos: CardPos }) {
+  const isTop = pos === "top-left" || pos === "top-right";
   const isLeft = pos === "top-left" || pos === "bottom-left";
+  // top cards: tooltip below; bottom cards: tooltip above
   const tilt = isLeft ? "-3deg" : "3deg";
+  const floatClass = isTop ? "tooltip-arrow-up" : "tooltip-arrow-down";
+  const origin = isTop ? "top center" : "bottom center";
 
   return (
     <div className="group relative" style={{ isolation: "isolate" }}>
@@ -249,30 +253,27 @@ function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; 
         </div>
       </div>
 
-      {/* tooltip — left column: appears to the LEFT; right column: to the RIGHT */}
-      {isLeft ? (
-        <div
-          className="tooltip-bubble tooltip-arrow-right absolute right-full top-1/2 -translate-y-1/2 mr-5 z-30 pointer-events-none flex items-center"
-          style={{ rotate: tilt, transformOrigin: "right center" }}
-        >
-          <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-60 leading-relaxed">
-            {tooltip}
+      {/* tooltip: below for top-row cards, above for bottom-row cards */}
+      <div
+        className={`tooltip-bubble ${floatClass} absolute z-30 pointer-events-none ${
+          isTop ? "top-full mt-4" : "bottom-full mb-4"
+        } ${isLeft ? "left-0" : "right-0"}`}
+        style={{ rotate: tilt, transformOrigin: origin }}
+      >
+        {!isTop && (
+          <div className="flex justify-center">
+            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
           </div>
-          {/* arrow pointing right toward image */}
-          <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderLeft: "9px solid #0c2330", flexShrink: 0 }} />
+        )}
+        <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-52 leading-relaxed">
+          {tooltip}
         </div>
-      ) : (
-        <div
-          className="tooltip-bubble tooltip-arrow-left absolute left-full top-1/2 -translate-y-1/2 ml-5 z-30 pointer-events-none flex items-center"
-          style={{ rotate: tilt, transformOrigin: "left center" }}
-        >
-          {/* arrow pointing left toward image */}
-          <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderRight: "9px solid #0c2330", flexShrink: 0 }} />
-          <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-60 leading-relaxed">
-            {tooltip}
+        {isTop && (
+          <div className="flex justify-center">
+            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
@@ -414,7 +415,7 @@ function EasyMailPack() {
           </div>
 
           {/* lesson images row */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-32">
             <LessonCard src={lezione2} badge="Crea la tua lista e mantienila attiva" tooltip="L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc)." pos="top-left" />
             <LessonCard src={lezione3} badge="Configura le piattaforme, anche se parti da 0" tooltip="Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno." pos="top-right" />
             <LessonCard src={lezione4} badge="Profila chi si iscrive alle tue liste" tooltip="Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro)." pos="bottom-left" />
