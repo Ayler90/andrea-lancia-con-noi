@@ -438,9 +438,14 @@ function EasyMailPack() {
 
             {/* ── Phone mockup ─────────────────────────────── */}
             <div className="flex justify-center">
-              <div className="relative w-[280px]">
-                {/* phone shell */}
-                <div className="rounded-[2.8rem] bg-[#0c2330] p-[10px] shadow-2xl" style={{ boxShadow: "0 32px 80px -12px rgba(12,35,48,0.45), inset 0 0 0 1px rgba(255,255,255,0.06)" }}>
+              <div className="relative w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom" }}>
+                {/* glow blob behind phone */}
+                <div className="absolute -inset-10 rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(196,217,220,0.55) 0%, rgba(255,255,255,0.25) 50%, transparent 75%)", filter: "blur(24px)", zIndex: 0 }} />
+                {/* phone shell — thin aluminum-style border like iPhone 17 */}
+                <div className="relative rounded-[3rem] p-[3px] z-10"
+                  style={{ background: "linear-gradient(160deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.18) 100%)", boxShadow: "0 40px 90px -16px rgba(12,35,48,0.5), 0 0 0 0.5px rgba(255,255,255,0.12)" }}>
+                  <div className="rounded-[2.85rem] bg-[#0c2330] p-[7px]" style={{ boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.07)" }}>
                   {/* dynamic island */}
                   <div className="mx-auto mb-2 w-20 h-5 bg-black rounded-full" />
                   {/* screen */}
@@ -519,17 +524,18 @@ function EasyMailPack() {
                       </svg>
                     </div>
 
-                  </div>
-                </div>
+                  </div>{/* screen */}
+                  </div>{/* inner bg */}
+                </div>{/* gradient border wrapper */}
                 {/* subtle phone reflection */}
-                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-[#0c2330]/20 blur-xl rounded-full" />
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-[#0c2330]/20 blur-xl rounded-full z-10" />
               </div>
             </div>
 
             {/* ── Text column ──────────────────────────────── */}
             <div>
               <p className="eyebrow text-[#156686]/70 mb-4">Il problema</p>
-              <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-8">
                 Fammi indovinare: il tuo business si regge{" "}
                 <em className="text-[#156686]">solo sui social.</em>
               </h2>
