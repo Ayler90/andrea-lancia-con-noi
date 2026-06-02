@@ -726,7 +726,7 @@ function EasyMailPack() {
 
             {/* handwriting annotation — right side, aligned with title area */}
             <div className="hidden md:block absolute right-0 top-8 text-right" style={{ transform: "rotate(3deg)" }}>
-              <p className="font-['Caveat'] text-xl text-[#156686] leading-snug">
+              <p className="font-['Caveat'] text-[#156686] leading-snug" style={{ fontSize: "1.2rem" }}>
                 Queste sono solo alcune<br />delle lezioni a cui avrai accesso
               </p>
               <svg width="60" height="48" viewBox="0 0 60 48" fill="none" className="mt-1 ml-auto text-[#156686]/60">
