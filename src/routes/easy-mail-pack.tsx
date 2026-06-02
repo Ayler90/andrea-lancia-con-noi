@@ -12,6 +12,12 @@ import lezione2 from "@/assets/lezione 2.png";
 import lezione3 from "@/assets/lezione 3.png";
 import lezione4 from "@/assets/lezione 4.png";
 import lezione5 from "@/assets/lezione 5.png";
+import imgCreaNL from "@/assets/crea newsletter.png";
+import imgForm from "@/assets/form.png";
+import imgAutomazioni from "@/assets/automazioni.png";
+import imgLanding from "@/assets/landing page.png";
+import imgLancio from "@/assets/lancio con email.png";
+import imgProfila from "@/assets/profila contenuti.png";
 import studenteEmp from "@/assets/studente emp.jpeg";
 import studenteEmp1 from "@/assets/studente emp 1.jpeg";
 import studenteEmp2 from "@/assets/studente emp 2.png";
@@ -702,70 +708,45 @@ function EasyMailPack() {
       </section>
 
       {/* ── PERCHÉ EASY-MAIL PACK ESISTE ──────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
-        {/* glow orbs */}
-        <div className="relative overflow-hidden">
-          <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
-            style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
-          <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
-            style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
+      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
+        <div className="container-narrow">
+          <p className="eyebrow text-[#156686]/70 mb-4">La soluzione</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
+            Ecco perché <em className="text-[#156686]">Easy-Mail Pack</em> esiste.
+          </h2>
+          <p className="text-sm md:text-base text-foreground/70 max-w-2xl mb-14 leading-relaxed">
+            Quando ho creato Easy-Mail Pack, avevo in mente un obiettivo molto chiaro: rendere indipendenti i freelance e i solopreneur che vogliono creare la propria lista email e aggiungere l'email marketing al loro ecosistema di business.
+          </p>
 
-          <div className="container-narrow relative">
-            <p className="eyebrow text-primary-foreground/70 mb-4">La soluzione</p>
-            <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">
-              Ecco perché <em style={{ color: "#C4D9DC" }}>Easy-Mail Pack</em> esiste.
-            </h2>
-            <p className="text-sm md:text-base text-white/80 max-w-2xl mb-12 leading-relaxed">
-              Per gestire piano video corsi in modo semplice e pratico, imparare a padroneggiare tutto il necessario e integrare l'email marketing nel tuo business online.
-            </p>
-
-            <p className="text-sm md:text-base text-white/80 font-semibold mb-8">
-              In Easy-Mail Pack trovi tutto quello che ti serve per:
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-5">
-              {[
-                {
-                  title: "Creare la tua lista email e mantenerla attiva",
-                  desc: "Impara a impostare la piattaforma, creare il form di iscrizione e iniziare a raccogliere contatti qualificati.",
-                  img: "Screenshot: lista email / dashboard",
-                },
-                {
-                  title: "Configurare le piattaforme email come un professionista",
-                  desc: "Mailerlite o Active Campaign: ti guido passo dopo passo nella configurazione completa.",
-                  img: "Screenshot: configurazione piattaforma",
-                },
-                {
-                  title: "Profilare chi si iscrive e inviare email personalizzate",
-                  desc: "Segmenta la tua lista, usa i tag e invia messaggi pertinenti alle persone giuste.",
-                  img: "Screenshot: segmentazione contatti",
-                },
-                {
-                  title: "Creare strategie di lancio con schemi e template",
-                  desc: "Struttura le email del tuo lancio con sequenze pre-costruite che ti semplificano la vita.",
-                  img: "Screenshot: strategia di lancio",
-                },
-              ].map((f) => (
-                <div key={f.title} className="rounded-2xl py-6 px-6" data-cursor-dark
-                  style={{ backgroundColor: "#EEF3F5", border: "1px solid rgba(196,217,220,0.5)" }}>
-                  <PlaceholderImg label={f.img} className="w-full aspect-video mb-5" />
-                  <h3 className="font-bold text-foreground/85 mb-2">{f.title}</h3>
-                  <p className="text-sm text-foreground/65 leading-relaxed">{f.desc}</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+            {[
+              { title: "Crea la tua newsletter",       img: imgCreaNL },
+              { title: "Dai vita al form di iscrizione", img: imgForm },
+              { title: "Ora tocca alle automazioni",   img: imgAutomazioni },
+              { title: "Crea la tua landing page",     img: imgLanding },
+              { title: "Struttura un lancio con le email", img: imgLancio },
+              { title: "Profila i tuoi contatti",      img: imgProfila },
+            ].map(({ title, img }) => (
+              <div key={title} className="rounded-xl overflow-hidden border border-[#156686]/10 bg-white"
+                style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)" }}>
+                <img src={img} alt={title} className="w-full aspect-video object-cover" />
+                <div className="px-4 py-3">
+                  <p className="text-sm font-semibold text-foreground/85">{title}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
 
-            <div className="mt-10 text-center">
-              <a
-                href={PURCHASE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap inline-block"
-                onClick={() => trackCta("perche-esiste-cta")}
-              >
-                Iscriviti ora →
-              </a>
-            </div>
+          <div className="mt-10 text-center">
+            <a
+              href={PURCHASE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap inline-block"
+              onClick={() => trackCta("perche-esiste-cta")}
+            >
+              Iscriviti ora →
+            </a>
           </div>
         </div>
       </section>
@@ -829,26 +810,6 @@ function EasyMailPack() {
             ))}
           </div>
 
-          {/* 6 anteprima lezioni */}
-          <p className="text-sm md:text-base text-foreground/65 text-center mb-8">Queste sono alcune delle lezioni a cui avrai accesso...</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {[
-              "Crea la tua newsletter",
-              "Dai vita al form di iscrizione",
-              "Ora tocca alle automazioni",
-              "Crea la tua landing page",
-              "Struttura un lancio con le email",
-              "Profila i tuoi contatti",
-            ].map((title) => (
-              <div key={title} className="rounded-xl overflow-hidden border border-[#156686]/10 bg-white"
-                style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)" }}>
-                <PlaceholderImg label={`Thumbnail: ${title}`} className="w-full aspect-video" />
-                <div className="px-4 py-3">
-                  <p className="text-sm font-semibold text-foreground/85">{title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
