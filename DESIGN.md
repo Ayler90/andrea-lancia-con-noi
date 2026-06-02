@@ -407,3 +407,82 @@ Struttura:
 - Mai `box-shadow` su `<img>`
 - Mai teal diverso da `#156686`
 - Mai `overflow-hidden` su elementi con animazione `::before` clip-path (la clippa)
+
+---
+
+## 11. CountUp — Numero animato al scroll
+
+Componente React che anima un numero da 0 al valore target quando entra nel viewport.
+
+### Caratteristiche
+- **Trigger**: `IntersectionObserver` con `threshold: 0.5` — parte quando il 50% del elemento è visibile
+- **Si avvia una sola volta** (ref `started` previene ri-avvii al re-scroll)
+- **Durata**: 6400ms
+- **Easing**: `1 - (1 - progress)^12` — sale velocemente all'inizio, rallenta moltissimo verso il valore finale
+- **Anti-tremolio**: `display: inline-block` + `minWidth` calcolato su `${cifre + suffisso}.length ch` + `fontVariantNumeric: tabular-nums`
+
+### Codice
+```tsx
+function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suffix?: string; duration?: number }) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 12);
+            setValue(Math.round(ease * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return (
+    <span ref={ref} style={{ display: "inline-block", minWidth: `${String(target).length + suffix.length}ch`, fontVariantNumeric: "tabular-nums" }}>
+      {value}{suffix}
+    </span>
+  );
+}
+```
+
+### Uso (riga stat con divisori verticali)
+```tsx
+<div className="flex items-stretch justify-center flex-wrap gap-y-8">
+  {[
+    { target: 90, suffix: "+", label: "Lezioni" },
+    { target: 21, suffix: "",  label: "Template" },
+    { target: 5,  suffix: "",  label: "Ore di formazione" },
+    { target: 2,  suffix: "",  label: "Bonus inclusi" },
+  ].map((s, i) => (
+    <>
+      {i > 0 && (
+        <div key={`div-${i}`} className="hidden md:flex items-center flex-shrink-0 mx-10">
+          <span className="w-px h-8 bg-[#156686]/30" />
+        </div>
+      )}
+      <div key={s.label} className="text-center min-w-[100px]">
+        <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontVariantNumeric: "tabular-nums", minWidth: "2.5ch" }}>
+          <CountUp target={s.target} suffix={s.suffix} />
+        </p>
+        <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
+      </div>
+    </>
+  ))}
+</div>
+```
+- Divisori verticali `w-px h-8 bg-[#156686]/30`, visibili solo su desktop (`hidden md:flex`)
+- Numeri con `clamp(2.5rem, 5vw, 4rem)` per dimensione responsive
