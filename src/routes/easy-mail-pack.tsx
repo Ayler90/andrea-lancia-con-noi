@@ -714,21 +714,22 @@ function EasyMailPack() {
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/15 blur-3xl pointer-events-none"
           style={{ bottom: "-15%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
         <div className="container-narrow relative">
-          <p className="eyebrow text-[#156686]/70 mb-4">La soluzione</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-            Ecco perché <em className="text-[#156686]">Easy-Mail Pack</em> esiste.
-          </h2>
-          <p className="text-sm md:text-base text-foreground/70 max-w-2xl mb-14 leading-relaxed">
-            Quando ho creato Easy-Mail Pack, avevo in mente un obiettivo molto chiaro: rendere indipendenti i freelance e i solopreneur che vogliono creare la propria lista email e aggiungere l'email marketing al loro ecosistema di business.
-          </p>
+          {/* title + text with handwriting annotation floating right */}
+          <div className="relative mb-14">
+            <p className="eyebrow text-[#156686]/70 mb-4">La soluzione</p>
+            <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
+              Ecco perché <em className="text-[#156686]">Easy-Mail Pack</em> esiste.
+            </h2>
+            <p className="text-sm md:text-base text-foreground/70 max-w-2xl leading-relaxed">
+              Quando ho creato Easy-Mail Pack, avevo in mente un obiettivo molto chiaro: rendere indipendenti i freelance e i solopreneur che vogliono creare la propria lista email e aggiungere l'email marketing al loro ecosistema di business.
+            </p>
 
-          {/* handwriting label + arrow */}
-          <div className="flex justify-center mb-8">
-            <div className="text-center" style={{ transform: "rotate(3deg)" }}>
-              <p className="font-['Caveat'] text-xl md:text-2xl text-[#156686] leading-snug">
+            {/* handwriting annotation — right side, aligned with title area */}
+            <div className="hidden md:block absolute right-0 top-8 text-right" style={{ transform: "rotate(3deg)" }}>
+              <p className="font-['Caveat'] text-xl text-[#156686] leading-snug">
                 Queste sono solo alcune<br />delle lezioni a cui avrai accesso
               </p>
-              <svg width="60" height="48" viewBox="0 0 60 48" fill="none" className="mt-1 mx-auto text-[#156686]/60">
+              <svg width="60" height="48" viewBox="0 0 60 48" fill="none" className="mt-1 ml-auto text-[#156686]/60">
                 <path d="M4 4 C10 20, 30 30, 50 42" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
                 <path d="M50 42 L40 36 M50 42 L46 31" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
