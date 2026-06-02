@@ -698,6 +698,14 @@ input:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
 }
 
+/* Strip default background from widget wrapper */
+#CookiebotWidget,
+#CookiebotWidget.CookiebotWidget-open {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 /* Floating trigger button */
 .CookiebotWidget-logo {
   background: #156686 !important;
