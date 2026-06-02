@@ -263,7 +263,7 @@ function EasyMailPack() {
                   </div>
                 ))}
               </div>
-              Oltre 150 studenti · Video Corso Completo
+              Oltre 150 studenti
             </div>
           </div>
 
@@ -290,7 +290,7 @@ function EasyMailPack() {
               Iscriviti ora →
             </a>
             <a href="#lezioni" className="cta-ghost whitespace-nowrap">
-              Guarda i contenuti ↓
+              Guarda le lezioni ↓
             </a>
           </div>
 
@@ -405,9 +405,9 @@ function EasyMailPack() {
                   </div>
                 </div>
 
-                {/* tooltip — angolo in alto a sinistra */}
+                {/* angolo in alto a sinistra — freccia in basso, pivot bottom-left */}
                 {pos === "top-left" && (
-                  <div className="tooltip-bubble absolute bottom-full left-0 mb-5 z-30 pointer-events-none origin-bottom-left" style={{ rotate: "-4deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full left-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom left", rotate: "-4deg" }}>
                     <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
@@ -415,21 +415,21 @@ function EasyMailPack() {
                   </div>
                 )}
 
-                {/* tooltip — angolo in alto a destra */}
+                {/* angolo in alto a destra — freccia in basso, pivot bottom-right */}
                 {pos === "top-right" && (
-                  <div className="tooltip-bubble absolute bottom-full right-0 mb-5 z-30 pointer-events-none origin-bottom-right" style={{ rotate: "3deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full right-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom right", rotate: "3deg" }}>
                     <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
-                    <div className="mr-6 flex justify-end" style={{ marginTop: 0 }}>
+                    <div className="mr-6 flex justify-end">
                       <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
                     </div>
                   </div>
                 )}
 
-                {/* tooltip — angolo in basso a sinistra */}
+                {/* angolo in basso a sinistra — freccia in alto, pivot top-left */}
                 {pos === "bottom-left" && (
-                  <div className="tooltip-bubble absolute top-full left-0 mt-5 z-30 pointer-events-none origin-top-left" style={{ rotate: "-3deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full left-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top left", rotate: "-3deg" }}>
                     <div className="ml-6">
                       <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
                     </div>
@@ -439,9 +439,9 @@ function EasyMailPack() {
                   </div>
                 )}
 
-                {/* tooltip — angolo in basso a destra */}
+                {/* angolo in basso a destra — freccia in alto, pivot top-right */}
                 {pos === "bottom-right" && (
-                  <div className="tooltip-bubble absolute top-full right-0 mt-5 z-30 pointer-events-none origin-top-right" style={{ rotate: "4deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full right-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top right", rotate: "4deg" }}>
                     <div className="mr-6 flex justify-end">
                       <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
                     </div>
@@ -466,7 +466,7 @@ function EasyMailPack() {
               Iscriviti ora →
             </a>
             <a href="#lezioni" className="cta-ghost text-white whitespace-nowrap" style={{ border: "1.5px solid rgba(255,255,255,0.45)" }}>
-              Guarda i contenuti ↓
+              Guarda le lezioni ↓
             </a>
           </div>
         </div>

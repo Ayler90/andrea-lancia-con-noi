@@ -393,8 +393,8 @@
 }
 
 @keyframes tooltip-pop {
-  0%   { opacity: 0; transform: scale(0); }
-  28%  { opacity: 1; transform: scale(1.12); }
+  0%   { transform: scale(0); }
+  28%  { transform: scale(1.12); }
   46%  { transform: scale(0.93); }
   61%  { transform: scale(1.06); }
   74%  { transform: scale(0.97); }
@@ -403,11 +403,31 @@
   100% { transform: scale(1); }
 }
 
-.group:hover .tooltip-bubble {
-  animation: tooltip-pop 0.85s ease forwards;
+/* Arrow points DOWN (tooltip is above) — pivot at bottom, sways L/R */
+@keyframes tooltip-float-arrowdown {
+  0%,100% { transform: scale(1) rotate(0deg) translateX(0); }
+  30%     { transform: scale(1) rotate(-2.5deg) translateX(-5px); }
+  70%     { transform: scale(1) rotate(2.5deg) translateX(5px); }
 }
-.tooltip-bubble {
-  opacity: 0;
+
+/* Arrow points UP (tooltip is below) — pivot at top, sways L/R */
+@keyframes tooltip-float-arrowup {
+  0%,100% { transform: scale(1) rotate(0deg) translateX(0); }
+  30%     { transform: scale(1) rotate(2.5deg) translateX(5px); }
+  70%     { transform: scale(1) rotate(-2.5deg) translateX(-5px); }
+}
+
+.tooltip-bubble { opacity: 0; }
+
+.group:hover .tooltip-bubble { opacity: 1; }
+
+.group:hover .tooltip-arrow-down {
+  animation: tooltip-pop 0.85s ease forwards,
+             tooltip-float-arrowdown 4s ease-in-out 0.85s infinite;
+}
+.group:hover .tooltip-arrow-up {
+  animation: tooltip-pop 0.85s ease forwards,
+             tooltip-float-arrowup 4.5s ease-in-out 0.85s infinite;
 }
 
 /* Guida stacked images — two-level: wrapper spreads, img floats */
