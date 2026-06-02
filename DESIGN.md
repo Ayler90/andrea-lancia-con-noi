@@ -113,26 +113,25 @@ Gap tra voci: `space-y-3`
 </a>
 ```
 
-### Varianti per dimensione
-| Contesto | Classi aggiuntive |
-|---|---|
-| Nav desktop CTA | `text-xs px-4 py-2` |
-| Sezioni principali | `text-sm px-6 py-3` |
-| Pricing / CTA principale | `text-base px-8 py-3.5` |
-| Piena larghezza mobile | aggiungere `block w-full text-center` |
+### Dimensione base (CSS — non sovrascrivere con Tailwind)
+- `font-size: 0.8125rem` · `font-weight: 600` · `padding: 1rem 1.75rem`
+- **Non aggiungere** classi `text-sm`, `text-base`, `px-*`, `py-*` — il CSS base gestisce tutto
+- Eccezioni: solo Nav CTA (`text-xs px-4 py-2`) e bottoni a piena larghezza mobile (`block w-full text-center`)
 
 ### Effetti built-in nel `.pill`
-- **Shadow teal:** `box-shadow: 0 4px 18px -2px oklch(0.452 0.067 230.5 / 0.22)`
+- **Shadow teal:** `box-shadow: 0 4px 18px -2px rgba(21,102,134,0.22)`
 - **Glow interno al hover:** `::before` con `radial-gradient` bianco che segue il cursore via CSS variables `--pill-glow-x` / `--pill-glow-y`
 - **Transizione:** `all 0.25s ease`
-- **`whitespace-nowrap`**: usare sui bottoni full-width per evitare che la freccia `→` vada a capo
+- **`whitespace-nowrap`**: usare per evitare che la freccia `→` vada a capo
 
 ### Bottone ghost (`.cta-ghost`)
-Per CTA secondarie su sfondo chiaro:
+Per CTA secondarie su sfondo chiaro — **stessa dimensione del pill**:
 ```tsx
 <a className="cta-ghost">Testo →</a>
 ```
-Al hover diventa teal (`#156686`) con testo bianco.
+- `font-size: 0.8125rem` · `font-weight: 600` · `padding: 1rem 1.75rem` (identico al pill)
+- Al hover diventa teal (`#156686`) con testo bianco
+- **Non aggiungere** classi di dimensione — il CSS base gestisce tutto
 
 ---
 
@@ -140,12 +139,21 @@ Al hover diventa teal (`#156686`) con testo bianco.
 
 ### Badge standard (su sfondo chiaro)
 ```tsx
-<div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full">
-  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0"
-    style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+<div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
   Label badge
 </div>
 ```
+- Nessun pallino/dot — solo testo uppercase
+- Se serve uno stack di avatar a sinistra del testo:
+```tsx
+<div className="flex -space-x-2 flex-shrink-0">
+  {avatars.map((src, i, arr) => (
+    <img key={i} src={src} className="w-9 h-9 rounded-full border-2 object-cover flex-shrink-0"
+      style={{ borderColor: "var(--surface)", zIndex: arr.length - i }} />
+  ))}
+</div>
+```
+  - `w-9 h-9` (36px), `border-color: var(--surface)`, z-index decrescente (primo avatar sopra gli altri)
 
 ### Badge su sfondo scuro (nav mobile)
 ```tsx
