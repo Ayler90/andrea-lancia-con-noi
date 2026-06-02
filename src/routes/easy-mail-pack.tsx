@@ -730,8 +730,8 @@ function EasyMailPack() {
                 Queste sono solo alcune<br />delle lezioni a cui avrai accesso
               </p>
               <svg width="60" height="48" viewBox="0 0 60 48" fill="none" className="mt-1 ml-auto text-[#156686]/60">
-                <path d="M4 4 C10 20, 30 30, 50 42" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
-                <path d="M50 42 L40 36 M50 42 L46 31" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M56 4 C50 20, 30 30, 10 42" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+                <path d="M10 42 L20 36 M10 42 L14 31" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>
