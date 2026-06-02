@@ -325,23 +325,51 @@ function EasyMailPack() {
       </section>
 
       {/* ── PROBLEMA ──────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
-        <div className="container-narrow max-w-3xl">
-          <p className="eyebrow text-[#156686]/70 mb-4">Il problema</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-            Il tuo business si regge principalmente solo sui{" "}
-            <em className="text-[#156686]">social.</em>
-          </h2>
-          <div className="text-sm md:text-base text-foreground/85 leading-relaxed space-y-4">
-            <p>
-              Ogni giorno crei contenuti, rispondi ai DM, insegui l'algoritmo. Ma se domani Instagram sparisse, il tuo business sparirebbe con lui.
-            </p>
-            <p>
-              Non hai una lista email. Non hai un canale diretto con il tuo pubblico. E ogni volta che vuoi vendere, devi sperare che l'algoritmo te lo permetta.
-            </p>
-            <p>
-              <strong>Easy-Mail Pack</strong> è nato per risolvere questo: imparare a costruire la tua lista, scrivere email che vendono e lanciare i tuoi prodotti con una strategia email solida — anche se parti da zero.
-            </p>
+      <section className="relative overflow-hidden py-20 md:py-28 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
+        {/* glow orbs */}
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"
+          style={{ background: "#0c2330", opacity: 0.25, filter: "blur(100px)", bottom: "-15%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
+
+        <div className="container-narrow relative">
+          {/* eyebrow */}
+          <p className="eyebrow text-white/50 mb-10">Il punto di partenza</p>
+
+          {/* two-column: title left, text right */}
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start mb-16 md:mb-20">
+            {/* left: title */}
+            <h2 className="h-display font-bold text-white leading-[1.1]"
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+              Tu vuoi creare la tua lista email, usare le newsletter e inviare email nei tuoi lanci.{" "}
+              <em style={{ color: "#C4D9DC" }}>Ma da dove si inizia?</em>
+            </h2>
+
+            {/* right: paragraphs */}
+            <div className="space-y-5 text-sm md:text-base text-white/75 leading-relaxed">
+              <p>
+                Easy-Mail Pack ti guida passo dopo passo nel costruire una strategia di email marketing efficace, mostrandoti come configurare strumenti come <strong className="text-white/90">Mailerlite</strong> o <strong className="text-white/90">Active Campaign</strong>, creare email accattivanti e impostare automazioni che lavorano per te.
+              </p>
+              <p>
+                Non importa se non hai esperienza tecnica, se parti da 0 o se non hai mai visto una piattaforma di email marketing: grazie a video tutorial chiari e materiali pronti all'uso, potrai sentirti sicuro e autonomo in ogni fase.
+              </p>
+              <p>
+                Easy-Mail Pack ti insegna a trasformare le email in un potente strumento per connetterti con la tua community, fidelizzare i clienti e aumentare il valore percepito del tuo brand.
+              </p>
+              <p>
+                Inoltre, ti aiuta a risparmiare tempo e a rendere il processo di email marketing <strong className="text-white/90">sostenibile e alla tua portata.</strong>
+              </p>
+            </div>
+          </div>
+
+          {/* image placeholders row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {["Immagine 1", "Immagine 2", "Immagine 3", "Immagine 4"].map((label) => (
+              <div key={label} className="rounded-2xl aspect-[4/5] flex items-center justify-center text-white/30 text-xs font-medium border border-white/10"
+                style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+                {label}
+              </div>
+            ))}
           </div>
         </div>
       </section>
