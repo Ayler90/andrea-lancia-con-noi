@@ -714,7 +714,6 @@ input:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
 }
 .CookiebotWidget-logo:hover {
   opacity: 0.88 !important;
-  transform: translateY(-2px) !important;
 }
 .CookiebotWidget-logo svg circle {
   fill: #156686 !important;
