@@ -230,6 +230,74 @@ function LessonList() {
   );
 }
 
+// ── LessonCard ────────────────────────────────────────────────────────────────
+
+type CardPos = "top-left" | "top-right" | "bottom-left" | "bottom-right";
+
+function TooltipBubble({ text, effectivePos, defaultPos }: { text: string; effectivePos: CardPos; defaultPos: CardPos }) {
+  const isAbove = effectivePos === "top-left" || effectivePos === "top-right";
+  const isLeft = effectivePos === "top-left" || effectivePos === "bottom-left";
+  const tilt = defaultPos === "top-left" ? "-4deg" : defaultPos === "top-right" ? "3deg" : defaultPos === "bottom-left" ? "-3deg" : "4deg";
+
+  return (
+    <div
+      className={`tooltip-bubble ${isAbove ? "tooltip-arrow-down" : "tooltip-arrow-up"} absolute z-30 pointer-events-none ${
+        isAbove ? "bottom-full mb-5" : "top-full mt-5"
+      } ${isLeft ? "left-0" : "right-0"}`}
+      style={{ transformOrigin: isAbove ? "bottom center" : "top center", rotate: tilt }}
+    >
+      {!isAbove && (
+        <div className="flex justify-center">
+          <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
+        </div>
+      )}
+      <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
+        {text}
+      </div>
+      {isAbove && (
+        <div className="flex justify-center">
+          <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; tooltip: string; pos: CardPos }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [effectivePos, setEffectivePos] = useState<CardPos>(pos);
+
+  const handleMouseEnter = () => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const tooltipH = 130;
+    const isDefaultAbove = pos === "top-left" || pos === "top-right";
+    if (isDefaultAbove && rect.top < tooltipH) {
+      // not enough space above → flip to below
+      setEffectivePos(pos === "top-left" ? "bottom-left" : "bottom-right");
+    } else if (!isDefaultAbove && window.innerHeight - rect.bottom < tooltipH) {
+      // not enough space below → flip to above
+      setEffectivePos(pos === "bottom-left" ? "top-left" : "top-right");
+    } else {
+      setEffectivePos(pos);
+    }
+  };
+
+  return (
+    <div ref={cardRef} className="group relative" style={{ isolation: "isolate" }} onMouseEnter={handleMouseEnter}>
+      <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
+        <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
+          <span className="inline-flex items-center border border-[#C4D9DC]/60 bg-[#156686]/80 text-[#C4D9DC] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
+            {badge}
+          </span>
+        </div>
+      </div>
+      <TooltipBubble text={tooltip} effectivePos={effectivePos} defaultPos={pos} />
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 
 function EasyMailPack() {
@@ -366,92 +434,12 @@ function EasyMailPack() {
             </div>
           </div>
 
-          {/* lesson images row — full width */}
+          {/* lesson images row */}
           <div className="grid grid-cols-2 gap-4">
-            {[
-              {
-                src: lezione2,
-                badge: "Crea la tua lista e mantienila attiva",
-                tooltip: "L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc).",
-                pos: "top-left" as const,
-              },
-              {
-                src: lezione3,
-                badge: "Configura le piattaforme, anche se parti da 0",
-                tooltip: "Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno.",
-                pos: "top-right" as const,
-              },
-              {
-                src: lezione4,
-                badge: "Profila chi si iscrive alle tue liste",
-                tooltip: "Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro).",
-                pos: "bottom-left" as const,
-              },
-              {
-                src: lezione5,
-                badge: "Crea strategie di lancio con le email",
-                tooltip: "Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare.",
-                pos: "bottom-right" as const,
-              },
-            ].map(({ src, badge, tooltip, pos }) => (
-              <div key={badge} className="group relative" style={{ isolation: "isolate" }}>
-                {/* card */}
-                <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
-                  <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
-                    <span className="inline-flex items-center border border-[#C4D9DC]/60 bg-[#156686]/80 text-[#C4D9DC] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
-                      {badge}
-                    </span>
-                  </div>
-                </div>
-
-                {/* angolo in alto a sinistra — freccia in basso, pivot bottom-left */}
-                {pos === "top-left" && (
-                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full left-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom center", rotate: "-4deg" }}>
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
-                      {tooltip}
-                    </div>
-                    <div className="flex justify-center" style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330", margin: "0 auto" }} />
-                  </div>
-                )}
-
-                {/* angolo in alto a destra — freccia in basso, pivot bottom-right */}
-                {pos === "top-right" && (
-                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full right-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom center", rotate: "3deg" }}>
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
-                      {tooltip}
-                    </div>
-                    <div className="flex justify-center">
-                      <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
-                    </div>
-                  </div>
-                )}
-
-                {/* angolo in basso a sinistra — freccia in alto, pivot top-left */}
-                {pos === "bottom-left" && (
-                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full left-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top center", rotate: "-3deg" }}>
-                    <div className="flex justify-center">
-                      <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
-                    </div>
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
-                      {tooltip}
-                    </div>
-                  </div>
-                )}
-
-                {/* angolo in basso a destra — freccia in alto, pivot top-right */}
-                {pos === "bottom-right" && (
-                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full right-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top center", rotate: "4deg" }}>
-                    <div className="flex justify-center">
-                      <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
-                    </div>
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
-                      {tooltip}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+            <LessonCard src={lezione2} badge="Crea la tua lista e mantienila attiva" tooltip="L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc)." pos="top-left" />
+            <LessonCard src={lezione3} badge="Configura le piattaforme, anche se parti da 0" tooltip="Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno." pos="top-right" />
+            <LessonCard src={lezione4} badge="Profila chi si iscrive alle tue liste" tooltip="Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro)." pos="bottom-left" />
+            <LessonCard src={lezione5} badge="Crea strategie di lancio con le email" tooltip="Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare." pos="bottom-right" />
           </div>
 
           {/* CTAs */}
