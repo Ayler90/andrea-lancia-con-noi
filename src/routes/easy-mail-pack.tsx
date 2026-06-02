@@ -397,7 +397,7 @@ function EasyMailPack() {
             >
               Iscriviti ora →
             </a>
-            <a href="#lezioni" className="cta-ghost text-white whitespace-nowrap">
+            <a href="#lezioni" className="cta-ghost text-white whitespace-nowrap" style={{ border: "1.5px solid rgba(255,255,255,0.45)" }}>
               Guarda i contenuti ↓
             </a>
           </div>
