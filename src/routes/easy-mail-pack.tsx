@@ -845,44 +845,14 @@ function EasyMailPack() {
         </div>
       </section>
 
-      {/* ── COSA TROVERAI DENTRO ──────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
-        <div className="container-narrow">
-          <p className="eyebrow text-[#156686]/70 mb-4 text-center">Il programma</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-6">
-            Ecco cosa troverai <em className="text-[#156686]">dentro Easy-Mail Pack.</em>
-          </h2>
-
-          {/* mockup prodotto */}
-          <div className="max-w-3xl mx-auto mb-10">
-            <PlaceholderImg label="Mockup prodotto" className="w-full aspect-[16/7]" />
-          </div>
-
-          {/* stats */}
-          <div className="flex items-center justify-center gap-10 flex-wrap mb-14">
-            {[
-              { n: "60+", label: "Lezioni" },
-              { n: "3+", label: "Ore di formazione" },
-              { n: "2", label: "Bonus" },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-4xl font-bold text-[#156686]">{s.n}</p>
-                <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
       {/* ── LISTA COMPLETA LEZIONI ────────────────────────────────────────── */}
-      <section id="lezioni" className="py-16 md:py-20 px-4">
+      <section id="lezioni" className="py-16 md:py-20 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
         <div className="container-narrow max-w-3xl">
-          <p className="eyebrow text-[#156686]/70 mb-4 text-center">Il programma completo</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-4">
-            Qui sotto trovi la lista <em className="text-[#156686]">completa delle lezioni.</em>
+          <p className="eyebrow text-white/60 mb-4 text-center">Il programma completo</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-4">
+            Qui sotto trovi la lista <em style={{ color: "#C4D9DC" }}>completa delle lezioni.</em>
           </h2>
-          <p className="text-sm text-foreground/65 text-center mb-10">
+          <p className="text-sm text-white/70 text-center mb-10">
             Sono disponibili fin da subito, puoi guardare a ritmo tuo.
           </p>
           <LessonList />
