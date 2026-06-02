@@ -692,4 +692,147 @@ input:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
 #CybotCookiebotDialog a:visited {
   color: #156686 !important;
 }
+/* ── Cookiebot widget (floating button + panel) ──────────────────────── */
+#CookiebotWidget,
+#CookiebotWidget * {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+}
+
+/* Floating trigger button */
+.CookiebotWidget-logo {
+  background: #156686 !important;
+  border-radius: 9999px !important;
+  width: 48px !important;
+  height: 48px !important;
+  box-shadow: 0 4px 16px rgba(21,102,134,0.35) !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.15s, transform 0.15s !important;
+  cursor: pointer !important;
+}
+.CookiebotWidget-logo:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-2px) !important;
+}
+.CookiebotWidget-logo svg circle {
+  fill: #156686 !important;
+}
+.CookiebotWidget-logo svg path {
+  fill: #ffffff !important;
+}
+
+/* Panel container */
+#CookiebotWidget-widgetContent {
+  border-radius: 1.25rem !important;
+  box-shadow: 0 8px 40px rgba(12,35,48,0.18) !important;
+  border: 1px solid rgba(21,102,134,0.12) !important;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+  overflow: hidden !important;
+}
+
+/* Panel header */
+.CookiebotWidget-header {
+  border-bottom: 1px solid rgba(21,102,134,0.1) !important;
+}
+.CookiebotWidget-header strong {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 700 !important;
+  color: #0c2330 !important;
+}
+
+/* Close button */
+.CookiebotWidget-close {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  opacity: 0.5 !important;
+  transition: opacity 0.15s !important;
+}
+.CookiebotWidget-close:hover {
+  opacity: 1 !important;
+}
+
+/* State heading */
+.CookiebotWidget-state {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+  color: #0c2330 !important;
+  font-size: 0.8125rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Consent list items */
+.CookiebotWidget-consents-list li {
+  font-family: "Inter", sans-serif !important;
+  font-size: 0.875rem !important;
+  color: #0c2330 !important;
+}
+.CookiebotWidget-approved .Cookiebotwidget-consent-icon svg path {
+  fill: #156686 !important;
+}
+.CookiebotWidget-declined .Cookiebotwidget-consent-icon svg path {
+  fill: rgba(12,35,48,0.3) !important;
+}
+
+/* "Mostra dettagli" toggle */
+.CookiebotWidget-show-consent-details {
+  background: transparent !important;
+  border: none !important;
+  color: #156686 !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+}
+.CookiebotWidget-show-consent-details svg path {
+  fill: #156686 !important;
+}
+
+/* Consent details box */
+.CookiebotWidget-consent-details-box {
+  font-size: 0.75rem !important;
+  color: rgba(12,35,48,0.6) !important;
+  font-family: "Inter", sans-serif !important;
+}
+.CookiebotWidget-consent-details-box strong {
+  color: #0c2330 !important;
+  font-weight: 600 !important;
+}
+
+/* Hide Cookiebot logo in widget */
+.CookiebotWidget-main-logo {
+  display: none !important;
+}
+
+/* Action buttons */
+#CookiebotWidget-btn-withdraw,
+#CookiebotWidget-btn-change {
+  border-radius: 9999px !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.8125rem !important;
+  padding: 0.625rem 1.25rem !important;
+  cursor: pointer !important;
+  transition: opacity 0.15s, transform 0.15s !important;
+}
+#CookiebotWidget-btn-change {
+  background: #156686 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+#CookiebotWidget-btn-change:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px) !important;
+}
+#CookiebotWidget-btn-withdraw {
+  background: transparent !important;
+  color: #156686 !important;
+  border: 1.5px solid #156686 !important;
+}
+#CookiebotWidget-btn-withdraw:hover {
+  background: rgba(21,102,134,0.06) !important;
+}
 /* ── end Cookiebot overrides ──────────────────────────────────────────── */
