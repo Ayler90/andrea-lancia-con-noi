@@ -235,12 +235,8 @@ function LessonList() {
 type CardPos = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 
 function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; tooltip: string; pos: CardPos }) {
-  const isTop = pos === "top-left" || pos === "top-right";
   const isLeft = pos === "top-left" || pos === "bottom-left";
-  // top cards: tooltip below; bottom cards: tooltip above
   const tilt = isLeft ? "-3deg" : "3deg";
-  const floatClass = isTop ? "tooltip-arrow-up" : "tooltip-arrow-down";
-  const origin = isTop ? "top center" : "bottom center";
 
   return (
     <div className="group relative" style={{ isolation: "isolate" }}>
@@ -253,27 +249,20 @@ function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; 
         </div>
       </div>
 
-      {/* tooltip: below for top-row cards, above for bottom-row cards */}
-      <div
-        className={`tooltip-bubble ${floatClass} absolute z-30 pointer-events-none ${
-          isTop ? "top-full mt-4" : "bottom-full mb-4"
-        } ${isLeft ? "left-0" : "right-0"}`}
-        style={{ rotate: tilt, transformOrigin: origin }}
-      >
-        {!isTop && (
-          <div className="flex justify-center">
-            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
-          </div>
-        )}
-        <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-52 leading-relaxed">
-          {tooltip}
+      {/* left column → tooltip outside LEFT border; right column → outside RIGHT border */}
+      {isLeft ? (
+        <div className="tooltip-bubble tooltip-arrow-right absolute right-full top-1/2 -translate-y-1/2 mr-4 z-30 pointer-events-none flex items-center"
+          style={{ rotate: tilt, transformOrigin: "right center" }}>
+          <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug">{tooltip}</div>
+          <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderLeft: "7px solid #0c2330", flexShrink: 0 }} />
         </div>
-        {isTop && (
-          <div className="flex justify-center">
-            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
-          </div>
-        )}
-      </div>
+      ) : (
+        <div className="tooltip-bubble tooltip-arrow-left absolute left-full top-1/2 -translate-y-1/2 ml-4 z-30 pointer-events-none flex items-center"
+          style={{ rotate: tilt, transformOrigin: "left center" }}>
+          <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderRight: "7px solid #0c2330", flexShrink: 0 }} />
+          <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug">{tooltip}</div>
+        </div>
+      )}
     </div>
   );
 }
@@ -377,12 +366,14 @@ function EasyMailPack() {
       </section>
 
       {/* ── PROBLEMA ──────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
-        {/* glow orbs */}
-        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
-        <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none"
-          style={{ background: "#0c2330", opacity: 0.25, filter: "blur(100px)", bottom: "-15%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
+      <section className="relative py-20 md:py-28 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
+        {/* glow orbs — overflow-hidden on inner wrapper, not section, so tooltips can escape */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute w-[600px] h-[600px] rounded-full"
+            style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
+          <div className="absolute w-[500px] h-[500px] rounded-full"
+            style={{ background: "#0c2330", opacity: 0.25, filter: "blur(100px)", bottom: "-15%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
+        </div>
 
         <div className="container-narrow relative">
           {/* eyebrow */}
@@ -415,7 +406,7 @@ function EasyMailPack() {
           </div>
 
           {/* lesson images row */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-32">
+          <div className="grid grid-cols-2 gap-4">
             <LessonCard src={lezione2} badge="Crea la tua lista e mantienila attiva" tooltip="L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc)." pos="top-left" />
             <LessonCard src={lezione3} badge="Configura le piattaforme, anche se parti da 0" tooltip="Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno." pos="top-right" />
             <LessonCard src={lezione4} badge="Profila chi si iscrive alle tue liste" tooltip="Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro)." pos="bottom-left" />
