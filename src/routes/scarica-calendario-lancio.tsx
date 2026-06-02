@@ -35,7 +35,7 @@ export const Route = createFileRoute("/scarica-calendario-lancio")({
   }),
 });
 
-const PURCHASE_URL = "https://andreabonomo.systeme.io/completa-acquisto-calendario-lancio";
+const PURCHASE_URL = "https://corsi.andreabonomo.it/completa-acquisto-calendario-lancio";
 const IMG_BASE = "https://academy.andreabonomo.it/wp-content/uploads/2025/03/";
 
 const carouselImages = [

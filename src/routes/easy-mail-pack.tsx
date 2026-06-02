@@ -34,7 +34,7 @@ export const Route = createFileRoute("/easy-mail-pack")({
   }),
 });
 
-const PURCHASE_URL = "https://andreabonomo.systeme.io/iscriviti-easy-mail-pack";
+const PURCHASE_URL = "https://corsi.andreabonomo.it/iscriviti-ora-base";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
