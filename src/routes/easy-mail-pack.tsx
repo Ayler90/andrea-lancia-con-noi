@@ -656,7 +656,7 @@ function EasyMailPack() {
                   "Non dipende da algoritmi o copertura organica",
                   "La mailing list è davvero tua: controllo diretto su quando e come comunicare",
                   "Dialogo più personale e costante con le persone giuste",
-                  "Nessuna pressione a pubblicare ogni giorno — frequenza settimanale, bisettimanale o mensile",
+                  "Nessuna pressione a pubblicare ogni giorno: frequenza settimanale, bisettimanale o mensile",
                   "La tua lista cresce comunque, indipendentemente dal profilo social",
                 ],
               },
