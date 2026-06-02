@@ -181,6 +181,37 @@ Per CTA secondarie su sfondo chiaro — **stessa dimensione del pill**:
 ```
 **Importante:** aggiungere `data-cursor-dark` sulle card chiare dentro sezioni scure.
 
+### Card con emoji fluttuante e glow (box checklist)
+```tsx
+<div className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
+  {/* emoji fluttuante con glow teal sotto */}
+  <div className="relative inline-block mb-5">
+    <div className="text-3xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>
+      🚀
+    </div>
+    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-4 blur-lg rounded-full pointer-events-none"
+      style={{ backgroundColor: "rgba(21,102,134,0.35)" }} />
+  </div>
+  <h3 className="font-semibold text-[#0c2330] text-base md:text-lg mb-5 leading-snug">Titolo</h3>
+  <ul className="space-y-3">
+    {items.map(t => (
+      <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
+        {/* checkbox arrotondato con spunta */}
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="flex-shrink-0 mt-0.5">
+          <rect x="0.5" y="0.5" width="17" height="17" rx="5" fill="#156686" fillOpacity="0.1" stroke="#156686" strokeOpacity="0.3"/>
+          <path d="M5 9.5l2.5 2.5 5-5" stroke="#156686" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        {t}
+      </li>
+    ))}
+  </ul>
+</div>
+```
+**Regole:**
+- Emoji sempre `text-3xl` con `thought-float 3s ease-in-out infinite`
+- Glow: `w-10 h-4 blur-lg`, colore `rgba(21,102,134,0.35)` per teal; `rgba(220,50,50,0.4)` per rosso
+- Checkbox: `rx="5"` (angoli arrotondati), fill teal a 10%, stroke teal a 30%, spunta teal `#156686`
+
 ### Card pricing (sfondo bianco con sezione scura intorno)
 ```tsx
 <div className="bg-white rounded-xl overflow-hidden" data-cursor-dark>
@@ -251,6 +282,7 @@ La sezione deve avere `relative overflow-hidden`.
 | `footer-glow` | `12s linear infinite` | Orb nel footer navy |
 | `guide-gentle-float` | `3-3.8s ease-in-out infinite` | Float leggero immagini guida |
 | `mobile-menu-in/out` | `0.15s ease` | Apertura/chiusura menu mobile |
+| `thought-float` | `3s ease-in-out infinite` | Fluttuazione emoji nei box checklist e card |
 
 ### `img-float` — dettaglio
 ```css

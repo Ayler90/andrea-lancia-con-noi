@@ -647,49 +647,59 @@ function EasyMailPack() {
 
           {/* ── Two solution boxes ────────────────────────── */}
           <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-            {/* Box 1 — Newsletter */}
-            <div className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
-              <div className="text-2xl mb-4">✉️</div>
-              <h3 className="font-semibold text-[#0c2330] text-base md:text-lg mb-4 leading-snug">
-                Perché dovresti usare la newsletter nel tuo ecosistema
-              </h3>
-              <ul className="space-y-3">
-                {[
+            {[
+              {
+                emoji: "✉️",
+                glow: "rgba(21,102,134,0.35)",
+                title: "Perché dovresti usare la newsletter nel tuo ecosistema",
+                items: [
                   "Non dipende da algoritmi o copertura organica",
                   "La mailing list è davvero tua: controllo diretto su quando e come comunicare",
                   "Dialogo più personale e costante con le persone giuste",
                   "Nessuna pressione a pubblicare ogni giorno — frequenza settimanale, bisettimanale o mensile",
                   "La tua lista cresce comunque, indipendentemente dal profilo social",
-                ].map(t => (
-                  <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#156686] flex-shrink-0" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Box 2 — Email nei lanci */}
-            <div className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
-              <div className="text-2xl mb-4">🚀</div>
-              <h3 className="font-semibold text-[#0c2330] text-base md:text-lg mb-4 leading-snug">
-                Perché dovresti usare le email nei tuoi lanci
-              </h3>
-              <ul className="space-y-3">
-                {[
+                ],
+              },
+              {
+                emoji: "🚀",
+                glow: "rgba(21,102,134,0.35)",
+                title: "Perché dovresti usare le email nei tuoi lanci",
+                items: [
                   "Fare un lancio solo sui social è rischioso: sei in balia di un canale che non controlli",
                   "L'email è un canale parallelo che non dipende dall'algoritmo",
                   "Tasso di apertura e di conversione più alto rispetto ai social",
                   "Più vendite e più clienti senza essere costantemente presente con contenuti",
                   "Strategia email + organico = lancio più solido e prevedibile",
-                ].map(t => (
-                  <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#156686] flex-shrink-0" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                ],
+              },
+            ].map(box => (
+              <div key={box.title} className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
+                {/* floating emoji with glow */}
+                <div className="relative inline-block mb-5">
+                  <div className="text-3xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>
+                    {box.emoji}
+                  </div>
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-4 blur-lg rounded-full pointer-events-none"
+                    style={{ backgroundColor: box.glow }} />
+                </div>
+
+                <h3 className="font-semibold text-[#0c2330] text-base md:text-lg mb-5 leading-snug">
+                  {box.title}
+                </h3>
+                <ul className="space-y-3">
+                  {box.items.map(t => (
+                    <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
+                      {/* rounded checkbox with checkmark */}
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="flex-shrink-0 mt-0.5" aria-hidden="true">
+                        <rect x="0.5" y="0.5" width="17" height="17" rx="5" fill="#156686" fillOpacity="0.1" stroke="#156686" strokeOpacity="0.3"/>
+                        <path d="M5 9.5l2.5 2.5 5-5" stroke="#156686" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
         </div>
