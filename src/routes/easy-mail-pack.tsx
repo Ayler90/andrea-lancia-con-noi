@@ -405,43 +405,43 @@ function EasyMailPack() {
                   </div>
                 </div>
 
-                {/* tooltip — angolo in alto a sinistra, fuori dall'immagine */}
+                {/* tooltip — angolo in alto a sinistra */}
                 {pos === "top-left" && (
-                  <div className="absolute bottom-full left-0 mb-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-bottom-left">
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                  <div className="tooltip-bubble absolute bottom-full left-0 mb-5 z-30 pointer-events-none origin-bottom-left" style={{ rotate: "-4deg" }}>
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
-                    <div className="ml-5" style={{ width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid #0c2330" }} />
+                    <div className="ml-6" style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
                   </div>
                 )}
 
-                {/* tooltip — metà bordo destro, fuori dall'immagine */}
+                {/* tooltip — metà bordo destro */}
                 {pos === "right" && (
-                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-left flex items-center gap-0">
-                    <div style={{ width: 0, height: 0, borderTop: "8px solid transparent", borderBottom: "8px solid transparent", borderRight: "8px solid #0c2330" }} />
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                  <div className="tooltip-bubble absolute left-full top-1/2 -translate-y-1/2 ml-5 z-30 pointer-events-none origin-left flex items-center" style={{ rotate: "3deg" }}>
+                    <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderRight: "9px solid #0c2330", flexShrink: 0 }} />
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
                   </div>
                 )}
 
-                {/* tooltip — metà bordo sinistro, fuori dall'immagine */}
+                {/* tooltip — metà bordo sinistro */}
                 {pos === "left" && (
-                  <div className="absolute right-full top-1/2 -translate-y-1/2 mr-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-right flex items-center gap-0">
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                  <div className="tooltip-bubble absolute right-full top-1/2 -translate-y-1/2 mr-5 z-30 pointer-events-none origin-right flex items-center" style={{ rotate: "-3deg" }}>
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
-                    <div style={{ width: 0, height: 0, borderTop: "8px solid transparent", borderBottom: "8px solid transparent", borderLeft: "8px solid #0c2330" }} />
+                    <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderLeft: "9px solid #0c2330", flexShrink: 0 }} />
                   </div>
                 )}
 
-                {/* tooltip — angolo in basso a destra, fuori dall'immagine */}
+                {/* tooltip — angolo in basso a destra */}
                 {pos === "bottom-right" && (
-                  <div className="absolute top-full right-0 mt-5 z-30 pointer-events-none opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 origin-top-right">
-                    <div className="mr-5 flex justify-end">
-                      <div style={{ width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderBottom: "8px solid #0c2330" }} />
+                  <div className="tooltip-bubble absolute top-full right-0 mt-5 z-30 pointer-events-none origin-top-right" style={{ rotate: "4deg" }}>
+                    <div className="mr-6 flex justify-end">
+                      <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
                     </div>
-                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-4 py-3 rounded-xl max-w-[210px] leading-snug">
+                    <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
                   </div>

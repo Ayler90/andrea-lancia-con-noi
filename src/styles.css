@@ -392,6 +392,20 @@
   100% { transform: scale(3.8); opacity: 0;    }
 }
 
+@keyframes tooltip-pop {
+  0%   { opacity: 0; transform: scale(0.65); }
+  55%  { transform: scale(1.1);  }
+  75%  { transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1);    }
+}
+
+.group:hover .tooltip-bubble {
+  animation: tooltip-pop 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.tooltip-bubble {
+  opacity: 0;
+}
+
 /* Guida stacked images — two-level: wrapper spreads, img floats */
 .guide-stack { position: relative; }
 .guide-wrapper {
