@@ -196,11 +196,7 @@ Per CTA secondarie su sfondo chiaro — **stessa dimensione del pill**:
   <ul className="space-y-3">
     {items.map(t => (
       <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
-        {/* checkbox arrotondato con spunta */}
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="flex-shrink-0 mt-0.5">
-          <rect x="0.5" y="0.5" width="17" height="17" rx="5" fill="#156686" fillOpacity="0.1" stroke="#156686" strokeOpacity="0.3"/>
-          <path d="M5 9.5l2.5 2.5 5-5" stroke="#156686" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <CheckIcon />
         {t}
       </li>
     ))}
