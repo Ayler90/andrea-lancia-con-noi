@@ -780,71 +780,68 @@ function EasyMailPack() {
             Creato per chi lavora <em className="text-[#156686]">in autonomia online.</em>
           </h2>
           <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+            {[
+              {
+                emoji: "💼",
+                delay: "0s",
+                title: "Freelance",
+                tags: ["Clienti diretti", "Indipendenza", "Passaparola"],
+                paragraphs: [
+                  "Se sei un libero professionista che si affida ai social per trovare clienti, Easy-Mail Pack ti aiuta a creare una lista email su cui hai il controllo completo.",
+                  "Così non devi più dipendere dall'algoritmo di Instagram o da piattaforme che cambiano continuamente.",
+                ],
+              },
+              {
+                emoji: "🚀",
+                delay: "0.3s",
+                title: "Solopreneur",
+                tags: ["Automazioni", "Risparmio di tempo", "Scalabilità"],
+                paragraphs: [
+                  "Gestire un intero business da solo può essere stressante.",
+                  "Con Easy-Mail Pack, impari a usare l'email marketing in modo sostenibile, risparmiando tempo con automazioni e strumenti che lavorano per te.",
+                ],
+              },
+              {
+                emoji: "🎯",
+                delay: "0.6s",
+                title: "Coach",
+                tags: ["Relazioni", "Educazione", "Conversioni"],
+                paragraphs: [
+                  "Se lavori come coach e vuoi costruire relazioni più forti con i tuoi clienti, Easy-Mail Pack è perfetto per creare un canale diretto.",
+                  "Le email ti aiutano a educare, coinvolgere e guidare i tuoi iscritti lungo un percorso che li porta a scegliere i tuoi servizi.",
+                ],
+              },
+            ].map((card) => (
+              <div key={card.title} className="rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15 flex flex-col"
+                style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}>
 
-            {/* ── Freelance ── */}
-            <div className="rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15"
-              style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}>
-              {/* icon: laptop + briefcase */}
-              <div className="w-12 h-12 rounded-xl bg-[#156686]/10 flex items-center justify-center mb-5">
-                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" className="text-[#156686]">
-                  <rect x="3" y="6" width="20" height="13" rx="2" stroke="currentColor" strokeWidth="1.7" fill="none"/>
-                  <path d="M1 19h24" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/>
-                  <path d="M10 6V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  <circle cx="13" cy="13" r="2" stroke="currentColor" strokeWidth="1.5"/>
-                </svg>
+                {/* floating emoji with glow */}
+                <div className="relative inline-block mb-5 self-start">
+                  <div className="text-4xl" style={{ animation: `thought-float 3s ease-in-out ${card.delay} infinite` }}>
+                    {card.emoji}
+                  </div>
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-4 blur-lg rounded-full pointer-events-none"
+                    style={{ backgroundColor: "rgba(21,102,134,0.35)" }} />
+                </div>
+
+                <h3 className="font-bold text-xl text-foreground/85 mb-3">{card.title}</h3>
+
+                {card.paragraphs.map((p, i) => (
+                  <p key={i} className={`text-sm text-foreground/65 leading-relaxed${i > 0 ? " mt-3" : ""}`}>{p}</p>
+                ))}
+
+                {/* keyword tags */}
+                <div className="mt-6 pt-5 border-t border-[#156686]/15 flex flex-wrap gap-x-3 gap-y-1">
+                  {card.tags.map((tag, i) => (
+                    <span key={tag} className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686]/70">
+                      {i > 0 && <span className="text-[#156686]/30">·</span>}
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#156686]/50 inline-block" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h3 className="font-bold text-xl text-foreground/85 mb-3">Freelance</h3>
-              <p className="text-sm text-foreground/65 leading-relaxed">
-                Se sei un libero professionista che si affida ai social per trovare clienti, Easy-Mail Pack ti aiuta a creare una lista email su cui hai il controllo completo.
-              </p>
-              <p className="text-sm text-foreground/65 leading-relaxed mt-3">
-                Così non devi più dipendere dall'algoritmo di Instagram o da piattaforme che cambiano continuamente.
-              </p>
-            </div>
-
-            {/* ── Solopreneur ── */}
-            <div className="rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15"
-              style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}>
-              {/* icon: rocket / solo builder */}
-              <div className="w-12 h-12 rounded-xl bg-[#156686]/10 flex items-center justify-center mb-5">
-                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" className="text-[#156686]">
-                  <path d="M13 3C13 3 8 8 8 14a5 5 0 0 0 10 0c0-6-5-11-5-11Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" fill="none"/>
-                  <path d="M8 14c-2 0-4 1-4 3l2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  <path d="M18 14c2 0 4 1 4 3l-2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  <circle cx="13" cy="13" r="1.5" fill="currentColor"/>
-                </svg>
-              </div>
-              <h3 className="font-bold text-xl text-foreground/85 mb-3">Solopreneur</h3>
-              <p className="text-sm text-foreground/65 leading-relaxed">
-                Gestire un intero business da solo può essere stressante.
-              </p>
-              <p className="text-sm text-foreground/65 leading-relaxed mt-3">
-                Con Easy-Mail Pack, impari a usare l'email marketing in modo sostenibile, risparmiando tempo con automazioni e strumenti che lavorano per te.
-              </p>
-            </div>
-
-            {/* ── Coach ── */}
-            <div className="rounded-2xl py-8 px-6 bg-[#156686]/8 border border-[#156686]/15"
-              style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}>
-              {/* icon: person + speech bubble */}
-              <div className="w-12 h-12 rounded-xl bg-[#156686]/10 flex items-center justify-center mb-5">
-                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" className="text-[#156686]">
-                  <circle cx="10" cy="8" r="3" stroke="currentColor" strokeWidth="1.7" fill="none"/>
-                  <path d="M4 21c0-4 2.7-6 6-6s6 2 6 6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" fill="none"/>
-                  <rect x="16" y="5" width="8" height="6" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                  <path d="M18 9l-2 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  <path d="M19 7.5h3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <h3 className="font-bold text-xl text-foreground/85 mb-3">Coach</h3>
-              <p className="text-sm text-foreground/65 leading-relaxed">
-                Se lavori come coach e vuoi costruire relazioni più forti con i tuoi clienti, Easy-Mail Pack è perfetto per creare un canale diretto.
-              </p>
-              <p className="text-sm text-foreground/65 leading-relaxed mt-3">
-                Le email ti aiutano a educare, coinvolgere e guidare i tuoi iscritti lungo un percorso che li porta a scegliere i tuoi servizi.
-              </p>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
