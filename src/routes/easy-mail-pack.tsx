@@ -42,15 +42,17 @@ const PURCHASE_URL = "https://corsi.andreabonomo.it/iscriviti-ora-base";
 
 // ── Instagram mockup sub-components ─────────────────────────────────────────
 
+const ANIM_DURATION = 3000; // ms — shared by both countdowns and charts
+
 const INSIGHTS = [
-  { label: "Copertura",       from: 8200, to: -67, suffix: "%", prefix: "↓ " },
-  { label: "Interazioni",     from: 4300, to: -89, suffix: "%", prefix: "↓ " },
-  { label: "Nuovi follower",  from: 120,  to: 3,   suffix: "",  prefix: "+" },
+  { label: "Copertura",      to: -67, suffix: "%", prefix: "↓ " },
+  { label: "Interazioni",    to: -89, suffix: "%", prefix: "↓ " },
+  { label: "Nuovi follower", to: 3,   suffix: "",  prefix: "+" },
 ];
 
 function InsightsBar() {
   const ref = useRef<HTMLDivElement>(null);
-  const [vals, setVals] = useState(INSIGHTS.map(i => i.from));
+  const [vals, setVals] = useState([0, 0, 0]);
   const [triggered, setTriggered] = useState(false);
 
   useEffect(() => {
@@ -60,21 +62,19 @@ function InsightsBar() {
       if (entry.isIntersecting && !triggered) {
         setTriggered(true);
         INSIGHTS.forEach((ins, idx) => {
-          const duration = 1800;
           const start = performance.now();
-          const from = ins.from;
-          const to = ins.to;
           const tick = (now: number) => {
-            const p = Math.min((now - start) / duration, 1);
-            const ease = 1 - Math.pow(1 - p, 3);
+            const p = Math.min((now - start) / ANIM_DURATION, 1);
+            // linear feel but smooth end
+            const ease = p < 0.9 ? p / 0.9 : 1 - (p - 0.9) / 0.1 * 0 + (p - 0.9) / 0.1;
             setVals(prev => {
               const next = [...prev];
-              next[idx] = Math.round(from + (to - from) * ease);
+              next[idx] = Math.round(ins.to * ease);
               return next;
             });
             if (p < 1) requestAnimationFrame(tick);
           };
-          setTimeout(() => requestAnimationFrame(tick), idx * 250);
+          requestAnimationFrame(tick);
         });
       }
     }, { threshold: 0.4 });
@@ -99,12 +99,24 @@ function InsightsBar() {
   );
 }
 
-const CHART_POINTS = "0,8 28,9 56,7 84,18 112,28 140,40 168,43 200,46";
+// Each chart has a distinct wavy declining path
+const CHARTS = [
+  { label: "Reach",        id: "reachFade",  points: "0,6 20,4 40,10 60,7 80,15 100,12 120,24 140,32 160,38 180,42 200,46" },
+  { label: "Interazioni",  id: "interFade",  points: "0,8 18,5 36,14 54,9 72,20 90,17 108,28 126,22 144,36 170,41 200,46" },
+  { label: "Nuovi follower", id: "follFade", points: "0,5 25,12 45,8 65,18 82,14 100,26 118,30 138,25 158,38 180,44 200,46" },
+];
 
-function MiniChart({ label, id, delay = 0 }: { label: string; id: string; delay?: number }) {
-  const ref = useRef<SVGPolylineElement>(null);
-  const fillRef = useRef<SVGPolylineElement>(null);
+function MiniChart({ label, id, points }: { label: string; id: string; points: string }) {
+  const ref = useRef<SVGPathElement>(null);
+  const fillRef = useRef<SVGPathElement>(null);
   const [triggered, setTriggered] = useState(false);
+
+  // Convert polyline points string to SVG path d attribute
+  const toPath = (pts: string) => {
+    const coords = pts.trim().split(/\s+/).map(p => p.split(",").map(Number));
+    return coords.map((c, i) => `${i === 0 ? "M" : "L"}${c[0]},${c[1]}`).join(" ");
+  };
+  const toFillPath = (pts: string) => toPath(pts) + " L200,50 L0,50 Z";
 
   useEffect(() => {
     const lineEl = ref.current;
@@ -115,18 +127,18 @@ function MiniChart({ label, id, delay = 0 }: { label: string; id: string; delay?
         const totalLen = lineEl.getTotalLength?.() ?? 300;
         lineEl.style.strokeDasharray = `${totalLen}`;
         lineEl.style.strokeDashoffset = `${totalLen}`;
-        lineEl.style.transition = `stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1) ${delay}s`;
+        lineEl.style.transition = `stroke-dashoffset ${ANIM_DURATION / 1000}s linear`;
         requestAnimationFrame(() => { lineEl.style.strokeDashoffset = "0"; });
         if (fillRef.current) {
           fillRef.current.style.opacity = "0";
-          fillRef.current.style.transition = `opacity 1.4s ease ${delay + 0.3}s`;
+          fillRef.current.style.transition = `opacity ${ANIM_DURATION / 1000}s ease`;
           requestAnimationFrame(() => { if (fillRef.current) fillRef.current.style.opacity = "1"; });
         }
       }
     }, { threshold: 0.3 });
     obs.observe(lineEl);
     return () => obs.disconnect();
-  }, [triggered, delay]);
+  }, [triggered]);
 
   return (
     <div className="mx-3 mb-3 bg-white rounded-xl px-3 py-2.5 border border-gray-100">
@@ -138,9 +150,9 @@ function MiniChart({ label, id, delay = 0 }: { label: string; id: string; delay?
             <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
           </linearGradient>
         </defs>
-        <polyline ref={fillRef} points={`${CHART_POINTS} 200,50 0,50`}
-          fill={`url(#${id})`} style={{ opacity: 0 }} />
-        <polyline ref={ref} points={CHART_POINTS}
+        <path ref={fillRef} d={toFillPath(points)}
+          fill={`url(#${id})`} stroke="none" style={{ opacity: 0 }} />
+        <path ref={ref} d={toPath(points)}
           fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
@@ -590,9 +602,7 @@ function EasyMailPack() {
                     <InsightsBar />
 
                     {/* 3 animated charts */}
-                    <MiniChart label="Reach" id="reachFade" />
-                    <MiniChart label="Interazioni" id="interFade" delay={0.3} />
-                    <MiniChart label="Nuovi follower" id="follFade" delay={0.6} />
+                    {CHARTS.map(c => <MiniChart key={c.id} {...c} />)}
 
                   </div>{/* screen */}
                   </div>{/* inner bg */}
