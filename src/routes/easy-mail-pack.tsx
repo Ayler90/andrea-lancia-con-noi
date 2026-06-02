@@ -431,50 +431,116 @@ function EasyMailPack() {
         </div>
       </section>
 
-      {/* ── PAIN POINTS: perché NO newsletter vs perché SÌ email ─────────── */}
-      <section className="py-16 md:py-20 px-4">
+      {/* ── PAIN POINTS: Instagram mockup + testo ───────────────────────── */}
+      <section className="py-16 md:py-24 px-4 bg-[#EEF3F5]">
         <div className="container-narrow">
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Fammi indovinare: al momento il tuo business si regge solo{" "}
-            <em className="text-[#156686]">sui social.</em>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* colonna NO */}
-            <div className="rounded-2xl border border-red-100 bg-red-50/40 px-6 py-8">
-              <p className="text-sm font-semibold uppercase tracking-widest text-red-400 mb-6">Ecco perché non usi la newsletter</p>
-              <ul className="space-y-3">
-                {[
-                  "Non sai da dove iniziare",
-                  "Hai paura di sembrare spam",
-                  "Non sai cosa scrivere",
-                  "Pensi che i social bastino",
-                  "Non conosci le piattaforme email",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                    <XIcon />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+
+            {/* ── Phone mockup ─────────────────────────────── */}
+            <div className="flex justify-center">
+              <div className="relative w-[280px]">
+                {/* phone shell */}
+                <div className="rounded-[2.8rem] bg-[#0c2330] p-[10px] shadow-2xl" style={{ boxShadow: "0 32px 80px -12px rgba(12,35,48,0.45), inset 0 0 0 1px rgba(255,255,255,0.06)" }}>
+                  {/* dynamic island */}
+                  <div className="mx-auto mb-2 w-20 h-5 bg-black rounded-full" />
+                  {/* screen */}
+                  <div className="rounded-[2rem] overflow-hidden bg-[#f9fafb]" style={{ minHeight: 480 }}>
+
+                    {/* IG header */}
+                    <div className="bg-white px-4 pt-4 pb-3 flex items-center justify-between border-b border-gray-100">
+                      <span className="text-[13px] font-bold text-[#0c2330]">andrea.bonomo</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0c2330" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+                      </svg>
+                    </div>
+
+                    {/* profile row */}
+                    <div className="bg-white px-4 py-4 flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-full flex-shrink-0 overflow-hidden border-2 border-[#156686]/30">
+                        <div className="w-full h-full bg-[#156686]/10 flex items-center justify-center text-[#156686] font-bold text-lg">AB</div>
+                      </div>
+                      <div className="flex gap-5 text-center flex-1">
+                        {[["12", "Post"], ["847", "Follower"], ["310", "Seguiti"]].map(([n, l]) => (
+                          <div key={l}>
+                            <p className="text-[13px] font-bold text-[#0c2330]">{n}</p>
+                            <p className="text-[10px] text-gray-400">{l}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* insights bar — negative */}
+                    <div className="bg-[#0c2330] mx-3 rounded-xl px-4 py-3 mb-3">
+                      <p className="text-[10px] text-white/50 uppercase tracking-widest mb-2">Insights ultimi 30 giorni</p>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[
+                          { label: "Copertura", value: "↓ 67%", bad: true },
+                          { label: "Interazioni", value: "↓ 89%", bad: true },
+                          { label: "Nuovi follower", value: "+3", bad: true },
+                        ].map(({ label, value }) => (
+                          <div key={label} className="text-center">
+                            <p className="text-[13px] font-bold text-red-400">{value}</p>
+                            <p className="text-[9px] text-white/40 leading-tight mt-0.5">{label}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* posts grid */}
+                    <div className="grid grid-cols-3 gap-0.5 mx-3 mb-3">
+                      {[
+                        { views: "892",  bg: "bg-[#C4D9DC]/60" },
+                        { views: "1.2K", bg: "bg-[#A1C2CF]/50" },
+                        { views: "341",  bg: "bg-[#156686]/20" },
+                        { views: "78",   bg: "bg-[#C4D9DC]/40" },
+                        { views: "2.1K", bg: "bg-[#A1C2CF]/30" },
+                        { views: "210",  bg: "bg-[#156686]/15" },
+                      ].map(({ views, bg }, i) => (
+                        <div key={i} className={`aspect-square rounded-sm ${bg} flex items-end justify-end p-1`}>
+                          <span className="text-[8px] font-semibold text-[#0c2330]/50">{views}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* reach trend mini chart */}
+                    <div className="mx-3 mb-3 bg-white rounded-xl px-3 py-3 border border-gray-100">
+                      <p className="text-[9px] text-gray-400 uppercase tracking-widest mb-2">Andamento copertura</p>
+                      <svg viewBox="0 0 200 50" className="w-full h-10">
+                        <polyline points="0,10 30,12 60,8 90,20 120,30 150,42 180,44 200,46"
+                          fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <polyline points="0,10 30,12 60,8 90,20 120,30 150,42 180,44 200,46 200,50 0,50"
+                          fill="url(#redFade)" />
+                        <defs>
+                          <linearGradient id="redFade" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#ef4444" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+
+                  </div>
+                </div>
+                {/* subtle phone reflection */}
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-[#0c2330]/20 blur-xl rounded-full" />
+              </div>
             </div>
-            {/* colonna SÌ */}
-            <div className="rounded-2xl border border-[#156686]/15 bg-[#156686]/5 px-6 py-8">
-              <p className="text-sm font-semibold uppercase tracking-widest text-[#156686] mb-6">Ecco perché dovresti usare le email</p>
-              <ul className="space-y-3">
-                {[
-                  "Raggiungi il 100% dei tuoi iscritti",
-                  "Non dipendi dall'algoritmo",
-                  "Costruisci un asset che ti appartiene",
-                  "Converte meglio di qualsiasi social",
-                  "Puoi automatizzare tutto il funnel",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                    <CheckIcon />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+
+            {/* ── Text column ──────────────────────────────── */}
+            <div>
+              <p className="eyebrow text-[#156686]/70 mb-4">Il problema</p>
+              <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
+                Fammi indovinare: il tuo business si regge{" "}
+                <em className="text-[#156686]">solo sui social.</em>
+              </h2>
+              <div className="space-y-5 text-sm md:text-base text-foreground/70 leading-relaxed">
+                <p>Cerchi di pubblicare regolarmente, interagisci con la tua community e ti sforzi per mantenere il tuo profilo attivo.</p>
+                <p>Tuttavia, sei in balia dell'algoritmo: un giorno i tuoi contenuti esplodono, il giorno dopo sembrano invisibili.</p>
+                <p>La copertura è imprevedibile e il traffico che generi dipende solo da quanto pubblichi.</p>
+                <p><strong className="text-foreground/85">Questo ti lascia in una posizione instabile e, alla lunga, mette a rischio il tuo business.</strong></p>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
