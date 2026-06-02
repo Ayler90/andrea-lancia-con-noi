@@ -673,7 +673,7 @@ function EasyMailPack() {
                 ],
               },
             ].map(box => (
-              <div key={box.title} className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
+              <div key={box.title} className="rounded-2xl p-7 md:p-8 bg-[#156686]/8 border border-[#156686]/15">
                 {/* floating emoji with glow */}
                 <div className="relative inline-block mb-5">
                   <div className="text-3xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>
