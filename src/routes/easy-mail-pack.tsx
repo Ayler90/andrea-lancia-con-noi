@@ -379,13 +379,13 @@ function EasyMailPack() {
                 src: lezione3,
                 badge: "Configura le piattaforme, anche se parti da 0",
                 tooltip: "Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno.",
-                pos: "right" as const,
+                pos: "top-right" as const,
               },
               {
                 src: lezione4,
                 badge: "Profila chi si iscrive alle tue liste",
                 tooltip: "Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro).",
-                pos: "left" as const,
+                pos: "bottom-left" as const,
               },
               {
                 src: lezione5,
@@ -415,23 +415,27 @@ function EasyMailPack() {
                   </div>
                 )}
 
-                {/* tooltip — metà bordo destro */}
-                {pos === "right" && (
-                  <div className="tooltip-bubble absolute left-full top-1/2 -translate-y-1/2 ml-5 z-30 pointer-events-none origin-left flex items-center" style={{ rotate: "3deg" }}>
-                    <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderRight: "9px solid #0c2330", flexShrink: 0 }} />
+                {/* tooltip — angolo in alto a destra */}
+                {pos === "top-right" && (
+                  <div className="tooltip-bubble absolute bottom-full right-0 mb-5 z-30 pointer-events-none origin-bottom-right" style={{ rotate: "3deg" }}>
                     <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
+                    </div>
+                    <div className="mr-6 flex justify-end" style={{ marginTop: 0 }}>
+                      <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
                     </div>
                   </div>
                 )}
 
-                {/* tooltip — metà bordo sinistro */}
-                {pos === "left" && (
-                  <div className="tooltip-bubble absolute right-full top-1/2 -translate-y-1/2 mr-5 z-30 pointer-events-none origin-right flex items-center" style={{ rotate: "-3deg" }}>
+                {/* tooltip — angolo in basso a sinistra */}
+                {pos === "bottom-left" && (
+                  <div className="tooltip-bubble absolute top-full left-0 mt-5 z-30 pointer-events-none origin-top-left" style={{ rotate: "-3deg" }}>
+                    <div className="ml-6">
+                      <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
+                    </div>
                     <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
-                    <div style={{ width: 0, height: 0, borderTop: "9px solid transparent", borderBottom: "9px solid transparent", borderLeft: "9px solid #0c2330", flexShrink: 0 }} />
                   </div>
                 )}
 
