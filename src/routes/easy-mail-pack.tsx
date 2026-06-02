@@ -553,7 +553,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PAIN POINTS: Instagram mockup + testo ───────────────────────── */}
-      <section className="py-16 md:py-24 px-4 bg-[#EEF3F5]">
+      <section className="py-16 md:py-24 px-4 bg-[#F0F0F0]">
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
@@ -630,6 +630,68 @@ function EasyMailPack() {
             </div>
 
           </div>
+
+          {/* ── Split arrow ───────────────────────────────── */}
+          <div className="flex justify-center my-10 md:my-14">
+            <svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* left branch */}
+              <path d="M60 4 C60 30, 20 40, 16 68" stroke="#6C9FA8" strokeWidth="2.2" strokeLinecap="round" fill="none"/>
+              {/* arrowhead left */}
+              <path d="M16 68 L9 58 M16 68 L24 60" stroke="#6C9FA8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+              {/* right branch */}
+              <path d="M60 4 C60 30, 100 40, 104 68" stroke="#6C9FA8" strokeWidth="2.2" strokeLinecap="round" fill="none"/>
+              {/* arrowhead right */}
+              <path d="M104 68 L96 60 M104 68 L111 58" stroke="#6C9FA8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+
+          {/* ── Two solution boxes ────────────────────────── */}
+          <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+            {/* Box 1 — Newsletter */}
+            <div className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
+              <div className="text-2xl mb-4">✉️</div>
+              <h3 className="font-semibold text-[#0c2330] text-base md:text-lg mb-4 leading-snug">
+                Perché dovresti usare la newsletter nel tuo ecosistema
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Non dipende da algoritmi o copertura organica",
+                  "La mailing list è davvero tua: controllo diretto su quando e come comunicare",
+                  "Dialogo più personale e costante con le persone giuste",
+                  "Nessuna pressione a pubblicare ogni giorno — frequenza settimanale, bisettimanale o mensile",
+                  "La tua lista cresce comunque, indipendentemente dal profilo social",
+                ].map(t => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#156686] flex-shrink-0" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Box 2 — Email nei lanci */}
+            <div className="bg-white rounded-2xl p-7 md:p-8 shadow-sm">
+              <div className="text-2xl mb-4">🚀</div>
+              <h3 className="font-semibold text-[#0c2330] text-base md:text-lg mb-4 leading-snug">
+                Perché dovresti usare le email nei tuoi lanci
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Fare un lancio solo sui social è rischioso: sei in balia di un canale che non controlli",
+                  "L'email è un canale parallelo che non dipende dall'algoritmo",
+                  "Tasso di apertura e di conversione più alto rispetto ai social",
+                  "Più vendite e più clienti senza essere costantemente presente con contenuti",
+                  "Strategia email + organico = lancio più solido e prevedibile",
+                ].map(t => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#156686] flex-shrink-0" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
 
