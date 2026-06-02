@@ -153,7 +153,8 @@ Per CTA secondarie su sfondo chiaro — **stessa dimensione del pill**:
   ))}
 </div>
 ```
-  - `w-9 h-9` (36px), `border-color: var(--surface)`, z-index decrescente (primo avatar sopra gli altri)
+- `w-9 h-9` (36px), `border-color: var(--surface)`, z-index decrescente (primo avatar sopra gli altri)
+- **Dimensione standard avatar: sempre `w-9 h-9` (36px)** — non usare `w-8` o altre varianti
 
 ### Badge su sfondo scuro (nav mobile)
 ```tsx
