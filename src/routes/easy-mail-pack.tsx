@@ -253,7 +253,7 @@ function EasyMailPack() {
             <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
               <div className="flex flex-shrink-0" style={{ gap: 0 }}>
                 {[studenteEmp, studenteEmp1, studenteEmp2, studenteEmp3, studenteEmp4].map((src, i, arr) => (
-                  <div key={i} className="w-9 h-9 rounded-full border-2 border-surface overflow-hidden flex-shrink-0"
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-surface overflow-hidden flex-shrink-0"
                     style={{ marginLeft: i > 0 ? "-10px" : "0", zIndex: arr.length - i }}>
                     <img src={src} alt={`Studente ${i + 1}`} className="w-full h-full object-cover" />
                   </div>

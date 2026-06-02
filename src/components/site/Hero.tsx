@@ -81,7 +81,7 @@ export function Hero() {
                       {AVATARS.map((src, i) => (
                         <div
                           key={i}
-                          className="w-9 h-9 rounded-full border-2 border-surface overflow-hidden flex-shrink-0"
+                          className="w-10 h-10 rounded-full border-2 border-surface overflow-hidden flex-shrink-0"
                           style={{ marginLeft: i > 0 ? "-10px" : "0", zIndex: AVATARS.length - i }}
                         >
                           <img src={src} alt="" className="w-full h-full object-cover" />

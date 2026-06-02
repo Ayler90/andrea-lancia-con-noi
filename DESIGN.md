@@ -148,13 +148,13 @@ Per CTA secondarie su sfondo chiaro — **stessa dimensione del pill**:
 ```tsx
 <div className="flex -space-x-2 flex-shrink-0">
   {avatars.map((src, i, arr) => (
-    <img key={i} src={src} className="w-9 h-9 rounded-full border-2 object-cover flex-shrink-0"
+    <img key={i} src={src} className="w-10 h-10 rounded-full border-2 object-cover flex-shrink-0"
       style={{ borderColor: "var(--surface)", zIndex: arr.length - i }} />
   ))}
 </div>
 ```
-- `w-9 h-9` (36px), `border-color: var(--surface)`, z-index decrescente (primo avatar sopra gli altri)
-- **Dimensione standard avatar: sempre `w-9 h-9` (36px)** — non usare `w-8` o altre varianti
+- `w-10 h-10` (40px), `border-color: var(--surface)`, z-index decrescente (primo avatar sopra gli altri)
+- **Dimensione standard avatar: sempre `w-10 h-10` (40px)** — non usare `w-8`, `w-9` o altre varianti
 
 ### Badge su sfondo scuro (nav mobile)
 ```tsx
