@@ -234,57 +234,62 @@ function LessonList() {
 
 type CardPos = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 
-function TooltipBubble({ text, effectivePos, defaultPos }: { text: string; effectivePos: CardPos; defaultPos: CardPos }) {
-  const isAbove = effectivePos === "top-left" || effectivePos === "top-right";
-  const isLeft = effectivePos === "top-left" || effectivePos === "bottom-left";
-  const tilt = defaultPos === "top-left" ? "-4deg" : defaultPos === "top-right" ? "3deg" : defaultPos === "bottom-left" ? "-3deg" : "4deg";
-
-  return (
-    <div
-      className={`tooltip-bubble ${isAbove ? "tooltip-arrow-down" : "tooltip-arrow-up"} absolute z-30 pointer-events-none ${
-        isAbove ? "bottom-full mb-5" : "top-full mt-5"
-      } ${isLeft ? "left-0" : "right-0"}`}
-      style={{ transformOrigin: isAbove ? "bottom center" : "top center", rotate: tilt }}
-    >
-      {!isAbove && (
-        <div className="flex justify-center">
-          <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
-        </div>
-      )}
-      <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
-        {text}
-      </div>
-      {isAbove && (
-        <div className="flex justify-center">
-          <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
-        </div>
-      )}
-    </div>
-  );
-}
+const TILT: Record<CardPos, string> = {
+  "top-left": "-4deg", "top-right": "3deg", "bottom-left": "-3deg", "bottom-right": "4deg",
+};
 
 function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; tooltip: string; pos: CardPos }) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [effectivePos, setEffectivePos] = useState<CardPos>(pos);
+  const [hovered, setHovered] = useState(false);
+  const [tipStyle, setTipStyle] = useState<React.CSSProperties>({});
+  const [arrowUp, setArrowUp] = useState(pos === "bottom-left" || pos === "bottom-right");
+
+  const isLeft = pos === "top-left" || pos === "bottom-left";
+  const isDefaultAbove = pos === "top-left" || pos === "top-right";
 
   const handleMouseEnter = () => {
     const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const tooltipH = 130;
-    const isDefaultAbove = pos === "top-left" || pos === "top-right";
-    if (isDefaultAbove && rect.top < tooltipH) {
-      // not enough space above → flip to below
-      setEffectivePos(pos === "top-left" ? "bottom-left" : "bottom-right");
-    } else if (!isDefaultAbove && window.innerHeight - rect.bottom < tooltipH) {
-      // not enough space below → flip to above
-      setEffectivePos(pos === "bottom-left" ? "top-left" : "top-right");
+    if (!rect) { setHovered(true); return; }
+
+    const tooltipH = 160;
+    const gap = 20;
+    let s: React.CSSProperties;
+    let up: boolean;
+
+    if (isDefaultAbove && rect.top < tooltipH + gap) {
+      // anchor tooltip just below the visible top edge of the card (fixed)
+      s = {
+        position: "fixed",
+        top: rect.top + gap,
+        ...(isLeft ? { left: rect.left } : { right: window.innerWidth - rect.right }),
+      };
+      up = false; // arrow points down toward the image (tooltip is above viewport edge)
+    } else if (!isDefaultAbove && window.innerHeight - rect.bottom < tooltipH + gap) {
+      // anchor tooltip just above the visible bottom edge of the card (fixed)
+      s = {
+        position: "fixed",
+        bottom: window.innerHeight - rect.bottom + gap,
+        ...(isLeft ? { left: rect.left } : { right: window.innerWidth - rect.right }),
+      };
+      up = true; // arrow points up
     } else {
-      setEffectivePos(pos);
+      // default: absolute above/below the card
+      s = isDefaultAbove
+        ? { position: "absolute", bottom: "100%", marginBottom: "20px", ...(isLeft ? { left: 0 } : { right: 0 }) }
+        : { position: "absolute", top: "100%", marginTop: "20px", ...(isLeft ? { left: 0 } : { right: 0 }) };
+      up = !isDefaultAbove;
     }
+
+    setTipStyle(s);
+    setArrowUp(up);
+    setHovered(true);
   };
 
   return (
-    <div ref={cardRef} className="group relative" style={{ isolation: "isolate" }} onMouseEnter={handleMouseEnter}>
+    <div ref={cardRef} className="group relative" style={{ isolation: "isolate" }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
         <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
@@ -293,7 +298,26 @@ function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; 
           </span>
         </div>
       </div>
-      <TooltipBubble text={tooltip} effectivePos={effectivePos} defaultPos={pos} />
+
+      {/* tooltip */}
+      <div
+        className={`${arrowUp ? "tooltip-arrow-up" : "tooltip-arrow-down"} z-50 pointer-events-none w-64 ${hovered ? "tooltip-bubble" : "hidden"}`}
+        style={{ ...tipStyle, rotate: TILT[pos], transformOrigin: arrowUp ? "top center" : "bottom center" }}
+      >
+        {arrowUp && (
+          <div className="flex justify-center">
+            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
+          </div>
+        )}
+        <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl leading-relaxed">
+          {tooltip}
+        </div>
+        {!arrowUp && (
+          <div className="flex justify-center">
+            <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderTop: "9px solid #0c2330" }} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

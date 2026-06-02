@@ -417,15 +417,13 @@
   70%     { transform: scale(1) rotate(-2.5deg) translateX(-5px); }
 }
 
-.tooltip-bubble { opacity: 0; }
+.tooltip-bubble { opacity: 1; }
 
-.group:hover .tooltip-bubble { opacity: 1; }
-
-.group:hover .tooltip-arrow-down {
+.tooltip-bubble.tooltip-arrow-down {
   animation: tooltip-pop 0.85s ease forwards,
              tooltip-float-arrowdown 4s ease-in-out 0.85s infinite;
 }
-.group:hover .tooltip-arrow-up {
+.tooltip-bubble.tooltip-arrow-up {
   animation: tooltip-pop 0.85s ease forwards,
              tooltip-float-arrowup 4.5s ease-in-out 0.85s infinite;
 }
