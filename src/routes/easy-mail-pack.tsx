@@ -407,7 +407,7 @@ function EasyMailPack() {
 
                 {/* angolo in alto a sinistra — freccia in basso, pivot bottom-left */}
                 {pos === "top-left" && (
-                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full left-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom left", rotate: "-4deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full left-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom center", rotate: "-4deg" }}>
                     <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
@@ -417,7 +417,7 @@ function EasyMailPack() {
 
                 {/* angolo in alto a destra — freccia in basso, pivot bottom-right */}
                 {pos === "top-right" && (
-                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full right-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom right", rotate: "3deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-down absolute bottom-full right-0 mb-5 z-30 pointer-events-none" style={{ transformOrigin: "bottom center", rotate: "3deg" }}>
                     <div className="bg-[#0c2330] text-white text-xs font-semibold px-5 py-4 rounded-2xl w-64 leading-relaxed">
                       {tooltip}
                     </div>
@@ -429,7 +429,7 @@ function EasyMailPack() {
 
                 {/* angolo in basso a sinistra — freccia in alto, pivot top-left */}
                 {pos === "bottom-left" && (
-                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full left-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top left", rotate: "-3deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full left-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top center", rotate: "-3deg" }}>
                     <div className="flex justify-center">
                       <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
                     </div>
@@ -441,7 +441,7 @@ function EasyMailPack() {
 
                 {/* angolo in basso a destra — freccia in alto, pivot top-right */}
                 {pos === "bottom-right" && (
-                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full right-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top right", rotate: "4deg" }}>
+                  <div className="tooltip-bubble tooltip-arrow-up absolute top-full right-0 mt-5 z-30 pointer-events-none" style={{ transformOrigin: "top center", rotate: "4deg" }}>
                     <div className="flex justify-center">
                       <div style={{ width: 0, height: 0, borderLeft: "9px solid transparent", borderRight: "9px solid transparent", borderBottom: "9px solid #0c2330" }} />
                     </div>
