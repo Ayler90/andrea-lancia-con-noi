@@ -374,11 +374,11 @@ function EasyMailPack() {
               { src: lezione4, badge: "Profila chi si iscrive alle tue liste" },
               { src: lezione5, badge: "Crea strategie di lancio con le email" },
             ].map(({ src, badge }) => (
-              <div key={badge} className="group relative rounded-2xl overflow-hidden aspect-video">
-                <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div key={badge} className="group relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 hover:scale-[1.03]" style={{ isolation: "isolate" }}>
+                <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
                 {/* badge — centred, same teal style as above-the-fold hero badge */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
-                  <span className="inline-flex items-center border border-[#C4D9DC]/50 bg-[#C4D9DC]/15 text-[#C4D9DC] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
+                  <span className="inline-flex items-center border border-[#C4D9DC]/60 bg-[#156686]/80 text-[#C4D9DC] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
                     {badge}
                   </span>
                 </div>
