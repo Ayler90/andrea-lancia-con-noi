@@ -91,7 +91,7 @@ const PERCORSI: Record<string, Percorso[]> = {
       desc: "Il video corso completo su email marketing e lanci. 90 lezioni per imparare a usare l'email nei tuoi lanci.",
       bullets: ["90 video lezioni", "Template email pronti", "Casi studio reali", "Accesso a vita"],
       cta: "Acquista ora il video corso",
-      ctaHref: "https://andreabonomo.systeme.io/iscriviti-easy-mail-pack",
+      ctaHref: "https://corsi.andreabonomo.it/iscriviti-easy-mail-pack",
       image: p5,
       bg: "bg-[#C4D9DC]",
     },
