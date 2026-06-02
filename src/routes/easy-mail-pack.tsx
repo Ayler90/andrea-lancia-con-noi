@@ -719,13 +719,12 @@ function EasyMailPack() {
           </p>
 
           {/* handwriting label + arrow */}
-          <div className="flex items-start gap-1 mb-8">
-            <div>
-              <p className="font-['Caveat'] text-xl md:text-2xl text-foreground/60 leading-snug">
+          <div className="flex justify-center mb-8">
+            <div className="text-center" style={{ transform: "rotate(3deg)" }}>
+              <p className="font-['Caveat'] text-xl md:text-2xl text-[#156686] leading-snug">
                 Queste sono solo alcune<br />delle lezioni a cui avrai accesso
               </p>
-              {/* curved arrow pointing down-right */}
-              <svg width="60" height="48" viewBox="0 0 60 48" fill="none" className="mt-1 ml-4 text-foreground/40">
+              <svg width="60" height="48" viewBox="0 0 60 48" fill="none" className="mt-1 mx-auto text-[#156686]/60">
                 <path d="M4 4 C10 20, 30 30, 50 42" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
                 <path d="M50 42 L40 36 M50 42 L46 31" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
