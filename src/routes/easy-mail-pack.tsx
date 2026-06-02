@@ -443,9 +443,9 @@ function EasyMailPack() {
                 <div className="absolute -inset-10 rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(196,217,220,0.55) 0%, rgba(255,255,255,0.25) 50%, transparent 75%)", filter: "blur(24px)", zIndex: 0 }} />
                 {/* phone shell — thin aluminum-style border like iPhone 17 */}
-                <div className="relative rounded-[3rem] p-[3px] z-10"
-                  style={{ background: "linear-gradient(160deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.18) 100%)", boxShadow: "0 40px 90px -16px rgba(12,35,48,0.5), 0 0 0 0.5px rgba(255,255,255,0.12)" }}>
-                  <div className="rounded-[2.85rem] bg-[#0c2330] p-[7px]" style={{ boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.07)" }}>
+                <div className="relative rounded-[3rem] p-[2px] z-10"
+                  style={{ background: "linear-gradient(160deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.15) 100%)", boxShadow: "0 40px 90px -16px rgba(12,35,48,0.5)" }}>
+                  <div className="rounded-[2.9rem] bg-[#0c2330] p-[4px]" style={{ boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.07)" }}>
                   {/* dynamic island */}
                   <div className="mx-auto mb-2 w-20 h-5 bg-black rounded-full" />
                   {/* screen */}
@@ -453,16 +453,19 @@ function EasyMailPack() {
 
                     {/* IG header */}
                     <div className="bg-white px-4 pt-4 pb-3 flex items-center justify-between border-b border-gray-100">
-                      <span className="text-[13px] font-bold text-[#0c2330]">andrea.bonomo</span>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0c2330" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+                      <span className="text-[13px] font-bold text-[#0c2330]">@iltuoprofiloinstagram</span>
+                      {/* Instagram logo */}
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#0c2330" strokeWidth="1.8" fill="none"/>
+                        <circle cx="12" cy="12" r="4.2" stroke="#0c2330" strokeWidth="1.8" fill="none"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="#0c2330"/>
                       </svg>
                     </div>
 
                     {/* profile row */}
                     <div className="bg-white px-4 py-4 flex items-center gap-4">
                       <div className="w-14 h-14 rounded-full flex-shrink-0 overflow-hidden border-2 border-[#156686]/30">
-                        <div className="w-full h-full bg-[#156686]/10 flex items-center justify-center text-[#156686] font-bold text-lg">AB</div>
+                        <img src="https://i.pravatar.cc/56?img=47" alt="profile" className="w-full h-full object-cover" />
                       </div>
                       <div className="flex gap-5 text-center flex-1">
                         {[["12", "Post"], ["847", "Follower"], ["310", "Seguiti"]].map(([n, l]) => (
