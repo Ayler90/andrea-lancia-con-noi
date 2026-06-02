@@ -755,15 +755,18 @@ function EasyMailPack() {
             ))}
           </div>
 
-          <div className="mt-10 text-center">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={PURCHASE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap inline-block"
+              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap"
               onClick={() => trackCta("perche-esiste-cta")}
             >
               Iscriviti ora →
+            </a>
+            <a href="#lezioni" className="cta-ghost whitespace-nowrap">
+              Guarda le lezioni ↓
             </a>
           </div>
         </div>
