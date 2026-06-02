@@ -107,41 +107,40 @@ const CHARTS = [
 ];
 
 function MiniChart({ label, id, points }: { label: string; id: string; points: string }) {
-  const ref = useRef<SVGPathElement>(null);
-  const fillRef = useRef<SVGPathElement>(null);
+  const clipRectRef = useRef<SVGRectElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [triggered, setTriggered] = useState(false);
 
-  // Convert polyline points string to SVG path d attribute
   const toPath = (pts: string) => {
     const coords = pts.trim().split(/\s+/).map(p => p.split(",").map(Number));
     return coords.map((c, i) => `${i === 0 ? "M" : "L"}${c[0]},${c[1]}`).join(" ");
   };
   const toFillPath = (pts: string) => toPath(pts) + " L200,50 L0,50 Z";
+  const clipId = `clip-${id}`;
 
   useEffect(() => {
-    const lineEl = ref.current;
-    if (!lineEl) return;
+    const el = wrapperRef.current;
+    if (!el) return;
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !triggered) {
         setTriggered(true);
-        const totalLen = lineEl.getTotalLength?.() ?? 300;
-        lineEl.style.strokeDasharray = `${totalLen}`;
-        lineEl.style.strokeDashoffset = `${totalLen}`;
-        lineEl.style.transition = `stroke-dashoffset ${ANIM_DURATION / 1000}s linear`;
-        requestAnimationFrame(() => { lineEl.style.strokeDashoffset = "0"; });
-        if (fillRef.current) {
-          fillRef.current.style.opacity = "0";
-          fillRef.current.style.transition = `opacity ${ANIM_DURATION / 1000}s ease`;
-          requestAnimationFrame(() => { if (fillRef.current) fillRef.current.style.opacity = "1"; });
-        }
+        const rect = clipRectRef.current;
+        if (!rect) return;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / ANIM_DURATION, 1);
+          rect.setAttribute("width", String(200 * p));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
       }
     }, { threshold: 0.3 });
-    obs.observe(lineEl);
+    obs.observe(el);
     return () => obs.disconnect();
   }, [triggered]);
 
   return (
-    <div className="mx-3 mb-3 bg-white rounded-xl px-3 py-2.5 border border-gray-100">
+    <div ref={wrapperRef} className="mx-3 mb-3 bg-white rounded-xl px-3 py-2.5 border border-gray-100">
       <p className="text-[9px] text-gray-400 uppercase tracking-widest mb-1.5">{label}</p>
       <svg viewBox="0 0 200 50" className="w-full h-9">
         <defs>
@@ -149,11 +148,14 @@ function MiniChart({ label, id, points }: { label: string; id: string; points: s
             <stop offset="0%" stopColor="#ef4444" stopOpacity="0.22" />
             <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
           </linearGradient>
+          <clipPath id={clipId}>
+            <rect ref={clipRectRef} x="0" y="0" width="0" height="50" />
+          </clipPath>
         </defs>
-        <path ref={fillRef} d={toFillPath(points)}
-          fill={`url(#${id})`} stroke="none" style={{ opacity: 0 }} />
-        <path ref={ref} d={toPath(points)}
-          fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <g clipPath={`url(#${clipId})`}>
+          <path d={toFillPath(points)} fill={`url(#${id})`} stroke="none" />
+          <path d={toPath(points)} fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
       </svg>
     </div>
   );
