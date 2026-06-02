@@ -279,12 +279,12 @@ function EasyMailPack() {
               href={PURCHASE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 whitespace-nowrap"
+              className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap"
               onClick={() => trackCta("hero-iscriviti")}
             >
               Iscriviti ora →
             </a>
-            <a href="#lezioni" className="cta-ghost text-base px-8 py-3.5 whitespace-nowrap">
+            <a href="#lezioni" className="cta-ghost whitespace-nowrap">
               Guarda i contenuti ↓
             </a>
           </div>
@@ -452,7 +452,7 @@ function EasyMailPack() {
                 href={PURCHASE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pill bg-white text-[#156686] hover:-translate-y-0.5 text-base px-8 py-3.5 whitespace-nowrap inline-block"
+                className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap inline-block"
                 onClick={() => trackCta("perche-esiste-cta")}
               >
                 Iscriviti ora →
@@ -703,7 +703,7 @@ function EasyMailPack() {
                 href={PURCHASE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-base px-8 py-3.5 block w-full text-center whitespace-nowrap"
+                className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center whitespace-nowrap"
                 onClick={() => trackCta("pricing-acquista")}
               >
                 Acquista ora →
