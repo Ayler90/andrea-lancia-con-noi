@@ -45,7 +45,6 @@ export function Nav() {
   const [open, setOpen]                 = useState(false);
   const [closing, setClosing]           = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
   const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
@@ -95,16 +94,19 @@ export function Nav() {
       {/* Main nav */}
       <header
         className="sticky top-0 z-50 border-b transition-[box-shadow] duration-300"
+        onMouseLeave={() => setDropdownOpen(false)}
         style={{
-          backgroundColor:      "rgba(255,255,255,0.72)",
+          backgroundColor:      "rgba(255,255,255,0.92)",
           backdropFilter:       "saturate(180%) blur(24px)",
           WebkitBackdropFilter: "saturate(180%) blur(24px)",
-          borderColor:          "rgba(209,213,219,0.45)",
-          boxShadow:            scrolled
+          borderColor:          dropdownOpen ? "rgba(209,213,219,0)" : "rgba(209,213,219,0.45)",
+          boxShadow:            scrolled || dropdownOpen
             ? "inset 0 1px 0 rgba(255,255,255,0.30), 0 4px 32px rgba(0,0,0,0.08)"
             : "inset 0 1px 0 rgba(255,255,255,0.30)",
+          transition: "box-shadow 0.3s, border-color 0.25s",
         }}
       >
+        {/* Top row */}
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: avatar + logo */}
           <a href="/" className="justify-self-start flex items-center gap-2.5 min-w-0">
@@ -121,79 +123,21 @@ export function Nav() {
           <nav className="hidden md:flex items-center justify-center gap-6">
             {links.map((l) =>
               l.label === "I miei percorsi" ? (
-                <div
-                  key="percorsi-dropdown"
-                  ref={dropdownRef}
-                  className="relative"
+                <button
+                  key="percorsi-trigger"
                   onMouseEnter={() => setDropdownOpen(true)}
-                  onMouseLeave={() => setDropdownOpen(false)}
+                  className="inline-flex items-center gap-1 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#156686] after:transition-all after:duration-200 cursor-pointer"
+                  style={{ "--tw-after-w": dropdownOpen ? "100%" : "0%" } as React.CSSProperties}
                 >
-                  <button className="inline-flex items-center gap-1 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200 cursor-pointer">
-                    {l.label}
-                    <svg
-                      width="11" height="7" viewBox="0 0 11 7" fill="none"
-                      className="mt-px opacity-50 transition-transform duration-200"
-                      style={{ transform: dropdownOpen ? "rotate(180deg)" : "rotate(0deg)" }}
-                    >
-                      <path d="M1 1l4.5 4.5L10 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-
-                  {/* Dropdown panel */}
-                  <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-[100]"
-                    style={{
-                      pointerEvents: dropdownOpen ? "auto" : "none",
-                      opacity:       dropdownOpen ? 1 : 0,
-                      transform:     `translateX(-50%) translateY(${dropdownOpen ? "0px" : "-6px"})`,
-                      transition:    "opacity 0.18s ease, transform 0.18s ease",
-                    }}
+                  {l.label}
+                  <svg
+                    width="11" height="7" viewBox="0 0 11 7" fill="none"
+                    className="mt-px opacity-50 transition-transform duration-200"
+                    style={{ transform: dropdownOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                   >
-                    <div
-                      className="rounded-2xl p-5 min-w-[360px] grid grid-cols-2 gap-x-6 gap-y-1"
-                      style={{
-                        backgroundColor: "rgba(255,255,255,0.92)",
-                        backdropFilter:  "saturate(180%) blur(20px)",
-                        boxShadow:       "0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)",
-                      }}
-                    >
-                      {/* Column: Percorsi */}
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Percorsi</p>
-                        <ul className="flex flex-col gap-0.5">
-                          {percorsiCategories.percorsi.map((p) => (
-                            <li key={p.slug}>
-                              <button
-                                onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                                className="text-sm text-foreground/75 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug rounded-lg px-2 hover:bg-[#156686]/6"
-                              >
-                                {p.label}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Column: Corsi e Template */}
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Corsi e Template</p>
-                        <ul className="flex flex-col gap-0.5">
-                          {percorsiCategories.corsi.map((p) => (
-                            <li key={p.slug}>
-                              <a
-                                href={p.href}
-                                onClick={() => setDropdownOpen(false)}
-                                className="block text-sm text-foreground/75 hover:text-foreground transition-colors py-1.5 text-left leading-snug rounded-lg px-2 hover:bg-[#156686]/6"
-                              >
-                                {p.label}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    <path d="M1 1l4.5 4.5L10 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
               ) : (
                 <a
                   key={l.href}
@@ -232,6 +176,54 @@ export function Nav() {
               <span className="block w-6 h-[2px] bg-foreground rounded-full" />
               <span className="block w-4 h-[2px] bg-foreground rounded-full" />
             </button>
+          </div>
+        </div>
+
+        {/* Expanded mega-menu row (desktop only) */}
+        <div
+          className="hidden md:block overflow-hidden border-t border-[rgba(209,213,219,0.45)]"
+          style={{
+            maxHeight:  dropdownOpen ? "200px" : "0px",
+            opacity:    dropdownOpen ? 1 : 0,
+            transition: "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
+            borderColor: dropdownOpen ? "rgba(209,213,219,0.45)" : "transparent",
+          }}
+        >
+          <div className="container-narrow py-5 grid grid-cols-2 gap-x-16 max-w-2xl">
+            {/* Column: Percorsi */}
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Percorsi</p>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+                {percorsiCategories.percorsi.map((p) => (
+                  <li key={p.slug}>
+                    <button
+                      onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
+                      className="text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug rounded-lg px-2 hover:bg-[#156686]/6 cursor-pointer"
+                    >
+                      {p.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column: Corsi e Template */}
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Corsi e Template</p>
+              <ul className="flex flex-col gap-0.5">
+                {percorsiCategories.corsi.map((p) => (
+                  <li key={p.slug}>
+                    <a
+                      href={p.href}
+                      onClick={() => setDropdownOpen(false)}
+                      className="block text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug rounded-lg px-2 hover:bg-[#156686]/6"
+                    >
+                      {p.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </header>
