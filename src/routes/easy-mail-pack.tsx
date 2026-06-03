@@ -46,6 +46,26 @@ export const Route = createFileRoute("/easy-mail-pack")({
 
 const PURCHASE_URL = "https://corsi.andreabonomo.it/iscriviti-ora-base";
 
+// ── Video modal ──────────────────────────────────────────────────────────────
+
+function VideoModal({ url, onClose }: { url: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <div className="relative z-10 w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
+        <iframe src={url} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />
+        <button onClick={onClose} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-sm hover:bg-black/80 transition">✕</button>
+      </div>
+    </div>
+  );
+}
+
 // ── Parallax lesson background ────────────────────────────────────────────────
 
 const PARALLAX_IMGS = [imgCreaNL, imgForm, imgAutomazioni, imgLanding, imgLancio, imgProfila, lezione2, lezione3, lezione4, lezione5];
@@ -66,14 +86,25 @@ function ParallaxLessonBg() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const rows = [
-    PARALLAX_IMGS,
-    [...PARALLAX_IMGS].reverse(),
-    PARALLAX_IMGS,
-  ];
+  // Generate enough rows to cover the full section height (each row ~124px incl gap)
+  const ROW_H = 124;
+  const [numRows, setNumRows] = useState(10);
+  useEffect(() => {
+    const update = () => {
+      if (!ref.current) return;
+      setNumRows(Math.ceil((ref.current.offsetHeight * 1.4) / ROW_H) + 2);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const rows = Array.from({ length: numRows }, (_, i) =>
+    i % 2 === 0 ? PARALLAX_IMGS : [...PARALLAX_IMGS].reverse()
+  );
 
   return (
-    <div ref={ref} className="absolute inset-0 pointer-events-none overflow-hidden" style={{ transform: "rotate(-8deg) scale(1.3)", transformOrigin: "center center" }}>
+    <div ref={ref} className="absolute inset-0 pointer-events-none overflow-hidden" style={{ transform: "rotate(-8deg) scale(1.4)", transformOrigin: "center top" }}>
       {rows.map((imgs, ri) => (
         <div key={ri} className="flex gap-3 mb-3"
           style={{ transform: `translateX(${ri % 2 === 0 ? -offset : offset}px)`, transition: "transform 0.1s linear" }}>
@@ -337,65 +368,6 @@ function FaqAccordion() {
 
 // ── Lesson list accordion ─────────────────────────────────────────────────────
 
-const lessons = [
-  "Introduzione a Easy-Mail Pack",
-  "Come creare la tua email professionale?",
-  "Introduzione a Mailerlite",
-  "Mailerlite: creare un modulo di iscrizione alla tua lista",
-  "Mailerlite: creare una campagna newsletter",
-  "Mailerlite: creare la prima automazione di ringraziamento",
-  "Introduzione ad Active Campaign",
-  "Active Campaign: come creare un modulo di iscrizione alla tua lista",
-  "Active Campaign: creare una campagna newsletter",
-  "Active Campaign: creare la prima automazione di ringraziamento",
-  "Creiamo la seconda automazione: la sequenza SOS",
-  "Lancio con lista distinta",
-  "Lancio con la newsletter",
-  "Vendere con la newsletter",
-  "Come creare una landing page con Mailerlite",
-  "Creare una landing page con Systeme.io",
-  "Crea la Privacy Policy",
-  "Come creare il form in Drive",
-  "Segmentazione e profilazione",
-  "Fiera editoriale e organizzazione dei contenuti",
-  "AI per newsletter",
-  "Automazioni base",
-  "Automazioni avanzate",
-  "Manuali e automazioni dei social",
-  "BONUS #1 – Calendario di Lancio (Template Notion)",
-  "BONUS #2 – Consigli Visual per la tua Newsletter (con Emanuela Esposito)",
-];
-
-function LessonList() {
-  const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? lessons : lessons.slice(0, 8);
-  return (
-    <div>
-      <div className="space-y-2">
-        {visible.map((l, i) => (
-          <div
-            key={i}
-            className="flex items-center justify-between gap-4 rounded-xl bg-white border border-[#156686]/10 px-5 py-4"
-          >
-            <span className="text-sm md:text-base text-foreground/85">{l}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="flex-shrink-0">
-              <circle cx="12" cy="12" r="10" stroke="#156686" strokeOpacity="0.4" strokeWidth="1.5" />
-              <path d="M10 8l6 4-6 4V8z" fill="#156686" fillOpacity="0.5" />
-            </svg>
-          </div>
-        ))}
-      </div>
-      {!expanded && (
-        <button
-          onClick={() => setExpanded(true)}
-          className="mt-6 mx-auto block text-sm font-semibold text-[#156686] underline underline-offset-4 hover:text-[#156686]/80"
-        >
-          Mostra tutte le {lessons.length} lezioni ↓
-        </button>
-      )}
-    </div>
-  );
-}
 
 // ── LessonCard ────────────────────────────────────────────────────────────────
 
@@ -431,6 +403,178 @@ function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; 
         </div>
       )}
     </div>
+  );
+}
+
+// ── Lesson list ──────────────────────────────────────────────────────────────
+
+type Lesson = { name: string; videoUrl?: string };
+type Module = { title: string; lessons: Lesson[] };
+
+const DEMO = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+
+const MODULES: Module[] = [
+  { title: "Come creare la tua email professionale", lessons: [
+    { name: "Perché usare un'email professionale?", videoUrl: DEMO },
+    { name: "Acquistare dominio e hosting email su Vhosting" },
+    { name: "Reindirizzare l'email professionale a Gmail" },
+    { name: "Usare l'email professionale come mittente su Mailerlite" },
+    { name: "Usare l'email professionale come mittente su Active Campaign" },
+  ]},
+  { title: "Introduzione a Mailerlite", lessons: [
+    { name: "Apertura account e inserimento informazioni", videoUrl: DEMO },
+    { name: "Panoramica della dashboard" },
+    { name: "Settaggio iniziale della piattaforma" },
+    { name: "Autentica il tuo dominio per evitare di finire in SPAM" },
+    { name: "Liste, segmenti e contatti" },
+    { name: "Campagne" }, { name: "Moduli di iscrizione" }, { name: "Automazioni" }, { name: "Landing page" },
+  ]},
+  { title: "Mailerlite: modulo di iscrizione alla newsletter", lessons: [
+    { name: "Creazione del form – design e impostazioni iniziali", videoUrl: DEMO },
+    { name: "Form per iscrizione NL" }, { name: "Form per iscrizione NL + Lead Magnet" },
+    { name: "Form per iscrizione pre lancio + Lead Magnet" }, { name: "Pubblicare il form" }, { name: "Testiamo il form" },
+  ]},
+  { title: "Mailerlite: creiamo una campagna newsletter", lessons: [
+    { name: "Nome, oggetto e lista" }, { name: "Scriviamola insieme" }, { name: "Inviamola" },
+    { name: "Leggiamo le statistiche" }, { name: "Creiamo un test A/B con la newsletter" }, { name: "Leggiamo le statistiche del test A/B" },
+  ]},
+  { title: "Mailerlite: prima automazione di ringraziamento", lessons: [
+    { name: "Panoramica iniziale dell'automazione" }, { name: "Il trigger" }, { name: "Creiamo l'email di ringraziamento" },
+    { name: "Attiviamo l'automazione e testiamola" }, { name: "Leggiamo le statistiche" },
+  ]},
+  { title: "Introduzione ad Active Campaign", lessons: [
+    { name: "Apertura account e inserimento informazioni" }, { name: "Settaggio iniziale della piattaforma" },
+    { name: "Autentica il tuo dominio per evitare di finire in SPAM" }, { name: "Liste e contatti" },
+    { name: "Campagne" }, { name: "Moduli di iscrizione" }, { name: "Automazioni" },
+  ]},
+  { title: "Active Campaign: modulo di iscrizione alla newsletter", lessons: [
+    { name: "Creazione della lista d'iscrizione" }, { name: "Creazione del form – design e impostazioni iniziali" },
+    { name: "Form per iscrizione NL" }, { name: "Form per iscrizione NL + Lead Magnet" },
+    { name: "Form per iscrizione pre lancio + Lead Magnet" }, { name: "Disabilitare o abilitare il Double Opt In" }, { name: "Testiamo il form" },
+  ]},
+  { title: "Active Campaign: creiamo una campagna newsletter", lessons: [
+    { name: "Nome, oggetto e lista" }, { name: "Scriviamola insieme" }, { name: "Leggiamo le statistiche" },
+    { name: "Creiamo un test A/B con la newsletter" }, { name: "Leggiamo le statistiche del test A/B" },
+  ]},
+  { title: "Active Campaign: prima automazione di ringraziamento", lessons: [
+    { name: "Panoramica iniziale dell'automazione + trigger" }, { name: "Creiamo l'email di ringraziamento" },
+    { name: "Attiviamo l'automazione e testiamola" }, { name: "Leggiamo le statistiche" },
+  ]},
+  { title: "La seconda automazione: la sequenza SOS", lessons: [
+    { name: "TEMPLATE: Sequenza SOS" }, { name: "Sequenza SOS con Mailerlite" }, { name: "Sequenza SOS con Active Campaign" },
+    { name: "Escludere chi è nella sequenza dalle email di pre lancio (Mailerlite)" }, { name: "Escludere chi è nella sequenza dalle email di pre lancio (Active Campaign)" },
+  ]},
+  { title: "AI per newsletter ed email marketing", lessons: [
+    { name: "Usare l'AI come assistente per le tue newsletter" }, { name: "Come addestrare l'AI: informazioni di base e tone of voice" },
+    { name: "Come generare idee per la newsletter con l'AI" }, { name: "Come riorganizzare gli appunti con l'AI" },
+    { name: "Scrivere la bozza provvisoria della NL con l'AI" }, { name: "Generare alternative di oggetto con l'AI" }, { name: "Rivedere la bozza finale della newsletter con l'AI" },
+  ]},
+  { title: "Piano editoriale e organizzazione dei contenuti", lessons: [
+    { name: "Come costruire un piano editoriale per la newsletter?" }, { name: "Content repurposing: come riciclare le tue idee" },
+    { name: "Format e Serie: come unirli alla newsletter?" }, { name: "Come trovare idee sempreverdi per la tua newsletter?" },
+  ]},
+  { title: "Automazioni base", lessons: [
+    { name: "Mailerlite: automazione post download freebie" }, { name: "Active Campaign: automazione post download freebie" },
+    { name: "Introduzione all'automazione di compleanno" }, { name: "Mailerlite: automazione di compleanno" }, { name: "Active Campaign: automazione di compleanno" },
+  ]},
+  { title: "Automazioni avanzate", lessons: [
+    { name: "Introduzione all'automazione per riattivare i contatti inattivi" }, { name: "Mailerlite: automazione per riattivare i contatti inattivi" },
+    { name: "Active Campaign: automazione per riattivare i contatti inattivi" }, { name: "Introduzione all'automazione per il carrello abbandonato" },
+    { name: "Mailerlite: automazione per il carrello abbandonato" }, { name: "Active Campaign: automazione per il carrello abbandonato" },
+    { name: "Introduzione all'automazione post acquisto" }, { name: "Mailerlite: automazione post acquisto" }, { name: "Active Campaign: automazione post acquisto" },
+  ]},
+  { title: "Manychat e automazioni dai social", lessons: [
+    { name: "Manychat e automazioni social per la newsletter" }, { name: "Panoramica e dashboard" },
+    { name: "Automazione con risposta ai commenti" }, { name: "Automazione con risposta alle storie" },
+  ]},
+  { title: "Lancio con Freebie e Webinar", lessons: [
+    { name: "Introduzione al lancio con freebie e webinar" }, { name: "Lo schema di lancio" },
+    { name: "Fase di pre pre lancio" }, { name: "Fase di pre lancio" }, { name: "Fase di lancio" }, { name: "Fase di post lancio" },
+  ]},
+  { title: "Lancio con Lista d'Attesa", lessons: [
+    { name: "Introduzione al lancio con lista d'attesa" }, { name: "Lo schema di lancio" },
+    { name: "Fase di pre pre lancio" }, { name: "Fase di pre lancio" }, { name: "Fase di lancio" }, { name: "Fase di post lancio" },
+  ]},
+  { title: "Vendere alla Newsletter", lessons: [
+    { name: "Vendere alla tua lista newsletter: sì o no?" }, { name: "Vendere alla newsletter facendo un lancio" },
+    { name: "Seconda tipologia di vendita alla newsletter" }, { name: "Terza tipologia di vendita alla newsletter" },
+    { name: "Escludere iscritti che non vogliono email di lancio (Active Campaign)" }, { name: "Escludere iscritti che non vogliono email di lancio (Mailerlite)" },
+  ]},
+  { title: "Landing page con Mailerlite", lessons: [
+    { name: "Tutorial per creare la landing page" },
+  ]},
+  { title: "Landing page con Systeme.io", lessons: [
+    { name: "Che cos'è Systeme.io?" }, { name: "Apriamo l'account" }, { name: "Tutorial per creare la landing page" },
+    { name: "Inseriamo il modulo di iscrizione" }, { name: "Eliminare il banner di Systeme.io dalle pagine" },
+    { name: "Creiamo la pagina di ringraziamento" }, { name: "Leggere le statistiche" },
+  ]},
+  { title: "Privacy policy con Iubenda", lessons: [
+    { name: "Creare la Privacy Policy con Iubenda" },
+  ]},
+  { title: "Evitare lo SPAM", lessons: [
+    { name: "Come evitare di finire in SPAM" },
+  ]},
+  { title: "Segmentazione e profilazione", lessons: [
+    { name: "Perché è importante segmentare le liste?" }, { name: "Segmentare con Google Form + Mailerlite" },
+    { name: "Collegare Make e Mailerlite" }, { name: "Segmentare con Google Form + Active Campaign" },
+    { name: "Collegare Make ad Active Campaign" }, { name: "Segmentare la frequenza delle newsletter con Mailerlite" },
+    { name: "Segmentare la frequenza delle newsletter con Active Campaign" },
+    { name: "Campi personalizzati nei form di iscrizione di Mailerlite" }, { name: "Campi personalizzati nei form di iscrizione di Active Campaign" },
+  ]},
+  { title: "BONUS – Il Calendario di Lancio", lessons: [
+    { name: "Template Notion – Il Calendario di Lancio" },
+  ]},
+  { title: "BONUS – Consigli Visual per la Newsletter", lessons: [
+    { name: "Consigli Visual per la tua Newsletter (con Emanuela Esposito)" },
+  ]},
+];
+
+const SHOW_INITIALLY = 9;
+
+function LessonList() {
+  const [showAll, setShowAll] = useState(false);
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const visible = showAll ? MODULES : MODULES.slice(0, SHOW_INITIALLY);
+
+  return (
+    <>
+      {videoUrl && <VideoModal url={videoUrl} onClose={() => setVideoUrl(null)} />}
+      <div className="columns-1 md:columns-3 gap-5">
+        {visible.map((mod, i) => (
+          <div key={mod.title} className="break-inside-avoid mb-6">
+            <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/90 px-2 py-0.5 rounded-full mb-2">
+              Modulo {i + 1}
+            </span>
+            <p className="text-[14px] font-semibold text-white/90 mb-2">{mod.title}</p>
+            <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
+              {mod.lessons.map((l) => (
+                <li key={l.name} className="flex items-center gap-1.5 text-[13px] text-white/60 leading-snug">
+                  {l.videoUrl ? (
+                    <button onClick={() => setVideoUrl(l.videoUrl!)}
+                      className="flex-shrink-0 w-4 h-4 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition"
+                      aria-label="Guarda lezione">
+                      <svg width="6" height="7" viewBox="0 0 6 7" fill="white"><polygon points="0,0 6,3.5 0,7" /></svg>
+                    </button>
+                  ) : (
+                    <span className="flex-shrink-0 w-4 h-4" />
+                  )}
+                  <span>{l.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      {!showAll && (
+        <div className="text-center mt-8">
+          <button onClick={() => setShowAll(true)}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 border border-white/25 rounded-full px-6 py-2.5 hover:bg-white/10 transition">
+            Guarda tutti i moduli
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 1v10M1 6l5 5 5-5"/></svg>
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -901,47 +1045,7 @@ function EasyMailPack() {
             Sono disponibili fin da subito, puoi guardare a ritmo tuo.
           </p>
 
-          <div className="columns-1 md:columns-3 gap-5">
-            {([
-              { title: "Come creare la tua email professionale", lessons: ["Perché usare un'email professionale?", "Acquistare dominio e hosting email su Vhosting", "Reindirizzare l'email professionale a Gmail", "Usare l'email professionale come mittente su Mailerlite", "Usare l'email professionale come mittente su Active Campaign"] },
-              { title: "Introduzione a Mailerlite", lessons: ["Apertura account e inserimento informazioni", "Panoramica della dashboard", "Settaggio iniziale della piattaforma", "Autentica il tuo dominio per evitare di finire in SPAM", "Liste, segmenti e contatti", "Campagne", "Moduli di iscrizione", "Automazioni", "Landing page"] },
-              { title: "Mailerlite: modulo di iscrizione alla newsletter", lessons: ["Creazione del form – design e impostazioni iniziali", "Form per iscrizione NL", "Form per iscrizione NL + Lead Magnet", "Form per iscrizione pre lancio + Lead Magnet", "Pubblicare il form", "Testiamo il form"] },
-              { title: "Mailerlite: creiamo una campagna newsletter", lessons: ["Nome, oggetto e lista", "Scriviamola insieme", "Inviamola", "Leggiamo le statistiche", "Creiamo un test A/B con la newsletter", "Leggiamo le statistiche del test A/B"] },
-              { title: "Mailerlite: prima automazione di ringraziamento", lessons: ["Panoramica iniziale dell'automazione", "Il trigger", "Creiamo l'email di ringraziamento", "Attiviamo l'automazione e testiamola", "Leggiamo le statistiche"] },
-              { title: "Introduzione ad Active Campaign", lessons: ["Apertura account e inserimento informazioni", "Settaggio iniziale della piattaforma", "Autentica il tuo dominio per evitare di finire in SPAM", "Liste e contatti", "Campagne", "Moduli di iscrizione", "Automazioni"] },
-              { title: "Active Campaign: modulo di iscrizione alla newsletter", lessons: ["Creazione della lista d'iscrizione", "Creazione del form – design e impostazioni iniziali", "Form per iscrizione NL", "Form per iscrizione NL + Lead Magnet", "Form per iscrizione pre lancio + Lead Magnet", "Disabilitare o abilitare il Double Opt In", "Testiamo il form"] },
-              { title: "Active Campaign: creiamo una campagna newsletter", lessons: ["Nome, oggetto e lista", "Scriviamola insieme", "Leggiamo le statistiche", "Creiamo un test A/B con la newsletter", "Leggiamo le statistiche del test A/B"] },
-              { title: "Active Campaign: prima automazione di ringraziamento", lessons: ["Panoramica iniziale dell'automazione + trigger", "Creiamo l'email di ringraziamento", "Attiviamo l'automazione e testiamola", "Leggiamo le statistiche"] },
-              { title: "La seconda automazione: la sequenza SOS", lessons: ["TEMPLATE: Sequenza SOS", "Sequenza SOS con Mailerlite", "Sequenza SOS con Active Campaign", "Escludere chi è nella sequenza dalle email di pre lancio (Mailerlite)", "Escludere chi è nella sequenza dalle email di pre lancio (Active Campaign)"] },
-              { title: "AI per newsletter ed email marketing", lessons: ["Usare l'AI come assistente per le tue newsletter", "Come addestrare l'AI: informazioni di base e tone of voice", "Come generare idee per la newsletter con l'AI", "Come riorganizzare gli appunti con l'AI", "Scrivere la bozza provvisoria della NL con l'AI", "Generare alternative di oggetto con l'AI", "Rivedere la bozza finale della newsletter con l'AI"] },
-              { title: "Piano editoriale e organizzazione dei contenuti", lessons: ["Come costruire un piano editoriale per la newsletter?", "Content repurposing: come riciclare le tue idee", "Format e Serie: come unirli alla newsletter?", "Come trovare idee sempreverdi per la tua newsletter?"] },
-              { title: "Automazioni base", lessons: ["Mailerlite: automazione post download freebie", "Active Campaign: automazione post download freebie", "Introduzione all'automazione di compleanno", "Mailerlite: automazione di compleanno", "Active Campaign: automazione di compleanno"] },
-              { title: "Automazioni avanzate", lessons: ["Introduzione all'automazione per riattivare i contatti inattivi", "Mailerlite: automazione per riattivare i contatti inattivi", "Active Campaign: automazione per riattivare i contatti inattivi", "Introduzione all'automazione per il carrello abbandonato", "Mailerlite: automazione per il carrello abbandonato", "Active Campaign: automazione per il carrello abbandonato", "Introduzione all'automazione post acquisto", "Mailerlite: automazione post acquisto", "Active Campaign: automazione post acquisto"] },
-              { title: "Manychat e automazioni dai social", lessons: ["Manychat e automazioni social per la newsletter", "Panoramica e dashboard", "Automazione con risposta ai commenti", "Automazione con risposta alle storie"] },
-              { title: "Lancio con Freebie e Webinar", lessons: ["Introduzione al lancio con freebie e webinar", "Lo schema di lancio", "Fase di pre pre lancio", "Fase di pre lancio", "Fase di lancio", "Fase di post lancio"] },
-              { title: "Lancio con Lista d'Attesa", lessons: ["Introduzione al lancio con lista d'attesa", "Lo schema di lancio", "Fase di pre pre lancio", "Fase di pre lancio", "Fase di lancio", "Fase di post lancio"] },
-              { title: "Vendere alla Newsletter", lessons: ["Vendere alla tua lista newsletter: sì o no?", "Vendere alla newsletter facendo un lancio", "Seconda tipologia di vendita alla newsletter", "Terza tipologia di vendita alla newsletter", "Escludere iscritti che non vogliono email di lancio (Active Campaign)", "Escludere iscritti che non vogliono email di lancio (Mailerlite)"] },
-              { title: "Landing page con Mailerlite", lessons: ["Tutorial per creare la landing page"] },
-              { title: "Landing page con Systeme.io", lessons: ["Che cos'è Systeme.io?", "Apriamo l'account", "Tutorial per creare la landing page", "Inseriamo il modulo di iscrizione", "Eliminare il banner di Systeme.io dalle pagine", "Creiamo la pagina di ringraziamento", "Leggere le statistiche"] },
-              { title: "Privacy policy con Iubenda", lessons: ["Creare la Privacy Policy con Iubenda"] },
-              { title: "Evitare lo SPAM", lessons: ["Come evitare di finire in SPAM"] },
-              { title: "Segmentazione e profilazione", lessons: ["Perché è importante segmentare le liste?", "Segmentare con Google Form + Mailerlite", "Collegare Make e Mailerlite", "Segmentare con Google Form + Active Campaign", "Collegare Make ad Active Campaign", "Segmentare la frequenza delle newsletter con Mailerlite", "Segmentare la frequenza delle newsletter con Active Campaign", "Campi personalizzati nei form di iscrizione di Mailerlite", "Campi personalizzati nei form di iscrizione di Active Campaign"] },
-              { title: "BONUS – Il Calendario di Lancio", lessons: ["Template Notion – Il Calendario di Lancio"] },
-              { title: "BONUS – Consigli Visual per la Newsletter", lessons: ["Consigli Visual per la tua Newsletter (con Emanuela Esposito)"] },
-            ] as { title: string; lessons: string[] }[]).map((mod, i) => (
-              <div key={mod.title} className="break-inside-avoid mb-6">
-                <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/90 px-2 py-0.5 rounded-full mb-2">
-                  Modulo {i + 1}
-                </span>
-                <p className="text-[14px] font-semibold text-white/90 mb-2">{mod.title}</p>
-                <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
-                  {mod.lessons.map((l) => (
-                    <li key={l} className="text-[13px] text-white/60 leading-snug">{l}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <LessonList />
         </div>
       </section>
 
