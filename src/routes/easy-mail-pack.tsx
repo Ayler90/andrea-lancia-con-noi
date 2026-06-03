@@ -20,7 +20,7 @@ import imgLancio from "@/assets/lancio con email.png";
 import imgProfila from "@/assets/profila contenuti.png";
 import imgLezioneEmanuela from "@/assets/lezione emanuela.png";
 import imgCalendarioEasyMail from "@/assets/calendario di lancio easy mail pack.png";
-import imgPalline from "@/assets/Foto con palline di carta.jpg";
+import imgPalline from "@/assets/garanzia.png";
 import recEmp1 from "@/assets/recensione emp 1.png";
 import recEmp2 from "@/assets/recensione emp 2.png";
 import recEmp3 from "@/assets/recensione emp 3.png";
@@ -1335,7 +1335,7 @@ function EasyMailPack() {
                     className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center whitespace-nowrap">
                     Acquista ora a 129€ →
                   </a>
-                  <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro. Accesso immediato.</p>
+                  <p className="text-xs text-foreground/40 mt-3">Puoi pagare anche a rate, selezionando l'opzione nel checkout</p>
                 </div>
               </div>
 
@@ -1378,7 +1378,7 @@ function EasyMailPack() {
                       className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-center block w-full">
                       Acquista ora a 129€ →
                     </a>
-                    <p className="text-xs text-foreground/40 mt-3">PayPal · Carta · Debito</p>
+                    <p className="text-xs text-foreground/40 mt-3">Puoi pagare anche a rate, selezionando l'opzione nel checkout</p>
                   </div>
                 </div>
               </div>
