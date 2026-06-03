@@ -1139,7 +1139,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── CHI SONO ──────────────────────────────────────────────────────── */}
-      <ChiSono ctaText="Acquista ora Easy-Mail Pack →" ctaHref={PURCHASE_URL} />
+      <ChiSono ctaText="Acquista ora Easy-Mail Pack →" ctaHref="#form" />
 
       {/* ── PER CHI SÌ / PER CHI NO ───────────────────────────────────────── */}
       <section className="py-20 md:py-28 px-4 bg-foreground text-background relative overflow-hidden" data-cursor-light>
@@ -1188,7 +1188,7 @@ function EasyMailPack() {
               </div>
               <p className="eyebrow mb-5 text-background/60">Per chi non è</p>
               <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
-                Probabilmente non fa per te <em className="text-[#C4D9DC]">se:</em>
+                Non fa per te <em className="text-[#C4D9DC]">se:</em>
               </h2>
               <ul className="mt-8 space-y-6">
                 {[
