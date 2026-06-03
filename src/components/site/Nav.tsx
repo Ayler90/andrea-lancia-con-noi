@@ -45,8 +45,8 @@ export function Nav() {
   const [open, setOpen]                 = useState(false);
   const [closing, setClosing]           = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [navBottom, setNavBottom] = useState(80);
-  const headerRef = useRef<HTMLElement>(null);
+  const headerRef  = useRef<HTMLElement>(null);
+  const megaMenuRef = useRef<HTMLDivElement>(null);
 
   const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
   const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
@@ -70,18 +70,17 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
-    const updateNavBottom = () => {
-      if (headerRef.current) {
-        const rect = headerRef.current.getBoundingClientRect();
-        setNavBottom(rect.bottom);
+    const syncPosition = () => {
+      if (headerRef.current && megaMenuRef.current) {
+        megaMenuRef.current.style.top = headerRef.current.getBoundingClientRect().bottom + "px";
       }
     };
-    updateNavBottom();
-    window.addEventListener("scroll", updateNavBottom, { passive: true });
-    window.addEventListener("resize", updateNavBottom);
+    syncPosition();
+    window.addEventListener("scroll", syncPosition, { passive: true });
+    window.addEventListener("resize", syncPosition);
     return () => {
-      window.removeEventListener("scroll", updateNavBottom);
-      window.removeEventListener("resize", updateNavBottom);
+      window.removeEventListener("scroll", syncPosition);
+      window.removeEventListener("resize", syncPosition);
     };
   }, []);
 
@@ -207,8 +206,9 @@ export function Nav() {
 
       {/* Mega-menu — rendered OUTSIDE header so backdrop-filter works (header's own filter blocks children) */}
       <div
+        ref={megaMenuRef}
         className="hidden md:block fixed left-0 right-0 z-[49]"
-        style={{ top: navBottom }}
+        style={{ top: 80 }}
         onMouseEnter={() => setDropdownOpen(true)}
         onMouseLeave={() => setDropdownOpen(false)}
       >
