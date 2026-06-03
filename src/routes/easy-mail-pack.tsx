@@ -1139,7 +1139,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── CHI SONO ──────────────────────────────────────────────────────── */}
-      <ChiSono />
+      <ChiSono ctaText="Acquista ora Easy-Mail Pack →" ctaHref={PURCHASE_URL} />
 
       {/* ── PER CHI SÌ / PER CHI NO ───────────────────────────────────────── */}
       <section className="py-20 md:py-28 px-4 bg-foreground text-background relative overflow-hidden" data-cursor-light>
