@@ -348,18 +348,35 @@ function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suf
 
 // ── FAQ Accordion ─────────────────────────────────────────────────────────────
 
-const faqs = [
+const faqs: { q: string; a: React.ReactNode }[] = [
   {
     q: "Quanto costa Easy-Mail Pack?",
     a: "Solamente 129€.\n\nIl prezzo è veramente ridicolo per tutto quello che ottieni.\n\nOltre 90 lezioni e 5+ ore di formazione teorico+pratica su newsletter ed email marketing.",
   },
   {
     q: "Se ho una domanda da farti, come faccio a contattarti?",
-    a: "Puoi scrivermi a ciao@andreabonomo.it o contattarmi in privato su Instagram.",
+    a: <>Puoi scrivermi a <a href="mailto:ciao@andreabonomo.it" className="text-[#156686] underline underline-offset-2">ciao@andreabonomo.it</a> o contattarmi in privato su Instagram.</>,
   },
   {
     q: "Cosa imparerò grazie a Easy-Mail Pack?",
-    a: "Imparerai a:\n\n• creare la tua prima newsletter da 0, grazie ai 9 template che trovi all'interno\n• creare un modulo di iscrizione e la tua prima automazione di ringraziamento per chi si iscrive alla NL o scarica un tuo freebie\n• gestire l'email marketing durante un lancio, grazie ai template con le email di pre pre lancio, pre lancio, lancio e post lancio\n• creare landing page dove far iscrivere le persone\n• creare una newsletter unica e inimitabile, grazie alla lezione sulla grafica di Emanuela\n• vendere grazie alla newsletter (ci sono 3 tipologie di vendita dentro al video corso)",
+    a: (
+      <div>
+        <p className="mb-3">Imparerai a:</p>
+        <ul className="space-y-2">
+          {[
+            "creare la tua prima newsletter da 0, grazie ai 9 template che trovi all'interno",
+            "creare un modulo di iscrizione e la tua prima automazione di ringraziamento per chi si iscrive alla NL o scarica un tuo freebie",
+            "gestire l'email marketing durante un lancio, grazie ai template con le email di pre pre lancio, pre lancio, lancio e post lancio",
+            "creare landing page dove far iscrivere le persone",
+            "creare una newsletter unica e inimitabile, grazie alla lezione sulla grafica di Emanuela",
+            "vendere grazie alla newsletter (ci sono 3 tipologie di vendita dentro al video corso)",
+            "E tanto altro",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2.5"><CheckIcon />{item}</li>
+          ))}
+        </ul>
+      </div>
+    ),
   },
   {
     q: "I template vanno usati come sono o posso modificarli?",
@@ -378,28 +395,23 @@ function FaqAccordion() {
       {faqs.map((faq, i) => (
         <div
           key={i}
-          className={`faq-item filter-btn rounded-xl bg-white border overflow-hidden${open === i ? " is-active" : ""}`}
+          className={`faq-item filter-btn rounded-2xl${open === i ? " is-active" : ""}`}
+          style={{ transition: "box-shadow 0.35s ease, transform 0.35s ease" }}
         >
           <button
-            className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
+            className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base text-foreground"
             onClick={() => setOpen(open === i ? null : i)}
           >
-            <span className="text-sm md:text-base font-semibold text-foreground/85">{faq.q}</span>
+            {faq.q}
             <svg
-              width="20" height="20" viewBox="0 0 24 24" fill="none"
-              className={`flex-shrink-0 transition-transform duration-300 ${open === i ? "rotate-180" : ""}`}
+              width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
+              style={{ transform: open === i ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.35s ease", flexShrink: 0, marginLeft: 16 }}
             >
-              <path d="M6 9l6 6 6-6" stroke="#156686" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <polyline points="6 9 12 15 18 9" />
             </svg>
           </button>
-          <div
-            style={{
-              maxHeight: open === i ? "800px" : "0",
-              transition: open === i ? "max-height 0.4s ease" : "none",
-              overflow: "hidden",
-            }}
-          >
-            <p className="px-6 pb-5 text-sm md:text-base text-foreground/65 leading-relaxed whitespace-pre-line">{faq.a}</p>
+          <div style={{ maxHeight: open === i ? "800px" : "0px", overflow: "hidden", transition: open === i ? "max-height 0.4s ease" : "none" }}>
+            <div className="px-6 pb-5 text-sm text-foreground/65 leading-relaxed" style={{ whiteSpace: typeof faq.a === "string" ? "pre-line" : "normal" }}>{faq.a}</div>
           </div>
         </div>
       ))}
