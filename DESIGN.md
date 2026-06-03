@@ -60,7 +60,9 @@ letter-spacing: 0.22em;
 font-weight: 500;
 color: muted-foreground;
 ```
-Uso tipico: `<p className="eyebrow text-[#156686]/70 mb-4">Label sezione</p>`
+Uso tipico: `<p className="eyebrow text-[#156686] mb-4">Label sezione</p>`
+
+**Regola:** colore sempre `text-[#156686]` pieno — **mai `/70` o altre opacità**. Uguale su tutte le pagine.
 
 #### Testo corpo
 - Dimensione: `text-sm md:text-base` — **mai `md:text-lg`**
@@ -204,15 +206,62 @@ Per CTA secondarie su sfondo chiaro — **stessa dimensione del pill**:
 </div>
 ```
 **Regole:**
-- Emoji sempre `text-3xl` con `thought-float 3s ease-in-out infinite`
+- Emoji sempre `text-4xl` con `thought-float 3s ease-in-out infinite`
 - Glow: `w-10 h-4 blur-lg`, colore `rgba(21,102,134,0.35)` per teal; `rgba(220,50,50,0.4)` per rosso
 - Checkbox: `rx="5"` (angoli arrotondati), fill teal a 10%, stroke teal a 30%, spunta teal `#156686`
 
 ### Card pricing (sfondo bianco con sezione scura intorno)
+
+Struttura completa — identica su tutte le pagine landing:
+
 ```tsx
-<div className="bg-white rounded-xl overflow-hidden" data-cursor-dark>
+<section id="form" className="py-16 md:py-20 px-2 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
+  {/* orb glow standard */}
+  <div className="container-narrow max-w-4xl mx-auto relative z-10">
+
+    {/* Annotazione handwriting a sinistra (desktop) / sopra (mobile) */}
+    {/* → vedi §11 Annotazioni Handwriting */}
+
+    <div className="relative">
+      {/* Desktop annotation: absolute right-full top-8 pr-6 w-52 */}
+      <div className="bg-white rounded-xl overflow-hidden" data-cursor-dark>
+
+        {/* MOBILE: immagine prodotto centrata + badge + titolo + prezzo + checklist + CTA */}
+        {/* DESKTOP: immagine prodotto + header a destra | checklist | divisore | prezzo+CTA */}
+
+        {/* Immagine prodotto con float */}
+        <img src={coverImg} className="w-36 flex-shrink-0" style={{ animation: "img-float 5s ease-in-out infinite" }} />
+
+        {/* Badge "Accesso immediato" */}
+        <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+          Accesso immediato
+        </div>
+
+        {/* Layout desktop: flex con divisore */}
+        {/* Sinistra: checklist | div w-px bg-foreground/10 | Destra: prezzo + CTA */}
+        <div className="w-px bg-foreground/10 mx-4 self-stretch" />
+        <div className="w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
+          <span className="text-5xl font-bold text-[#156686]">129€</span>
+          <a href={PURCHASE_URL} className="pill bg-primary text-primary-foreground ...">Acquista ora a 129€ →</a>
+          <p className="text-xs text-foreground/40 mt-3">Puoi pagare anche a rate, selezionando l'opzione nel checkout</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Blocco garanzia separato sotto il card */}
+    <div className="mt-10 bg-white/5 border border-white/20 rounded-2xl px-8 py-7">
+      <div className="flex items-center gap-6">
+        <img src={imgGaranzia} className="w-16 h-16 flex-shrink-0 rounded-xl object-cover" />
+        <div>
+          <p className="font-semibold text-white mb-1">Titolo garanzia</p>
+          <p className="text-sm text-white/65 leading-relaxed">Testo garanzia con <strong className="text-white/85">14 giorni</strong>...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 ```
-La sezione che la contiene ha `bg-foreground` con `data-cursor-light`.
 
 ---
 
@@ -330,6 +379,28 @@ Usato nei filtri percorsi e nelle FAQ.
 /* Chiusura: istantanea (transition: none) */
 ```
 
+### Struttura FAQ corretta
+```tsx
+{/* Sezione: max-w-4xl mx-auto */}
+<div className={`faq-item filter-btn rounded-2xl${open ? " is-active" : ""}`}
+  style={{ transition: "box-shadow 0.35s ease, transform 0.35s ease" }}>
+  <button className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-base text-foreground">
+    {faq.q}
+    <svg ... style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.35s ease" }}>
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  </button>
+  <div style={{ maxHeight: open ? "800px" : "0px", overflow: "hidden", transition: open ? "max-height 0.4s ease" : "none" }}>
+    <div className="px-6 pb-5 text-sm text-foreground/65 leading-relaxed">{faq.a}</div>
+  </div>
+</div>
+```
+**Regole:**
+- **NON** aggiungere `border` o `overflow-hidden` Tailwind al div wrapper — il `filter-btn` gestisce tutto via CSS
+- Testo domanda: `font-semibold text-base text-foreground` (non `text-foreground/85`)
+- `faq.a` può essere `React.ReactNode` per supportare JSX (checklist con `<CheckIcon />`, link `<a>`)
+- Risposte con paragrafi/newline: aggiungere `whitespace-pre-line` al wrapper se è stringa pura
+
 ---
 
 ## 11. Annotazioni Handwriting
@@ -435,6 +506,190 @@ Struttura:
 - Mai `box-shadow` su `<img>`
 - Mai teal diverso da `#156686`
 - Mai `overflow-hidden` su elementi con animazione `::before` clip-path (la clippa)
+
+---
+
+## 18. Programma Lezioni (sezione corso)
+
+### Layout colonne
+```tsx
+<div className="columns-1 md:columns-3 gap-5">
+  {modules.map((mod, i) => (
+    <div className="break-inside-avoid mb-6">
+      {/* Badge modulo */}
+      <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/90 px-2 py-0.5 rounded-full mb-2">
+        Modulo {i + 1}
+      </span>
+      <p className="text-[14px] font-semibold text-white/90 mb-2">{mod.title}</p>
+      <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
+        {mod.lessons.map((l) => (
+          <li className="text-[13px] leading-snug">
+            {/* Lezione con video */}
+            <button className="group flex items-center gap-1.5 text-left text-white/80 hover:text-white transition-colors w-full">
+              <span className="lesson-link-text">{l.name}</span>
+              <span className="flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                style={{ animation: "arrow-nudge 2.8s ease-in-out infinite", backgroundColor: "rgba(187,247,208,0.9)" }}>
+                <svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg>
+              </span>
+            </button>
+            {/* Lezione senza video */}
+            <span className="text-white/60">{l.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+```
+
+### Badge modulo pill
+- Sfondo: `bg-[#C4D9DC]/90` — teal chiaro semi-opaco
+- Testo: `text-[#156686]` — teal su teal chiaro
+- Taglia: `text-[10px]` uppercase tracking `0.14em`
+
+### Pulsante play (lezioni sbloccate)
+- **Sfondo cerchio:** `rgba(187,247,208,0.9)` — verde chiaro
+- **Triangolo:** fill `#15803d` — verde scuro
+- **Animazione:** `arrow-nudge 2.8s ease-in-out infinite` — doppio scatto a destra
+- **Posizione:** a destra del testo lezione
+
+### Sottolineatura lezione cliccabile (`.lesson-link-text`)
+```css
+.lesson-link-text {
+  background-image: linear-gradient(rgba(187,247,208,0.9), rgba(187,247,208,0.9));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 2px;
+  transition: background-size 0.5s cubic-bezier(0.4,0,0.2,1);
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.group:hover .lesson-link-text {
+  background-size: 100% 2px; /* disegna da sinistra a destra */
+  font-weight: 600;
+}
+```
+
+### Badge "lezioni sbloccate"
+```tsx
+<div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em]"
+  style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.25)", color: "#C4D9DC" }}>
+  🔓 Testo badge
+  <span className="flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+    style={{ backgroundColor: "rgba(187,247,208,0.9)" }}>
+    <svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg>
+  </span>
+</div>
+```
+
+### Pulsante "Guarda tutti i moduli"
+```tsx
+<button className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 border border-white/25 rounded-full px-6 py-2.5 hover:bg-white/10 transition">
+  Guarda tutti i moduli
+  <svg ...>↓</svg>
+</button>
+```
+
+---
+
+## 19. Video Modal
+
+Si apre con animazione `clipPath` dal centro (espande verso l'alto e verso il basso):
+
+```tsx
+<div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
+  <div className="absolute inset-0 backdrop-blur-sm" style={{ backgroundColor: open ? "rgba(12,35,48,0.85)" : "rgba(12,35,48,0)" }} />
+  <div className="relative z-10 w-full max-w-3xl rounded-2xl overflow-hidden"
+    style={{
+      clipPath: open ? "inset(0% 0% 0% 0% round 1rem)" : "inset(50% 0% 50% 0% round 1rem)",
+      border: "1.5px solid rgba(196,217,220,0.25)",
+      boxShadow: "0 0 60px -10px rgba(21,102,134,0.6)",
+      transition: "all 0.3s",
+    }}>
+    {/* Barra superiore brand */}
+    <div className="flex items-center justify-between px-4 py-3" style={{ backgroundColor: "#EEF3F5", borderBottom: "1px solid rgba(21,102,134,0.12)" }}>
+      <div>
+        <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#156686]/60">Anteprima lezione</p>
+        <p className="text-[13px] font-semibold text-[#0c2330]/85">{title}</p>
+      </div>
+      <button onClick={onClose} className="w-7 h-7 rounded-full hover:bg-[#156686]/10 text-[#156686]/60">✕</button>
+    </div>
+    {/* Video: <video> per .mp4, <iframe> per YouTube */}
+    <div className="aspect-video" style={{ backgroundColor: "#0c2330" }}>
+      {url.includes(".mp4") ? <video src={url} controls autoPlay className="w-full h-full" />
+                            : <iframe src={url} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />}
+    </div>
+  </div>
+</div>
+```
+**Colori barra:** `#EEF3F5` sfondo, `#156686` accenti, `#0c2330` testo — brand palette.
+
+---
+
+## 20. Card con immagine interna (Bonus)
+
+Per card dove l'immagine deve avere margini dai bordi:
+```tsx
+<div className="rounded-2xl bg-white border border-[#156686]/15 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+  style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.10)" }}>
+  <div className="p-4 pb-0">
+    <img src={img} className="w-full aspect-video object-cover rounded-xl" />
+  </div>
+  <div className="px-6 py-6">...</div>
+</div>
+```
+- Immagine dentro `p-4 pb-0` → margini interni con angoli arrotondati `rounded-xl`
+- Hover: `-translate-y-1` + `shadow-xl`
+
+---
+
+## 21. Hover immagini prodotto (lezioni)
+
+Hover leggero senza zoom:
+```tsx
+<div className="group overflow-hidden rounded-2xl">
+  <img className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-105 group-hover:scale-[1.01]" />
+</div>
+```
+- **NO** `scale` grande (tipo 1.05) — solo `1.01` al massimo
+- `brightness-105` per l'effetto luminosità leggero
+
+---
+
+## 22. Slider recensioni scroll-driven (due righe)
+
+```tsx
+// Row 1: si sposta a sinistra mentre si scrolla
+// Row 2: si sposta a destra mentre si scrolla
+// Guidato da IntersectionObserver + scroll offset
+
+const [offset, setOffset] = useState(0);
+// offset = progress * 300 dove progress = -rect.top / (rect.height + window.innerHeight)
+
+{[row1, row2].map((row, ri) => (
+  <div className="flex gap-5"
+    style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
+    {row.map(src => <img className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />)}
+  </div>
+))}
+```
+- Immagini: `h-80` (320px) senza box-shadow
+- Fade sui bordi: `w-32` gradient bianco a sinistra e destra
+- Nessuna animazione automatica — solo scroll-driven
+
+---
+
+## 23. CountUp — Card box contenitore
+
+Le statistiche countup vanno inside un riquadro card:
+```tsx
+<div className="rounded-2xl border border-[#156686]/15 bg-[#156686]/5 px-6 py-8"
+  style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.08)" }}>
+  <div className="flex items-stretch justify-center flex-wrap gap-y-8">
+    {/* countup items con divisori */}
+  </div>
+</div>
+```
 
 ---
 
