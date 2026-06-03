@@ -579,8 +579,10 @@ function LessonList() {
                       className="group flex items-center gap-1.5 text-left text-white/80 hover:text-white transition-colors"
                       aria-label={`Guarda: ${l.name}`}>
                       <span className="underline underline-offset-2 decoration-white/30 group-hover:decoration-white/70 transition-colors">{l.name}</span>
-                      <span className="flex-shrink-0 text-[13px] leading-none"
-                        style={{ animation: "arrow-nudge 2.8s ease-in-out infinite", display: "inline-block" }}>▶️</span>
+                      <span className="flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                        style={{ animation: "arrow-nudge 2.8s ease-in-out infinite", backgroundColor: "rgba(34,197,94,0.18)" }}>
+                        <svg width="6" height="7" viewBox="0 0 6 7" fill="#22c55e"><polygon points="0,0 6,3.5 0,7" /></svg>
+                      </span>
                     </button>
                   ) : (
                     <span className="text-white/60">{l.name}</span>
@@ -1080,7 +1082,7 @@ function EasyMailPack() {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
-              Come regalo, ti ho sbloccato alcune lezioni — cercale con il simbolo ▶️
+              Come regalo, ti ho sbloccato alcune lezioni — cercale con il simbolo verde
             </div>
           </div>
 
