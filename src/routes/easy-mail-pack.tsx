@@ -1079,13 +1079,13 @@ function EasyMailPack() {
           </p>
           {/* unlocked lessons badge */}
           <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold"
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em]"
               style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.25)", color: "#C4D9DC" }}>
               🔓
-              Come regalo, ti ho sbloccato alcune lezioni — cercale con questo simbolo
-              <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full leading-none">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                <svg width="5" height="6" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg>
+              Come regalo, ti ho sbloccato alcune lezioni – cercale con questo simbolo
+              <span className="flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: "rgba(187,247,208,0.9)" }}>
+                <svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg>
               </span>
             </div>
           </div>
