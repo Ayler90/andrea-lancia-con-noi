@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 import { LogoText } from "./LogoText";
 import posthog from "posthog-js";
@@ -69,19 +69,16 @@ export function Nav() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
-  useEffect(() => {
-    const syncPosition = () => {
+  useLayoutEffect(() => {
+    let rafId: number;
+    const sync = () => {
       if (headerRef.current && megaMenuRef.current) {
         megaMenuRef.current.style.top = headerRef.current.getBoundingClientRect().bottom + "px";
       }
+      rafId = requestAnimationFrame(sync);
     };
-    syncPosition();
-    window.addEventListener("scroll", syncPosition, { passive: true });
-    window.addEventListener("resize", syncPosition);
-    return () => {
-      window.removeEventListener("scroll", syncPosition);
-      window.removeEventListener("resize", syncPosition);
-    };
+    rafId = requestAnimationFrame(sync);
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
   useEffect(() => {
