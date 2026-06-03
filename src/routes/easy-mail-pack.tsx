@@ -20,6 +20,15 @@ import imgLancio from "@/assets/lancio con email.png";
 import imgProfila from "@/assets/profila contenuti.png";
 import imgLezioneEmanuela from "@/assets/lezione emanuela.png";
 import imgCalendarioEasyMail from "@/assets/calendario di lancio easy mail pack.png";
+import recEmp1 from "@/assets/recensione emp 1.png";
+import recEmp2 from "@/assets/recensione emp 2.png";
+import recEmp3 from "@/assets/recensione emp 3.png";
+import recEmp4 from "@/assets/recensione emp 4.png";
+import recEmp5 from "@/assets/recensione emp 5.png";
+import recEmp6 from "@/assets/recensione emp 6.png";
+import recEmp7 from "@/assets/recensione emp 7.png";
+import recEmp8 from "@/assets/recensione emp 8.png";
+import recEmp9 from "@/assets/recensione emp 9.png";
 import studenteEmp from "@/assets/studente emp.jpeg";
 import studenteEmp1 from "@/assets/studente emp 1.jpeg";
 import studenteEmp2 from "@/assets/studente emp 2.png";
@@ -608,6 +617,79 @@ function LessonList() {
         </div>
       )}
     </>
+  );
+}
+
+// ── Star field (same as homepage Testimonianze) ──────────────────────────────
+
+type Star = { cx: number; cy: number; r: number; opacity: number; phase: number; angle: number; driftSpeed: number };
+
+function drawSparkle(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, opacity: number) {
+  ctx.save(); ctx.globalAlpha = opacity; ctx.fillStyle = "#156686"; ctx.beginPath();
+  for (let i = 0; i < 8; i++) {
+    const a = (i * Math.PI) / 4 - Math.PI / 2;
+    const rad = i % 2 === 0 ? r : r * 0.3;
+    i === 0 ? ctx.moveTo(x + Math.cos(a) * rad, y + Math.sin(a) * rad)
+            : ctx.lineTo(x + Math.cos(a) * rad, y + Math.sin(a) * rad);
+  }
+  ctx.closePath(); ctx.fill(); ctx.restore();
+}
+
+function StarFieldBg() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const canvas = canvasRef.current; if (!canvas) return;
+    const ctx = canvas.getContext("2d")!;
+    let animId: number; let stars: Star[] = [];
+    let mX = -9999, mY = -9999, smX = -9999, smY = -9999, active = false, pull = 0;
+    const build = () => { stars = Array.from({ length: 200 }, () => ({ cx: Math.random() * canvas.width, cy: Math.random() * canvas.height, r: Math.random() * 7 + 3, opacity: Math.random() * 0.45 + 0.25, phase: Math.random() * Math.PI * 2, angle: Math.random() * Math.PI * 2, driftSpeed: Math.random() * 0.35 + 0.08 })); };
+    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; build(); };
+    resize(); const ro = new ResizeObserver(resize); ro.observe(canvas);
+    const section = canvas.parentElement!;
+    section.addEventListener("mousemove", (e) => { const r = canvas.getBoundingClientRect(); mX = e.clientX - r.left; mY = e.clientY - r.top; if (!active) { smX = mX; smY = mY; active = true; } });
+    section.addEventListener("mouseleave", () => { active = false; });
+    let t = 0;
+    const draw = () => {
+      t += 0.012; ctx.clearRect(0, 0, canvas.width, canvas.height);
+      smX += (mX - smX) * 0.035; smY += (mY - smY) * 0.035;
+      pull += ((active ? 1 : 0) - pull) * 0.05;
+      for (const s of stars) {
+        s.angle += (Math.random() - 0.5) * 0.04; s.cx += Math.cos(s.angle) * s.driftSpeed; s.cy += Math.sin(s.angle) * s.driftSpeed;
+        if (s.cx < -20) s.cx = canvas.width + 20; if (s.cx > canvas.width + 20) s.cx = -20;
+        if (s.cy < -20) s.cy = canvas.height + 20; if (s.cy > canvas.height + 20) s.cy = -20;
+        const dx = smX - s.cx, dy = smY - s.cy, dist = Math.sqrt(dx*dx + dy*dy) || 1;
+        const p = 18 * Math.exp(-(dist*dist) / (2*280*280)) * pull;
+        const tw = 0.75 + 0.25 * Math.sin(t * 1.6 + s.phase);
+        drawSparkle(ctx, s.cx + (dx/dist)*p, s.cy + (dy/dist)*p, s.r * tw, s.opacity * tw);
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { cancelAnimationFrame(animId); ro.disconnect(); };
+  }, []);
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
+}
+
+// ── Infinite slider ───────────────────────────────────────────────────────────
+
+const REC_IMGS = [recEmp1, recEmp2, recEmp3, recEmp4, recEmp5, recEmp6, recEmp7, recEmp8, recEmp9];
+
+function InfiniteSlider() {
+  const track = useRef<HTMLDivElement>(null);
+  // duplicate for seamless loop
+  const items = [...REC_IMGS, ...REC_IMGS];
+  return (
+    <div className="overflow-hidden relative">
+      {/* fade edges */}
+      <div className="absolute inset-y-0 left-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 1 }} />
+      <div className="absolute inset-y-0 right-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 1 }} />
+      <div ref={track} className="flex gap-4" style={{ animation: "infinite-scroll 40s linear infinite", width: "max-content" }}>
+        {items.map((src, i) => (
+          <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
+            className="h-64 w-auto rounded-2xl object-cover flex-shrink-0 shadow-sm" />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -1213,18 +1295,18 @@ function EasyMailPack() {
       </section>
 
       {/* ── TESTIMONIANZE ─────────────────────────────────────────────────── */}
-      <section id="recensioni" className="py-16 md:py-20 px-4">
-        <div className="container-narrow">
-          <p className="eyebrow text-[#156686]/70 mb-4 text-center">Social proof</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Cosa dicono i miei <em className="text-[#156686]">studenti e clienti</em> di me?
+      <section id="recensioni" className="pt-4 pb-20 relative overflow-hidden">
+        <StarFieldBg />
+        <div className="absolute inset-x-0 top-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
+        <div className="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
+        <div className="container-narrow relative z-10 mb-12">
+          <p className="eyebrow text-[#156686]/70 mb-4 text-center">Le parole dei miei studenti ❤️</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center">
+            Cosa dicono i miei studenti e clienti di <em className="text-[#156686]">Easy-Mail Pack?</em>
           </h2>
-          {/* placeholder grid testimonianze */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <PlaceholderImg key={i} label={`Testimonianza ${i + 1}`} className="w-full aspect-square" />
-            ))}
-          </div>
+        </div>
+        <div className="relative z-10">
+          <InfiniteSlider />
         </div>
       </section>
 
