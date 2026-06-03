@@ -46,6 +46,46 @@ export const Route = createFileRoute("/easy-mail-pack")({
 
 const PURCHASE_URL = "https://corsi.andreabonomo.it/iscriviti-ora-base";
 
+// ── Parallax lesson background ────────────────────────────────────────────────
+
+const PARALLAX_IMGS = [imgCreaNL, imgForm, imgAutomazioni, imgLanding, imgLancio, imgProfila, lezione2, lezione3, lezione4, lezione5];
+
+function ParallaxLessonBg() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handler = () => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const progress = -rect.top / (rect.height + window.innerHeight);
+      setOffset(progress * 200);
+    };
+    window.addEventListener("scroll", handler, { passive: true });
+    handler();
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  const rows = [
+    PARALLAX_IMGS,
+    [...PARALLAX_IMGS].reverse(),
+    PARALLAX_IMGS,
+  ];
+
+  return (
+    <div ref={ref} className="absolute inset-0 pointer-events-none overflow-hidden" style={{ transform: "rotate(-8deg) scale(1.3)", transformOrigin: "center center" }}>
+      {rows.map((imgs, ri) => (
+        <div key={ri} className="flex gap-3 mb-3"
+          style={{ transform: `translateX(${ri % 2 === 0 ? -offset : offset}px)`, transition: "transform 0.1s linear" }}>
+          {[...imgs, ...imgs, ...imgs].map((src, ii) => (
+            <img key={ii} src={src} alt="" className="h-28 w-44 object-cover rounded-xl flex-shrink-0 opacity-40" />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ── Instagram mockup sub-components ─────────────────────────────────────────
 
 const ANIM_DURATION = 3000; // ms — shared by both countdowns and charts
@@ -846,8 +886,13 @@ function EasyMailPack() {
       </section>
 
       {/* ── LISTA COMPLETA LEZIONI ────────────────────────────────────────── */}
-      <section id="lezioni" className="py-16 md:py-20 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
-        <div className="container-narrow">
+      <section id="lezioni" className="py-16 md:py-20 px-4 relative overflow-hidden" style={{ backgroundColor: "#156686" }} data-cursor-light>
+        {/* parallax diagonal lesson images in background */}
+        <ParallaxLessonBg />
+        {/* dark overlay */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(21,102,134,0.82) 0%, rgba(21,102,134,0.75) 50%, rgba(21,102,134,0.82) 100%)" }} />
+
+        <div className="container-narrow relative z-10">
           <p className="eyebrow text-white/60 mb-4 text-center">Il programma completo</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-4">
             Qui sotto trovi la lista <em style={{ color: "#C4D9DC" }}>completa delle lezioni.</em>
@@ -857,7 +902,7 @@ function EasyMailPack() {
           </p>
 
           <div className="columns-1 md:columns-3 gap-5">
-            {[
+            {([
               { title: "Come creare la tua email professionale", lessons: ["Perché usare un'email professionale?", "Acquistare dominio e hosting email su Vhosting", "Reindirizzare l'email professionale a Gmail", "Usare l'email professionale come mittente su Mailerlite", "Usare l'email professionale come mittente su Active Campaign"] },
               { title: "Introduzione a Mailerlite", lessons: ["Apertura account e inserimento informazioni", "Panoramica della dashboard", "Settaggio iniziale della piattaforma", "Autentica il tuo dominio per evitare di finire in SPAM", "Liste, segmenti e contatti", "Campagne", "Moduli di iscrizione", "Automazioni", "Landing page"] },
               { title: "Mailerlite: modulo di iscrizione alla newsletter", lessons: ["Creazione del form – design e impostazioni iniziali", "Form per iscrizione NL", "Form per iscrizione NL + Lead Magnet", "Form per iscrizione pre lancio + Lead Magnet", "Pubblicare il form", "Testiamo il form"] },
@@ -883,12 +928,15 @@ function EasyMailPack() {
               { title: "Segmentazione e profilazione", lessons: ["Perché è importante segmentare le liste?", "Segmentare con Google Form + Mailerlite", "Collegare Make e Mailerlite", "Segmentare con Google Form + Active Campaign", "Collegare Make ad Active Campaign", "Segmentare la frequenza delle newsletter con Mailerlite", "Segmentare la frequenza delle newsletter con Active Campaign", "Campi personalizzati nei form di iscrizione di Mailerlite", "Campi personalizzati nei form di iscrizione di Active Campaign"] },
               { title: "BONUS – Il Calendario di Lancio", lessons: ["Template Notion – Il Calendario di Lancio"] },
               { title: "BONUS – Consigli Visual per la Newsletter", lessons: ["Consigli Visual per la tua Newsletter (con Emanuela Esposito)"] },
-            ].map((mod) => (
+            ] as { title: string; lessons: string[] }[]).map((mod, i) => (
               <div key={mod.title} className="break-inside-avoid mb-6">
-                <p className="text-[11px] font-semibold tracking-[0.12em] text-[#C4D9DC] mb-2">{mod.title}</p>
+                <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/90 px-2 py-0.5 rounded-full mb-2">
+                  Modulo {i + 1}
+                </span>
+                <p className="text-[12px] font-semibold tracking-[0.04em] text-white/90 mb-2">{mod.title}</p>
                 <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
                   {mod.lessons.map((l) => (
-                    <li key={l} className="text-[13px] text-white/65 leading-snug">{l}</li>
+                    <li key={l} className="text-[13px] text-white/60 leading-snug">{l}</li>
                   ))}
                 </ul>
               </div>
