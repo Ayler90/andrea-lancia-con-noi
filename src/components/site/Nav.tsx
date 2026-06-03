@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 import { LogoText } from "./LogoText";
 import posthog from "posthog-js";
@@ -11,6 +11,19 @@ const percorsiSub = [
   { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
   { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack" },
 ];
+
+const percorsiCategories = {
+  percorsi: [
+    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
+    { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
+    { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
+    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
+  ],
+  corsi: [
+    { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", href: "/scarica-calendario-lancio" },
+    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        href: "/easy-mail-pack" },
+  ],
+};
 
 function goToPercorso(filter: string, slug: string, onClose: () => void) {
   onClose();
@@ -28,9 +41,11 @@ function goToPercorso(filter: string, slug: string, onClose: () => void) {
 }
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen]         = useState(false);
-  const [closing, setClosing]   = useState(false);
+  const [scrolled, setScrolled]         = useState(false);
+  const [open, setOpen]                 = useState(false);
+  const [closing, setClosing]           = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
   const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
@@ -104,21 +119,97 @@ export function Nav() {
 
           {/* Center: nav links (desktop only) */}
           <nav className="hidden md:flex items-center justify-center gap-6">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="inline-flex items-center gap-1.5 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
-              >
-                {l.label}
-                {l.badge && (
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full leading-none">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                    {l.badge}
-                  </span>
-                )}
-              </a>
-            ))}
+            {links.map((l) =>
+              l.label === "I miei percorsi" ? (
+                <div
+                  key="percorsi-dropdown"
+                  ref={dropdownRef}
+                  className="relative"
+                  onMouseEnter={() => setDropdownOpen(true)}
+                  onMouseLeave={() => setDropdownOpen(false)}
+                >
+                  <button className="inline-flex items-center gap-1 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200 cursor-pointer">
+                    {l.label}
+                    <svg
+                      width="11" height="7" viewBox="0 0 11 7" fill="none"
+                      className="mt-px opacity-50 transition-transform duration-200"
+                      style={{ transform: dropdownOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                    >
+                      <path d="M1 1l4.5 4.5L10 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+
+                  {/* Dropdown panel */}
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-[100]"
+                    style={{
+                      pointerEvents: dropdownOpen ? "auto" : "none",
+                      opacity:       dropdownOpen ? 1 : 0,
+                      transform:     `translateX(-50%) translateY(${dropdownOpen ? "0px" : "-6px"})`,
+                      transition:    "opacity 0.18s ease, transform 0.18s ease",
+                    }}
+                  >
+                    <div
+                      className="rounded-2xl p-5 min-w-[360px] grid grid-cols-2 gap-x-6 gap-y-1"
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.92)",
+                        backdropFilter:  "saturate(180%) blur(20px)",
+                        boxShadow:       "0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)",
+                      }}
+                    >
+                      {/* Column: Percorsi */}
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Percorsi</p>
+                        <ul className="flex flex-col gap-0.5">
+                          {percorsiCategories.percorsi.map((p) => (
+                            <li key={p.slug}>
+                              <button
+                                onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
+                                className="text-sm text-foreground/75 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug rounded-lg px-2 hover:bg-[#156686]/6"
+                              >
+                                {p.label}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Column: Corsi e Template */}
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Corsi e Template</p>
+                        <ul className="flex flex-col gap-0.5">
+                          {percorsiCategories.corsi.map((p) => (
+                            <li key={p.slug}>
+                              <a
+                                href={p.href}
+                                onClick={() => setDropdownOpen(false)}
+                                className="block text-sm text-foreground/75 hover:text-foreground transition-colors py-1.5 text-left leading-snug rounded-lg px-2 hover:bg-[#156686]/6"
+                              >
+                                {p.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="inline-flex items-center gap-1.5 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
+                >
+                  {l.label}
+                  {l.badge && (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full leading-none">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                      {l.badge}
+                    </span>
+                  )}
+                </a>
+              )
+            )}
           </nav>
 
           {/* Right: CTA (desktop) + hamburger (mobile) */}
