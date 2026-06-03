@@ -838,7 +838,7 @@ function EasyMailPack() {
 
         <div className="container-narrow relative">
           {/* eyebrow */}
-          <p className="eyebrow text-white/50 mb-10">Il punto di partenza</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-10">Il punto di partenza</p>
 
           {/* two-column: title left, text right */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start mb-16 md:mb-20">
@@ -956,7 +956,7 @@ function EasyMailPack() {
 
             {/* ── Text column ──────────────────────────────── */}
             <div>
-              <p className="eyebrow text-[#156686] mb-4">Il problema</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4">Il problema</p>
               <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-8">
                 Fammi indovinare: il tuo business si regge{" "}
                 <em className="text-[#156686]">solo sui social.</em>
@@ -1050,7 +1050,7 @@ function EasyMailPack() {
         <div className="container-narrow relative">
           {/* title + text with handwriting annotation floating right */}
           <div className="relative mb-14">
-            <p className="eyebrow text-[#156686] mb-4">La soluzione</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4">La soluzione</p>
             <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
               Ecco perché <em className="text-[#156686]">Easy-Mail Pack</em> esiste.
             </h2>
@@ -1109,7 +1109,7 @@ function EasyMailPack() {
       {/* ── PER CHI È ─────────────────────────────────────────────────────── */}
       <section id="per-chi" className="py-16 md:py-20 px-4">
         <div className="container-narrow">
-          <p className="eyebrow text-[#156686] mb-4 text-center">Per chi è Easy-Mail Pack?</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Per chi è Easy-Mail Pack?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Easy-Mail Pack è <em className="text-[#156686]">perfetto per te</em> se sei:
           </h2>
@@ -1187,7 +1187,7 @@ function EasyMailPack() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(21,102,134,0.88) 0%, rgba(21,102,134,0.84) 50%, rgba(21,102,134,0.88) 100%)" }} />
 
         <div className="container-narrow relative z-10">
-          <p className="eyebrow text-white/60 mb-4 text-center">Il programma completo</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60 mb-4 text-center">Il programma completo</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-4">
             Qui sotto trovi la lista <em style={{ color: "#C4D9DC" }}>completa delle lezioni.</em>
           </h2>
@@ -1212,7 +1212,7 @@ function EasyMailPack() {
       {/* ── BONUS ─────────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
         <div className="container-narrow">
-          <p className="eyebrow text-[#156686] mb-4 text-center">Extra</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Extra</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Ci sono anche due <em className="text-[#156686]">Bonus Speciali</em> per te.
           </h2>
@@ -1224,7 +1224,7 @@ function EasyMailPack() {
                 <img src={imgLezioneEmanuela} alt="Lezione Emanuela Esposito" className="w-full aspect-video object-cover rounded-xl" />
               </div>
               <div className="px-6 py-6">
-                <span className="eyebrow text-[#156686] mb-2 block">Bonus #1</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-2 block">Bonus #1</span>
                 <h3 className="font-bold text-lg text-foreground/85 mb-3">
                   Consigli Visual per la tua Newsletter
                   <span className="block text-sm font-normal text-foreground/55 mt-0.5">con Emanuela Esposito, Strategist Designer</span>
@@ -1241,7 +1241,7 @@ function EasyMailPack() {
                 <img src={imgCalendarioEasyMail} alt="Calendario di Lancio Easy-Mail Pack" className="w-full aspect-video object-cover rounded-xl" />
               </div>
               <div className="px-6 py-6">
-                <span className="eyebrow text-[#156686] mb-2 block">Bonus #2</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-2 block">Bonus #2</span>
                 <h3 className="font-bold text-lg text-foreground/85 mb-3">
                   Il Calendario di Lancio
                   <span className="block text-sm font-normal text-foreground/55 mt-0.5">Template Notion pronto all'uso</span>
@@ -1264,7 +1264,7 @@ function EasyMailPack() {
         <div className="absolute inset-x-0 top-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
         <div className="container-narrow relative z-10 mb-16">
-          <p className="eyebrow text-[#156686] mb-4 text-center">Le parole dei miei studenti ❤️</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Le parole dei miei studenti ❤️</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             Cosa dicono i miei studenti e clienti di <em className="text-[#156686]">Easy-Mail Pack?</em>
           </h2>
@@ -1421,7 +1421,7 @@ function EasyMailPack() {
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 px-4">
         <div className="container-narrow max-w-4xl mx-auto">
-          <p className="eyebrow text-[#156686] mb-4 text-center">Domande frequenti</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Domande frequenti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-10">
             Hai qualche domanda? <em className="text-[#156686]">Ho le risposte.</em>
           </h2>
