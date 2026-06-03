@@ -49,18 +49,43 @@ const PURCHASE_URL = "https://corsi.andreabonomo.it/iscriviti-ora-base";
 // ── Video modal ──────────────────────────────────────────────────────────────
 
 function VideoModal({ url, onClose }: { url: string; onClose: () => void }) {
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
+    // trigger expand animation on mount
+    const t = requestAnimationFrame(() => setOpen(true));
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    return () => {
+      cancelAnimationFrame(t);
+      document.removeEventListener("keydown", onKey);
+    };
   }, [onClose]);
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-      <div className="relative z-10 w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
-        <iframe src={url} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />
-        <button onClick={onClose} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-sm hover:bg-black/80 transition">✕</button>
+      <div className="absolute inset-0 backdrop-blur-sm transition-opacity duration-300"
+        style={{ backgroundColor: open ? "rgba(12,35,48,0.85)" : "rgba(12,35,48,0)" }} />
+      <div
+        className="relative z-10 w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl transition-all duration-300"
+        style={{
+          clipPath: open ? "inset(0% 0% 0% 0% round 1rem)" : "inset(50% 0% 50% 0% round 1rem)",
+          border: "1.5px solid rgba(196,217,220,0.25)",
+          boxShadow: "0 0 60px -10px rgba(21,102,134,0.6)",
+        }}
+        onClick={e => e.stopPropagation()}>
+        {/* brand top bar */}
+        <div className="flex items-center justify-between px-4 py-2.5" style={{ backgroundColor: "#0c2330" }}>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: "#C4D9DC" }}>
+            Easy-Mail Pack — Anteprima lezione
+          </span>
+          <button onClick={onClose}
+            className="w-6 h-6 rounded-full flex items-center justify-center text-xs transition hover:bg-white/10"
+            style={{ color: "#C4D9DC" }}>✕</button>
+        </div>
+        <div className="aspect-video" style={{ backgroundColor: "#0c2330" }}>
+          <iframe src={url} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />
+        </div>
       </div>
     </div>
   );
@@ -548,17 +573,23 @@ function LessonList() {
             <p className="text-[14px] font-semibold text-white/90 mb-2">{mod.title}</p>
             <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
               {mod.lessons.map((l) => (
-                <li key={l.name} className="flex items-center gap-1.5 text-[13px] text-white/60 leading-snug">
+                <li key={l.name} className="text-[13px] leading-snug">
                   {l.videoUrl ? (
                     <button onClick={() => setVideoUrl(l.videoUrl!)}
-                      className="flex-shrink-0 w-4 h-4 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition"
-                      aria-label="Guarda lezione">
-                      <svg width="6" height="7" viewBox="0 0 6 7" fill="white"><polygon points="0,0 6,3.5 0,7" /></svg>
+                      className="group flex items-center gap-1.5 text-left text-white/80 hover:text-white transition-colors"
+                      aria-label={`Guarda: ${l.name}`}>
+                      <span className="flex-shrink-0 w-4 h-4 rounded-full bg-white/20 group-hover:bg-[#C4D9DC]/50 flex items-center justify-center transition-colors"
+                        style={{ animation: "arrow-nudge 2.8s ease-in-out infinite" }}>
+                        <svg width="6" height="7" viewBox="0 0 6 7" fill="white"><polygon points="0,0 6,3.5 0,7" /></svg>
+                      </span>
+                      <span className="underline underline-offset-2 decoration-white/30 group-hover:decoration-white/70 transition-colors">{l.name}</span>
                     </button>
                   ) : (
-                    <span className="flex-shrink-0 w-4 h-4" />
+                    <span className="flex items-center gap-1.5 text-white/60">
+                      <span className="flex-shrink-0 w-4 h-4" />
+                      {l.name}
+                    </span>
                   )}
-                  <span>{l.name}</span>
                 </li>
               ))}
             </ul>
@@ -1041,9 +1072,19 @@ function EasyMailPack() {
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-4">
             Qui sotto trovi la lista <em style={{ color: "#C4D9DC" }}>completa delle lezioni.</em>
           </h2>
-          <p className="text-sm text-white/70 text-center mb-12">
+          <p className="text-sm text-white/70 text-center mb-6">
             Sono disponibili fin da subito, puoi guardare a ritmo tuo.
           </p>
+          {/* unlocked lessons badge */}
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em]"
+              style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.25)", color: "#C4D9DC" }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              Come regalo, ti ho sbloccato alcune lezioni — cercale con il simbolo ▶
+            </div>
+          </div>
 
           <LessonList />
         </div>
