@@ -188,20 +188,18 @@ export function Nav() {
         <div
           className="hidden md:block absolute left-0 right-0 top-full z-50"
           style={{
-            maxHeight:  dropdownOpen ? "380px" : "0px",
+            clipPath:   dropdownOpen ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
             opacity:    dropdownOpen ? 1 : 0,
-            overflow:   "hidden",
-            transition: "max-height 0.28s ease, opacity 0.2s ease",
-          }}
-        >
-          <div style={{
+            transition: "clip-path 0.28s ease, opacity 0.2s ease",
             backgroundColor:      "rgba(255,255,255,0.75)",
             backdropFilter:       "saturate(180%) blur(28px)",
             WebkitBackdropFilter: "saturate(180%) blur(28px)",
             borderTop:    "1px solid rgba(209,213,219,0.45)",
             borderBottom: "1px solid rgba(209,213,219,0.45)",
             boxShadow:    "0 8px 32px rgba(0,0,0,0.08)",
-          }}>
+          }}
+        >
+          <div>
           {/* Same 3-col grid as top row so content aligns under center nav */}
           <div className="container-narrow grid grid-cols-3 py-6">
             <div /> {/* left spacer */}
