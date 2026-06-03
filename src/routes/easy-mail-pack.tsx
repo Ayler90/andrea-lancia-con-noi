@@ -582,8 +582,8 @@ function LessonList() {
                       aria-label={`Guarda: ${l.name}`}>
                       <span className="underline underline-offset-2 decoration-white/30 group-hover:decoration-white/70 transition-colors">{l.name}</span>
                       <span className="flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
-                        style={{ animation: "arrow-nudge 2.8s ease-in-out infinite", backgroundColor: "rgba(34,197,94,0.18)" }}>
-                        <svg width="6" height="7" viewBox="0 0 6 7" fill="#22c55e"><polygon points="0,0 6,3.5 0,7" /></svg>
+                        style={{ animation: "arrow-nudge 2.8s ease-in-out infinite", backgroundColor: "rgba(187,247,208,0.9)" }}>
+                        <svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg>
                       </span>
                     </button>
                   ) : (
