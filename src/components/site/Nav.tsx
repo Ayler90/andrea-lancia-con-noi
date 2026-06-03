@@ -198,10 +198,10 @@ export function Nav() {
           {/* Same 3-col grid as top row so content aligns under center nav */}
           <div className="container-narrow grid grid-cols-3 py-6">
             <div /> {/* left spacer */}
-            <div className="flex justify-center gap-12">
+            <div className="col-span-2 flex gap-16 pl-2">
 
               {/* Column: Percorsi */}
-              <div className="min-w-0">
+              <div className="w-64 flex-shrink-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Percorsi</p>
                 <ul className="flex flex-col gap-1">
                   {percorsiCategories.percorsi.map((p) => (
@@ -222,7 +222,7 @@ export function Nav() {
               </div>
 
               {/* Column: Corsi e Template */}
-              <div className="min-w-0">
+              <div className="w-64 flex-shrink-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Corsi e Template</p>
                 <ul className="flex flex-col gap-1">
                   {percorsiCategories.corsi.map((p) => (
@@ -230,7 +230,7 @@ export function Nav() {
                       <a
                         href={p.href}
                         onClick={() => setDropdownOpen(false)}
-                        className="flex items-start gap-3 py-2 px-2 group rounded-lg hover:bg-[#156686]/5 transition-colors"
+                        className="flex items-start gap-3 py-2 px-2 w-full group rounded-lg hover:bg-[#156686]/5 transition-colors"
                       >
                         <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
                         <span className="min-w-0">
@@ -244,7 +244,6 @@ export function Nav() {
               </div>
 
             </div>
-            <div /> {/* right spacer */}
           </div>
         </div>
       </header>
