@@ -126,8 +126,7 @@ export function Nav() {
                 <button
                   key="percorsi-trigger"
                   onMouseEnter={() => setDropdownOpen(true)}
-                  className="inline-flex items-center gap-1 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#156686] after:transition-all after:duration-200 cursor-pointer"
-                  style={{ "--tw-after-w": dropdownOpen ? "100%" : "0%" } as React.CSSProperties}
+                  className="inline-flex items-center gap-1 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap cursor-pointer"
                 >
                   {l.label}
                   <svg
@@ -137,6 +136,11 @@ export function Nav() {
                   >
                     <path d="M1 1l4.5 4.5L10 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
+                  {/* Animated underline */}
+                  <span
+                    className="absolute bottom-0 left-0 h-[2px] bg-[#156686] transition-all duration-200"
+                    style={{ width: dropdownOpen ? "100%" : "0%" }}
+                  />
                 </button>
               ) : (
                 <a
@@ -182,55 +186,58 @@ export function Nav() {
         {/* Expanded mega-menu row (desktop only) */}
         <div
           className="hidden md:block overflow-hidden"
+          onMouseLeave={() => setDropdownOpen(false)}
           style={{
-            maxHeight:   dropdownOpen ? "220px" : "0px",
-            opacity:     dropdownOpen ? 1 : 0,
-            borderTop:   dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
-            transition:  "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
+            maxHeight:  dropdownOpen ? "220px" : "0px",
+            opacity:    dropdownOpen ? 1 : 0,
+            borderTop:  dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
+            transition: "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
           }}
         >
-          <div className="container-narrow py-5 flex gap-16">
+          {/* Same 3-col grid as top row so content aligns under center nav */}
+          <div className="container-narrow grid grid-cols-3 py-5">
+            <div /> {/* left spacer */}
+            <div className="flex justify-center gap-12">
 
-            {/* Column: Percorsi */}
-            <div className="min-w-0">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Percorsi</p>
-              <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
-                {percorsiCategories.percorsi.map((p) => (
-                  <li key={p.slug}>
-                    <button
-                      onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                      className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group"
-                    >
-                      <span className="text-base leading-none">{p.emoji}</span>
-                      <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              {/* Column: Percorsi */}
+              <div className="min-w-0">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Percorsi</p>
+                <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
+                  {percorsiCategories.percorsi.map((p) => (
+                    <li key={p.slug}>
+                      <button
+                        onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
+                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group"
+                      >
+                        <span className="text-base leading-none">{p.emoji}</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Column: Corsi e Template */}
+              <div className="min-w-0">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Corsi e Template</p>
+                <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
+                  {percorsiCategories.corsi.map((p) => (
+                    <li key={p.slug}>
+                      <a
+                        href={p.href}
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group"
+                      >
+                        <span className="text-base leading-none">{p.emoji}</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
-
-            {/* Divider */}
-            <div className="w-px bg-[#156686]/10 self-stretch flex-shrink-0" />
-
-            {/* Column: Corsi e Template */}
-            <div className="min-w-0">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Corsi e Template</p>
-              <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
-                {percorsiCategories.corsi.map((p) => (
-                  <li key={p.slug}>
-                    <a
-                      href={p.href}
-                      onClick={() => setDropdownOpen(false)}
-                      className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group"
-                    >
-                      <span className="text-base leading-none">{p.emoji}</span>
-                      <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+            <div /> {/* right spacer */}
           </div>
         </div>
       </header>
