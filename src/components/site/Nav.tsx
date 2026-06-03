@@ -184,21 +184,24 @@ export function Nav() {
           </div>
         </div>
 
-        {/* Expanded mega-menu (desktop only) — absolutely positioned so it overlays page content */}
+        {/* Expanded mega-menu (desktop only) — outer div handles height clip, inner div handles blur */}
         <div
-          className="hidden md:block absolute left-0 right-0 top-full overflow-hidden z-50"
+          className="hidden md:block absolute left-0 right-0 top-full z-50"
           style={{
-            maxHeight:        dropdownOpen ? "380px" : "0px",
-            opacity:          dropdownOpen ? 1 : 0,
-            backgroundColor:  "rgba(255,255,255,0.88)",
-            backdropFilter:   "saturate(180%) blur(20px)",
-            WebkitBackdropFilter: "saturate(180%) blur(20px)",
-            borderTop:        "1px solid rgba(209,213,219,0.45)",
-            borderBottom:     dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
-            boxShadow:        dropdownOpen ? "0 8px 32px rgba(0,0,0,0.08)" : "none",
-            transition:       "max-height 0.28s ease, opacity 0.2s ease",
+            maxHeight:  dropdownOpen ? "380px" : "0px",
+            opacity:    dropdownOpen ? 1 : 0,
+            overflow:   "hidden",
+            transition: "max-height 0.28s ease, opacity 0.2s ease",
           }}
         >
+          <div style={{
+            backgroundColor:      "rgba(255,255,255,0.75)",
+            backdropFilter:       "saturate(180%) blur(28px)",
+            WebkitBackdropFilter: "saturate(180%) blur(28px)",
+            borderTop:    "1px solid rgba(209,213,219,0.45)",
+            borderBottom: "1px solid rgba(209,213,219,0.45)",
+            boxShadow:    "0 8px 32px rgba(0,0,0,0.08)",
+          }}>
           {/* Same 3-col grid as top row so content aligns under center nav */}
           <div className="container-narrow grid grid-cols-3 py-6">
             <div /> {/* left spacer */}
@@ -248,6 +251,7 @@ export function Nav() {
               </div>
 
             </div>
+          </div>
           </div>
         </div>
       </header>
