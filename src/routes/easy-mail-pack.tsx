@@ -933,7 +933,7 @@ function EasyMailPack() {
                 <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/90 px-2 py-0.5 rounded-full mb-2">
                   Modulo {i + 1}
                 </span>
-                <p className="text-[12px] font-semibold tracking-[0.04em] text-white/90 mb-2">{mod.title}</p>
+                <p className="text-[14px] font-semibold text-white/90 mb-2">{mod.title}</p>
                 <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
                   {mod.lessons.map((l) => (
                     <li key={l} className="text-[13px] text-white/60 leading-snug">{l}</li>
