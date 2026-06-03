@@ -86,7 +86,11 @@ function VideoModal({ url, title, onClose }: { url: string; title: string; onClo
             className="w-7 h-7 rounded-full flex items-center justify-center text-xs transition hover:bg-[#156686]/10 text-[#156686]/60 hover:text-[#156686] flex-shrink-0 ml-4">✕</button>
         </div>
         <div className="aspect-video" style={{ backgroundColor: "#0c2330" }}>
-          <iframe src={url} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />
+          {url.includes(".mp4") ? (
+            <video src={url} className="w-full h-full" controls autoPlay />
+          ) : (
+            <iframe src={url} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />
+          )}
         </div>
       </div>
     </div>
@@ -438,18 +442,17 @@ function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; 
 type Lesson = { name: string; videoUrl?: string };
 type Module = { title: string; lessons: Lesson[] };
 
-const DEMO = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
 
 const MODULES: Module[] = [
   { title: "Come creare la tua email professionale", lessons: [
-    { name: "Perché usare un'email professionale?", videoUrl: DEMO },
+    { name: "Perché usare un'email professionale?" },
     { name: "Acquistare dominio e hosting email su Vhosting" },
     { name: "Reindirizzare l'email professionale a Gmail" },
     { name: "Usare l'email professionale come mittente su Mailerlite" },
     { name: "Usare l'email professionale come mittente su Active Campaign" },
   ]},
   { title: "Introduzione a Mailerlite", lessons: [
-    { name: "Apertura account e inserimento informazioni", videoUrl: DEMO },
+    { name: "Apertura account e inserimento informazioni" },
     { name: "Panoramica della dashboard" },
     { name: "Settaggio iniziale della piattaforma" },
     { name: "Autentica il tuo dominio per evitare di finire in SPAM" },
@@ -457,8 +460,8 @@ const MODULES: Module[] = [
     { name: "Campagne" }, { name: "Moduli di iscrizione" }, { name: "Automazioni" }, { name: "Landing page" },
   ]},
   { title: "Mailerlite: modulo di iscrizione alla newsletter", lessons: [
-    { name: "Creazione del form – design e impostazioni iniziali", videoUrl: DEMO },
-    { name: "Form per iscrizione NL" }, { name: "Form per iscrizione NL + Lead Magnet" },
+    { name: "Creazione del form – design e impostazioni iniziali" },
+    { name: "Form per iscrizione NL", videoUrl: "https://d1yei2z3i6k35z.cloudfront.net/2971732/65db28a4c8148_OkFormperiscrizioneNewsletter.mp4" }, { name: "Form per iscrizione NL + Lead Magnet" },
     { name: "Form per iscrizione pre lancio + Lead Magnet" }, { name: "Pubblicare il form" }, { name: "Testiamo il form" },
   ]},
   { title: "Mailerlite: creiamo una campagna newsletter", lessons: [
@@ -492,7 +495,7 @@ const MODULES: Module[] = [
     { name: "Escludere chi è nella sequenza dalle email di pre lancio (Mailerlite)" }, { name: "Escludere chi è nella sequenza dalle email di pre lancio (Active Campaign)" },
   ]},
   { title: "AI per newsletter ed email marketing", lessons: [
-    { name: "Usare l'AI come assistente per le tue newsletter" }, { name: "Come addestrare l'AI: informazioni di base e tone of voice" },
+    { name: "Usare l'AI come assistente per le tue newsletter", videoUrl: "https://www.youtube.com/embed/EHn1jtyZU4M?autoplay=1" }, { name: "Come addestrare l'AI: informazioni di base e tone of voice" },
     { name: "Come generare idee per la newsletter con l'AI" }, { name: "Come riorganizzare gli appunti con l'AI" },
     { name: "Scrivere la bozza provvisoria della NL con l'AI" }, { name: "Generare alternative di oggetto con l'AI" }, { name: "Rivedere la bozza finale della newsletter con l'AI" },
   ]},
@@ -515,7 +518,7 @@ const MODULES: Module[] = [
     { name: "Automazione con risposta ai commenti" }, { name: "Automazione con risposta alle storie" },
   ]},
   { title: "Lancio con Freebie e Webinar", lessons: [
-    { name: "Introduzione al lancio con freebie e webinar" }, { name: "Lo schema di lancio" },
+    { name: "Introduzione al lancio con freebie e webinar", videoUrl: "https://d1yei2z3i6k35z.cloudfront.net/2971732/66783efc338cf_OKIntroduzionelancioFrWeb.mp4" }, { name: "Lo schema di lancio" },
     { name: "Fase di pre pre lancio" }, { name: "Fase di pre lancio" }, { name: "Fase di lancio" }, { name: "Fase di post lancio" },
   ]},
   { title: "Lancio con Lista d'Attesa", lessons: [
