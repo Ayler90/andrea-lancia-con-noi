@@ -14,14 +14,14 @@ const percorsiSub = [
 
 const percorsiCategories = {
   percorsi: [
-    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
-    { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
-    { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
-    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
+    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀" },
+    { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint",        emoji: "🗺️" },
+    { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter",      emoji: "✉️" },
+    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯" },
   ],
   corsi: [
-    { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", href: "/scarica-calendario-lancio" },
-    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        href: "/easy-mail-pack" },
+    { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", emoji: "📅", href: "/scarica-calendario-lancio" },
+    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        emoji: "📧", href: "/easy-mail-pack" },
   ],
 };
 
@@ -181,49 +181,56 @@ export function Nav() {
 
         {/* Expanded mega-menu row (desktop only) */}
         <div
-          className="hidden md:block overflow-hidden border-t border-[rgba(209,213,219,0.45)]"
+          className="hidden md:block overflow-hidden"
           style={{
-            maxHeight:  dropdownOpen ? "200px" : "0px",
-            opacity:    dropdownOpen ? 1 : 0,
-            transition: "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
-            borderColor: dropdownOpen ? "rgba(209,213,219,0.45)" : "transparent",
+            maxHeight:   dropdownOpen ? "220px" : "0px",
+            opacity:     dropdownOpen ? 1 : 0,
+            borderTop:   dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
+            transition:  "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
           }}
         >
-          <div className="container-narrow py-5 grid grid-cols-2 gap-x-16 max-w-2xl">
+          <div className="container-narrow py-5 flex gap-16">
+
             {/* Column: Percorsi */}
-            <div>
+            <div className="min-w-0">
               <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Percorsi</p>
-              <ul className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+              <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
                 {percorsiCategories.percorsi.map((p) => (
                   <li key={p.slug}>
                     <button
                       onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                      className="text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug rounded-lg px-2 hover:bg-[#156686]/6 cursor-pointer"
+                      className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group"
                     >
-                      {p.label}
+                      <span className="text-base leading-none">{p.emoji}</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
                     </button>
                   </li>
                 ))}
               </ul>
             </div>
 
+            {/* Divider */}
+            <div className="w-px bg-[#156686]/10 self-stretch flex-shrink-0" />
+
             {/* Column: Corsi e Template */}
-            <div>
+            <div className="min-w-0">
               <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Corsi e Template</p>
-              <ul className="flex flex-col gap-0.5">
+              <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
                 {percorsiCategories.corsi.map((p) => (
                   <li key={p.slug}>
                     <a
                       href={p.href}
                       onClick={() => setDropdownOpen(false)}
-                      className="block text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug rounded-lg px-2 hover:bg-[#156686]/6"
+                      className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group"
                     >
-                      {p.label}
+                      <span className="text-base leading-none">{p.emoji}</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
+
           </div>
         </div>
       </header>
