@@ -1320,8 +1320,10 @@ function EasyMailPack() {
                     <ul className="space-y-3">
                       {[
                         "90+ lezioni video",
+                        "21 template pronti all'uso",
+                        "5 ore di formazione",
                         "Accesso a vita",
-                        "Template email pronti all'uso",
+                        "Supporto via email",
                         "Bonus: Grafica per la Newsletter (con Emanuela Esposito)",
                         "Bonus: Calendario di Lancio (Template Notion)",
                         "Garanzia soddisfatto o rimborsato 14 giorni",
@@ -1358,8 +1360,10 @@ function EasyMailPack() {
                     <ul className="space-y-3">
                       {[
                         "90+ lezioni video",
+                        "21 template pronti all'uso",
+                        "5 ore di formazione",
                         "Accesso a vita",
-                        "Template email pronti all'uso",
+                        "Supporto via email",
                         "Bonus: Grafica per la Newsletter (con Emanuela Esposito)",
                         "Bonus: Calendario di Lancio (Template Notion)",
                         "Garanzia soddisfatto o rimborsato 14 giorni",
