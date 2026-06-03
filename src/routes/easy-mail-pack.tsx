@@ -884,14 +884,11 @@ function EasyMailPack() {
               { title: "BONUS – Il Calendario di Lancio", lessons: ["Template Notion – Il Calendario di Lancio"] },
               { title: "BONUS – Consigli Visual per la Newsletter", lessons: ["Consigli Visual per la tua Newsletter (con Emanuela Esposito)"] },
             ].map((mod) => (
-              <div key={mod.title} className="break-inside-avoid mb-4 rounded-xl bg-white/8 border border-white/12 px-5 py-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#C4D9DC] mb-3">{mod.title}</p>
-                <ul className="space-y-1.5">
+              <div key={mod.title} className="break-inside-avoid mb-6">
+                <p className="text-[11px] font-semibold tracking-[0.12em] text-[#C4D9DC] mb-2">{mod.title}</p>
+                <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
                   {mod.lessons.map((l) => (
-                    <li key={l} className="flex items-start gap-2 text-[13px] text-white/70 leading-snug">
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                      {l}
-                    </li>
+                    <li key={l} className="text-[13px] text-white/65 leading-snug">{l}</li>
                   ))}
                 </ul>
               </div>
