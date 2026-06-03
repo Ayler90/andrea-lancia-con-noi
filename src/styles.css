@@ -599,6 +599,10 @@
   font-weight: 400;
 }
 
+.lesson-link-text {
+  cursor: pointer;
+}
+
 .group:hover .lesson-link-text {
   background-size: 100% 2px;
   font-weight: 600;
