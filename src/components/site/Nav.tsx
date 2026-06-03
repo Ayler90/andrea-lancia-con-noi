@@ -190,9 +190,9 @@ export function Nav() {
           style={{
             maxHeight:        dropdownOpen ? "380px" : "0px",
             opacity:          dropdownOpen ? 1 : 0,
-            backgroundColor:  "rgba(255,255,255,0.72)",
-            backdropFilter:   "saturate(180%) blur(24px)",
-            WebkitBackdropFilter: "saturate(180%) blur(24px)",
+            backgroundColor:  "rgba(255,255,255,0.88)",
+            backdropFilter:   "saturate(180%) blur(20px)",
+            WebkitBackdropFilter: "saturate(180%) blur(20px)",
             borderTop:        "1px solid rgba(209,213,219,0.45)",
             borderBottom:     dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
             boxShadow:        dropdownOpen ? "0 8px 32px rgba(0,0,0,0.08)" : "none",
