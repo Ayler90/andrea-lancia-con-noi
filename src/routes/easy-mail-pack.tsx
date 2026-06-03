@@ -1074,9 +1074,7 @@ function EasyMailPack() {
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-4">
             Qui sotto trovi la lista <em style={{ color: "#C4D9DC" }}>completa delle lezioni.</em>
           </h2>
-          <p className="text-sm text-white/70 text-center mb-6">
-            Sono disponibili fin da subito, puoi guardare a ritmo tuo.
-          </p>
+
           {/* unlocked lessons badge */}
           <div className="flex justify-center mb-10">
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em]"
