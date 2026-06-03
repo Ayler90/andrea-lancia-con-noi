@@ -670,25 +670,44 @@ function StarFieldBg() {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
 }
 
-// ── Infinite slider ───────────────────────────────────────────────────────────
+// ── Scroll-driven review rows ─────────────────────────────────────────────────
 
 const REC_IMGS = [recEmp1, recEmp2, recEmp3, recEmp4, recEmp5, recEmp6, recEmp7, recEmp8, recEmp9];
 
-function InfiniteSlider() {
-  const track = useRef<HTMLDivElement>(null);
-  // duplicate for seamless loop
-  const items = [...REC_IMGS, ...REC_IMGS];
+function ScrollReviews() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handler = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const progress = -rect.top / (rect.height + window.innerHeight);
+      setOffset(progress * 300);
+    };
+    window.addEventListener("scroll", handler, { passive: true });
+    handler();
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  const row1 = [...REC_IMGS, ...REC_IMGS];
+  const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
+
   return (
-    <div className="overflow-hidden relative">
+    <div ref={sectionRef} className="overflow-hidden space-y-5">
       {/* fade edges */}
-      <div className="absolute inset-y-0 left-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 1 }} />
-      <div className="absolute inset-y-0 right-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 1 }} />
-      <div ref={track} className="flex gap-4" style={{ animation: "infinite-scroll 40s linear infinite", width: "max-content" }}>
-        {items.map((src, i) => (
-          <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
-            className="h-64 w-auto rounded-2xl object-cover flex-shrink-0 shadow-sm" />
-        ))}
-      </div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
+
+      {[row1, row2].map((row, ri) => (
+        <div key={ri} className="flex gap-5"
+          style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
+          {row.map((src, i) => (
+            <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
+              className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
@@ -1295,18 +1314,18 @@ function EasyMailPack() {
       </section>
 
       {/* ── TESTIMONIANZE ─────────────────────────────────────────────────── */}
-      <section id="recensioni" className="pt-4 pb-20 relative overflow-hidden">
+      <section id="recensioni" className="pt-20 pb-24 relative overflow-hidden">
         <StarFieldBg />
-        <div className="absolute inset-x-0 top-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
-        <div className="absolute inset-x-0 bottom-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
-        <div className="container-narrow relative z-10 mb-12">
+        <div className="absolute inset-x-0 top-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
+        <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
+        <div className="container-narrow relative z-10 mb-16">
           <p className="eyebrow text-[#156686]/70 mb-4 text-center">Le parole dei miei studenti ❤️</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             Cosa dicono i miei studenti e clienti di <em className="text-[#156686]">Easy-Mail Pack?</em>
           </h2>
         </div>
         <div className="relative z-10">
-          <InfiniteSlider />
+          <ScrollReviews />
         </div>
       </section>
 
