@@ -1142,46 +1142,69 @@ function EasyMailPack() {
       <ChiSono />
 
       {/* ── PER CHI SÌ / PER CHI NO ───────────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
-        <div className="container-narrow max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Per chi è */}
-            <div className="rounded-2xl bg-white border border-[#156686]/15 px-6 py-8"
-              style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.08)" }}>
-              <p className="text-sm font-semibold uppercase tracking-widest text-[#156686] mb-6">✅ Per chi è Easy-Mail Pack</p>
-              <ul className="space-y-3">
+      <section className="py-20 md:py-28 px-4 bg-foreground text-background relative overflow-hidden" data-cursor-light>
+        {/* orbs */}
+        <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
+          style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
+
+        <div className="container-narrow relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+
+            {/* Per chi è — white card */}
+            <div className="bg-white text-foreground rounded-3xl p-8 md:p-10" data-cursor-dark>
+              <div className="relative inline-block mb-6">
+                <div className="text-4xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>✅</div>
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-5 blur-lg rounded-full pointer-events-none"
+                  style={{ backgroundColor: "rgba(21,102,134,0.4)" }} />
+              </div>
+              <p className="eyebrow mb-5 text-foreground/50">Per chi è</p>
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
+                Easy-Mail Pack è <em className="text-[#156686]">perfetto per te</em> se:
+              </h2>
+              <ul className="mt-8 space-y-4">
                 {[
-                  "Per liberi professionisti, consulenti, coach e formatori che vogliono impostare una newsletter",
-                  "Per chi non vuole dipendere dai social come unico canale di contatto con i clienti",
-                  "Per chi è già presente online e vuole usare l'email per lanciare e vendere",
-                  "Per chi vuole creare email personalizzate che rispecchino la sua brand identity",
-                  "Per chi vuole imparare ad usare le automazioni per semplificare il business",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                    <CheckIcon />
+                  "Sei un libero professionista, consulente, coach o formatore che vuole impostare una newsletter",
+                  "Non vuoi dipendere dai social come unico canale di contatto con i clienti",
+                  "Sei già presente online e vuoi usare l'email per lanciare e vendere",
+                  "Vuoi creare email personalizzate che rispecchino la tua brand identity",
+                  "Vuoi imparare ad usare le automazioni per semplificare il business",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4 text-sm md:text-base text-foreground/85">
+                    <span className="mt-2 w-2 h-2 bg-[#156686] flex-shrink-0" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-            {/* Per chi non è */}
-            <div className="rounded-2xl bg-white border border-red-100 px-6 py-8"
-              style={{ boxShadow: "0 2px 16px -4px rgba(239,68,68,0.06)" }}>
-              <p className="text-sm font-semibold uppercase tracking-widest text-red-400 mb-6">❌ Per chi non è Easy-Mail Pack</p>
-              <ul className="space-y-3">
+
+            {/* Per chi non è — dark, no box */}
+            <div className="pt-8 md:pt-10">
+              <div className="relative inline-block mb-6">
+                <div className="text-4xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>❌</div>
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-10 h-5 blur-lg rounded-full pointer-events-none"
+                  style={{ backgroundColor: "rgba(220,50,50,0.4)" }} />
+              </div>
+              <p className="eyebrow mb-5 text-background/60">Per chi non è</p>
+              <h2 className="h-display text-3xl md:text-4xl lg:text-5xl">
+                Probabilmente non fa per te <em className="text-[#C4D9DC]">se:</em>
+              </h2>
+              <ul className="mt-8 space-y-6">
                 {[
-                  "Per chi non ha ancora una presenza online e non vuole costruirla",
-                  "Per chi cerca un servizio dove qualcuno crea la newsletter al posto suo",
-                  "Per chi si aspetta risultati senza mettere in pratica le lezioni",
-                  "Per chi ha bisogno di una strategia email ultra-avanzata a livello enterprise",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                    <XIcon />
+                  "Non hai ancora una presenza online e non vuoi costruirla",
+                  "Cerchi un servizio dove qualcuno crea la newsletter al posto tuo",
+                  "Ti aspetti risultati senza mettere in pratica le lezioni",
+                  "Hai bisogno di una strategia email ultra-avanzata a livello enterprise",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4 text-sm md:text-base text-background/80">
+                    <span className="mt-2 w-2 h-2 border border-background/40 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
+
           </div>
         </div>
       </section>
