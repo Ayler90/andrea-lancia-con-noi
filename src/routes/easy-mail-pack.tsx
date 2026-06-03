@@ -847,15 +847,56 @@ function EasyMailPack() {
 
       {/* ── LISTA COMPLETA LEZIONI ────────────────────────────────────────── */}
       <section id="lezioni" className="py-16 md:py-20 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
-        <div className="container-narrow max-w-3xl">
+        <div className="container-narrow">
           <p className="eyebrow text-white/60 mb-4 text-center">Il programma completo</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-4">
             Qui sotto trovi la lista <em style={{ color: "#C4D9DC" }}>completa delle lezioni.</em>
           </h2>
-          <p className="text-sm text-white/70 text-center mb-10">
+          <p className="text-sm text-white/70 text-center mb-12">
             Sono disponibili fin da subito, puoi guardare a ritmo tuo.
           </p>
-          <LessonList />
+
+          <div className="columns-1 md:columns-3 gap-5">
+            {[
+              { title: "Come creare la tua email professionale", lessons: ["Perché usare un'email professionale?", "Acquistare dominio e hosting email su Vhosting", "Reindirizzare l'email professionale a Gmail", "Usare l'email professionale come mittente su Mailerlite", "Usare l'email professionale come mittente su Active Campaign"] },
+              { title: "Introduzione a Mailerlite", lessons: ["Apertura account e inserimento informazioni", "Panoramica della dashboard", "Settaggio iniziale della piattaforma", "Autentica il tuo dominio per evitare di finire in SPAM", "Liste, segmenti e contatti", "Campagne", "Moduli di iscrizione", "Automazioni", "Landing page"] },
+              { title: "Mailerlite: modulo di iscrizione alla newsletter", lessons: ["Creazione del form – design e impostazioni iniziali", "Form per iscrizione NL", "Form per iscrizione NL + Lead Magnet", "Form per iscrizione pre lancio + Lead Magnet", "Pubblicare il form", "Testiamo il form"] },
+              { title: "Mailerlite: creiamo una campagna newsletter", lessons: ["Nome, oggetto e lista", "Scriviamola insieme", "Inviamola", "Leggiamo le statistiche", "Creiamo un test A/B con la newsletter", "Leggiamo le statistiche del test A/B"] },
+              { title: "Mailerlite: prima automazione di ringraziamento", lessons: ["Panoramica iniziale dell'automazione", "Il trigger", "Creiamo l'email di ringraziamento", "Attiviamo l'automazione e testiamola", "Leggiamo le statistiche"] },
+              { title: "Introduzione ad Active Campaign", lessons: ["Apertura account e inserimento informazioni", "Settaggio iniziale della piattaforma", "Autentica il tuo dominio per evitare di finire in SPAM", "Liste e contatti", "Campagne", "Moduli di iscrizione", "Automazioni"] },
+              { title: "Active Campaign: modulo di iscrizione alla newsletter", lessons: ["Creazione della lista d'iscrizione", "Creazione del form – design e impostazioni iniziali", "Form per iscrizione NL", "Form per iscrizione NL + Lead Magnet", "Form per iscrizione pre lancio + Lead Magnet", "Disabilitare o abilitare il Double Opt In", "Testiamo il form"] },
+              { title: "Active Campaign: creiamo una campagna newsletter", lessons: ["Nome, oggetto e lista", "Scriviamola insieme", "Leggiamo le statistiche", "Creiamo un test A/B con la newsletter", "Leggiamo le statistiche del test A/B"] },
+              { title: "Active Campaign: prima automazione di ringraziamento", lessons: ["Panoramica iniziale dell'automazione + trigger", "Creiamo l'email di ringraziamento", "Attiviamo l'automazione e testiamola", "Leggiamo le statistiche"] },
+              { title: "La seconda automazione: la sequenza SOS", lessons: ["TEMPLATE: Sequenza SOS", "Sequenza SOS con Mailerlite", "Sequenza SOS con Active Campaign", "Escludere chi è nella sequenza dalle email di pre lancio (Mailerlite)", "Escludere chi è nella sequenza dalle email di pre lancio (Active Campaign)"] },
+              { title: "AI per newsletter ed email marketing", lessons: ["Usare l'AI come assistente per le tue newsletter", "Come addestrare l'AI: informazioni di base e tone of voice", "Come generare idee per la newsletter con l'AI", "Come riorganizzare gli appunti con l'AI", "Scrivere la bozza provvisoria della NL con l'AI", "Generare alternative di oggetto con l'AI", "Rivedere la bozza finale della newsletter con l'AI"] },
+              { title: "Piano editoriale e organizzazione dei contenuti", lessons: ["Come costruire un piano editoriale per la newsletter?", "Content repurposing: come riciclare le tue idee", "Format e Serie: come unirli alla newsletter?", "Come trovare idee sempreverdi per la tua newsletter?"] },
+              { title: "Automazioni base", lessons: ["Mailerlite: automazione post download freebie", "Active Campaign: automazione post download freebie", "Introduzione all'automazione di compleanno", "Mailerlite: automazione di compleanno", "Active Campaign: automazione di compleanno"] },
+              { title: "Automazioni avanzate", lessons: ["Introduzione all'automazione per riattivare i contatti inattivi", "Mailerlite: automazione per riattivare i contatti inattivi", "Active Campaign: automazione per riattivare i contatti inattivi", "Introduzione all'automazione per il carrello abbandonato", "Mailerlite: automazione per il carrello abbandonato", "Active Campaign: automazione per il carrello abbandonato", "Introduzione all'automazione post acquisto", "Mailerlite: automazione post acquisto", "Active Campaign: automazione post acquisto"] },
+              { title: "Manychat e automazioni dai social", lessons: ["Manychat e automazioni social per la newsletter", "Panoramica e dashboard", "Automazione con risposta ai commenti", "Automazione con risposta alle storie"] },
+              { title: "Lancio con Freebie e Webinar", lessons: ["Introduzione al lancio con freebie e webinar", "Lo schema di lancio", "Fase di pre pre lancio", "Fase di pre lancio", "Fase di lancio", "Fase di post lancio"] },
+              { title: "Lancio con Lista d'Attesa", lessons: ["Introduzione al lancio con lista d'attesa", "Lo schema di lancio", "Fase di pre pre lancio", "Fase di pre lancio", "Fase di lancio", "Fase di post lancio"] },
+              { title: "Vendere alla Newsletter", lessons: ["Vendere alla tua lista newsletter: sì o no?", "Vendere alla newsletter facendo un lancio", "Seconda tipologia di vendita alla newsletter", "Terza tipologia di vendita alla newsletter", "Escludere iscritti che non vogliono email di lancio (Active Campaign)", "Escludere iscritti che non vogliono email di lancio (Mailerlite)"] },
+              { title: "Landing page con Mailerlite", lessons: ["Tutorial per creare la landing page"] },
+              { title: "Landing page con Systeme.io", lessons: ["Che cos'è Systeme.io?", "Apriamo l'account", "Tutorial per creare la landing page", "Inseriamo il modulo di iscrizione", "Eliminare il banner di Systeme.io dalle pagine", "Creiamo la pagina di ringraziamento", "Leggere le statistiche"] },
+              { title: "Privacy policy con Iubenda", lessons: ["Creare la Privacy Policy con Iubenda"] },
+              { title: "Evitare lo SPAM", lessons: ["Come evitare di finire in SPAM"] },
+              { title: "Segmentazione e profilazione", lessons: ["Perché è importante segmentare le liste?", "Segmentare con Google Form + Mailerlite", "Collegare Make e Mailerlite", "Segmentare con Google Form + Active Campaign", "Collegare Make ad Active Campaign", "Segmentare la frequenza delle newsletter con Mailerlite", "Segmentare la frequenza delle newsletter con Active Campaign", "Campi personalizzati nei form di iscrizione di Mailerlite", "Campi personalizzati nei form di iscrizione di Active Campaign"] },
+              { title: "BONUS – Il Calendario di Lancio", lessons: ["Template Notion – Il Calendario di Lancio"] },
+              { title: "BONUS – Consigli Visual per la Newsletter", lessons: ["Consigli Visual per la tua Newsletter (con Emanuela Esposito)"] },
+            ].map((mod) => (
+              <div key={mod.title} className="break-inside-avoid mb-4 rounded-xl bg-white/8 border border-white/12 px-5 py-4">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#C4D9DC] mb-3">{mod.title}</p>
+                <ul className="space-y-1.5">
+                  {mod.lessons.map((l) => (
+                    <li key={l} className="flex items-start gap-2 text-[13px] text-white/70 leading-snug">
+                      <span className="mt-1.5 w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
+                      {l}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
