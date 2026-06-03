@@ -33,10 +33,11 @@ export function Nav() {
   const [closing, setClosing]   = useState(false);
 
   const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
+  const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
   const links = [
     { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
     { href: "/#percorsi",                                             label: "I miei percorsi" },
-    { href: isCalendarioPage ? "#newsletter"    : "/#newsletter",    label: "Guida gratuita ai lanci", badge: "Gratis" },
+    { href: (isCalendarioPage || isEasyMailPage) ? "#newsletter" : "/#newsletter", label: "Guida gratuita ai lanci", badge: "Gratis" },
     { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
   ];
 
