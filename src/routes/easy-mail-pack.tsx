@@ -1395,9 +1395,9 @@ function EasyMailPack() {
             <div className="flex items-center gap-6">
               <img src={imgPalline} alt="Garanzia" className="w-16 h-16 flex-shrink-0 rounded-xl object-cover" />
               <div>
-                <p className="font-semibold text-white mb-1">Non fa per te? Hai la garanzia.</p>
+                <p className="font-semibold text-white mb-2">Voglio che il tuo acquisto sia consapevole.</p>
                 <p className="text-sm text-white/65 leading-relaxed">
-                  Se dopo l'acquisto il corso non ti convince, puoi richiedere il rimborso completo entro <strong className="text-white/85">14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia: sono sicuro del valore del corso.
+                  Quindi, puoi sempre richiedere il rimborso entro <strong className="text-white/85">14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia. Se non sei soddisfatto per qualsiasi motivo, puoi richiedermi il rimborso e ti darò indietro fino all'ultimo centesimo.
                 </p>
               </div>
             </div>
