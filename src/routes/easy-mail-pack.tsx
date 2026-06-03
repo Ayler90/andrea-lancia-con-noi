@@ -18,6 +18,8 @@ import imgAutomazioni from "@/assets/automazioni.png";
 import imgLanding from "@/assets/landing page.png";
 import imgLancio from "@/assets/lancio con email.png";
 import imgProfila from "@/assets/profila contenuti.png";
+import imgLezioneEmanuela from "@/assets/lezione emanuela.png";
+import imgCalendarioEasyMail from "@/assets/calendario di lancio easy mail pack.png";
 import studenteEmp from "@/assets/studente emp.jpeg";
 import studenteEmp1 from "@/assets/studente emp 1.jpeg";
 import studenteEmp2 from "@/assets/studente emp 2.png";
@@ -1082,7 +1084,7 @@ function EasyMailPack() {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
-              Come regalo, ti ho sbloccato alcune lezioni — cercale con il simbolo verde
+              Come regalo, ti ho sbloccato alcune lezioni: cercale con il simbolo verde
             </div>
           </div>
 
@@ -1101,7 +1103,7 @@ function EasyMailPack() {
             {/* Bonus 1 */}
             <div className="rounded-2xl bg-white border border-[#156686]/15 overflow-hidden"
               style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.10)" }}>
-              <PlaceholderImg label="Screenshot bonus: Consigli Visual Newsletter" className="w-full aspect-video" />
+              <img src={imgLezioneEmanuela} alt="Lezione Emanuela Esposito" className="w-full aspect-video object-cover" />
               <div className="px-6 py-6">
                 <span className="eyebrow text-[#156686]/70 mb-2 block">Bonus #1</span>
                 <h3 className="font-bold text-lg text-foreground/85 mb-3">
@@ -1116,7 +1118,7 @@ function EasyMailPack() {
             {/* Bonus 2 */}
             <div className="rounded-2xl bg-white border border-[#156686]/15 overflow-hidden"
               style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.10)" }}>
-              <PlaceholderImg label="Screenshot bonus: Calendario di Lancio Notion" className="w-full aspect-video" />
+              <img src={imgCalendarioEasyMail} alt="Calendario di Lancio Easy-Mail Pack" className="w-full aspect-video object-cover" />
               <div className="px-6 py-6">
                 <span className="eyebrow text-[#156686]/70 mb-2 block">Bonus #2</span>
                 <h3 className="font-bold text-lg text-foreground/85 mb-3">
@@ -1124,7 +1126,7 @@ function EasyMailPack() {
                   <span className="block text-sm font-normal text-foreground/55 mt-0.5">Template Notion pronto all'uso</span>
                 </h3>
                 <p className="text-sm text-foreground/65 leading-relaxed">
-                  Avrai accesso al mio Calendario di Lancio — lo stesso che uso con i miei clienti. È già tutto pronto: duplichi il template con un clic e hai subito sotto controllo tutte le fasi del lancio, i contenuti e cosa fare ogni giorno.
+                  Avrai accesso al mio Calendario di Lancio, lo stesso che uso con i miei clienti. È già tutto pronto: duplichi il template con un clic e hai subito sotto controllo tutte le fasi del lancio, i contenuti e cosa fare ogni giorno.
                 </p>
               </div>
             </div>
@@ -1259,7 +1261,7 @@ function EasyMailPack() {
                 <div>
                   <p className="font-semibold text-foreground/85 mb-1">Non fa per te? Hai la garanzia.</p>
                   <p className="text-sm text-foreground/65 leading-relaxed">
-                    Solo che ti ho dato l'acquisto non ti convince, puoi richiedere il rimborso completo entro <strong>14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia — sono sicuro del valore del corso.
+                    Solo che ti ho dato l'acquisto non ti convince, puoi richiedere il rimborso completo entro <strong>14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia: sono sicuro del valore del corso.
                   </p>
                 </div>
               </div>
