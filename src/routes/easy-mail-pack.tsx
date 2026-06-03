@@ -20,6 +20,7 @@ import imgLancio from "@/assets/lancio con email.png";
 import imgProfila from "@/assets/profila contenuti.png";
 import imgLezioneEmanuela from "@/assets/lezione emanuela.png";
 import imgCalendarioEasyMail from "@/assets/calendario di lancio easy mail pack.png";
+import imgPalline from "@/assets/Foto con palline di carta.jpg";
 import recEmp1 from "@/assets/recensione emp 1.png";
 import recEmp2 from "@/assets/recensione emp 2.png";
 import recEmp3 from "@/assets/recensione emp 3.png";
@@ -1262,74 +1263,142 @@ function EasyMailPack() {
       </section>
 
       {/* ── PRICING ───────────────────────────────────────────────────────── */}
-      <section id="form" className="py-16 md:py-20 px-4 bg-foreground" data-cursor-light>
-        <div className="container-narrow max-w-4xl">
-          <p className="eyebrow text-primary-foreground/60 mb-4 text-center">Inizia ora</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-white text-center mb-12">
-            Accedi a <em style={{ color: "#C4D9DC" }}>Easy-Mail Pack.</em>
-          </h2>
+      <section id="form" className="py-16 md:py-20 px-2 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
+        {/* Glow orbs */}
+        <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
+          style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
-          <div className="bg-white rounded-xl overflow-hidden max-w-lg mx-auto" data-cursor-dark
-            style={{ boxShadow: "0 8px 48px -8px rgba(0,0,0,0.28)" }}>
-            <div className="px-8 py-10">
-              {/* prezzo */}
-              <div className="mb-8">
-                <p className="text-6xl font-bold text-[#156686]">129€</p>
-                <p className="text-sm text-foreground/55 mt-1">IVA inclusa · Accesso a vita</p>
-              </div>
+        <div className="container-narrow max-w-4xl mx-auto relative z-10">
 
-              {/* checklist */}
-              <ul className="space-y-3 mb-8">
-                {[
-                  "60+ lezioni video",
-                  "Accesso a vita",
-                  "Template email pronti all'uso",
-                  "Bonus #1 – Grafica per la Newsletter (con Emanuela Esposito)",
-                  "Bonus #2 – Calendario di Lancio (Template Notion)",
-                  "Garanzia soddisfatto o rimborsato 14 giorni",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                    <CheckIcon />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          {/* Mobile annotation */}
+          <div className="block md:hidden mb-6 pl-2" data-cursor-light>
+            <div style={{ transform: "rotate(-6deg)", transformOrigin: "left top" }}>
+              <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.35, display: "block" }}>
+                Pronto a lanciare la tua newsletter e a usare le email nei tuoi lanci come un pro?
+              </span>
+              <svg width="50" height="55" viewBox="0 0 50 55" fill="none" className="mt-2 ml-2">
+                <path d="M 25 4 C 22 20, 28 36, 25 48" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <path d="M 17 40 L 25 52 L 33 40" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
 
-              {/* CTA */}
-              <a
-                href={PURCHASE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center whitespace-nowrap"
-                onClick={() => trackCta("pricing-acquista")}
-              >
-                Acquista ora →
-              </a>
-
-              {/* metodi pagamento */}
-              <p className="text-xs text-foreground/40 text-center mt-4">
-                PayPal · Carta di credito · Carta di debito
-              </p>
+          <div className="relative">
+            {/* Desktop annotation */}
+            <div className="hidden md:block absolute right-full top-8 pr-6 w-52" data-cursor-light>
+              <span style={{ fontFamily: "'Caveat', cursive", fontSize: "1.2rem", color: "#C4D9DC", lineHeight: 1.35, display: "block", transform: "rotate(-6deg)", transformOrigin: "center top" }}>
+                Pronto a lanciare la tua newsletter e a usare le email nei tuoi lanci come un pro?
+              </span>
+              <svg width="80" height="75" viewBox="0 0 80 75" fill="none" className="mt-1 ml-6">
+                <path d="M 25 4 C 24 28, 20 50, 72 68" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <path d="M 60 60 L 72 68 L 62 76" stroke="#C4D9DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
             </div>
 
-            {/* garanzia */}
-            <div className="border-t border-border px-8 py-6 bg-[#EEF3F5]/60">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#156686]/10 flex items-center justify-center flex-shrink-0">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z" fill="#156686" fillOpacity="0.15" stroke="#156686" strokeWidth="1.5" />
-                    <path d="M8 12.5l2.5 2.5 5-5" stroke="#156686" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+            <div className="bg-white rounded-xl overflow-hidden" data-cursor-dark>
+
+              {/* ── MOBILE layout ── */}
+              <div className="md:hidden pt-6 pb-10 text-center">
+                <div className="px-5">
+                  <img src={coverImg} alt="Easy-Mail Pack" className="w-44 mx-auto mb-3" style={{ animation: "img-float 5s ease-in-out infinite" }} />
+                  <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+                    Accesso immediato
+                  </div>
+                  <h2 className="h-display text-3xl mb-1">Easy-Mail <em className="text-[#156686]">Pack</em></h2>
+                  <p className="text-foreground/60 text-sm mb-7">Video corso – accesso immediato dopo l'acquisto</p>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground/85 mb-1">Non fa per te? Hai la garanzia.</p>
-                  <p className="text-sm text-foreground/65 leading-relaxed">
-                    Solo che ti ho dato l'acquisto non ti convince, puoi richiedere il rimborso completo entro <strong>14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia: sono sicuro del valore del corso.
-                  </p>
+                <div className="px-8">
+                  <div className="flex items-baseline gap-2 justify-center mb-10">
+                    <span className="text-5xl font-bold text-[#156686]">129€</span>
+                    <span className="text-foreground/40 text-sm">IVA inclusa · una tantum</span>
+                  </div>
+                  <div className="text-left max-w-xs mx-auto mb-8">
+                    <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
+                    <ul className="space-y-3">
+                      {[
+                        "90+ lezioni video",
+                        "Accesso a vita",
+                        "Template email pronti all'uso",
+                        "Bonus: Grafica per la Newsletter (con Emanuela Esposito)",
+                        "Bonus: Calendario di Lancio (Template Notion)",
+                        "Garanzia soddisfatto o rimborsato 14 giorni",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80"><CheckIcon />{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <a href={PURCHASE_URL} target="_blank" rel="noreferrer"
+                    onClick={() => trackCta("pricing-acquista-mobile")}
+                    className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center whitespace-nowrap">
+                    Acquista ora a 129€ →
+                  </a>
+                  <p className="text-xs text-foreground/40 mt-3">Pagamento sicuro. Accesso immediato.</p>
                 </div>
+              </div>
+
+              {/* ── DESKTOP layout ── */}
+              <div className="hidden md:block px-14 pt-12 pb-12">
+                <div className="flex items-start gap-8 mb-10">
+                  <img src={coverImg} alt="Easy-Mail Pack" className="w-36 flex-shrink-0" style={{ animation: "img-float 5s ease-in-out infinite" }} />
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full mb-4">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+                      Accesso immediato
+                    </div>
+                    <h2 className="h-display text-4xl lg:text-5xl mb-2">Easy-Mail <em className="text-[#156686]">Pack</em></h2>
+                    <p className="text-foreground/60 text-sm">Video corso – accesso immediato dopo l'acquisto</p>
+                  </div>
+                </div>
+                <div className="flex gap-0">
+                  <div className="flex-1 pr-12">
+                    <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-5">Cosa ricevi</p>
+                    <ul className="space-y-3">
+                      {[
+                        "90+ lezioni video",
+                        "Accesso a vita",
+                        "Template email pronti all'uso",
+                        "Bonus: Grafica per la Newsletter (con Emanuela Esposito)",
+                        "Bonus: Calendario di Lancio (Template Notion)",
+                        "Garanzia soddisfatto o rimborsato 14 giorni",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80"><CheckIcon />{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="w-px bg-foreground/10 mx-4 self-stretch" />
+                  <div className="w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
+                    <span className="text-5xl font-bold text-[#156686]">129€</span>
+                    <span className="text-foreground/40 text-sm mt-1 mb-2">IVA inclusa · una tantum</span>
+                    <span className="text-foreground/40 text-xs mb-8">Accesso a vita</span>
+                    <a href={PURCHASE_URL} target="_blank" rel="noreferrer"
+                      onClick={() => trackCta("pricing-acquista-desktop")}
+                      className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-center block w-full">
+                      Acquista ora a 129€ →
+                    </a>
+                    <p className="text-xs text-foreground/40 mt-3">PayPal · Carta · Debito</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* ── GARANZIA ── */}
+          <div className="mt-10 bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+            <div className="flex flex-col md:flex-row items-center gap-0">
+              <img src={imgPalline} alt="Garanzia" className="w-full md:w-64 md:flex-shrink-0 h-48 md:h-auto object-cover" />
+              <div className="px-8 py-8">
+                <p className="font-semibold text-white mb-2">Non fa per te? Hai la garanzia.</p>
+                <p className="text-sm text-white/65 leading-relaxed">
+                  Se dopo l'acquisto il corso non ti convince, puoi richiedere il rimborso completo entro <strong className="text-white/85">14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia: sono sicuro del valore del corso.
+                </p>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
