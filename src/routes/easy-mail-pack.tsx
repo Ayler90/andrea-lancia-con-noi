@@ -1391,11 +1391,11 @@ function EasyMailPack() {
           </div>
 
           {/* ── GARANZIA ── */}
-          <div className="mt-10 bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center gap-0">
-              <img src={imgPalline} alt="Garanzia" className="w-full md:w-64 md:flex-shrink-0 h-48 md:h-auto object-cover" />
-              <div className="px-8 py-8">
-                <p className="font-semibold text-white mb-2">Non fa per te? Hai la garanzia.</p>
+          <div className="mt-10 bg-white/5 border border-white/20 rounded-2xl px-8 py-7">
+            <div className="flex items-center gap-6">
+              <img src={imgPalline} alt="Garanzia" className="w-16 h-16 flex-shrink-0 rounded-xl object-cover" />
+              <div>
+                <p className="font-semibold text-white mb-1">Non fa per te? Hai la garanzia.</p>
                 <p className="text-sm text-white/65 leading-relaxed">
                   Se dopo l'acquisto il corso non ti convince, puoi richiedere il rimborso completo entro <strong className="text-white/85">14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia: sono sicuro del valore del corso.
                 </p>
