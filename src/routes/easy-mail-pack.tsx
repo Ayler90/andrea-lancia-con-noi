@@ -48,7 +48,7 @@ const PURCHASE_URL = "https://corsi.andreabonomo.it/iscriviti-ora-base";
 
 // ── Video modal ──────────────────────────────────────────────────────────────
 
-function VideoModal({ url, onClose }: { url: string; onClose: () => void }) {
+function VideoModal({ url, title, onClose }: { url: string; title: string; onClose: () => void }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -75,13 +75,13 @@ function VideoModal({ url, onClose }: { url: string; onClose: () => void }) {
         }}
         onClick={e => e.stopPropagation()}>
         {/* brand top bar */}
-        <div className="flex items-center justify-between px-4 py-2.5" style={{ backgroundColor: "#0c2330" }}>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: "#C4D9DC" }}>
-            Easy-Mail Pack — Anteprima lezione
-          </span>
+        <div className="flex items-center justify-between px-4 py-3" style={{ backgroundColor: "#EEF3F5", borderBottom: "1px solid rgba(21,102,134,0.12)" }}>
+          <div>
+            <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#156686]/60 mb-0.5">Anteprima lezione</p>
+            <p className="text-[13px] font-semibold text-[#0c2330]/85 leading-tight">{title}</p>
+          </div>
           <button onClick={onClose}
-            className="w-6 h-6 rounded-full flex items-center justify-center text-xs transition hover:bg-white/10"
-            style={{ color: "#C4D9DC" }}>✕</button>
+            className="w-7 h-7 rounded-full flex items-center justify-center text-xs transition hover:bg-[#156686]/10 text-[#156686]/60 hover:text-[#156686] flex-shrink-0 ml-4">✕</button>
         </div>
         <div className="aspect-video" style={{ backgroundColor: "#0c2330" }}>
           <iframe src={url} className="w-full h-full" allow="autoplay; fullscreen" allowFullScreen />
@@ -558,12 +558,12 @@ const SHOW_INITIALLY = 9;
 
 function LessonList() {
   const [showAll, setShowAll] = useState(false);
-  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [video, setVideo] = useState<{ url: string; title: string } | null>(null);
   const visible = showAll ? MODULES : MODULES.slice(0, SHOW_INITIALLY);
 
   return (
     <>
-      {videoUrl && <VideoModal url={videoUrl} onClose={() => setVideoUrl(null)} />}
+      {video && <VideoModal url={video.url} title={video.title} onClose={() => setVideo(null)} />}
       <div className="columns-1 md:columns-3 gap-5">
         {visible.map((mod, i) => (
           <div key={mod.title} className="break-inside-avoid mb-6">
@@ -575,7 +575,7 @@ function LessonList() {
               {mod.lessons.map((l) => (
                 <li key={l.name} className="text-[13px] leading-snug">
                   {l.videoUrl ? (
-                    <button onClick={() => setVideoUrl(l.videoUrl!)}
+                    <button onClick={() => setVideo({ url: l.videoUrl!, title: l.name })}
                       className="group flex items-center gap-1.5 text-left text-white/80 hover:text-white transition-colors"
                       aria-label={`Guarda: ${l.name}`}>
                       <span className="underline underline-offset-2 decoration-white/30 group-hover:decoration-white/70 transition-colors">{l.name}</span>
