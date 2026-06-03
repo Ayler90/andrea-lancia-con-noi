@@ -674,7 +674,9 @@ function EasyMailPack() {
           </div>
 
           {/* stats row with count-up */}
-          <div className="mt-10 flex items-stretch justify-center max-w-4xl mx-auto flex-wrap gap-y-8">
+          <div className="mt-10 max-w-4xl mx-auto rounded-2xl border border-[#156686]/15 bg-[#156686]/5 px-6 py-8"
+            style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.08)" }}>
+          <div className="flex items-stretch justify-center flex-wrap gap-y-8">
             {[
               { target: 90, suffix: "+", label: "Lezioni" },
               { target: 21, suffix: "",  label: "Template" },
@@ -695,6 +697,7 @@ function EasyMailPack() {
                 </div>
               </>
             ))}
+          </div>
           </div>
 
         </div>
