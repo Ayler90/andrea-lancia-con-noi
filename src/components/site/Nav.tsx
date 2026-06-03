@@ -208,7 +208,7 @@ export function Nav() {
                     <li key={p.slug}>
                       <button
                         onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group whitespace-nowrap"
+                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
                       >
                         <span className="text-base leading-none">{p.emoji}</span>
                         <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
@@ -227,7 +227,7 @@ export function Nav() {
                       <a
                         href={p.href}
                         onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group whitespace-nowrap"
+                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
                       >
                         <span className="text-base leading-none">{p.emoji}</span>
                         <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
