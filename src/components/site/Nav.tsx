@@ -14,14 +14,14 @@ const percorsiSub = [
 
 const percorsiCategories = {
   percorsi: [
-    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀" },
-    { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint",        emoji: "🗺️" },
-    { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter",      emoji: "✉️" },
-    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯" },
+    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀", desc: "Lancia il tuo primo prodotto online" },
+    { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint",        emoji: "🗺️", desc: "Costruisci un business solido e scalabile" },
+    { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter",      emoji: "✉️", desc: "Cresci con supporto diretto one-to-one" },
+    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯", desc: "Chiarezza e direzione in una sessione" },
   ],
   corsi: [
-    { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", emoji: "📅", href: "/scarica-calendario-lancio" },
-    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        emoji: "📧", href: "/easy-mail-pack" },
+    { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", emoji: "📅", desc: "Pianifica ogni lancio senza stress", href: "/scarica-calendario-lancio" },
+    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        emoji: "📧", desc: "Email e newsletter che vendono davvero", href: "/easy-mail-pack" },
   ],
 };
 
@@ -189,29 +189,32 @@ export function Nav() {
           className="hidden md:block overflow-hidden"
           onMouseLeave={() => setDropdownOpen(false)}
           style={{
-            maxHeight:  dropdownOpen ? "280px" : "0px",
+            maxHeight:  dropdownOpen ? "380px" : "0px",
             opacity:    dropdownOpen ? 1 : 0,
             borderTop:  dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
             transition: "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
           }}
         >
           {/* Same 3-col grid as top row so content aligns under center nav */}
-          <div className="container-narrow grid grid-cols-3 py-5">
+          <div className="container-narrow grid grid-cols-3 py-6">
             <div /> {/* left spacer */}
-            <div className="flex justify-center gap-20">
+            <div className="flex justify-center gap-12">
 
               {/* Column: Percorsi */}
               <div className="min-w-0">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Percorsi</p>
-                <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Percorsi</p>
+                <ul className="flex flex-col gap-1">
                   {percorsiCategories.percorsi.map((p) => (
                     <li key={p.slug}>
                       <button
                         onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
+                        className="flex items-start gap-3 py-2 px-2 text-left w-full cursor-pointer group rounded-lg hover:bg-[#156686]/5 transition-colors"
                       >
-                        <span className="text-base leading-none">{p.emoji}</span>
-                        <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
+                        <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
+                        <span className="min-w-0">
+                          <span className="block text-sm font-semibold text-foreground/85 group-hover:text-foreground transition-colors whitespace-nowrap">{p.label}</span>
+                          <span className="block text-xs text-foreground/50 mt-0.5 whitespace-nowrap">{p.desc}</span>
+                        </span>
                       </button>
                     </li>
                   ))}
@@ -220,17 +223,20 @@ export function Nav() {
 
               {/* Column: Corsi e Template */}
               <div className="min-w-0">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-3">Corsi e Template</p>
-                <ul className="border-l-2 border-[#156686]/20 pl-4 flex flex-col gap-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Corsi e Template</p>
+                <ul className="flex flex-col gap-1">
                   {percorsiCategories.corsi.map((p) => (
                     <li key={p.slug}>
                       <a
                         href={p.href}
                         onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
+                        className="flex items-start gap-3 py-2 px-2 group rounded-lg hover:bg-[#156686]/5 transition-colors"
                       >
-                        <span className="text-base leading-none">{p.emoji}</span>
-                        <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
+                        <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
+                        <span className="min-w-0">
+                          <span className="block text-sm font-semibold text-foreground/85 group-hover:text-foreground transition-colors whitespace-nowrap">{p.label}</span>
+                          <span className="block text-xs text-foreground/50 mt-0.5 whitespace-nowrap">{p.desc}</span>
+                        </span>
                       </a>
                     </li>
                   ))}
