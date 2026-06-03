@@ -578,11 +578,11 @@ function LessonList() {
                     <button onClick={() => setVideoUrl(l.videoUrl!)}
                       className="group flex items-center gap-1.5 text-left text-white/80 hover:text-white transition-colors"
                       aria-label={`Guarda: ${l.name}`}>
+                      <span className="underline underline-offset-2 decoration-white/30 group-hover:decoration-white/70 transition-colors">{l.name}</span>
                       <span className="flex-shrink-0 w-4 h-4 rounded-full bg-white/20 group-hover:bg-[#C4D9DC]/50 flex items-center justify-center transition-colors"
                         style={{ animation: "arrow-nudge 2.8s ease-in-out infinite" }}>
                         <svg width="6" height="7" viewBox="0 0 6 7" fill="white"><polygon points="0,0 6,3.5 0,7" /></svg>
                       </span>
-                      <span className="underline underline-offset-2 decoration-white/30 group-hover:decoration-white/70 transition-colors">{l.name}</span>
                     </button>
                   ) : (
                     <span className="flex items-center gap-1.5 text-white/60">
