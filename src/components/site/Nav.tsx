@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import avatarImg from "@/assets/Foto profilo IG - Favicon.jpg";
 import { LogoText } from "./LogoText";
 import posthog from "posthog-js";
@@ -45,8 +45,7 @@ export function Nav() {
   const [open, setOpen]                 = useState(false);
   const [closing, setClosing]           = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const headerRef  = useRef<HTMLElement>(null);
-  const megaMenuRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
   const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
@@ -69,17 +68,6 @@ export function Nav() {
     return () => window.removeEventListener("scroll", update);
   }, []);
 
-  useLayoutEffect(() => {
-    let rafId: number;
-    const sync = () => {
-      if (headerRef.current && megaMenuRef.current) {
-        megaMenuRef.current.style.top = headerRef.current.getBoundingClientRect().bottom + "px";
-      }
-      rafId = requestAnimationFrame(sync);
-    };
-    rafId = requestAnimationFrame(sync);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -111,16 +99,20 @@ export function Nav() {
         className="sticky top-0 z-50 border-b transition-[box-shadow] duration-300"
         onMouseLeave={() => setDropdownOpen(false)}
         style={{
-          backgroundColor:      "rgba(255,255,255,0.92)",
-          backdropFilter:       "saturate(180%) blur(24px)",
-          WebkitBackdropFilter: "saturate(180%) blur(24px)",
-          borderColor:          "rgba(209,213,219,0.45)",
-          boxShadow:            scrolled || dropdownOpen
+          borderColor: "rgba(209,213,219,0.45)",
+          boxShadow:   scrolled || dropdownOpen
             ? "inset 0 1px 0 rgba(255,255,255,0.30), 0 4px 32px rgba(0,0,0,0.08)"
             : "inset 0 1px 0 rgba(255,255,255,0.30)",
-          transition: "box-shadow 0.3s",
+          transition:  "box-shadow 0.3s",
         }}
       >
+        {/* Glass background — separate div so mega-menu's backdrop-filter is not nested inside another backdrop-filter */}
+        <div className="absolute inset-0 -z-10" style={{
+          backgroundColor:      "rgba(255,255,255,0.72)",
+          backdropFilter:       "saturate(180%) blur(24px)",
+          WebkitBackdropFilter: "saturate(180%) blur(24px)",
+        }} />
+
         {/* Top row */}
         <div className="container-narrow grid grid-cols-3 items-center h-16 md:h-20">
           {/* Left: avatar + logo */}
@@ -199,25 +191,19 @@ export function Nav() {
           </div>
         </div>
 
-      </header>
-
-      {/* Mega-menu — rendered OUTSIDE header so backdrop-filter works (header's own filter blocks children) */}
-      <div
-        ref={megaMenuRef}
-        className="hidden md:block fixed left-0 right-0 z-[49]"
-        style={{ top: 80 }}
-        onMouseEnter={() => setDropdownOpen(true)}
-        onMouseLeave={() => setDropdownOpen(false)}
-      >
+        {/* Mega-menu — inside header so position is always perfect (CSS only, no JS positioning) */}
+        {/* backdrop-filter works because the header's blur is on a child div, not the header itself */}
         <div
+          className="hidden md:block absolute left-0 right-0 top-full"
+          onMouseEnter={() => setDropdownOpen(true)}
           style={{
             opacity:       dropdownOpen ? 1 : 0,
             pointerEvents: dropdownOpen ? "auto" : "none",
             transform:     dropdownOpen ? "translateY(0)" : "translateY(-6px)",
             transition:    "opacity 0.2s ease, transform 0.2s ease",
-            backgroundColor:      "rgba(255,255,255,0.75)",
-            backdropFilter:       "saturate(180%) blur(28px)",
-            WebkitBackdropFilter: "saturate(180%) blur(28px)",
+            backgroundColor:      "rgba(255,255,255,0.72)",
+            backdropFilter:       "saturate(180%) blur(24px)",
+            WebkitBackdropFilter: "saturate(180%) blur(24px)",
             borderTop:    "1px solid rgba(209,213,219,0.45)",
             borderBottom: "1px solid rgba(209,213,219,0.45)",
             boxShadow:    "0 8px 32px rgba(0,0,0,0.08)",
@@ -273,7 +259,9 @@ export function Nav() {
             </div>
           </div>
         </div>
-      </div>
+
+      </header>
+
 
       {/* Fullscreen mobile overlay */}
       {open && (
