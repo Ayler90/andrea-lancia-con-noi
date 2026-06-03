@@ -146,6 +146,7 @@ export function Nav() {
                 <a
                   key={l.href}
                   href={l.href}
+                  onMouseEnter={() => setDropdownOpen(false)}
                   className="inline-flex items-center gap-1.5 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#156686] hover:after:w-full after:transition-all after:duration-200"
                 >
                   {l.label}
@@ -161,7 +162,7 @@ export function Nav() {
           </nav>
 
           {/* Right: CTA (desktop) + hamburger (mobile) */}
-          <div className="flex items-center justify-end gap-3 col-start-3">
+          <div className="flex items-center justify-end gap-3 col-start-3" onMouseEnter={() => setDropdownOpen(false)}>
             <a
               href="/#prenota"
               onClick={() => posthog.capture("nav_cta_prenota_call", { position: "desktop" })}
@@ -188,7 +189,7 @@ export function Nav() {
           className="hidden md:block overflow-hidden"
           onMouseLeave={() => setDropdownOpen(false)}
           style={{
-            maxHeight:  dropdownOpen ? "220px" : "0px",
+            maxHeight:  dropdownOpen ? "280px" : "0px",
             opacity:    dropdownOpen ? 1 : 0,
             borderTop:  dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
             transition: "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
@@ -197,7 +198,7 @@ export function Nav() {
           {/* Same 3-col grid as top row so content aligns under center nav */}
           <div className="container-narrow grid grid-cols-3 py-5">
             <div /> {/* left spacer */}
-            <div className="flex justify-center gap-12">
+            <div className="flex justify-center gap-20">
 
               {/* Column: Percorsi */}
               <div className="min-w-0">
@@ -207,7 +208,7 @@ export function Nav() {
                     <li key={p.slug}>
                       <button
                         onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group"
+                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 text-left w-full leading-snug cursor-pointer group whitespace-nowrap"
                       >
                         <span className="text-base leading-none">{p.emoji}</span>
                         <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
@@ -226,7 +227,7 @@ export function Nav() {
                       <a
                         href={p.href}
                         onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group"
+                        className="flex items-center gap-2.5 text-sm text-foreground/70 hover:text-foreground transition-colors py-1.5 leading-snug group whitespace-nowrap"
                       >
                         <span className="text-base leading-none">{p.emoji}</span>
                         <span className="group-hover:translate-x-0.5 transition-transform duration-150">{p.label}</span>
