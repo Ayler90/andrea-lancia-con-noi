@@ -1103,9 +1103,11 @@ function EasyMailPack() {
           </h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Bonus 1 */}
-            <div className="rounded-2xl bg-white border border-[#156686]/15 overflow-hidden"
+            <div className="rounded-2xl bg-white border border-[#156686]/15 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.10)" }}>
-              <img src={imgLezioneEmanuela} alt="Lezione Emanuela Esposito" className="w-full aspect-video object-cover" />
+              <div className="p-4 pb-0">
+                <img src={imgLezioneEmanuela} alt="Lezione Emanuela Esposito" className="w-full aspect-video object-cover rounded-xl" />
+              </div>
               <div className="px-6 py-6">
                 <span className="eyebrow text-[#156686]/70 mb-2 block">Bonus #1</span>
                 <h3 className="font-bold text-lg text-foreground/85 mb-3">
@@ -1118,9 +1120,11 @@ function EasyMailPack() {
               </div>
             </div>
             {/* Bonus 2 */}
-            <div className="rounded-2xl bg-white border border-[#156686]/15 overflow-hidden"
+            <div className="rounded-2xl bg-white border border-[#156686]/15 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.10)" }}>
-              <img src={imgCalendarioEasyMail} alt="Calendario di Lancio Easy-Mail Pack" className="w-full aspect-video object-cover" />
+              <div className="p-4 pb-0">
+                <img src={imgCalendarioEasyMail} alt="Calendario di Lancio Easy-Mail Pack" className="w-full aspect-video object-cover rounded-xl" />
+              </div>
               <div className="px-6 py-6">
                 <span className="eyebrow text-[#156686]/70 mb-2 block">Bonus #2</span>
                 <h3 className="font-bold text-lg text-foreground/85 mb-3">
