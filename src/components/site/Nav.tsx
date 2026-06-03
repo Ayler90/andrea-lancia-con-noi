@@ -45,6 +45,8 @@ export function Nav() {
   const [open, setOpen]                 = useState(false);
   const [closing, setClosing]           = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [navBottom, setNavBottom] = useState(80);
+  const headerRef = useRef<HTMLElement>(null);
 
   const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
   const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
@@ -65,6 +67,22 @@ export function Nav() {
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  useEffect(() => {
+    const updateNavBottom = () => {
+      if (headerRef.current) {
+        const rect = headerRef.current.getBoundingClientRect();
+        setNavBottom(rect.bottom);
+      }
+    };
+    updateNavBottom();
+    window.addEventListener("scroll", updateNavBottom, { passive: true });
+    window.addEventListener("resize", updateNavBottom);
+    return () => {
+      window.removeEventListener("scroll", updateNavBottom);
+      window.removeEventListener("resize", updateNavBottom);
+    };
   }, []);
 
   useEffect(() => {
@@ -93,6 +111,7 @@ export function Nav() {
 
       {/* Main nav */}
       <header
+        ref={headerRef}
         className="sticky top-0 z-50 border-b transition-[box-shadow] duration-300"
         onMouseLeave={() => setDropdownOpen(false)}
         style={{
@@ -184,9 +203,16 @@ export function Nav() {
           </div>
         </div>
 
-        {/* Expanded mega-menu (desktop only) — outer div handles height clip, inner div handles blur */}
+      </header>
+
+      {/* Mega-menu — rendered OUTSIDE header so backdrop-filter works (header's own filter blocks children) */}
+      <div
+        className="hidden md:block fixed left-0 right-0 z-[49]"
+        style={{ top: navBottom }}
+        onMouseEnter={() => setDropdownOpen(true)}
+        onMouseLeave={() => setDropdownOpen(false)}
+      >
         <div
-          className="hidden md:block absolute left-0 right-0 top-full z-50"
           style={{
             opacity:       dropdownOpen ? 1 : 0,
             pointerEvents: dropdownOpen ? "auto" : "none",
@@ -200,10 +226,8 @@ export function Nav() {
             boxShadow:    "0 8px 32px rgba(0,0,0,0.08)",
           }}
         >
-          <div>
-          {/* Same 3-col grid as top row so content aligns under center nav */}
           <div className="container-narrow grid grid-cols-3 py-6">
-            <div /> {/* left spacer */}
+            <div />
             <div className="col-span-2 flex gap-16 pl-2">
 
               {/* Column: Percorsi */}
@@ -251,9 +275,8 @@ export function Nav() {
 
             </div>
           </div>
-          </div>
         </div>
-      </header>
+      </div>
 
       {/* Fullscreen mobile overlay */}
       {open && (
