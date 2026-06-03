@@ -1034,7 +1034,7 @@ function EasyMailPack() {
         {/* parallax diagonal lesson images in background */}
         <ParallaxLessonBg />
         {/* dark overlay */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(21,102,134,0.93) 0%, rgba(21,102,134,0.90) 50%, rgba(21,102,134,0.93) 100%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(21,102,134,0.88) 0%, rgba(21,102,134,0.84) 50%, rgba(21,102,134,0.88) 100%)" }} />
 
         <div className="container-narrow relative z-10">
           <p className="eyebrow text-white/60 mb-4 text-center">Il programma completo</p>
