@@ -351,23 +351,23 @@ function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suf
 const faqs = [
   {
     q: "Quanto costa Easy-Mail Pack?",
-    a: "Easy-Mail Pack costa 129€ (IVA inclusa). È un accesso a vita: paghi una volta e puoi tornare a guardare le lezioni quando vuoi, per sempre.",
+    a: "Solamente 129€.\n\nIl prezzo è veramente ridicolo per tutto quello che ottieni.\n\nOltre 90 lezioni e 5+ ore di formazione teorico+pratica su newsletter ed email marketing.",
   },
   {
     q: "Se ho una domanda da farti, come faccio a contattarti?",
-    a: "Puoi scrivermi via email a andrea@andreabonomo.it oppure mandarmi un DM su Instagram @andrea.bonomo. Rispondo generalmente entro 24–48 ore.",
+    a: "Puoi scrivermi a ciao@andreabonomo.it o contattarmi in privato su Instagram.",
   },
   {
     q: "Cosa imparerò grazie a Easy-Mail Pack?",
-    a: "Imparerai a creare e gestire una lista email, configurare piattaforme come Mailerlite e Active Campaign, scrivere sequenze di lancio, impostare automazioni e creare landing page di iscrizione.",
+    a: "Imparerai a:\n\n• creare la tua prima newsletter da 0, grazie ai 9 template che trovi all'interno\n• creare un modulo di iscrizione e la tua prima automazione di ringraziamento per chi si iscrive alla NL o scarica un tuo freebie\n• gestire l'email marketing durante un lancio, grazie ai template con le email di pre pre lancio, pre lancio, lancio e post lancio\n• creare landing page dove far iscrivere le persone\n• creare una newsletter unica e inimitabile, grazie alla lezione sulla grafica di Emanuela\n• vendere grazie alla newsletter (ci sono 3 tipologie di vendita dentro al video corso)",
   },
   {
     q: "I template vanno usati come sono o posso modificarli?",
-    a: "Puoi modificarli liberamente! Sono pensati come punto di partenza da personalizzare con il tuo tone of voice e la tua offerta.",
+    a: "I template sono tutti duplicabili sul tuo Notion, proprio perché tu li possa modificare come vuoi.\n\nCosì puoi creare le tue newsletter ed email direttamente da lì e averli sempre a portata di mano.",
   },
   {
     q: `Come funziona la garanzia "Soddisfatto o rimborsato"?`,
-    a: "Hai 14 giorni dall'acquisto per richiedere il rimborso completo, senza dover fornire alcuna motivazione. Ti basta scrivermi.",
+    a: "Se entro 14 giorni non sei soddisfatto di Easy-Mail Pack, ti rimborso fino all'ultimo centesimo.",
   },
 ];
 
@@ -394,12 +394,12 @@ function FaqAccordion() {
           </button>
           <div
             style={{
-              maxHeight: open === i ? "400px" : "0",
+              maxHeight: open === i ? "800px" : "0",
               transition: open === i ? "max-height 0.4s ease" : "none",
               overflow: "hidden",
             }}
           >
-            <p className="px-6 pb-5 text-sm md:text-base text-foreground/65 leading-relaxed">{faq.a}</p>
+            <p className="px-6 pb-5 text-sm md:text-base text-foreground/65 leading-relaxed whitespace-pre-line">{faq.a}</p>
           </div>
         </div>
       ))}
