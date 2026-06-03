@@ -1165,11 +1165,11 @@ function EasyMailPack() {
               </h2>
               <ul className="mt-8 space-y-4">
                 {[
-                  "Sei un libero professionista, consulente, coach o formatore che vuole impostare una newsletter",
-                  "Non vuoi dipendere dai social come unico canale di contatto con i clienti",
-                  "Sei già presente online e vuoi usare l'email per lanciare e vendere",
-                  "Vuoi creare email personalizzate che rispecchino la tua brand identity",
-                  "Vuoi imparare ad usare le automazioni per semplificare il business",
+                  "Sei un libero professionista, consulente, coach o solopreneur con un personal brand e vuoi creare la tua newsletter da 0",
+                  "Vuoi avere una scaletta per impiegare 1/4 del tempo a creare newsletter ed email di lancio",
+                  "Non hai ancora creato la tua mailing list e vuoi imparare a farlo, capendo come creare un modulo di iscrizione e come inserirlo in una pagina",
+                  "Vuoi imparare a creare automazioni, anche se non l'hai mai fatto prima",
+                  "Vuoi usare l'email marketing nei tuoi prossimi lanci",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4 text-sm md:text-base text-foreground/85">
                     <span className="mt-2 w-2 h-2 bg-[#156686] flex-shrink-0" />
@@ -1192,10 +1192,10 @@ function EasyMailPack() {
               </h2>
               <ul className="mt-8 space-y-6">
                 {[
-                  "Non hai ancora una presenza online e non vuoi costruirla",
-                  "Cerchi un servizio dove qualcuno crea la newsletter al posto tuo",
-                  "Ti aspetti risultati senza mettere in pratica le lezioni",
-                  "Hai bisogno di una strategia email ultra-avanzata a livello enterprise",
+                  "Sai già come scrivere newsletter ed email di lancio",
+                  "Sai già come creare moduli di iscrizione e automazioni",
+                  "Hai un e-commerce e hai bisogno di automazioni più complesse per il tuo shop",
+                  "Non hai interesse nell'avere una newsletter",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4 text-sm md:text-base text-background/80">
                     <span className="mt-2 w-2 h-2 border border-background/40 flex-shrink-0" />
