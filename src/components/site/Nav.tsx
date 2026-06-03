@@ -188,9 +188,10 @@ export function Nav() {
         <div
           className="hidden md:block absolute left-0 right-0 top-full z-50"
           style={{
-            clipPath:   dropdownOpen ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
-            opacity:    dropdownOpen ? 1 : 0,
-            transition: "clip-path 0.28s ease, opacity 0.2s ease",
+            opacity:       dropdownOpen ? 1 : 0,
+            pointerEvents: dropdownOpen ? "auto" : "none",
+            transform:     dropdownOpen ? "translateY(0)" : "translateY(-6px)",
+            transition:    "opacity 0.2s ease, transform 0.2s ease",
             backgroundColor:      "rgba(255,255,255,0.75)",
             backdropFilter:       "saturate(180%) blur(28px)",
             WebkitBackdropFilter: "saturate(180%) blur(28px)",
