@@ -1420,7 +1420,7 @@ function EasyMailPack() {
 
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 px-4">
-        <div className="container-narrow max-w-3xl">
+        <div className="container-narrow max-w-4xl mx-auto">
           <p className="eyebrow text-[#156686]/70 mb-4 text-center">Domande frequenti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-10">
             Hai qualche domanda? <em className="text-[#156686]">Ho le risposte.</em>
