@@ -99,11 +99,11 @@ export function Nav() {
           backgroundColor:      "rgba(255,255,255,0.92)",
           backdropFilter:       "saturate(180%) blur(24px)",
           WebkitBackdropFilter: "saturate(180%) blur(24px)",
-          borderColor:          dropdownOpen ? "rgba(209,213,219,0)" : "rgba(209,213,219,0.45)",
+          borderColor:          "rgba(209,213,219,0.45)",
           boxShadow:            scrolled || dropdownOpen
             ? "inset 0 1px 0 rgba(255,255,255,0.30), 0 4px 32px rgba(0,0,0,0.08)"
             : "inset 0 1px 0 rgba(255,255,255,0.30)",
-          transition: "box-shadow 0.3s, border-color 0.25s",
+          transition: "box-shadow 0.3s",
         }}
       >
         {/* Top row */}
@@ -184,15 +184,19 @@ export function Nav() {
           </div>
         </div>
 
-        {/* Expanded mega-menu row (desktop only) */}
+        {/* Expanded mega-menu (desktop only) — absolutely positioned so it overlays page content */}
         <div
-          className="hidden md:block overflow-hidden"
-          onMouseLeave={() => setDropdownOpen(false)}
+          className="hidden md:block absolute left-0 right-0 top-full overflow-hidden z-50"
           style={{
-            maxHeight:  dropdownOpen ? "380px" : "0px",
-            opacity:    dropdownOpen ? 1 : 0,
-            borderTop:  dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
-            transition: "max-height 0.28s ease, opacity 0.2s ease, border-color 0.25s",
+            maxHeight:        dropdownOpen ? "380px" : "0px",
+            opacity:          dropdownOpen ? 1 : 0,
+            backgroundColor:  "rgba(255,255,255,0.96)",
+            backdropFilter:   "saturate(180%) blur(24px)",
+            WebkitBackdropFilter: "saturate(180%) blur(24px)",
+            borderTop:        "1px solid rgba(209,213,219,0.45)",
+            borderBottom:     dropdownOpen ? "1px solid rgba(209,213,219,0.45)" : "1px solid transparent",
+            boxShadow:        dropdownOpen ? "0 8px 32px rgba(0,0,0,0.08)" : "none",
+            transition:       "max-height 0.28s ease, opacity 0.2s ease",
           }}
         >
           {/* Same 3-col grid as top row so content aligns under center nav */}
