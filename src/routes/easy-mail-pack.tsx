@@ -583,10 +583,7 @@ function LessonList() {
                         style={{ animation: "arrow-nudge 2.8s ease-in-out infinite", display: "inline-block" }}>▶️</span>
                     </button>
                   ) : (
-                    <span className="flex items-center gap-1.5 text-white/60">
-                      <span className="flex-shrink-0 w-4 h-4" />
-                      {l.name}
-                    </span>
+                    <span className="text-white/60">{l.name}</span>
                   )}
                 </li>
               ))}
