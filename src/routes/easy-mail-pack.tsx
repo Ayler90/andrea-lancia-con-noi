@@ -823,7 +823,7 @@ function ModuleGrid() {
         return (
           <div key={title}
             className={`rounded-xl overflow-hidden border border-[#156686]/10 bg-white group transition-transform duration-300 md:hover:-translate-y-1.5${isActive ? " -translate-y-1.5" : ""}`}
-            style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)" }}
+            style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)", touchAction: "manipulation" }}
             onClick={() => setActiveIndex(prev => prev === i ? null : i)}>
             <img src={img} alt={title} className="w-full aspect-video object-cover transition-transform duration-500 md:group-hover:scale-[1.03]" />
             <div className="px-4 py-3">
