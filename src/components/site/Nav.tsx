@@ -14,14 +14,14 @@ const percorsiSub = [
 
 const percorsiCategories = {
   percorsi: [
-    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀", desc: "Lancia il tuo primo prodotto online" },
-    { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint",        emoji: "🗺️", desc: "Costruisci un business solido e scalabile" },
-    { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter",      emoji: "✉️", desc: "Cresci con supporto diretto one-to-one" },
-    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯", desc: "Chiarezza e direzione in una sessione" },
+    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀", desc: "Percorso individuale di 3-4 mesi per lanciare il tuo servizio" },
+    { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint",        emoji: "🗺️", desc: "Mentoring di 12 mesi per creare un business solido" },
+    { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter",      emoji: "✉️", desc: "Mentoring di 1 mese e mezzo per lanciare la tua newsletter" },
+    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯", desc: "Sessione di 60 minuti per fare chiarezza" },
   ],
   corsi: [
-    { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", emoji: "📅", desc: "Pianifica ogni lancio senza stress", href: "/scarica-calendario-lancio" },
-    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        emoji: "📧", desc: "Email e newsletter che vendono davvero", href: "/easy-mail-pack" },
+    { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", emoji: "📅", desc: "Template Notion per organizzare il tuo lancio", href: "/scarica-calendario-lancio" },
+    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        emoji: "📧", desc: "Il mio video corso per creare la tua newsletter e usare le email nei lanci", href: "/easy-mail-pack" },
   ],
 };
 
@@ -216,7 +216,7 @@ export function Nav() {
               {/* Column: Percorsi */}
               <div className="w-80 flex-shrink-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Percorsi</p>
-                <ul className="flex flex-col gap-1">
+                <ul className="flex flex-col">
                   {percorsiCategories.percorsi.map((p) => (
                     <li key={p.slug}>
                       <button
@@ -237,7 +237,7 @@ export function Nav() {
               {/* Column: Corsi e Template */}
               <div className="w-72 flex-shrink-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Corsi e Template</p>
-                <ul className="flex flex-col gap-1">
+                <ul className="flex flex-col">
                   {percorsiCategories.corsi.map((p) => (
                     <li key={p.slug}>
                       <a
