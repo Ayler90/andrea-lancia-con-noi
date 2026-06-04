@@ -498,7 +498,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
             <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
           </div>
         )}
-        <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl leading-snug text-center">
+        <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.95)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}>
           {tooltip}
         </div>
         {!tooltipBelow && (
@@ -880,10 +880,10 @@ function EasyMailPack() {
             style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.08)" }}>
           <div className="flex items-stretch justify-center flex-nowrap gap-y-4">
             {[
-              { target: 90, suffix: "+", label: "Lezioni" },
-              { target: 21, suffix: "",  label: "Template" },
-              { target: 5,  suffix: "",  label: "Ore di formazione" },
-              { target: 2,  suffix: "",  label: "Bonus inclusi" },
+              { target: 90, suffix: "+", label: "Lezioni",            labelMobile: "Lezioni" },
+              { target: 21, suffix: "",  label: "Template",           labelMobile: "Template" },
+              { target: 5,  suffix: "",  label: "Ore di formazione",  labelMobile: "Ore" },
+              { target: 2,  suffix: "",  label: "Bonus inclusi",      labelMobile: "Bonus" },
             ].map((s, i) => (
               <>
                 {i > 0 && (
@@ -895,7 +895,7 @@ function EasyMailPack() {
                   <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(1.5rem, 7vw, 4rem)", fontVariantNumeric: "tabular-nums", minWidth: "2.5ch" }}>
                     <CountUp target={s.target} suffix={s.suffix} />
                   </p>
-                  <p className="text-xs md:text-sm text-foreground/65 mt-1">{s.label}</p>
+                  <p className="text-xs md:text-sm text-foreground/65 mt-1"><span className="md:hidden">{s.labelMobile}</span><span className="hidden md:inline">{s.label}</span></p>
                 </div>
               </>
             ))}
@@ -980,7 +980,7 @@ function EasyMailPack() {
 
             {/* ── Phone mockup ─────────────────────────────── */}
             <div className="flex justify-center">
-              <div className="relative w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
+              <div className="relative w-[180px] md:w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
                 {/* glow blob behind phone */}
                 <div className="absolute -inset-10 rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(196,217,220,0.55) 0%, rgba(255,255,255,0.25) 50%, transparent 75%)", filter: "blur(24px)", zIndex: 0 }} />
