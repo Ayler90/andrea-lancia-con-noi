@@ -221,7 +221,7 @@ export function Nav() {
                     <li key={p.slug}>
                       <button
                         onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                        className="flex items-start gap-3 py-2 px-2 text-left w-full cursor-pointer group rounded-lg hover:bg-[#156686]/5 transition-colors"
+                        className="flex items-start gap-3 py-2 px-2 text-left w-full cursor-pointer group rounded-lg hover:bg-[#156686]/10 transition-colors"
                       >
                         <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
                         <span className="min-w-0">
@@ -243,7 +243,7 @@ export function Nav() {
                       <a
                         href={p.href}
                         onClick={() => setDropdownOpen(false)}
-                        className="flex items-start gap-3 py-2 px-2 w-full group rounded-lg hover:bg-[#156686]/5 transition-colors"
+                        className="flex items-start gap-3 py-2 px-2 w-full group rounded-lg hover:bg-[#156686]/10 transition-colors"
                       >
                         <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
                         <span className="min-w-0">
