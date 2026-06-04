@@ -981,7 +981,8 @@ function EasyMailPack() {
 
             {/* ── Phone mockup ─────────────────────────────── */}
             <div className="flex justify-center">
-              <div className="relative w-[180px] md:w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
+              <div className="scale-[0.62] md:scale-100 origin-bottom">
+              <div className="relative w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
                 {/* glow blob behind phone */}
                 <div className="absolute -inset-10 rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(196,217,220,0.55) 0%, rgba(255,255,255,0.25) 50%, transparent 75%)", filter: "blur(24px)", zIndex: 0 }} />
@@ -1034,6 +1035,7 @@ function EasyMailPack() {
                 {/* subtle phone reflection */}
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-[#0c2330]/20 blur-xl rounded-full z-10" />
               </div>
+              </div>{/* scale wrapper */}
             </div>
 
             {/* ── Text column ──────────────────────────────── */}
