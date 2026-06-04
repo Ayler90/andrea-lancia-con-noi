@@ -483,12 +483,15 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
 
       {/* Mobile tooltip: above or below the image */}
       <div
-        className={`md:hidden absolute left-0 right-0 z-[100] pointer-events-none transition-opacity duration-300${
+        className={`md:hidden absolute left-0 right-0 z-[100] pointer-events-none${
           mobileOpen ? " opacity-100" : " opacity-0"
         }${tooltipBelow ? " top-full mt-2" : " bottom-full mb-2"}`}
         style={{
-          transform: `rotate(${tilt})`,
+          transform: mobileOpen
+            ? `rotate(${tilt}) translateY(0)`
+            : `rotate(${tilt}) translateY(${tooltipBelow ? "-6px" : "6px"})`,
           transformOrigin: tooltipBelow ? "center top" : "center bottom",
+          transition: "opacity 0.3s ease, transform 0.3s ease",
         }}
       >
         {/* Arrow pointing toward image */}
