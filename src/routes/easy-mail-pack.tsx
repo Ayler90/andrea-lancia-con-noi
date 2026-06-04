@@ -488,7 +488,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
       <div className={`mobile-tooltip md:hidden absolute left-0 right-0 bottom-full mb-2 z-[100]${mobileOpen && !showBelow ? " is-open" : ""}`}
         style={{ transform: `rotate(${tilt})`, transformOrigin: "center bottom" }}>
         <div key={animKey} className="mobile-tooltip-inner">
-          <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)" }}>{tooltip}</div>
+          <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "#0c2330", boxShadow: "0 4px 20px rgba(0,0,0,0.35)" }}>{tooltip}</div>
           <div className="flex justify-center">
             <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderTop: "7px solid #0c2330" }} />
           </div>
@@ -502,7 +502,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
           <div className="flex justify-center">
             <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
           </div>
-          <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)" }}>{tooltip}</div>
+          <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "#0c2330", boxShadow: "0 4px 20px rgba(0,0,0,0.35)" }}>{tooltip}</div>
         </div>
       </div>
     </div>
