@@ -132,7 +132,7 @@ export function Nav() {
               l.label === "I miei percorsi" ? (
                 <button
                   key="percorsi-trigger"
-                  onMouseEnter={() => setDropdownOpen(true)}
+                  onMouseEnter={() => { if (!dropdownOpen) setDropdownOpen(true); }}
                   className="inline-flex items-center gap-1 text-sm text-foreground/80 relative pb-0.5 whitespace-nowrap cursor-pointer"
                 >
                   {l.label}
@@ -195,7 +195,6 @@ export function Nav() {
         {/* backdrop-filter works because the header's blur is on a child div, not the header itself */}
         <div
           className="hidden md:block absolute left-0 right-0 top-full"
-          onMouseEnter={() => setDropdownOpen(true)}
           style={{
             opacity:       dropdownOpen ? 1 : 0,
             pointerEvents: dropdownOpen ? "auto" : "none",
