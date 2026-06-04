@@ -1444,7 +1444,7 @@ function EasyMailPack() {
                       ))}
                     </ul>
                   </div>
-                  <a href={PURCHASE_URL} target="_blank" rel="noreferrer"
+                  <a href={PURCHASE_URL}
                     onClick={() => trackCta("pricing-acquista-mobile")}
                     className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center whitespace-nowrap">
                     Acquista ora a 129€ →
@@ -1489,7 +1489,7 @@ function EasyMailPack() {
                     <span className="text-5xl font-bold text-[#156686]">129€</span>
                     <span className="text-foreground/40 text-sm mt-1 mb-2">una tantum</span>
                     <span className="text-foreground/40 text-xs mb-8">Accesso a vita</span>
-                    <a href={PURCHASE_URL} target="_blank" rel="noreferrer"
+                    <a href={PURCHASE_URL}
                       onClick={() => trackCta("pricing-acquista-desktop")}
                       className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 text-center block w-full">
                       Acquista ora a 129€ →
