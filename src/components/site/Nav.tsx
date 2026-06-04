@@ -84,7 +84,7 @@ export function Nav() {
             per creare il tuo primo, o prossimo, lancio.
           </p>
           <a
-            href="/#newsletter"
+            href={(isCalendarioPage || isEasyMailPage) ? "#newsletter" : "/#newsletter"}
             className="flex-shrink-0 inline-flex items-center gap-1 text-xs font-semibold bg-primary text-primary-foreground px-4 py-1.5 rounded-full hover:bg-primary/90 transition-colors whitespace-nowrap"
           >
             Scarica ora
