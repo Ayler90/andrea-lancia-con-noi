@@ -6,10 +6,10 @@ import posthog from "posthog-js";
 const percorsiSub = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
   { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", href: "/scarica-calendario-lancio" },
+  { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack", href: "/easy-mail-pack" },
   { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
   { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
   { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
-  { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack", href: "/easy-mail-pack" },
 ];
 
 const percorsiCategories = {
