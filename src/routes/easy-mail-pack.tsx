@@ -1290,7 +1290,7 @@ function EasyMailPack() {
 
           {/* unlocked lessons badge */}
           <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em]"
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.12em] text-center"
               style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.25)", color: "#C4D9DC" }}>
               🔓
               Come regalo, ti ho sbloccato alcune lezioni – hanno questo simbolo
