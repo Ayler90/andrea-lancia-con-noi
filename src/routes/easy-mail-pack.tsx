@@ -1425,7 +1425,7 @@ function EasyMailPack() {
                 <div className="px-8">
                   <div className="flex items-baseline gap-2 justify-center mb-10">
                     <span className="text-5xl font-bold text-[#156686]">129€</span>
-                    <span className="text-foreground/40 text-sm">IVA inclusa · una tantum</span>
+                    <span className="text-foreground/40 text-sm">una tantum</span>
                   </div>
                   <div className="text-left max-w-xs mx-auto mb-8">
                     <p className="text-xs font-semibold text-foreground/50 uppercase tracking-[0.15em] mb-4">Cosa ricevi</p>
@@ -1487,7 +1487,7 @@ function EasyMailPack() {
                   <div className="w-px bg-foreground/10 mx-4 self-stretch" />
                   <div className="w-72 flex-shrink-0 pl-12 flex flex-col justify-center items-center text-center">
                     <span className="text-5xl font-bold text-[#156686]">129€</span>
-                    <span className="text-foreground/40 text-sm mt-1 mb-2">IVA inclusa · una tantum</span>
+                    <span className="text-foreground/40 text-sm mt-1 mb-2">una tantum</span>
                     <span className="text-foreground/40 text-xs mb-8">Accesso a vita</span>
                     <a href={PURCHASE_URL} target="_blank" rel="noreferrer"
                       onClick={() => trackCta("pricing-acquista-desktop")}
@@ -1504,15 +1504,13 @@ function EasyMailPack() {
 
           {/* ── GARANZIA ── */}
           <div className="mt-10 bg-white/5 border border-white/20 rounded-2xl px-8 py-7">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 mb-3">
               <img src={imgPalline} alt="Garanzia" className="w-16 h-16 flex-shrink-0 rounded-xl object-cover" />
-              <div>
-                <p className="font-semibold text-white mb-2">Voglio che il tuo acquisto sia consapevole.</p>
-                <p className="text-sm text-white/65 leading-relaxed">
-                  Quindi, puoi sempre richiedere il rimborso entro <strong className="text-white/85">14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia. Se non sei soddisfatto per qualsiasi motivo, puoi richiedermi il rimborso e ti darò indietro fino all'ultimo centesimo.
-                </p>
-              </div>
+              <p className="font-semibold text-white">Voglio che il tuo acquisto sia consapevole.</p>
             </div>
+            <p className="text-sm text-white/65 leading-relaxed">
+              Quindi, puoi sempre richiedere il rimborso entro <strong className="text-white/85">14 giorni</strong> dall'acquisto. Non ho alcun problema a darti questa garanzia. Se non sei soddisfatto per qualsiasi motivo, puoi richiedermi il rimborso e ti darò indietro fino all'ultimo centesimo.
+            </p>
           </div>
 
         </div>
