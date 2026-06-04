@@ -1122,6 +1122,38 @@ function EasyMailPack() {
         </div>
       </section>
 
+// ── ModuleGrid ────────────────────────────────────────────────────────────────
+const MODULE_CARDS = [
+  { title: "Crea la tua newsletter",           img: imgCreaNL },
+  { title: "Dai vita al form di iscrizione",   img: imgForm },
+  { title: "Ora tocca alle automazioni",       img: imgAutomazioni },
+  { title: "Crea la tua landing page",         img: imgLanding },
+  { title: "Struttura un lancio con le email", img: imgLancio },
+  { title: "Profila i tuoi contatti",          img: imgProfila },
+];
+
+function ModuleGrid() {
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+      {MODULE_CARDS.map(({ title, img }, i) => {
+        const isActive = activeIndex === i;
+        return (
+          <div key={title}
+            className={`rounded-xl overflow-hidden border border-[#156686]/10 bg-white group transition-transform duration-300 md:hover:-translate-y-1.5${isActive ? " -translate-y-1.5" : ""}`}
+            style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)" }}
+            onClick={() => setActiveIndex(prev => prev === i ? null : i)}>
+            <img src={img} alt={title} className="w-full aspect-video object-cover transition-transform duration-500 md:group-hover:scale-[1.03]" />
+            <div className="px-4 py-3">
+              <p className="text-sm font-semibold text-foreground/85">{title}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
       {/* ── PERCHÉ EASY-MAIL PACK ESISTE ──────────────────────────────────── */}
       <section className="py-16 md:py-20 px-2 md:px-4 bg-[#EEF3F5] relative overflow-hidden">
         <div className="absolute w-[600px] h-[600px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
@@ -1151,24 +1183,7 @@ function EasyMailPack() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            {[
-              { title: "Crea la tua newsletter",       img: imgCreaNL },
-              { title: "Dai vita al form di iscrizione", img: imgForm },
-              { title: "Ora tocca alle automazioni",   img: imgAutomazioni },
-              { title: "Crea la tua landing page",     img: imgLanding },
-              { title: "Struttura un lancio con le email", img: imgLancio },
-              { title: "Profila i tuoi contatti",      img: imgProfila },
-            ].map(({ title, img }) => (
-              <div key={title} className="rounded-xl overflow-hidden border border-[#156686]/10 bg-white group transition-transform duration-300 md:hover:-translate-y-1.5 active:-translate-y-1.5"
-                style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)" }}>
-                <img src={img} alt={title} className="w-full aspect-video object-cover transition-transform duration-500 md:group-hover:scale-[1.03]" />
-                <div className="px-4 py-3">
-                  <p className="text-sm font-semibold text-foreground/85">{title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ModuleGrid />
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
