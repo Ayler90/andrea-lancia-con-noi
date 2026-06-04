@@ -9,7 +9,7 @@ const percorsiSub = [
   { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
   { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
   { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
-  { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack" },
+  { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack", href: "/easy-mail-pack" },
 ];
 
 const percorsiCategories = {
