@@ -469,14 +469,14 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
       {isLeft ? (
         <div className="tooltip-bubble tooltip-arrow-right hidden md:flex absolute right-full top-1/2 -translate-y-1/2 mr-4 z-30 pointer-events-none items-center"
           style={{ rotate: tilt, transformOrigin: "right center" }}>
-          <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug">{tooltip}</div>
+          <div className="text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug" style={{ backgroundColor: "rgba(12,35,48,0.97)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>{tooltip}</div>
           <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderLeft: "7px solid #0c2330", flexShrink: 0 }} />
         </div>
       ) : (
         <div className="tooltip-bubble tooltip-arrow-left hidden md:flex absolute left-full top-1/2 -translate-y-1/2 ml-4 z-30 pointer-events-none items-center"
           style={{ rotate: tilt, transformOrigin: "left center" }}>
           <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderRight: "7px solid #0c2330", flexShrink: 0 }} />
-          <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug">{tooltip}</div>
+          <div className="text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug" style={{ backgroundColor: "rgba(12,35,48,0.97)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>{tooltip}</div>
         </div>
       )}
 
@@ -498,7 +498,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
             <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
           </div>
         )}
-        <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.95)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}>
+        <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
           {tooltip}
         </div>
         {!tooltipBelow && (
