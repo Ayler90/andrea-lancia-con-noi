@@ -444,7 +444,9 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
   const handleClick = () => {
     if (cardRef.current) {
       const rect = cardRef.current.getBoundingClientRect();
-      setTooltipBelow(rect.top < window.innerHeight / 2);
+      const isBottomCard = pos.startsWith("bottom");
+      // Bottom cards: always show tooltip above to avoid overlapping CTAs below
+      setTooltipBelow(isBottomCard ? false : rect.top < window.innerHeight / 2);
     }
     onToggle();
   };
