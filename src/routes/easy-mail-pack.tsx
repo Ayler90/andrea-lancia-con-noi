@@ -452,7 +452,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
   return (
     <div
       ref={cardRef}
-      className={`group relative transition-opacity duration-200${isDimmed ? " opacity-40 pointer-events-none" : ""}`}
+      className={`group relative transition-opacity duration-200${isDimmed ? " opacity-40" : ""}`}
       style={{ isolation: "isolate" }}
       onClick={handleClick}
     >
