@@ -483,13 +483,13 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
 
       {/* Mobile tooltip: above or below the image */}
       <div
-        className={`md:hidden absolute left-0 right-0 z-[100] pointer-events-none transition-all duration-300${
+        className={`md:hidden absolute left-1/2 -translate-x-1/2 z-[100] pointer-events-none transition-all duration-300 w-[85%]${
           mobileOpen ? " opacity-100" : " opacity-0"
         }${tooltipBelow ? " top-full mt-2" : " bottom-full mb-2"}`}
         style={{
           transform: mobileOpen
-            ? `rotate(${tilt}) translateY(0)`
-            : `rotate(${tilt}) translateY(${tooltipBelow ? "-8px" : "8px"})`,
+            ? `translateX(-50%) translateY(0)`
+            : `translateX(-50%) translateY(${tooltipBelow ? "-8px" : "8px"})`,
           transformOrigin: tooltipBelow ? "center top" : "center bottom",
         }}
       >
@@ -499,7 +499,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
             <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
           </div>
         )}
-        <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
+        <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)" }}>
           {tooltip}
         </div>
         {!tooltipBelow && (
