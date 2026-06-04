@@ -459,7 +459,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
       <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
         <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
-          <span className="inline-flex items-center border border-[#C4D9DC]/60 bg-[#156686]/80 text-[#C4D9DC] text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full">
+          <span className="inline-flex items-center border border-[#C4D9DC]/60 bg-[#156686]/80 text-[#C4D9DC] text-[9px] md:text-[11px] font-semibold uppercase tracking-[0.10em] px-2.5 py-1 rounded-full">
             {badge}
           </span>
         </div>
@@ -949,10 +949,10 @@ function EasyMailPack() {
 
           {/* lesson images row */}
           <LessonGrid cards={[
-            { src: lezione2, badge: "Crea la tua lista e mantienila attiva", tooltip: "L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc).", pos: "top-left" },
-            { src: lezione3, badge: "Configura le piattaforme, anche se parti da 0", tooltip: "Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno.", pos: "top-right" },
-            { src: lezione4, badge: "Profila chi si iscrive alle tue liste", tooltip: "Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro).", pos: "bottom-left" },
-            { src: lezione5, badge: "Crea strategie di lancio con le email", tooltip: "Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare.", pos: "bottom-right" },
+            { src: lezione2, badge: "Crea e mantieni la tua lista", tooltip: "L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc).", pos: "top-left" },
+            { src: lezione3, badge: "Configura le piattaforme", tooltip: "Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno.", pos: "top-right" },
+            { src: lezione4, badge: "Profila chi si iscrive", tooltip: "Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro).", pos: "bottom-left" },
+            { src: lezione5, badge: "Email nei tuoi lanci", tooltip: "Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare.", pos: "bottom-right" },
           ]} />
 
           {/* CTAs */}
