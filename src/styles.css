@@ -411,20 +411,23 @@
 
 /* Arrow points RIGHT (tooltip left of card) — sways up/down */
 @keyframes tooltip-float-arrowright {
-  0%,100% { transform: scale(1) rotate(0deg) translateY(0); }
-  30%     { transform: scale(1) rotate(-2deg) translateY(-4px); }
-  70%     { transform: scale(1) rotate(2deg) translateY(4px); }
+  0%,100% { transform: rotate(0deg); }
+  30%     { transform: rotate(-3deg); }
+  70%     { transform: rotate(3deg); }
 }
 
 /* Arrow points LEFT (tooltip right of card) — sways up/down */
 @keyframes tooltip-float-arrowleft {
-  0%,100% { transform: scale(1) rotate(0deg) translateY(0); }
-  30%     { transform: scale(1) rotate(2deg) translateY(4px); }
-  70%     { transform: scale(1) rotate(-2deg) translateY(-4px); }
+  0%,100% { transform: rotate(0deg); }
+  30%     { transform: rotate(2deg); }
+  70%     { transform: rotate(-2deg); }
 }
 
 .tooltip-bubble { opacity: 0; }
 .group:hover .tooltip-bubble { opacity: 1; }
+
+.tooltip-bubble.tooltip-arrow-right { transform-origin: right center; }
+.tooltip-bubble.tooltip-arrow-left  { transform-origin: left center; }
 
 .group:hover .tooltip-bubble.tooltip-arrow-right {
   animation: tooltip-pop 0.85s ease forwards,
