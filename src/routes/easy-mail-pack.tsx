@@ -439,17 +439,10 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
   const tilt = isLeft ? "-3deg" : "3deg";
 
   const cardRef = React.useRef<HTMLDivElement>(null);
-  const [tooltipBelow, setTooltipBelow] = React.useState(true);
+  // Bottom cards always show tooltip above; top cards always below
+  const tooltipBelow = !pos.startsWith("bottom");
 
-  const handleClick = () => {
-    if (cardRef.current) {
-      const rect = cardRef.current.getBoundingClientRect();
-      const isBottomCard = pos.startsWith("bottom");
-      // Bottom cards: always show tooltip above to avoid overlapping CTAs below
-      setTooltipBelow(isBottomCard ? false : rect.top < window.innerHeight / 2);
-    }
-    onToggle();
-  };
+  const handleClick = () => { onToggle(); };
 
   return (
     <div
