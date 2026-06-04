@@ -1528,7 +1528,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── NEWSLETTER ────────────────────────────────────────────────────── */}
-      <Newsletter />
+      <div id="newsletter"><Newsletter /></div>
 
       <Footer />
     </main>
