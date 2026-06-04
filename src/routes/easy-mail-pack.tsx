@@ -816,7 +816,7 @@ function EasyMailPack() {
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-5 md:px-4">
+      <section className="relative overflow-hidden py-20 md:py-28 px-2 md:px-4">
         {/* glow orbs — z-index 0 so they sit behind all content */}
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
           style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />
@@ -906,7 +906,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PROBLEMA ──────────────────────────────────────────────────────── */}
-      <section className="relative py-20 md:py-28 px-5 md:px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
+      <section className="relative py-20 md:py-28 px-2 md:px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
         {/* glow orbs — overflow-hidden on inner wrapper, not section, so tooltips can escape */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-[600px] h-[600px] rounded-full"
@@ -972,7 +972,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PAIN POINTS: Instagram mockup + testo ───────────────────────── */}
-      <section className="pt-6 pb-16 md:py-24 px-5 md:px-4 bg-white">
+      <section className="pt-12 pb-16 md:py-24 px-2 md:px-4 bg-white">
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
@@ -1123,7 +1123,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PERCHÉ EASY-MAIL PACK ESISTE ──────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-5 md:px-4 bg-[#EEF3F5] relative overflow-hidden">
+      <section className="py-16 md:py-20 px-2 md:px-4 bg-[#EEF3F5] relative overflow-hidden">
         <div className="absolute w-[600px] h-[600px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
           style={{ top: "-10%", left: "-8%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/15 blur-3xl pointer-events-none"
@@ -1188,7 +1188,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PER CHI È ─────────────────────────────────────────────────────── */}
-      <section id="per-chi" className="py-16 md:py-20 px-5 md:px-4">
+      <section id="per-chi" className="py-16 md:py-20 px-2 md:px-4">
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Per chi è Easy-Mail Pack?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
@@ -1261,7 +1261,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── LISTA COMPLETA LEZIONI ────────────────────────────────────────── */}
-      <section id="lezioni" className="py-16 md:py-20 px-5 md:px-4 relative overflow-hidden" style={{ backgroundColor: "#156686" }} data-cursor-light>
+      <section id="lezioni" className="py-16 md:py-20 px-2 md:px-4 relative overflow-hidden" style={{ backgroundColor: "#156686" }} data-cursor-light>
         {/* parallax diagonal lesson images in background */}
         <ParallaxLessonBg />
         {/* dark overlay */}
@@ -1291,7 +1291,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── BONUS ─────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-5 md:px-4 bg-[#EEF3F5]">
+      <section className="py-16 md:py-20 px-2 md:px-4 bg-[#EEF3F5]">
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Extra</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
@@ -1356,7 +1356,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PRICING ───────────────────────────────────────────────────────── */}
-      <section id="form" className="py-16 md:py-20 px-5 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
+      <section id="form" className="py-16 md:py-20 px-2 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
         {/* Glow orbs */}
         <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
           style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
@@ -1500,7 +1500,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-5 md:px-4">
+      <section className="py-16 md:py-20 px-2 md:px-4">
         <div className="container-narrow max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Domande frequenti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-10">
