@@ -769,10 +769,17 @@ const REC_IMGS = [recEmp1, recEmp2, recEmp3, recEmp4, recEmp5, recEmp6, recEmp7,
 function ScrollReviews() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     const handler = () => {
-      if (!sectionRef.current) return;
+      if (!sectionRef.current || isMobile) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const progress = -rect.top / (rect.height + window.innerHeight);
       setOffset(progress * 300);
@@ -780,7 +787,7 @@ function ScrollReviews() {
     window.addEventListener("scroll", handler, { passive: true });
     handler();
     return () => window.removeEventListener("scroll", handler);
-  }, []);
+  }, [isMobile]);
 
   const row1 = [...REC_IMGS, ...REC_IMGS];
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
@@ -794,7 +801,7 @@ function ScrollReviews() {
       {[row1, row2].map((row, ri) => (
         <div key={ri}
           className={`flex gap-5 ${ri === 0 ? "marquee-left" : "marquee-right"}`}
-          style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
+          style={isMobile ? { width: "max-content" } : { transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
             <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
               className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />
