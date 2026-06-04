@@ -14,14 +14,14 @@ const percorsiSub = [
 
 const percorsiCategories = {
   percorsi: [
-    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀", desc: "Percorso individuale di 3-4 mesi per lanciare il tuo servizio" },
+    { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀", desc: "Percorso 1:1 di 3-4 mesi per lanciare il tuo servizio" },
     { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint",        emoji: "🗺️", desc: "Mentoring di 12 mesi per creare un business solido" },
     { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter",      emoji: "✉️", desc: "Mentoring di 1 mese e mezzo per lanciare la tua newsletter" },
     { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯", desc: "Sessione di 60 minuti per fare chiarezza" },
   ],
   corsi: [
     { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", emoji: "📅", desc: "Template Notion per organizzare il tuo lancio", href: "/scarica-calendario-lancio" },
-    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        emoji: "📧", desc: "Il mio video corso per creare la tua newsletter e usare le email nei lanci", href: "/easy-mail-pack" },
+    { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack",        emoji: "📧", desc: "Video corso per creare la tua newsletter e usare le email nei lanci", href: "/easy-mail-pack" },
   ],
 };
 
@@ -225,7 +225,7 @@ export function Nav() {
                         <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
                         <span className="min-w-0">
                           <span className="block text-sm font-semibold text-foreground/85 group-hover:text-foreground transition-colors whitespace-nowrap">{p.label}</span>
-                          <span className="block text-xs text-foreground/50 mt-0.5 whitespace-nowrap">{p.desc}</span>
+                          <span className="block text-xs text-foreground/50 mt-0.5">{p.desc}</span>
                         </span>
                       </button>
                     </li>
@@ -247,7 +247,7 @@ export function Nav() {
                         <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
                         <span className="min-w-0">
                           <span className="block text-sm font-semibold text-foreground/85 group-hover:text-foreground transition-colors whitespace-nowrap">{p.label}</span>
-                          <span className="block text-xs text-foreground/50 mt-0.5 whitespace-nowrap">{p.desc}</span>
+                          <span className="block text-xs text-foreground/50 mt-0.5">{p.desc}</span>
                         </span>
                       </a>
                     </li>
