@@ -435,6 +435,19 @@
              tooltip-float-arrowleft 4.5s ease-in-out 0.85s infinite;
 }
 
+/* Phone mockup — scale down on mobile without layout gap */
+@media (max-width: 767px) {
+  .phone-mockup-mobile {
+    transform: scale(0.6);
+    transform-origin: top center;
+    margin-bottom: -195px;
+  }
+}
+
+/* Mobile lesson card tooltips */
+.mobile-tooltip { opacity: 0; pointer-events: none; }
+.mobile-tooltip.is-open { animation: tooltip-pop 0.85s ease forwards; }
+
 /* Guida stacked images — two-level: wrapper spreads, img floats */
 .guide-stack { position: relative; }
 .guide-wrapper {

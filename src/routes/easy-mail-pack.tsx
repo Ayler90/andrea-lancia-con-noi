@@ -483,19 +483,19 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
         </div>
       )}
 
-      {/* Mobile tooltip ABOVE — fixed at bottom-full, only opacity changes */}
-      <div className="md:hidden absolute left-0 right-0 bottom-full mb-2 z-[100] pointer-events-none"
-        style={{ transform: `rotate(${tilt})`, transformOrigin: "center bottom", opacity: (mobileOpen && !showBelow) ? 1 : 0, transition: "opacity 0.25s ease" }}>
+      {/* Mobile tooltip ABOVE */}
+      <div className={`mobile-tooltip md:hidden absolute left-0 right-0 bottom-full mb-2 z-[100]${mobileOpen && !showBelow ? " is-open" : ""}`}
+        style={{ transform: `rotate(${tilt})`, transformOrigin: "center bottom" }}>
         <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)" }}>{tooltip}</div>
-        <div className="flex justify-center mt-0">
+        <div className="flex justify-center">
           <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderTop: "7px solid #0c2330" }} />
         </div>
       </div>
 
-      {/* Mobile tooltip BELOW — fixed at top-full, only opacity changes */}
-      <div className="md:hidden absolute left-0 right-0 top-full mt-2 z-[100] pointer-events-none"
-        style={{ transform: `rotate(${tilt})`, transformOrigin: "center top", opacity: (mobileOpen && showBelow) ? 1 : 0, transition: "opacity 0.25s ease" }}>
-        <div className="flex justify-center mb-0">
+      {/* Mobile tooltip BELOW */}
+      <div className={`mobile-tooltip md:hidden absolute left-0 right-0 top-full mt-2 z-[100]${mobileOpen && showBelow ? " is-open" : ""}`}
+        style={{ transform: `rotate(${tilt})`, transformOrigin: "center top" }}>
+        <div className="flex justify-center">
           <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
         </div>
         <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)" }}>{tooltip}</div>
@@ -969,11 +969,12 @@ function EasyMailPack() {
       {/* ── PAIN POINTS: Instagram mockup + testo ───────────────────────── */}
       <section className="pt-6 pb-16 md:py-24 px-5 md:px-4 bg-white">
         <div className="container-narrow">
-          <div className="grid grid-cols-[42%_58%] md:grid-cols-2 gap-4 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
             {/* ── Phone mockup ─────────────────────────────── */}
-            <div className="flex justify-center overflow-hidden">
-              <div className="relative w-[280px] flex-shrink-0" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
+            <div className="flex justify-center">
+              <div className="phone-mockup-mobile">
+              <div className="relative w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
                 {/* glow blob behind phone */}
                 <div className="absolute -inset-10 rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(196,217,220,0.55) 0%, rgba(255,255,255,0.25) 50%, transparent 75%)", filter: "blur(24px)", zIndex: 0 }} />
@@ -1026,6 +1027,7 @@ function EasyMailPack() {
                 {/* subtle phone reflection */}
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-[#0c2330]/20 blur-xl rounded-full z-10" />
               </div>
+              </div>{/* phone-mockup-mobile */}
             </div>
 
             {/* ── Text column ──────────────────────────────── */}
