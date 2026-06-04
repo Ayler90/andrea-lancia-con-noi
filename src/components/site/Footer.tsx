@@ -10,7 +10,7 @@ const percorsi = [
 ];
 
 const corsi = [
-  { filter: "newsletter", slug: "easy-mail-pack",   label: "Easy-Mail Pack" },
+  { filter: "newsletter", slug: "easy-mail-pack",   label: "Easy-Mail Pack", href: "/easy-mail-pack" },
   { filter: "lancio",     slug: "calendario-lancio", label: "Calendario di Lancio", href: "/scarica-calendario-lancio" },
 ];
 
