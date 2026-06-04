@@ -769,3 +769,255 @@ function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suf
 ```
 - Divisori verticali `w-px h-8 bg-[#156686]/30`, visibili solo su desktop (`hidden md:flex`)
 - Numeri con `clamp(2.5rem, 5vw, 4rem)` per dimensione responsive
+
+---
+
+## 24. Fumetti tooltip (LessonCard)
+
+Fumetti che appaiono accanto alle card immagine, con freccia che punta alla card.
+
+### Desktop
+Appare al hover, fuori dal bordo della card. Colonna sinistra → fumetto a sinistra con freccia destra; colonna destra → fumetto a destra con freccia sinistra.
+
+```tsx
+{/* Colonna SINISTRA — fumetto a sinistra, freccia punta a destra */}
+<div className="tooltip-bubble tooltip-arrow-right hidden md:flex absolute right-full top-1/2 -translate-y-1/2 mr-4 z-30 pointer-events-none items-center"
+  style={{ rotate: "-3deg", transformOrigin: "right center" }}>
+  <div className="text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug"
+    style={{ backgroundColor: "rgba(12,35,48,0.97)", backdropFilter: "blur(12px)" }}>
+    Testo tooltip
+  </div>
+  {/* Freccia → */}
+  <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderLeft: "7px solid #0c2330", flexShrink: 0 }} />
+</div>
+
+{/* Colonna DESTRA — fumetto a destra, freccia punta a sinistra */}
+<div className="tooltip-bubble tooltip-arrow-left hidden md:flex absolute left-full top-1/2 -translate-y-1/2 ml-4 z-30 pointer-events-none items-center"
+  style={{ rotate: "3deg", transformOrigin: "left center" }}>
+  {/* Freccia ← */}
+  <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderRight: "7px solid #0c2330", flexShrink: 0 }} />
+  <div className="text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug"
+    style={{ backgroundColor: "rgba(12,35,48,0.97)", backdropFilter: "blur(12px)" }}>
+    Testo tooltip
+  </div>
+</div>
+```
+
+**Animazioni desktop** (in `styles.css`):
+- `.tooltip-bubble` → `opacity: 0` di default
+- `.group:hover .tooltip-bubble` → `opacity: 1`
+- `.tooltip-bubble.tooltip-arrow-right` → `transform-origin: right center` (pivot sulla punta della freccia)
+- `.tooltip-bubble.tooltip-arrow-left` → `transform-origin: left center`
+- Al hover: `tooltip-pop 0.85s ease forwards` poi `tooltip-float-arrowright/left 4-4.5s ease-in-out infinite`
+- `tooltip-float-*`: pura rotazione ±3deg attorno al pivot (niente translateY)
+
+### Mobile
+Appare al tap. Si posiziona sopra o sotto la card in base alla posizione nel viewport. La card attiva prende `z-10` per evitare che le card con `opacity-40` vicine la coprano (stacking context).
+
+```tsx
+{/* Card wrapper */}
+<div className={`group relative${isDimmed ? " opacity-40" : ""}${mobileOpen ? " z-10" : ""}`}>
+
+  {/* Fumetto SOPRA */}
+  <div className={`mobile-tooltip md:hidden absolute left-0 right-0 bottom-full mb-2 z-[100]${mobileOpen && !showBelow ? " is-open" : ""}`}
+    style={{ transform: "rotate(-3deg)", transformOrigin: "center bottom" }}>
+    <div key={animKey} className="mobile-tooltip-inner">
+      <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center"
+        style={{ backgroundColor: "#0c2330", boxShadow: "0 4px 20px rgba(0,0,0,0.35)" }}>
+        Testo tooltip
+      </div>
+      {/* Freccia ↓ */}
+      <div className="flex justify-center">
+        <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderTop: "7px solid #0c2330" }} />
+      </div>
+    </div>
+  </div>
+
+  {/* Fumetto SOTTO */}
+  <div className={`mobile-tooltip md:hidden absolute left-0 right-0 top-full mt-2 z-[100]${mobileOpen && showBelow ? " is-open" : ""}`}
+    style={{ transform: "rotate(-3deg)", transformOrigin: "center top" }}>
+    <div key={animKey} className="mobile-tooltip-inner">
+      {/* Freccia ↑ */}
+      <div className="flex justify-center">
+        <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
+      </div>
+      <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center"
+        style={{ backgroundColor: "#0c2330", boxShadow: "0 4px 20px rgba(0,0,0,0.35)" }}>
+        Testo tooltip
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Logica posizionamento mobile:**
+```tsx
+const [showBelow, setShowBelow] = useState(pos !== "bottom-right");
+const [animKey, setAnimKey]     = useState(0);
+
+const handleClick = () => {
+  if (!mobileOpen) {
+    if (pos === "bottom-right") setShowBelow(false); // sempre sopra
+    else if (cardRef.current)
+      setShowBelow(cardRef.current.getBoundingClientRect().top < window.innerHeight / 2);
+    setAnimKey(k => k + 1); // forza remount per riavviare animazione
+  }
+  onToggle();
+};
+```
+
+**CSS mobile** (in `styles.css`):
+```css
+.mobile-tooltip { visibility: hidden; pointer-events: none; }
+.mobile-tooltip.is-open { visibility: visible; }
+.mobile-tooltip.is-open .mobile-tooltip-inner { animation: tooltip-pop 0.85s ease forwards; }
+```
+Usare `visibility` (non `opacity`) per evitare trasparenza parziale durante l'animazione pop.
+
+---
+
+## 25. Slider recensioni — marquee infinito mobile
+
+La versione mobile dello slider usa CSS animation invece di scroll-driven (che conflitterebbe).
+
+```tsx
+function ScrollReviews() {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // scroll handler: bail early su mobile
+  useEffect(() => {
+    const handler = () => {
+      if (!sectionRef.current || isMobile) return;
+      // ... calcola offset scroll-driven
+    };
+    window.addEventListener("scroll", handler, { passive: true });
+  }, [isMobile]);
+
+  return (
+    <div className="overflow-hidden space-y-5">
+      {[row1, row2].map((row, ri) => (
+        <div key={ri}
+          className={`flex gap-5 ${ri === 0 ? "marquee-left" : "marquee-right"}`}
+          style={isMobile
+            ? { width: "max-content" }  // nessun transform inline su mobile
+            : { transform: `translateX(${...}px)`, width: "max-content" }}>
+          {row.map((src, i) => <img key={i} className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />)}
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**CSS** (in `styles.css`):
+```css
+@keyframes marquee-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+@media (max-width: 767px) {
+  .marquee-left  { animation: marquee-left  35s linear infinite; }
+  .marquee-right { animation: marquee-right 35s linear infinite; }
+}
+```
+
+**Regola critica:** non applicare mai `transform` inline e CSS animation contemporaneamente — la CSS animation vince ma il risultato è imprevedibile. Usare `isMobile` per escludere uno dei due meccanismi.
+
+Il doppio array (`[...REC_IMGS, ...REC_IMGS]`) serve perché l'animazione scorre del 50% — la seconda metà è identica alla prima per il loop seamless.
+
+---
+
+## 26. Phone mockup — scaling mobile senza spazio bianco
+
+`transform: scale()` preserva lo spazio layout originale. Per ridurre il mockup su mobile senza lasciare spazio bianco, si usa `margin-bottom` negativo.
+
+```css
+@media (max-width: 767px) {
+  .phone-mockup-mobile {
+    transform: scale(0.6);
+    transform-origin: top center;
+    margin-bottom: -195px; /* compensa lo spazio layout residuo */
+  }
+}
+```
+
+Il valore `-195px` dipende dall'altezza originale del mockup (≈488px): `488 * (1 - 0.6) / 2 ≈ 195px`. Ricalcolare se cambia l'altezza del mockup.
+
+**Struttura JSX:**
+```tsx
+<div className="phone-mockup-mobile"> {/* classe CSS con scale mobile */}
+  <div className="relative w-[280px]"
+    style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
+    {/* contenuto mockup */}
+  </div>
+</div>
+```
+
+---
+
+## 27. ModuleGrid — card con tap-toggle su mobile
+
+Le card mostrano un effetto lift al click su mobile (stesso del hover desktop), senza ingrandimento immagine interno.
+
+```tsx
+function ModuleGrid() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+      {MODULE_CARDS.map(({ title, img }, i) => {
+        const isActive = activeIndex === i;
+        return (
+          <div key={title}
+            className={`rounded-xl overflow-hidden border border-[#156686]/10 bg-white group transition-transform duration-300 md:hover:-translate-y-1.5${isActive ? " -translate-y-1.5" : ""}`}
+            style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)", touchAction: "manipulation" }}
+            onClick={() => setActiveIndex(prev => prev === i ? null : i)}>
+            <img src={img} alt={title} className="w-full aspect-video object-cover transition-transform duration-500 md:group-hover:scale-[1.03]" />
+            <div className="px-4 py-3">
+              <p className="text-sm font-semibold text-foreground/85">{title}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+```
+
+**Regole:**
+- `touchAction: "manipulation"` rimuove il delay di 300ms al tap su mobile
+- Hover scale immagine (`md:group-hover:scale-[1.03]`) solo su desktop — niente zoom su mobile
+- Lift (`-translate-y-1.5`) attivo sia su `md:hover` (desktop) che su `.isActive` (mobile tap)
+- Click ri-clicca per deselezionare (toggle: `prev === i ? null : i`)
+
+---
+
+## 28. Box garanzia
+
+Sotto il card pricing, blocco garanzia su sfondo scuro con immagine + titolo in riga e testo full-width sotto.
+
+```tsx
+<div className="mt-10 bg-white/5 border border-white/20 rounded-2xl px-8 py-7">
+  {/* Riga: immagine + titolo */}
+  <div className="flex items-center gap-6 mb-3">
+    <img src={imgGaranzia} alt="Garanzia" className="w-16 h-16 flex-shrink-0 rounded-xl object-cover" />
+    <p className="font-semibold text-white">Voglio che il tuo acquisto sia consapevole.</p>
+  </div>
+  {/* Testo full-width sotto */}
+  <p className="text-sm text-white/65 leading-relaxed">
+    Puoi sempre richiedere il rimborso entro <strong className="text-white/85">14 giorni</strong> dall'acquisto...
+  </p>
+</div>
+```
+
+**Regole:**
+- Immagine: `w-16 h-16` (64px), `rounded-xl`, `flex-shrink-0`
+- Titolo inline con immagine, testo corpo sotto a piena larghezza (non dentro il flex)
+- Sfondo: `bg-white/5` + `border border-white/20` — semi-trasparente su `bg-foreground`
+- Testo enfatizzato (es. "14 giorni"): `text-white/85` dentro `<strong>`
+- Funziona uguale su mobile e desktop — nessuna variante responsive necessaria
