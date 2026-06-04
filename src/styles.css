@@ -445,8 +445,8 @@
 }
 
 /* Mobile lesson card tooltips */
-.mobile-tooltip { opacity: 0; pointer-events: none; }
-.mobile-tooltip.is-open { opacity: 1; }
+.mobile-tooltip { visibility: hidden; pointer-events: none; }
+.mobile-tooltip.is-open { visibility: visible; }
 .mobile-tooltip.is-open .mobile-tooltip-inner { animation: tooltip-pop 0.85s ease forwards; }
 
 /* Guida stacked images — two-level: wrapper spreads, img floats */
