@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import posthog from "posthog-js";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -426,12 +426,36 @@ function FaqAccordion() {
 
 type CardPos = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 
-function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; tooltip: string; pos: CardPos }) {
+function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }: {
+  src: string;
+  badge: string;
+  tooltip: string;
+  pos: CardPos;
+  mobileOpen: boolean;
+  onToggle: () => void;
+  isDimmed: boolean;
+}) {
   const isLeft = pos === "top-left" || pos === "bottom-left";
   const tilt = isLeft ? "-3deg" : "3deg";
 
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  const [tooltipBelow, setTooltipBelow] = React.useState(true);
+
+  const handleClick = () => {
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      setTooltipBelow(rect.top < window.innerHeight / 2);
+    }
+    onToggle();
+  };
+
   return (
-    <div className="group relative" style={{ isolation: "isolate" }}>
+    <div
+      ref={cardRef}
+      className={`group relative transition-opacity duration-200${isDimmed ? " opacity-40 pointer-events-none" : ""}`}
+      style={{ isolation: "isolate" }}
+      onClick={handleClick}
+    >
       <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
         <img src={src} alt={badge} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
@@ -441,20 +465,77 @@ function LessonCard({ src, badge, tooltip, pos }: { src: string; badge: string; 
         </div>
       </div>
 
-      {/* left column → tooltip outside LEFT border; right column → outside RIGHT border */}
+      {/* Desktop tooltip: left column → outside LEFT border; right column → outside RIGHT border */}
       {isLeft ? (
-        <div className="tooltip-bubble tooltip-arrow-right absolute right-full top-1/2 -translate-y-1/2 mr-4 z-30 pointer-events-none flex items-center"
+        <div className="tooltip-bubble tooltip-arrow-right hidden md:flex absolute right-full top-1/2 -translate-y-1/2 mr-4 z-30 pointer-events-none items-center"
           style={{ rotate: tilt, transformOrigin: "right center" }}>
           <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug">{tooltip}</div>
           <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderLeft: "7px solid #0c2330", flexShrink: 0 }} />
         </div>
       ) : (
-        <div className="tooltip-bubble tooltip-arrow-left absolute left-full top-1/2 -translate-y-1/2 ml-4 z-30 pointer-events-none flex items-center"
+        <div className="tooltip-bubble tooltip-arrow-left hidden md:flex absolute left-full top-1/2 -translate-y-1/2 ml-4 z-30 pointer-events-none items-center"
           style={{ rotate: tilt, transformOrigin: "left center" }}>
           <div style={{ width: 0, height: 0, borderTop: "7px solid transparent", borderBottom: "7px solid transparent", borderRight: "7px solid #0c2330", flexShrink: 0 }} />
           <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl w-36 leading-snug">{tooltip}</div>
         </div>
       )}
+
+      {/* Mobile tooltip: above or below the image */}
+      <div
+        className={`md:hidden absolute left-0 right-0 z-30 pointer-events-none transition-all duration-300${
+          mobileOpen ? " opacity-100" : " opacity-0"
+        }${tooltipBelow ? " top-full mt-2" : " bottom-full mb-2"}`}
+        style={{
+          transform: mobileOpen
+            ? `rotate(${tilt}) translateY(0)`
+            : `rotate(${tilt}) translateY(${tooltipBelow ? "-8px" : "8px"})`,
+          transformOrigin: tooltipBelow ? "center top" : "center bottom",
+        }}
+      >
+        {/* Arrow pointing toward image */}
+        {tooltipBelow && (
+          <div className="flex justify-center mb-0">
+            <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
+          </div>
+        )}
+        <div className="bg-[#0c2330] text-white text-[11px] font-semibold px-4 py-3 rounded-xl leading-snug text-center">
+          {tooltip}
+        </div>
+        {!tooltipBelow && (
+          <div className="flex justify-center mt-0">
+            <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderTop: "7px solid #0c2330" }} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── LessonGrid ────────────────────────────────────────────────────────────────
+
+type LessonCardData = { src: string; badge: string; tooltip: string; pos: CardPos };
+
+function LessonGrid({ cards }: { cards: LessonCardData[] }) {
+  const [openCardIndex, setOpenCardIndex] = React.useState<number | null>(null);
+
+  const handleToggle = (i: number) => {
+    setOpenCardIndex(prev => (prev === i ? null : i));
+  };
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {cards.map((card, i) => (
+        <LessonCard
+          key={i}
+          src={card.src}
+          badge={card.badge}
+          tooltip={card.tooltip}
+          pos={card.pos}
+          mobileOpen={openCardIndex === i}
+          onToggle={() => handleToggle(i)}
+          isDimmed={openCardIndex !== null && openCardIndex !== i}
+        />
+      ))}
     </div>
   );
 }
@@ -737,7 +818,7 @@ function EasyMailPack() {
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-4">
+      <section className="relative overflow-hidden py-20 md:py-28 px-5 md:px-4">
         {/* glow orbs — z-index 0 so they sit behind all content */}
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
           style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />
@@ -797,7 +878,7 @@ function EasyMailPack() {
           {/* stats row with count-up */}
           <div className="mt-10 max-w-4xl mx-auto rounded-2xl border border-[#156686]/15 bg-[#156686]/5 px-6 py-8"
             style={{ boxShadow: "0 2px 16px -4px rgba(21,102,134,0.08)" }}>
-          <div className="flex items-stretch justify-center flex-wrap gap-y-8">
+          <div className="flex items-stretch justify-center flex-nowrap gap-y-4">
             {[
               { target: 90, suffix: "+", label: "Lezioni" },
               { target: 21, suffix: "",  label: "Template" },
@@ -806,15 +887,15 @@ function EasyMailPack() {
             ].map((s, i) => (
               <>
                 {i > 0 && (
-                  <div key={`dot-${i}`} className="hidden md:flex items-center flex-shrink-0 mx-10">
+                  <div key={`dot-${i}`} className="flex items-center flex-shrink-0 mx-3 md:mx-10">
                     <span className="w-px h-8 bg-[#156686]/30" />
                   </div>
                 )}
-                <div key={s.label} className="text-center min-w-[100px]">
-                  <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontVariantNumeric: "tabular-nums", minWidth: "2.5ch" }}>
+                <div key={s.label} className="text-center min-w-[48px] md:min-w-[100px]">
+                  <p className="font-bold text-[#156686]" style={{ fontSize: "clamp(1.5rem, 7vw, 4rem)", fontVariantNumeric: "tabular-nums", minWidth: "2.5ch" }}>
                     <CountUp target={s.target} suffix={s.suffix} />
                   </p>
-                  <p className="text-sm text-foreground/65 mt-1">{s.label}</p>
+                  <p className="text-xs md:text-sm text-foreground/65 mt-1">{s.label}</p>
                 </div>
               </>
             ))}
@@ -827,7 +908,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PROBLEMA ──────────────────────────────────────────────────────── */}
-      <section className="relative py-20 md:py-28 px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
+      <section className="relative py-20 md:py-28 px-5 md:px-4" style={{ backgroundColor: "#156686" }} data-cursor-light>
         {/* glow orbs — overflow-hidden on inner wrapper, not section, so tooltips can escape */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-[600px] h-[600px] rounded-full"
@@ -867,12 +948,12 @@ function EasyMailPack() {
           </div>
 
           {/* lesson images row */}
-          <div className="grid grid-cols-2 gap-4">
-            <LessonCard src={lezione2} badge="Crea la tua lista e mantienila attiva" tooltip="L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc)." pos="top-left" />
-            <LessonCard src={lezione3} badge="Configura le piattaforme, anche se parti da 0" tooltip="Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno." pos="top-right" />
-            <LessonCard src={lezione4} badge="Profila chi si iscrive alle tue liste" tooltip="Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro)." pos="bottom-left" />
-            <LessonCard src={lezione5} badge="Crea strategie di lancio con le email" tooltip="Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare." pos="bottom-right" />
-          </div>
+          <LessonGrid cards={[
+            { src: lezione2, badge: "Crea la tua lista e mantienila attiva", tooltip: "L'email marketing è efficace quando crei liste specifiche (newsletter, clienti, ecc).", pos: "top-left" },
+            { src: lezione3, badge: "Configura le piattaforme, anche se parti da 0", tooltip: "Non sai come configurare le piattaforme email? No problem, è tutto spiegato per filo e per segno.", pos: "top-right" },
+            { src: lezione4, badge: "Profila chi si iscrive alle tue liste", tooltip: "Ti mostro come si creano i diversi form di iscrizione (è veramente facile, te l'assicuro).", pos: "bottom-left" },
+            { src: lezione5, badge: "Crea strategie di lancio con le email", tooltip: "Stai lavorando a un lancio e vuoi usare le email? Qui hai tutti gli script da usare.", pos: "bottom-right" },
+          ]} />
 
           {/* CTAs */}
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -893,7 +974,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PAIN POINTS: Instagram mockup + testo ───────────────────────── */}
-      <section className="py-16 md:py-24 px-4 bg-white">
+      <section className="py-16 md:py-24 px-5 md:px-4 bg-white">
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
@@ -1042,7 +1123,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PERCHÉ EASY-MAIL PACK ESISTE ──────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5] relative overflow-hidden">
+      <section className="py-16 md:py-20 px-5 md:px-4 bg-[#EEF3F5] relative overflow-hidden">
         <div className="absolute w-[600px] h-[600px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
           style={{ top: "-10%", left: "-8%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/15 blur-3xl pointer-events-none"
@@ -1107,7 +1188,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PER CHI È ─────────────────────────────────────────────────────── */}
-      <section id="per-chi" className="py-16 md:py-20 px-4">
+      <section id="per-chi" className="py-16 md:py-20 px-5 md:px-4">
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Per chi è Easy-Mail Pack?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
@@ -1180,7 +1261,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── LISTA COMPLETA LEZIONI ────────────────────────────────────────── */}
-      <section id="lezioni" className="py-16 md:py-20 px-4 relative overflow-hidden" style={{ backgroundColor: "#156686" }} data-cursor-light>
+      <section id="lezioni" className="py-16 md:py-20 px-5 md:px-4 relative overflow-hidden" style={{ backgroundColor: "#156686" }} data-cursor-light>
         {/* parallax diagonal lesson images in background */}
         <ParallaxLessonBg />
         {/* dark overlay */}
@@ -1210,7 +1291,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── BONUS ─────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4 bg-[#EEF3F5]">
+      <section className="py-16 md:py-20 px-5 md:px-4 bg-[#EEF3F5]">
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Extra</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
@@ -1275,7 +1356,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PRICING ───────────────────────────────────────────────────────── */}
-      <section id="form" className="py-16 md:py-20 px-2 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
+      <section id="form" className="py-16 md:py-20 px-5 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
         {/* Glow orbs */}
         <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
           style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
@@ -1419,7 +1500,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 px-4">
+      <section className="py-16 md:py-20 px-5 md:px-4">
         <div className="container-narrow max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Domande frequenti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-10">
