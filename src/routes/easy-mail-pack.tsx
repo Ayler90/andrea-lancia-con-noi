@@ -145,7 +145,7 @@ function ParallaxLessonBg() {
   );
 
   return (
-    <div ref={ref} className="absolute inset-0 pointer-events-none overflow-hidden parallax-lesson-bg" style={{ transformOrigin: "center top" }}>
+    <div ref={ref} className="absolute pointer-events-none overflow-hidden" style={{ inset: "-30%", transform: "rotate(-8deg)", transformOrigin: "center center" }}>
       {rows.map((imgs, ri) => (
         <div key={ri} className="flex gap-3 mb-3"
           style={{ transform: `translateX(${ri % 2 === 0 ? -offset : offset}px)`, transition: "transform 0.1s linear" }}>
