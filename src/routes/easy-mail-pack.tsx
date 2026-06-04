@@ -976,7 +976,7 @@ function EasyMailPack() {
       </section>
 
       {/* ── PAIN POINTS: Instagram mockup + testo ───────────────────────── */}
-      <section className="py-16 md:py-24 px-5 md:px-4 bg-white">
+      <section className="pt-6 pb-16 md:py-24 px-5 md:px-4 bg-white">
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
