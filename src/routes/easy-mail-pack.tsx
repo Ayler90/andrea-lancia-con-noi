@@ -1151,7 +1151,7 @@ function EasyMailPack() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             {[
               { title: "Crea la tua newsletter",       img: imgCreaNL },
               { title: "Dai vita al form di iscrizione", img: imgForm },
@@ -1160,9 +1160,9 @@ function EasyMailPack() {
               { title: "Struttura un lancio con le email", img: imgLancio },
               { title: "Profila i tuoi contatti",      img: imgProfila },
             ].map(({ title, img }) => (
-              <div key={title} className="rounded-xl overflow-hidden border border-[#156686]/10 bg-white group transition-transform duration-300 hover:-translate-y-1.5"
+              <div key={title} className="rounded-xl overflow-hidden border border-[#156686]/10 bg-white group transition-transform duration-300 hover:-translate-y-1.5 active:-translate-y-1.5"
                 style={{ boxShadow: "0 2px 12px -2px rgba(21,102,134,0.08)" }}>
-                <img src={img} alt={title} className="w-full aspect-video object-cover" />
+                <img src={img} alt={title} className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-[1.03] group-active:scale-[1.03]" />
                 <div className="px-4 py-3">
                   <p className="text-sm font-semibold text-foreground/85">{title}</p>
                 </div>
