@@ -435,6 +435,12 @@
              tooltip-float-arrowleft 4.5s ease-in-out 0.85s infinite;
 }
 
+/* Parallax lesson background — no rotation on mobile to avoid diagonal cut */
+.parallax-lesson-bg { transform: scale(1.4); }
+@media (min-width: 768px) {
+  .parallax-lesson-bg { transform: rotate(-8deg) scale(1.4); }
+}
+
 /* Phone mockup — scale down on mobile without layout gap */
 @media (max-width: 767px) {
   .phone-mockup-mobile {
