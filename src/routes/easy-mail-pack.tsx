@@ -980,17 +980,16 @@ function EasyMailPack() {
 
             {/* ── Phone mockup ─────────────────────────────── */}
             <div className="flex justify-center">
-              <div className="scale-[0.62] md:scale-100 origin-bottom">
-              <div className="relative w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
+              <div className="relative w-[175px] md:w-[280px]" style={{ transform: "rotate(-6deg)", transformOrigin: "center bottom", animation: "phone-float 5s ease-in-out infinite" }}>
                 {/* glow blob behind phone */}
                 <div className="absolute -inset-10 rounded-full pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(196,217,220,0.55) 0%, rgba(255,255,255,0.25) 50%, transparent 75%)", filter: "blur(24px)", zIndex: 0 }} />
                 {/* phone shell — thin aluminum-style border like iPhone 17 */}
-                <div className="relative rounded-[3rem] p-[2px] z-10"
+                <div className="relative rounded-[2rem] md:rounded-[3rem] p-[2px] z-10"
                   style={{ background: "linear-gradient(160deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.15) 100%)", boxShadow: "0 40px 90px -16px rgba(12,35,48,0.5)" }}>
-                  <div className="rounded-[2.9rem] bg-[#0c2330] p-[3px]" style={{ boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.07)" }}>
+                  <div className="rounded-[1.85rem] md:rounded-[2.9rem] bg-[#0c2330] p-[3px]" style={{ boxShadow: "inset 0 0 0 0.5px rgba(255,255,255,0.07)" }}>
                   {/* screen — dynamic island is inside the screen like real iPhone */}
-                  <div className="rounded-[2.75rem] overflow-hidden bg-[#f9fafb]" style={{ minHeight: 480 }}>
+                  <div className="rounded-[1.7rem] md:rounded-[2.75rem] overflow-hidden bg-[#f9fafb]" style={{ minHeight: "auto" }}>
                   {/* dynamic island — inside screen */}
                   <div className="flex justify-center pt-3 pb-1 bg-[#f9fafb]">
                     <div className="w-24 h-[18px] bg-[#0c2330] rounded-full" />
@@ -1034,7 +1033,6 @@ function EasyMailPack() {
                 {/* subtle phone reflection */}
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-[#0c2330]/20 blur-xl rounded-full z-10" />
               </div>
-              </div>{/* scale wrapper */}
             </div>
 
             {/* ── Text column ──────────────────────────────── */}
