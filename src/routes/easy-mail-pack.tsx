@@ -439,8 +439,8 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
   const tilt = isLeft ? "-3deg" : "3deg";
 
   const cardRef = React.useRef<HTMLDivElement>(null);
-  // true = show below, false = show above; computed at open time
   const [showBelow, setShowBelow] = React.useState(pos !== "bottom-right");
+  const [animKey, setAnimKey] = React.useState(0);
 
   const handleClick = () => {
     if (!mobileOpen) {
@@ -449,6 +449,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
       } else if (cardRef.current) {
         setShowBelow(cardRef.current.getBoundingClientRect().top < window.innerHeight / 2);
       }
+      setAnimKey(k => k + 1);
     }
     onToggle();
   };
@@ -486,7 +487,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
       {/* Mobile tooltip ABOVE */}
       <div className={`mobile-tooltip md:hidden absolute left-0 right-0 bottom-full mb-2 z-[100]${mobileOpen && !showBelow ? " is-open" : ""}`}
         style={{ transform: `rotate(${tilt})`, transformOrigin: "center bottom" }}>
-        <div className="mobile-tooltip-inner">
+        <div key={animKey} className="mobile-tooltip-inner">
           <div className="text-white text-[12px] font-semibold px-4 py-3 rounded-xl leading-snug text-center" style={{ backgroundColor: "rgba(12,35,48,0.97)" }}>{tooltip}</div>
           <div className="flex justify-center">
             <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderTop: "7px solid #0c2330" }} />
@@ -497,7 +498,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
       {/* Mobile tooltip BELOW */}
       <div className={`mobile-tooltip md:hidden absolute left-0 right-0 top-full mt-2 z-[100]${mobileOpen && showBelow ? " is-open" : ""}`}
         style={{ transform: `rotate(${tilt})`, transformOrigin: "center top" }}>
-        <div className="mobile-tooltip-inner">
+        <div key={animKey} className="mobile-tooltip-inner">
           <div className="flex justify-center">
             <div style={{ width: 0, height: 0, borderLeft: "7px solid transparent", borderRight: "7px solid transparent", borderBottom: "7px solid #0c2330" }} />
           </div>
