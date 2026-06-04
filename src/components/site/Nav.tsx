@@ -215,7 +215,7 @@ export function Nav() {
               {/* Column: Percorsi */}
               <div className="w-80 flex-shrink-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Percorsi</p>
-                <ul className="flex flex-col">
+                <ul className="flex flex-col gap-1">
                   {percorsiCategories.percorsi.map((p) => (
                     <li key={p.slug}>
                       <button
@@ -236,7 +236,7 @@ export function Nav() {
               {/* Column: Corsi e Template */}
               <div className="w-72 flex-shrink-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#156686] mb-4">Corsi e Template</p>
-                <ul className="flex flex-col">
+                <ul className="flex flex-col gap-1">
                   {percorsiCategories.corsi.map((p) => (
                     <li key={p.slug}>
                       <a
