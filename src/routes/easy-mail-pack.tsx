@@ -792,7 +792,8 @@ function ScrollReviews() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
 
       {[row1, row2].map((row, ri) => (
-        <div key={ri} className="flex gap-5"
+        <div key={ri}
+          className={`flex gap-5 ${ri === 0 ? "marquee-left" : "marquee-right"}`}
           style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
             <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}

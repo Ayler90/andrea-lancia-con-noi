@@ -436,6 +436,15 @@
 }
 
 
+/* Infinite marquee for reviews on mobile */
+@keyframes marquee-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+@media (max-width: 767px) {
+  .marquee-left  { animation: marquee-left  18s linear infinite; }
+  .marquee-right { animation: marquee-right 18s linear infinite; }
+}
+
 /* Phone mockup — scale down on mobile without layout gap */
 @media (max-width: 767px) {
   .phone-mockup-mobile {
