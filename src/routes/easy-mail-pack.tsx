@@ -455,7 +455,6 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
     <div
       ref={cardRef}
       className={`group relative transition-opacity duration-200${isDimmed ? " opacity-40" : ""}`}
-      style={{ isolation: "isolate" }}
       onClick={handleClick}
     >
       <div className="relative rounded-2xl overflow-hidden aspect-video transition-transform duration-500 group-hover:scale-[1.03]">
@@ -484,7 +483,7 @@ function LessonCard({ src, badge, tooltip, pos, mobileOpen, onToggle, isDimmed }
 
       {/* Mobile tooltip: above or below the image */}
       <div
-        className={`md:hidden absolute left-0 right-0 z-30 pointer-events-none transition-all duration-300${
+        className={`md:hidden absolute left-0 right-0 z-[100] pointer-events-none transition-all duration-300${
           mobileOpen ? " opacity-100" : " opacity-0"
         }${tooltipBelow ? " top-full mt-2" : " bottom-full mb-2"}`}
         style={{
