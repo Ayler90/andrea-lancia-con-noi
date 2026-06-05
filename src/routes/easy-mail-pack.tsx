@@ -1308,13 +1308,7 @@ function EasyMailPack() {
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.12em] text-center"
               style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.25)", color: "#C4D9DC" }}>
               🔓
-              <span>Come regalo, ti ho sbloccato alcune lezioni – hanno questo simbolo <span className="inline-flex flex-shrink-0 w-4 h-4 rounded-full items-center justify-center align-middle" style={{ backgroundColor: "rgba(187,247,208,0.9)" }}><svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg></span></span>
-              <button
-                onClick={() => setFilterUnlocked(true)}
-                className="ml-1 underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap cursor-pointer"
-                style={{ color: "#C4D9DC", fontWeight: "inherit", fontSize: "inherit", textTransform: "inherit", letterSpacing: "inherit" }}>
-                (o clicca qui per filtrarle)
-              </button>
+              <span>Come regalo, ti ho sbloccato alcune lezioni – hanno questo simbolo <span className="inline-flex flex-shrink-0 w-4 h-4 rounded-full items-center justify-center align-middle" style={{ backgroundColor: "rgba(187,247,208,0.9)" }}><svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg></span> <button onClick={() => setFilterUnlocked(true)} className="inline underline underline-offset-2 hover:opacity-80 transition-opacity cursor-pointer" style={{ color: "#C4D9DC", fontWeight: "inherit", fontSize: "inherit", textTransform: "inherit", letterSpacing: "inherit" }}>(o clicca qui per filtrarle)</button></span>
             </div>
             {filterUnlocked && (
               <button
