@@ -895,9 +895,7 @@ function EasyMailPack() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#form"
               className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap"
               onClick={() => trackCta("hero-iscriviti")}
             >
@@ -996,9 +994,7 @@ function EasyMailPack() {
           {/* CTAs */}
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#form"
               className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap"
               onClick={() => trackCta("problema-iscriviti")}
             >
@@ -1195,9 +1191,7 @@ function EasyMailPack() {
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href={PURCHASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#form"
               className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap"
               onClick={() => trackCta("perche-esiste-cta")}
             >
