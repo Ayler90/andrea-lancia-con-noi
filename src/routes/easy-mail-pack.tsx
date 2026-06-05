@@ -693,7 +693,7 @@ function LessonList({ filterUnlocked = false }: { filterUnlocked?: boolean }) {
                 <li key={l.name} className="text-[13px] leading-snug">
                   {l.videoUrl ? (
                     <button onClick={() => setVideo({ url: l.videoUrl!, title: l.name })}
-                      className="group flex items-center gap-1.5 text-left text-white/80 hover:text-white transition-colors w-full"
+                      className="group flex items-center gap-1.5 text-left text-white/80 hover:text-white transition-colors w-full cursor-pointer"
                       aria-label={`Guarda: ${l.name}`}>
                       <span className="lesson-link-text">{l.name}</span>
                       <span className="flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
