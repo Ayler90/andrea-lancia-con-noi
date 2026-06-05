@@ -50,8 +50,52 @@ const ML_FORM_HTML = `
 </div>
 `;
 
+const PREVIEW_URL = "https://preview.mailerlite.io/emails/webview/17207/188806471623902309";
+
+function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => { requestAnimationFrame(() => setOpen(true)); }, []);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 backdrop-blur-sm" style={{ backgroundColor: open ? "rgba(12,35,48,0.85)" : "rgba(12,35,48,0)", transition: "background-color 0.3s" }} />
+      <div className="relative z-10 w-full max-w-2xl rounded-2xl overflow-hidden flex flex-col"
+        style={{
+          clipPath: open ? "inset(0% 0% 0% 0% round 1rem)" : "inset(50% 0% 50% 0% round 1rem)",
+          border: "1.5px solid rgba(196,217,220,0.25)",
+          boxShadow: "0 0 60px -10px rgba(21,102,134,0.6)",
+          transition: "clip-path 0.3s",
+          maxHeight: "85vh",
+        }}
+        onClick={e => e.stopPropagation()}>
+        {/* Top bar */}
+        <div className="flex items-center justify-between px-4 py-3 flex-shrink-0"
+          style={{ backgroundColor: "#EEF3F5", borderBottom: "1px solid rgba(21,102,134,0.12)" }}>
+          <div>
+            <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#156686]/60">Anteprima newsletter</p>
+            <p className="text-[13px] font-semibold text-[#0c2330]/85">Fun-Letter — esempio di una puntata</p>
+          </div>
+          <button onClick={onClose} className="w-7 h-7 rounded-full hover:bg-[#156686]/10 flex items-center justify-center text-[#156686]/60 cursor-pointer">✕</button>
+        </div>
+        {/* Scrollable iframe */}
+        <iframe
+          src={PREVIEW_URL}
+          className="w-full flex-1"
+          style={{ minHeight: "60vh", border: "none", backgroundColor: "#fff" }}
+          title="Anteprima newsletter"
+        />
+      </div>
+    </div>
+  );
+}
+
 export function Newsletter() {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [fanned, setFanned] = useState(false);
 
@@ -160,6 +204,8 @@ export function Newsletter() {
   }, []);
 
   return (
+    <>
+    {showPreview && <NewsletterPreviewModal onClose={() => setShowPreview(false)} />}
     <section id="newsletter" className="py-20 md:py-28 px-4 md:px-8 lg:px-12">
       <div className="bg-primary text-primary-foreground rounded-3xl md:rounded-[2rem] overflow-hidden relative max-w-[1600px] mx-auto" data-cursor-light>
           <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-secondary/20 blur-3xl pointer-events-none" />
@@ -232,6 +278,11 @@ export function Newsletter() {
               {/* Form + tooltip */}
               <div className="mt-10 max-w-xl relative">
                 <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
+                <button
+                  onClick={() => setShowPreview(true)}
+                  className="mt-3 text-sm font-semibold text-primary-foreground/70 hover:text-primary-foreground transition-colors underline underline-offset-2 cursor-pointer">
+                  Guarda un esempio di newsletter →
+                </button>
 
                 {showTooltip && (
                   <div className="absolute left-0 pointer-events-none z-20"
@@ -256,5 +307,6 @@ export function Newsletter() {
           </div>
         </div>
     </section>
+    </>
   );
 }
