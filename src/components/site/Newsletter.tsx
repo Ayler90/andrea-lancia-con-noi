@@ -35,6 +35,7 @@ const ML_FORM_HTML = `
               <div class="ml-form-embedSubmitLoad"></div>
               <span class="sr-only">Loading...</span>
             </button>
+            <a href="#" id="nl-preview-link" class="nl-preview-link">Guarda un esempio di newsletter →</a>
           </div>
           <input type="hidden" name="anticsrf" value="true">
         </form>
@@ -112,6 +113,15 @@ export function Newsletter() {
     document.addEventListener("mousedown", dismiss);
     return () => document.removeEventListener("mousedown", dismiss);
   }, [showTooltip]);
+
+  // Preview link click handler (injected inside MailerLite HTML)
+  useEffect(() => {
+    const link = document.getElementById("nl-preview-link");
+    if (!link) return;
+    const handler = (e: Event) => { e.preventDefault(); setShowPreview(true); };
+    link.addEventListener("click", handler);
+    return () => link.removeEventListener("click", handler);
+  }, []);
 
   useEffect(() => {
     // Success callback invoked by MailerLite after successful submission
@@ -276,9 +286,8 @@ export function Newsletter() {
               </ul>
 
               {/* Form + tooltip */}
-              <div className="mt-10 md:flex md:items-end md:gap-8">
-                <div className="max-w-xl flex-1 relative">
-                  <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
+              <div className="mt-10 max-w-xl relative">
+                <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
 
                   {showTooltip && (
                   <div className="absolute left-0 pointer-events-none z-20"
@@ -298,12 +307,6 @@ export function Newsletter() {
                     </div>
                   </div>
                 )}
-                </div>
-                <button
-                  onClick={() => setShowPreview(true)}
-                  className="mt-3 md:mt-0 md:mb-[0.6rem] text-sm font-semibold text-primary-foreground/70 hover:text-primary-foreground transition-colors underline underline-offset-2 cursor-pointer block w-full text-center md:w-auto md:text-left md:whitespace-nowrap">
-                  Guarda un esempio →
-                </button>
               </div>
             </div>
           </div>

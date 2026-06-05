@@ -566,7 +566,23 @@
   text-decoration: underline;
 }
 
-#mlb2-41923213 .ml-form-embedSubmit { margin: 0; float: none; }
+#mlb2-41923213 .ml-form-embedSubmit { margin: 0; float: none; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
+
+.nl-preview-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nl-preview-link:hover { color: rgba(255,255,255,1); }
+
+@media (max-width: 767px) {
+  .nl-preview-link { width: 100%; text-align: center; }
+}
 #mlb2-41923213 .ml-form-embedSubmit button.primary {
   display: inline-flex;
   align-items: center;
