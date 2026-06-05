@@ -82,11 +82,11 @@ function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
           </div>
           <button onClick={onClose} className="w-7 h-7 rounded-full hover:bg-[#156686]/10 flex items-center justify-center text-[#156686]/60 cursor-pointer">✕</button>
         </div>
-        {/* Scrollable iframe */}
+        {/* Scrollable iframe — opacity delayed so it fades in after clip-path animation */}
         <iframe
           src={PREVIEW_URL}
           className="w-full flex-1"
-          style={{ minHeight: "60vh", border: "none", backgroundColor: "#fff" }}
+          style={{ minHeight: "60vh", border: "none", backgroundColor: "#EEF3F5", opacity: open ? 1 : 0, transition: "opacity 0.2s ease 0.3s" }}
           title="Anteprima newsletter"
         />
       </div>
