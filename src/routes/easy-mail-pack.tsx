@@ -662,10 +662,19 @@ const MODULES: Module[] = [
 
 const SHOW_INITIALLY = 9;
 
-function LessonList() {
+function LessonList({ filterUnlocked = false }: { filterUnlocked?: boolean }) {
   const [showAll, setShowAll] = useState(false);
   const [video, setVideo] = useState<{ url: string; title: string } | null>(null);
-  const visible = showAll ? MODULES : MODULES.slice(0, SHOW_INITIALLY);
+
+  const displayedModules = (() => {
+    const base = showAll ? MODULES : MODULES.slice(0, SHOW_INITIALLY);
+    if (!filterUnlocked) return base;
+    return MODULES
+      .map(mod => ({ ...mod, lessons: mod.lessons.filter(l => !!l.videoUrl) }))
+      .filter(mod => mod.lessons.length > 0);
+  })();
+
+  const visible = displayedModules;
 
   return (
     <>
@@ -699,7 +708,7 @@ function LessonList() {
           </div>
         ))}
       </div>
-      {!showAll && (
+      {!showAll && !filterUnlocked && (
         <div className="text-center mt-8">
           <button onClick={() => setShowAll(true)}
             className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 border border-white/25 rounded-full px-6 py-2.5 hover:bg-white/10 transition">
@@ -850,6 +859,7 @@ function EasyMailPack() {
   function trackCta(label: string) {
     posthog.capture("acquisto_cta_click", { cta_label: label, page: "easy-mail-pack" });
   }
+  const [filterUnlocked, setFilterUnlocked] = useState(false);
 
   return (
     <main className="min-h-screen bg-background">
@@ -1291,15 +1301,28 @@ function EasyMailPack() {
           </h2>
 
           {/* unlocked lessons badge */}
-          <div className="flex justify-center mb-10">
+          <div className="flex flex-col items-center gap-3 mb-10">
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.12em] text-center"
               style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.25)", color: "#C4D9DC" }}>
               🔓
               <span>Come regalo, ti ho sbloccato alcune lezioni – hanno questo simbolo <span className="inline-flex flex-shrink-0 w-4 h-4 rounded-full items-center justify-center align-middle" style={{ backgroundColor: "rgba(187,247,208,0.9)" }}><svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg></span></span>
+              <button
+                onClick={() => setFilterUnlocked(true)}
+                className="ml-1 underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap normal-case tracking-normal"
+                style={{ color: "#C4D9DC", fontWeight: 500, fontSize: "inherit", textTransform: "none", letterSpacing: "normal" }}>
+                (o clicca qui per filtrarle)
+              </button>
             </div>
+            {filterUnlocked && (
+              <button
+                onClick={() => setFilterUnlocked(false)}
+                className="text-[11px] font-semibold text-white/60 hover:text-white/90 transition-colors underline underline-offset-2">
+                Mostra tutte le lezioni
+              </button>
+            )}
           </div>
 
-          <LessonList />
+          <LessonList filterUnlocked={filterUnlocked} />
         </div>
       </section>
 
