@@ -71,7 +71,7 @@ function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
           boxShadow: "0 0 60px -10px rgba(21,102,134,0.6)",
           transition: "clip-path 0.3s",
           maxHeight: "85vh",
-          backgroundColor: "#EEF3F5",
+          backgroundColor: "#0C2330",
         }}
         onClick={e => e.stopPropagation()}>
         {/* Top bar */}
