@@ -79,7 +79,7 @@ function VideoModal({ url, title, onClose }: { url: string; title: string; onClo
       <div className="absolute inset-0 backdrop-blur-sm transition-opacity duration-300"
         style={{ backgroundColor: open ? "rgba(12,35,48,0.85)" : "rgba(12,35,48,0)" }} />
       <div
-        className="relative z-10 w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl transition-all duration-300"
+        className="relative z-10 w-full max-w-3xl md:max-w-5xl rounded-2xl overflow-hidden shadow-2xl transition-all duration-300"
         style={{
           clipPath: open ? "inset(0% 0% 0% 0% round 1rem)" : "inset(50% 0% 50% 0% round 1rem)",
           border: "1.5px solid rgba(196,217,220,0.25)",
