@@ -582,7 +582,7 @@
   border: none;
   cursor: pointer;
   transition: all 0.25s ease;
-  width: auto !important;
+  width: 100% !important;
   box-shadow: 0 4px 18px -2px rgba(21,102,134,0.22), 0 2px 6px -1px rgba(21,102,134,0.14);
 }
 #mlb2-41923213 .ml-form-embedSubmit button.primary:hover {
