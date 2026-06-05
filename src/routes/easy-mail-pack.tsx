@@ -680,10 +680,12 @@ function LessonList({ filterUnlocked = false }: { filterUnlocked?: boolean }) {
     <>
       {video && <VideoModal url={video.url} title={video.title} onClose={() => setVideo(null)} />}
       <div className="columns-1 md:columns-3 gap-5">
-        {visible.map((mod, i) => (
+        {visible.map((mod) => {
+          const originalIndex = MODULES.findIndex(m => m.title === mod.title);
+          return (
           <div key={mod.title} className="break-inside-avoid mb-6">
             <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/90 px-2 py-0.5 rounded-full mb-2">
-              Modulo {i + 1}
+              Modulo {originalIndex + 1}
             </span>
             <p className="text-[14px] font-semibold text-white/90 mb-2">{mod.title}</p>
             <ul className="border-l-2 border-white/20 pl-3 space-y-1.5">
@@ -706,7 +708,8 @@ function LessonList({ filterUnlocked = false }: { filterUnlocked?: boolean }) {
               ))}
             </ul>
           </div>
-        ))}
+          );
+        })}
       </div>
       {!showAll && !filterUnlocked && (
         <div className="text-center mt-8">
@@ -1308,15 +1311,15 @@ function EasyMailPack() {
               <span>Come regalo, ti ho sbloccato alcune lezioni – hanno questo simbolo <span className="inline-flex flex-shrink-0 w-4 h-4 rounded-full items-center justify-center align-middle" style={{ backgroundColor: "rgba(187,247,208,0.9)" }}><svg width="6" height="7" viewBox="0 0 6 7" fill="#15803d"><polygon points="0,0 6,3.5 0,7" /></svg></span></span>
               <button
                 onClick={() => setFilterUnlocked(true)}
-                className="ml-1 underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap normal-case tracking-normal"
-                style={{ color: "#C4D9DC", fontWeight: 500, fontSize: "inherit", textTransform: "none", letterSpacing: "normal" }}>
+                className="ml-1 underline underline-offset-2 hover:opacity-80 transition-opacity whitespace-nowrap cursor-pointer"
+                style={{ color: "#C4D9DC", fontWeight: "inherit", fontSize: "inherit", textTransform: "inherit", letterSpacing: "inherit" }}>
                 (o clicca qui per filtrarle)
               </button>
             </div>
             {filterUnlocked && (
               <button
                 onClick={() => setFilterUnlocked(false)}
-                className="text-[11px] font-semibold text-white/60 hover:text-white/90 transition-colors underline underline-offset-2">
+                className="text-[11px] font-semibold text-white/60 hover:text-white/90 transition-colors underline underline-offset-2 cursor-pointer">
                 Mostra tutte le lezioni
               </button>
             )}
