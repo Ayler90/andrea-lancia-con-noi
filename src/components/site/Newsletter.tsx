@@ -276,15 +276,11 @@ export function Newsletter() {
               </ul>
 
               {/* Form + tooltip */}
-              <div className="mt-10 max-w-xl relative">
-                <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
-                <button
-                  onClick={() => setShowPreview(true)}
-                  className="mt-3 text-sm font-semibold text-primary-foreground/70 hover:text-primary-foreground transition-colors underline underline-offset-2 cursor-pointer block w-full text-center md:text-left">
-                  Guarda un esempio di newsletter →
-                </button>
+              <div className="mt-10 md:flex md:items-end md:gap-8">
+                <div className="max-w-xl flex-1 relative">
+                  <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
 
-                {showTooltip && (
+                  {showTooltip && (
                   <div className="absolute left-0 pointer-events-none z-20"
                     style={{ bottom: "calc(100% - 3.5rem)" }}>
                     <div className="relative bg-white text-foreground text-sm font-medium px-4 py-3 rounded-2xl shadow-lg border border-border">
@@ -302,6 +298,12 @@ export function Newsletter() {
                     </div>
                   </div>
                 )}
+                </div>
+                <button
+                  onClick={() => setShowPreview(true)}
+                  className="mt-3 md:mt-0 md:mb-[0.6rem] text-sm font-semibold text-primary-foreground/70 hover:text-primary-foreground transition-colors underline underline-offset-2 cursor-pointer block w-full text-center md:w-auto md:text-left md:whitespace-nowrap">
+                  Guarda un esempio →
+                </button>
               </div>
             </div>
           </div>
