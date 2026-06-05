@@ -77,7 +77,7 @@ function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
           style={{ backgroundColor: "#EEF3F5", borderBottom: "1px solid rgba(21,102,134,0.12)" }}>
           <div>
             <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#156686]/60">Anteprima newsletter</p>
-            <p className="text-[13px] font-semibold text-[#0c2330]/85">Fun-Letter — esempio di una puntata</p>
+            <p className="text-[13px] font-semibold text-[#0c2330]/85">Questa è una delle newsletter che ho inviato</p>
           </div>
           <button onClick={onClose} className="w-7 h-7 rounded-full hover:bg-[#156686]/10 flex items-center justify-center text-[#156686]/60 cursor-pointer">✕</button>
         </div>
@@ -280,7 +280,7 @@ export function Newsletter() {
                 <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
                 <button
                   onClick={() => setShowPreview(true)}
-                  className="mt-3 text-sm font-semibold text-primary-foreground/70 hover:text-primary-foreground transition-colors underline underline-offset-2 cursor-pointer">
+                  className="mt-3 text-sm font-semibold text-primary-foreground/70 hover:text-primary-foreground transition-colors underline underline-offset-2 cursor-pointer block w-full text-center md:text-left">
                   Guarda un esempio di newsletter →
                 </button>
 
