@@ -64,7 +64,7 @@ function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 backdrop-blur-sm" style={{ backgroundColor: open ? "rgba(12,35,48,0.85)" : "rgba(12,35,48,0)", transition: "background-color 0.3s" }} />
-      <div className="relative z-10 w-full max-w-2xl rounded-2xl overflow-hidden flex flex-col"
+      <div className="relative z-10 w-full max-w-2xl md:max-w-4xl rounded-2xl overflow-hidden flex flex-col"
         style={{
           clipPath: open ? "inset(0% 0% 0% 0% round 1rem)" : "inset(50% 0% 50% 0% round 1rem)",
           border: "1.5px solid rgba(196,217,220,0.25)",
