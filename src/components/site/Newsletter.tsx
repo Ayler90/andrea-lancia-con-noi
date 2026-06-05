@@ -55,7 +55,14 @@ const PREVIEW_URL = "https://preview.mailerlite.io/emails/webview/17207/18880647
 
 function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
   const [open, setOpen] = useState(false);
-  useEffect(() => { requestAnimationFrame(() => setOpen(true)); }, []);
+  const [iframeSrc, setIframeSrc] = useState("");
+  useEffect(() => {
+    // Two rAFs to ensure DOM is painted before starting animation
+    requestAnimationFrame(() => requestAnimationFrame(() => setOpen(true)));
+    // Load iframe only after clip-path animation completes (300ms)
+    const t = setTimeout(() => setIframeSrc(PREVIEW_URL), 350);
+    return () => clearTimeout(t);
+  }, []);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
@@ -83,11 +90,11 @@ function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
           </div>
           <button onClick={onClose} className="w-7 h-7 rounded-full hover:bg-[#156686]/10 flex items-center justify-center text-[#156686]/60 cursor-pointer">✕</button>
         </div>
-        {/* Scrollable iframe — opacity delayed so it fades in after clip-path animation */}
+        {/* Iframe loaded only after clip-path animation completes */}
         <iframe
-          src={PREVIEW_URL}
+          src={iframeSrc}
           className="w-full flex-1"
-          style={{ minHeight: "60vh", border: "none", backgroundColor: "#EEF3F5", opacity: open ? 1 : 0, transition: "opacity 0.2s ease 0.3s" }}
+          style={{ minHeight: "60vh", border: "none", backgroundColor: "#0C2330", opacity: iframeSrc ? 1 : 0, transition: "opacity 0.3s ease" }}
           title="Anteprima newsletter"
         />
       </div>
