@@ -114,13 +114,16 @@ export function Newsletter() {
     return () => document.removeEventListener("mousedown", dismiss);
   }, [showTooltip]);
 
-  // Preview link click handler (injected inside MailerLite HTML)
+  // Preview link click handler — document-level delegation so it survives re-renders
   useEffect(() => {
-    const link = document.getElementById("nl-preview-link");
-    if (!link) return;
-    const handler = (e: Event) => { e.preventDefault(); setShowPreview(true); };
-    link.addEventListener("click", handler);
-    return () => link.removeEventListener("click", handler);
+    const handler = (e: MouseEvent) => {
+      if ((e.target as Element).closest("#nl-preview-link")) {
+        e.preventDefault();
+        setShowPreview(true);
+      }
+    };
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
   }, []);
 
   useEffect(() => {

@@ -576,13 +576,11 @@
   text-underline-offset: 3px;
   cursor: pointer;
   transition: color 0.2s;
-  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  display: block;
 }
 .nl-preview-link:hover { color: rgba(255,255,255,1); }
-
-@media (max-width: 767px) {
-  .nl-preview-link { width: 100%; text-align: center; }
-}
 #mlb2-41923213 .ml-form-embedSubmit button.primary {
   display: inline-flex;
   align-items: center;
