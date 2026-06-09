@@ -177,7 +177,7 @@ function ScrollReviews() {
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
 
   return (
-    <div ref={sectionRef} className="overflow-hidden space-y-14">
+    <div ref={sectionRef} className="relative overflow-hidden space-y-14">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
       {[row1, row2].map((row, ri) => (
@@ -371,8 +371,8 @@ function ConsulenzaStrategica() {
             </a>
           </div>
 
-          {/* Info chips */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          {/* Info chips — desktop: riga flex; mobile: griglia 2×2 con trattino separatore */}
+          <div className="mt-10 hidden md:flex flex-wrap items-center justify-center gap-3">
             {[
               { icon: "⏱", text: "60 minuti" },
               { icon: "💬", text: "1:1 con me" },
@@ -381,6 +381,20 @@ function ConsulenzaStrategica() {
             ].map(chip => (
               <div key={chip.text} className="inline-flex items-center gap-2 border border-[#156686]/15 bg-[#156686]/5 px-4 py-2 rounded-full text-sm text-foreground/75 font-medium">
                 <span>{chip.icon}</span>{chip.text}
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 md:hidden grid grid-cols-2 gap-x-2 gap-y-3 max-w-xs mx-auto">
+            {[
+              { icon: "⏱", text: "60 minuti" },
+              { icon: "💬", text: "1:1 con me" },
+              { icon: "💶", text: "€150 una tantum" },
+              { icon: "📅", text: "Scegli tu giorno e ora" },
+            ].map((chip, i) => (
+              <div key={chip.text} className="flex items-center gap-1.5 text-sm text-foreground/65 font-medium">
+                {i % 2 === 1 && <span className="text-foreground/25 mr-1">-</span>}
+                <span>{chip.icon}</span>
+                <span>{chip.text}</span>
               </div>
             ))}
           </div>
