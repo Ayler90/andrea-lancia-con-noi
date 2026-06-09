@@ -153,7 +153,7 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
 function FaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
-    <section className="py-16 md:py-20 px-2 md:px-4">
+    <section className="py-16 md:py-20">
       <div className="container-narrow max-w-4xl mx-auto">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3 text-center">Hai dubbi?</p>
         <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-10 text-center">Domande frequenti</h2>
@@ -188,7 +188,7 @@ function ScaricaCalendarioLancio() {
       <Nav />
 
       {/* ── HERO ── */}
-      <section className="py-20 md:py-28 px-2 md:px-4 relative overflow-hidden">
+      <section className="py-20 md:py-28 relative overflow-hidden">
         {/* Glow orbs */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/25 blur-3xl"
@@ -197,7 +197,7 @@ function ScaricaCalendarioLancio() {
             style={{ bottom: "0%", right: "-5%", animation: "orb-drift-2 26s ease-in-out infinite", animationDelay: "5s" }} />
         </div>
 
-        <div className="mx-auto w-full max-w-6xl relative z-10">
+        <div className="container-narrow max-w-6xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
             {/* Left: copy */}
             <div className="flex-1 min-w-0">
@@ -253,7 +253,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── FEATURES BAND ── */}
-      <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-2 md:px-4">
+      <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-white mb-3">
             Un Template Notion. Due Calendari. <em style={{ color: "#C4D9DC" }}>Zero Stress di Lancio.</em>
@@ -321,7 +321,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── CAROUSEL ── */}
-      <section className="py-16 md:py-20 px-2 md:px-4">
+      <section className="py-16 md:py-20">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Dai un'occhiata al template</p>
           <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-12">Guarda come è fatto</h2>
@@ -330,7 +330,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── PURCHASE ── */}
-      <section id="form" className="py-16 md:py-20 px-2 md:px-4 bg-foreground relative overflow-hidden" data-cursor-light>
+      <section id="form" className="py-16 md:py-20 bg-foreground relative overflow-hidden" data-cursor-light>
         {/* Glow orbs */}
         <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none"
           style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
