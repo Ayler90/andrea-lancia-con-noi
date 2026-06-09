@@ -1,7 +1,7 @@
 @import "tailwindcss" source(none);
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 @source "../src";
 @import "tw-animate-css";
