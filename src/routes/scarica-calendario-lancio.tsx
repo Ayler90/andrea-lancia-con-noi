@@ -184,7 +184,7 @@ function FaqSection() {
 
 function ScaricaCalendarioLancio() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col overflow-x-hidden">
       <Nav />
 
       {/* ── HERO ── */}
