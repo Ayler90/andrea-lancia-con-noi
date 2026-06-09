@@ -1,7 +1,10 @@
 # Sistema di Design — Andrea Bonomo
 
 > Documento di riferimento per qualsiasi nuova pagina o componente.
-> Ogni scelta qui descritta è lo standard consolidato — non deviare senza motivo esplicito.
+> Ogni scelta qui descritta è lo standard consolidato - non deviare senza motivo esplicito.
+
+## Regola tipografica: trattini
+Usare sempre il trattino corto `-` (hyphen). Non usare mai il trattino lungo `—` (em dash) nei testi della pagina, nei commenti JSX o nelle stringhe. Questo vale per tutti i file del progetto.
 
 ---
 

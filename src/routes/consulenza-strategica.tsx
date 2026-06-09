@@ -161,7 +161,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "Cosa devo preparare per la call?",
-    a: "Compila il questionario con più dettagli possibili. Se hai screenshot, link o documenti rilevanti — la strategia del lancio, le email che hai scritto, lo screenshot del funnel — tienili pronti da condividere durante la videochiamata.",
+    a: "Compila il questionario con più dettagli possibili. Se hai screenshot, link o documenti rilevanti -la strategia del lancio, le email che hai scritto, lo screenshot del funnel -tienili pronti da condividere durante la videochiamata.",
   },
   {
     q: "Posso prenotare più sessioni?",
@@ -197,6 +197,83 @@ function FaqAccordion() {
   );
 }
 
+// ── Come funziona (scroll-lit steps) ─────────────────────────────────────────
+
+const STEPS = [
+  { n: "01", title: "Prenota il tuo slot", desc: "Scegli giorno e ora direttamente dal calendario qui sotto. Ci vuole meno di un minuto." },
+  { n: "02", title: "Effettua il pagamento", desc: "Dopo la prenotazione ricevi il link per pagare €150. Il pagamento conferma ufficialmente la tua sessione." },
+  { n: "03", title: "Compila il questionario", desc: "Ricevi un breve questionario in cui mi racconti la tua situazione e il problema da affrontare. Piu dettagli dai, piu valore ottieni dalla call." },
+  { n: "04", title: "La call", desc: "60 minuti in videochiamata 1:1 con me. Analizziamo il problema, troviamo soluzioni concrete e usciamo con un piano d'azione chiaro." },
+];
+
+function ComeFunziona() {
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+
+  useEffect(() => {
+    const update = () => {
+      const mid = window.innerHeight * 0.5;
+      let closest: number | null = null;
+      let closestDist = Infinity;
+      stepRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const dist = Math.abs(center - mid);
+        if (dist < closestDist && rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
+          closestDist = dist;
+          closest = i;
+        }
+      });
+      setActiveIdx(closest);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  return (
+    <section id="come-funziona" className="py-16 md:py-20 px-2 md:px-4 bg-white">
+      <div className="container-narrow max-w-3xl mx-auto">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il processo</p>
+        <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
+          Come funziona la <em className="text-[#156686]">consulenza?</em>
+        </h2>
+        <div className="relative">
+          <div className="absolute left-7 top-10 bottom-10 w-px bg-[#156686]/10 hidden md:block" />
+          <div className="space-y-8">
+            {STEPS.map((step, i) => {
+              const isActive = activeIdx === i;
+              return (
+                <div
+                  key={step.n}
+                  ref={el => { stepRefs.current[i] = el; }}
+                  className="flex gap-6 md:gap-8 items-start relative"
+                  style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
+                >
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
+                    style={{
+                      backgroundColor: isActive ? "#156686" : "rgba(21,102,134,0.15)",
+                      color: isActive ? "white" : "#156686",
+                      boxShadow: "0 0 0 4px white",
+                      transition: "background-color 0.4s ease, color 0.4s ease",
+                    }}>
+                    {step.n}
+                  </div>
+                  <div className="pt-1 pb-2">
+                    <h3 className="font-semibold text-foreground/90 text-lg mb-1">{step.title}</h3>
+                    <p className="text-sm text-foreground/60 leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 
 function ConsulenzaStrategica() {
@@ -221,6 +298,8 @@ function ConsulenzaStrategica() {
             <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full">
               <span className="text-yellow-400 text-base tracking-tight leading-none">★★★★★</span>
               5.0 su Google
+              <span className="text-[#156686]/30">·</span>
+              <a href="#recensioni" className="underline underline-offset-2 hover:opacity-70 transition-opacity normal-case" style={{ textTransform: "none", letterSpacing: "normal" }}>Leggi le recensioni</a>
             </div>
           </div>
 
@@ -250,7 +329,7 @@ function ConsulenzaStrategica() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {[
               { icon: "⏱", text: "60 minuti" },
-              { icon: "💬", text: "1:1 con Andrea" },
+              { icon: "💬", text: "1:1 con me" },
               { icon: "💶", text: "€150 una tantum" },
               { icon: "📅", text: "Scegli tu giorno e ora" },
             ].map(chip => (
@@ -260,10 +339,6 @@ function ConsulenzaStrategica() {
             ))}
           </div>
 
-          {/* Cover */}
-          <div className="mt-14 max-w-3xl mx-auto">
-            <img src={coverImg} alt="Consulenza Strategica con Andrea Bonomo" className="w-full rounded-2xl object-cover" />
-          </div>
         </div>
       </section>
 
@@ -288,7 +363,7 @@ function ConsulenzaStrategica() {
 
             <div className="space-y-5 text-sm md:text-base text-white/75 leading-relaxed">
               <p>
-                Hai qualcosa che non funziona — un funnel che non converte, un'automazione rotta, una newsletter che non cresce — ma non riesci a capire dov'è il problema.
+                Hai qualcosa che non funziona -un funnel che non converte, un'automazione rotta, una newsletter che non cresce -ma non riesci a capire dov'è il problema.
               </p>
               <p>
                 Oppure stai per fare un lancio e vuoi essere sicuro che la strategia sia solida: vuoi qualcuno che guardi le tue email, il tuo piano, la tua sequenza, e ti dica onestamente cosa funziona e cosa no.
@@ -337,7 +412,7 @@ function ConsulenzaStrategica() {
               {
                 emoji: "📰",
                 title: "La tua newsletter non cresce",
-                desc: "Troviamo insieme le cause — dal form di iscrizione alla strategia di contenuto — e definiamo un piano concreto per far crescere la lista.",
+                desc: "Troviamo insieme le cause -dal form di iscrizione alla strategia di contenuto -e definiamo un piano concreto per far crescere la lista.",
               },
               {
                 emoji: "✉️",
@@ -366,11 +441,11 @@ function ConsulenzaStrategica() {
           </div>
 
           <p className="text-center text-sm text-foreground/50 mt-8">
-            Non trovi il tuo caso?{" "}
+            Non sai se la consulenza è adatta al tuo problema?{" "}
             <a href={IG_URL} target="_blank" rel="noreferrer" className="text-[#156686] underline underline-offset-2">
               Scrivimi su Instagram
             </a>{" "}
-            e vediamo insieme se la consulenza fa al caso tuo.
+            e vediamo insieme.
           </p>
         </div>
       </section>
@@ -388,7 +463,7 @@ function ConsulenzaStrategica() {
                 emoji: "💼",
                 delay: "0s",
                 title: "Freelance",
-                tags: ["Email marketing", "Funnel", "Clienti diretti"],
+                tags: ["Email marketing", "Funnel", "Lancio"],
                 paragraphs: [
                   "Offri servizi in autonomia e hai bisogno di qualcuno con cui ragionare su come migliorare la tua strategia di email marketing o acquisizione clienti.",
                   "La consulenza ti dà risposte pratiche e operative senza giri di parole.",
@@ -441,52 +516,7 @@ function ConsulenzaStrategica() {
       </section>
 
       {/* ── COME FUNZIONA ─────────────────────────────────────────────────── */}
-      <section id="come-funziona" className="py-16 md:py-20 px-2 md:px-4 bg-white">
-        <div className="container-narrow max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il processo</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Come funziona la <em className="text-[#156686]">consulenza?</em>
-          </h2>
-          <div className="relative">
-            <div className="absolute left-7 top-10 bottom-10 w-px bg-[#156686]/15 hidden md:block" />
-            <div className="space-y-8">
-              {[
-                {
-                  n: "01",
-                  title: "Prenota il tuo slot",
-                  desc: "Scegli giorno e ora direttamente dal calendario qui sotto. Ci vuole meno di un minuto.",
-                },
-                {
-                  n: "02",
-                  title: "Effettua il pagamento",
-                  desc: "Dopo la prenotazione ricevi il link per pagare €150. Il pagamento conferma ufficialmente la tua sessione.",
-                },
-                {
-                  n: "03",
-                  title: "Compila il questionario",
-                  desc: "Ricevi un breve questionario in cui mi racconti la tua situazione e il problema da affrontare. Più dettagli dai, più valore ottieni dalla call.",
-                },
-                {
-                  n: "04",
-                  title: "La call",
-                  desc: "60 minuti in videochiamata 1:1 con me. Analizziamo il problema, troviamo soluzioni concrete e usciamo con un piano d'azione chiaro.",
-                },
-              ].map(step => (
-                <div key={step.n} className="flex gap-6 md:gap-8 items-start relative">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
-                    style={{ backgroundColor: "#156686", color: "white", boxShadow: "0 0 0 4px white" }}>
-                    {step.n}
-                  </div>
-                  <div className="pt-1 pb-2">
-                    <h3 className="font-semibold text-foreground/90 text-lg mb-1">{step.title}</h3>
-                    <p className="text-sm text-foreground/60 leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ComeFunziona />
 
       {/* ── CHI SONO ──────────────────────────────────────────────────────── */}
       <ChiSono ctaText="Prenota la consulenza →" ctaHref="#prenota" />
