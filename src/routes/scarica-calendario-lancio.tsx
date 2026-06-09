@@ -153,7 +153,7 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
 function FaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
-    <section className="py-16 md:py-20 px-4">
+    <section className="py-16 md:py-20 px-2 md:px-4">
       <div className="container-narrow max-w-4xl mx-auto">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3 text-center">Hai dubbi?</p>
         <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-10 text-center">Domande frequenti</h2>
@@ -253,7 +253,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── FEATURES BAND ── */}
-      <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-4">
+      <section data-cursor-light style={{ backgroundColor: "#156686" }} className="py-16 md:py-20 px-2 md:px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <h2 className="h-display text-3xl md:text-4xl lg:text-5xl text-white mb-3">
             Un Template Notion. Due Calendari. <em style={{ color: "#C4D9DC" }}>Zero Stress di Lancio.</em>
@@ -321,7 +321,7 @@ function ScaricaCalendarioLancio() {
       </section>
 
       {/* ── CAROUSEL ── */}
-      <section className="py-16 md:py-20 px-4">
+      <section className="py-16 md:py-20 px-2 md:px-4">
         <div className="container-narrow max-w-5xl mx-auto text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-3">Dai un'occhiata al template</p>
           <h2 className="h-display text-3xl md:text-4xl lg:text-5xl mb-12">Guarda come è fatto</h2>
