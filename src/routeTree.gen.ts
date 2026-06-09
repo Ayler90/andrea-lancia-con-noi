@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
 import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
+import { Route as ConsulenzaStrategicaRouteImport } from './routes/consulenza-strategica'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
@@ -29,6 +30,11 @@ const CookiePolicyRoute = CookiePolicyRouteImport.update({
   path: '/cookie-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsulenzaStrategicaRoute = ConsulenzaStrategicaRouteImport.update({
+  id: '/consulenza-strategica',
+  path: '/consulenza-strategica',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
@@ -50,6 +58,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
@@ -58,14 +67,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/consulenza-strategica'
     | '/cookie-policy'
     | '/easy-mail-pack'
     | '/scarica-calendario-lancio'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cookie-policy' | '/easy-mail-pack' | '/scarica-calendario-lancio'
+  to:
+    | '/'
+    | '/consulenza-strategica'
+    | '/cookie-policy'
+    | '/easy-mail-pack'
+    | '/scarica-calendario-lancio'
   id:
     | '__root__'
     | '/'
+    | '/consulenza-strategica'
     | '/cookie-policy'
     | '/easy-mail-pack'
     | '/scarica-calendario-lancio'
@@ -73,6 +89,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConsulenzaStrategicaRoute: typeof ConsulenzaStrategicaRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   EasyMailPackRoute: typeof EasyMailPackRoute
   ScaricaCalendarioLancioRoute: typeof ScaricaCalendarioLancioRoute
@@ -101,6 +118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CookiePolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consulenza-strategica': {
+      id: '/consulenza-strategica'
+      path: '/consulenza-strategica'
+      fullPath: '/consulenza-strategica'
+      preLoaderRoute: typeof ConsulenzaStrategicaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -113,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConsulenzaStrategicaRoute: ConsulenzaStrategicaRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   EasyMailPackRoute: EasyMailPackRoute,
   ScaricaCalendarioLancioRoute: ScaricaCalendarioLancioRoute,
