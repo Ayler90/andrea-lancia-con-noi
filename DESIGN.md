@@ -747,6 +747,16 @@ function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suf
 }
 ```
 
+### Uso in ChiSono (box statistiche)
+
+I tre numeri nel box statistiche di `ChiSono.tsx` usano CountUp:
+```tsx
+<p className="h-display text-3xl md:text-4xl text-[#156686]"><CountUp target={50} suffix="+" /></p>
+<p className="h-display text-3xl md:text-4xl text-[#156686]"><CountUp target={6} suffix="+" /></p>
+<p className="h-display text-3xl md:text-4xl text-[#156686]"><CountUp target={500} suffix="k€" /></p>
+```
+Il componente `CountUp` è definito direttamente in `ChiSono.tsx` (non importato da altrove).
+
 ### Uso (riga stat con divisori verticali)
 ```tsx
 <div className="flex items-stretch justify-center flex-wrap gap-y-8">
@@ -881,13 +891,19 @@ Usare `visibility` (non `opacity`) per evitare trasparenza parziale durante l'an
 
 ---
 
-## 25. Slider recensioni — marquee infinito mobile
+## 25. Slider recensioni — scroll-driven desktop + auto-scroll JS mobile
 
-La versione mobile dello slider usa CSS animation invece di scroll-driven (che conflitterebbe).
+Lo slider usa **sempre JS** per animare le righe — sia su desktop (scroll-driven) che su mobile (auto-scroll con `requestAnimationFrame`). **Non usare mai CSS animation (`marquee-left`/`marquee-right`) per questo componente**: su Safari mobile, la CSS `transform` animation su figli di un contenitore con `overflow` causa rendering invisibile delle immagini, un bug difficile da debuggare.
+
+### Componente completo
 
 ```tsx
 function ScrollReviews() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+  const mobileOffset = useRef(0);
+  const rafRef = useRef<number>();
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
@@ -895,24 +911,44 @@ function ScrollReviews() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // scroll handler: bail early su mobile
   useEffect(() => {
-    const handler = () => {
-      if (!sectionRef.current || isMobile) return;
-      // ... calcola offset scroll-driven
-    };
-    window.addEventListener("scroll", handler, { passive: true });
+    if (isMobile) {
+      // mobile: auto-scroll lento con rAF (0.5px per frame ≈ 30px/s a 60fps)
+      const tick = () => {
+        mobileOffset.current += 0.5;
+        setOffset(mobileOffset.current);
+        rafRef.current = requestAnimationFrame(tick);
+      };
+      rafRef.current = requestAnimationFrame(tick);
+      return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    } else {
+      // desktop: scroll-driven
+      const handler = () => {
+        if (!sectionRef.current) return;
+        const rect = sectionRef.current.getBoundingClientRect();
+        const progress = -rect.top / (rect.height + window.innerHeight);
+        setOffset(progress * 300);
+      };
+      window.addEventListener("scroll", handler, { passive: true });
+      handler();
+      return () => window.removeEventListener("scroll", handler);
+    }
   }, [isMobile]);
 
+  const row1 = [...REC_IMGS, ...REC_IMGS];
+  const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
+
   return (
-    <div className="overflow-hidden space-y-5">
+    <div ref={sectionRef} className="relative space-y-5">
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
       {[row1, row2].map((row, ri) => (
         <div key={ri}
-          className={`flex gap-5 ${ri === 0 ? "marquee-left" : "marquee-right"}`}
-          style={isMobile
-            ? { width: "max-content" }  // nessun transform inline su mobile
-            : { transform: `translateX(${...}px)`, width: "max-content" }}>
-          {row.map((src, i) => <img key={i} className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />)}
+          className="flex gap-5"
+          style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
+          {row.map((src, i) => (
+            <img key={i} src={src} className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />
+          ))}
         </div>
       ))}
     </div>
@@ -920,20 +956,23 @@ function ScrollReviews() {
 }
 ```
 
-**CSS** (in `styles.css`):
-```css
-@keyframes marquee-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
-@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+### Wrapper nella section
 
-@media (max-width: 767px) {
-  .marquee-left  { animation: marquee-left  35s linear infinite; }
-  .marquee-right { animation: marquee-right 35s linear infinite; }
-}
+```tsx
+<div className="relative z-10" style={{ clipPath: "inset(0)" }}>
+  <ScrollReviews />
+</div>
 ```
 
-**Regola critica:** non applicare mai `transform` inline e CSS animation contemporaneamente — la CSS animation vince ma il risultato è imprevedibile. Usare `isMobile` per escludere uno dei due meccanismi.
+`clipPath: "inset(0)"` taglia l'overflow orizzontale delle righe senza creare uno scroll container (che romperebbe `position: sticky/fixed`) e senza tagliare l'asse verticale (che nasconderebbe la seconda riga).
 
-Il doppio array (`[...REC_IMGS, ...REC_IMGS]`) serve perché l'animazione scorre del 50% — la seconda metà è identica alla prima per il loop seamless.
+### Regole
+
+- **Mai CSS animation su mobile** per questo componente - causa invisibilità immagini su Safari
+- **Mai `overflow: hidden`** sul wrapper diretto delle righe - taglia la seconda riga verticalmente
+- Il doppio array (`[...REC_IMGS, ...REC_IMGS]`) garantisce che le righe siano abbastanza larghe da scorrere senza fine apparente
+- `transition: "none"` su mobile evita lag percepibile nel rAF loop
+- `mobileOffset` e `rafRef` sono `useRef` (non state) per evitare re-render ad ogni frame
 
 ---
 
