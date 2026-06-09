@@ -171,10 +171,9 @@ function ScrollReviews() {
   }, [isMobile]);
 
   const row1 = [...REC_IMGS, ...REC_IMGS];
-  // recG9 è all'indice 8 in REC_IMGS → indice 4 nell'array invertito
-  // Ruotiamo l'array invertito di 4 posizioni così recG9 è la prima immagine visibile
   const reversed = [...REC_IMGS].reverse();
-  const row2Base = [...reversed.slice(4), ...reversed.slice(0, 4)];
+  // Mobile: ruota di 4 così recG9 è prima. Desktop: ordine originale invertito.
+  const row2Base = isMobile ? [...reversed.slice(4), ...reversed.slice(0, 4)] : reversed;
   const row2 = [...row2Base, ...row2Base];
 
   const getTransform = (ri: number) => {
