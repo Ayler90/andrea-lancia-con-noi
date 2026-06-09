@@ -1065,3 +1065,70 @@ Sotto il card pricing, blocco garanzia su sfondo scuro con immagine + titolo in 
 - Sfondo: `bg-white/5` + `border border-white/20` — semi-trasparente su `bg-foreground`
 - Testo enfatizzato (es. "14 giorni"): `text-white/85` dentro `<strong>`
 - Funziona uguale su mobile e desktop — nessuna variante responsive necessaria
+
+---
+
+## 29. Hero above-the-fold — padding verticale
+
+Tutte le hero section usano padding asimmetrico: meno sopra (vicino alla nav), più sotto.
+
+```tsx
+<section className="pt-10 pb-20 md:pt-14 md:pb-28 relative overflow-hidden">
+```
+
+- Mobile: `pt-10` (2.5rem) sopra, `pb-20` (5rem) sotto
+- Desktop: `pt-14` (3.5rem) sopra, `pb-28` (7rem) sotto
+- Applicato a: `consulenza-strategica`, `easy-mail-pack`, `scarica-calendario-lancio`
+
+---
+
+## 30. Slider recensioni mobile — loop lungo
+
+Per evitare che il loop si percepisca troppo presto, ogni slider usa **4 copie** dell'array immagini e resetta ogni `2*hw` pixel (il doppio del set unico).
+
+**Row1 (sinistra):**
+```tsx
+const row1 = isMobile
+  ? [...REC_IMGS, ...REC_IMGS, ...REC_IMGS, ...REC_IMGS]
+  : [...REC_IMGS, ...REC_IMGS];
+
+// offset resetta a 2*hw
+if (hw > 0 && mobileOffset.current >= hw * 2) mobileOffset.current -= hw * 2;
+
+// transform
+`translateX(${-(offset % (hw * 2))}px)`
+```
+
+**Row2 (destra, parte da immagine specifica):**
+```tsx
+// Ruota l'array invertito per far partire dall'immagine desiderata
+const reversed = [...REC_IMGS].reverse();
+const row2Base = isMobile ? [...reversed.slice(N), ...reversed.slice(0, N)] : reversed;
+const row2 = isMobile
+  ? [...row2Base, ...row2Base, ...row2Base, ...row2Base]
+  : [...row2Base, ...row2Base];
+
+// offset2 separato, resetta a 2*hw
+if (hw > 0 && mobileOffset2.current >= hw * 2) mobileOffset2.current -= hw * 2;
+
+// transform: parte da -2*hw e scorre a destra
+`translateX(${(offset2 % (hw * 2)) - hw * 2}px)`
+```
+
+**Dove N = indice di rotazione**: per consulenza-strategica N=4 (recG9 = Barbara Menescardi prima).
+
+**halfWidth** si misura dal `rowRef` (row1): `scrollWidth / 4` se row1 ha 4 copie su mobile.
+
+---
+
+## 31. Consulenza Strategica — navigazione
+
+La pagina `/consulenza-strategica` è collegata in:
+- **Nav desktop**: dropdown "I miei percorsi" > Consulenza Strategica (link diretto)
+- **Nav mobile**: menu hamburger, stessa voce
+- **Footer**: colonna "Percorsi", link diretto
+- **Homepage Percorsi**: box CTA con `ctaHref: "/consulenza-strategica"`
+- **Banner guida**: sezione `#guida` in fondo alla pagina con CTA a `/scarica-calendario-lancio`
+- **Hero CTA secondario**: link testo "Scarica la guida gratuita →" sotto il pulsante principale
+
+**Regola per i percorsi nel Nav/Footer:** se un percorso ha un campo `href`, il link va direttamente a quella URL (tag `<a>`). Altrimenti usa il sistema `goToPercorso` (scroll + filtro homepage).
