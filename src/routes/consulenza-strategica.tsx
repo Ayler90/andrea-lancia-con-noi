@@ -159,7 +159,7 @@ function ScrollReviews() {
           style={isMobile ? { width: "max-content" } : { transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
             <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
-              className="h-44 w-auto rounded-xl object-cover flex-shrink-0 transition-transform duration-300 hover:scale-125 hover:z-10 relative cursor-zoom-in" />
+              className="h-44 w-auto rounded-xl object-cover flex-shrink-0 transition-transform duration-300 hover:scale-105 hover:z-10 relative" />
           ))}
         </div>
       ))}

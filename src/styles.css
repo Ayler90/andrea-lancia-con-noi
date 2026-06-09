@@ -444,8 +444,8 @@
 @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 @media (max-width: 767px) {
-  .marquee-left  { animation: marquee-left  35s linear infinite; }
-  .marquee-right { animation: marquee-right 35s linear infinite; }
+  .marquee-left  { animation: marquee-left  80s linear infinite; }
+  .marquee-right { animation: marquee-right 80s linear infinite; }
 }
 
 /* Phone mockup — scale down on mobile without layout gap */
