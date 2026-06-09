@@ -119,8 +119,9 @@ const STEPS = [
 function GrazieConsulenzaStrategica() {
   useEffect(() => {
     posthog.capture("consulenza_strategica_booked", {
-      value: 150,
+      revenue: 150,
       currency: "EUR",
+      product: "Consulenza Strategica",
     });
   }, []);
 
