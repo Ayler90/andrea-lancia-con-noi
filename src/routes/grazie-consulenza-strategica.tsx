@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
+import posthog from "posthog-js";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 
@@ -116,6 +117,13 @@ const STEPS = [
 ];
 
 function GrazieConsulenzaStrategica() {
+  useEffect(() => {
+    posthog.capture("consulenza_strategica_booked", {
+      value: 150,
+      currency: "EUR",
+    });
+  }, []);
+
   return (
     <main className="min-h-screen bg-background">
       <Nav />
