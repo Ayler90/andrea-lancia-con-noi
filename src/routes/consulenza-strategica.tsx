@@ -223,6 +223,7 @@ const STEPS = [
   { n: "02", title: "Effettua il pagamento", desc: "Dopo la prenotazione ricevi il link per pagare €150. Il pagamento conferma ufficialmente la tua sessione." },
   { n: "03", title: "Compila il questionario", desc: "Ricevi un breve questionario in cui mi racconti la tua situazione e il problema da affrontare. Piu dettagli dai, piu valore ottieni dalla call." },
   { n: "04", title: "La call", desc: "60 minuti in videochiamata 1:1 con me. Analizziamo il problema, troviamo soluzioni concrete e usciamo con un piano d'azione chiaro." },
+  { n: "05", title: "Recap scritto e registrazione", desc: "Dopo la call ricevi la registrazione completa della videochiamata e un recap scritto con il piano d'azione, cosi puoi rileggere e riascoltare tutto con calma." },
 ];
 
 function ComeFunziona() {
