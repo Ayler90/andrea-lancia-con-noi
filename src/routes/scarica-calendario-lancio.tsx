@@ -186,7 +186,6 @@ function ScaricaCalendarioLancio() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Nav />
-      <div className="overflow-x-hidden flex flex-col flex-1">
 
       {/* ── HERO ── */}
       <section className="py-20 md:py-28 relative overflow-hidden">
@@ -450,7 +449,6 @@ function ScaricaCalendarioLancio() {
       <Newsletter />
 
       <Footer />
-      </div>
     </div>
   );
 }

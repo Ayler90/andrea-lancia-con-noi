@@ -301,7 +301,6 @@ function ConsulenzaStrategica() {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="overflow-x-hidden">
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
@@ -615,7 +614,6 @@ function ConsulenzaStrategica() {
       <div id="newsletter"><Newsletter /></div>
 
       <Footer />
-      </div>
     </main>
   );
 }
