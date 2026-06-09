@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
+import { Route as GrazieConsulenzaStrategicaRouteImport } from './routes/grazie-consulenza-strategica'
 import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as ConsulenzaStrategicaRouteImport } from './routes/consulenza-strategica'
@@ -20,6 +21,12 @@ const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
   path: '/scarica-calendario-lancio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GrazieConsulenzaStrategicaRoute =
+  GrazieConsulenzaStrategicaRouteImport.update({
+    id: '/grazie-consulenza-strategica',
+    path: '/grazie-consulenza-strategica',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EasyMailPackRoute = EasyMailPackRouteImport.update({
   id: '/easy-mail-pack',
   path: '/easy-mail-pack',
@@ -46,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
+  '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +61,7 @@ export interface FileRoutesByTo {
   '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
+  '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRoutesById {
@@ -61,6 +70,7 @@ export interface FileRoutesById {
   '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
+  '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
 }
 export interface FileRouteTypes {
@@ -70,6 +80,7 @@ export interface FileRouteTypes {
     | '/consulenza-strategica'
     | '/cookie-policy'
     | '/easy-mail-pack'
+    | '/grazie-consulenza-strategica'
     | '/scarica-calendario-lancio'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -77,6 +88,7 @@ export interface FileRouteTypes {
     | '/consulenza-strategica'
     | '/cookie-policy'
     | '/easy-mail-pack'
+    | '/grazie-consulenza-strategica'
     | '/scarica-calendario-lancio'
   id:
     | '__root__'
@@ -84,6 +96,7 @@ export interface FileRouteTypes {
     | '/consulenza-strategica'
     | '/cookie-policy'
     | '/easy-mail-pack'
+    | '/grazie-consulenza-strategica'
     | '/scarica-calendario-lancio'
   fileRoutesById: FileRoutesById
 }
@@ -92,6 +105,7 @@ export interface RootRouteChildren {
   ConsulenzaStrategicaRoute: typeof ConsulenzaStrategicaRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   EasyMailPackRoute: typeof EasyMailPackRoute
+  GrazieConsulenzaStrategicaRoute: typeof GrazieConsulenzaStrategicaRoute
   ScaricaCalendarioLancioRoute: typeof ScaricaCalendarioLancioRoute
 }
 
@@ -102,6 +116,13 @@ declare module '@tanstack/react-router' {
       path: '/scarica-calendario-lancio'
       fullPath: '/scarica-calendario-lancio'
       preLoaderRoute: typeof ScaricaCalendarioLancioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grazie-consulenza-strategica': {
+      id: '/grazie-consulenza-strategica'
+      path: '/grazie-consulenza-strategica'
+      fullPath: '/grazie-consulenza-strategica'
+      preLoaderRoute: typeof GrazieConsulenzaStrategicaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/easy-mail-pack': {
@@ -140,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConsulenzaStrategicaRoute: ConsulenzaStrategicaRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   EasyMailPackRoute: EasyMailPackRoute,
+  GrazieConsulenzaStrategicaRoute: GrazieConsulenzaStrategicaRoute,
   ScaricaCalendarioLancioRoute: ScaricaCalendarioLancioRoute,
 }
 export const routeTree = rootRouteImport
