@@ -119,33 +119,6 @@ function StarFieldBg() {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
 }
 
-// ── Zoomable review image ─────────────────────────────────────────────────────
-
-function ZoomableImage({ src, alt, className }: { src: string; alt: string; className: string }) {
-  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
-  return (
-    <>
-      <img
-        src={src} alt={alt} className={className}
-        style={{ cursor: "zoom-in" }}
-        onMouseEnter={e => {
-          const r = e.currentTarget.getBoundingClientRect();
-          setPos({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
-        }}
-        onMouseLeave={() => setPos(null)}
-      />
-      {pos && (
-        <div className="fixed z-[500] pointer-events-none"
-          style={{ left: pos.x, top: pos.y, transform: "translate(-50%, -50%)" }}>
-          <img src={src} alt={alt}
-            className="h-[480px] w-auto rounded-2xl object-cover"
-            style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.3)", border: "1.5px solid rgba(21,102,134,0.15)" }} />
-        </div>
-      )}
-    </>
-  );
-}
-
 // ── Scroll reviews ────────────────────────────────────────────────────────────
 
 const REC_IMGS = [recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13];
@@ -177,7 +150,7 @@ function ScrollReviews() {
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
 
   return (
-    <div ref={sectionRef} className="relative overflow-hidden space-y-14">
+    <div ref={sectionRef} className="relative space-y-14">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
       {[row1, row2].map((row, ri) => (
@@ -185,8 +158,8 @@ function ScrollReviews() {
           className={`flex gap-5 ${ri === 0 ? "marquee-left" : "marquee-right"}`}
           style={isMobile ? { width: "max-content" } : { transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
-            <ZoomableImage key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
-              className="h-44 w-auto rounded-xl object-cover flex-shrink-0" />
+            <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
+              className="h-44 w-auto rounded-xl object-cover flex-shrink-0 transition-transform duration-300 hover:scale-125 hover:z-10 relative cursor-zoom-in" />
           ))}
         </div>
       ))}
@@ -306,8 +279,10 @@ function ComeFunziona() {
                     </div>
                   </div>
                   {i < STEPS.length - 1 && (
-                    <div className="hidden md:flex justify-start pl-7 py-3">
-                      <div className="w-px h-6 bg-[#156686]/15" />
+                    <div className="hidden md:flex py-3">
+                      <div className="w-14 flex-shrink-0 flex justify-center">
+                        <div className="w-px h-6 bg-[#156686]/15" />
+                      </div>
                     </div>
                   )}
                 </React.Fragment>
