@@ -208,24 +208,19 @@ const STEPS = [
 
 function ComeFunziona() {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [passedSet, setPassedSet] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const update = () => {
       const mid = window.innerHeight * 0.5;
-      let closest: number | null = null;
-      let closestDist = Infinity;
+      const next = new Set<number>();
       stepRefs.current.forEach((el, i) => {
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const dist = Math.abs(center - mid);
-        if (dist < closestDist && rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
-          closestDist = dist;
-          closest = i;
-        }
+        // step is "passed" once its center crosses the viewport midpoint
+        if (rect.top + rect.height / 2 < mid) next.add(i);
       });
-      setActiveIdx(closest);
+      setPassedSet(next);
     };
     window.addEventListener("scroll", update, { passive: true });
     update();
@@ -243,7 +238,7 @@ function ComeFunziona() {
           <div className="absolute left-7 top-10 bottom-10 w-px bg-[#156686]/10 hidden md:block" />
           <div className="space-y-8">
             {STEPS.map((step, i) => {
-              const isActive = activeIdx === i;
+              const isActive = passedSet.has(i);
               return (
                 <div
                   key={step.n}
