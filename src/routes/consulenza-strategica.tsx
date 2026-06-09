@@ -126,12 +126,12 @@ const REC_IMGS = [recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9,
 function ScrollReviews() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
-  const row2Ref = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
+  const [offset2, setOffset2] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const mobileOffset = useRef(0);
+  const mobileOffset2 = useRef(0);
   const halfWidth = useRef(0);
-  const row2Phase = useRef(0);
   const rafRef = useRef<number>();
 
   useEffect(() => {
@@ -143,16 +143,14 @@ function ScrollReviews() {
   useEffect(() => {
     if (isMobile) {
       if (rowRef.current) halfWidth.current = rowRef.current.scrollWidth / 2;
-      // recG9 è all'indice 4 dell'array invertito — misura la sua posizione nel DOM
-      if (row2Ref.current) {
-        const child = row2Ref.current.children[4] as HTMLElement | undefined;
-        row2Phase.current = child ? child.offsetLeft : 0;
-      }
       const tick = () => {
-        mobileOffset.current += 0.5;
         const hw = halfWidth.current;
+        mobileOffset.current += 0.5;
         if (hw > 0 && mobileOffset.current >= hw) mobileOffset.current -= hw;
         setOffset(mobileOffset.current);
+        mobileOffset2.current += 0.5;
+        if (hw > 0 && mobileOffset2.current >= hw * 2) mobileOffset2.current -= hw * 2;
+        setOffset2(mobileOffset2.current);
         rafRef.current = requestAnimationFrame(tick);
       };
       rafRef.current = requestAnimationFrame(tick);
@@ -172,15 +170,18 @@ function ScrollReviews() {
 
   const row1 = [...REC_IMGS, ...REC_IMGS];
   const reversed = [...REC_IMGS].reverse();
-  // Mobile: ruota di 4 così recG9 è prima. Desktop: ordine originale invertito.
+  // Mobile: ruota di 4 così recG9 è prima (4 copie per loop più lungo). Desktop: ordine originale.
   const row2Base = isMobile ? [...reversed.slice(4), ...reversed.slice(0, 4)] : reversed;
-  const row2 = [...row2Base, ...row2Base];
+  const row2 = isMobile
+    ? [...row2Base, ...row2Base, ...row2Base, ...row2Base]
+    : [...row2Base, ...row2Base];
 
   const getTransform = (ri: number) => {
     if (isMobile) {
       const hw = halfWidth.current || 1;
       if (ri === 0) return `translateX(${-(offset % hw)}px)`;
-      return `translateX(${(offset % hw) - hw}px)`;
+      // row2: 4 copie, reset ogni 2*hw — scorre a destra
+      return `translateX(${(offset2 % (hw * 2)) - hw * 2}px)`;
     }
     return `translateX(${ri === 0 ? -offset : offset - 150}px)`;
   };
@@ -191,7 +192,7 @@ function ScrollReviews() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
       {[row1, row2].map((row, ri) => (
         <div key={ri}
-          ref={ri === 0 ? rowRef : ri === 1 ? row2Ref : undefined}
+          ref={ri === 0 ? rowRef : undefined}
           className="flex gap-5"
           style={{ transform: getTransform(ri), transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
