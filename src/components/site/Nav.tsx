@@ -47,12 +47,15 @@ export function Nav() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
-  const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
-  const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
+  const isCalendarioPage  = window.location.pathname === "/scarica-calendario-lancio";
+  const isEasyMailPage    = window.location.pathname === "/easy-mail-pack";
+  const isConsulenzaPage  = window.location.pathname === "/consulenza-strategica";
+  const hasNewsletterSection = isCalendarioPage || isEasyMailPage || isConsulenzaPage;
+  const guidaHref = hasNewsletterSection ? "#newsletter" : "/#newsletter";
   const links = [
     { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
     { href: "/#percorsi",                                             label: "I miei percorsi" },
-    { href: "/scarica-calendario-lancio", label: "Guida gratuita ai lanci", badge: "Gratis" },
+    { href: guidaHref, label: "Guida gratuita ai lanci", badge: "Gratis" },
     { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
   ];
 
@@ -84,7 +87,7 @@ export function Nav() {
             per creare il tuo primo, o prossimo, lancio.
           </p>
           <a
-            href={(isCalendarioPage || isEasyMailPage) ? "#newsletter" : "/#newsletter"}
+            href={guidaHref}
             className="flex-shrink-0 inline-flex items-center gap-1 text-xs font-semibold bg-primary text-primary-foreground px-4 py-1.5 rounded-full hover:bg-primary/90 transition-colors whitespace-nowrap"
           >
             Scarica ora
@@ -355,7 +358,7 @@ export function Nav() {
             </div>
 
             {/* Guida gratuita ai lanci + badge */}
-            <a href="/scarica-calendario-lancio" onClick={closeMenu}
+            <a href={guidaHref} onClick={closeMenu}
               className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors flex items-center gap-3 flex-wrap">
               Guida gratuita ai lanci
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest bg-white/15 text-white px-2.5 py-1 rounded-full leading-none">

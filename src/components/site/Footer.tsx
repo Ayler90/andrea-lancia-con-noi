@@ -30,11 +30,14 @@ function goToPercorso(e: React.MouseEvent, filter: string, slug: string) {
 }
 
 export function Footer() {
-  const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
+  const isCalendarioPage  = window.location.pathname === "/scarica-calendario-lancio";
+  const isEasyMailPage    = window.location.pathname === "/easy-mail-pack";
+  const isConsulenzaPage  = window.location.pathname === "/consulenza-strategica";
+  const guidaHref = (isCalendarioPage || isEasyMailPage || isConsulenzaPage) ? "#newsletter" : "/#newsletter";
   const sito = [
     { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
     { href: "/#percorsi",                                             label: "I miei percorsi" },
-    { href: "/scarica-calendario-lancio",    label: "Guida gratuita ai lanci" },
+    { href: guidaHref,                                                label: "Guida gratuita ai lanci" },
     { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
   ];
   return (
