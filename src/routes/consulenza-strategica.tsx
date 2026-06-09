@@ -167,14 +167,11 @@ function ScrollReviews() {
   const row1 = [...REC_IMGS, ...REC_IMGS];
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
 
-  // Su mobile: entrambe le righe vanno a sinistra, row2 sfasata di metà periodo
-  // Su desktop: scroll-driven con direzioni opposte (range limitato, non c'è problema di overflow)
   const getTransform = (ri: number) => {
     if (isMobile) {
-      const hw = halfWidth.current;
-      const phase = ri === 0 ? 0 : hw / 2;
-      const x = -((offset + phase) % (hw || 1));
-      return `translateX(${x}px)`;
+      const hw = halfWidth.current || 1;
+      if (ri === 0) return `translateX(${-(offset % hw)}px)`;
+      return `translateX(${(offset % hw) - hw}px)`;
     }
     return `translateX(${ri === 0 ? -offset : offset - 150}px)`;
   };

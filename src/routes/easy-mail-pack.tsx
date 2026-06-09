@@ -824,10 +824,9 @@ function ScrollReviews() {
 
   const getTransform = (ri: number) => {
     if (isMobile) {
-      const hw = halfWidth.current;
-      const phase = ri === 0 ? 0 : hw / 2;
-      const x = -((offset + phase) % (hw || 1));
-      return `translateX(${x}px)`;
+      const hw = halfWidth.current || 1;
+      if (ri === 0) return `translateX(${-(offset % hw)}px)`;
+      return `translateX(${(offset % hw) - hw}px)`;
     }
     return `translateX(${ri === 0 ? -offset : offset - 150}px)`;
   };
