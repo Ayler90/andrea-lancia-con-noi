@@ -544,7 +544,7 @@ function ConsulenzaStrategica() {
         <div className="absolute inset-x-0 top-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
         <div className="container-narrow relative z-10 mb-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Le parole di chi ci è già passato ❤️</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Le parole di chi ha già fatto una consulenza con me ❤️</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center">
             Cosa dicono le persone che hanno lavorato{" "}
             <em className="text-[#156686]">con me?</em>
