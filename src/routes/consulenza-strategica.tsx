@@ -119,6 +119,33 @@ function StarFieldBg() {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
 }
 
+// ── Zoomable review image ─────────────────────────────────────────────────────
+
+function ZoomableImage({ src, alt, className }: { src: string; alt: string; className: string }) {
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  return (
+    <>
+      <img
+        src={src} alt={alt} className={className}
+        style={{ cursor: "zoom-in" }}
+        onMouseEnter={e => {
+          const r = e.currentTarget.getBoundingClientRect();
+          setPos({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+        }}
+        onMouseLeave={() => setPos(null)}
+      />
+      {pos && (
+        <div className="fixed z-[500] pointer-events-none"
+          style={{ left: pos.x, top: pos.y, transform: "translate(-50%, -50%)" }}>
+          <img src={src} alt={alt}
+            className="h-[480px] w-auto rounded-2xl object-cover"
+            style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.3)", border: "1.5px solid rgba(21,102,134,0.15)" }} />
+        </div>
+      )}
+    </>
+  );
+}
+
 // ── Scroll reviews ────────────────────────────────────────────────────────────
 
 const REC_IMGS = [recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13];
@@ -158,7 +185,7 @@ function ScrollReviews() {
           className={`flex gap-5 ${ri === 0 ? "marquee-left" : "marquee-right"}`}
           style={isMobile ? { width: "max-content" } : { transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
-            <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
+            <ZoomableImage key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
               className="h-44 w-auto rounded-xl object-cover flex-shrink-0" />
           ))}
         </div>
@@ -261,7 +288,7 @@ function ComeFunziona() {
                 <React.Fragment key={step.n}>
                   <div
                     ref={el => { stepRefs.current[i] = el; }}
-                    className="flex gap-6 md:gap-8 items-start relative bg-white py-1"
+                    className="flex gap-6 md:gap-8 items-start relative bg-white"
                     style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
                   >
                     <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
@@ -273,7 +300,7 @@ function ComeFunziona() {
                       }}>
                       {step.n}
                     </div>
-                    <div className="pt-1 pb-2">
+                    <div className="pt-1">
                       <h3 className="font-semibold text-foreground/90 text-lg mb-1">{step.title}</h3>
                       <p className="text-sm text-foreground/60 leading-relaxed">{step.desc}</p>
                     </div>
