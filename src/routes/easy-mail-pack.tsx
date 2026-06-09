@@ -782,8 +782,11 @@ function ScrollReviews() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
+  const [offset2, setOffset2] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const mobileOffset = useRef(0);
+  const mobileOffset2 = useRef(0);
+  const halfWidth = useRef(0);
   const rafRef = useRef<number>();
 
   useEffect(() => {
@@ -792,16 +795,17 @@ function ScrollReviews() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const halfWidth = useRef(0);
-
   useEffect(() => {
     if (isMobile) {
-      if (rowRef.current) halfWidth.current = rowRef.current.scrollWidth / 2;
+      if (rowRef.current) halfWidth.current = rowRef.current.scrollWidth / 4;
       const tick = () => {
-        mobileOffset.current += 0.5;
         const hw = halfWidth.current;
-        if (hw > 0 && mobileOffset.current >= hw) mobileOffset.current -= hw;
+        mobileOffset.current += 0.5;
+        if (hw > 0 && mobileOffset.current >= hw * 2) mobileOffset.current -= hw * 2;
         setOffset(mobileOffset.current);
+        mobileOffset2.current += 0.5;
+        if (hw > 0 && mobileOffset2.current >= hw * 2) mobileOffset2.current -= hw * 2;
+        setOffset2(mobileOffset2.current);
         rafRef.current = requestAnimationFrame(tick);
       };
       rafRef.current = requestAnimationFrame(tick);
@@ -819,14 +823,19 @@ function ScrollReviews() {
     }
   }, [isMobile]);
 
-  const row1 = [...REC_IMGS, ...REC_IMGS];
-  const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
+  const row1 = isMobile
+    ? [...REC_IMGS, ...REC_IMGS, ...REC_IMGS, ...REC_IMGS]
+    : [...REC_IMGS, ...REC_IMGS];
+  const reversed = [...REC_IMGS].reverse();
+  const row2 = isMobile
+    ? [...reversed, ...reversed, ...reversed, ...reversed]
+    : [...reversed, ...reversed];
 
   const getTransform = (ri: number) => {
     if (isMobile) {
       const hw = halfWidth.current || 1;
-      if (ri === 0) return `translateX(${-(offset % hw)}px)`;
-      return `translateX(${offset % hw}px)`;
+      if (ri === 0) return `translateX(${-(offset % (hw * 2))}px)`;
+      return `translateX(${(offset2 % (hw * 2)) - hw * 2}px)`;
     }
     return `translateX(${ri === 0 ? -offset : offset - 150}px)`;
   };
