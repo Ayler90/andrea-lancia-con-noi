@@ -174,13 +174,12 @@ function GrazieConsulenzaStrategica() {
                       </div>
                     </div>
                   </div>
+                  {step.hasForm && (
+                    <div className="mt-6 -mx-1">
+                      <TallyForm />
+                    </div>
+                  )}
                 </div>
-
-                {step.hasForm && (
-                  <div className="mt-6 rounded-2xl border border-[#156686]/15 overflow-hidden px-2 py-4 md:px-6">
-                    <TallyForm />
-                  </div>
-                )}
               </div>
             ))}
           </div>
