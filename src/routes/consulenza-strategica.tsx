@@ -150,7 +150,7 @@ function ScrollReviews() {
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
 
   return (
-    <div ref={sectionRef} className="overflow-hidden space-y-8">
+    <div ref={sectionRef} className="overflow-hidden space-y-14">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
       {[row1, row2].map((row, ri) => (
