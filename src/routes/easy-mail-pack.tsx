@@ -865,8 +865,9 @@ function EasyMailPack() {
   const [filterUnlocked, setFilterUnlocked] = useState(false);
 
   return (
-    <main className="min-h-screen bg-background overflow-x-hidden">
+    <main className="min-h-screen bg-background">
       <Nav />
+      <div className="overflow-x-hidden">
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden py-20 md:py-28 px-2 md:px-4">
@@ -1545,6 +1546,7 @@ function EasyMailPack() {
       <div id="newsletter"><Newsletter /></div>
 
       <Footer />
+      </div>
     </main>
   );
 }
