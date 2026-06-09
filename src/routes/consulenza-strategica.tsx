@@ -127,6 +127,8 @@ function ScrollReviews() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+  const mobileOffset = useRef(0);
+  const rafRef = useRef<number>();
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
@@ -135,15 +137,25 @@ function ScrollReviews() {
   }, []);
 
   useEffect(() => {
-    const handler = () => {
-      if (!sectionRef.current || isMobile) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const progress = -rect.top / (rect.height + window.innerHeight);
-      setOffset(progress * 300);
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    handler();
-    return () => window.removeEventListener("scroll", handler);
+    if (isMobile) {
+      const tick = () => {
+        mobileOffset.current += 0.5;
+        setOffset(mobileOffset.current);
+        rafRef.current = requestAnimationFrame(tick);
+      };
+      rafRef.current = requestAnimationFrame(tick);
+      return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    } else {
+      const handler = () => {
+        if (!sectionRef.current) return;
+        const rect = sectionRef.current.getBoundingClientRect();
+        const progress = -rect.top / (rect.height + window.innerHeight);
+        setOffset(progress * 300);
+      };
+      window.addEventListener("scroll", handler, { passive: true });
+      handler();
+      return () => window.removeEventListener("scroll", handler);
+    }
   }, [isMobile]);
 
   const row1 = [...REC_IMGS, ...REC_IMGS];
@@ -155,8 +167,8 @@ function ScrollReviews() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
       {[row1, row2].map((row, ri) => (
         <div key={ri}
-          className={`flex gap-5 ${ri === 0 ? "marquee-left" : "marquee-right"}`}
-          style={isMobile ? { width: "max-content" } : { transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
+          className="flex gap-5"
+          style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
             <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
               className="h-44 w-auto rounded-xl object-cover flex-shrink-0 transition-transform duration-300 hover:scale-105 hover:z-10 relative" />
