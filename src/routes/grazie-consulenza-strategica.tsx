@@ -122,7 +122,7 @@ function GrazieConsulenzaStrategica() {
 
       {/* ── HERO ── */}
       <section className="pt-10 pb-16 md:pt-14 md:pb-20 relative overflow-hidden">
-        <div className="container-narrow max-w-2xl mx-auto text-center">
+        <div className="container-narrow max-w-3xl mx-auto text-center">
           <p className="text-3xl mb-4">🎉</p>
           <p className="eyebrow text-[#156686]/70 mb-4">Prenotazione confermata</p>
           <h1 className="h-display text-3xl md:text-4xl lg:text-5xl mb-6">
@@ -146,7 +146,7 @@ function GrazieConsulenzaStrategica() {
 
       {/* ── STEPS ── */}
       <section className="pb-24 bg-white">
-        <div className="container-narrow max-w-2xl mx-auto">
+        <div className="container-narrow max-w-3xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-10 text-center">
             Segui questi step per confermare la Consulenza Strategica
           </p>
