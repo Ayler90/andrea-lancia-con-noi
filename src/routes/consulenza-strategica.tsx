@@ -313,7 +313,7 @@ function ConsulenzaStrategica() {
         <div className="container-narrow relative" style={{ zIndex: 1 }}>
           {/* Google badge */}
           <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full">
+            <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full whitespace-nowrap">
               <span className="text-yellow-400 text-base tracking-tight leading-none">★★★★★</span>
               5.0 su Google
               <span className="text-[#156686]/30">·</span>
@@ -362,9 +362,8 @@ function ConsulenzaStrategica() {
               { icon: "💬", text: "1:1 con me" },
               { icon: "💶", text: "€150 una tantum" },
               { icon: "📅", text: "Scegli tu giorno e ora" },
-            ].map((chip, i) => (
+            ].map((chip) => (
               <div key={chip.text} className="flex items-center gap-1.5 text-sm text-foreground/65 font-medium">
-                {i % 2 === 1 && <span className="text-foreground/25 mr-1">-</span>}
                 <span>{chip.icon}</span>
                 <span>{chip.text}</span>
               </div>
