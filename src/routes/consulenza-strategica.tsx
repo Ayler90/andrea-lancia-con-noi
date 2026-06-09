@@ -582,9 +582,23 @@ function ConsulenzaStrategica() {
               </div>
             ))}
           </div>
-          <p className="mt-10 text-sm text-foreground/45 text-center max-w-xl mx-auto leading-relaxed">
-            <strong className="text-foreground/55">La consulenza non fa per te se sei:</strong> un networker o se non vendi prodotti o servizi tuoi - non lavoro su modelli di business basati sul reclutamento o sulla vendita di opportunità.
-          </p>
+          <div className="mt-14 border-t border-[#156686]/15 pt-12">
+            <h3 className="h-display font-bold text-2xl md:text-3xl text-center mb-8">
+              La consulenza <em className="text-foreground/40">non fa per te</em> se sei:
+            </h3>
+            <ul className="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto">
+              {[
+                { emoji: "🔗", text: "Un networker o MLM — non lavoro su modelli di business basati sul reclutamento o sulla vendita di opportunità." },
+                { emoji: "🌱", text: "All'inizio assoluto — se non hai ancora un'offerta o un business definito, hai bisogno prima di una base solida, non di una consulenza strategica." },
+                { emoji: "🔄", text: "In cerca di qualcuno che faccia tutto al posto tuo — la consulenza ti dà la strategia, l'esecuzione rimane in capo a te." },
+              ].map(({ emoji, text }) => (
+                <li key={text} className="flex-1 flex items-start gap-3 bg-white/60 border border-[#156686]/10 rounded-xl px-5 py-4">
+                  <span className="text-xl flex-shrink-0 mt-0.5">{emoji}</span>
+                  <p className="text-sm text-foreground/55 leading-relaxed">{text}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
