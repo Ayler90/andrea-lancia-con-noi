@@ -1,4 +1,35 @@
+import { useEffect, useRef, useState } from "react";
 import aereiImg from "@/assets/Foto con aerei senza sfondo.png";
+
+function CountUp({ target, suffix = "", duration = 6400 }: { target: number; suffix?: string; duration?: number }) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 12);
+          setValue(Math.round(ease * target));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+  return (
+    <span ref={ref} style={{ display: "inline-block", minWidth: `${String(target).length + suffix.length}ch`, fontVariantNumeric: "tabular-nums" }}>
+      {value}{suffix}
+    </span>
+  );
+}
 
 const settori = [
   "Video making",
@@ -65,19 +96,19 @@ export function ChiSono({ ctaText = "Scopri i miei percorsi →", ctaHref = "#pe
             style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.12), inset 0 1px 0 rgba(196,217,220,0.3)" }}
           >
             <div>
-              <p className="h-display text-3xl md:text-4xl text-[#156686]">50+</p>
+              <p className="h-display text-3xl md:text-4xl text-[#156686]"><CountUp target={50} suffix="+" /></p>
               <p className="text-xs text-muted-foreground mt-2 uppercase tracking-wider">
                 Lanci gestiti
               </p>
             </div>
             <div>
-              <p className="h-display text-3xl md:text-4xl text-[#156686]">6+</p>
+              <p className="h-display text-3xl md:text-4xl text-[#156686]"><CountUp target={6} suffix="+" /></p>
               <p className="text-xs text-muted-foreground mt-2 uppercase tracking-wider">
                 Anni di esperienza
               </p>
             </div>
             <div>
-              <p className="h-display text-3xl md:text-4xl text-[#156686]">500k€</p>
+              <p className="h-display text-3xl md:text-4xl text-[#156686]"><CountUp target={500} suffix="k€" /></p>
               <p className="text-xs text-muted-foreground mt-2 uppercase tracking-wider">
                 Fatturato generato
               </p>
