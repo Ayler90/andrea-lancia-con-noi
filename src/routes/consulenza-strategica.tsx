@@ -583,12 +583,14 @@ function ConsulenzaStrategica() {
             ))}
           </div>
           <div className="mt-10 max-w-xl mx-auto">
-            <p className="text-sm font-semibold text-foreground/50 uppercase tracking-wider text-center mb-5">La consulenza non fa per te se sei:</p>
+            <h3 className="h-display font-bold text-2xl md:text-3xl text-center mb-6">
+              La consulenza <em className="text-foreground/40">non fa per te</em> se sei:
+            </h3>
             <ul className="flex flex-col gap-3">
               {[
-                "Un networker o MLM — non lavoro su modelli di business basati sul reclutamento o sulla vendita di opportunità.",
-                "All'inizio assoluto — se non hai ancora un'offerta o un business definito, hai bisogno prima di una base solida.",
-                "In cerca di qualcuno che faccia tutto al posto tuo — la consulenza ti dà la strategia, l'esecuzione rimane in capo a te.",
+                "Un networker o MLM. Non lavoro su modelli di business basati sul reclutamento o sulla vendita di opportunità.",
+                "All'inizio assoluto. Se non hai ancora un'offerta o un business definito, hai bisogno prima di una base solida.",
+                "In cerca di qualcuno che faccia tutto al posto tuo. La consulenza ti dà la strategia, l'esecuzione rimane in capo a te.",
               ].map((text) => (
                 <li key={text} className="flex items-start gap-3 text-sm text-foreground/50 leading-relaxed">
                   <span className="flex-shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-foreground/25" />
