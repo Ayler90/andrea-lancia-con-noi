@@ -161,7 +161,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "Cosa devo preparare per la call?",
-    a: "Compila il questionario con più dettagli possibili. Se hai screenshot, link o documenti rilevanti -la strategia del lancio, le email che hai scritto, lo screenshot del funnel -tienili pronti da condividere durante la videochiamata.",
+    a: "Compila il questionario con più dettagli possibili. Se hai screenshot, link o documenti rilevanti - la strategia del lancio, le email che hai scritto, lo screenshot del funnel - tienili pronti da condividere durante la videochiamata.",
   },
   {
     q: "Posso prenotare più sessioni?",
@@ -353,12 +353,12 @@ function ConsulenzaStrategica() {
             <h2 className="h-display font-bold text-white leading-[1.1]"
               style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
               Hai un problema specifico da risolvere,{" "}
-              <em style={{ color: "#C4D9DC" }}>ma non sai da dove iniziare?</em>
+              <em style={{ color: "#C4D9DC" }}>ma non sai dove mettere le mani e a chi chiedere?</em>
             </h2>
 
             <div className="space-y-5 text-sm md:text-base text-white/75 leading-relaxed">
               <p>
-                Hai qualcosa che non funziona -un funnel che non converte, un'automazione rotta, una newsletter che non cresce -ma non riesci a capire dov'è il problema.
+                Hai qualcosa che non funziona - un funnel che non converte, un'automazione rotta, una newsletter che non cresce - ma non riesci a capire dov'è il problema.
               </p>
               <p>
                 Oppure stai per fare un lancio e vuoi essere sicuro che la strategia sia solida: vuoi qualcuno che guardi le tue email, il tuo piano, la tua sequenza, e ti dica onestamente cosa funziona e cosa no.
@@ -407,7 +407,7 @@ function ConsulenzaStrategica() {
               {
                 emoji: "📰",
                 title: "La tua newsletter non cresce",
-                desc: "Troviamo insieme le cause -dal form di iscrizione alla strategia di contenuto -e definiamo un piano concreto per far crescere la lista.",
+                desc: "Troviamo insieme le cause - dal form di iscrizione alla strategia di contenuto - e definiamo un piano concreto per far crescere la lista.",
               },
               {
                 emoji: "✉️",
