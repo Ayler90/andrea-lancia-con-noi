@@ -562,16 +562,14 @@ function ConsulenzaStrategica() {
         <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
 
-        <div className="container-narrow max-w-4xl mx-auto relative z-10">
+        <div className="container-narrow relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Scegli il tuo slot</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl text-center text-white mb-3">
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-3">
             Prenota la tua <em style={{ color: "#C4D9DC" }}>Consulenza Strategica</em>
           </h2>
           <p className="text-center text-white/60 text-sm mb-10">60 minuti · €150 · 1:1 con me</p>
 
-          <div className="rounded-2xl overflow-hidden" style={{ border: "1.5px solid rgba(196,217,220,0.2)", backgroundColor: "white" }}>
-            <CalEmbed />
-          </div>
+          <CalEmbed />
 
           <p className="text-center text-white/50 text-sm mt-8">
             Non sei sicuro che la consulenza faccia per te?{" "}
