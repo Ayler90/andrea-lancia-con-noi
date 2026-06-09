@@ -501,7 +501,10 @@ function ConsulenzaStrategica() {
               },
             ].map((item, idx) => (
               <div key={item.title} className="rounded-2xl p-6 border border-[#156686]/15 bg-[#156686]/4 flex gap-5 items-start">
-                <div className="text-3xl flex-shrink-0 mt-0.5" style={{ animation: `thought-float ${3 + (idx % 3) * 0.4}s ease-in-out infinite` }}>{item.emoji}</div>
+                <div className="relative flex-shrink-0 mt-0.5">
+                  <div className="text-3xl" style={{ animation: `thought-float ${3 + (idx % 3) * 0.4}s ease-in-out infinite` }}>{item.emoji}</div>
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-3 blur-lg rounded-full pointer-events-none" style={{ backgroundColor: "rgba(21,102,134,0.35)" }} />
+                </div>
                 <div>
                   <h3 className="font-semibold text-foreground/90 text-base mb-2">{item.title}</h3>
                   <p className="text-sm text-foreground/60 leading-relaxed">{item.desc}</p>
