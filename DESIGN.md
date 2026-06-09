@@ -1132,3 +1132,38 @@ La pagina `/consulenza-strategica` è collegata in:
 - **Hero CTA secondario**: link testo "Scarica la guida gratuita →" sotto il pulsante principale
 
 **Regola per i percorsi nel Nav/Footer:** se un percorso ha un campo `href`, il link va direttamente a quella URL (tag `<a>`). Altrimenti usa il sistema `goToPercorso` (scroll + filtro homepage).
+
+---
+
+## 32. Logica anchor nav e footer — voci contestuali
+
+Le voci "Guida gratuita ai lanci" e "Recensioni" nel Nav e nel Footer puntano a sezioni diverse in base alla pagina corrente. La logica è calcolata con `window.location.pathname`:
+
+### Guida gratuita ai lanci
+| Pagina | href |
+|---|---|
+| `/scarica-calendario-lancio`, `/easy-mail-pack`, `/consulenza-strategica` | `#newsletter` |
+| tutte le altre (inclusa homepage) | `/#newsletter` |
+
+### Recensioni
+| Pagina | href |
+|---|---|
+| `/easy-mail-pack`, `/consulenza-strategica` | `#recensioni` |
+| `/scarica-calendario-lancio` | `#testimonianze` |
+| tutte le altre (inclusa homepage) | `/#testimonianze` |
+
+**Implementazione in Nav.tsx e Footer.tsx:**
+```tsx
+const isCalendarioPage = window.location.pathname === "/scarica-calendario-lancio";
+const isEasyMailPage   = window.location.pathname === "/easy-mail-pack";
+const isConsulenzaPage = window.location.pathname === "/consulenza-strategica";
+
+const guidaHref = (isCalendarioPage || isEasyMailPage || isConsulenzaPage)
+  ? "#newsletter" : "/#newsletter";
+
+const recensioniHref = isEasyMailPage || isConsulenzaPage ? "#recensioni"
+  : isCalendarioPage ? "#testimonianze"
+  : "/#testimonianze";
+```
+
+**Regola di aggiornamento:** ogni volta che si aggiunge una nuova pagina con sezione `#newsletter` o `#recensioni`, aggiornare entrambi Nav.tsx e Footer.tsx aggiungendo il check del pathname alle rispettive variabili.
