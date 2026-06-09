@@ -904,7 +904,7 @@ function EasyMailPack() {
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-2 md:px-4">
+      <section className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28 px-2 md:px-4">
         {/* glow orbs — z-index 0 so they sit behind all content */}
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none"
           style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />

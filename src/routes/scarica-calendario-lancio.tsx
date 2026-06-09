@@ -188,7 +188,7 @@ function ScaricaCalendarioLancio() {
       <Nav />
 
       {/* ── HERO ── */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
+      <section className="pt-10 pb-20 md:pt-14 md:pb-28 relative overflow-hidden">
         {/* Glow orbs */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/25 blur-3xl"
