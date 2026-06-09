@@ -50,13 +50,15 @@ export function Nav() {
   const isCalendarioPage  = window.location.pathname === "/scarica-calendario-lancio";
   const isEasyMailPage    = window.location.pathname === "/easy-mail-pack";
   const isConsulenzaPage  = window.location.pathname === "/consulenza-strategica";
-  const hasNewsletterSection = isCalendarioPage || isEasyMailPage || isConsulenzaPage;
-  const guidaHref = hasNewsletterSection ? "#newsletter" : "/#newsletter";
+  const guidaHref = (isCalendarioPage || isEasyMailPage || isConsulenzaPage) ? "#newsletter" : "/#newsletter";
+  const recensioniHref = isEasyMailPage || isConsulenzaPage ? "#recensioni"
+    : isCalendarioPage ? "#testimonianze"
+    : "/#testimonianze";
   const links = [
-    { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
-    { href: "/#percorsi",                                             label: "I miei percorsi" },
-    { href: guidaHref, label: "Guida gratuita ai lanci", badge: "Gratis" },
-    { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
+    { href: isCalendarioPage ? "#chi-sono" : "/#chi-sono", label: "Chi sono" },
+    { href: "/#percorsi",                                  label: "I miei percorsi" },
+    { href: guidaHref,       label: "Guida gratuita ai lanci", badge: "Gratis" },
+    { href: recensioniHref,  label: "Recensioni" },
   ];
 
   const closeMenu = () => {
@@ -368,7 +370,7 @@ export function Nav() {
             </a>
 
             {/* Recensioni */}
-            <a href={isCalendarioPage ? "#testimonianze" : "/#testimonianze"} onClick={closeMenu}
+            <a href={recensioniHref} onClick={closeMenu}
               className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors">
               Recensioni
             </a>
