@@ -177,7 +177,7 @@ function ScrollReviews() {
     if (isMobile) {
       const hw = halfWidth.current || 1;
       if (ri === 0) return `translateX(${-(offset % hw)}px)`;
-      return `translateX(${-((offset + row2Phase.current) % hw)}px)`;
+      return `translateX(${(offset % hw) - row2Phase.current}px)`;
     }
     return `translateX(${ri === 0 ? -offset : offset - 150}px)`;
   };
