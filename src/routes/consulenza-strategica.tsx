@@ -382,6 +382,13 @@ function ConsulenzaStrategica() {
               Come funziona ↓
             </a>
           </div>
+          <div className="mt-4 flex justify-center">
+            <a href="/scarica-calendario-lancio"
+              className="text-sm text-[#156686] underline underline-offset-4 hover:opacity-70 transition-opacity whitespace-nowrap"
+              onClick={() => trackCta("hero-guida-gratuita")}>
+              Scarica la guida gratuita →
+            </a>
+          </div>
 
           {/* Info chips — desktop: riga flex; mobile: griglia 2×2 con trattino separatore */}
           <div className="mt-10 hidden md:flex flex-wrap items-center justify-center gap-3">
@@ -647,6 +654,26 @@ function ConsulenzaStrategica() {
             Hai qualche domanda? <em className="text-[#156686]">Ho le risposte.</em>
           </h2>
           <FaqAccordion />
+        </div>
+      </section>
+
+      {/* ── GUIDA GRATUITA ────────────────────────────────────────────────── */}
+      <section id="guida" className="py-16 md:py-20 bg-[#EEF3F5]">
+        <div className="container-narrow max-w-3xl mx-auto text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4">Risorsa gratuita</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-4">
+            Scarica la <em className="text-[#156686]">guida gratuita</em> ai lanci
+          </h2>
+          <p className="text-sm md:text-base text-foreground/65 leading-relaxed max-w-xl mx-auto mb-8">
+            Una guida di oltre 30 pagine per creare il tuo primo — o prossimo — lancio. Strategia, email e calendario tutto in un posto.
+          </p>
+          <a
+            href="/scarica-calendario-lancio"
+            onClick={() => posthog.capture("consulenza_cta_click", { cta_label: "guida-gratuita-banner", page: "consulenza-strategica" })}
+            className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap inline-flex"
+          >
+            Scarica la guida gratuita →
+          </a>
         </div>
       </section>
 

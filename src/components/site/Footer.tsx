@@ -6,7 +6,7 @@ const percorsi = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
   { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
   { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
-  { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
+  { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica", href: "/consulenza-strategica" },
 ];
 
 const corsi = [
@@ -34,7 +34,7 @@ export function Footer() {
   const sito = [
     { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
     { href: "/#percorsi",                                             label: "I miei percorsi" },
-    { href: isCalendarioPage ? "#newsletter"    : "/#newsletter",    label: "Guida gratuita ai lanci" },
+    { href: "/scarica-calendario-lancio",    label: "Guida gratuita ai lanci" },
     { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
   ];
   return (
@@ -76,13 +76,22 @@ export function Footer() {
             <ul className="space-y-3">
               {percorsi.map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={`#percorso-${l.slug}`}
-                    onClick={(e) => goToPercorso(e, l.filter, l.slug)}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </a>
+                  {(l as any).href ? (
+                    <a
+                      href={(l as any).href}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  ) : (
+                    <a
+                      href={`#percorso-${l.slug}`}
+                      onClick={(e) => goToPercorso(e, l.filter, l.slug)}
+                      className="text-sm text-white/70 hover:text-white transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

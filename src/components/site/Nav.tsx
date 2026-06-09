@@ -7,7 +7,7 @@ const percorsiSub = [
   { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio" },
   { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint" },
   { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter" },
-  { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica" },
+  { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica", href: "/consulenza-strategica" },
   { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", href: "/scarica-calendario-lancio" },
   { filter: "newsletter", slug: "easy-mail-pack",         label: "Easy-Mail Pack", href: "/easy-mail-pack" },
 ];
@@ -17,7 +17,7 @@ const percorsiCategories = {
     { filter: "lancio",     slug: "pronti-partenza-lancio", label: "Pronti, Partenza, Lancio", emoji: "🚀", desc: "Percorso 1:1 di 3-4 mesi per lanciare il tuo servizio" },
     { filter: "business",   slug: "business-blueprint",     label: "Business Blueprint",        emoji: "🗺️", desc: "Mentoring di 12 mesi per creare un business solido" },
     { filter: "newsletter", slug: "mentoring-newsletter",   label: "Mentoring Newsletter",      emoji: "✉️", desc: "Mentoring di 1 mese e mezzo per lanciare la tua newsletter" },
-    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯", desc: "Sessione di 60 minuti per fare chiarezza" },
+    { filter: "consulenza", slug: "consulenza-strategica",  label: "Consulenza Strategica",     emoji: "🎯", desc: "Sessione di 60 minuti per fare chiarezza", href: "/consulenza-strategica" },
   ],
   corsi: [
     { filter: "lancio",     slug: "calendario-lancio",      label: "Calendario di Lancio", emoji: "📅", desc: "Template Notion per organizzare il tuo lancio", href: "/scarica-calendario-lancio" },
@@ -52,7 +52,7 @@ export function Nav() {
   const links = [
     { href: isCalendarioPage ? "#chi-sono"      : "/#chi-sono",      label: "Chi sono" },
     { href: "/#percorsi",                                             label: "I miei percorsi" },
-    { href: (isCalendarioPage || isEasyMailPage) ? "#newsletter" : "/#newsletter", label: "Guida gratuita ai lanci", badge: "Gratis" },
+    { href: "/scarica-calendario-lancio", label: "Guida gratuita ai lanci", badge: "Gratis" },
     { href: isCalendarioPage ? "#testimonianze" : "/#testimonianze", label: "Recensioni" },
   ];
 
@@ -218,16 +218,30 @@ export function Nav() {
                 <ul className="flex flex-col gap-1">
                   {percorsiCategories.percorsi.map((p) => (
                     <li key={p.slug}>
-                      <button
-                        onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
-                        className="flex items-start gap-3 py-2 px-2 text-left w-full cursor-pointer group rounded-lg hover:bg-[#156686]/10 transition-colors"
-                      >
-                        <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
-                        <span className="min-w-0">
-                          <span className="block text-sm font-semibold text-foreground/85 group-hover:text-foreground transition-colors whitespace-nowrap">{p.label}</span>
-                          <span className="block text-xs text-foreground/50 mt-0.5">{p.desc}</span>
-                        </span>
-                      </button>
+                      {(p as any).href ? (
+                        <a
+                          href={(p as any).href}
+                          onClick={() => setDropdownOpen(false)}
+                          className="flex items-start gap-3 py-2 px-2 w-full group rounded-lg hover:bg-[#156686]/10 transition-colors"
+                        >
+                          <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold text-foreground/85 group-hover:text-foreground transition-colors whitespace-nowrap">{p.label}</span>
+                            <span className="block text-xs text-foreground/50 mt-0.5">{p.desc}</span>
+                          </span>
+                        </a>
+                      ) : (
+                        <button
+                          onClick={() => { setDropdownOpen(false); goToPercorso(p.filter, p.slug, () => {}); }}
+                          className="flex items-start gap-3 py-2 px-2 text-left w-full cursor-pointer group rounded-lg hover:bg-[#156686]/10 transition-colors"
+                        >
+                          <span className="text-lg leading-none mt-0.5 flex-shrink-0">{p.emoji}</span>
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold text-foreground/85 group-hover:text-foreground transition-colors whitespace-nowrap">{p.label}</span>
+                            <span className="block text-xs text-foreground/50 mt-0.5">{p.desc}</span>
+                          </span>
+                        </button>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -341,7 +355,7 @@ export function Nav() {
             </div>
 
             {/* Guida gratuita ai lanci + badge */}
-            <a href={isCalendarioPage ? "#newsletter" : "/#newsletter"} onClick={closeMenu}
+            <a href="/scarica-calendario-lancio" onClick={closeMenu}
               className="h-display text-[1.75rem] font-bold text-white leading-none hover:text-white/70 transition-colors flex items-center gap-3 flex-wrap">
               Guida gratuita ai lanci
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest bg-white/15 text-white px-2.5 py-1 rounded-full leading-none">
