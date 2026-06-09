@@ -147,10 +147,6 @@ function GrazieConsulenzaStrategica() {
       {/* ── STEPS ── */}
       <section className="py-16 md:py-24 bg-[#EEF3F5]">
         <div className="container-narrow max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-10 text-center">
-            Segui questi step per confermare la Consulenza Strategica
-          </p>
-
           <div className="flex flex-col gap-10">
             {STEPS.map((step, i) => (
               <div key={step.n}>
