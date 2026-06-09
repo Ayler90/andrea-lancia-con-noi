@@ -146,7 +146,7 @@ function ScrollReviews() {
       const tick = () => {
         const hw = halfWidth.current;
         mobileOffset.current += 0.5;
-        if (hw > 0 && mobileOffset.current >= hw) mobileOffset.current -= hw;
+        if (hw > 0 && mobileOffset.current >= hw * 2) mobileOffset.current -= hw * 2;
         setOffset(mobileOffset.current);
         mobileOffset2.current += 0.5;
         if (hw > 0 && mobileOffset2.current >= hw * 2) mobileOffset2.current -= hw * 2;
@@ -168,7 +168,9 @@ function ScrollReviews() {
     }
   }, [isMobile]);
 
-  const row1 = [...REC_IMGS, ...REC_IMGS];
+  const row1 = isMobile
+    ? [...REC_IMGS, ...REC_IMGS, ...REC_IMGS, ...REC_IMGS]
+    : [...REC_IMGS, ...REC_IMGS];
   const reversed = [...REC_IMGS].reverse();
   // Mobile: ruota di 4 così recG9 è prima (4 copie per loop più lungo). Desktop: ordine originale.
   const row2Base = isMobile ? [...reversed.slice(4), ...reversed.slice(0, 4)] : reversed;
@@ -179,7 +181,7 @@ function ScrollReviews() {
   const getTransform = (ri: number) => {
     if (isMobile) {
       const hw = halfWidth.current || 1;
-      if (ri === 0) return `translateX(${-(offset % hw)}px)`;
+      if (ri === 0) return `translateX(${-(offset % (hw * 2))}px)`;
       // row2: 4 copie, reset ogni 2*hw — scorre a destra
       return `translateX(${(offset2 % (hw * 2)) - hw * 2}px)`;
     }
