@@ -588,13 +588,13 @@ function ConsulenzaStrategica() {
             </h3>
             <ul className="flex flex-col gap-3">
               {[
-                "Un networker o MLM. Non lavoro su modelli di business basati sul reclutamento o sulla vendita di opportunità.",
-                "All'inizio assoluto. Se non hai ancora un'offerta o un business definito, hai bisogno prima di una base solida.",
-                "In cerca di qualcuno che faccia tutto al posto tuo. La consulenza ti dà la strategia, l'esecuzione rimane in capo a te.",
-              ].map((text) => (
-                <li key={text} className="flex items-start gap-3 text-sm text-foreground/50 leading-relaxed">
+                { bold: "Un networker o MLM.", rest: " Non lavoro su modelli di business basati sul reclutamento o sulla vendita di opportunità." },
+                { bold: "All'inizio assoluto.", rest: " Se non hai ancora un'offerta o un business definito, hai bisogno prima di una base solida." },
+                { bold: "In cerca di qualcuno che faccia tutto al posto tuo.", rest: " La consulenza ti dà la strategia, l'esecuzione rimane in capo a te." },
+              ].map(({ bold, rest }) => (
+                <li key={bold} className="flex items-start gap-3 text-sm text-foreground/50 leading-relaxed">
                   <span className="flex-shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-foreground/25" />
-                  {text}
+                  <span><strong className="text-foreground/65">{bold}</strong>{rest}</span>
                 </li>
               ))}
             </ul>
