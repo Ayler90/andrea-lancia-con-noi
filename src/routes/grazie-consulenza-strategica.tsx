@@ -145,7 +145,7 @@ function GrazieConsulenzaStrategica() {
       </section>
 
       {/* ── STEPS ── */}
-      <section className="pb-24 bg-white">
+      <section className="pb-24 bg-[#EEF3F5]">
         <div className="container-narrow max-w-3xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-10 text-center">
             Segui questi step per confermare la Consulenza Strategica
