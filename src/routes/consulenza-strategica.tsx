@@ -567,7 +567,7 @@ function ConsulenzaStrategica() {
             <em className="text-[#156686]">con me?</em>
           </h2>
         </div>
-        <div className="relative z-10 overflow-hidden">
+        <div className="relative z-10" style={{ overflowX: "clip" }}>
           <ScrollReviews />
         </div>
       </section>
