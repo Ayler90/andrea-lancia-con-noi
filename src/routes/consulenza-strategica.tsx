@@ -129,6 +129,7 @@ function ScrollReviews() {
   const [offset, setOffset] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const mobileOffset = useRef(0);
+  const halfWidth = useRef(0);
   const rafRef = useRef<number>();
 
   useEffect(() => {
@@ -139,14 +140,12 @@ function ScrollReviews() {
 
   useEffect(() => {
     if (isMobile) {
+      // Misura halfWidth una volta dopo il mount
+      if (rowRef.current) halfWidth.current = rowRef.current.scrollWidth / 2;
       const tick = () => {
         mobileOffset.current += 0.5;
-        if (rowRef.current) {
-          const halfWidth = rowRef.current.scrollWidth / 2;
-          if (halfWidth > 0 && mobileOffset.current >= halfWidth) {
-            mobileOffset.current -= halfWidth;
-          }
-        }
+        const hw = halfWidth.current;
+        if (hw > 0 && mobileOffset.current >= hw) mobileOffset.current -= hw;
         setOffset(mobileOffset.current);
         rafRef.current = requestAnimationFrame(tick);
       };
@@ -168,6 +167,18 @@ function ScrollReviews() {
   const row1 = [...REC_IMGS, ...REC_IMGS];
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
 
+  // Su mobile: entrambe le righe vanno a sinistra, row2 sfasata di metà periodo
+  // Su desktop: scroll-driven con direzioni opposte (range limitato, non c'è problema di overflow)
+  const getTransform = (ri: number) => {
+    if (isMobile) {
+      const hw = halfWidth.current;
+      const phase = ri === 0 ? 0 : hw / 2;
+      const x = -((offset + phase) % (hw || 1));
+      return `translateX(${x}px)`;
+    }
+    return `translateX(${ri === 0 ? -offset : offset - 150}px)`;
+  };
+
   return (
     <div ref={sectionRef} className="relative space-y-14">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
@@ -176,7 +187,7 @@ function ScrollReviews() {
         <div key={ri}
           ref={ri === 0 ? rowRef : undefined}
           className="flex gap-5"
-          style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
+          style={{ transform: getTransform(ri), transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
             <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
               className="h-44 w-auto rounded-xl object-cover flex-shrink-0 transition-transform duration-300 hover:scale-105 hover:z-10 relative" />

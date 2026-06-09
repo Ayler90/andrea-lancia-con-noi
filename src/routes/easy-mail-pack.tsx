@@ -792,16 +792,15 @@ function ScrollReviews() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  const halfWidth = useRef(0);
+
   useEffect(() => {
     if (isMobile) {
+      if (rowRef.current) halfWidth.current = rowRef.current.scrollWidth / 2;
       const tick = () => {
         mobileOffset.current += 0.5;
-        if (rowRef.current) {
-          const halfWidth = rowRef.current.scrollWidth / 2;
-          if (halfWidth > 0 && mobileOffset.current >= halfWidth) {
-            mobileOffset.current -= halfWidth;
-          }
-        }
+        const hw = halfWidth.current;
+        if (hw > 0 && mobileOffset.current >= hw) mobileOffset.current -= hw;
         setOffset(mobileOffset.current);
         rafRef.current = requestAnimationFrame(tick);
       };
@@ -823,6 +822,16 @@ function ScrollReviews() {
   const row1 = [...REC_IMGS, ...REC_IMGS];
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
 
+  const getTransform = (ri: number) => {
+    if (isMobile) {
+      const hw = halfWidth.current;
+      const phase = ri === 0 ? 0 : hw / 2;
+      const x = -((offset + phase) % (hw || 1));
+      return `translateX(${x}px)`;
+    }
+    return `translateX(${ri === 0 ? -offset : offset - 150}px)`;
+  };
+
   return (
     <div ref={sectionRef} className="relative space-y-5">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
@@ -831,7 +840,7 @@ function ScrollReviews() {
         <div key={ri}
           ref={ri === 0 ? rowRef : undefined}
           className="flex gap-5"
-          style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
+          style={{ transform: getTransform(ri), transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
             <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
               className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />
