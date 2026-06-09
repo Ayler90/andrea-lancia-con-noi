@@ -805,7 +805,7 @@ function ScrollReviews() {
   const row2 = [...REC_IMGS].reverse().concat([...REC_IMGS].reverse());
 
   return (
-    <div ref={sectionRef} className="relative overflow-hidden space-y-5">
+    <div ref={sectionRef} className="relative space-y-5">
       {/* fade edges */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, white, transparent)", zIndex: 2 }} />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
@@ -1383,7 +1383,7 @@ function EasyMailPack() {
             Cosa dicono i miei studenti e clienti di <em className="text-[#156686]">Easy-Mail Pack?</em>
           </h2>
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 overflow-hidden">
           <ScrollReviews />
         </div>
       </section>
