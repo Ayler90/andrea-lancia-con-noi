@@ -90,9 +90,11 @@ Gap tra voci: `space-y-3`
 ### Container
 | Classe | Max-width | Padding |
 |---|---|---|
-| `.container-narrow` | `1200px` | `px-6` mobile, `px-10` desktop |
+| `.container-narrow` | `1200px` | `1.5rem` (24px) mobile, `2.5rem` (40px) desktop |
 | Pagine landing | `max-w-6xl mx-auto` | — |
 | Sezione pricing/FAQ | `max-w-4xl mx-auto` | — |
+
+**Regola:** il padding mobile di `container-narrow` e `1.5rem` (equivalente a `px-6`) - lo stesso usato nella sezione Chi sono. Non ridurre a valori inferiori. Il padding desktop resta `2.5rem`. Le sezioni che usano `container-narrow` non devono aggiungere `px-*` extra sulla `<section>` - il padding lo gestisce solo il container.
 
 ### Spaziatura verticale sezioni
 - Sezione standard: `py-16 md:py-20`
