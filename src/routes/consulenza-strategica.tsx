@@ -218,7 +218,7 @@ function ComeFunziona() {
         if (!el) return;
         const rect = el.getBoundingClientRect();
         // step is "passed" once its center crosses the viewport midpoint
-        if (rect.top + rect.height / 2 < mid) next.add(i);
+        if (rect.top + rect.height / 2 < mid + window.innerHeight * 0.2) next.add(i);
       });
       setPassedSet(next);
     };
