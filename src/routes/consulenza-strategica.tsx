@@ -159,7 +159,7 @@ function ScrollReviews() {
           style={isMobile ? { width: "max-content" } : { transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
             <img key={i} src={src} alt={`Recensione ${(i % REC_IMGS.length) + 1}`}
-              className="h-80 w-auto rounded-2xl object-cover flex-shrink-0" />
+              className="h-44 w-auto rounded-xl object-cover flex-shrink-0" />
           ))}
         </div>
       ))}
@@ -526,6 +526,9 @@ function ConsulenzaStrategica() {
               </div>
             ))}
           </div>
+          <p className="mt-10 text-sm text-foreground/45 text-center max-w-xl mx-auto leading-relaxed">
+            <strong className="text-foreground/55">La consulenza non fa per te se sei:</strong> un networker o se non vendi prodotti o servizi tuoi - non lavoro su modelli di business basati sul reclutamento o sulla vendita di opportunità.
+          </p>
         </div>
       </section>
 
@@ -564,7 +567,7 @@ function ConsulenzaStrategica() {
           <h2 className="h-display font-bold text-3xl md:text-4xl text-center text-white mb-3">
             Prenota la tua <em style={{ color: "#C4D9DC" }}>Consulenza Strategica</em>
           </h2>
-          <p className="text-center text-white/60 text-sm mb-10">60 minuti · €150 · 1:1 con Andrea Bonomo</p>
+          <p className="text-center text-white/60 text-sm mb-10">60 minuti · €150 · 1:1 con me</p>
 
           <div className="rounded-2xl overflow-hidden" style={{ border: "1.5px solid rgba(196,217,220,0.2)", backgroundColor: "white" }}>
             <CalEmbed />
