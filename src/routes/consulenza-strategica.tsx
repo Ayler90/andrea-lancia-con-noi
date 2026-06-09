@@ -382,14 +382,6 @@ function ConsulenzaStrategica() {
               Come funziona ↓
             </a>
           </div>
-          <div className="mt-4 flex justify-center">
-            <a href="/scarica-calendario-lancio"
-              className="text-sm text-[#156686] underline underline-offset-4 hover:opacity-70 transition-opacity whitespace-nowrap"
-              onClick={() => trackCta("hero-guida-gratuita")}>
-              Scarica la guida gratuita →
-            </a>
-          </div>
-
           {/* Info chips — desktop: riga flex; mobile: griglia 2×2 con trattino separatore */}
           <div className="mt-10 hidden md:flex flex-wrap items-center justify-center gap-3">
             {[
