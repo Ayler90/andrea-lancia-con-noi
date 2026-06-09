@@ -460,7 +460,7 @@ function ConsulenzaStrategica() {
       {/* ── COSA RISOLVIAMO ───────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Per esempio, possiamo lavorare su</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Su cosa possiamo lavorare insieme?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Questi sono alcuni dei{" "}
             <em className="text-[#156686]">problemi che risolviamo</em>{" "}
