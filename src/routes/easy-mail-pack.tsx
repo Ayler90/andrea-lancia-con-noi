@@ -780,6 +780,7 @@ const REC_IMGS = [recEmp1, recEmp2, recEmp3, recEmp4, recEmp5, recEmp6, recEmp7,
 
 function ScrollReviews() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const mobileOffset = useRef(0);
@@ -795,6 +796,12 @@ function ScrollReviews() {
     if (isMobile) {
       const tick = () => {
         mobileOffset.current += 0.5;
+        if (rowRef.current) {
+          const halfWidth = rowRef.current.scrollWidth / 2;
+          if (halfWidth > 0 && mobileOffset.current >= halfWidth) {
+            mobileOffset.current -= halfWidth;
+          }
+        }
         setOffset(mobileOffset.current);
         rafRef.current = requestAnimationFrame(tick);
       };
@@ -822,6 +829,7 @@ function ScrollReviews() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, white, transparent)", zIndex: 2 }} />
       {[row1, row2].map((row, ri) => (
         <div key={ri}
+          ref={ri === 0 ? rowRef : undefined}
           className="flex gap-5"
           style={{ transform: `translateX(${ri === 0 ? -offset : offset - 150}px)`, transition: isMobile ? "none" : "transform 0.05s linear", width: "max-content" }}>
           {row.map((src, i) => (
