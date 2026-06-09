@@ -254,31 +254,36 @@ function ComeFunziona() {
           Come funziona la <em className="text-[#156686]">consulenza?</em>
         </h2>
         <div className="relative">
-          <div className="absolute left-7 top-10 bottom-10 w-px bg-[#156686]/10 hidden md:block" />
-          <div className="space-y-10">
+          <div className="space-y-0">
             {STEPS.map((step, i) => {
               const isActive = passedSet.has(i);
               return (
-                <div
-                  key={step.n}
-                  ref={el => { stepRefs.current[i] = el; }}
-                  className="flex gap-6 md:gap-8 items-start relative bg-white py-1"
-                  style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
-                >
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
-                    style={{
-                      backgroundColor: isActive ? "#156686" : "rgba(21,102,134,0.15)",
-                      color: isActive ? "white" : "#156686",
-                      boxShadow: "0 0 0 4px white",
-                      transition: "background-color 0.4s ease, color 0.4s ease",
-                    }}>
-                    {step.n}
+                <React.Fragment key={step.n}>
+                  <div
+                    ref={el => { stepRefs.current[i] = el; }}
+                    className="flex gap-6 md:gap-8 items-start relative bg-white py-1"
+                    style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
+                  >
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
+                      style={{
+                        backgroundColor: isActive ? "#156686" : "rgba(21,102,134,0.15)",
+                        color: isActive ? "white" : "#156686",
+                        boxShadow: "0 0 0 4px white",
+                        transition: "background-color 0.4s ease, color 0.4s ease",
+                      }}>
+                      {step.n}
+                    </div>
+                    <div className="pt-1 pb-2">
+                      <h3 className="font-semibold text-foreground/90 text-lg mb-1">{step.title}</h3>
+                      <p className="text-sm text-foreground/60 leading-relaxed">{step.desc}</p>
+                    </div>
                   </div>
-                  <div className="pt-1 pb-2">
-                    <h3 className="font-semibold text-foreground/90 text-lg mb-1">{step.title}</h3>
-                    <p className="text-sm text-foreground/60 leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
+                  {i < STEPS.length - 1 && (
+                    <div className="hidden md:flex justify-start pl-7 py-3">
+                      <div className="w-px h-6 bg-[#156686]/15" />
+                    </div>
+                  )}
+                </React.Fragment>
               );
             })}
           </div>
