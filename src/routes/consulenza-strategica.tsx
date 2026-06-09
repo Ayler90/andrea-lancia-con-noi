@@ -236,14 +236,14 @@ function ComeFunziona() {
         </h2>
         <div className="relative">
           <div className="absolute left-7 top-10 bottom-10 w-px bg-[#156686]/10 hidden md:block" />
-          <div className="space-y-8">
+          <div className="space-y-10">
             {STEPS.map((step, i) => {
               const isActive = passedSet.has(i);
               return (
                 <div
                   key={step.n}
                   ref={el => { stepRefs.current[i] = el; }}
-                  className="flex gap-6 md:gap-8 items-start relative"
+                  className="flex gap-6 md:gap-8 items-start relative bg-white py-1"
                   style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
                 >
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
