@@ -1,9 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import React, { useState, useEffect, useRef } from "react";
 import posthog from "posthog-js";
-import { Nav } from "@/components/site/Nav";
-import { Footer } from "@/components/site/Footer";
-import { ChiSono } from "@/components/site/ChiSono";
 
 export const Route = createFileRoute("/zero-improvvisazione-masterclass")({
   component: ZeroImprovvisazioneMasterclass,
@@ -108,10 +105,9 @@ function FaqAccordion() {
 
 const STEPS = [
   { n: "01", title: "Apertura insieme", desc: "Chi siamo, perché siamo insieme, per chi è questa masterclass e cosa costruiremo nelle prossime 2 ore." },
-  { n: "02", title: "Target e offerte — con Davide", desc: "Partiamo da quello che hai: le offerte che vendi e le persone a cui vuoi venderle. Capiamo quante offerte ha senso avere, in quale ordine lanciarle e come costruire un ecosistema in cui una porta naturalmente all'altra." },
-  { n: "03", title: "Piano lanci per 12 mesi — con Andrea", desc: "Costruiamo la mappa dell'anno: grandi lanci, micro lanci e funnel evergreen. Quanto tempo prima iniziare, cosa pubblicare in ogni fase e come portare i clienti da un'offerta all'altra con l'email marketing." },
-  { n: "04", title: "Testimonianza di Ale", desc: "Ale — partecipante al percorso Business Blueprint — entra in live per raccontare come ha cambiato la gestione dei suoi lanci." },
-  { n: "05", title: "Q&A finale", desc: "Domande aperte: rispondiamo in diretta ai dubbi specifici della tua situazione e del tuo business." },
+  { n: "02", title: "Target e offerte (con Davide)", desc: "Partiamo da quello che hai: le offerte che vendi e le persone a cui vuoi venderle. Capiamo quante offerte ha senso avere, in quale ordine lanciarle e come costruire un ecosistema in cui una porta naturalmente all'altra." },
+  { n: "03", title: "Piano lanci per 12 mesi (con Andrea)", desc: "Costruiamo la mappa dell'anno: grandi lanci, micro lanci e funnel evergreen. Quanto tempo prima iniziare, cosa pubblicare in ogni fase e come portare i clienti da un'offerta all'altra con l'email marketing." },
+  { n: "04", title: "Q&A finale", desc: "Domande aperte: rispondiamo in diretta ai dubbi specifici della tua situazione e del tuo business." },
 ];
 
 function Programma() {
@@ -184,8 +180,6 @@ function ZeroImprovvisazioneMasterclass() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Nav />
-
       {/* BANNER */}
       <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white" style={{ backgroundColor: "#156686" }}>
         Le iscrizioni chiudono presto — prenota il tuo posto ora
@@ -258,7 +252,7 @@ function ZeroImprovvisazioneMasterclass() {
           {/* FORM prima occorrenza */}
           <div id="form" className="mt-14 max-w-lg mx-auto">
             <div className="bg-[#EEF3F5] border-2 border-dashed border-[#156686]/30 rounded-2xl p-10 text-center text-[#156686]/50 text-sm font-medium">
-              Form di iscrizione MailerLite — da integrare
+              Form di iscrizione MailerLite · da integrare
             </div>
             <p className="text-xs text-foreground/40 text-center mt-3">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
           </div>
@@ -519,7 +513,7 @@ function ZeroImprovvisazioneMasterclass() {
                 <p className="font-bold text-foreground/85 text-lg">Davide Angiolillo</p>
                 <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
               </div>
-              <p className="text-sm text-foreground/50 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide — da aggiungere]</p>
+              <p className="text-sm text-foreground/50 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
             </div>
           </div>
         </div>
@@ -537,7 +531,7 @@ function ZeroImprovvisazioneMasterclass() {
             <em className="text-[#156686]">con noi?</em>
           </h2>
           <div className="bg-[#EEF3F5]/90 backdrop-blur rounded-2xl border border-[#156686]/15 p-8 text-center max-w-2xl mx-auto text-foreground/50 text-sm">
-            Le testimonianze arriveranno dopo il webinar — questa sezione verrà aggiornata.
+            Le testimonianze arriveranno dopo il webinar. Questa sezione verrà aggiornata.
           </div>
         </div>
       </section>
@@ -555,7 +549,7 @@ function ZeroImprovvisazioneMasterclass() {
           <div className="max-w-lg mx-auto mt-10">
             <div className="bg-white rounded-xl p-8">
               <div id="form-bottom" className="bg-[#EEF3F5] border-2 border-dashed border-[#156686]/30 rounded-2xl p-10 text-center text-[#156686]/50 text-sm font-medium mb-6">
-                Form di iscrizione MailerLite — da integrare
+                Form di iscrizione MailerLite · da integrare
               </div>
               <a href="#form" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => trackCta("bottom-iscriviti")}>
                 Voglio il mio posto →
@@ -591,10 +585,16 @@ function ZeroImprovvisazioneMasterclass() {
         </div>
       </section>
 
-      {/* CHI SONO componente */}
-      <ChiSono ctaText="Voglio il mio posto →" ctaHref="#form" onCtaClick={() => trackCta("chi-sono-iscriviti")} />
-
-      <Footer />
+      {/* FOOTER SEMPLICE */}
+      <footer style={{ backgroundColor: "#1B2F52" }} className="text-white">
+        <div className="container-narrow py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
+          <p>Andrea Bonomo · P.IVA 04815800232</p>
+          <div className="flex gap-5">
+            <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer" className="hover:text-white/80 transition-colors">Privacy Policy</a>
+            <a href="/cookie-policy" className="hover:text-white/80 transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
