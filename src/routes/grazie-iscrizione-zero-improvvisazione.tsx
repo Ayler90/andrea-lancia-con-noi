@@ -1,15 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import React from "react";
-
-export const Route = createFileRoute("/grazie-iscrizione-zero-improvvisazione")({
-  component: GrazieZeroImprovvisazione,
-  head: () => ({
-    meta: [
-      { name: "robots", content: "noindex, nofollow" },
-      { title: "Ci sei! – Zero Improvvisazione | Andrea Bonomo" },
-    ],
-  }),
-});
+const CALENDAR_URL =
+  "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+  "&text=Zero+Improvvisazione+%E2%80%93+Masterclass+Gratuita" +
+  "&dates=20260829T080000Z%2F20260829T100000Z" +
+  "&details=Masterclass+gratuita+con+Andrea+Bonomo+e+Davide+Angiolillo.+Il+link+Zoom+arriva+via+email+la+mattina+stessa." +
+  "&location=Zoom";
 
 function CheckIcon() {
   return (
@@ -24,114 +18,133 @@ function GrazieZeroImprovvisazione() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
 
-      {/* HERO */}
-      <section className="relative overflow-hidden pt-20 pb-20 md:pt-28 md:pb-28 text-center">
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />
-        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite" }} />
+      {/* HERO — dark navy */}
+      <section className="relative overflow-hidden py-20 md:py-28 text-white" style={{ backgroundColor: "#1B2F52" }} data-cursor-light>
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#156686", opacity: 0.35, filter: "blur(120px)", top: "-20%", left: "-10%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "#6C9FA8", opacity: 0.25, filter: "blur(100px)", bottom: "-10%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
 
-        <div className="container-narrow relative" style={{ zIndex: 1 }}>
-          <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+        <div className="container-narrow relative text-center" style={{ zIndex: 1 }}>
+          <div className="inline-flex items-center gap-2 border border-white/20 bg-white/8 text-white text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(52,211,153,0.9)" }} />
             Iscrizione confermata
           </div>
 
-          <h1 className="h-display font-bold text-center" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", lineHeight: 1.0 }}>
-            Ci sei!
+          <h1 className="h-display font-bold" style={{ fontSize: "clamp(3.5rem, 10vw, 7rem)", lineHeight: 1.0 }}>
+            Ci sei! 🎉
           </h1>
 
-          <p className="font-bold text-[#156686] text-base mt-4 mb-6">[DATA] · [ORA] · su Zoom</p>
-
-          <p className="text-foreground/70 leading-relaxed max-w-2xl mx-auto mb-10 text-sm md:text-base">
-            In questa giornata costruiamo insieme il tuo piano lanci per i prossimi 12 mesi: target per ogni offerta, struttura dell&apos;anno, contenuti per ogni fase di lancio e come portare i clienti da un&apos;offerta all&apos;altra nel tempo. Alla fine hai un piano completo già scritto, adattato al tuo business.
+          <p className="font-bold text-white/80 text-base md:text-lg mt-5 mb-3">
+            Sabato 29 agosto · 10:00–12:00 · su Zoom
+          </p>
+          <p className="text-white/55 text-sm max-w-xl mx-auto leading-relaxed">
+            Costruiamo insieme il tuo piano lanci per i prossimi 12 mesi. Alla fine hai un piano completo già scritto, adattato al tuo business.
           </p>
 
-          <a href="#" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex mb-10">
-            Salva la data in calendario →
-          </a>
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={CALENDAR_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap font-semibold"
+            >
+              🗓 Salva la data in calendario →
+            </a>
+            <a href="#step-workbook" className="cta-ghost text-white/70 border-white/25 hover:text-white hover:border-white/50 whitespace-nowrap">
+              Scarica il workbook ↓
+            </a>
+          </div>
 
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 max-w-xl mx-auto text-sm text-amber-900 leading-relaxed text-left">
-            <p className="font-bold mb-2">Importante</p>
-            Nelle prossime ore ricevi un&apos;email con tutti i dettagli. Se non la trovi in arrivo, controlla nello spam. Il link Zoom arriva la mattina del webinar, non prima. Hai domande? Scrivi a [EMAIL DI ANDREA].
+          <div className="mt-10 max-w-xl mx-auto bg-white/8 border border-white/15 rounded-2xl p-5 text-sm text-white/65 leading-relaxed text-left">
+            <p className="font-semibold text-white/85 mb-1">Tieni d'occhio la tua email</p>
+            Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi in arrivo, controlla nello spam. Il link Zoom arriva la mattina del 29 agosto, non prima.
           </div>
         </div>
       </section>
 
-      {/* WORKBOOK */}
-      <section className="py-16 md:py-20 bg-[#EEF3F5]">
-        <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4">Il tuo regalo</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-            Scarica subito il tuo <em className="text-[#156686]">workbook</em>
+      {/* STEPS — 3 passi da fare */}
+      <section className="py-16 md:py-24 bg-[#EEF3F5]">
+        <div className="container-narrow max-w-3xl mx-auto">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Cosa fare adesso</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-14">
+            Tre cose da fare{" "}
+            <em className="text-[#156686]">prima del 29 agosto</em>
           </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-4xl">
-            <div>
-              <p className="text-sm md:text-base text-foreground/70 leading-relaxed mb-6">
-                Il workbook è il documento che compili in diretta con noi, sezione per sezione, adattato al tuo business mentre lavoriamo. Mi raccomando, scaricalo dal link qui sotto. Se non te lo scarichi e non ti segni tutto quello che verrà fuori durante la diretta, ti perdi l&apos;80% del valore della masterclass.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "La sezione target per ogni tua offerta",
-                  "La mappa delle offerte con l'ordine di lancio",
-                  "Il piano dell'anno e il piano contenuti per ogni fase",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-foreground/80 text-sm">
-                    <CheckIcon />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a href="#" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex mb-4">
-                Scarica il workbook →
-              </a>
-              <p className="text-xs text-foreground/50 mt-3">
-                Consiglio: stampalo o aprilo su un secondo schermo durante la masterclass. Avere carta e penna vicino aiuta.
-              </p>
+
+          <div className="flex flex-col gap-6">
+            {/* Step 1: Calendario */}
+            <div className="bg-white rounded-2xl border border-[#156686]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#156686" }}>01</div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">🗓</span>
+                  <h3 className="font-bold text-lg text-foreground/90">Salva la data in calendario</h3>
+                </div>
+                <p className="text-sm text-foreground/60 leading-relaxed mb-4">Aggiungi subito la masterclass al tuo calendario per non dimenticarti. Il link Zoom arriva via email la mattina del 29 agosto.</p>
+                <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
+                  Aggiungi a Google Calendar →
+                </a>
+                <p className="text-xs text-foreground/40 mt-3">Sabato 29 agosto · 10:00–12:00 · Zoom</p>
+              </div>
             </div>
-            <div className="rounded-2xl bg-white border border-[#156686]/15 p-8 flex flex-col items-center gap-4 shadow-sm text-center">
-              <div className="relative">
-                <div className="text-5xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>📋</div>
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-12 h-4 blur-xl rounded-full pointer-events-none" style={{ backgroundColor: "rgba(21,102,134,0.3)" }} />
+
+            {/* Step 2: Workbook */}
+            <div id="step-workbook" className="bg-white rounded-2xl border border-[#156686]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#156686" }}>02</div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">📋</span>
+                  <h3 className="font-bold text-lg text-foreground/90">Scarica il workbook</h3>
+                </div>
+                <p className="text-sm text-foreground/60 leading-relaxed mb-4">Scaricalo adesso e stampalo (o aprilo su un secondo schermo) prima della diretta. Lo compili insieme a noi sezione per sezione. Senza workbook perdi l'80% del valore della mattinata.</p>
+                <ul className="space-y-2 mb-5">
+                  {[
+                    "La sezione target per ogni tua offerta",
+                    "La mappa delle offerte con l'ordine di lancio",
+                    "Il piano dell'anno e il piano contenuti per ogni fase",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/75">
+                      <CheckIcon />{item}
+                    </li>
+                  ))}
+                </ul>
+                <a href="#" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
+                  Scarica il workbook →
+                </a>
+                <p className="text-xs text-foreground/40 mt-3">Consiglio: carta e penna vicino aiutano.</p>
               </div>
-              <div>
-                <p className="font-bold text-foreground/85 text-lg mb-1">Il tuo workbook</p>
-                <p className="text-sm text-foreground/50">Disponibile subito</p>
-              </div>
-              <div className="inline-flex items-center gap-1.5 border border-emerald-200 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
-                Scaricabile ora
+            </div>
+
+            {/* Step 3: Questionario */}
+            <div className="bg-white rounded-2xl border border-[#156686]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#156686" }}>03</div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">✍️</span>
+                  <h3 className="font-bold text-lg text-foreground/90">Rispondi al questionario</h3>
+                </div>
+                <p className="text-sm text-foreground/60 leading-relaxed mb-4">Due minuti, anonimo. Quello che scrivi ci aiuta a impostare la diretta sulla situazione reale di chi partecipa. Rispondi come ti viene, senza pensarci troppo.</p>
+                <a href="#" className="pill border border-[#156686]/30 text-[#156686] hover:bg-[#156686]/5 inline-flex">
+                  Compila il questionario →
+                </a>
+                <p className="text-xs text-foreground/40 mt-3">Ci vuole meno di 2 minuti.</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* QUESTIONARIO */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container-narrow max-w-4xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4">Due minuti</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-            Due minuti prima di <em className="text-[#156686]">chiudere questa pagina</em>
-          </h2>
-          <p className="text-sm md:text-base text-foreground/70 leading-relaxed max-w-2xl mb-8">
-            Rispondi a questo questionario anonimo: quello che scrivi ci aiuta a impostare la diretta sulla situazione reale di chi partecipa. Rispondi come ti viene, senza pensarci troppo.
-          </p>
-          <a href="#" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
-            Compila il questionario →
-          </a>
         </div>
       </section>
 
       {/* SEGUICI SU INSTAGRAM */}
-      <section className="py-16 md:py-20 bg-[#156686]" data-cursor-light>
+      <section className="py-16 md:py-20 relative overflow-hidden" style={{ backgroundColor: "#156686" }} data-cursor-light>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-[500px] h-[500px] rounded-full" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
+          <div className="absolute w-[400px] h-[400px] rounded-full" style={{ background: "#0c2330", opacity: 0.2, filter: "blur(80px)", bottom: "-10%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
         </div>
         <div className="container-narrow relative">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4">Rimani aggiornato</p>
-          <h2 className="h-display font-bold text-white leading-[1.1] mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+          <h2 className="h-display font-bold text-white leading-[1.1] mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
             Seguici su <em style={{ color: "#C4D9DC" }}>Instagram</em>
           </h2>
-          <p className="text-sm md:text-base text-white/75 leading-relaxed max-w-xl mb-8">
+          <p className="text-sm md:text-base text-white/70 leading-relaxed max-w-xl mb-8">
             Nei giorni prima della masterclass pubblicheremo contenuti per prepararti. Seguici per non perderti nulla.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">

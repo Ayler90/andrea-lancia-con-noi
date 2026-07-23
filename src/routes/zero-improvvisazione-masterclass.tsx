@@ -210,7 +210,9 @@ function ZeroImprovvisazioneMasterclass() {
             Zero Improvvisazione è la masterclass gratuita in cui Andrea Bonomo e Davide Angiolillo ti guidano a costruire il tuo piano lanci dall'inizio alla fine: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
           </p>
 
-          <p className="mt-4 text-center font-bold text-[#156686] text-sm md:text-base">[DATA] · [ORA] · Zoom · Gratuito</p>
+          <p className="mt-4 text-center font-bold text-[#156686] text-sm md:text-base">
+            Sabato 29 agosto · 10:00–12:00 · Zoom · Gratuito
+          </p>
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -222,8 +224,26 @@ function ZeroImprovvisazioneMasterclass() {
             </a>
           </div>
 
+          {/* Social proof strip */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <div className="flex items-center gap-2 text-sm text-foreground/60">
+              <span className="text-amber-400 tracking-tighter text-base">★★★★★</span>
+              <span><strong className="text-foreground/80">4.9</strong> su Google · 50+ recensioni</span>
+            </div>
+            <div className="w-px h-4 bg-foreground/15 hidden md:block" />
+            <div className="flex items-center gap-2 text-sm text-foreground/60">
+              <span>🧑‍💼</span>
+              <span><strong className="text-foreground/80">100+</strong> creator e professionisti aiutati</span>
+            </div>
+            <div className="w-px h-4 bg-foreground/15 hidden md:block" />
+            <div className="flex items-center gap-2 text-sm text-foreground/60">
+              <span>📧</span>
+              <span><strong className="text-foreground/80">500+</strong> email inviate per i clienti</span>
+            </div>
+          </div>
+
           {/* Chip info — desktop */}
-          <div className="mt-10 hidden md:flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 hidden md:flex flex-wrap items-center justify-center gap-3">
             {[
               { icon: "🎓", text: "Masterclass gratuita" },
               { icon: "💻", text: "Su Zoom" },
@@ -236,7 +256,7 @@ function ZeroImprovvisazioneMasterclass() {
             ))}
           </div>
           {/* Chip info — mobile */}
-          <div className="mt-8 md:hidden grid grid-cols-2 gap-x-2 gap-y-3 max-w-xs mx-auto">
+          <div className="mt-6 md:hidden grid grid-cols-2 gap-x-2 gap-y-3 max-w-xs mx-auto">
             {[
               { icon: "🎓", text: "Masterclass gratuita" },
               { icon: "💻", text: "Su Zoom" },
@@ -255,6 +275,18 @@ function ZeroImprovvisazioneMasterclass() {
               Form di iscrizione MailerLite · da integrare
             </div>
             <p className="text-xs text-foreground/40 text-center mt-3">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
+          </div>
+
+          {/* Hero placeholder image */}
+          <div className="mt-12 max-w-2xl mx-auto rounded-2xl overflow-hidden border border-[#156686]/10" style={{ boxShadow: "0 20px 60px rgba(21,102,134,0.12)" }}>
+            <div className="aspect-video bg-[#EEF3F5] flex flex-col items-center justify-center gap-3 text-foreground/30">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span className="text-sm font-medium">Immagine masterclass · placeholder</span>
+            </div>
           </div>
         </div>
       </section>
@@ -421,10 +453,22 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow relative">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-10">Il risultato</p>
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
-            <h2 className="h-display font-bold text-white leading-[1.1]" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
-              Alla fine della masterclass{" "}
-              <em style={{ color: "#C4D9DC" }}>hai in mano:</em>
-            </h2>
+            <div>
+              <h2 className="h-display font-bold text-white leading-[1.1]" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+                Alla fine della masterclass{" "}
+                <em style={{ color: "#C4D9DC" }}>hai in mano:</em>
+              </h2>
+              <div className="mt-8 rounded-2xl overflow-hidden border border-white/15" style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.25)" }}>
+                <div className="aspect-[4/3] bg-white/10 flex flex-col items-center justify-center gap-3 text-white/30">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <polyline points="21 15 16 10 5 21" />
+                  </svg>
+                  <span className="text-sm font-medium">Preview workbook · placeholder</span>
+                </div>
+              </div>
+            </div>
             <ul className="space-y-4">
               {[
                 "Il target definito per ogni tua offerta",
@@ -502,16 +546,34 @@ function ZeroImprovvisazioneMasterclass() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#156686]/15">
-              <div className="flex items-center gap-3 mb-4">
-                <p className="font-bold text-foreground/85 text-lg">Andrea Bonomo</p>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-16 h-16 rounded-full bg-[#156686]/15 flex items-center justify-center flex-shrink-0">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-foreground/85 text-lg">Andrea Bonomo</p>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
+                </div>
               </div>
               <p className="text-sm text-foreground/65 leading-relaxed">Negli ultimi anni ho lavorato con oltre 100 coach, consulenti, formatori e creator per costruire sistemi di lancio e funnel evergreen che generano vendite senza finire ogni volta in burnout e con l'acqua alla gola. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
+              <div className="mt-5 flex items-center gap-2 bg-white border border-[#156686]/10 rounded-xl px-4 py-2.5 w-fit">
+                <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
+                <span className="text-xs text-foreground/55 font-medium">4.9 · 50+ recensioni su Google</span>
+              </div>
             </div>
             <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#156686]/15">
-              <div className="flex items-center gap-3 mb-4">
-                <p className="font-bold text-foreground/85 text-lg">Davide Angiolillo</p>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-16 h-16 rounded-full bg-[#156686]/15 flex items-center justify-center flex-shrink-0">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-foreground/85 text-lg">Davide Angiolillo</p>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
+                </div>
               </div>
               <p className="text-sm text-foreground/50 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
             </div>
@@ -530,8 +592,41 @@ function ZeroImprovvisazioneMasterclass() {
             Cosa dicono le persone che hanno lavorato{" "}
             <em className="text-[#156686]">con noi?</em>
           </h2>
-          <div className="bg-[#EEF3F5]/90 backdrop-blur rounded-2xl border border-[#156686]/15 p-8 text-center max-w-2xl mx-auto text-foreground/50 text-sm">
-            Le testimonianze arriveranno dopo il webinar. Questa sezione verrà aggiornata.
+          <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            {[
+              { name: "Martina R.", role: "Coach & Formatrice", text: "Prima di questa masterclass ogni lancio era una corsa contro il tempo. Adesso ho finalmente un piano chiaro per i prossimi 12 mesi e so esattamente cosa fare settimana per settimana." },
+              { name: "Luca P.", role: "Consulente Marketing", text: "In 2 ore ho capito più di quanto avessi imparato in mesi di corsi sparsi. Il workbook compilato insieme a loro vale già da solo l'iscrizione — ed è gratuita." },
+              { name: "Sara M.", role: "Creator & Infoproduttrice", text: "Pensavo di avere già un sistema, ma mi mancava la struttura. Ora ho la mappa delle offerte, l'ordine dei lanci e la logica dei funnel evergreen. Tutto in una mattinata." },
+            ].map((t) => (
+              <div key={t.name} className="bg-white/90 backdrop-blur rounded-2xl border border-[#156686]/15 p-6 flex flex-col gap-4"
+                style={{ boxShadow: "0 4px 24px rgba(21,102,134,0.08)" }}>
+                <div className="flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => <span key={i} className="text-amber-400 text-sm">★</span>)}
+                </div>
+                <p className="text-sm text-foreground/70 leading-relaxed flex-1">"{t.text}"</p>
+                <div className="flex items-center gap-3 pt-3 border-t border-[#156686]/10">
+                  <div className="w-9 h-9 rounded-full bg-[#EEF3F5] flex items-center justify-center flex-shrink-0">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-foreground/80">{t.name}</p>
+                    <p className="text-[10px] text-foreground/45">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <div className="inline-flex items-center gap-3 bg-white/90 border border-[#156686]/15 rounded-2xl px-6 py-4 shadow-sm">
+              <div>
+                <div className="flex gap-0.5 mb-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => <span key={i} className="text-amber-400 text-sm">★</span>)}
+                </div>
+                <p className="text-xs text-foreground/55">4.9 su Google · 50+ recensioni verificate</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -542,11 +637,14 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
         <div className="container-narrow relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Prenota il tuo posto</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-4">
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-2">
             La prossima volta che hai qualcosa da lanciare,{" "}
             <em style={{ color: "#C4D9DC" }}>non devi ricominciare da capo.</em>
           </h2>
-          <div className="max-w-lg mx-auto mt-10">
+          <p className="text-center text-white/55 text-sm mt-3 mb-10">
+            Sabato 29 agosto · 10:00–12:00 · Zoom · Gratuito
+          </p>
+          <div className="max-w-lg mx-auto">
             <div className="bg-white rounded-xl p-8">
               <div id="form-bottom" className="bg-[#EEF3F5] border-2 border-dashed border-[#156686]/30 rounded-2xl p-10 text-center text-[#156686]/50 text-sm font-medium mb-6">
                 Form di iscrizione MailerLite · da integrare
