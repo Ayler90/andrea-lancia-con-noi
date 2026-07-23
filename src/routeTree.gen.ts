@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZeroImprovvisazioneMasterclassRouteImport } from './routes/zero-improvvisazione-masterclass'
+import { Route as GrazieIscrizioneZeroImprovvisazioneRouteImport } from './routes/grazie-iscrizione-zero-improvvisazione'
 import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
 import { Route as GrazieConsulenzaStrategicaRouteImport } from './routes/grazie-consulenza-strategica'
 import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
@@ -16,6 +18,18 @@ import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as ConsulenzaStrategicaRouteImport } from './routes/consulenza-strategica'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ZeroImprovvisazioneMasterclassRoute =
+  ZeroImprovvisazioneMasterclassRouteImport.update({
+    id: '/zero-improvvisazione-masterclass',
+    path: '/zero-improvvisazione-masterclass',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GrazieIscrizioneZeroImprovvisazioneRoute =
+  GrazieIscrizioneZeroImprovvisazioneRouteImport.update({
+    id: '/grazie-iscrizione-zero-improvvisazione',
+    path: '/grazie-iscrizione-zero-improvvisazione',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
   id: '/scarica-calendario-lancio',
   path: '/scarica-calendario-lancio',
@@ -54,7 +68,9 @@ export interface FileRoutesByFullPath {
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
+  '/grazie-iscrizione-zero-improvvisazione': typeof GrazieIscrizioneZeroImprovvisazioneRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
+  '/zero-improvvisazione-masterclass': typeof ZeroImprovvisazioneMasterclassRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,7 +78,9 @@ export interface FileRoutesByTo {
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
+  '/grazie-iscrizione-zero-improvvisazione': typeof GrazieIscrizioneZeroImprovvisazioneRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
+  '/zero-improvvisazione-masterclass': typeof ZeroImprovvisazioneMasterclassRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,7 +89,9 @@ export interface FileRoutesById {
   '/cookie-policy': typeof CookiePolicyRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
+  '/grazie-iscrizione-zero-improvvisazione': typeof GrazieIscrizioneZeroImprovvisazioneRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
+  '/zero-improvvisazione-masterclass': typeof ZeroImprovvisazioneMasterclassRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,7 +101,9 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/easy-mail-pack'
     | '/grazie-consulenza-strategica'
+    | '/grazie-iscrizione-zero-improvvisazione'
     | '/scarica-calendario-lancio'
+    | '/zero-improvvisazione-masterclass'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,7 +111,9 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/easy-mail-pack'
     | '/grazie-consulenza-strategica'
+    | '/grazie-iscrizione-zero-improvvisazione'
     | '/scarica-calendario-lancio'
+    | '/zero-improvvisazione-masterclass'
   id:
     | '__root__'
     | '/'
@@ -97,7 +121,9 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/easy-mail-pack'
     | '/grazie-consulenza-strategica'
+    | '/grazie-iscrizione-zero-improvvisazione'
     | '/scarica-calendario-lancio'
+    | '/zero-improvvisazione-masterclass'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,11 +132,27 @@ export interface RootRouteChildren {
   CookiePolicyRoute: typeof CookiePolicyRoute
   EasyMailPackRoute: typeof EasyMailPackRoute
   GrazieConsulenzaStrategicaRoute: typeof GrazieConsulenzaStrategicaRoute
+  GrazieIscrizioneZeroImprovvisazioneRoute: typeof GrazieIscrizioneZeroImprovvisazioneRoute
   ScaricaCalendarioLancioRoute: typeof ScaricaCalendarioLancioRoute
+  ZeroImprovvisazioneMasterclassRoute: typeof ZeroImprovvisazioneMasterclassRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zero-improvvisazione-masterclass': {
+      id: '/zero-improvvisazione-masterclass'
+      path: '/zero-improvvisazione-masterclass'
+      fullPath: '/zero-improvvisazione-masterclass'
+      preLoaderRoute: typeof ZeroImprovvisazioneMasterclassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grazie-iscrizione-zero-improvvisazione': {
+      id: '/grazie-iscrizione-zero-improvvisazione'
+      path: '/grazie-iscrizione-zero-improvvisazione'
+      fullPath: '/grazie-iscrizione-zero-improvvisazione'
+      preLoaderRoute: typeof GrazieIscrizioneZeroImprovvisazioneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scarica-calendario-lancio': {
       id: '/scarica-calendario-lancio'
       path: '/scarica-calendario-lancio'
@@ -162,7 +204,9 @@ const rootRouteChildren: RootRouteChildren = {
   CookiePolicyRoute: CookiePolicyRoute,
   EasyMailPackRoute: EasyMailPackRoute,
   GrazieConsulenzaStrategicaRoute: GrazieConsulenzaStrategicaRoute,
+  GrazieIscrizioneZeroImprovvisazioneRoute: GrazieIscrizioneZeroImprovvisazioneRoute,
   ScaricaCalendarioLancioRoute: ScaricaCalendarioLancioRoute,
+  ZeroImprovvisazioneMasterclassRoute: ZeroImprovvisazioneMasterclassRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
