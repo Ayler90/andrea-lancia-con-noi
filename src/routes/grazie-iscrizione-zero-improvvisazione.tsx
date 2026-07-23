@@ -1,3 +1,16 @@
+import { createFileRoute } from "@tanstack/react-router";
+import React from "react";
+
+export const Route = createFileRoute("/grazie-iscrizione-zero-improvvisazione")({
+  component: GrazieZeroImprovvisazione,
+  head: () => ({
+    meta: [
+      { name: "robots", content: "noindex, nofollow" },
+      { title: "Ci sei! – Zero Improvvisazione | Andrea Bonomo" },
+    ],
+  }),
+});
+
 const CALENDAR_URL =
   "https://calendar.google.com/calendar/render?action=TEMPLATE" +
   "&text=Zero+Improvvisazione+%E2%80%93+Masterclass+Gratuita" +
