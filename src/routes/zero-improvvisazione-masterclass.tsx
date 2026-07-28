@@ -353,78 +353,65 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
         <div className="container-narrow relative" style={{ zIndex: 1 }}>
-          {/* Badge */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full">
-              🗓 29 agosto · ore 10:00 · Masterclass gratuita · Zoom · Posti limitati
-            </div>
-          </div>
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
 
-          {/* H1 */}
-          <h1 className="h-display font-bold text-center max-w-3xl mx-auto" style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)" }}>
-            Pianifica i prossimi 12 mesi di{" "}
-            <em className="text-[#156686]">lanci e funnel</em>{" "}
-            delle tue offerte in una mattinata.
-          </h1>
-
-          <p className="mt-6 text-sm md:text-base text-foreground/65 text-center max-w-xl mx-auto leading-relaxed">
-            Lanci Senza Stress è la masterclass gratuita in cui Andrea Bonomo e Davide Angiolillo ti guidano a costruire il tuo piano lanci dall'inizio alla fine: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
-          </p>
-
-          <p className="mt-4 text-center font-bold text-[#156686] text-sm md:text-base">
-            Sabato 29 agosto · 10:00–12:00 · Zoom · Gratuito
-          </p>
-
-          {/* CTAs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
-              Voglio il mio posto →
-            </button>
-            <button className="cta-ghost whitespace-nowrap" onClick={() => scrollToSection("programma")}>
-              Scopri il programma ↓
-            </button>
-          </div>
-
-          {/* Chip info — desktop */}
-          <div className="mt-8 hidden md:flex flex-wrap items-center justify-center gap-3">
-            {[
-              { icon: "🎓", text: "Masterclass gratuita" },
-              { icon: "💻", text: "Su Zoom" },
-              { icon: "👥", text: "Max 100 posti" },
-              { icon: "📋", text: "Workbook incluso" },
-            ].map(chip => (
-              <div key={chip.text} className="inline-flex items-center gap-2 border border-[#156686]/15 bg-[#156686]/5 px-4 py-2 rounded-full text-sm text-foreground/75 font-medium">
-                <span>{chip.icon}</span>{chip.text}
+            {/* COLONNA SINISTRA */}
+            <div>
+              <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-6">
+                🗓 29 agosto · ore 10:00 · Masterclass gratuita · Zoom · Posti limitati
               </div>
-            ))}
-          </div>
-          {/* Chip info — mobile */}
-          <div className="mt-6 md:hidden grid grid-cols-2 gap-x-2 gap-y-3 max-w-xs mx-auto">
-            {[
-              { icon: "🎓", text: "Masterclass gratuita" },
-              { icon: "💻", text: "Su Zoom" },
-              { icon: "👥", text: "Max 100 posti" },
-              { icon: "📋", text: "Workbook incluso" },
-            ].map(chip => (
-              <div key={chip.text} className="flex items-center gap-1.5 text-sm text-foreground/65 font-medium">
-                <span>{chip.icon}</span><span>{chip.text}</span>
-              </div>
-            ))}
-          </div>
 
-          {/* FORM */}
-          <div id="form" className="mt-14 max-w-lg mx-auto bg-white rounded-2xl p-7 md:p-9" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)" }}>
-            <div className="flex justify-center mb-4">
-              <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full">
-                🗓 29 agosto · ore 10:00
+              <h1 className="h-display font-bold" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}>
+                Pianifica i prossimi 12 mesi di{" "}
+                <em className="text-[#156686]">lanci e funnel</em>{" "}
+                delle tue offerte in una mattinata.
+              </h1>
+
+              <p className="mt-5 text-sm md:text-base text-foreground/65 leading-relaxed">
+                Lanci Senza Stress è la masterclass gratuita in cui Andrea Bonomo e Davide Angiolillo ti guidano a costruire il tuo piano lanci dall'inizio alla fine: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
+              </p>
+
+              <p className="mt-3 font-bold text-[#156686] text-sm md:text-base">
+                Sabato 29 agosto · 10:00–12:00 · Zoom · Gratuito
+              </p>
+
+              <div className="mt-7 flex flex-col sm:flex-row items-start gap-3">
+                <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
+                  Voglio il mio posto →
+                </button>
+                <button className="cta-ghost whitespace-nowrap" onClick={() => scrollToSection("programma")}>
+                  Scopri il programma ↓
+                </button>
+              </div>
+
+              <div className="mt-7 flex flex-wrap gap-2.5">
+                {[
+                  { icon: "🎓", text: "Masterclass gratuita" },
+                  { icon: "💻", text: "Su Zoom" },
+                  { icon: "👥", text: "Max 100 posti" },
+                  { icon: "📋", text: "Workbook incluso" },
+                ].map(chip => (
+                  <div key={chip.text} className="inline-flex items-center gap-2 border border-[#156686]/15 bg-[#156686]/5 px-3 py-1.5 rounded-full text-xs text-foreground/70 font-medium">
+                    <span>{chip.icon}</span>{chip.text}
+                  </div>
+                ))}
               </div>
             </div>
-            <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
-              Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
-            </h3>
-            <MailerLiteForm />
-          </div>
 
+            {/* COLONNA DESTRA — form */}
+            <div id="form" className="bg-white rounded-2xl p-7 md:p-9" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)" }}>
+              <div className="flex justify-center mb-4">
+                <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full">
+                  🗓 29 agosto · ore 10:00
+                </div>
+              </div>
+              <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
+                Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
+              </h3>
+              <MailerLiteForm />
+            </div>
+
+          </div>
         </div>
       </section>
 
