@@ -908,13 +908,15 @@ function ZeroImprovvisazioneMasterclass() {
             </div>
 
             {/* COLONNA DESTRA — quiz + form */}
-            <div id="form" className="bg-white rounded-2xl p-7 md:p-9" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)" }}>
-              <div className="flex justify-center mb-5">
+            <div id="form" className="bg-white rounded-2xl p-7 md:p-9 flex flex-col" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)", height: 520 }}>
+              <div className="flex justify-center mb-5 flex-shrink-0">
                 <div className="inline-flex items-center gap-1.5 border border-[#4B6380]/25 bg-[#4B6380]/6 text-[#4B6380] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full">
                   🗓 29 agosto · ore 10:00
                 </div>
               </div>
-              <QuizForm />
+              <div className="flex-1 flex flex-col justify-center">
+                <QuizForm />
+              </div>
             </div>
 
           </div>
