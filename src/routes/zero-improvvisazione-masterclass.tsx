@@ -218,8 +218,7 @@ function MailerLiteForm() {
       window.location.href = "/grazie-iscrizione-zero-improvvisazione";
     };
 
-    const fetchUrl = "https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/takel";
-    fetch(fetchUrl).catch(() => {});
+    fetch("https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/takel").catch(() => {});
 
     if (!document.getElementById("ml-form-44209135-script")) {
       const s = document.createElement("script");
@@ -233,47 +232,42 @@ function MailerLiteForm() {
   return (
     <>
       <style>{ML_FORM_STYLE}</style>
-      <div id="mlb2-44209135" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44209135">
-        <div className="ml-form-align-center">
-          <div className="ml-form-embedWrapper embedForm">
-            <div className="ml-form-embedBody ml-form-embedBodyDefault row-form">
-              <form
-                className="ml-block-form"
-                action="https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/subscribe"
-                data-code=""
-                method="post"
-                target="_blank"
-              >
-                <div className="ml-form-formContent">
-                  <div className="ml-form-fieldRow">
-                    <div className="ml-field-group ml-field-name">
-                      <input type="text" className="form-control" name="fields[name]" placeholder="Il tuo nome" autoComplete="given-name" />
-                    </div>
-                  </div>
-                  <div className="ml-form-fieldRow">
-                    <div className="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                      <input type="email" className="form-control" name="fields[email]" placeholder="La tua email" autoComplete="email" />
-                    </div>
-                  </div>
-                  <div className="ml-form-checkboxRow ml-form-fieldRow ml-last-item">
-                    <input type="checkbox" id="ml-gdpr-44209135" name="gdpr[]" value="true" />
-                    <label htmlFor="ml-gdpr-44209135">
-                      Acconsento a ricevere comunicazioni da Andrea Bonomo.{" "}
-                      <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer">Privacy Policy</a>
-                    </label>
-                  </div>
-                </div>
-                <div className="ml-form-embedSubmit">
-                  <button type="submit" className="primary">Voglio iscrivermi alla masterclass gratuita!</button>
-                </div>
-                <input type="hidden" name="ml-submit" value="1" />
-                <input type="hidden" name="anticsrf" value="true" />
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="mlb2-44209135" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44209135" />
     </>
+  );
+}
+
+const TARGET_DATE = new Date("2026-08-29T08:00:00Z"); // 10:00 CEST
+
+function useCountdown() {
+  const calc = () => {
+    const diff = TARGET_DATE.getTime() - Date.now();
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    const s = Math.floor(diff / 1000);
+    return { days: Math.floor(s / 86400), hours: Math.floor((s % 86400) / 3600), minutes: Math.floor((s % 3600) / 60), seconds: s % 60 };
+  };
+  const [time, setTime] = useState(calc);
+  useEffect(() => { const id = setInterval(() => setTime(calc()), 1000); return () => clearInterval(id); }, []);
+  return time;
+}
+
+function CountdownBanner() {
+  const { days, hours, minutes, seconds } = useCountdown();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white flex flex-wrap items-center justify-center gap-2" style={{ backgroundColor: "#156686" }}>
+      <span className="opacity-80">La masterclass inizia tra</span>
+      <span className="inline-flex items-center gap-1.5 font-bold tabular-nums">
+        <span>{days}g</span>
+        <span className="opacity-50">·</span>
+        <span>{pad(hours)}h</span>
+        <span className="opacity-50">·</span>
+        <span>{pad(minutes)}m</span>
+        <span className="opacity-50">·</span>
+        <span>{pad(seconds)}s</span>
+      </span>
+      <span className="opacity-60 hidden sm:inline">— prenota il tuo posto ora</span>
+    </div>
   );
 }
 
@@ -285,9 +279,7 @@ function ZeroImprovvisazioneMasterclass() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* BANNER */}
-      <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white" style={{ backgroundColor: "#156686" }}>
-        Le iscrizioni chiudono presto — prenota il tuo posto ora
-      </div>
+      <CountdownBanner />
 
       {/* HERO */}
       <section className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28">
@@ -328,24 +320,6 @@ function ZeroImprovvisazioneMasterclass() {
             </a>
           </div>
 
-          {/* Social proof strip */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            <div className="flex items-center gap-2 text-sm text-foreground/60">
-              <span className="text-amber-400 tracking-tighter text-base">★★★★★</span>
-              <span><strong className="text-foreground/80">4.9</strong> su Google · 50+ recensioni</span>
-            </div>
-            <div className="w-px h-4 bg-foreground/15 hidden md:block" />
-            <div className="flex items-center gap-2 text-sm text-foreground/60">
-              <span>🧑‍💼</span>
-              <span><strong className="text-foreground/80">100+</strong> creator e professionisti aiutati</span>
-            </div>
-            <div className="w-px h-4 bg-foreground/15 hidden md:block" />
-            <div className="flex items-center gap-2 text-sm text-foreground/60">
-              <span>📧</span>
-              <span><strong className="text-foreground/80">500+</strong> email inviate per i clienti</span>
-            </div>
-          </div>
-
           {/* Chip info — desktop */}
           <div className="mt-8 hidden md:flex flex-wrap items-center justify-center gap-3">
             {[
@@ -374,7 +348,10 @@ function ZeroImprovvisazioneMasterclass() {
           </div>
 
           {/* FORM prima occorrenza */}
-          <div id="form" className="mt-14 max-w-lg mx-auto bg-white rounded-2xl border border-[#156686]/10 p-6 md:p-8" style={{ boxShadow: "0 8px 40px rgba(21,102,134,0.10)" }}>
+          <div id="form" className="mt-14 max-w-lg mx-auto bg-white rounded-2xl border border-[#156686]/10 p-6 md:p-8" style={{ boxShadow: "0 20px 60px rgba(21,102,134,0.18), 0 4px 16px rgba(21,102,134,0.10)" }}>
+            <p className="font-bold text-foreground/85 text-center text-base md:text-lg mb-5 leading-snug">
+              Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
+            </p>
             <MailerLiteForm />
             <p className="text-xs text-foreground/40 text-center mt-4">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
           </div>
