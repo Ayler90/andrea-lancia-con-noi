@@ -353,12 +353,12 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
         <div className="container-narrow relative" style={{ zIndex: 1 }}>
-          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
 
             {/* COLONNA SINISTRA */}
             <div>
               <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-6">
-                🗓 29 agosto · ore 10:00 · Masterclass gratuita · Zoom · Posti limitati
+                🗓 29 agosto · ore 10:00 · Masterclass gratuita · Posti limitati
               </div>
 
               <h1 className="h-display font-bold" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}>
