@@ -166,7 +166,7 @@ function Programma() {
 
   return (
     <section className="py-16 md:py-20 bg-white">
-      <div className="container-narrow max-w-3xl mx-auto">
+      <div className="container-narrow">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il programma</p>
         <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
           Cosa costruiamo insieme <em className="text-[#156686]">in questa masterclass?</em>
