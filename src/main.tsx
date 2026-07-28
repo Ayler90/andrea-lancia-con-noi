@@ -9,7 +9,7 @@ import posthog from "posthog-js";
 posthog.init("phc_yXpufJkfsapN4qcb8jkoTNxet4ZMNjYJE9y38hoGfJEX", {
   api_host: "https://n.andreabonomo.it",
   ui_host: "https://eu.posthog.com",
-  defaults: "2026-05-30",
+  defaults: "2026-01-30",
   person_profiles: "identified_only",
 });
 

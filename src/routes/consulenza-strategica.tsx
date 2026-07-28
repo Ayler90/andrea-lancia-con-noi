@@ -132,7 +132,7 @@ function ScrollReviews() {
   const mobileOffset = useRef(0);
   const mobileOffset2 = useRef(0);
   const halfWidth = useRef(0);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
