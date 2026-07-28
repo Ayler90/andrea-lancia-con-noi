@@ -637,7 +637,7 @@ function ZeroImprovvisazioneMasterclass() {
                 tags: ["Coaching", "Consulenza", "Formazione"],
                 paragraphs: [
                   <>Vendi sessioni, pacchetti o percorsi. Ogni mese la situazione cambia: a volte sei pieno di clienti, altri mesi è il vuoto totale. <strong>Non riesci a prevedere le entrate</strong> e ogni lancio lo costruisci da zero, con l'ansia che non funzioni.</>,
-                  <>Esci dalla masterclass con <strong>un piano lanci per l'anno</strong> che ti permette di sapere in anticipo quando e come acquisire nuovi clienti — senza rincorrere sempre l'emergenza.</>,
+                  <>Esci dalla masterclass con <strong>un piano lanci per l'anno</strong> che ti permette di sapere in anticipo quando e come acquisire nuovi clienti, senza rincorrere sempre l'emergenza.</>,
                 ],
               },
               {
@@ -683,7 +683,7 @@ function ZeroImprovvisazioneMasterclass() {
                 { bold: "Hai già un calendario lanci strutturato e funzionante.", rest: " Questa masterclass è per chi ancora non ce l'ha." },
                 { bold: "Stai cercando tattiche tecniche.", rest: " Ads, copywriting avanzato o automazioni non sono l'argomento." },
                 { bold: "Non hai ancora un'offerta chiara.", rest: " Serve almeno una cosa da lanciare per costruire il piano." },
-                { bold: "Lavori nel network marketing.", rest: " Il metodo che insegniamo è pensato per chi vende le proprie offerte — non per chi distribuisce prodotti di terzi e lavora su reclutamento e downline." },
+                { bold: "Lavori nel network marketing.", rest: " Il metodo che insegniamo è pensato per chi vende le proprie offerte, non per chi distribuisce prodotti di terzi e lavora su reclutamento e downline." },
               ].map(({ bold, rest }) => (
                 <li key={bold} className="flex items-start gap-3 text-sm text-foreground/50 leading-relaxed">
                   <span className="flex-shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-foreground/25" />
@@ -849,7 +849,7 @@ function ZeroImprovvisazioneMasterclass() {
           <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
               { name: "Martina R.", role: "Coach & Formatrice", text: "Prima di questa masterclass ogni lancio era una corsa contro il tempo. Adesso ho finalmente un piano chiaro per i prossimi 12 mesi e so esattamente cosa fare settimana per settimana." },
-              { name: "Luca P.", role: "Consulente Marketing", text: "In 2 ore ho capito più di quanto avessi imparato in mesi di corsi sparsi. Il workbook compilato insieme a loro vale già da solo l'iscrizione — ed è gratuita." },
+              { name: "Luca P.", role: "Consulente Marketing", text: "In 2 ore ho capito più di quanto avessi imparato in mesi di corsi sparsi. Il workbook compilato insieme a loro vale già da solo l'iscrizione. Ed è gratuita." },
               { name: "Sara M.", role: "Creator & Infoproduttrice", text: "Pensavo di avere già un sistema, ma mi mancava la struttura. Ora ho la mappa delle offerte, l'ordine dei lanci e la logica dei funnel evergreen. Tutto in una mattinata." },
             ].map((t) => (
               <div key={t.name} className="bg-white/90 backdrop-blur rounded-2xl border border-[#156686]/15 p-6 flex flex-col gap-4"
