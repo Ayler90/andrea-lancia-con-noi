@@ -352,8 +352,8 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
-        <div className="container-narrow relative" style={{ zIndex: 1 }}>
-          <div className="grid md:grid-cols-[1fr_380px] gap-10 md:gap-24 items-center">
+        <div className="container-narrow relative" style={{ zIndex: 1, maxWidth: 1400 }}>
+          <div className="grid md:grid-cols-[1fr_440px] gap-10 md:gap-20 items-center">
 
             {/* COLONNA SINISTRA */}
             <div>
