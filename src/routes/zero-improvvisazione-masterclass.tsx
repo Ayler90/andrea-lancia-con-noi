@@ -415,7 +415,7 @@ function ZeroImprovvisazioneMasterclass() {
                 🗓 29 agosto · ore 10:00
               </div>
             </div>
-            <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5">
+            <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
               Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
             </h3>
             <MailerLiteForm />
