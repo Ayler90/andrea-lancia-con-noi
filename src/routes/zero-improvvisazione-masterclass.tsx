@@ -658,27 +658,27 @@ function ChaosCalendar() {
 
 const QUIZ_QUESTIONS = [
   {
-    question: "Come gestisci i tuoi lanci in questo momento?",
+    question: "Come descrivi la tua situazione attuale?",
     answers: [
-      "Li improvviso quando ho bisogno di fatturare",
-      "Ho una struttura di base ma non un piano annuale",
-      "Lancio in modo ricorrente ma è sempre caotico",
+      "Ho un'offerta ma faccio fatica a vendere con continuità",
+      "Ho clienti ma non riesco a scalare o strutturare",
+      "Sto cercando di capire cosa vendere e a chi",
     ],
   },
   {
-    question: "Hai chiaro a chi ti stai rivolgendo con le tue offerte?",
+    question: "Quanto guadagni dipende da quanto lavori attivamente?",
     answers: [
-      "No, parlo a tutti e non ho un target definito",
-      "Ho un'idea di massima ma non è ben definita",
-      "Sì, ma faccio fatica a raggiungerlo con i miei contenuti",
+      "Sì, se mi fermo si ferma tutto",
+      "In parte, ho qualcosa di automatico ma non basta",
+      "No, ho sistemi che lavorano anche senza di me",
     ],
   },
   {
-    question: "Cosa vuoi ottenere, più di tutto, da questa masterclass?",
+    question: "Qual è il tuo obiettivo principale venendo a questa masterclass?",
     answers: [
-      "Capire meglio target e offerte da costruire",
-      "Avere un piano lanci per i prossimi 12 mesi",
-      "Aggiungere funnel evergreen tra i lanci",
+      "Avere un piano lanci concreto per i prossimi 12 mesi",
+      "Capire come strutturare le mie offerte e a chi venderle",
+      "Trovare un sistema che generi vendite anche quando non sto spingendo",
     ],
   },
 ];
@@ -856,7 +856,7 @@ function ZeroImprovvisazioneMasterclass() {
       <CountdownBanner />
 
       {/* HERO */}
-      <section id="hero-section" className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28">
+      <section id="hero-section" className="relative overflow-hidden pt-16 pb-28 md:pt-24 md:pb-36">
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
         <div className="absolute w-[400px] h-[400px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
