@@ -393,7 +393,7 @@ function MailerLiteForm() {
     const errs: typeof errors = {};
     if (!name.trim()) errs.name = "Inserisci il tuo nome";
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = "Inserisci un'email valida";
-    if (!gdpr) errs.gdpr = "Devi accettare per continuare";
+    if (!gdpr) errs.gdpr = "";
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
     setSubmitting(true);
@@ -478,7 +478,6 @@ function MailerLiteForm() {
         <label htmlFor="ml-gdpr-44209135" style={{ fontSize: 13, color: errors.gdpr ? "#dc2626" : "rgba(21,102,134,0.75)", cursor: "pointer", lineHeight: "1.5" }}>
           Voglio ricevere comunicazioni relative alla masterclass gratuita*
         </label>
-        {errors.gdpr && <p style={{ color: "#dc2626", fontSize: 12, margin: "4px 0 0" }}>{errors.gdpr}</p>}
       </div>
       <button
         type="submit"
