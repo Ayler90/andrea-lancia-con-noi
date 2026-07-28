@@ -33,6 +33,7 @@ _img.src = faviconSrc;
 
 // Prevent browser from restoring scroll position on refresh — we manage scroll ourselves
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.scrollTo(0, 0);
 
 const router = getRouter();
 
