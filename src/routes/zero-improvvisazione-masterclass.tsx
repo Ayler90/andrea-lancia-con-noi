@@ -432,7 +432,7 @@ function ZeroImprovvisazioneMasterclass() {
               <p>Hai un'offerta da lanciare ma <strong className="text-white/90">non sai da dove iniziare</strong>: non sai quando farlo, come comunicarlo, quante email mandare né cosa pubblicare sui social. Allora rimandi, aspetti il momento giusto, e il momento giusto non arriva mai.</p>
               <p>Quando non puoi più rimandare, <strong className="text-white/90">costruisci tutto in una settimana di corsa</strong>: scrivi le email alle undici di sera, pubblichi contenuti senza una logica precisa, apri le iscrizioni sperando che qualcosa funzioni. A volte va bene, a volte no. Ma non sai mai perché.</p>
               <p>Il lancio si chiude, e dopo? <strong className="text-white/90">Passano settimane in cui non entra nulla</strong> perché non hai strutturato niente nel mezzo. Nessun funnel evergreen, nessun piano di contenuti, nessuna automazione che lavora mentre tu non ci sei. E il prossimo lancio ricomincia da zero, con le stesse domande irrisolte.</p>
-              <p><strong className="text-white/90">Non è il lancio il problema. È che non hai un sistema attorno.</strong> E senza sistema, ogni lancio è come il primo.</p>
+              <p><strong className="text-white/90">Il problema non è il lancio in sé. È che attorno al lancio non c'è niente.</strong> Nessuna struttura, nessun filo che tiene insieme una cosa e l'altra. E quindi ogni volta ricomincia da capo.</p>
             </div>
           </div>
           <div className="mt-12 flex justify-center">
