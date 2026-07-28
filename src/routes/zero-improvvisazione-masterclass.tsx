@@ -325,6 +325,10 @@ function CountdownBanner() {
   );
 }
 
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function ZeroImprovvisazioneMasterclass() {
   function trackCta(label: string) {
     posthog.capture("zero_improv_cta_click", { cta_label: label });
@@ -366,12 +370,12 @@ function ZeroImprovvisazioneMasterclass() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="#form" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => trackCta("hero-iscriviti")}>
+            <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollTo("form"); }}>
               Voglio il mio posto →
-            </a>
-            <a href="#programma" className="cta-ghost whitespace-nowrap">
+            </button>
+            <button className="cta-ghost whitespace-nowrap" onClick={() => scrollTo("programma")}>
               Scopri il programma ↓
-            </a>
+            </button>
           </div>
 
           {/* Chip info — desktop */}
@@ -439,9 +443,9 @@ function ZeroImprovvisazioneMasterclass() {
             </div>
           </div>
           <div className="mt-12 flex justify-center">
-            <a href="#form" className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => trackCta("problema-iscriviti")}>
+            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollTo("form"); }}>
               Voglio il mio posto →
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -612,9 +616,9 @@ function ZeroImprovvisazioneMasterclass() {
             </ul>
           </div>
           <div className="mt-12 flex justify-center">
-            <a href="#form" className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => trackCta("risultato-iscriviti")}>
+            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollTo("form"); }}>
               Voglio il mio posto →
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -773,9 +777,9 @@ function ZeroImprovvisazioneMasterclass() {
           </p>
           <div className="max-w-lg mx-auto">
             <div className="bg-white rounded-xl p-8">
-              <a href="#form" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => trackCta("bottom-iscriviti")}>
+              <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => { trackCta("bottom-iscriviti"); scrollTo("form"); }}>
                 Voglio il mio posto →
-              </a>
+              </button>
               <p className="text-xs text-foreground/40 text-center mt-3">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
             </div>
             <div className="bg-white/8 border border-white/15 rounded-2xl p-6 mt-6 text-white/70 text-sm leading-relaxed text-center">
