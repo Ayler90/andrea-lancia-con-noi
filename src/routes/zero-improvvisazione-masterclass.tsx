@@ -721,7 +721,7 @@ function QuizForm() {
     <div style={{ position: "relative", minHeight: showQuiz ? 460 : 0 }}>
 
       {/* VISTA QUIZ */}
-      <div style={{ opacity: showQuiz ? 1 : 0, pointerEvents: showQuiz ? "auto" : "none", transition: "opacity 0.2s ease" }}>
+      <div style={{ position: showQuiz ? "relative" : "absolute", inset: 0, opacity: showQuiz ? 1 : 0, pointerEvents: showQuiz ? "auto" : "none", transition: "opacity 0.2s ease" }}>
         {step === 0 && (
           <div className="mb-5 text-center">
             <p className="text-sm text-foreground/65 leading-relaxed">
@@ -782,8 +782,6 @@ function QuizForm() {
 
       {/* VISTA FORM — sempre montata, visibile solo dopo il quiz */}
       <div style={{
-        position: showQuiz ? "absolute" : "relative",
-        inset: 0,
         opacity: showQuiz ? 0 : 1,
         pointerEvents: showQuiz ? "none" : "auto",
         transition: "opacity 0.2s ease",
