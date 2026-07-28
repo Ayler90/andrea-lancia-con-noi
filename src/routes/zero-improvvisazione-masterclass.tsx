@@ -399,7 +399,7 @@ function ChaosCalendar() {
               </div>
 
               {/* Month name */}
-              <p className={`text-[10px] font-bold uppercase tracking-[0.14em] text-center mb-1.5 ${isPanic ? "text-orange-300" : "text-white/35"}`}>
+              <p className={`text-[10px] font-bold uppercase tracking-[0.14em] text-center mb-1.5 ${isPanic ? "text-orange-300" : "text-white/70"}`}>
                 {m.name}
               </p>
 
@@ -421,7 +421,7 @@ function ChaosCalendar() {
               </div>
 
               {/* Label below */}
-              <p className={`text-[9px] text-center mt-2 leading-tight ${isPanic ? "text-orange-200/60" : "text-white/22"}`}>
+              <p className={`text-[9px] text-center mt-2 leading-tight ${isPanic ? "text-orange-200/80" : "text-white/55"}`}>
                 {m.label}
               </p>
             </div>
@@ -433,15 +433,15 @@ function ChaosCalendar() {
       <div className="flex items-center justify-center gap-5 mt-5 px-6">
         <div className="flex items-center gap-1.5">
           <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(255,255,255,0.05)" }} />
-          <span className="text-[9px] text-white/30 uppercase tracking-[0.1em]">Nessuna attività</span>
+          <span className="text-[9px] text-white/60 uppercase tracking-[0.1em]">Nessuna attività</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(196,217,220,0.30)" }} />
-          <span className="text-[9px] text-white/30 uppercase tracking-[0.1em]">Qualcosa</span>
+          <span className="text-[9px] text-white/60 uppercase tracking-[0.1em]">Qualcosa</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(251,146,60,0.80)" }} />
-          <span className="text-[9px] text-white/30 uppercase tracking-[0.1em]">Panico / sovraccarico</span>
+          <span className="text-[9px] text-white/60 uppercase tracking-[0.1em]">Panico / sovraccarico</span>
         </div>
       </div>
     </div>
