@@ -568,23 +568,41 @@ function ZeroImprovvisazioneMasterclass() {
       <section className="py-16 md:py-20 bg-white">
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il vero problema</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Il vero problema{" "}
-            <em className="text-[#156686]">non è il lancio</em>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-4">
+            Quanto sarebbe liberatorio sapere{" "}
+            <em className="text-[#156686]">esattamente cosa e quando farlo?</em>
           </h2>
+          <p className="text-center text-foreground/60 text-base md:text-lg max-w-2xl mx-auto mb-4">
+            Ma fai fatica a farlo perché hai uno di questi problemi qui sotto.
+          </p>
+          <p className="text-center text-foreground/70 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
+            Non è colpa tua. Il mercato ti ha convinto che basta avere un prodotto e una buona campagna. Ma senza una struttura chiara attorno — target, offerte, ecosistema e piano — <strong>ogni lancio è una partenza da zero</strong>. E così rimani sempre in modalità emergenza, esausto, senza mai riuscire a costruire qualcosa di stabile.
+          </p>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
               {
                 emoji: "🎯",
                 delay: "0s",
-                title: "Manca la chiarezza sul target",
-                desc: <>Non sai esattamente chi stai raggiungendo con quella specifica offerta. E <strong>ogni lancio riparte da zero</strong> anche su questo: stesse domande, stessa incertezza.</>,
+                title: "Non hai ben chiaro a chi ti stai rivolgendo",
+                desc: <>Parli a tutti e non parli a nessuno. Ogni lancio ricomincia con le stesse domande: chi è il mio cliente ideale? Cosa gli interessa davvero? <strong>Senza una risposta stabile, ogni campagna è un tentativo</strong> e non una certezza.</>,
+              },
+              {
+                emoji: "📦",
+                delay: "0.2s",
+                title: "Non hai definito le tue offerte in modo specifico",
+                desc: <>Ne hai troppe, troppe poche, o non sono abbastanza chiare. Il risultato? <strong>Le persone non capiscono cosa comprano</strong> e tu non sai quale offrire prima, quale dopo e a chi.</>,
+              },
+              {
+                emoji: "🔗",
+                delay: "0.4s",
+                title: "Il tuo ecosistema non porta i clienti ad acquistare",
+                desc: <>Hai contenuti, una lista, forse anche un funnel. Ma non sono collegati tra loro in modo da <strong>guidare le persone naturalmente verso le tue offerte</strong>. Le cose ci sono, ma non lavorano insieme.</>,
               },
               {
                 emoji: "📅",
-                delay: "0.3s",
-                title: "Manca il piano nell'anno",
-                desc: <>Se affidi il fatturato solo ai lanci attivi, <strong>le vendite si fermano tra uno e l'altro</strong>. Serve una struttura con <strong>micro lanci e funnel evergreen</strong> che genera entrate costanti.</>,
+                delay: "0.6s",
+                title: "Non hai un piano di lanci e funnel",
+                desc: <>Ogni mese vai a sentimento. Quando le vendite calano, lanci qualcosa. Quando sei stanco, ti fermi. <strong>Non c'è mai un piano per l'anno</strong>: solo reazione a quello che succede, mese per mese.</>,
               },
             ].map((item, idx) => (
               <div key={item.title} className="rounded-2xl p-6 border border-[#156686]/15 bg-[#156686]/4 flex gap-5 items-start">
