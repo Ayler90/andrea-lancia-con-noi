@@ -410,8 +410,10 @@ function ZeroImprovvisazioneMasterclass() {
 
           {/* FORM */}
           <div id="form" className="mt-14 max-w-lg mx-auto bg-white rounded-2xl p-7 md:p-9" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)" }}>
-            <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full mb-4">
-              🗓 29 agosto · ore 10:00
+            <div className="flex justify-center mb-4">
+              <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full">
+                🗓 29 agosto · ore 10:00
+              </div>
             </div>
             <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5">
               Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
