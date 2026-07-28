@@ -718,7 +718,7 @@ function QuizForm() {
   const showQuiz = step < 3;
 
   return (
-    <div style={{ position: "relative", minHeight: 460 }}>
+    <div style={{ position: "relative", minHeight: showQuiz ? 460 : 0 }}>
 
       {/* VISTA QUIZ */}
       <div style={{ opacity: showQuiz ? 1 : 0, pointerEvents: showQuiz ? "auto" : "none", transition: "opacity 0.2s ease" }}>
