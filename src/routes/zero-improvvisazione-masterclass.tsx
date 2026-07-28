@@ -455,6 +455,59 @@ function scrollToSection(id: string) {
   window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 }
 
+function StickyBar() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const hero = document.getElementById("hero-section");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      className="fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300"
+      style={{ transform: visible ? "translateY(0)" : "translateY(110%)" }}
+    >
+      <div
+        className="mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-3.5"
+        style={{
+          background: "rgba(10,26,35,0.92)",
+          backdropFilter: "blur(14px)",
+          borderTop: "1px solid rgba(196,217,220,0.12)",
+          maxWidth: 900,
+          margin: "0 auto",
+          borderRadius: "16px 16px 0 0",
+        }}
+      >
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/80">
+          <span className="font-semibold text-white">Lanci Senza Stress</span>
+          <span className="text-white/40 hidden sm:inline">·</span>
+          <span>🗓 29 agosto · ore 10:00</span>
+          <span className="text-white/40 hidden sm:inline">·</span>
+          <span>Gratuita</span>
+          <span className="text-white/40 hidden sm:inline">·</span>
+          <span>100 posti disponibili</span>
+        </div>
+        <button
+          className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap flex-shrink-0 text-sm px-5 py-2"
+          onClick={() => {
+            posthog.capture("zero_improv_cta_click", { cta_label: "sticky-bar" });
+            scrollToSection("form");
+          }}
+        >
+          Voglio il mio posto →
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function ZeroImprovvisazioneMasterclass() {
   function trackCta(label: string) {
     posthog.capture("zero_improv_cta_click", { cta_label: label });
@@ -462,11 +515,12 @@ function ZeroImprovvisazioneMasterclass() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <StickyBar />
       {/* BANNER */}
       <CountdownBanner />
 
       {/* HERO */}
-      <section className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28">
+      <section id="hero-section" className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28">
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
         <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
