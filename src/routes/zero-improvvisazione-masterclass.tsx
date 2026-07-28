@@ -690,6 +690,21 @@ function QuizForm() {
 
   function pick(answerIdx: number) {
     setSelecting(answerIdx);
+    const q = QUIZ_QUESTIONS[step];
+    posthog.capture("quiz_answer", {
+      question_index: step + 1,
+      question:       q.question,
+      answer_index:   answerIdx,
+      answer:         q.answers[answerIdx],
+    });
+    if (step === QUIZ_QUESTIONS.length - 1) {
+      posthog.capture("quiz_completed", {
+        answers: [...answers, answerIdx].map((ai, qi) => ({
+          question: QUIZ_QUESTIONS[qi].question,
+          answer:   QUIZ_QUESTIONS[qi].answers[ai],
+        })),
+      });
+    }
     setTimeout(() => {
       const next = [...answers, answerIdx];
       setAnswers(next);
