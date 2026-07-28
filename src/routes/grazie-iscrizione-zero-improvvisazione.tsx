@@ -21,8 +21,8 @@ const CALENDAR_URL =
 function CheckIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 mt-0.5" aria-hidden="true">
-      <circle cx="12" cy="12" r="12" fill="#156686" fillOpacity="0.12" />
-      <path d="M7 12.5l3.5 3.5 6.5-7" stroke="#156686" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="12" r="12" fill="#4B6380" fillOpacity="0.12" />
+      <path d="M7 12.5l3.5 3.5 6.5-7" stroke="#4B6380" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -33,7 +33,7 @@ function GrazieZeroImprovvisazione() {
 
       {/* HERO — dark navy */}
       <section className="relative overflow-hidden py-20 md:py-28 text-white" style={{ backgroundColor: "#1B2F52" }} data-cursor-light>
-        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#156686", opacity: 0.35, filter: "blur(120px)", top: "-20%", left: "-10%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#4B6380", opacity: 0.35, filter: "blur(120px)", top: "-20%", left: "-10%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
         <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "#6C9FA8", opacity: 0.25, filter: "blur(100px)", bottom: "-10%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
 
         <div className="container-narrow relative text-center" style={{ zIndex: 1 }}>
@@ -58,7 +58,7 @@ function GrazieZeroImprovvisazione() {
               href={CALENDAR_URL}
               target="_blank"
               rel="noreferrer"
-              className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap font-semibold"
+              className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap font-semibold"
             >
               🗓 Salva la data in calendario →
             </a>
@@ -77,16 +77,16 @@ function GrazieZeroImprovvisazione() {
       {/* STEPS — 3 passi da fare */}
       <section className="py-16 md:py-24 bg-[#EEF3F5]">
         <div className="container-narrow max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Cosa fare adesso</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Cosa fare adesso</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-14">
             Tre cose da fare{" "}
-            <em className="text-[#156686]">prima del 29 agosto</em>
+            <em className="text-[#4B6380]">prima del 29 agosto</em>
           </h2>
 
           <div className="flex flex-col gap-6">
             {/* Step 1: Calendario */}
-            <div className="bg-white rounded-2xl border border-[#156686]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#156686" }}>01</div>
+            <div className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>01</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🗓</span>
@@ -101,8 +101,8 @@ function GrazieZeroImprovvisazione() {
             </div>
 
             {/* Step 2: Workbook */}
-            <div id="step-workbook" className="bg-white rounded-2xl border border-[#156686]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#156686" }}>02</div>
+            <div id="step-workbook" className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>02</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">📋</span>
@@ -128,15 +128,15 @@ function GrazieZeroImprovvisazione() {
             </div>
 
             {/* Step 3: Questionario */}
-            <div className="bg-white rounded-2xl border border-[#156686]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#156686" }}>03</div>
+            <div className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>03</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">✍️</span>
                   <h3 className="font-bold text-lg text-foreground/90">Rispondi al questionario</h3>
                 </div>
                 <p className="text-sm text-foreground/60 leading-relaxed mb-4">Due minuti, anonimo. Quello che scrivi ci aiuta a impostare la diretta sulla situazione reale di chi partecipa. Rispondi come ti viene, senza pensarci troppo.</p>
-                <a href="#" className="pill border border-[#156686]/30 text-[#156686] hover:bg-[#156686]/5 inline-flex">
+                <a href="#" className="pill border border-[#4B6380]/30 text-[#4B6380] hover:bg-[#4B6380]/5 inline-flex">
                   Compila il questionario →
                 </a>
                 <p className="text-xs text-foreground/40 mt-3">Ci vuole meno di 2 minuti.</p>
@@ -147,7 +147,7 @@ function GrazieZeroImprovvisazione() {
       </section>
 
       {/* SEGUICI SU INSTAGRAM */}
-      <section className="py-16 md:py-20 relative overflow-hidden" style={{ backgroundColor: "#156686" }} data-cursor-light>
+      <section className="py-16 md:py-20 relative overflow-hidden" style={{ backgroundColor: "#4B6380" }} data-cursor-light>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-[500px] h-[500px] rounded-full" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
           <div className="absolute w-[400px] h-[400px] rounded-full" style={{ background: "#0c2330", opacity: 0.2, filter: "blur(80px)", bottom: "-10%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />

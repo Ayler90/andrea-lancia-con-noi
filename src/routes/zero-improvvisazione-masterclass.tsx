@@ -13,7 +13,7 @@ export const Route = createFileRoute("/zero-improvvisazione-masterclass")({
   }),
 });
 
-function CheckIcon({ color = "#156686" }: { color?: string }) {
+function CheckIcon({ color = "#4B6380" }: { color?: string }) {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 mt-0.5" aria-hidden="true">
       <circle cx="12" cy="12" r="12" fill={color} fillOpacity="0.12" />
@@ -25,7 +25,7 @@ function CheckIcon({ color = "#156686" }: { color?: string }) {
 type Star = { cx: number; cy: number; r: number; opacity: number; phase: number; angle: number; driftSpeed: number };
 
 function drawSparkle(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, opacity: number) {
-  ctx.save(); ctx.globalAlpha = opacity; ctx.fillStyle = "#156686"; ctx.beginPath();
+  ctx.save(); ctx.globalAlpha = opacity; ctx.fillStyle = "#4B6380"; ctx.beginPath();
   for (let i = 0; i < 8; i++) {
     const a = (i * Math.PI) / 4 - Math.PI / 2;
     const rad = i % 2 === 0 ? r : r * 0.3;
@@ -151,7 +151,7 @@ function IllTarget({ active }: { active: boolean }) {
       {[80, 60, 40, 22].map((r, i) => (
         <circle key={r} cx="100" cy="100" r={r}
           fill="none"
-          stroke="#156686"
+          stroke="#4B6380"
           strokeWidth={i === 3 ? 0 : 1.5}
           opacity={active ? [0.12, 0.2, 0.35, 0][i] : 0}
           style={{ transition: `opacity 0.5s ease ${i * 0.07}s` }}
@@ -161,17 +161,17 @@ function IllTarget({ active }: { active: boolean }) {
       <circle cx="100" cy="100" r={58} fill="rgba(21,102,134,0.07)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.1s" }} />
       <circle cx="100" cy="100" r={40} fill="rgba(21,102,134,0.10)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.15s" }} />
       <circle cx="100" cy="100" r={22} fill="rgba(21,102,134,0.20)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.2s" }} />
-      <circle cx="100" cy="100" r={8} fill="#156686" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.28s" }} />
+      <circle cx="100" cy="100" r={8} fill="#4B6380" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.28s" }} />
       {/* crosshair */}
       {[[-85,0],[85,0],[0,-85],[0,85]].map(([dx, dy], i) => (
         <line key={i} x1={100} y1={100} x2={100 + dx} y2={100 + dy}
-          stroke="#156686" strokeWidth="1" strokeDasharray="3 4"
+          stroke="#4B6380" strokeWidth="1" strokeDasharray="3 4"
           opacity={active ? 0.25 : 0} style={{ transition: `opacity 0.4s ease ${0.3 + i*0.05}s` }} />
       ))}
       {/* floating dot */}
-      <circle cx="148" cy="58" r="5" fill="#156686" opacity={active ? 0.5 : 0}
+      <circle cx="148" cy="58" r="5" fill="#4B6380" opacity={active ? 0.5 : 0}
         style={{ transition: "opacity 0.4s ease 0.4s", animation: active ? "thought-float 3s ease-in-out infinite" : "none" }} />
-      <circle cx="60" cy="148" r="3.5" fill="#156686" opacity={active ? 0.35 : 0}
+      <circle cx="60" cy="148" r="3.5" fill="#4B6380" opacity={active ? 0.35 : 0}
         style={{ transition: "opacity 0.4s ease 0.45s", animation: active ? "thought-float 3.8s ease-in-out 0.5s infinite" : "none" }} />
     </svg>
   );
@@ -188,18 +188,18 @@ function IllOfferte({ active }: { active: boolean }) {
       {cards.map((c, i) => (
         <g key={i} opacity={active ? 1 : 0} style={{ transition: `opacity 0.45s ease ${i * 0.1}s` }}>
           <rect x={(200 - c.w) / 2} y={c.y} width={c.w} height={32} rx="8"
-            fill="rgba(21,102,134,0.09)" stroke="#156686" strokeWidth="1.2" strokeOpacity="0.3" />
-          <rect x={(200 - c.w) / 2 + 10} y={c.y + 11} width={c.w * 0.55} height="6" rx="3" fill="#156686" fillOpacity="0.3" />
-          <rect x={(200 - c.w) / 2 + 10 + c.w * 0.55 + 6} y={c.y + 11} width={20} height="6" rx="3" fill="#156686" fillOpacity="0.5" />
+            fill="rgba(21,102,134,0.09)" stroke="#4B6380" strokeWidth="1.2" strokeOpacity="0.3" />
+          <rect x={(200 - c.w) / 2 + 10} y={c.y + 11} width={c.w * 0.55} height="6" rx="3" fill="#4B6380" fillOpacity="0.3" />
+          <rect x={(200 - c.w) / 2 + 10 + c.w * 0.55 + 6} y={c.y + 11} width={20} height="6" rx="3" fill="#4B6380" fillOpacity="0.5" />
         </g>
       ))}
       {/* arrows connecting cards */}
       {[0,1].map(i => (
         <path key={i} d={`M100 ${cards[i].y + 32} L100 ${cards[i+1].y}`}
-          stroke="#156686" strokeWidth="1.2" strokeDasharray="3 3"
+          stroke="#4B6380" strokeWidth="1.2" strokeDasharray="3 3"
           strokeOpacity={active ? 0.35 : 0} style={{ transition: `stroke-opacity 0.4s ease ${0.3 + i*0.1}s` }} />
       ))}
-      <circle cx="148" cy="160" r="4" fill="#156686" opacity={active ? 0.4 : 0}
+      <circle cx="148" cy="160" r="4" fill="#4B6380" opacity={active ? 0.4 : 0}
         style={{ transition: "opacity 0.4s ease 0.5s", animation: active ? "thought-float 3.5s ease-in-out infinite" : "none" }} />
     </svg>
   );
@@ -210,26 +210,26 @@ function IllFreebie({ active }: { active: boolean }) {
     <svg viewBox="0 0 200 200" width="200" height="200" style={{ overflow: "visible" }}>
       {/* envelope body */}
       <rect x="40" y="70" width="120" height="80" rx="10"
-        fill="rgba(21,102,134,0.08)" stroke="#156686" strokeWidth="1.4" strokeOpacity={active ? 0.4 : 0}
+        fill="rgba(21,102,134,0.08)" stroke="#4B6380" strokeWidth="1.4" strokeOpacity={active ? 0.4 : 0}
         style={{ transition: "stroke-opacity 0.4s ease 0.1s" }} />
       {/* envelope flap */}
       <path d="M40 70 L100 115 L160 70"
-        fill="none" stroke="#156686" strokeWidth="1.4"
+        fill="none" stroke="#4B6380" strokeWidth="1.4"
         strokeOpacity={active ? 0.4 : 0} style={{ transition: "stroke-opacity 0.4s ease 0.15s" }} />
       {/* gift bow */}
-      <path d="M85 70 Q100 52 115 70" fill="none" stroke="#156686" strokeWidth="2"
+      <path d="M85 70 Q100 52 115 70" fill="none" stroke="#4B6380" strokeWidth="2"
         strokeOpacity={active ? 0.6 : 0} style={{ transition: "stroke-opacity 0.4s ease 0.2s" }} />
-      <circle cx="100" cy="70" r="5" fill="#156686" opacity={active ? 0.7 : 0}
+      <circle cx="100" cy="70" r="5" fill="#4B6380" opacity={active ? 0.7 : 0}
         style={{ transition: "opacity 0.4s ease 0.25s" }} />
       {/* sparkles */}
       {[[55,45,6],[148,52,4],[138,140,5],[52,148,3.5]].map(([cx,cy,r],i) => (
-        <circle key={i} cx={cx} cy={cy} r={r} fill="#156686"
+        <circle key={i} cx={cx} cy={cy} r={r} fill="#4B6380"
           opacity={active ? [0.35,0.25,0.3,0.2][i] : 0}
           style={{ transition: `opacity 0.4s ease ${0.3+i*0.08}s`, animation: active ? `thought-float ${3+i*0.4}s ease-in-out ${i*0.3}s infinite` : "none" }} />
       ))}
       {/* download arrow */}
       <path d="M100 118 L100 140 M88 130 L100 142 L112 130"
-        fill="none" stroke="#156686" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+        fill="none" stroke="#4B6380" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
         strokeOpacity={active ? 0.5 : 0} style={{ transition: "stroke-opacity 0.4s ease 0.4s" }} />
     </svg>
   );
@@ -246,7 +246,7 @@ function IllCalendario({ active }: { active: boolean }) {
       {/* header bar */}
       <rect x="30" y="28" width="140" height="22" rx="6"
         fill="rgba(21,102,134,0.15)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.35s ease" }} />
-      <rect x="42" y="35" width="50" height="8" rx="4" fill="#156686" fillOpacity={active ? 0.5 : 0}
+      <rect x="42" y="35" width="50" height="8" rx="4" fill="#4B6380" fillOpacity={active ? 0.5 : 0}
         style={{ transition: "opacity 0.35s ease 0.05s" }} />
       {/* grid */}
       {Array.from({ length: rows * cols }, (_, idx) => {
@@ -263,7 +263,7 @@ function IllCalendario({ active }: { active: boolean }) {
           />
         );
       })}
-      <circle cx="155" cy="168" r="4" fill="#156686" opacity={active ? 0.4 : 0}
+      <circle cx="155" cy="168" r="4" fill="#4B6380" opacity={active ? 0.4 : 0}
         style={{ transition: "opacity 0.4s ease 0.5s", animation: active ? "thought-float 3.2s ease-in-out infinite" : "none" }} />
     </svg>
   );
@@ -301,9 +301,9 @@ function Programma() {
   return (
     <section className="py-16 md:py-20 bg-white overflow-hidden">
       <div className="container-narrow">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il programma</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Il programma</p>
         <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-          Cosa costruiamo insieme <em className="text-[#156686]">in questa masterclass?</em>
+          Cosa costruiamo insieme <em className="text-[#4B6380]">in questa masterclass?</em>
         </h2>
 
         <div>
@@ -343,20 +343,20 @@ function Programma() {
                   <div className="w-14 flex-shrink-0 flex flex-col items-center">
                     <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
                       style={{
-                        backgroundColor: isActive ? "#156686" : "rgba(21,102,134,0.15)",
-                        color: isActive ? "white" : "#156686",
+                        backgroundColor: isActive ? "#4B6380" : "rgba(21,102,134,0.15)",
+                        color: isActive ? "white" : "#4B6380",
                         boxShadow: "0 0 0 4px white",
                         transition: "background-color 0.4s ease, color 0.4s ease",
                       }}>
                       {step.n}
                     </div>
-                    {!isLast && <div className="w-px flex-1 bg-[#156686]/20 my-3" />}
+                    {!isLast && <div className="w-px flex-1 bg-[#4B6380]/20 my-3" />}
                   </div>
                   <div className={`pt-1 ${isLast ? "" : "pb-10"}`}>
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <h3 className="font-bold text-foreground/90 text-xl">{step.title}</h3>
                       {step.badge && (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#156686] bg-[#156686]/10 border border-[#156686]/20 rounded-full px-2.5 py-1">
+                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#4B6380] bg-[#4B6380]/10 border border-[#4B6380]/20 rounded-full px-2.5 py-1">
                           👤 {step.badge}
                         </span>
                       )}
@@ -420,7 +420,7 @@ function MailerLiteForm() {
       {/* Nome */}
       <div style={{ marginBottom: 10 }}>
         <div style={{ position: "relative" }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
             style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
           </svg>
@@ -440,7 +440,7 @@ function MailerLiteForm() {
       {/* Email */}
       <div style={{ marginBottom: 16 }}>
         <div style={{ position: "relative" }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
             style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
             <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
           </svg>
@@ -460,7 +460,7 @@ function MailerLiteForm() {
       {/* Privacy */}
       <div style={{ marginBottom: 16, fontSize: 13, color: "rgba(21,102,134,0.65)", lineHeight: "1.5" }}>
         Iscrivendoti accetti la{" "}
-        <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer" style={{ color: "#156686", textDecoration: "underline" }}>
+        <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer" style={{ color: "#4B6380", textDecoration: "underline" }}>
           Privacy Policy
         </a>{" "}
         del sito. Puoi disiscriverti quando vuoi, dal link che trovi alla fine di ogni email.
@@ -473,7 +473,7 @@ function MailerLiteForm() {
           id="ml-gdpr-44209135"
           checked={gdpr}
           onChange={e => setGdpr(e.target.checked)}
-          style={{ position: "absolute", left: 0, top: 3, width: 16, height: 16, cursor: "pointer", accentColor: "#156686" }}
+          style={{ position: "absolute", left: 0, top: 3, width: 16, height: 16, cursor: "pointer", accentColor: "#4B6380" }}
         />
         <label htmlFor="ml-gdpr-44209135" style={{ fontSize: 13, color: errors.gdpr ? "#dc2626" : "rgba(21,102,134,0.75)", cursor: "pointer", lineHeight: "1.5" }}>
           Voglio ricevere comunicazioni relative alla masterclass gratuita*
@@ -484,7 +484,7 @@ function MailerLiteForm() {
         type="submit"
         disabled={submitting}
         style={{
-          width: "100%", padding: "14px 28px", backgroundColor: submitting ? "#125a77" : "#156686",
+          width: "100%", padding: "14px 28px", backgroundColor: submitting ? "#125a77" : "#4B6380",
           color: "#fff", border: "none", borderRadius: 9999, fontSize: 16, fontWeight: 700,
           cursor: submitting ? "not-allowed" : "pointer", fontFamily: "inherit",
           transition: "background-color 0.2s",
@@ -522,7 +522,7 @@ function CountdownBanner() {
   const { days, hours, minutes, seconds } = useCountdown();
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
-    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white whitespace-nowrap overflow-hidden" style={{ backgroundColor: "#156686", lineHeight: "1.4" }}>
+    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white whitespace-nowrap overflow-hidden" style={{ backgroundColor: "#4B6380", lineHeight: "1.4" }}>
       <span className="opacity-80">Le iscrizioni si chiudono tra </span>
       <span className="font-bold tabular-nums">
         <span style={{ display: "inline-block", minWidth: "2.5ch" }}>{days}g</span>
@@ -716,7 +716,7 @@ function QuizForm() {
           <div key={i} className="rounded-full transition-all duration-400"
             style={{
               width: i === step ? 20 : 8, height: 8,
-              backgroundColor: i < step ? "#156686" : i === step ? "#156686" : "rgba(21,102,134,0.18)",
+              backgroundColor: i < step ? "#4B6380" : i === step ? "#4B6380" : "rgba(21,102,134,0.18)",
               transition: "all 0.3s ease",
             }} />
         ))}
@@ -724,7 +724,7 @@ function QuizForm() {
 
       {step < 3 ? (
         <div key={step} style={{ animation: "quiz-in 0.35s ease" }}>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#156686]/60 mb-2 text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4B6380]/60 mb-2 text-center">
             Domanda {step + 1} di 3
           </p>
           <h3 className="font-bold text-foreground/90 text-base md:text-lg leading-snug mb-5 text-center">
@@ -737,9 +737,9 @@ function QuizForm() {
                 onClick={() => pick(i)}
                 className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200"
                 style={{
-                  border: selecting === i ? "1.5px solid #156686" : "1.5px solid rgba(21,102,134,0.2)",
+                  border: selecting === i ? "1.5px solid #4B6380" : "1.5px solid rgba(21,102,134,0.2)",
                   backgroundColor: selecting === i ? "rgba(21,102,134,0.10)" : "rgba(21,102,134,0.03)",
-                  color: selecting === i ? "#156686" : "rgba(0,0,0,0.7)",
+                  color: selecting === i ? "#4B6380" : "rgba(0,0,0,0.7)",
                   transform: selecting === i ? "scale(0.985)" : "scale(1)",
                   cursor: "pointer",
                 }}
@@ -747,9 +747,9 @@ function QuizForm() {
                 <span className="inline-flex items-center gap-3">
                   <span className="w-5 h-5 rounded-full border flex-shrink-0 flex items-center justify-center text-[10px] font-bold"
                     style={{
-                      borderColor: selecting === i ? "#156686" : "rgba(21,102,134,0.35)",
-                      backgroundColor: selecting === i ? "#156686" : "transparent",
-                      color: selecting === i ? "white" : "#156686",
+                      borderColor: selecting === i ? "#4B6380" : "rgba(21,102,134,0.35)",
+                      backgroundColor: selecting === i ? "#4B6380" : "transparent",
+                      color: selecting === i ? "white" : "#4B6380",
                     }}>
                     {["A","B","C"][i]}
                   </span>
@@ -761,7 +761,7 @@ function QuizForm() {
         </div>
       ) : (
         <div style={{ animation: "quiz-in 0.4s ease" }}>
-          <p className="text-center text-sm text-[#156686] font-semibold mb-1">Perfetto, ci siamo quasi.</p>
+          <p className="text-center text-sm text-[#4B6380] font-semibold mb-1">Perfetto, ci siamo quasi.</p>
           <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
             Prenota il tuo posto alla Masterclass Gratuita
           </h3>
@@ -842,22 +842,22 @@ function ZeroImprovvisazioneMasterclass() {
 
       {/* HERO */}
       <section id="hero-section" className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28">
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
-        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
         <div className="container-narrow relative" style={{ zIndex: 1, maxWidth: 1260 }}>
           <div className="grid md:grid-cols-[1fr_420px] gap-10 md:gap-20 items-center">
 
             {/* COLONNA SINISTRA */}
             <div>
-              <div className="inline-flex items-center gap-2 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 border border-[#4B6380]/25 bg-[#4B6380]/6 text-[#4B6380] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-6">
                 🗓 29 agosto · ore 10:00 · Masterclass gratuita · Posti limitati
               </div>
 
               <h1 className="h-display font-bold" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}>
                 Pianifica i prossimi 12 mesi di{" "}
-                <em className="text-[#156686]">lanci e funnel</em>{" "}
+                <em className="text-[#4B6380]">lanci e funnel</em>{" "}
                 delle tue offerte in una mattinata.
               </h1>
 
@@ -865,7 +865,7 @@ function ZeroImprovvisazioneMasterclass() {
                 <strong>Lanci Senza Stress</strong> è la masterclass gratuita in cui <strong>Andrea Bonomo</strong> e <strong>Davide Angiolillo</strong> ti guidano a costruire il tuo <strong>piano lanci dall'inizio alla fine</strong>: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
               </p>
 
-              <p className="mt-3 font-bold text-[#156686] text-sm md:text-base">
+              <p className="mt-3 font-bold text-[#4B6380] text-sm md:text-base">
                 Sabato 29 agosto · 10:00–12:00 · Zoom · Gratuito
               </p>
 
@@ -885,7 +885,7 @@ function ZeroImprovvisazioneMasterclass() {
                   { icon: "👥", text: "Max 100 posti" },
                   { icon: "📋", text: "Workbook incluso" },
                 ].map(chip => (
-                  <div key={chip.text} className="inline-flex items-center gap-2 border border-[#156686]/15 bg-[#156686]/5 px-3 py-1.5 rounded-full text-xs text-foreground/70 font-medium">
+                  <div key={chip.text} className="inline-flex items-center gap-2 border border-[#4B6380]/15 bg-[#4B6380]/5 px-3 py-1.5 rounded-full text-xs text-foreground/70 font-medium">
                     <span>{chip.icon}</span>{chip.text}
                   </div>
                 ))}
@@ -895,7 +895,7 @@ function ZeroImprovvisazioneMasterclass() {
             {/* COLONNA DESTRA — quiz + form */}
             <div id="form" className="bg-white rounded-2xl p-7 md:p-9" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)" }}>
               <div className="flex justify-center mb-5">
-                <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full">
+                <div className="inline-flex items-center gap-1.5 border border-[#4B6380]/25 bg-[#4B6380]/6 text-[#4B6380] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full">
                   🗓 29 agosto · ore 10:00
                 </div>
               </div>
@@ -906,8 +906,8 @@ function ZeroImprovvisazioneMasterclass() {
         </div>
       </section>
 
-      {/* PROBLEMA — sfondo #156686 */}
-      <section className="relative py-20 md:py-28" style={{ backgroundColor: "#156686" }} data-cursor-light>
+      {/* PROBLEMA — sfondo #4B6380 */}
+      <section className="relative py-20 md:py-28" style={{ backgroundColor: "#4B6380" }} data-cursor-light>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-[600px] h-[600px] rounded-full" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
           <div className="absolute w-[500px] h-[500px] rounded-full" style={{ background: "#0c2330", opacity: 0.25, filter: "blur(100px)", bottom: "-15%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
@@ -927,7 +927,7 @@ function ZeroImprovvisazioneMasterclass() {
             </div>
           </div>
           <div className="mt-12 flex justify-center">
-            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToSection("form"); }}>
+            <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
           </div>
@@ -939,10 +939,10 @@ function ZeroImprovvisazioneMasterclass() {
       {/* CARD PROBLEMA — sfondo bianco */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Quanto sarebbe liberatorio sapere esattamente cosa e quando farlo?</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Quanto sarebbe liberatorio sapere esattamente cosa e quando farlo?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-6">
             Ma fai fatica a farlo perché hai{" "}
-            <em className="text-[#156686]">uno di questi problemi qui sotto.</em>
+            <em className="text-[#4B6380]">uno di questi problemi qui sotto.</em>
           </h2>
           <p className="text-foreground/70 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
             Lo so. In questo momento <strong>il tuo business va un po' a braccio.</strong><br /><br />
@@ -977,7 +977,7 @@ function ZeroImprovvisazioneMasterclass() {
                 desc: <>Ogni mese vai a sentimento. Quando le vendite calano, lanci qualcosa. Quando sei stanco, ti fermi. <strong>Non c'è mai un piano per l'anno</strong>: solo reazione a quello che succede, mese per mese.</>,
               },
             ].map((item, idx) => (
-              <div key={item.title} className="rounded-2xl p-6 border border-[#156686]/15 bg-[#156686]/4 flex gap-5 items-start">
+              <div key={item.title} className="rounded-2xl p-6 border border-[#4B6380]/15 bg-[#4B6380]/4 flex gap-5 items-start">
                 <div className="relative flex-shrink-0 mt-0.5">
                   <div className="text-3xl" style={{ animation: `thought-float ${3 + idx * 0.4}s ease-in-out infinite` }}>{item.emoji}</div>
                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-3 blur-lg rounded-full pointer-events-none" style={{ backgroundColor: "rgba(21,102,134,0.35)" }} />
@@ -995,10 +995,10 @@ function ZeroImprovvisazioneMasterclass() {
       {/* PER CHI È — sfondo #EEF3F5 */}
       <section className="py-16 md:py-20 bg-[#EEF3F5]">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Per chi è</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Per chi è</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Lanci Senza Stress è{" "}
-            <em className="text-[#156686]">perfetto per te</em> se:
+            <em className="text-[#4B6380]">perfetto per te</em> se:
           </h2>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
@@ -1023,7 +1023,7 @@ function ZeroImprovvisazioneMasterclass() {
                 ],
               },
             ].map(card => (
-              <div key={card.title} className="rounded-2xl py-8 px-6 bg-white border border-[#156686]/15 flex flex-col"
+              <div key={card.title} className="rounded-2xl py-8 px-6 bg-white border border-[#4B6380]/15 flex flex-col"
                 style={{ boxShadow: "inset 0 0 40px -10px rgba(21,102,134,0.08), inset 0 1px 0 rgba(196,217,220,0.3)" }}>
                 <div className="relative inline-block mb-5 self-start">
                   <div className="text-4xl" style={{ animation: `thought-float 3s ease-in-out ${card.delay} infinite` }}>{card.emoji}</div>
@@ -1033,10 +1033,10 @@ function ZeroImprovvisazioneMasterclass() {
                 {card.paragraphs.map((p, i) => (
                   <p key={i} className={`text-sm text-foreground/65 leading-relaxed${i > 0 ? " mt-3" : ""}`}>{p}</p>
                 ))}
-                <div className="mt-6 pt-5 border-t border-[#156686]/15 flex flex-wrap gap-x-3 gap-y-1">
+                <div className="mt-6 pt-5 border-t border-[#4B6380]/15 flex flex-wrap gap-x-3 gap-y-1">
                   {card.tags.map((tag, i) => (
-                    <span key={tag} className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686]/70">
-                      {i > 0 && <span className="text-[#156686]/30 mx-0.5">·</span>}
+                    <span key={tag} className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380]/70">
+                      {i > 0 && <span className="text-[#4B6380]/30 mx-0.5">·</span>}
                       {tag}
                     </span>
                   ))}
@@ -1070,8 +1070,8 @@ function ZeroImprovvisazioneMasterclass() {
       {/* PROGRAMMA — scroll-lit steps */}
       <div id="programma"><Programma /></div>
 
-      {/* COSA TI PORTI A CASA — sfondo #156686 */}
-      <section className="relative py-20 md:py-28" style={{ backgroundColor: "#156686" }} data-cursor-light>
+      {/* COSA TI PORTI A CASA — sfondo #4B6380 */}
+      <section className="relative py-20 md:py-28" style={{ backgroundColor: "#4B6380" }} data-cursor-light>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-[600px] h-[600px] rounded-full" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
           <div className="absolute w-[500px] h-[500px] rounded-full" style={{ background: "#0c2330", opacity: 0.25, filter: "blur(100px)", bottom: "-15%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
@@ -1111,7 +1111,7 @@ function ZeroImprovvisazioneMasterclass() {
             </ul>
           </div>
           <div className="mt-12 flex justify-center">
-            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
+            <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
           </div>
@@ -1121,10 +1121,10 @@ function ZeroImprovvisazioneMasterclass() {
       {/* WORKBOOK — sfondo #EEF3F5 */}
       <section className="py-16 md:py-20 bg-[#EEF3F5]">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il regalo</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Il regalo</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Il workbook che compili{" "}
-            <em className="text-[#156686]">in diretta con noi</em>
+            <em className="text-[#4B6380]">in diretta con noi</em>
           </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
             <div>
@@ -1144,7 +1144,7 @@ function ZeroImprovvisazioneMasterclass() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl bg-white border border-[#156686]/15 p-8 flex flex-col items-center gap-4 shadow-sm text-center">
+            <div className="rounded-2xl bg-white border border-[#4B6380]/15 p-8 flex flex-col items-center gap-4 shadow-sm text-center">
               <div className="relative">
                 <div className="text-5xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>📋</div>
                 <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-12 h-4 blur-xl rounded-full pointer-events-none" style={{ backgroundColor: "rgba(21,102,134,0.3)" }} />
@@ -1165,40 +1165,40 @@ function ZeroImprovvisazioneMasterclass() {
       {/* CHI SIAMO — sfondo bianco */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Chi siamo</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Chi siamo</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Chi siamo e perché{" "}
-            <em className="text-[#156686]">possiamo parlare di questo</em>
+            <em className="text-[#4B6380]">possiamo parlare di questo</em>
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#156686]/15">
+            <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#4B6380]/15">
               <div className="flex items-center gap-4 mb-5">
-                <div className="w-16 h-16 rounded-full bg-[#156686]/15 flex items-center justify-center flex-shrink-0">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
+                <div className="w-16 h-16 rounded-full bg-[#4B6380]/15 flex items-center justify-center flex-shrink-0">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
                   </svg>
                 </div>
                 <div>
                   <p className="font-bold text-foreground/85 text-lg">Andrea Bonomo</p>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
                 </div>
               </div>
               <p className="text-sm text-foreground/65 leading-relaxed">Negli ultimi anni ho lavorato con <strong>oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong>senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
-              <div className="mt-5 flex items-center gap-2 bg-white border border-[#156686]/10 rounded-xl px-4 py-2.5 w-fit">
+              <div className="mt-5 flex items-center gap-2 bg-white border border-[#4B6380]/10 rounded-xl px-4 py-2.5 w-fit">
                 <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
                 <span className="text-xs text-foreground/55 font-medium">4.9 · 50+ recensioni su Google</span>
               </div>
             </div>
-            <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#156686]/15">
+            <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#4B6380]/15">
               <div className="flex items-center gap-4 mb-5">
-                <div className="w-16 h-16 rounded-full bg-[#156686]/15 flex items-center justify-center flex-shrink-0">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
+                <div className="w-16 h-16 rounded-full bg-[#4B6380]/15 flex items-center justify-center flex-shrink-0">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
                   </svg>
                 </div>
                 <div>
                   <p className="font-bold text-foreground/85 text-lg">Davide Angiolillo</p>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
                 </div>
               </div>
               <p className="text-sm text-foreground/50 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
@@ -1213,10 +1213,10 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute inset-x-0 top-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
         <div className="container-narrow relative z-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Le parole dei partecipanti ❤️</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Le parole dei partecipanti ❤️</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Cosa dicono le persone che hanno lavorato{" "}
-            <em className="text-[#156686]">con noi?</em>
+            <em className="text-[#4B6380]">con noi?</em>
           </h2>
           <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
@@ -1224,15 +1224,15 @@ function ZeroImprovvisazioneMasterclass() {
               { name: "Luca P.", role: "Consulente Marketing", text: "In 2 ore ho capito più di quanto avessi imparato in mesi di corsi sparsi. Il workbook compilato insieme a loro vale già da solo l'iscrizione. Ed è gratuita." },
               { name: "Sara M.", role: "Creator & Infoproduttrice", text: "Pensavo di avere già un sistema, ma mi mancava la struttura. Ora ho la mappa delle offerte, l'ordine dei lanci e la logica dei funnel evergreen. Tutto in una mattinata." },
             ].map((t) => (
-              <div key={t.name} className="bg-white/90 backdrop-blur rounded-2xl border border-[#156686]/15 p-6 flex flex-col gap-4"
+              <div key={t.name} className="bg-white/90 backdrop-blur rounded-2xl border border-[#4B6380]/15 p-6 flex flex-col gap-4"
                 style={{ boxShadow: "0 4px 24px rgba(21,102,134,0.08)" }}>
                 <div className="flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => <span key={i} className="text-amber-400 text-sm">★</span>)}
                 </div>
                 <p className="text-sm text-foreground/70 leading-relaxed flex-1">"{t.text}"</p>
-                <div className="flex items-center gap-3 pt-3 border-t border-[#156686]/10">
+                <div className="flex items-center gap-3 pt-3 border-t border-[#4B6380]/10">
                   <div className="w-9 h-9 rounded-full bg-[#EEF3F5] flex items-center justify-center flex-shrink-0">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
                     </svg>
                   </div>
@@ -1245,7 +1245,7 @@ function ZeroImprovvisazioneMasterclass() {
             ))}
           </div>
           <div className="mt-10 flex justify-center">
-            <div className="inline-flex items-center gap-3 bg-white/90 border border-[#156686]/15 rounded-2xl px-6 py-4 shadow-sm">
+            <div className="inline-flex items-center gap-3 bg-white/90 border border-[#4B6380]/15 rounded-2xl px-6 py-4 shadow-sm">
               <div>
                 <div className="flex gap-0.5 mb-0.5">
                   {Array.from({ length: 5 }).map((_, i) => <span key={i} className="text-amber-400 text-sm">★</span>)}
@@ -1260,7 +1260,7 @@ function ZeroImprovvisazioneMasterclass() {
       {/* FORM seconda occorrenza — sfondo scuro */}
       <section className="py-16 md:py-20 bg-foreground relative overflow-hidden" data-cursor-light>
         <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none" style={{ background: "#6C9FA8", opacity: 0.35, filter: "blur(100px)", bottom: "-20%", left: "5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
-        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#156686", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#4B6380", opacity: 0.3, filter: "blur(100px)", bottom: "-15%", right: "10%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
         <div className="container-narrow relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Prenota il tuo posto</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-2">
@@ -1287,9 +1287,9 @@ function ZeroImprovvisazioneMasterclass() {
       {/* FAQ */}
       <section className="py-16 md:py-20">
         <div className="container-narrow max-w-4xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Domande frequenti</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Domande frequenti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-10">
-            Hai qualche domanda? <em className="text-[#156686]">Ho le risposte.</em>
+            Hai qualche domanda? <em className="text-[#4B6380]">Ho le risposte.</em>
           </h2>
           <FaqAccordion />
         </div>
@@ -1298,7 +1298,7 @@ function ZeroImprovvisazioneMasterclass() {
       {/* P.S. */}
       <section className="py-12 bg-[#EEF3F5]">
         <div className="container-narrow max-w-2xl mx-auto">
-          <div className="rounded-2xl border border-[#156686]/15 bg-white p-8">
+          <div className="rounded-2xl border border-[#4B6380]/15 bg-white p-8">
             <p className="text-sm text-foreground/65 leading-relaxed">
               <strong className="text-foreground/85">P.S.</strong> Se stai pensando "ho già provato a fare dei piani ma poi non li ho mai seguiti", non è una scusa per non venire - è esattamente il motivo per cui questa masterclass esiste. Un piano fatto da solo su un foglio non lo segui. Uno costruito in diretta, con qualcuno che ti fa le domande giuste sul tuo business specifico, è un'altra cosa. Iscriviti, ne vale la pena.
             </p>
