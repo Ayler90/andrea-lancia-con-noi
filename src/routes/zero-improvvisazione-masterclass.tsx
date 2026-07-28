@@ -567,16 +567,13 @@ function ZeroImprovvisazioneMasterclass() {
       {/* CARD PROBLEMA — sfondo bianco */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il vero problema</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-4">
-            Quanto sarebbe liberatorio sapere{" "}
-            <em className="text-[#156686]">esattamente cosa e quando farlo?</em>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Quanto sarebbe liberatorio sapere esattamente cosa e quando farlo?</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-6">
+            Ma fai fatica a farlo perché hai{" "}
+            <em className="text-[#156686]">uno di questi problemi qui sotto.</em>
           </h2>
-          <p className="text-center text-foreground/60 text-base md:text-lg max-w-2xl mx-auto mb-4">
-            Ma fai fatica a farlo perché hai uno di questi problemi qui sotto.
-          </p>
-          <p className="text-center text-foreground/70 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
-            Non è colpa tua. Il mercato ti ha convinto che basta avere un prodotto e una buona campagna. Ma senza una struttura chiara attorno — target, offerte, ecosistema e piano — <strong>ogni lancio è una partenza da zero</strong>. E così rimani sempre in modalità emergenza, esausto, senza mai riuscire a costruire qualcosa di stabile.
+          <p className="text-foreground/70 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
+            Lo so. In questo momento il tuo business va un po' a braccio. Fai un lancio e poi speri che le cose vadano bene perché buona parte dei guadagni dipendono da questo. Stessa cosa per le tue offerte: ti trovi ad averne parecchie per accontentare tutti i potenziali clienti che arrivano (e passi quasi più tempo a fare preventivi che altro). I 4 riquadri qui sotto sintetizzano bene quello che vive il 90% dei liberi professionisti e imprenditori che hanno un business online e si sentono sfiancati dalla sua gestione.
           </p>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
