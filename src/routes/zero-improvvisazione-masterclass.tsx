@@ -534,6 +534,14 @@ function MailerLiteForm() {
     if (injected.current) return;
     injected.current = true;
 
+    // Inject styles into <head> once to avoid mid-render style injection causing layout shift
+    if (!document.getElementById("ml-form-44209135-styles")) {
+      const styleEl = document.createElement("style");
+      styleEl.id = "ml-form-44209135-styles";
+      styleEl.textContent = ML_FORM_STYLE;
+      document.head.appendChild(styleEl);
+    }
+
     (window as any).ml_webform_success_44209135 = function () {
       window.location.href = "/grazie-iscrizione-zero-improvvisazione";
     };
@@ -549,12 +557,7 @@ function MailerLiteForm() {
     }
   }, []);
 
-  return (
-    <>
-      <style>{ML_FORM_STYLE}</style>
-      <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
-    </>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />;
 }
 
 const TARGET_DATE = new Date("2026-08-29T08:00:00Z"); // 10:00 CEST
