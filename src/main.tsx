@@ -31,9 +31,12 @@ _img.onload = () => {
 };
 _img.src = faviconSrc;
 
-// Prevent browser from restoring scroll position on refresh — we manage scroll ourselves
+// Prevent browser scroll restoration and native anchor-scroll on refresh
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-window.scrollTo(0, 0);
+// Strip any hash from the URL so the browser doesn't auto-scroll to #form (or any other anchor) on load
+if (window.location.hash) {
+  history.replaceState(null, "", window.location.pathname + window.location.search);
+}
 
 const router = getRouter();
 

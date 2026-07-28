@@ -723,7 +723,7 @@ function QuizForm() {
       </div>
 
       {step < 3 ? (
-        <div key={step} style={{ animation: "quiz-in 0.35s ease" }}>
+        <div key={step}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4B6380]/60 mb-2 text-center">
             Domanda {step + 1} di 3
           </p>
@@ -760,7 +760,7 @@ function QuizForm() {
           </div>
         </div>
       ) : (
-        <div style={{ animation: "quiz-in 0.4s ease" }}>
+        <div>
           <p className="text-center text-sm text-[#4B6380] font-semibold mb-1">Perfetto, ci siamo quasi.</p>
           <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
             Prenota il tuo posto alla Masterclass Gratuita
