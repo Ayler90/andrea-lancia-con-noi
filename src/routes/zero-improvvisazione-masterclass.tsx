@@ -710,7 +710,7 @@ function QuizForm() {
       setAnswers(next);
       setSelecting(null);
       setStep(s => s + 1);
-    }, 380);
+    }, 180);
   }
 
   const q = QUIZ_QUESTIONS[step];
