@@ -329,94 +329,119 @@ function CountdownBanner() {
   );
 }
 
-const CHAOS_WEEKS = [
-  { id: 1, label: "4 sett. prima", panic: false, items: [] },
-  { id: 2, label: "3 sett. prima", panic: false, items: [] },
-  { id: 3, label: "2 sett. prima", panic: false, items: [
-    { text: "Forse lancio qualcosa?", time: "" },
-  ]},
-  { id: 4, label: "1 sett. prima", panic: false, items: [
-    { text: "Email da scrivere (forse)", time: "" },
-    { text: "Social… da definire", time: "" },
-  ]},
-  { id: 5, label: "⚡ Settimana lancio", panic: true, items: [
-    { text: "Email 1 – scritta alle 23:45", time: "Lun" },
-    { text: "Post improvvisato", time: "Mar" },
-    { text: "Pagina iscrizione – ancora non pronta", time: "Mar" },
-    { text: "Email 2 – riscritta 3 volte", time: "Mer" },
-    { text: "Email 3 – dimenticata", time: "Gio" },
-    { text: "Chiusura – tutto di corsa", time: "Ven" },
-  ]},
-  { id: 6, label: "Dopo il lancio", panic: false, items: [] },
+// 0 = giorno vuoto, 1 = un po' di lavoro, 2 = panico/sovraccarico
+const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string; days: number[] }[] = [
+  {
+    name: "GEN", label: "In attesa di qualcosa",
+    days: [0,0,0,0,0,0,0, 0,0,1,0,0,0,0, 0,0,0,0,0,0,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "FEB", label: "Panico totale", note: "Lancio improvvisato", badge: "🔥",
+    days: [2,2,2,0,2,2,0, 2,2,2,2,0,2,2, 0,2,2,2,2,2,0, 2,2,0,2,2,2,0, 2,2,2,0,0,0,0],
+  },
+  {
+    name: "MAR", label: "Esausto, in recupero",
+    days: [0,1,0,0,1,0,0, 0,0,1,1,0,0,0, 0,1,0,0,0,1,0, 0,0,0,1,0,0,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "APR", label: "Nessun cliente", note: "Nessun funnel attivo",
+    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,1,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "MAG", label: "Silenzio",
+    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "GIU", label: "Qualcosa arriva",
+    days: [0,0,1,0,1,0,0, 0,1,0,0,0,1,0, 0,0,0,1,0,0,0, 0,1,1,0,0,0,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "LUG", label: "Ferie forzate", note: "Zero entrate",
+    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "AGO", label: "Silenzio totale",
+    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "SET", label: "Tutto insieme", note: "Di corsa, di nuovo", badge: "🔥",
+    days: [2,2,2,2,2,0,0, 2,2,2,2,2,2,0, 0,2,2,2,2,2,2, 2,2,2,2,2,0,0, 0,2,2,2,0,0,0],
+  },
+  {
+    name: "OTT", label: "In recupero",
+    days: [0,1,0,0,1,0,0, 0,0,1,0,0,0,0, 1,0,0,0,1,0,0, 0,0,0,1,0,0,0, 0,0,0,0,0,0,0],
+  },
+  {
+    name: "NOV", label: "Rush finale", note: "Black Friday", badge: "🔥",
+    days: [0,0,2,2,2,0,0, 2,2,2,2,2,0,2, 2,0,2,2,2,2,0, 2,2,2,0,2,2,2, 0,0,2,2,2,0,0],
+  },
+  {
+    name: "DIC", label: "Stanco morto",
+    days: [0,0,0,0,0,0,0, 0,0,1,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
+  },
 ];
 
-function ChaosTimeline() {
+function ChaosCalendar() {
   return (
-    <div className="mt-14 overflow-x-auto pb-2">
-      <div className="min-w-[640px]">
-        {/* Labels */}
-        <div className="flex gap-2 mb-2">
-          {CHAOS_WEEKS.map(w => (
-            <div key={w.id} className={`${w.panic ? "flex-[2]" : "flex-1"} text-center`}>
-              <span className={`text-[10px] font-semibold uppercase tracking-[0.1em] ${w.panic ? "text-orange-300" : "text-white/35"}`}>
-                {w.label}
-              </span>
-            </div>
-          ))}
-        </div>
+    <div className="mt-14" style={{ position: "relative", left: "50%", width: "108vw", transform: "translateX(-50%)" }}>
+      <div className="flex gap-[6px] px-6">
+        {CHAOS_MONTHS.map(m => {
+          const isPanic = m.days.filter(d => d === 2).length > 10;
+          return (
+            <div key={m.name} className="flex-1 min-w-0">
+              {/* Annotation above panic months */}
+              <div className="h-7 flex items-end justify-center mb-1">
+                {m.badge && (
+                  <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.08em] text-orange-300/80 bg-orange-400/10 border border-orange-400/20 rounded-full px-1.5 py-0.5">
+                    {m.badge} {m.note}
+                  </span>
+                )}
+              </div>
 
-        {/* Timeline line */}
-        <div className="relative h-px bg-white/15 mb-3 mx-1">
-          {CHAOS_WEEKS.map((w, i) => (
-            <div key={w.id}
-              className={`absolute top-1/2 w-2.5 h-2.5 rounded-full border-2 ${w.panic ? "bg-orange-400 border-orange-300" : "bg-white/20 border-white/30"}`}
-              style={{ left: `${(i / (CHAOS_WEEKS.length - 1)) * 100}%`, transform: "translate(-50%, -50%)" }}
-            />
-          ))}
-        </div>
+              {/* Month name */}
+              <p className={`text-[10px] font-bold uppercase tracking-[0.14em] text-center mb-1.5 ${isPanic ? "text-orange-300" : "text-white/35"}`}>
+                {m.name}
+              </p>
 
-        {/* Week columns */}
-        <div className="flex gap-2 items-start">
-          {CHAOS_WEEKS.map(w => (
-            <div key={w.id}
-              className={`${w.panic ? "flex-[2]" : "flex-1"} rounded-xl p-3 min-h-[130px] ${w.panic ? "bg-orange-500/12 border border-orange-400/30" : "bg-white/5 border border-white/8"}`}>
-              {w.items.length === 0 ? (
-                <div className="flex flex-col gap-2 mt-3 px-1">
-                  <div className="h-1.5 rounded-full bg-white/10 w-4/5" />
-                  <div className="h-1.5 rounded-full bg-white/8 w-3/5" />
-                  <div className="h-1.5 rounded-full bg-white/6 w-2/5" />
-                </div>
-              ) : w.panic ? (
-                <div className="flex flex-col gap-1.5">
-                  {w.items.map((item, i) => (
-                    <div key={i} className="rounded-lg px-2.5 py-1.5 bg-orange-400/15 border border-orange-400/25 flex items-start gap-2">
-                      {item.time && <span className="text-[9px] font-bold text-orange-300/80 flex-shrink-0 mt-0.5 uppercase">{item.time}</span>}
-                      <span className="text-[11px] text-orange-100/85 leading-tight">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="flex flex-col gap-1.5">
-                  {w.items.map((item, i) => (
-                    <div key={i} className="rounded-lg px-2.5 py-1.5 bg-white/8 border border-white/10">
-                      <span className="text-[11px] text-white/40 leading-tight">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+              {/* Day grid 5×7 */}
+              <div className="grid grid-cols-7 gap-[2px]">
+                {m.days.map((d, i) => (
+                  <div
+                    key={i}
+                    className="rounded-[2px]"
+                    style={{
+                      aspectRatio: "1",
+                      backgroundColor:
+                        d === 2 ? "rgba(251,146,60,0.80)"
+                        : d === 1 ? "rgba(196,217,220,0.30)"
+                        : "rgba(255,255,255,0.05)",
+                    }}
+                  />
+                ))}
+              </div>
 
-        {/* Bottom note */}
-        <div className="flex gap-2 mt-2">
-          {CHAOS_WEEKS.map(w => (
-            <div key={w.id} className={`${w.panic ? "flex-[2]" : "flex-1"} text-center`}>
-              {w.panic && <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-orange-300/70">⚠ Panico totale</span>}
-              {!w.panic && w.id === 6 && <span className="text-[9px] text-white/25 uppercase tracking-[0.08em]">Silenzio</span>}
-              {!w.panic && (w.id === 1 || w.id === 2) && <span className="text-[9px] text-white/20 uppercase tracking-[0.08em]">Nessun piano</span>}
+              {/* Label below */}
+              <p className={`text-[9px] text-center mt-2 leading-tight ${isPanic ? "text-orange-200/60" : "text-white/22"}`}>
+                {m.label}
+              </p>
             </div>
-          ))}
+          );
+        })}
+      </div>
+
+      {/* Legend */}
+      <div className="flex items-center justify-center gap-5 mt-5 px-6">
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(255,255,255,0.05)" }} />
+          <span className="text-[9px] text-white/30 uppercase tracking-[0.1em]">Nessuna attività</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(196,217,220,0.30)" }} />
+          <span className="text-[9px] text-white/30 uppercase tracking-[0.1em]">Qualcosa</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(251,146,60,0.80)" }} />
+          <span className="text-[9px] text-white/30 uppercase tracking-[0.1em]">Panico / sovraccarico</span>
         </div>
       </div>
     </div>
@@ -535,7 +560,7 @@ function ZeroImprovvisazioneMasterclass() {
             </button>
           </div>
 
-          <ChaosTimeline />
+          <ChaosCalendar />
         </div>
       </section>
 
