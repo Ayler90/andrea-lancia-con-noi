@@ -702,6 +702,14 @@ function QuizForm() {
 
   return (
     <div>
+      {step === 0 && (
+        <div className="mb-5 text-center">
+          <p className="text-sm text-foreground/65 leading-relaxed">
+            Prima di iscriverti, abbiamo <strong>3 domande veloci</strong> per capire da dove parti. Meno di un minuto.
+          </p>
+        </div>
+      )}
+
       {/* Progress dots */}
       <div className="flex justify-center gap-2 mb-5">
         {QUIZ_QUESTIONS.map((_, i) => (
