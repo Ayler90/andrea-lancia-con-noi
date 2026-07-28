@@ -379,17 +379,6 @@ function ZeroImprovvisazioneMasterclass() {
             <p className="text-xs text-foreground/40 text-center mt-4">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
           </div>
 
-          {/* Hero placeholder image */}
-          <div className="mt-12 max-w-2xl mx-auto rounded-2xl overflow-hidden border border-[#156686]/10" style={{ boxShadow: "0 20px 60px rgba(21,102,134,0.12)" }}>
-            <div className="aspect-video bg-[#EEF3F5] flex flex-col items-center justify-center gap-3 text-foreground/30">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg>
-              <span className="text-sm font-medium">Immagine masterclass · placeholder</span>
-            </div>
-          </div>
         </div>
       </section>
 
