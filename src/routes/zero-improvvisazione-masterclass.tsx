@@ -405,18 +405,9 @@ function ZeroImprovvisazioneMasterclass() {
             ))}
           </div>
 
-          {/* FORM prima occorrenza */}
-          <div id="form" className="mt-14 max-w-lg mx-auto bg-white rounded-2xl border border-[#156686]/10 p-6 md:p-8" style={{ boxShadow: "0 20px 60px rgba(21,102,134,0.18), 0 4px 16px rgba(21,102,134,0.10)" }}>
-            <div className="flex justify-center mb-4">
-              <div className="inline-flex items-center gap-2 bg-[#156686] text-white text-[11px] font-bold uppercase tracking-[0.12em] px-4 py-1.5 rounded-full">
-                📅 29 agosto · ore 10:00 · Zoom
-              </div>
-            </div>
-            <p className="font-bold text-foreground/85 text-center text-base md:text-lg mb-5 leading-snug">
-              Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
-            </p>
-            <MailerLiteForm />
-            <p className="text-xs text-foreground/40 text-center mt-4">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
+          {/* FORM placeholder — rimosso temporaneamente per debug */}
+          <div id="form" className="mt-14 max-w-lg mx-auto bg-[#EEF3F5] border border-dashed border-[#156686]/30 rounded-2xl p-10 text-center text-[#156686]/50 text-sm font-medium">
+            Form rimosso temporaneamente
           </div>
 
         </div>
