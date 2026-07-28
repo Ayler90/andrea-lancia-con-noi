@@ -207,6 +207,55 @@ const ML_FORM_STYLE = `
   #mlb2-44209135 .ml-form-successBody.show { display: block; text-align: center; padding: 24px; }
 `;
 
+const ML_FORM_HTML = `
+<div id="mlb2-44209135" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44209135">
+  <div class="ml-form-align-center">
+    <div class="ml-form-embedWrapper embedForm">
+      <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+        <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/subscribe" data-code="" method="post" target="_blank">
+          <div class="ml-form-formContent">
+            <div class="ml-form-fieldRow">
+              <div class="ml-field-group ml-field-name">
+                <input type="text" class="form-control" data-inputmask="" name="fields[name]" placeholder="Nome" autocomplete="name">
+              </div>
+            </div>
+            <div class="ml-form-fieldRow ml-last-item">
+              <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                <input type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+              </div>
+            </div>
+          </div>
+          <div class="ml-form-checkboxRow ml-form-fieldRow">
+            <label class="checkbox">
+              <span class="label-description">
+                Confermando l'iscrizione, accetti di ricevere le email di Andrea Bonomo. Puoi disiscriverti in qualsiasi momento. <a href="https://www.iubenda.com/privacy-policy/31182601" rel="noopener noreferrer" target="_blank">Privacy Policy</a>
+              </span>
+              <input type="checkbox" name="gdpr[]" value="Confermando">
+              <span class="custom-checkbox"></span>
+            </label>
+          </div>
+          <input type="hidden" name="ml-submit" value="1">
+          <div class="ml-form-embedSubmit">
+            <button type="submit" class="primary">Voglio iscrivermi alla masterclass gratuita!</button>
+            <button disabled="disabled" style="display:none" type="button" class="loading">
+              <div class="ml-form-embedSubmitLoad"></div>
+              <span class="sr-only">Loading...</span>
+            </button>
+          </div>
+          <input type="hidden" name="anticsrf" value="true">
+        </form>
+      </div>
+      <div class="ml-form-successBody row-success" style="display:none">
+        <div class="ml-form-successContent">
+          <h4>Grazie!</h4>
+          <p>Controlla la tua email per confermare l'iscrizione.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 function MailerLiteForm() {
   const injected = useRef(false);
 
@@ -232,7 +281,7 @@ function MailerLiteForm() {
   return (
     <>
       <style>{ML_FORM_STYLE}</style>
-      <div id="mlb2-44209135" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44209135" />
+      <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />
     </>
   );
 }
@@ -256,7 +305,7 @@ function CountdownBanner() {
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
     <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white flex flex-wrap items-center justify-center gap-2" style={{ backgroundColor: "#156686" }}>
-      <span className="opacity-80">La masterclass inizia tra</span>
+      <span className="opacity-80">Le iscrizioni si chiudono tra</span>
       <span className="inline-flex items-center gap-1.5 font-bold tabular-nums">
         <span>{days}g</span>
         <span className="opacity-50">·</span>
@@ -266,7 +315,6 @@ function CountdownBanner() {
         <span className="opacity-50">·</span>
         <span>{pad(seconds)}s</span>
       </span>
-      <span className="opacity-60 hidden sm:inline">— prenota il tuo posto ora</span>
     </div>
   );
 }
