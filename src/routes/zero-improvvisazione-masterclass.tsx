@@ -7,7 +7,7 @@ export const Route = createFileRoute("/zero-improvvisazione-masterclass")({
   head: () => ({
     meta: [
       { name: "robots", content: "noindex, nofollow" },
-      { title: "Zero Improvvisazione – Masterclass Gratuita | Andrea Bonomo" },
+      { title: "Lanci Senza Stress – Masterclass Gratuita | Andrea Bonomo" },
       { name: "description", content: "La masterclass gratuita con Andrea Bonomo e Davide Angiolillo per costruire il tuo piano lanci per i prossimi 12 mesi." },
     ],
   }),
@@ -173,6 +173,110 @@ function Programma() {
   );
 }
 
+const ML_FORM_STYLE = `
+  #mlb2-44209135 { font-family: 'Inter', sans-serif; }
+  #mlb2-44209135 .ml-form-embedWrapper { background: transparent !important; }
+  #mlb2-44209135 .ml-form-embedBody { padding: 0 !important; }
+  #mlb2-44209135 .ml-form-fieldRow { margin-bottom: 12px; }
+  #mlb2-44209135 .form-control {
+    width: 100%; padding: 13px 16px; border: 1.5px solid rgba(21,102,134,0.28);
+    border-radius: 12px; font-size: 15px; color: #1B2F52; background: white;
+    outline: none; transition: border-color 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  #mlb2-44209135 .form-control:focus { border-color: #156686; box-shadow: 0 0 0 3px rgba(21,102,134,0.1); }
+  #mlb2-44209135 .form-control::placeholder { color: rgba(27,47,82,0.4); }
+  #mlb2-44209135 .ml-form-embedSubmit { margin-top: 16px; }
+  #mlb2-44209135 .ml-form-embedSubmit button {
+    width: 100%; padding: 14px 28px; background-color: #156686; color: white;
+    border: none; border-radius: 9999px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background-color 0.2s, transform 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  #mlb2-44209135 .ml-form-embedSubmit button:hover { background-color: #125a77; transform: translateY(-2px); }
+  #mlb2-44209135 .ml-form-checkboxRow { margin-top: 14px; display: flex; align-items: flex-start; gap: 10px; }
+  #mlb2-44209135 .ml-form-checkboxRow input[type="checkbox"] {
+    width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; accent-color: #156686; cursor: pointer;
+  }
+  #mlb2-44209135 .ml-form-checkboxRow label {
+    font-size: 12px; color: rgba(21,102,134,0.65); line-height: 1.5; cursor: pointer;
+  }
+  #mlb2-44209135 .ml-form-checkboxRow label a { color: #156686; text-decoration: underline; }
+  #mlb2-44209135 .ml-error { color: #dc2626; font-size: 12px; margin-top: 4px; }
+  #mlb2-44209135 .ml-form-successBody { display: none; }
+  #mlb2-44209135 .ml-form-successBody.show { display: block; text-align: center; padding: 24px; }
+`;
+
+function MailerLiteForm() {
+  const injected = useRef(false);
+
+  useEffect(() => {
+    if (injected.current) return;
+    injected.current = true;
+
+    (window as any).ml_webform_success_44209135 = function () {
+      window.location.href = "/grazie-iscrizione-zero-improvvisazione";
+    };
+
+    const fetchUrl = "https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/takel";
+    fetch(fetchUrl).catch(() => {});
+
+    if (!document.getElementById("ml-form-44209135-script")) {
+      const s = document.createElement("script");
+      s.id = "ml-form-44209135-script";
+      s.src = "https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519";
+      s.async = true;
+      document.head.appendChild(s);
+    }
+  }, []);
+
+  return (
+    <>
+      <style>{ML_FORM_STYLE}</style>
+      <div id="mlb2-44209135" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44209135">
+        <div className="ml-form-align-center">
+          <div className="ml-form-embedWrapper embedForm">
+            <div className="ml-form-embedBody ml-form-embedBodyDefault row-form">
+              <form
+                className="ml-block-form"
+                action="https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/subscribe"
+                data-code=""
+                method="post"
+                target="_blank"
+              >
+                <div className="ml-form-formContent">
+                  <div className="ml-form-fieldRow">
+                    <div className="ml-field-group ml-field-name">
+                      <input type="text" className="form-control" name="fields[name]" placeholder="Il tuo nome" autoComplete="given-name" />
+                    </div>
+                  </div>
+                  <div className="ml-form-fieldRow">
+                    <div className="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                      <input type="email" className="form-control" name="fields[email]" placeholder="La tua email" autoComplete="email" />
+                    </div>
+                  </div>
+                  <div className="ml-form-checkboxRow ml-form-fieldRow ml-last-item">
+                    <input type="checkbox" id="ml-gdpr-44209135" name="gdpr[]" value="true" />
+                    <label htmlFor="ml-gdpr-44209135">
+                      Acconsento a ricevere comunicazioni da Andrea Bonomo.{" "}
+                      <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer">Privacy Policy</a>
+                    </label>
+                  </div>
+                </div>
+                <div className="ml-form-embedSubmit">
+                  <button type="submit" className="primary">Voglio iscrivermi alla masterclass gratuita!</button>
+                </div>
+                <input type="hidden" name="ml-submit" value="1" />
+                <input type="hidden" name="anticsrf" value="true" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
 function ZeroImprovvisazioneMasterclass() {
   function trackCta(label: string) {
     posthog.capture("zero_improv_cta_click", { cta_label: label });
@@ -207,7 +311,7 @@ function ZeroImprovvisazioneMasterclass() {
           </h1>
 
           <p className="mt-6 text-sm md:text-base text-foreground/65 text-center max-w-xl mx-auto leading-relaxed">
-            Zero Improvvisazione è la masterclass gratuita in cui Andrea Bonomo e Davide Angiolillo ti guidano a costruire il tuo piano lanci dall'inizio alla fine: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
+            Lanci Senza Stress è la masterclass gratuita in cui Andrea Bonomo e Davide Angiolillo ti guidano a costruire il tuo piano lanci dall'inizio alla fine: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
           </p>
 
           <p className="mt-4 text-center font-bold text-[#156686] text-sm md:text-base">
@@ -270,11 +374,9 @@ function ZeroImprovvisazioneMasterclass() {
           </div>
 
           {/* FORM prima occorrenza */}
-          <div id="form" className="mt-14 max-w-lg mx-auto">
-            <div className="bg-[#EEF3F5] border-2 border-dashed border-[#156686]/30 rounded-2xl p-10 text-center text-[#156686]/50 text-sm font-medium">
-              Form di iscrizione MailerLite · da integrare
-            </div>
-            <p className="text-xs text-foreground/40 text-center mt-3">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
+          <div id="form" className="mt-14 max-w-lg mx-auto bg-white rounded-2xl border border-[#156686]/10 p-6 md:p-8" style={{ boxShadow: "0 8px 40px rgba(21,102,134,0.10)" }}>
+            <MailerLiteForm />
+            <p className="text-xs text-foreground/40 text-center mt-4">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
           </div>
 
           {/* Hero placeholder image */}
@@ -362,7 +464,7 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Per chi è</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Zero Improvvisazione è{" "}
+            Lanci Senza Stress è{" "}
             <em className="text-[#156686]">perfetto per te</em> se:
           </h2>
           <div className="grid md:grid-cols-3 gap-5">
@@ -646,9 +748,6 @@ function ZeroImprovvisazioneMasterclass() {
           </p>
           <div className="max-w-lg mx-auto">
             <div className="bg-white rounded-xl p-8">
-              <div id="form-bottom" className="bg-[#EEF3F5] border-2 border-dashed border-[#156686]/30 rounded-2xl p-10 text-center text-[#156686]/50 text-sm font-medium mb-6">
-                Form di iscrizione MailerLite · da integrare
-              </div>
               <a href="#form" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => trackCta("bottom-iscriviti")}>
                 Voglio il mio posto →
               </a>
