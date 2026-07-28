@@ -144,20 +144,154 @@ const STEPS: { n: string; title: string; badge?: string; points: string[] }[] = 
   },
 ];
 
+/* ── Illustrazioni per ogni step del programma ── */
+function IllTarget({ active }: { active: boolean }) {
+  return (
+    <svg viewBox="0 0 200 200" width="200" height="200" style={{ overflow: "visible" }}>
+      {[80, 60, 40, 22].map((r, i) => (
+        <circle key={r} cx="100" cy="100" r={r}
+          fill="none"
+          stroke="#156686"
+          strokeWidth={i === 3 ? 0 : 1.5}
+          opacity={active ? [0.12, 0.2, 0.35, 0][i] : 0}
+          style={{ transition: `opacity 0.5s ease ${i * 0.07}s` }}
+        />
+      ))}
+      {/* filled rings */}
+      <circle cx="100" cy="100" r={58} fill="rgba(21,102,134,0.07)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.1s" }} />
+      <circle cx="100" cy="100" r={40} fill="rgba(21,102,134,0.10)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.15s" }} />
+      <circle cx="100" cy="100" r={22} fill="rgba(21,102,134,0.20)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.2s" }} />
+      <circle cx="100" cy="100" r={8} fill="#156686" opacity={active ? 1 : 0} style={{ transition: "opacity 0.4s ease 0.28s" }} />
+      {/* crosshair */}
+      {[[-85,0],[85,0],[0,-85],[0,85]].map(([dx, dy], i) => (
+        <line key={i} x1={100} y1={100} x2={100 + dx} y2={100 + dy}
+          stroke="#156686" strokeWidth="1" strokeDasharray="3 4"
+          opacity={active ? 0.25 : 0} style={{ transition: `opacity 0.4s ease ${0.3 + i*0.05}s` }} />
+      ))}
+      {/* floating dot */}
+      <circle cx="148" cy="58" r="5" fill="#156686" opacity={active ? 0.5 : 0}
+        style={{ transition: "opacity 0.4s ease 0.4s", animation: active ? "thought-float 3s ease-in-out infinite" : "none" }} />
+      <circle cx="60" cy="148" r="3.5" fill="#156686" opacity={active ? 0.35 : 0}
+        style={{ transition: "opacity 0.4s ease 0.45s", animation: active ? "thought-float 3.8s ease-in-out 0.5s infinite" : "none" }} />
+    </svg>
+  );
+}
+
+function IllOfferte({ active }: { active: boolean }) {
+  const cards = [
+    { y: 36, label: "Offerta principale", w: 140 },
+    { y: 78, label: "Upsell", w: 110 },
+    { y: 118, label: "Entry point", w: 125 },
+  ];
+  return (
+    <svg viewBox="0 0 200 200" width="200" height="200" style={{ overflow: "visible" }}>
+      {cards.map((c, i) => (
+        <g key={i} opacity={active ? 1 : 0} style={{ transition: `opacity 0.45s ease ${i * 0.1}s` }}>
+          <rect x={(200 - c.w) / 2} y={c.y} width={c.w} height={32} rx="8"
+            fill="rgba(21,102,134,0.09)" stroke="#156686" strokeWidth="1.2" strokeOpacity="0.3" />
+          <rect x={(200 - c.w) / 2 + 10} y={c.y + 11} width={c.w * 0.55} height="6" rx="3" fill="#156686" fillOpacity="0.3" />
+          <rect x={(200 - c.w) / 2 + 10 + c.w * 0.55 + 6} y={c.y + 11} width={20} height="6" rx="3" fill="#156686" fillOpacity="0.5" />
+        </g>
+      ))}
+      {/* arrows connecting cards */}
+      {[0,1].map(i => (
+        <path key={i} d={`M100 ${cards[i].y + 32} L100 ${cards[i+1].y}`}
+          stroke="#156686" strokeWidth="1.2" strokeDasharray="3 3"
+          strokeOpacity={active ? 0.35 : 0} style={{ transition: `stroke-opacity 0.4s ease ${0.3 + i*0.1}s` }} />
+      ))}
+      <circle cx="148" cy="160" r="4" fill="#156686" opacity={active ? 0.4 : 0}
+        style={{ transition: "opacity 0.4s ease 0.5s", animation: active ? "thought-float 3.5s ease-in-out infinite" : "none" }} />
+    </svg>
+  );
+}
+
+function IllFreebie({ active }: { active: boolean }) {
+  return (
+    <svg viewBox="0 0 200 200" width="200" height="200" style={{ overflow: "visible" }}>
+      {/* envelope body */}
+      <rect x="40" y="70" width="120" height="80" rx="10"
+        fill="rgba(21,102,134,0.08)" stroke="#156686" strokeWidth="1.4" strokeOpacity={active ? 0.4 : 0}
+        style={{ transition: "stroke-opacity 0.4s ease 0.1s" }} />
+      {/* envelope flap */}
+      <path d="M40 70 L100 115 L160 70"
+        fill="none" stroke="#156686" strokeWidth="1.4"
+        strokeOpacity={active ? 0.4 : 0} style={{ transition: "stroke-opacity 0.4s ease 0.15s" }} />
+      {/* gift bow */}
+      <path d="M85 70 Q100 52 115 70" fill="none" stroke="#156686" strokeWidth="2"
+        strokeOpacity={active ? 0.6 : 0} style={{ transition: "stroke-opacity 0.4s ease 0.2s" }} />
+      <circle cx="100" cy="70" r="5" fill="#156686" opacity={active ? 0.7 : 0}
+        style={{ transition: "opacity 0.4s ease 0.25s" }} />
+      {/* sparkles */}
+      {[[55,45,6],[148,52,4],[138,140,5],[52,148,3.5]].map(([cx,cy,r],i) => (
+        <circle key={i} cx={cx} cy={cy} r={r} fill="#156686"
+          opacity={active ? [0.35,0.25,0.3,0.2][i] : 0}
+          style={{ transition: `opacity 0.4s ease ${0.3+i*0.08}s`, animation: active ? `thought-float ${3+i*0.4}s ease-in-out ${i*0.3}s infinite` : "none" }} />
+      ))}
+      {/* download arrow */}
+      <path d="M100 118 L100 140 M88 130 L100 142 L112 130"
+        fill="none" stroke="#156686" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+        strokeOpacity={active ? 0.5 : 0} style={{ transition: "stroke-opacity 0.4s ease 0.4s" }} />
+    </svg>
+  );
+}
+
+function IllCalendario({ active }: { active: boolean }) {
+  const cols = 7;
+  const rows = 5;
+  // highlight some cells to look like a launch plan
+  const highlighted = new Set([2,4,8,9,10,16,17,23,24,30,31,32]);
+  const orange = new Set([9,10,24,25]);
+  return (
+    <svg viewBox="0 0 200 200" width="200" height="200" style={{ overflow: "visible" }}>
+      {/* header bar */}
+      <rect x="30" y="28" width="140" height="22" rx="6"
+        fill="rgba(21,102,134,0.15)" opacity={active ? 1 : 0} style={{ transition: "opacity 0.35s ease" }} />
+      <rect x="42" y="35" width="50" height="8" rx="4" fill="#156686" fillOpacity={active ? 0.5 : 0}
+        style={{ transition: "opacity 0.35s ease 0.05s" }} />
+      {/* grid */}
+      {Array.from({ length: rows * cols }, (_, idx) => {
+        const col = idx % cols;
+        const row = Math.floor(idx / cols);
+        const isHL = highlighted.has(idx);
+        const isOr = orange.has(idx);
+        return (
+          <rect key={idx}
+            x={30 + col * 20} y={58 + row * 20} width="16" height="16" rx="3"
+            fill={isOr ? "rgba(251,146,60,0.75)" : isHL ? "rgba(21,102,134,0.45)" : "rgba(21,102,134,0.08)"}
+            opacity={active ? 1 : 0}
+            style={{ transition: `opacity 0.35s ease ${0.05 + idx * 0.008}s` }}
+          />
+        );
+      })}
+      <circle cx="155" cy="168" r="4" fill="#156686" opacity={active ? 0.4 : 0}
+        style={{ transition: "opacity 0.4s ease 0.5s", animation: active ? "thought-float 3.2s ease-in-out infinite" : "none" }} />
+    </svg>
+  );
+}
+
+const STEP_ILLUSTRATIONS = [IllTarget, IllOfferte, IllFreebie, IllCalendario];
+
 function Programma() {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [passedSet, setPassedSet] = useState<Set<number>>(new Set());
+  const [activeStep, setActiveStep] = useState<number>(-1);
 
   useEffect(() => {
     const update = () => {
       const mid = window.innerHeight * 0.5;
       const next = new Set<number>();
+      let closest = -1;
+      let closestDist = Infinity;
       stepRefs.current.forEach((el, i) => {
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        if (rect.top + rect.height / 2 < mid + window.innerHeight * 0.2) next.add(i);
+        const center = rect.top + rect.height / 2;
+        if (center < mid + window.innerHeight * 0.2) next.add(i);
+        const dist = Math.abs(center - mid);
+        if (dist < closestDist) { closestDist = dist; closest = i; }
       });
       setPassedSet(next);
+      setActiveStep(closest);
     };
     window.addEventListener("scroll", update, { passive: true });
     update();
@@ -165,53 +299,90 @@ function Programma() {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-16 md:py-20 bg-white overflow-hidden">
       <div className="container-narrow">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#156686] mb-4 text-center">Il programma</p>
         <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
           Cosa costruiamo insieme <em className="text-[#156686]">in questa masterclass?</em>
         </h2>
-        <div>
-          {STEPS.map((step, i) => {
-            const isActive = passedSet.has(i);
-            const isLast = i === STEPS.length - 1;
-            return (
-              <div
-                key={step.n}
-                ref={el => { stepRefs.current[i] = el; }}
-                className="flex gap-6 md:gap-8 items-stretch bg-white"
-                style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
-              >
-                <div className="w-14 flex-shrink-0 flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
-                    style={{
-                      backgroundColor: isActive ? "#156686" : "rgba(21,102,134,0.15)",
-                      color: isActive ? "white" : "#156686",
-                      boxShadow: "0 0 0 4px white",
-                      transition: "background-color 0.4s ease, color 0.4s ease",
-                    }}>
-                    {step.n}
-                  </div>
-                  {!isLast && <div className="w-px flex-1 bg-[#156686]/20 my-3" />}
+
+        {/* 3-col layout on desktop */}
+        <div className="relative grid grid-cols-1 md:grid-cols-[180px_1fr_180px] gap-0 md:gap-8 items-start">
+
+          {/* LEFT column — steps 1 (hidden) and 3 illustration */}
+          <div className="hidden md:flex flex-col">
+            {STEPS.map((_, i) => {
+              const IllComp = STEP_ILLUSTRATIONS[i];
+              const side = i % 2 === 0 ? "right" : "left";
+              if (side !== "left") return <div key={i} style={{ height: i === 0 ? 0 : undefined }} className="flex-1" />;
+              return (
+                <div key={i} className="sticky top-[40vh] flex justify-center"
+                  style={{ opacity: activeStep === i ? 1 : 0, transform: activeStep === i ? "translateX(0) scale(1)" : "translateX(-20px) scale(0.9)", transition: "opacity 0.5s ease, transform 0.5s ease" }}>
+                  <IllComp active={activeStep === i} />
                 </div>
-                <div className={`pt-1 ${isLast ? "" : "pb-10"}`}>
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <h3 className="font-bold text-foreground/90 text-xl">{step.title}</h3>
-                    {step.badge && (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#156686] bg-[#156686]/10 border border-[#156686]/20 rounded-full px-2.5 py-1">
-                        👤 {step.badge}
-                      </span>
-                    )}
+              );
+            })}
+          </div>
+
+          {/* CENTER — timeline */}
+          <div>
+            {STEPS.map((step, i) => {
+              const isActive = passedSet.has(i);
+              const isLast = i === STEPS.length - 1;
+              return (
+                <div
+                  key={step.n}
+                  ref={el => { stepRefs.current[i] = el; }}
+                  className="flex gap-6 md:gap-8 items-stretch bg-white"
+                  style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
+                >
+                  <div className="w-14 flex-shrink-0 flex flex-col items-center">
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
+                      style={{
+                        backgroundColor: isActive ? "#156686" : "rgba(21,102,134,0.15)",
+                        color: isActive ? "white" : "#156686",
+                        boxShadow: "0 0 0 4px white",
+                        transition: "background-color 0.4s ease, color 0.4s ease",
+                      }}>
+                      {step.n}
+                    </div>
+                    {!isLast && <div className="w-px flex-1 bg-[#156686]/20 my-3" />}
                   </div>
-                  <div className="flex flex-col gap-3 mt-3">
-                    {step.points.map((p, j) => (
-                      <p key={j} className="text-sm text-foreground/60 leading-relaxed">{p}</p>
-                    ))}
+                  <div className={`pt-1 ${isLast ? "" : "pb-10"}`}>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h3 className="font-bold text-foreground/90 text-xl">{step.title}</h3>
+                      {step.badge && (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#156686] bg-[#156686]/10 border border-[#156686]/20 rounded-full px-2.5 py-1">
+                          👤 {step.badge}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-3 mt-3">
+                      {step.points.map((p, j) => (
+                        <p key={j} className="text-sm text-foreground/60 leading-relaxed">{p}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* RIGHT column — steps 0 and 2 illustrations */}
+          <div className="hidden md:flex flex-col">
+            {STEPS.map((_, i) => {
+              const IllComp = STEP_ILLUSTRATIONS[i];
+              const side = i % 2 === 0 ? "right" : "left";
+              if (side !== "right") return <div key={i} className="flex-1" />;
+              return (
+                <div key={i} className="sticky top-[40vh] flex justify-center"
+                  style={{ opacity: activeStep === i ? 1 : 0, transform: activeStep === i ? "translateX(0) scale(1)" : "translateX(20px) scale(0.9)", transition: "opacity 0.5s ease, transform 0.5s ease" }}>
+                  <IllComp active={activeStep === i} />
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       </div>
     </section>
@@ -520,14 +691,11 @@ function StickyBar() {
       style={{ transform: visible ? "translateY(0)" : "translateY(110%)" }}
     >
       <div
-        className="mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-3.5"
+        className="flex flex-col sm:flex-row items-center justify-between gap-3 px-8 py-3.5"
         style={{
           background: "rgba(10,26,35,0.92)",
           backdropFilter: "blur(14px)",
           borderTop: "1px solid rgba(196,217,220,0.12)",
-          maxWidth: 900,
-          margin: "0 auto",
-          borderRadius: "16px 16px 0 0",
         }}
       >
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/80">
