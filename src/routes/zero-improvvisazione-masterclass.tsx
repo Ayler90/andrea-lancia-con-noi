@@ -210,38 +210,42 @@ function MailerLiteForm() {
   return (
     <form onSubmit={handleSubmit} noValidate>
       {/* Nome */}
-      <div style={{ marginBottom: 10, position: "relative" }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
-          style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-        </svg>
-        <input
-          type="text"
-          name="fields[name]"
-          placeholder="Il tuo Nome*"
-          autoComplete="given-name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          style={errors.name ? inputErr : inputBase}
-        />
+      <div style={{ marginBottom: 10 }}>
+        <div style={{ position: "relative" }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
+            style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          <input
+            type="text"
+            name="fields[name]"
+            placeholder="Il tuo Nome*"
+            autoComplete="given-name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            style={errors.name ? inputErr : inputBase}
+          />
+        </div>
         {errors.name && <p style={{ color: "#dc2626", fontSize: 12, margin: "4px 0 0" }}>{errors.name}</p>}
       </div>
 
       {/* Email */}
-      <div style={{ marginBottom: 16, position: "relative" }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
-          style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
-          <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
-        </svg>
-        <input
-          type="email"
-          name="fields[email]"
-          placeholder="La tua Email* (riceverai qui il workbook)"
-          autoComplete="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          style={errors.email ? inputErr : inputBase}
-        />
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ position: "relative" }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
+            style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
+            <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
+          </svg>
+          <input
+            type="email"
+            name="fields[email]"
+            placeholder="La tua Email* (riceverai qui il workbook)"
+            autoComplete="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            style={errors.email ? inputErr : inputBase}
+          />
+        </div>
         {errors.email && <p style={{ color: "#dc2626", fontSize: 12, margin: "4px 0 0" }}>{errors.email}</p>}
       </div>
 
