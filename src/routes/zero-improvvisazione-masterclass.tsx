@@ -442,9 +442,9 @@ function ZeroImprovvisazioneMasterclass() {
               <em style={{ color: "#C4D9DC" }}>in emergenza?</em>
             </h2>
             <div className="space-y-5 text-sm md:text-base text-white/75 leading-relaxed">
-              <p>Hai un'offerta da lanciare ma non sai da dove iniziare, quando farlo né come comunicarlo alla tua community. Quindi aspetti.</p>
-              <p>Quando non puoi più rimandare, costruisci tutto in una settimana di corsa: email, contenuti, pagine di iscrizione. Il lancio parte, funziona più o meno, poi si chiude.</p>
-              <p>Passano settimane senza richieste perché non hai strutturato niente nel mezzo. E il prossimo lancio ricomincia da zero, con le stesse domande irrisolte.</p>
+              <p>Hai un'offerta da lanciare ma <strong className="text-white/90">non sai da dove iniziare</strong>, quando farlo né come comunicarlo alla tua community. Quindi aspetti.</p>
+              <p>Quando non puoi più rimandare, <strong className="text-white/90">costruisci tutto in una settimana di corsa</strong>: email, contenuti, pagine di iscrizione. Il lancio parte, funziona più o meno, poi si chiude.</p>
+              <p>Passano settimane senza richieste perché non hai strutturato niente nel mezzo. E <strong className="text-white/90">il prossimo lancio ricomincia da zero</strong>, con le stesse domande irrisolte.</p>
               <p><strong className="text-white/90">Non è il lancio il problema. È che non hai un sistema attorno.</strong></p>
             </div>
           </div>
@@ -470,13 +470,13 @@ function ZeroImprovvisazioneMasterclass() {
                 emoji: "🎯",
                 delay: "0s",
                 title: "Manca la chiarezza sul target",
-                desc: "Non sai esattamente chi stai raggiungendo con quella specifica offerta. E ogni lancio riparte da zero anche su questo: stesse domande, stessa incertezza.",
+                desc: <>Non sai esattamente chi stai raggiungendo con quella specifica offerta. E <strong>ogni lancio riparte da zero</strong> anche su questo: stesse domande, stessa incertezza.</>,
               },
               {
                 emoji: "📅",
                 delay: "0.3s",
                 title: "Manca il piano nell'anno",
-                desc: "Se affidi il fatturato solo ai lanci attivi, le vendite si fermano tra uno e l'altro. Serve una struttura con micro lanci e funnel evergreen che genera entrate costanti.",
+                desc: <>Se affidi il fatturato solo ai lanci attivi, <strong>le vendite si fermano tra uno e l'altro</strong>. Serve una struttura con <strong>micro lanci e funnel evergreen</strong> che genera entrate costanti.</>,
               },
             ].map((item, idx) => (
               <div key={item.title} className="rounded-2xl p-6 border border-[#156686]/15 bg-[#156686]/4 flex gap-5 items-start">
@@ -510,8 +510,8 @@ function ZeroImprovvisazioneMasterclass() {
                 title: "Vendi servizi",
                 tags: ["Coaching", "Consulenza", "Formazione"],
                 paragraphs: [
-                  "Hai 1-3 offerte e ogni lancio sembra un'emergenza: non sai da dove iniziare, cosa pubblicare e quando.",
-                  "Esci dalla masterclass con un piano lanci per l'anno che funziona anche nei mesi in cui non sei in fase attiva.",
+                  <>Hai 1-3 offerte e <strong>ogni lancio sembra un'emergenza</strong>: non sai da dove iniziare, cosa pubblicare e quando.</>,
+                  <>Esci dalla masterclass con <strong>un piano lanci per l'anno</strong> che funziona anche nei mesi in cui non sei in fase attiva.</>,
                 ],
               },
               {
@@ -520,8 +520,8 @@ function ZeroImprovvisazioneMasterclass() {
                 title: "Crei contenuti o infoprodotti",
                 tags: ["Videocorsi", "Membership", "Masterclass"],
                 paragraphs: [
-                  "Lanci videocorsi, membership o masterclass ma non hai una struttura chiara: i lanci ti esauriscono e tra l'uno e l'altro non entrano vendite.",
-                  "Costruiamo insieme la mappa dell'anno con i lanci giusti nei momenti giusti.",
+                  <>Lanci videocorsi, membership o masterclass ma non hai una struttura chiara: <strong>i lanci ti esauriscono</strong> e <strong>tra l'uno e l'altro non entrano vendite</strong>.</>,
+                  <>Costruiamo insieme <strong>la mappa dell'anno</strong> con i lanci giusti nei momenti giusti.</>,
                 ],
               },
               {
@@ -530,8 +530,8 @@ function ZeroImprovvisazioneMasterclass() {
                 title: "Vuoi smettere di improvvisare",
                 tags: ["Piano", "Funnel", "Sistemi"],
                 paragraphs: [
-                  "Ogni lancio ti prende energie enormi perché non è mai pianificato in anticipo. Finisci sempre con l'acqua alla gola.",
-                  "Impari a distribuire lanci e funnel nell'anno in modo che le vendite siano più costanti e prevedibili.",
+                  <><strong>Ogni lancio ti prende energie enormi</strong> perché non è mai pianificato in anticipo. Finisci sempre con l'acqua alla gola.</>,
+                  <>Impari a distribuire lanci e funnel nell'anno in modo che <strong>le vendite siano più costanti e prevedibili</strong>.</>,
                 ],
               },
             ].map(card => (
@@ -640,7 +640,7 @@ function ZeroImprovvisazioneMasterclass() {
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
             <div>
               <p className="text-sm md:text-base text-foreground/70 leading-relaxed mb-6">
-                Iscrivendoti alla masterclass gratuita scarichi subito il workbook. Lo compili in diretta con noi, sezione per sezione, adattato al tuo business specifico. Alla fine hai uno schema già fatto e pronto da usare.
+                Iscrivendoti alla masterclass gratuita <strong>scarichi subito il workbook</strong>. Lo compili in diretta con noi, sezione per sezione, adattato al tuo business specifico. <strong>Alla fine hai uno schema già fatto e pronto da usare.</strong>
               </p>
               <ul className="space-y-3">
                 {[
@@ -694,7 +694,7 @@ function ZeroImprovvisazioneMasterclass() {
                   <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#156686] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
                 </div>
               </div>
-              <p className="text-sm text-foreground/65 leading-relaxed">Negli ultimi anni ho lavorato con oltre 100 coach, consulenti, formatori e creator per costruire sistemi di lancio e funnel evergreen che generano vendite senza finire ogni volta in burnout e con l'acqua alla gola. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
+              <p className="text-sm text-foreground/65 leading-relaxed">Negli ultimi anni ho lavorato con <strong>oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong>senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
               <div className="mt-5 flex items-center gap-2 bg-white border border-[#156686]/10 rounded-xl px-4 py-2.5 w-fit">
                 <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
                 <span className="text-xs text-foreground/55 font-medium">4.9 · 50+ recensioni su Google</span>

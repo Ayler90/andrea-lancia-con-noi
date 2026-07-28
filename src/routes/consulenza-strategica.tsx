@@ -433,13 +433,13 @@ function ConsulenzaStrategica() {
 
             <div className="space-y-5 text-sm md:text-base text-white/75 leading-relaxed">
               <p>
-                Hai qualcosa che non funziona - un funnel che non converte, un'automazione rotta, una newsletter che non cresce - ma non riesci a capire dov'è il problema.
+                Hai qualcosa che non funziona - un funnel che non converte, un'automazione rotta, una newsletter che non cresce - ma <strong className="text-white/90">non riesci a capire dov'è il problema</strong>.
               </p>
               <p>
-                Oppure stai per fare un lancio e vuoi essere sicuro che la strategia sia solida: vuoi qualcuno che guardi le tue email, il tuo piano, la tua sequenza, e ti dica onestamente cosa funziona e cosa no.
+                Oppure stai per fare un lancio e vuoi essere sicuro che la strategia sia solida: vuoi qualcuno che guardi le tue email, il tuo piano, la tua sequenza, e <strong className="text-white/90">ti dica onestamente cosa funziona e cosa no</strong>.
               </p>
               <p>
-                O magari hai un'idea in testa ma non sai come strutturarla. Hai bisogno di qualcuno con cui ragionare ad alta voce, che ti faccia le domande giuste e ti aiuti a mettere ordine.
+                O magari hai un'idea in testa ma non sai come strutturarla. Hai bisogno di qualcuno con cui <strong className="text-white/90">ragionare ad alta voce</strong>, che ti faccia le domande giuste e ti aiuti a mettere ordine.
               </p>
               <p>
                 <strong className="text-white/90">La consulenza strategica è esattamente questo: 60 minuti 1:1 con me, dedicati interamente al tuo problema specifico.</strong>
@@ -472,12 +472,12 @@ function ConsulenzaStrategica() {
               {
                 emoji: "📉",
                 title: "Il tuo funnel non converte",
-                desc: "Analizziamo insieme ogni step, identifichiamo dove le persone si perdono e definiamo cosa cambiare per migliorare le conversioni.",
+                desc: <>Analizziamo insieme ogni step, identifichiamo dove le persone si perdono e definiamo <strong>cosa cambiare per migliorare le conversioni</strong>.</>,
               },
               {
                 emoji: "🚀",
                 title: "Stai per fare un lancio",
-                desc: "Controlliamo la strategia, le fasi pre/lancio/post e le email che hai scritto. Esci dalla call con la certezza che tutto è strutturato bene.",
+                desc: <>Controlliamo la strategia, le fasi pre/lancio/post e le email che hai scritto. <strong>Esci dalla call con la certezza che tutto è strutturato bene.</strong></>,
               },
               {
                 emoji: "📰",
@@ -487,7 +487,7 @@ function ConsulenzaStrategica() {
               {
                 emoji: "✉️",
                 title: "Le tue email non producono risultati",
-                desc: "Leggiamo insieme le email che hai scritto, analizziamo oggetto, struttura e copy, e le ottimizziamo per aumentare aperture e clic.",
+                desc: <>Leggiamo insieme le email che hai scritto, analizziamo oggetto, struttura e copy, e le ottimizziamo per <strong>aumentare aperture e clic</strong>.</>,
               },
               {
                 emoji: "⚙️",
@@ -497,7 +497,7 @@ function ConsulenzaStrategica() {
               {
                 emoji: "🎯",
                 title: "Vuoi aumentare le richieste di consulenza",
-                desc: "Analizziamo il tuo funnel di acquisizione, le email e i contenuti che stai usando, e definiamo cosa ottimizzare per ricevere più richieste qualificate.",
+                desc: <>Analizziamo il tuo funnel di acquisizione, le email e i contenuti che stai usando, e definiamo cosa ottimizzare per <strong>ricevere più richieste qualificate</strong>.</>,
               },
             ].map((item, idx) => (
               <div key={item.title} className="rounded-2xl p-6 border border-[#156686]/15 bg-[#156686]/4 flex gap-5 items-start">

@@ -1128,8 +1128,8 @@ function EasyMailPack() {
               </h2>
               <div className="space-y-5 text-sm md:text-base text-foreground/70 leading-relaxed">
                 <p>Cerchi di pubblicare regolarmente, interagisci con la tua community e ti sforzi per mantenere il tuo profilo attivo.</p>
-                <p>Tuttavia, sei in balia dell'algoritmo: un giorno i tuoi contenuti esplodono, il giorno dopo sembrano invisibili.</p>
-                <p>La copertura è imprevedibile e il traffico che generi dipende solo da quanto pubblichi.</p>
+                <p>Tuttavia, <strong>sei in balia dell'algoritmo</strong>: un giorno i tuoi contenuti esplodono, il giorno dopo sembrano invisibili.</p>
+                <p>La copertura è imprevedibile e <strong>il traffico che generi dipende solo da quanto pubblichi</strong>.</p>
                 <p><strong className="text-foreground/85">Questo ti lascia in una posizione instabile e, alla lunga, mette a rischio il tuo business.</strong></p>
               </div>
             </div>
@@ -1159,7 +1159,7 @@ function EasyMailPack() {
                 title: "Perché dovresti usare la newsletter nel tuo ecosistema",
                 items: [
                   "Non dipende da algoritmi o copertura organica",
-                  "La mailing list è davvero tua: controllo diretto su quando e come comunicare",
+                  <><strong>La mailing list è davvero tua</strong>: controllo diretto su quando e come comunicare</>,
                   "Dialogo più personale e costante con le persone giuste",
                   "Nessuna pressione a pubblicare ogni giorno: frequenza settimanale, bisettimanale o mensile",
                   "La tua lista cresce comunque, indipendentemente dal profilo social",
@@ -1172,9 +1172,9 @@ function EasyMailPack() {
                 items: [
                   "Fare un lancio solo sui social è rischioso: sei in balia di un canale che non controlli",
                   "L'email è un canale parallelo che non dipende dall'algoritmo",
-                  "Tasso di apertura e di conversione più alto rispetto ai social",
+                  <><strong>Tasso di apertura e di conversione più alto</strong> rispetto ai social</>,
                   "Più vendite e più clienti senza essere costantemente presente con contenuti",
-                  "Strategia email + organico = lancio più solido e prevedibile",
+                  <>Strategia email + organico = <strong>lancio più solido e prevedibile</strong></>,
                 ],
               },
             ].map(box => (
@@ -1192,8 +1192,8 @@ function EasyMailPack() {
                   {box.title}
                 </h3>
                 <ul className="space-y-3">
-                  {box.items.map(t => (
-                    <li key={t} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
+                  {box.items.map((t, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed">
                       <CheckIcon />
                       {t}
                     </li>
