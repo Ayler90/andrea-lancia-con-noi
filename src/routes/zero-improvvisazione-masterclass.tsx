@@ -330,12 +330,8 @@ function scrollToForm() {
   if (!el) return;
   const rect = el.getBoundingClientRect();
   const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-  if (inView) {
-    // Form already visible — just focus the first input
-    el.querySelector<HTMLInputElement>("input")?.focus();
-  } else {
-    el.scrollIntoView({ behavior: "smooth", block: "center" });
-    setTimeout(() => el.querySelector<HTMLInputElement>("input")?.focus(), 500);
+  if (!inView) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
@@ -350,10 +346,10 @@ function ZeroImprovvisazioneMasterclass() {
       <CountdownBanner />
 
       {/* HERO */}
-      <section className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28">
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />
-        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite" }} />
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite" }} />
+      <section className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28" style={{ contain: "layout paint", transform: "translateZ(0)" }}>
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform" }} />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform" }} />
 
         <div className="container-narrow relative" style={{ zIndex: 1 }}>
           {/* Badge */}
@@ -415,9 +411,15 @@ function ZeroImprovvisazioneMasterclass() {
             ))}
           </div>
 
-          {/* FORM placeholder — rimosso temporaneamente per debug */}
-          <div id="form" className="mt-14 max-w-lg mx-auto bg-[#EEF3F5] border border-dashed border-[#156686]/30 rounded-2xl p-10 text-center text-[#156686]/50 text-sm font-medium">
-            Form rimosso temporaneamente
+          {/* FORM */}
+          <div id="form" className="mt-14 max-w-lg mx-auto bg-white rounded-2xl p-7 md:p-9" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)" }}>
+            <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full mb-4">
+              🗓 29 agosto · ore 10:00
+            </div>
+            <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5">
+              Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
+            </h3>
+            <MailerLiteForm />
           </div>
 
         </div>
