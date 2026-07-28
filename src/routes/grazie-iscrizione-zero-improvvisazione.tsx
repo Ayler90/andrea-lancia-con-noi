@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import React from "react";
+import React, { useEffect } from "react";
+import posthog from "posthog-js";
 
 export const Route = createFileRoute("/grazie-iscrizione-zero-improvvisazione")({
   component: GrazieZeroImprovvisazione,
@@ -28,6 +29,10 @@ function CheckIcon() {
 }
 
 function GrazieZeroImprovvisazione() {
+  useEffect(() => {
+    posthog.capture("lead_masterclass", { source: "grazie-iscrizione-zero-improvvisazione" });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
 
