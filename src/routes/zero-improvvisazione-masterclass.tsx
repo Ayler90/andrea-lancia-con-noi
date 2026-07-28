@@ -353,7 +353,7 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
         <div className="container-narrow relative" style={{ zIndex: 1 }}>
-          <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+          <div className="grid md:grid-cols-[1fr_380px] gap-10 md:gap-24 items-center">
 
             {/* COLONNA SINISTRA */}
             <div>
@@ -368,7 +368,7 @@ function ZeroImprovvisazioneMasterclass() {
               </h1>
 
               <p className="mt-5 text-sm md:text-base text-foreground/65 leading-relaxed">
-                Lanci Senza Stress è la masterclass gratuita in cui Andrea Bonomo e Davide Angiolillo ti guidano a costruire il tuo piano lanci dall'inizio alla fine: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
+                <strong>Lanci Senza Stress</strong> è la masterclass gratuita in cui <strong>Andrea Bonomo</strong> e <strong>Davide Angiolillo</strong> ti guidano a costruire il tuo <strong>piano lanci dall'inizio alla fine</strong>: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
               </p>
 
               <p className="mt-3 font-bold text-[#156686] text-sm md:text-base">
