@@ -573,7 +573,10 @@ function ZeroImprovvisazioneMasterclass() {
             <em className="text-[#156686]">uno di questi problemi qui sotto.</em>
           </h2>
           <p className="text-foreground/70 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
-            Lo so. In questo momento il tuo business va un po' a braccio. Fai un lancio e poi speri che le cose vadano bene perché buona parte dei guadagni dipendono da questo. Stessa cosa per le tue offerte: ti trovi ad averne parecchie per accontentare tutti i potenziali clienti che arrivano (e passi quasi più tempo a fare preventivi che altro). I 4 riquadri qui sotto sintetizzano bene quello che vive il 90% dei liberi professionisti e imprenditori che hanno un business online e si sentono sfiancati dalla sua gestione.
+            Lo so. In questo momento <strong>il tuo business va un po' a braccio.</strong><br /><br />
+            Fai un lancio e poi speri che le cose vadano bene perché <strong>buona parte dei guadagni dipendono da questo.</strong><br /><br />
+            Stessa cosa per le tue offerte: ti trovi ad averne parecchie per accontentare tutti i potenziali clienti che arrivano (e passi quasi più tempo a fare preventivi che altro).<br /><br />
+            I 4 riquadri qui sotto sintetizzano bene quello che vive il <strong>90% dei liberi professionisti e imprenditori</strong> che hanno un business online e si sentono sfiancati dalla sua gestione.
           </p>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
@@ -625,36 +628,26 @@ function ZeroImprovvisazioneMasterclass() {
             Lanci Senza Stress è{" "}
             <em className="text-[#156686]">perfetto per te</em> se:
           </h2>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
               {
                 emoji: "💼",
                 delay: "0s",
-                title: "Vendi servizi",
+                title: "Sei un coach o consulente",
                 tags: ["Coaching", "Consulenza", "Formazione"],
                 paragraphs: [
-                  <>Hai 1-3 offerte e <strong>ogni lancio sembra un'emergenza</strong>: non sai da dove iniziare, cosa pubblicare e quando.</>,
-                  <>Esci dalla masterclass con <strong>un piano lanci per l'anno</strong> che funziona anche nei mesi in cui non sei in fase attiva.</>,
+                  <>Vendi sessioni, pacchetti o percorsi. Ogni mese la situazione cambia: a volte sei pieno di clienti, altri mesi è il vuoto totale. <strong>Non riesci a prevedere le entrate</strong> e ogni lancio lo costruisci da zero, con l'ansia che non funzioni.</>,
+                  <>Esci dalla masterclass con <strong>un piano lanci per l'anno</strong> che ti permette di sapere in anticipo quando e come acquisire nuovi clienti — senza rincorrere sempre l'emergenza.</>,
                 ],
               },
               {
                 emoji: "🎬",
                 delay: "0.3s",
-                title: "Crei contenuti o infoprodotti",
-                tags: ["Videocorsi", "Membership", "Masterclass"],
+                title: "Sei un creator o brand",
+                tags: ["Videocorsi", "Membership", "Infoprodotti"],
                 paragraphs: [
-                  <>Lanci videocorsi, membership o masterclass ma non hai una struttura chiara: <strong>i lanci ti esauriscono</strong> e <strong>tra l'uno e l'altro non entrano vendite</strong>.</>,
-                  <>Costruiamo insieme <strong>la mappa dell'anno</strong> con i lanci giusti nei momenti giusti.</>,
-                ],
-              },
-              {
-                emoji: "🚀",
-                delay: "0.6s",
-                title: "Vuoi smettere di improvvisare",
-                tags: ["Piano", "Funnel", "Sistemi"],
-                paragraphs: [
-                  <><strong>Ogni lancio ti prende energie enormi</strong> perché non è mai pianificato in anticipo. Finisci sempre con l'acqua alla gola.</>,
-                  <>Impari a distribuire lanci e funnel nell'anno in modo che <strong>le vendite siano più costanti e prevedibili</strong>.</>,
+                  <>Vendi videocorsi, membership, masterclass o prodotti digitali. Ogni lancio ti prosciuga: ci metti settimane di energia e <strong>tra un lancio e l'altro le vendite si fermano</strong>. Non hai una struttura che generi entrate costanti.</>,
+                  <>Costruiamo insieme <strong>la mappa dell'anno</strong> con i lanci giusti al momento giusto e i funnel evergreen che lavorano anche quando non sei in fase attiva.</>,
                 ],
               },
             ].map(card => (
@@ -690,6 +683,7 @@ function ZeroImprovvisazioneMasterclass() {
                 { bold: "Hai già un calendario lanci strutturato e funzionante.", rest: " Questa masterclass è per chi ancora non ce l'ha." },
                 { bold: "Stai cercando tattiche tecniche.", rest: " Ads, copywriting avanzato o automazioni non sono l'argomento." },
                 { bold: "Non hai ancora un'offerta chiara.", rest: " Serve almeno una cosa da lanciare per costruire il piano." },
+                { bold: "Lavori nel network marketing.", rest: " Il metodo che insegniamo è pensato per chi vende le proprie offerte — non per chi distribuisce prodotti di terzi e lavora su reclutamento e downline." },
               ].map(({ bold, rest }) => (
                 <li key={bold} className="flex items-start gap-3 text-sm text-foreground/50 leading-relaxed">
                   <span className="flex-shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-foreground/25" />
