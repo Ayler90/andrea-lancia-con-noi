@@ -329,6 +329,100 @@ function CountdownBanner() {
   );
 }
 
+const CHAOS_WEEKS = [
+  { id: 1, label: "4 sett. prima", panic: false, items: [] },
+  { id: 2, label: "3 sett. prima", panic: false, items: [] },
+  { id: 3, label: "2 sett. prima", panic: false, items: [
+    { text: "Forse lancio qualcosa?", time: "" },
+  ]},
+  { id: 4, label: "1 sett. prima", panic: false, items: [
+    { text: "Email da scrivere (forse)", time: "" },
+    { text: "Social… da definire", time: "" },
+  ]},
+  { id: 5, label: "⚡ Settimana lancio", panic: true, items: [
+    { text: "Email 1 – scritta alle 23:45", time: "Lun" },
+    { text: "Post improvvisato", time: "Mar" },
+    { text: "Pagina iscrizione – ancora non pronta", time: "Mar" },
+    { text: "Email 2 – riscritta 3 volte", time: "Mer" },
+    { text: "Email 3 – dimenticata", time: "Gio" },
+    { text: "Chiusura – tutto di corsa", time: "Ven" },
+  ]},
+  { id: 6, label: "Dopo il lancio", panic: false, items: [] },
+];
+
+function ChaosTimeline() {
+  return (
+    <div className="mt-14 overflow-x-auto pb-2">
+      <div className="min-w-[640px]">
+        {/* Labels */}
+        <div className="flex gap-2 mb-2">
+          {CHAOS_WEEKS.map(w => (
+            <div key={w.id} className={`${w.panic ? "flex-[2]" : "flex-1"} text-center`}>
+              <span className={`text-[10px] font-semibold uppercase tracking-[0.1em] ${w.panic ? "text-orange-300" : "text-white/35"}`}>
+                {w.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Timeline line */}
+        <div className="relative h-px bg-white/15 mb-3 mx-1">
+          {CHAOS_WEEKS.map((w, i) => (
+            <div key={w.id}
+              className={`absolute top-1/2 w-2.5 h-2.5 rounded-full border-2 ${w.panic ? "bg-orange-400 border-orange-300" : "bg-white/20 border-white/30"}`}
+              style={{ left: `${(i / (CHAOS_WEEKS.length - 1)) * 100}%`, transform: "translate(-50%, -50%)" }}
+            />
+          ))}
+        </div>
+
+        {/* Week columns */}
+        <div className="flex gap-2 items-start">
+          {CHAOS_WEEKS.map(w => (
+            <div key={w.id}
+              className={`${w.panic ? "flex-[2]" : "flex-1"} rounded-xl p-3 min-h-[130px] ${w.panic ? "bg-orange-500/12 border border-orange-400/30" : "bg-white/5 border border-white/8"}`}>
+              {w.items.length === 0 ? (
+                <div className="flex flex-col gap-2 mt-3 px-1">
+                  <div className="h-1.5 rounded-full bg-white/10 w-4/5" />
+                  <div className="h-1.5 rounded-full bg-white/8 w-3/5" />
+                  <div className="h-1.5 rounded-full bg-white/6 w-2/5" />
+                </div>
+              ) : w.panic ? (
+                <div className="flex flex-col gap-1.5">
+                  {w.items.map((item, i) => (
+                    <div key={i} className="rounded-lg px-2.5 py-1.5 bg-orange-400/15 border border-orange-400/25 flex items-start gap-2">
+                      {item.time && <span className="text-[9px] font-bold text-orange-300/80 flex-shrink-0 mt-0.5 uppercase">{item.time}</span>}
+                      <span className="text-[11px] text-orange-100/85 leading-tight">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col gap-1.5">
+                  {w.items.map((item, i) => (
+                    <div key={i} className="rounded-lg px-2.5 py-1.5 bg-white/8 border border-white/10">
+                      <span className="text-[11px] text-white/40 leading-tight">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom note */}
+        <div className="flex gap-2 mt-2">
+          {CHAOS_WEEKS.map(w => (
+            <div key={w.id} className={`${w.panic ? "flex-[2]" : "flex-1"} text-center`}>
+              {w.panic && <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-orange-300/70">⚠ Panico totale</span>}
+              {!w.panic && w.id === 6 && <span className="text-[9px] text-white/25 uppercase tracking-[0.08em]">Silenzio</span>}
+              {!w.panic && (w.id === 1 || w.id === 2) && <span className="text-[9px] text-white/20 uppercase tracking-[0.08em]">Nessun piano</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -352,8 +446,8 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
         <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
-        <div className="container-narrow relative" style={{ zIndex: 1, maxWidth: 1400 }}>
-          <div className="grid md:grid-cols-[1fr_440px] gap-10 md:gap-20 items-center">
+        <div className="container-narrow relative" style={{ zIndex: 1, maxWidth: 1260 }}>
+          <div className="grid md:grid-cols-[1fr_420px] gap-10 md:gap-20 items-center">
 
             {/* COLONNA SINISTRA */}
             <div>
@@ -440,6 +534,8 @@ function ZeroImprovvisazioneMasterclass() {
               Voglio il mio posto →
             </button>
           </div>
+
+          <ChaosTimeline />
         </div>
       </section>
 
