@@ -738,7 +738,7 @@ function QuizForm() {
       </div>
 
       {step < 3 ? (
-        <div key={step}>
+        <div key={step} style={{ minHeight: 260 }}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4B6380]/60 mb-2 text-center">
             Domanda {step + 1} di 3
           </p>
