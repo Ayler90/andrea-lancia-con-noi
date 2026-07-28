@@ -674,7 +674,7 @@ const QUIZ_QUESTIONS = [
     ],
   },
   {
-    question: "Cosa vuoi ottenere da questa masterclass?",
+    question: "Cosa vuoi ottenere, più di tutto, da questa masterclass?",
     answers: [
       "Capire meglio target e offerte da costruire",
       "Avere un piano lanci per i prossimi 12 mesi",
