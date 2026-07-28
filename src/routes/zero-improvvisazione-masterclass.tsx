@@ -325,14 +325,11 @@ function CountdownBanner() {
   );
 }
 
-function scrollToForm() {
-  const el = document.getElementById("form");
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
   if (!el) return;
-  const rect = el.getBoundingClientRect();
-  const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-  if (!inView) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  const top = el.getBoundingClientRect().top + window.scrollY - 24;
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 }
 
 function ZeroImprovvisazioneMasterclass() {
@@ -346,10 +343,10 @@ function ZeroImprovvisazioneMasterclass() {
       <CountdownBanner />
 
       {/* HERO */}
-      <section className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28" style={{ contain: "layout paint", transform: "translateZ(0)" }}>
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform" }} />
-        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform" }} />
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform" }} />
+      <section className="relative overflow-hidden pt-10 pb-20 md:pt-14 md:pb-28">
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#156686]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
         <div className="container-narrow relative" style={{ zIndex: 1 }}>
           {/* Badge */}
@@ -376,10 +373,10 @@ function ZeroImprovvisazioneMasterclass() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToForm(); }}>
+            <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
-            <button className="cta-ghost whitespace-nowrap" onClick={() => scrollTo("programma")}>
+            <button className="cta-ghost whitespace-nowrap" onClick={() => scrollToSection("programma")}>
               Scopri il programma ↓
             </button>
           </div>
@@ -446,7 +443,7 @@ function ZeroImprovvisazioneMasterclass() {
             </div>
           </div>
           <div className="mt-12 flex justify-center">
-            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToForm(); }}>
+            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
           </div>
@@ -619,7 +616,7 @@ function ZeroImprovvisazioneMasterclass() {
             </ul>
           </div>
           <div className="mt-12 flex justify-center">
-            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToForm(); }}>
+            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
           </div>
@@ -780,7 +777,7 @@ function ZeroImprovvisazioneMasterclass() {
           </p>
           <div className="max-w-lg mx-auto">
             <div className="bg-white rounded-xl p-8">
-              <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => { trackCta("bottom-iscriviti"); scrollToForm(); }}>
+              <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => { trackCta("bottom-iscriviti"); scrollToSection("form"); }}>
                 Voglio il mio posto →
               </button>
               <p className="text-xs text-foreground/40 text-center mt-3">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
