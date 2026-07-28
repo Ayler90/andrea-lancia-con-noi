@@ -715,42 +715,38 @@ function QuizForm() {
 
   const q = QUIZ_QUESTIONS[step];
 
-  const showQuiz = step < 3;
-
   return (
-    <div style={{ position: "relative" }}>
-
-      {/* VISTA QUIZ */}
-      <div style={{ position: showQuiz ? "relative" : "absolute", inset: 0, opacity: showQuiz ? 1 : 0, pointerEvents: showQuiz ? "auto" : "none", transition: "opacity 0.2s ease" }}>
-        {step === 0 && (
-          <div className="mb-5 text-center">
-            <p className="text-sm text-foreground/65 leading-relaxed">
-              Prima di iscriverti, abbiamo <strong>3 domande veloci</strong> per capire da dove parti. Meno di un minuto.
-            </p>
-          </div>
-        )}
-
-        {/* Progress dots */}
-        <div className="flex justify-center gap-2 mb-5">
-          {QUIZ_QUESTIONS.map((_, i) => (
-            <div key={i} className="rounded-full"
-              style={{
-                width: i === step ? 20 : 8, height: 8,
-                backgroundColor: i < step ? "#4B6380" : i === step ? "#4B6380" : "rgba(21,102,134,0.18)",
-                transition: "all 0.3s ease",
-              }} />
-          ))}
+    <div>
+      {step === 0 && (
+        <div className="mb-5 text-center">
+          <p className="text-sm text-foreground/65 leading-relaxed">
+            Prima di iscriverti, abbiamo <strong>3 domande veloci</strong> per capire da dove parti. Meno di un minuto.
+          </p>
         </div>
+      )}
 
-        <div key={step}>
+      {/* Progress dots */}
+      <div className="flex justify-center gap-2 mb-5">
+        {QUIZ_QUESTIONS.map((_, i) => (
+          <div key={i} className="rounded-full transition-all duration-400"
+            style={{
+              width: i === step ? 20 : 8, height: 8,
+              backgroundColor: i < step ? "#4B6380" : i === step ? "#4B6380" : "rgba(21,102,134,0.18)",
+              transition: "all 0.3s ease",
+            }} />
+        ))}
+      </div>
+
+      {step < 3 ? (
+        <div key={step} style={{ minHeight: 260 }}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4B6380]/60 mb-2 text-center">
             Domanda {step + 1} di 3
           </p>
           <h3 className="font-bold text-foreground/90 text-base md:text-lg leading-snug mb-5 text-center">
-            {q?.question}
+            {q.question}
           </h3>
           <div className="flex flex-col gap-2.5">
-            {(q?.answers ?? []).map((a, i) => (
+            {q.answers.map((a, i) => (
               <button
                 key={i}
                 onClick={() => pick(i)}
@@ -778,21 +774,15 @@ function QuizForm() {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* VISTA FORM — sempre montata, visibile solo dopo il quiz */}
-      <div style={{
-        opacity: showQuiz ? 0 : 1,
-        pointerEvents: showQuiz ? "none" : "auto",
-        transition: "opacity 0.2s ease",
-      }}>
-        <p className="text-center text-sm text-[#4B6380] font-semibold mb-1">Perfetto, ci siamo quasi.</p>
-        <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
-          Prenota il tuo posto alla Masterclass Gratuita
-        </h3>
-        <MailerLiteForm />
-      </div>
-
+      ) : (
+        <div>
+          <p className="text-center text-sm text-[#4B6380] font-semibold mb-1">Perfetto, ci siamo quasi.</p>
+          <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
+            Prenota il tuo posto alla Masterclass Gratuita
+          </h3>
+          <MailerLiteForm />
+        </div>
+      )}
     </div>
   );
 }
