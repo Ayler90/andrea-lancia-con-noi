@@ -666,11 +666,11 @@ const QUIZ_QUESTIONS = [
     ],
   },
   {
-    question: "Qual è il tuo problema principale con i lanci?",
+    question: "Hai chiaro a chi ti stai rivolgendo con le tue offerte?",
     answers: [
-      "Non so bene a chi mi rivolgo o cosa vendere",
-      "Ho le offerte ma non so come lanciarle con continuità",
-      "Lancio ma tra un lancio e l'altro le vendite si fermano",
+      "No, parlo a tutti e non ho un target definito",
+      "Ho un'idea di massima ma non è ben definita",
+      "Sì, ma faccio fatica a raggiungerlo con i miei contenuti",
     ],
   },
   {
