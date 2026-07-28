@@ -147,6 +147,7 @@ body {
     box-shadow: 0 4px 18px -2px oklch(0.452 0.067 230.5 / 0.22), 0 2px 6px -1px oklch(0.452 0.067 230.5 / 0.14);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .pill::before {
@@ -180,6 +181,7 @@ body {
     background: oklch(0.18 0.02 230 / 0.07);
     transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     text-align: center;
+    cursor: pointer;
   }
 
   .cta-ghost:hover {
