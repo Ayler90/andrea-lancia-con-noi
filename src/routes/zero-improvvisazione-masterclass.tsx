@@ -310,23 +310,33 @@ function CountdownBanner() {
   const { days, hours, minutes, seconds } = useCountdown();
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
-    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white flex flex-wrap items-center justify-center gap-2" style={{ backgroundColor: "#156686" }}>
-      <span className="opacity-80">Le iscrizioni si chiudono tra</span>
-      <span className="inline-flex items-center gap-1.5 font-bold tabular-nums">
-        <span>{days}g</span>
-        <span className="opacity-50">·</span>
-        <span>{pad(hours)}h</span>
-        <span className="opacity-50">·</span>
-        <span>{pad(minutes)}m</span>
-        <span className="opacity-50">·</span>
-        <span>{pad(seconds)}s</span>
+    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white whitespace-nowrap overflow-hidden" style={{ backgroundColor: "#156686", lineHeight: "1.4" }}>
+      <span className="opacity-80">Le iscrizioni si chiudono tra </span>
+      <span className="font-bold tabular-nums">
+        <span style={{ display: "inline-block", minWidth: "2.5ch" }}>{days}g</span>
+        {" · "}
+        <span style={{ display: "inline-block", minWidth: "2.5ch" }}>{pad(hours)}h</span>
+        {" · "}
+        <span style={{ display: "inline-block", minWidth: "2.5ch" }}>{pad(minutes)}m</span>
+        {" · "}
+        <span style={{ display: "inline-block", minWidth: "2.5ch" }}>{pad(seconds)}s</span>
       </span>
     </div>
   );
 }
 
-function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+function scrollToForm() {
+  const el = document.getElementById("form");
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+  if (inView) {
+    // Form already visible — just focus the first input
+    el.querySelector<HTMLInputElement>("input")?.focus();
+  } else {
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => el.querySelector<HTMLInputElement>("input")?.focus(), 500);
+  }
 }
 
 function ZeroImprovvisazioneMasterclass() {
@@ -370,7 +380,7 @@ function ZeroImprovvisazioneMasterclass() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollTo("form"); }}>
+            <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToForm(); }}>
               Voglio il mio posto →
             </button>
             <button className="cta-ghost whitespace-nowrap" onClick={() => scrollTo("programma")}>
@@ -434,7 +444,7 @@ function ZeroImprovvisazioneMasterclass() {
             </div>
           </div>
           <div className="mt-12 flex justify-center">
-            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollTo("form"); }}>
+            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToForm(); }}>
               Voglio il mio posto →
             </button>
           </div>
@@ -607,7 +617,7 @@ function ZeroImprovvisazioneMasterclass() {
             </ul>
           </div>
           <div className="mt-12 flex justify-center">
-            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollTo("form"); }}>
+            <button className="pill bg-white text-[#156686] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToForm(); }}>
               Voglio il mio posto →
             </button>
           </div>
@@ -768,7 +778,7 @@ function ZeroImprovvisazioneMasterclass() {
           </p>
           <div className="max-w-lg mx-auto">
             <div className="bg-white rounded-xl p-8">
-              <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => { trackCta("bottom-iscriviti"); scrollTo("form"); }}>
+              <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 block w-full text-center" onClick={() => { trackCta("bottom-iscriviti"); scrollToForm(); }}>
                 Voglio il mio posto →
               </button>
               <p className="text-xs text-foreground/40 text-center mt-3">Gratuito. Niente spam. Ricevi solo l'email con il link Zoom.</p>
