@@ -173,392 +173,124 @@ function Programma() {
   );
 }
 
-const ML_FORM_STYLE = `
-  .ml-form-embedSubmitLoad {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-  }
-  .g-recaptcha {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-    transform-origin: 0 0;
-    -webkit-transform-origin: 0 0;
-    height: ;
-  }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-  }
-  .ml-form-embedSubmitLoad:after {
-    content: " ";
-    display: block;
-    width: 11px;
-    height: 11px;
-    margin: 1px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    border-color: #ffffff #ffffff #ffffff transparent;
-    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
-  }
-  @keyframes ml-form-embedSubmitLoad {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  #mlb2-44209135.ml-form-embedContainer {
-    box-sizing: border-box;
-    display: table;
-    margin: 0 auto;
-    position: static;
-    width: 100% !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer h4,
-  #mlb2-44209135.ml-form-embedContainer p,
-  #mlb2-44209135.ml-form-embedContainer span,
-  #mlb2-44209135.ml-form-embedContainer button {
-    text-transform: none !important;
-    letter-spacing: normal !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper {
-    background-color: transparent;
-    border-width: 0px;
-    border-color: transparent;
-    border-radius: 4px;
-    border-style: solid;
-    box-sizing: border-box;
-    display: inline-block !important;
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 100%; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 100%; width: 100%; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-align-left { text-align: left; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-align-center { text-align: center; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-align-right { text-align: right; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
-    padding: 20px 20px 0 20px;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody.ml-form-embedBodyHorizontal {
-    padding-bottom: 0;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
-    text-align: left;
-    margin: 0 0 20px 0;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
-    color: #000000;
-    font-family: 'Inter', sans-serif;
-    font-size: 30px;
-    font-weight: 400;
-    margin: 0 0 10px 0;
-    text-align: left;
-    word-break: break-word;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
-    color: #000000;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 22px;
-    margin: 0 0 10px 0;
-    text-align: left;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
-    margin: 0;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
-    margin: 0;
-    width: 100%;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
-    margin: 0 0 20px 0;
-    width: 100%;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
-    float: left;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
-    margin: 0 0 10px 0;
-    width: 100%;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
-    margin: 0;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
-    background-color: #ffffff !important;
-    color: #333333 !important;
-    border-color: #cccccc;
-    border-radius: 10px !important;
-    border-style: solid !important;
-    border-width: 1px !important;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px !important;
-    height: auto;
-    line-height: 21px !important;
-    margin-bottom: 0;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 10px 10px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    max-width: 100% !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder { color: #333333; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder { color: #333333; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder { color: #333333; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder { color: #333333; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type="checkbox"] {
-    box-sizing: border-box;
-    padding: 0;
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-    margin-top: 5px;
-    margin-left: -1.5rem;
-    overflow: visible;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description {
-    color: #000000;
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    text-align: left;
-    margin-bottom: 0;
-    position: relative;
-    vertical-align: top;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label {
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    display: block;
-    min-height: 24px;
-    padding-left: 24px;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a {
-    color: #000000;
-    text-decoration: underline;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p {
-    color: #000000 !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 14px !important;
-    font-weight: normal !important;
-    line-height: 20px !important;
-    padding: 0 !important;
-    margin: 0 5px 0 0 !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions { text-align: left; float: left; width: 100%; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent {
-    margin: 0 0 15px 0;
-    text-align: left;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p {
-    color: #000000;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
-    margin: 0 0 10px 0;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p a {
-    color: #000000;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p:last-child { margin: 0 0 15px 0; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
-    margin: 0 0 20px 0;
-    float: left;
-    width: 100%;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
-    background-color: #6C9FA8 !important;
-    border: none !important;
-    border-radius: 10px !important;
-    box-shadow: none !important;
-    color: #ffffff !important;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    line-height: 21px !important;
-    height: auto;
-    padding: 10px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
-    display: none;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
-    background-color: #66a9b2 !important;
-  }
-  .ml-error input, .ml-error textarea, .ml-error select { border-color: red !important; }
-  .ml-error .label-description,
-  .ml-error .label-description p,
-  .ml-error .label-description p a,
-  .ml-error label:first-child { color: #ff0000 !important; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p:first-letter { color: #ff0000 !important; }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
-    top: 2px !important;
-    box-sizing: border-box !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before,
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
-    position: absolute;
-    top: 4px;
-    left: -1.5rem;
-    display: block;
-    width: 16px;
-    height: 16px;
-    pointer-events: none;
-    content: "";
-    background-color: #ffffff;
-    border: #adb5bd solid 1px;
-    border-radius: 50%;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
-    position: absolute;
-    top: 2px !important;
-    left: -1.5rem;
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    content: "";
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before {
-    border-color: #000000 !important;
-    background-color: #000000 !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-    background: no-repeat 50%/50% 50%;
-  }
-  @media only screen and (max-width: 440px){
-    .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100% !important; }
-  }
-
-  /* Design system overrides */
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary {
-    background-color: #156686 !important;
-    border-radius: 9999px !important;
-    padding: 14px 28px !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover {
-    background-color: #125a77 !important;
-  }
-  #mlb2-44209135.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:focus {
-    border-color: #156686 !important;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(21,102,134,0.1);
-  }
-`;
-
-const ML_FORM_HTML = `
-<div id="mlb2-44209135" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44209135">
-  <div class="ml-form-align-center ">
-    <div class="ml-form-embedWrapper embedForm">
-      <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-        <div class="ml-form-embedContent" style=" ">
-          <h4></h4>
-        </div>
-        <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/subscribe" data-code="" method="post" target="_blank">
-          <div class="ml-form-formContent">
-            <div class="ml-form-fieldRow ">
-              <div class="ml-field-group ml-field-name ml-validate-required">
-                <input aria-label="name" aria-required="true" type="text" class="form-control" data-inputmask="" name="fields[name]" placeholder="Il tuo Nome*" autocomplete="given-name">
-              </div>
-            </div>
-            <div class="ml-form-fieldRow ml-last-item">
-              <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="La tua Email* (riceverai qui il workbook)" autocomplete="email">
-              </div>
-            </div>
-          </div>
-          <div class="ml-form-embedPermissions" style="">
-            <div class="ml-form-embedPermissionsContent default privacy-policy">
-              <p>Iscrivendoti accetti la <span><a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank">Privacy Policy</a></span> del sito. Puoi disiscriverti quando vuoi, dal link che trovi alla fine di ogni email.</p>
-            </div>
-          </div>
-          <div class="ml-form-checkboxRow ml-validate-required">
-            <label class="checkbox">
-              <input type="checkbox">
-              <div class="label-description">
-                <p>Voglio ricevere comunicazioni relative alla masterclass gratuita*</p>
-              </div>
-            </label>
-          </div>
-          <input type="hidden" name="ml-submit" value="1">
-          <div class="ml-form-embedSubmit">
-            <button type="submit" class="primary">Voglio iscrivermi alla masterclass gratuita!</button>
-            <button disabled="disabled" style="display: none;" type="button" class="loading">
-              <div class="ml-form-embedSubmitLoad"></div>
-              <span class="sr-only">Loading...</span>
-            </button>
-          </div>
-          <input type="hidden" name="anticsrf" value="true">
-        </form>
-      </div>
-      <div class="ml-form-successBody row-success" style="display: none">
-        <div class="ml-form-successContent">
-          <h4>Iscrizione confermata!</h4>
-          <p>Controlla la tua inbox: dovresti aver ricevuto un'email da parte mia con la conferma dell'iscrizione e il link per accedere immediatamente alla Guida Gratuita ai Lanci!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 function MailerLiteForm() {
-  const injected = useRef(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [gdpr, setGdpr] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{ name?: string; email?: string; gdpr?: string }>({});
 
-  useEffect(() => {
-    if (injected.current) return;
-    injected.current = true;
-
-    // Inject styles into <head> once to avoid mid-render style injection causing layout shift
-    if (!document.getElementById("ml-form-44209135-styles")) {
-      const styleEl = document.createElement("style");
-      styleEl.id = "ml-form-44209135-styles";
-      styleEl.textContent = ML_FORM_STYLE;
-      document.head.appendChild(styleEl);
-    }
-
-    (window as any).ml_webform_success_44209135 = function () {
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const errs: typeof errors = {};
+    if (!name.trim()) errs.name = "Inserisci il tuo nome";
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = "Inserisci un'email valida";
+    if (!gdpr) errs.gdpr = "Devi accettare per continuare";
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    setErrors({});
+    setSubmitting(true);
+    try {
+      const body = new URLSearchParams();
+      body.set("fields[name]", name.trim());
+      body.set("fields[email]", email.trim());
+      body.set("gdpr[]", "Voglio ricevere comunicazioni relative alla masterclass gratuita");
+      body.set("ml-submit", "1");
+      body.set("anticsrf", "true");
+      await fetch("https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/subscribe", {
+        method: "POST",
+        body,
+        mode: "no-cors",
+      });
       window.location.href = "/grazie-iscrizione-zero-improvvisazione";
-    };
-
-    fetch("https://assets.mailerlite.com/jsonp/17207/forms/194222245924571056/takel").catch(() => {});
-
-    if (!document.getElementById("ml-form-44209135-script")) {
-      const s = document.createElement("script");
-      s.id = "ml-form-44209135-script";
-      s.src = "https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519";
-      s.async = true;
-      document.head.appendChild(s);
+    } catch {
+      setSubmitting(false);
     }
-  }, []);
+  }
 
-  return <div dangerouslySetInnerHTML={{ __html: ML_FORM_HTML }} />;
+  return (
+    <form onSubmit={handleSubmit} noValidate>
+      {/* Nome */}
+      <div style={{ marginBottom: 10, position: "relative" }}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
+          style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        <input
+          type="text"
+          name="fields[name]"
+          placeholder="Il tuo Nome*"
+          autoComplete="given-name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          style={errors.name ? inputErr : inputBase}
+        />
+        {errors.name && <p style={{ color: "#dc2626", fontSize: 12, margin: "4px 0 0" }}>{errors.name}</p>}
+      </div>
+
+      {/* Email */}
+      <div style={{ marginBottom: 16, position: "relative" }}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#156686" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"
+          style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", opacity: 0.55 }}>
+          <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
+        </svg>
+        <input
+          type="email"
+          name="fields[email]"
+          placeholder="La tua Email* (riceverai qui il workbook)"
+          autoComplete="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          style={errors.email ? inputErr : inputBase}
+        />
+        {errors.email && <p style={{ color: "#dc2626", fontSize: 12, margin: "4px 0 0" }}>{errors.email}</p>}
+      </div>
+
+      {/* Privacy */}
+      <div style={{ marginBottom: 16, fontSize: 13, color: "rgba(21,102,134,0.65)", lineHeight: "1.5" }}>
+        Iscrivendoti accetti la{" "}
+        <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer" style={{ color: "#156686", textDecoration: "underline" }}>
+          Privacy Policy
+        </a>{" "}
+        del sito. Puoi disiscriverti quando vuoi, dal link che trovi alla fine di ogni email.
+      </div>
+
+      {/* Checkbox GDPR */}
+      <div style={{ marginBottom: 20, paddingLeft: 26, position: "relative", minHeight: 24 }}>
+        <input
+          type="checkbox"
+          id="ml-gdpr-44209135"
+          checked={gdpr}
+          onChange={e => setGdpr(e.target.checked)}
+          style={{ position: "absolute", left: 0, top: 3, width: 16, height: 16, cursor: "pointer", accentColor: "#156686" }}
+        />
+        <label htmlFor="ml-gdpr-44209135" style={{ fontSize: 13, color: errors.gdpr ? "#dc2626" : "rgba(21,102,134,0.75)", cursor: "pointer", lineHeight: "1.5" }}>
+          Voglio ricevere comunicazioni relative alla masterclass gratuita*
+        </label>
+        {errors.gdpr && <p style={{ color: "#dc2626", fontSize: 12, margin: "4px 0 0" }}>{errors.gdpr}</p>}
+      </div>
+      <button
+        type="submit"
+        disabled={submitting}
+        style={{
+          width: "100%", padding: "14px 28px", backgroundColor: submitting ? "#125a77" : "#156686",
+          color: "#fff", border: "none", borderRadius: 9999, fontSize: 16, fontWeight: 700,
+          cursor: submitting ? "not-allowed" : "pointer", fontFamily: "inherit",
+          transition: "background-color 0.2s",
+        }}
+      >
+        {submitting ? "Iscrizione in corso…" : "Voglio iscrivermi alla masterclass gratuita!"}
+      </button>
+    </form>
+  );
 }
+
+const inputBase: React.CSSProperties = {
+  width: "100%", padding: "11px 12px 11px 40px", boxSizing: "border-box",
+  border: "1.5px solid rgba(21,102,134,0.2)", borderRadius: 12, fontSize: 15,
+  fontFamily: "inherit", color: "#1B2F52", backgroundColor: "#EEF3F5",
+  outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
+};
+const inputErr: React.CSSProperties = { ...inputBase, border: "1.5px solid #dc2626" };
 
 const TARGET_DATE = new Date("2026-08-29T08:00:00Z"); // 10:00 CEST
 
