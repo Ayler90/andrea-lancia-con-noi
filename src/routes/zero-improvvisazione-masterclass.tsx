@@ -716,7 +716,7 @@ function QuizForm() {
   const q = QUIZ_QUESTIONS[step];
 
   return (
-    <div>
+    <div style={{ minHeight: 380 }}>
       {step === 0 && (
         <div className="mb-5 text-center">
           <p className="text-sm text-foreground/65 leading-relaxed">
@@ -738,7 +738,7 @@ function QuizForm() {
       </div>
 
       {step < 3 ? (
-        <div key={step} style={{ minHeight: 260 }}>
+        <div key={step}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4B6380]/60 mb-2 text-center">
             Domanda {step + 1} di 3
           </p>
