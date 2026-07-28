@@ -306,36 +306,40 @@ function Programma() {
           Cosa costruiamo insieme <em className="text-[#156686]">in questa masterclass?</em>
         </h2>
 
-        {/* 3-col layout on desktop */}
-        <div className="relative grid grid-cols-1 md:grid-cols-[180px_1fr_180px] gap-0 md:gap-8 items-start">
+        <div>
+          {STEPS.map((step, i) => {
+            const isActive = passedSet.has(i);
+            const isLast = i === STEPS.length - 1;
+            const IllComp = STEP_ILLUSTRATIONS[i];
+            const onRight = i % 2 === 0;
+            const illVisible = activeStep === i;
 
-          {/* LEFT column — steps 1 (hidden) and 3 illustration */}
-          <div className="hidden md:flex flex-col">
-            {STEPS.map((_, i) => {
-              const IllComp = STEP_ILLUSTRATIONS[i];
-              const side = i % 2 === 0 ? "right" : "left";
-              if (side !== "left") return <div key={i} style={{ height: i === 0 ? 0 : undefined }} className="flex-1" />;
-              return (
-                <div key={i} className="sticky top-[40vh] flex justify-center"
-                  style={{ opacity: activeStep === i ? 1 : 0, transform: activeStep === i ? "translateX(0) scale(1)" : "translateX(-20px) scale(0.9)", transition: "opacity 0.5s ease, transform 0.5s ease" }}>
-                  <IllComp active={activeStep === i} />
-                </div>
-              );
-            })}
-          </div>
+            const illEl = (
+              <div className="hidden md:flex items-start justify-center w-[200px] flex-shrink-0 pt-2"
+                style={{
+                  opacity: illVisible ? 1 : 0,
+                  transform: illVisible
+                    ? "translateX(0) scale(1)"
+                    : onRight ? "translateX(20px) scale(0.88)" : "translateX(-20px) scale(0.88)",
+                  transition: "opacity 0.5s ease, transform 0.5s ease",
+                }}>
+                <IllComp active={illVisible} />
+              </div>
+            );
 
-          {/* CENTER — timeline */}
-          <div>
-            {STEPS.map((step, i) => {
-              const isActive = passedSet.has(i);
-              const isLast = i === STEPS.length - 1;
-              return (
-                <div
-                  key={step.n}
-                  ref={el => { stepRefs.current[i] = el; }}
-                  className="flex gap-6 md:gap-8 items-stretch bg-white"
-                  style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
-                >
+            return (
+              <div
+                key={step.n}
+                ref={el => { stepRefs.current[i] = el; }}
+                className="flex gap-6 md:gap-8 items-start bg-white"
+                style={{ opacity: isActive ? 1 : 0.3, transition: "opacity 0.4s ease" }}
+              >
+                {/* Illustration LEFT slot */}
+                {!onRight && illEl}
+                {onRight && <div className="hidden md:block w-[200px] flex-shrink-0" />}
+
+                {/* Step number + content */}
+                <div className="flex gap-6 md:gap-8 flex-1 items-stretch">
                   <div className="w-14 flex-shrink-0 flex flex-col items-center">
                     <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 font-bold text-sm relative z-10"
                       style={{
@@ -364,25 +368,13 @@ function Programma() {
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
 
-          {/* RIGHT column — steps 0 and 2 illustrations */}
-          <div className="hidden md:flex flex-col">
-            {STEPS.map((_, i) => {
-              const IllComp = STEP_ILLUSTRATIONS[i];
-              const side = i % 2 === 0 ? "right" : "left";
-              if (side !== "right") return <div key={i} className="flex-1" />;
-              return (
-                <div key={i} className="sticky top-[40vh] flex justify-center"
-                  style={{ opacity: activeStep === i ? 1 : 0, transform: activeStep === i ? "translateX(0) scale(1)" : "translateX(20px) scale(0.9)", transition: "opacity 0.5s ease, transform 0.5s ease" }}>
-                  <IllComp active={activeStep === i} />
-                </div>
-              );
-            })}
-          </div>
-
+                {/* Illustration RIGHT slot */}
+                {onRight && illEl}
+                {!onRight && <div className="hidden md:block w-[200px] flex-shrink-0" />}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -691,7 +683,7 @@ function StickyBar() {
       style={{ transform: visible ? "translateY(0)" : "translateY(110%)" }}
     >
       <div
-        className="flex flex-col sm:flex-row items-center justify-between gap-3 px-8 py-3.5"
+        className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 px-8 py-3.5"
         style={{
           background: "rgba(10,26,35,0.92)",
           backdropFilter: "blur(14px)",
