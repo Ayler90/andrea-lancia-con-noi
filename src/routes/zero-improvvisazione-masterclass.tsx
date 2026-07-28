@@ -656,6 +656,114 @@ function ChaosCalendar() {
   );
 }
 
+const QUIZ_QUESTIONS = [
+  {
+    question: "Come gestisci i tuoi lanci in questo momento?",
+    answers: [
+      "Li improvviso quando ho bisogno di fatturare",
+      "Ho una struttura di base ma non un piano annuale",
+      "Lancio in modo ricorrente ma è sempre caotico",
+    ],
+  },
+  {
+    question: "Qual è il tuo problema principale con i lanci?",
+    answers: [
+      "Non so bene a chi mi rivolgo o cosa vendere",
+      "Ho le offerte ma non so come lanciarle con continuità",
+      "Lancio ma tra un lancio e l'altro le vendite si fermano",
+    ],
+  },
+  {
+    question: "Cosa vuoi ottenere da questa masterclass?",
+    answers: [
+      "Capire meglio target e offerte da costruire",
+      "Avere un piano lanci per i prossimi 12 mesi",
+      "Aggiungere funnel evergreen tra i lanci",
+    ],
+  },
+];
+
+function QuizForm() {
+  const [step, setStep] = useState<number>(0);       // 0-2 = quiz, 3 = form
+  const [answers, setAnswers] = useState<number[]>([]);
+  const [selecting, setSelecting] = useState<number | null>(null);
+
+  function pick(answerIdx: number) {
+    setSelecting(answerIdx);
+    setTimeout(() => {
+      const next = [...answers, answerIdx];
+      setAnswers(next);
+      setSelecting(null);
+      setStep(s => s + 1);
+    }, 380);
+  }
+
+  const q = QUIZ_QUESTIONS[step];
+
+  return (
+    <div>
+      {/* Progress dots */}
+      <div className="flex justify-center gap-2 mb-5">
+        {QUIZ_QUESTIONS.map((_, i) => (
+          <div key={i} className="rounded-full transition-all duration-400"
+            style={{
+              width: i === step ? 20 : 8, height: 8,
+              backgroundColor: i < step ? "#156686" : i === step ? "#156686" : "rgba(21,102,134,0.18)",
+              transition: "all 0.3s ease",
+            }} />
+        ))}
+      </div>
+
+      {step < 3 ? (
+        <div key={step} style={{ animation: "quiz-in 0.35s ease" }}>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#156686]/60 mb-2 text-center">
+            Domanda {step + 1} di 3
+          </p>
+          <h3 className="font-bold text-foreground/90 text-base md:text-lg leading-snug mb-5 text-center">
+            {q.question}
+          </h3>
+          <div className="flex flex-col gap-2.5">
+            {q.answers.map((a, i) => (
+              <button
+                key={i}
+                onClick={() => pick(i)}
+                className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200"
+                style={{
+                  border: selecting === i ? "1.5px solid #156686" : "1.5px solid rgba(21,102,134,0.2)",
+                  backgroundColor: selecting === i ? "rgba(21,102,134,0.10)" : "rgba(21,102,134,0.03)",
+                  color: selecting === i ? "#156686" : "rgba(0,0,0,0.7)",
+                  transform: selecting === i ? "scale(0.985)" : "scale(1)",
+                  cursor: "pointer",
+                }}
+              >
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-5 rounded-full border flex-shrink-0 flex items-center justify-center text-[10px] font-bold"
+                    style={{
+                      borderColor: selecting === i ? "#156686" : "rgba(21,102,134,0.35)",
+                      backgroundColor: selecting === i ? "#156686" : "transparent",
+                      color: selecting === i ? "white" : "#156686",
+                    }}>
+                    {["A","B","C"][i]}
+                  </span>
+                  {a}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div style={{ animation: "quiz-in 0.4s ease" }}>
+          <p className="text-center text-sm text-[#156686] font-semibold mb-1">Perfetto, ci siamo quasi.</p>
+          <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
+            Prenota il tuo posto alla Masterclass Gratuita
+          </h3>
+          <MailerLiteForm />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -776,17 +884,14 @@ function ZeroImprovvisazioneMasterclass() {
               </div>
             </div>
 
-            {/* COLONNA DESTRA — form */}
+            {/* COLONNA DESTRA — quiz + form */}
             <div id="form" className="bg-white rounded-2xl p-7 md:p-9" style={{ boxShadow: "0 8px 48px -8px rgba(21,102,134,0.22), 0 2px 12px -2px rgba(21,102,134,0.12)" }}>
-              <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-5">
                 <div className="inline-flex items-center gap-1.5 border border-[#156686]/25 bg-[#156686]/6 text-[#156686] text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full">
                   🗓 29 agosto · ore 10:00
                 </div>
               </div>
-              <h3 className="font-bold text-foreground/90 text-lg md:text-xl leading-snug mb-5 text-center">
-                Prenota il tuo posto alla Masterclass Gratuita e scarica immediatamente il Workbook dell'evento
-              </h3>
-              <MailerLiteForm />
+              <QuizForm />
             </div>
 
           </div>
