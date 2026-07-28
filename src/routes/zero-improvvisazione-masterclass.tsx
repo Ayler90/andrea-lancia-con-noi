@@ -282,7 +282,7 @@ function MailerLiteForm() {
           transition: "background-color 0.2s",
         }}
       >
-        {submitting ? "Iscrizione in corso…" : "Voglio iscrivermi alla masterclass gratuita!"}
+        {submitting ? "Iscrizione in corso…" : "Voglio iscrivermi ora"}
       </button>
     </form>
   );
