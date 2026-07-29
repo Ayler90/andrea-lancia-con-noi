@@ -921,9 +921,12 @@ function ZeroImprovvisazioneMasterclass() {
               </p>
 
               <div className="mt-7 flex flex-col sm:flex-row items-start gap-3">
-                <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
-                  Voglio il mio posto →
-                </button>
+                <div className="flex flex-col items-start gap-1">
+                  <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
+                    Voglio il mio posto →
+                  </button>
+                  <p className="text-xs text-white/40 pl-1">Masterclass Gratuita · 29 Agosto</p>
+                </div>
                 <button className="cta-ghost whitespace-nowrap" onClick={() => scrollToSection("programma")}>
                   Scopri il programma ↓
                 </button>
@@ -979,10 +982,11 @@ function ZeroImprovvisazioneMasterclass() {
               <p><strong className="text-white/90">Il problema non è il lancio in sé. È che attorno al lancio non c'è niente.</strong> Nessuna struttura, nessun filo che tiene insieme una cosa e l'altra. E quindi ogni volta ricomincia da capo.</p>
             </div>
           </div>
-          <div className="mt-12 flex justify-center">
+          <div className="mt-12 flex flex-col items-center gap-1">
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
+            <p className="text-xs text-white/40">Masterclass Gratuita · 29 Agosto</p>
           </div>
 
           <ChaosCalendar />
@@ -1259,10 +1263,11 @@ function ZeroImprovvisazioneMasterclass() {
 
           </div>
 
-          <div className="mt-12 flex justify-center">
+          <div className="mt-12 flex flex-col items-center gap-1">
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
+            <p className="text-xs text-white/40">Masterclass Gratuita · 29 Agosto</p>
           </div>
         </div>
       </section>
@@ -1327,6 +1332,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
+                <p className="text-xs text-foreground/40">Masterclass Gratuita · 29 Agosto</p>
               </div>
 
             </div>
@@ -1433,6 +1439,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
+                <p className="text-xs text-foreground/40">Masterclass Gratuita · 29 Agosto</p>
                 <p className="text-xs text-foreground/40">Niente spam. Ricevi solo l'email con il link Zoom.</p>
                 <div className="border-t border-[#4B6380]/10 pt-4 text-xs text-foreground/45 leading-relaxed">
                   Se alla fine ti presentiamo Business Blueprint e non fa per te, non cambia niente. Porti a casa il piano e lo usi da solo.
