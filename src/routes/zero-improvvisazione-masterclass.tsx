@@ -917,7 +917,7 @@ function ZeroImprovvisazioneMasterclass() {
               </p>
 
               <p className="mt-3 font-bold text-[#4B6380] text-sm md:text-base">
-                Sabato 29 agosto · 10:00–12:00 · Zoom · Gratuito
+                Sabato 29 agosto · ore 10:00 · Zoom · Gratuito
               </p>
 
               <div className="mt-7 flex flex-col sm:flex-row items-start gap-3">

@@ -52,7 +52,7 @@ function GrazieZeroImprovvisazione() {
           </h1>
 
           <p className="font-bold text-white/80 text-base md:text-lg mt-5 mb-3">
-            Sabato 29 agosto · 10:00–12:00 · su Zoom
+            Sabato 29 agosto · ore 10:00 · su Zoom
           </p>
           <p className="text-white/55 text-sm max-w-xl mx-auto leading-relaxed">
             Costruiamo insieme il tuo piano lanci per i prossimi 12 mesi. Alla fine hai un piano completo già scritto, adattato al tuo business.
@@ -101,7 +101,7 @@ function GrazieZeroImprovvisazione() {
                 <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
                   Aggiungi a Google Calendar →
                 </a>
-                <p className="text-xs text-foreground/40 mt-3">Sabato 29 agosto · 10:00–12:00 · Zoom</p>
+                <p className="text-xs text-foreground/40 mt-3">Sabato 29 agosto · ore 10:00 · Zoom</p>
               </div>
             </div>
 
