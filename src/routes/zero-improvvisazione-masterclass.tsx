@@ -814,52 +814,68 @@ function scrollToSection(id: string) {
   window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
 }
 
+const BAR_CONTENT = ({ onClick }: { onClick: () => void }) => (
+  <div
+    className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 px-8 py-3.5"
+    style={{
+      background: "rgba(10,26,35,0.92)",
+      backdropFilter: "blur(14px)",
+      borderTop: "1px solid rgba(196,217,220,0.12)",
+    }}
+  >
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/80">
+      <span className="font-semibold text-white">Lanci Senza Stress</span>
+      <span className="text-white/40 hidden sm:inline">·</span>
+      <span>🗓 29 agosto · ore 10:00</span>
+      <span className="text-white/40 hidden sm:inline">·</span>
+      <span>Gratuita</span>
+      <span className="text-white/40 hidden sm:inline">·</span>
+      <span>100 posti disponibili</span>
+    </div>
+    <button
+      className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap flex-shrink-0 text-sm px-5 py-2"
+      onClick={onClick}
+    >
+      Voglio il mio posto →
+    </button>
+  </div>
+);
+
 function StickyBar() {
   const [visible, setVisible] = useState(false);
+  const [docked, setDocked] = useState(false);
 
   useEffect(() => {
     const hero = document.getElementById("hero-section");
-    if (!hero) return;
-    const observer = new IntersectionObserver(
+    const anchor = document.getElementById("sticky-bar-anchor");
+    if (!hero || !anchor) return;
+
+    const heroObs = new IntersectionObserver(
       ([entry]) => setVisible(!entry.isIntersecting),
       { threshold: 0 }
     );
-    observer.observe(hero);
-    return () => observer.disconnect();
+    const anchorObs = new IntersectionObserver(
+      ([entry]) => setDocked(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    heroObs.observe(hero);
+    anchorObs.observe(anchor);
+    return () => { heroObs.disconnect(); anchorObs.disconnect(); };
   }, []);
 
+  const handleClick = () => {
+    posthog.capture("zero_improv_cta_click", { cta_label: "sticky-bar" });
+    scrollToSection("form");
+  };
+
+  if (!visible) return null;
+
+  // When footer anchor is visible, the bar is rendered statically inside it (not fixed)
+  if (docked) return null;
+
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300"
-      style={{ transform: visible ? "translateY(0)" : "translateY(110%)" }}
-    >
-      <div
-        className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 px-8 py-3.5"
-        style={{
-          background: "rgba(10,26,35,0.92)",
-          backdropFilter: "blur(14px)",
-          borderTop: "1px solid rgba(196,217,220,0.12)",
-        }}
-      >
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/80">
-          <span className="font-semibold text-white">Lanci Senza Stress</span>
-          <span className="text-white/40 hidden sm:inline">·</span>
-          <span>🗓 29 agosto · ore 10:00</span>
-          <span className="text-white/40 hidden sm:inline">·</span>
-          <span>Gratuita</span>
-          <span className="text-white/40 hidden sm:inline">·</span>
-          <span>100 posti disponibili</span>
-        </div>
-        <button
-          className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap flex-shrink-0 text-sm px-5 py-2"
-          onClick={() => {
-            posthog.capture("zero_improv_cta_click", { cta_label: "sticky-bar" });
-            scrollToSection("form");
-          }}
-        >
-          Voglio il mio posto →
-        </button>
-      </div>
+    <div className="fixed bottom-0 left-0 right-0 z-50">
+      <BAR_CONTENT onClick={handleClick} />
     </div>
   );
 }
@@ -1437,16 +1453,10 @@ function ZeroImprovvisazioneMasterclass() {
         </div>
       </section>
 
-      {/* P.S. */}
-      <section className="py-12 bg-[#EEF3F5]">
-        <div className="container-narrow max-w-2xl mx-auto">
-          <div className="rounded-2xl border border-[#4B6380]/15 bg-white p-8">
-            <p className="text-sm text-foreground/65 leading-relaxed">
-              <strong className="text-foreground/85">P.S.</strong> Se stai pensando "ho già provato a fare dei piani ma poi non li ho mai seguiti", non è una scusa per non venire - è esattamente il motivo per cui questa masterclass esiste. Un piano fatto da solo su un foglio non lo segui. Uno costruito in diretta, con qualcuno che ti fa le domande giuste sul tuo business specifico, è un'altra cosa. Iscriviti, ne vale la pena.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* ANCHOR per sticky bar — la barra si "ancora" qui prima del footer */}
+      <div id="sticky-bar-anchor">
+        <BAR_CONTENT onClick={() => { posthog.capture("zero_improv_cta_click", { cta_label: "sticky-bar-docked" }); scrollToSection("form"); }} />
+      </div>
 
       {/* FOOTER SEMPLICE */}
       <footer style={{ backgroundColor: "#1B2F52" }} className="text-white">
