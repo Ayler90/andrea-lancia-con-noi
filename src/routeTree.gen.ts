@@ -9,45 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as ConsulenzaStrategicaRouteImport } from './routes/consulenza-strategica'
-import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
-import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
-import { Route as GrazieConsulenzaStrategicaRouteImport } from './routes/grazie-consulenza-strategica'
-import { Route as GrazieIscrizioneZeroImprovvisazioneRouteImport } from './routes/grazie-iscrizione-zero-improvvisazione'
-import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
 import { Route as ZeroImprovvisazioneMasterclassRouteImport } from './routes/zero-improvvisazione-masterclass'
+import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
+import { Route as GrazieIscrizioneZeroImprovvisazioneRouteImport } from './routes/grazie-iscrizione-zero-improvvisazione'
+import { Route as GrazieConsulenzaStrategicaRouteImport } from './routes/grazie-consulenza-strategica'
+import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
+import { Route as ConsulenzaStrategicaRouteImport } from './routes/consulenza-strategica'
+import { Route as IndexRouteImport } from './routes/index'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsulenzaStrategicaRoute = ConsulenzaStrategicaRouteImport.update({
-  id: '/consulenza-strategica',
-  path: '/consulenza-strategica',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CookiePolicyRoute = CookiePolicyRouteImport.update({
-  id: '/cookie-policy',
-  path: '/cookie-policy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EasyMailPackRoute = EasyMailPackRouteImport.update({
-  id: '/easy-mail-pack',
-  path: '/easy-mail-pack',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GrazieConsulenzaStrategicaRoute =
-  GrazieConsulenzaStrategicaRouteImport.update({
-    id: '/grazie-consulenza-strategica',
-    path: '/grazie-consulenza-strategica',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const GrazieIscrizioneZeroImprovvisazioneRoute =
-  GrazieIscrizioneZeroImprovvisazioneRouteImport.update({
-    id: '/grazie-iscrizione-zero-improvvisazione',
-    path: '/grazie-iscrizione-zero-improvvisazione',
+const ZeroImprovvisazioneMasterclassRoute =
+  ZeroImprovvisazioneMasterclassRouteImport.update({
+    id: '/zero-improvvisazione-masterclass',
+    path: '/zero-improvvisazione-masterclass',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
@@ -55,12 +29,38 @@ const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
   path: '/scarica-calendario-lancio',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ZeroImprovvisazioneMasterclassRoute =
-  ZeroImprovvisazioneMasterclassRouteImport.update({
-    id: '/zero-improvvisazione-masterclass',
-    path: '/zero-improvvisazione-masterclass',
+const GrazieIscrizioneZeroImprovvisazioneRoute =
+  GrazieIscrizioneZeroImprovvisazioneRouteImport.update({
+    id: '/grazie-iscrizione-zero-improvvisazione',
+    path: '/grazie-iscrizione-zero-improvvisazione',
     getParentRoute: () => rootRouteImport,
   } as any)
+const GrazieConsulenzaStrategicaRoute =
+  GrazieConsulenzaStrategicaRouteImport.update({
+    id: '/grazie-consulenza-strategica',
+    path: '/grazie-consulenza-strategica',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EasyMailPackRoute = EasyMailPackRouteImport.update({
+  id: '/easy-mail-pack',
+  path: '/easy-mail-pack',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsulenzaStrategicaRoute = ConsulenzaStrategicaRouteImport.update({
+  id: '/consulenza-strategica',
+  path: '/consulenza-strategica',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -139,46 +139,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/consulenza-strategica': {
-      id: '/consulenza-strategica'
-      path: '/consulenza-strategica'
-      fullPath: '/consulenza-strategica'
-      preLoaderRoute: typeof ConsulenzaStrategicaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cookie-policy': {
-      id: '/cookie-policy'
-      path: '/cookie-policy'
-      fullPath: '/cookie-policy'
-      preLoaderRoute: typeof CookiePolicyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/easy-mail-pack': {
-      id: '/easy-mail-pack'
-      path: '/easy-mail-pack'
-      fullPath: '/easy-mail-pack'
-      preLoaderRoute: typeof EasyMailPackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/grazie-consulenza-strategica': {
-      id: '/grazie-consulenza-strategica'
-      path: '/grazie-consulenza-strategica'
-      fullPath: '/grazie-consulenza-strategica'
-      preLoaderRoute: typeof GrazieConsulenzaStrategicaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/grazie-iscrizione-zero-improvvisazione': {
-      id: '/grazie-iscrizione-zero-improvvisazione'
-      path: '/grazie-iscrizione-zero-improvvisazione'
-      fullPath: '/grazie-iscrizione-zero-improvvisazione'
-      preLoaderRoute: typeof GrazieIscrizioneZeroImprovvisazioneRouteImport
+    '/zero-improvvisazione-masterclass': {
+      id: '/zero-improvvisazione-masterclass'
+      path: '/zero-improvvisazione-masterclass'
+      fullPath: '/zero-improvvisazione-masterclass'
+      preLoaderRoute: typeof ZeroImprovvisazioneMasterclassRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scarica-calendario-lancio': {
@@ -188,11 +153,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScaricaCalendarioLancioRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/zero-improvvisazione-masterclass': {
-      id: '/zero-improvvisazione-masterclass'
-      path: '/zero-improvvisazione-masterclass'
-      fullPath: '/zero-improvvisazione-masterclass'
-      preLoaderRoute: typeof ZeroImprovvisazioneMasterclassRouteImport
+    '/grazie-iscrizione-zero-improvvisazione': {
+      id: '/grazie-iscrizione-zero-improvvisazione'
+      path: '/grazie-iscrizione-zero-improvvisazione'
+      fullPath: '/grazie-iscrizione-zero-improvvisazione'
+      preLoaderRoute: typeof GrazieIscrizioneZeroImprovvisazioneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grazie-consulenza-strategica': {
+      id: '/grazie-consulenza-strategica'
+      path: '/grazie-consulenza-strategica'
+      fullPath: '/grazie-consulenza-strategica'
+      preLoaderRoute: typeof GrazieConsulenzaStrategicaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/easy-mail-pack': {
+      id: '/easy-mail-pack'
+      path: '/easy-mail-pack'
+      fullPath: '/easy-mail-pack'
+      preLoaderRoute: typeof EasyMailPackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consulenza-strategica': {
+      id: '/consulenza-strategica'
+      path: '/consulenza-strategica'
+      fullPath: '/consulenza-strategica'
+      preLoaderRoute: typeof ConsulenzaStrategicaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
