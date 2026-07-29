@@ -1368,13 +1368,15 @@ function ZeroImprovvisazioneMasterclass() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 self-start"
-                  onClick={() => { trackCta("workbook-iscriviti"); scrollToSection("form"); }}
-                >
-                  Voglio il mio posto →
-                </button>
-                <p className="text-sm text-foreground/70 font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+                <div className="flex flex-col items-center md:items-start">
+                  <button
+                    className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5"
+                    onClick={() => { trackCta("workbook-iscriviti"); scrollToSection("form"); }}
+                  >
+                    Voglio il mio posto →
+                  </button>
+                  <p className="text-sm text-foreground/70 font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+                </div>
               </div>
 
             </div>
