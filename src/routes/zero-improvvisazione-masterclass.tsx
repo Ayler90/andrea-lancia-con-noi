@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import React, { useState, useEffect, useRef } from "react";
 import posthog from "posthog-js";
+import andreaFavicon from "@/assets/Foto profilo IG - Favicon.jpg";
+import davideFoto from "@/assets/Davide foto profilo.jpg";
 
 export const Route = createFileRoute("/zero-improvvisazione-masterclass")({
   component: ZeroImprovvisazioneMasterclass,
@@ -358,8 +360,13 @@ function Programma() {
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <h3 className="font-bold text-foreground/90 text-xl">{step.title}</h3>
                       {step.badge && (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#4B6380] bg-[#4B6380]/10 border border-[#4B6380]/20 rounded-full px-2.5 py-1">
-                          👤 {step.badge}
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#4B6380] bg-[#4B6380]/10 border border-[#4B6380]/20 rounded-full pl-1 pr-2.5 py-1">
+                          <img
+                            src={step.badge === "con Davide" ? davideFoto : andreaFavicon}
+                            alt={step.badge}
+                            className="w-4 h-4 rounded-full object-cover flex-shrink-0"
+                          />
+                          {step.badge}
                         </span>
                       )}
                     </div>
