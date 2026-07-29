@@ -1405,9 +1405,11 @@ function ZeroImprovvisazioneMasterclass() {
 
             {/* COLONNA SINISTRA — testo */}
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40 mb-6">Perché vale la pena</p>
+              <h2 className="h-display font-bold text-white text-3xl md:text-4xl leading-tight mb-6">
+                Un solo motivo per iscriverti
+              </h2>
               <p className="text-white/85 text-base md:text-lg leading-relaxed mb-5">
-                Se in tutti questi mesi ti sei chiesto <em style={{ color: "#C4D9DC" }}>"come faccio a organizzare i miei lanci?"</em>, perché un mese sei sommerso di lavoro e il mese dopo il calendario è vuoto, o perché per ogni cliente devi rincorrere un preventivo diverso, questa masterclass è la risposta a tutto quello che ti frulla in testa.
+                Se in tutti questi mesi ti sei chiesto come fare a organizzare i tuoi lanci, capire cosa vendere e a chi, o uscire dal loop di un mese pieno e uno vuoto, questa masterclass è la risposta a tutto quello che ti frulla in testa.
               </p>
               <p className="text-white/65 text-sm md:text-base leading-relaxed mb-5">
                 Sì, ti chiede una mattinata e un po' di attenzione. Ma in cambio risolvi una volta per tutte quella sensazione di guardare il calendario e pensare: "Ok, e adesso che faccio?"
@@ -1419,10 +1421,10 @@ function ZeroImprovvisazioneMasterclass() {
 
             {/* COLONNA DESTRA — CTA card */}
             <div>
-              <div className="bg-white rounded-2xl p-8 flex flex-col gap-5">
+              <div className="bg-white rounded-2xl p-8 flex flex-col gap-5 items-center text-center">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#4B6380]/60 mb-1">Prenota il tuo posto</p>
-                  <p className="font-bold text-foreground/85 text-lg leading-snug">Sabato 29 agosto · 10:00–12:00 · Zoom</p>
+                  <p className="font-bold text-foreground/85 text-lg leading-snug">Sabato 29 agosto · ore 10:00 · Zoom</p>
                   <p className="text-sm text-foreground/50 mt-1">Gratuito. Nessun pagamento, nessun impegno.</p>
                 </div>
                 <button
@@ -1431,7 +1433,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
-                <p className="text-xs text-foreground/40 text-center">Niente spam. Ricevi solo l'email con il link Zoom.</p>
+                <p className="text-xs text-foreground/40">Niente spam. Ricevi solo l'email con il link Zoom.</p>
                 <div className="border-t border-[#4B6380]/10 pt-4 text-xs text-foreground/45 leading-relaxed">
                   Se alla fine ti presentiamo Business Blueprint e non fa per te, non cambia niente. Porti a casa il piano e lo usi da solo.
                 </div>
