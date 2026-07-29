@@ -1311,40 +1311,43 @@ function ZeroImprovvisazioneMasterclass() {
         </div>
       </section>
 
-      {/* CHI SIAMO — sfondo immagine */}
-      <section className="relative overflow-hidden" style={{ minHeight: "900px" }}>
-        <div className="absolute inset-0">
-          <img src={andreadaveSfondo} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0" style={{ background: "rgba(27,47,82,0.32)" }} />
-        </div>
-        <div className="container-narrow relative z-10 flex flex-col" style={{ minHeight: "900px" }}>
-          <div className="mt-auto pb-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Chi ti guiderà durante la masterclass?</p>
-            <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-8">
-              Chi siamo e perché{" "}
-              <em style={{ color: "#C4D9DC" }}>possiamo parlare di questo</em>
-            </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto w-full items-end">
+      {/* CHI SIAMO */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="px-4 md:px-8 max-w-6xl mx-auto">
+          {/* Grande riquadro con immagine di sfondo */}
+          <div className="relative overflow-hidden rounded-3xl flex flex-col" style={{ minHeight: "780px" }}>
+            <img src={andreadaveSfondo} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0" style={{ background: "rgba(27,47,82,0.32)" }} />
+            <div className="relative z-10 flex flex-col h-full" style={{ minHeight: "780px" }}>
+              <div className="mt-auto pb-10 px-8 md:px-12">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Chi ti guiderà durante la masterclass?</p>
+                <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-8">
+                  Chi siamo e perché{" "}
+                  <em style={{ color: "#C4D9DC" }}>possiamo parlare di questo</em>
+                </h2>
+                <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 
-            {/* ANDREA — sinistra */}
-            <div className="rounded-2xl p-4" style={{ backgroundColor: "#C4D9DC", border: "1px solid #A8C8CC" }}>
-              <p className="font-bold text-[#1B2F52] text-base">Andrea Bonomo</p>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#4B6380]/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-2">Funnel & Launch Strategist</span>
-              <p className="text-xs text-[#1B2F52]/75 leading-relaxed">Negli ultimi anni ho lavorato con <strong className="text-[#1B2F52]">oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong className="text-[#1B2F52]">senza finire ogni volta in burnout e con l'acqua alla gola</strong>.</p>
-              <div className="mt-3 flex items-center gap-2 bg-white/50 border border-[#4B6380]/20 rounded-xl px-3 py-1.5 w-fit">
-                <span className="text-amber-500 text-xs tracking-tighter">★★★★★</span>
-                <span className="text-xs text-[#1B2F52]/70 font-medium">4.9 · 50+ recensioni su Google</span>
+                  {/* ANDREA — sinistra */}
+                  <div className="rounded-2xl p-4" style={{ backgroundColor: "#C4D9DC", border: "1px solid #A8C8CC" }}>
+                    <p className="font-bold text-[#1B2F52] text-base">Andrea Bonomo</p>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#4B6380]/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-2">Funnel & Launch Strategist</span>
+                    <p className="text-xs text-[#1B2F52]/75 leading-relaxed">Negli ultimi anni ho lavorato con <strong className="text-[#1B2F52]">oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong className="text-[#1B2F52]">senza finire ogni volta in burnout e con l'acqua alla gola</strong>.</p>
+                    <div className="mt-3 flex items-center gap-2 bg-white/50 border border-[#4B6380]/20 rounded-xl px-3 py-1.5 w-fit">
+                      <span className="text-amber-500 text-xs tracking-tighter">★★★★★</span>
+                      <span className="text-xs text-[#1B2F52]/70 font-medium">4.9 · 50+ recensioni su Google</span>
+                    </div>
+                  </div>
+
+                  {/* DAVIDE — destra */}
+                  <div className="rounded-2xl p-4" style={{ backgroundColor: "#C4D9DC", border: "1px solid #A8C8CC" }}>
+                    <p className="font-bold text-[#1B2F52] text-base">Davide Angiolillo</p>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#4B6380]/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-2">Esperto di Target & Offerte</span>
+                    <p className="text-xs text-[#1B2F52]/65 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
+                  </div>
+
+                </div>
               </div>
             </div>
-
-            {/* DAVIDE — destra */}
-            <div className="rounded-2xl p-4" style={{ backgroundColor: "#C4D9DC", border: "1px solid #A8C8CC" }}>
-              <p className="font-bold text-[#1B2F52] text-base">Davide Angiolillo</p>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#4B6380]/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-2">Esperto di Target & Offerte</span>
-              <p className="text-xs text-[#1B2F52]/65 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
-            </div>
-
-          </div>
           </div>
         </div>
       </section>
