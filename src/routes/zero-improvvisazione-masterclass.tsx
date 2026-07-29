@@ -1312,12 +1312,12 @@ function ZeroImprovvisazioneMasterclass() {
       </section>
 
       {/* CHI SIAMO — sfondo immagine */}
-      <section className="relative overflow-hidden" style={{ minHeight: "680px" }}>
+      <section className="relative overflow-hidden" style={{ minHeight: "900px" }}>
         <div className="absolute inset-0">
           <img src={andreadaveSfondo} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "rgba(27,47,82,0.32)" }} />
         </div>
-        <div className="container-narrow relative z-10 flex flex-col" style={{ minHeight: "680px" }}>
+        <div className="container-narrow relative z-10 flex flex-col" style={{ minHeight: "900px" }}>
           <div className="mt-auto pb-10">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Chi siamo</p>
             <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-8">
