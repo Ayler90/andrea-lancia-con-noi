@@ -925,7 +925,7 @@ function ZeroImprovvisazioneMasterclass() {
                   <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
                     Voglio il mio posto →
                   </button>
-                  <p className="text-xs text-white/40 pl-1">Masterclass Gratuita · 29 Agosto</p>
+                  <p className="text-sm text-white font-medium mt-1 pl-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
                 </div>
                 <button className="cta-ghost whitespace-nowrap" onClick={() => scrollToSection("programma")}>
                   Scopri il programma ↓
@@ -986,7 +986,7 @@ function ZeroImprovvisazioneMasterclass() {
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
-            <p className="text-xs text-white/40">Masterclass Gratuita · 29 Agosto</p>
+            <p className="text-sm text-white font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
           </div>
 
           <ChaosCalendar />
@@ -1263,7 +1263,7 @@ function ZeroImprovvisazioneMasterclass() {
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
-            <p className="text-xs text-white/40">Masterclass Gratuita · 29 Agosto</p>
+            <p className="text-sm text-white font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
           </div>
         </div>
       </section>
@@ -1328,7 +1328,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
-                <p className="text-xs text-foreground/40">Masterclass Gratuita · 29 Agosto</p>
+                <p className="text-sm text-foreground/70 font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
               </div>
 
             </div>
@@ -1435,7 +1435,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
-                <p className="text-xs text-foreground/40">Masterclass Gratuita · 29 Agosto</p>
+                <p className="text-sm text-foreground/70 font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
                 <p className="text-xs text-foreground/40">Niente spam. Ricevi solo l'email con il link Zoom.</p>
                 <div className="border-t border-[#4B6380]/10 pt-4 text-xs text-foreground/45 leading-relaxed">
                   Se alla fine ti presentiamo Business Blueprint e non fa per te, non cambia niente. Porti a casa il piano e lo usi da solo.
