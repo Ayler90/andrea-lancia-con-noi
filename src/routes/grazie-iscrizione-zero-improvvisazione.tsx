@@ -105,17 +105,9 @@ function GrazieZeroImprovvisazione() {
                   <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-5">
                     Lo compiliamo insieme sezione per sezione durante la mattinata. Senza workbook perdi l'80% del valore: alla fine della diretta esci con un piano vero già scritto, adattato al tuo business. Stampalo o aprilo su un secondo schermo.
                   </p>
-                  <ul className="space-y-2 mb-6">
-                    {[
-                      "Target definito per ogni tua offerta",
-                      "Mappa delle offerte e ordine di lancio",
-                      "Calendario lanci per i prossimi 12 mesi",
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/75">
-                        <CheckIcon />{item}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-sm text-foreground/60 leading-relaxed mb-6">
+                    Una volta cliccato sul pulsante si aprirà il Workbook in formato Google Doc. Clicca su "File", poi "Crea una copia", per salvarlo sul tuo Drive e modificarlo.
+                  </p>
                   <a
                     href="https://docs.google.com/document/d/1CeoHFyWylrmRn65gBMjINacUVAzSRt6aSd-5ilW0cGU/edit?usp=sharing"
                     target="_blank"
@@ -124,7 +116,7 @@ function GrazieZeroImprovvisazione() {
                   >
                     Scarica il workbook →
                   </a>
-                  <p className="text-xs text-foreground/40 mt-3">Consiglio: carta e penna vicino aiutano.</p>
+                  <p className="text-xs text-foreground/40 mt-3">Se vuoi stamparlo e tenerlo con te, è anche meglio.</p>
                 </div>
               </div>
             </div>
