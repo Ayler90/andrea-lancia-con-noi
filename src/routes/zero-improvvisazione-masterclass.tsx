@@ -1242,7 +1242,7 @@ function ZeroImprovvisazioneMasterclass() {
       {/* WORKBOOK — sfondo #EEF3F5 */}
       <section className="py-16 md:py-20 bg-[#EEF3F5]">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Il regalo</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Durante la masterclass compileremo il workbook su offerte, lanci, funnel ed ecosistema.</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Il workbook che compili{" "}
             <em className="text-[#4B6380]">in diretta con noi</em>
