@@ -1140,7 +1140,7 @@ function ZeroImprovvisazioneMasterclass() {
               <div className="w-full flex items-center justify-center" style={{ height: 140 }}>
                 <svg viewBox="0 0 200 140" width="200" height="140" style={{ animation: "thought-float 4.5s ease-in-out 0.3s infinite" }}>
                   {[
-                    { x: 70, y: 10, w: 60, h: 28, label: "Offerta principale" },
+                    { x: 60, y: 10, w: 80, h: 28, label: "Offerta principale" },
                     { x: 50, y: 52, w: 100, h: 28, label: "Upsell / continuità" },
                     { x: 28, y: 94, w: 144, h: 28, label: "Entry point" },
                   ].map((b, i) => (
