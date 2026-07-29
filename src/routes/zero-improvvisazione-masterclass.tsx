@@ -1318,14 +1318,13 @@ function ZeroImprovvisazioneMasterclass() {
           <div className="absolute inset-0" style={{ background: "rgba(27,47,82,0.32)" }} />
         </div>
         <div className="container-narrow relative z-10 flex flex-col" style={{ minHeight: "680px" }}>
-          <div className="pt-16 md:pt-20 pb-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4">Chi siamo</p>
-            <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white">
+          <div className="mt-auto pb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Chi siamo</p>
+            <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-8">
               Chi siamo e perché{" "}
               <em style={{ color: "#C4D9DC" }}>possiamo parlare di questo</em>
             </h2>
-          </div>
-          <div className="mt-auto pb-10 grid md:grid-cols-2 gap-6 max-w-5xl mx-auto w-full items-end">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto w-full items-end">
 
             {/* ANDREA — sinistra */}
             <div className="rounded-2xl p-4" style={{ backgroundColor: "#C4D9DC", border: "1px solid #A8C8CC" }}>
@@ -1345,6 +1344,7 @@ function ZeroImprovvisazioneMasterclass() {
               <p className="text-xs text-[#1B2F52]/65 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
             </div>
 
+          </div>
           </div>
         </div>
       </section>
