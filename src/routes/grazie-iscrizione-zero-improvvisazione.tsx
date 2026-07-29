@@ -125,7 +125,7 @@ function GrazieZeroImprovvisazione() {
                     </li>
                   ))}
                 </ul>
-                <a href="#" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
+                <a href="https://docs.google.com/document/d/1CeoHFyWylrmRn65gBMjINacUVAzSRt6aSd-5ilW0cGU/edit?usp=sharing" target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
                   Scarica il workbook →
                 </a>
                 <p className="text-xs text-foreground/40 mt-3">Consiglio: carta e penna vicino aiutano.</p>
