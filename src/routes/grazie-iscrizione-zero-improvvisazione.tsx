@@ -65,7 +65,7 @@ function GrazieZeroImprovvisazione() {
 
           <div className="mt-10 max-w-xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-5 text-sm text-white/75 leading-relaxed text-left">
             <p className="font-semibold text-white mb-2">Tieni d'occhio la tua email</p>
-            Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi, controlla SPAM e PROMOZIONI: le email di conferma finiscono spesso lì. Il link Zoom arriva la mattina del 29 agosto, non prima.
+            Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi, controlla in SPAM e in PROMOZIONI: le email di conferma finiscono spesso lì. Il link Zoom arriva la mattina del 29 agosto, non prima.
           </div>
         </div>
       </section>
