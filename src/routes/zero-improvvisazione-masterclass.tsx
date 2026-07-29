@@ -103,15 +103,15 @@ function FaqAccordion() {
   );
 }
 
-const STEPS: { n: string; title: string; badge?: string; points: string[] }[] = [
+const STEPS: { n: string; title: string; badge?: string; points: React.ReactNode[] }[] = [
   {
     n: "01",
     title: "Il tuo target: a chi ti stai rivolgendo davvero",
     badge: "con Davide",
     points: [
-      "Partiamo da una domanda scomoda: sai davvero a chi stai vendendo? Non in senso generico, ma in modo specifico: chi è, cosa vuole, cosa lo blocca, perché dovrebbe scegliere te e non qualcun altro.",
-      "In questa parte costruiamo insieme il profilo del tuo cliente ideale in modo operativo: non un esercizio teorico, ma uno strumento che ti serve per prendere decisioni concrete su cosa creare, come comunicarlo e a chi.",
-      "Uscire da questa sezione con le idee chiare sul target cambia tutto: i tuoi contenuti diventano più efficaci, i tuoi lanci parlano alla persona giusta e smetti di sentirti come se stessi urlando nel vuoto.",
+      <>Partiamo da una domanda scomoda: <strong>sai davvero a chi stai vendendo?</strong> Non in senso generico, ma in modo specifico: chi è, cosa vuole, cosa lo blocca, perché dovrebbe scegliere te e non qualcun altro.</>,
+      <>In questa parte costruiamo insieme il <strong>profilo del tuo cliente ideale in modo operativo</strong>: non un esercizio teorico, ma uno strumento che ti serve per prendere <strong>decisioni concrete</strong> su cosa creare, come comunicarlo e a chi.</>,
+      <>Uscire da questa sezione con le idee chiare sul target cambia tutto: i tuoi contenuti diventano più efficaci, <strong>i tuoi lanci parlano alla persona giusta</strong> e smetti di sentirti come se stessi urlando nel vuoto.</>,
     ],
   },
   {
@@ -119,27 +119,29 @@ const STEPS: { n: string; title: string; badge?: string; points: string[] }[] = 
     title: "Le tue offerte: quante, quali e in che ordine",
     badge: "con Davide",
     points: [
-      "Hai troppe offerte e non sai quale promuovere? O ne hai una sola e non capisci perché non basta? In questa sezione guardiamo quello che hai (o quello che vorresti avere) e lo trasformiamo in un ecosistema che ha senso.",
-      "Capiamo quante offerte servono davvero, quale è il punto di ingresso più efficace per i nuovi clienti, quale è l'offerta principale da lanciare e come costruire una progressione naturale che porta le persone ad acquistare di più nel tempo.",
-      "Il risultato è una mappa chiara delle tue offerte: cosa vendi, a chi, in quale ordine e perché. Niente più confusione su cosa spingere e quando.",
+      <>Hai troppe offerte e non sai quale promuovere? O ne hai una sola e non capisci perché non basta? In questa sezione guardiamo quello che hai e lo trasformiamo in <strong>un ecosistema di offerte che ha senso</strong>.</>,
+      <>Capiamo quante offerte servono davvero, <strong>quale è il punto di ingresso più efficace</strong> per i nuovi clienti, quale è l'offerta principale da lanciare e come costruire <strong>una progressione naturale</strong> che porta le persone ad acquistare di più nel tempo.</>,
+      <>Il risultato è <strong>una mappa chiara delle tue offerte</strong>: cosa vendi, a chi, in quale ordine e perché. Niente più confusione su cosa spingere e quando.</>,
     ],
   },
   {
     n: "03",
     title: "Il tuo freebie: cosa regalare per far crescere la lista",
+    badge: "con Andrea",
     points: [
-      "Senza una lista email non hai un business scalabile: hai solo clienti che comprano una volta e spariscono. Il freebie è lo strumento che trasforma i visitatori in contatti e i contatti in clienti.",
-      "In questa parte capiamo quale tipo di contenuto gratuito funziona meglio per il tuo business, non in assoluto, ma in base a quello che vendi e a chi ti rivolgi. Una guida, un template, una mini-formazione, un audit: la scelta giusta dipende dal tuo target e dal tuo ecosistema.",
-      "Esci da questa sezione con un'idea concreta del freebie da creare (o da migliorare, se ce l'hai già) e con la struttura del funnel di acquisizione che lo distribuisce in automatico.",
+      <><strong>Senza una lista email non hai un business scalabile</strong>: hai solo clienti che comprano una volta e spariscono. Il freebie è lo strumento che trasforma i visitatori in contatti e i contatti in clienti.</>,
+      <>In questa parte capiamo <strong>quale tipo di contenuto gratuito funziona meglio per il tuo business</strong>, non in assoluto, ma in base a quello che vendi e a chi ti rivolgi. Una guida, un template, una mini-formazione, un audit: la scelta giusta dipende dal tuo target e dal tuo ecosistema.</>,
+      <>Esci da questa sezione con <strong>un'idea concreta del freebie da creare</strong> e con la struttura del <strong>funnel di acquisizione che lo distribuisce in automatico</strong>.</>,
     ],
   },
   {
     n: "04",
     title: "Il calendario lanci e funnel per i prossimi 12 mesi",
+    badge: "con Andrea",
     points: [
-      "Questa è la parte che cambia il modo in cui gestisci il tuo business. Costruiamo insieme la mappa dell'anno: quando fare i lanci principali, dove inserire i micro lanci tra un lancio e l'altro e come far girare i funnel evergreen nei periodi in cui non sei in fase attiva.",
-      "Non si tratta di riempire un calendario a caso. Si tratta di scegliere i momenti giusti per il tuo mercato, distribuire le energie nel modo più efficace e fare in modo che le entrate siano più costanti e prevedibili, senza dover stare sempre a spingere.",
-      "A fine masterclass hai sul foglio di lavoro un piano lanci per i prossimi 12 mesi: date, offerte, tipo di lancio e struttura del funnel. Qualcosa di concreto che puoi iniziare a usare da subito.",
+      <>Questa è la parte che cambia il modo in cui gestisci il tuo business. <strong>Costruiamo insieme la mappa dell'anno</strong>: quando fare i lanci principali, dove inserire i micro lanci tra un lancio e l'altro e come far girare i funnel evergreen nei periodi in cui non sei in fase attiva.</>,
+      <>Non si tratta di riempire un calendario a caso. Si tratta di <strong>scegliere i momenti giusti per il tuo mercato</strong>, distribuire le energie nel modo più efficace e fare in modo che <strong>le entrate siano più costanti e prevedibili</strong>, senza dover stare sempre a spingere.</>,
+      <>A fine masterclass hai sul foglio di lavoro <strong>un piano lanci per i prossimi 12 mesi: date, offerte, tipo di lancio e struttura del funnel</strong>. Qualcosa di concreto che puoi iniziare a usare da subito.</>,
     ],
   },
 ];
@@ -363,7 +365,7 @@ function Programma() {
                     </div>
                     <div className="flex flex-col gap-3 mt-3">
                       {step.points.map((p, j) => (
-                        <p key={j} className="text-sm text-foreground/60 leading-relaxed">{p}</p>
+                        <p key={j} className="text-sm text-foreground/60 leading-relaxed">{p as React.ReactNode}</p>
                       ))}
                     </div>
                   </div>
