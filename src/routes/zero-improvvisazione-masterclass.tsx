@@ -4,6 +4,17 @@ import posthog from "posthog-js";
 import andreaFavicon from "@/assets/Foto profilo IG - Favicon.jpg";
 import davideFoto from "@/assets/Davide foto profilo.jpg";
 import copertingWorkbook from "@/assets/Copertina workbook masterclass.png";
+import andreaChiSono from "@/assets/Andrea chi sono.png";
+import davideChiSono from "@/assets/Davide chi sono.png";
+import recBB1 from "@/assets/Recensioni Business Blueprint 1.jpg";
+import recBB2 from "@/assets/Recensioni Business Blueprint 2.png";
+import recBB3 from "@/assets/Recensioni Business Blueprint3.png";
+import recBB4 from "@/assets/Recensioni Business Blueprint4.png";
+import recBB5 from "@/assets/Recensioni Business Blueprint5.png";
+import recBB6 from "@/assets/Recensioni Business Blueprint6.jpg";
+import recBB7 from "@/assets/Recensioni Business Blueprint7.png";
+import recBB8 from "@/assets/Recensioni Business Blueprint8.jpg";
+import recBB9 from "@/assets/Recensioni Business Blueprint9.jpg";
 
 export const Route = createFileRoute("/zero-improvvisazione-masterclass")({
   component: ZeroImprovvisazioneMasterclass,
@@ -1316,37 +1327,33 @@ function ZeroImprovvisazioneMasterclass() {
             <em className="text-[#4B6380]">possiamo parlare di questo</em>
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#4B6380]/15">
-              <div className="flex items-center gap-4 mb-5">
-                <div className="w-16 h-16 rounded-full bg-[#4B6380]/15 flex items-center justify-center flex-shrink-0">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-                  </svg>
+            <div className="rounded-2xl overflow-hidden bg-[#EEF3F5] border border-[#4B6380]/15">
+              <img src={andreaChiSono} alt="Andrea Bonomo" className="w-full object-cover" style={{ maxHeight: 260 }} />
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <div>
+                    <p className="font-bold text-foreground/85 text-lg">Andrea Bonomo</p>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-bold text-foreground/85 text-lg">Andrea Bonomo</p>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
+                <p className="text-sm text-foreground/65 leading-relaxed">Negli ultimi anni ho lavorato con <strong>oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong>senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
+                <div className="mt-4 flex items-center gap-2 bg-white border border-[#4B6380]/10 rounded-xl px-4 py-2.5 w-fit">
+                  <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
+                  <span className="text-xs text-foreground/55 font-medium">4.9 · 50+ recensioni su Google</span>
                 </div>
-              </div>
-              <p className="text-sm text-foreground/65 leading-relaxed">Negli ultimi anni ho lavorato con <strong>oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong>senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
-              <div className="mt-5 flex items-center gap-2 bg-white border border-[#4B6380]/10 rounded-xl px-4 py-2.5 w-fit">
-                <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
-                <span className="text-xs text-foreground/55 font-medium">4.9 · 50+ recensioni su Google</span>
               </div>
             </div>
-            <div className="rounded-2xl p-6 bg-[#EEF3F5] border border-[#4B6380]/15">
-              <div className="flex items-center gap-4 mb-5">
-                <div className="w-16 h-16 rounded-full bg-[#4B6380]/15 flex items-center justify-center flex-shrink-0">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-                  </svg>
+            <div className="rounded-2xl overflow-hidden bg-[#EEF3F5] border border-[#4B6380]/15">
+              <img src={davideChiSono} alt="Davide Angiolillo" className="w-full object-cover" style={{ maxHeight: 260 }} />
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <div>
+                    <p className="font-bold text-foreground/85 text-lg">Davide Angiolillo</p>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-bold text-foreground/85 text-lg">Davide Angiolillo</p>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
-                </div>
+                <p className="text-sm text-foreground/50 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
               </div>
-              <p className="text-sm text-foreground/50 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
             </div>
           </div>
         </div>
@@ -1358,46 +1365,17 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="absolute inset-x-0 top-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to bottom, white, transparent)", zIndex: 1 }} />
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to top, white, transparent)", zIndex: 1 }} />
         <div className="container-narrow relative z-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Le parole dei partecipanti ❤️</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Alcune parole dei nostri studenti/clienti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Cosa dicono le persone che hanno lavorato{" "}
             <em className="text-[#4B6380]">con noi?</em>
           </h2>
-          <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {[
-              { name: "Martina R.", role: "Coach & Formatrice", text: "Prima di questa masterclass ogni lancio era una corsa contro il tempo. Adesso ho finalmente un piano chiaro per i prossimi 12 mesi e so esattamente cosa fare settimana per settimana." },
-              { name: "Luca P.", role: "Consulente Marketing", text: "In 2 ore ho capito più di quanto avessi imparato in mesi di corsi sparsi. Il workbook compilato insieme a loro vale già da solo l'iscrizione. Ed è gratuita." },
-              { name: "Sara M.", role: "Creator & Infoproduttrice", text: "Pensavo di avere già un sistema, ma mi mancava la struttura. Ora ho la mappa delle offerte, l'ordine dei lanci e la logica dei funnel evergreen. Tutto in una mattinata." },
-            ].map((t) => (
-              <div key={t.name} className="bg-white/90 backdrop-blur rounded-2xl border border-[#4B6380]/15 p-6 flex flex-col gap-4"
-                style={{ boxShadow: "0 4px 24px rgba(21,102,134,0.08)" }}>
-                <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => <span key={i} className="text-amber-400 text-sm">★</span>)}
-                </div>
-                <p className="text-sm text-foreground/70 leading-relaxed flex-1">"{t.text}"</p>
-                <div className="flex items-center gap-3 pt-3 border-t border-[#4B6380]/10">
-                  <div className="w-9 h-9 rounded-full bg-[#EEF3F5] flex items-center justify-center flex-shrink-0">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4B6380" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-foreground/80">{t.name}</p>
-                    <p className="text-[10px] text-foreground/45">{t.role}</p>
-                  </div>
-                </div>
+          <div className="columns-2 md:columns-3 gap-4 max-w-5xl mx-auto">
+            {[recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9].map((src, i) => (
+              <div key={i} className="break-inside-avoid mb-4">
+                <img src={src} alt={`Recensione ${i + 1}`} className="w-full rounded-2xl" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.1)" }} />
               </div>
             ))}
-          </div>
-          <div className="mt-10 flex justify-center">
-            <div className="inline-flex items-center gap-3 bg-white/90 border border-[#4B6380]/15 rounded-2xl px-6 py-4 shadow-sm">
-              <div>
-                <div className="flex gap-0.5 mb-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => <span key={i} className="text-amber-400 text-sm">★</span>)}
-                </div>
-                <p className="text-xs text-foreground/55">4.9 su Google · 50+ recensioni verificate</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
