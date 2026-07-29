@@ -36,10 +36,10 @@ function GrazieZeroImprovvisazione() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
 
-      {/* HERO — dark navy */}
-      <section className="relative overflow-hidden py-20 md:py-28 text-white" style={{ backgroundColor: "#1B2F52" }} data-cursor-light>
-        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#4B6380", opacity: 0.35, filter: "blur(120px)", top: "-20%", left: "-10%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
-        <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "#6C9FA8", opacity: 0.25, filter: "blur(100px)", bottom: "-10%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
+      {/* HERO */}
+      <section className="relative overflow-hidden py-20 md:py-28 text-white" style={{ backgroundColor: "#4B6380" }} data-cursor-light>
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "#1B2F52", opacity: 0.45, filter: "blur(120px)", top: "-20%", left: "-10%", animation: "orb-drift-1 22s ease-in-out infinite" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", bottom: "-10%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
 
         <div className="container-narrow relative text-center" style={{ zIndex: 1 }}>
           <div className="inline-flex items-center gap-2 border border-white/20 bg-white/8 text-white text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-8">
@@ -51,30 +51,17 @@ function GrazieZeroImprovvisazione() {
             Ci sei! 🎉
           </h1>
 
-          <p className="font-bold text-white/80 text-base md:text-lg mt-5 mb-3">
+          <p className="text-white/90 text-base md:text-lg mt-6 max-w-xl mx-auto leading-relaxed">
+            Hai fatto un passo importante. Non uno di quei "mi ci metto domani" che restano nel cassetto, uno vero. Il 29 agosto costruiamo insieme il tuo piano lanci e lo porti a casa già scritto, adattato al tuo business.
+          </p>
+
+          <p className="font-semibold text-white/70 text-sm mt-4">
             Sabato 29 agosto · ore 10:00 · su Zoom
           </p>
-          <p className="text-white/55 text-sm max-w-xl mx-auto leading-relaxed">
-            Costruiamo insieme il tuo piano lanci per i prossimi 12 mesi. Alla fine hai un piano completo già scritto, adattato al tuo business.
-          </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href={CALENDAR_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap font-semibold"
-            >
-              🗓 Salva la data in calendario →
-            </a>
-            <a href="#step-workbook" className="cta-ghost text-white/70 border-white/25 hover:text-white hover:border-white/50 whitespace-nowrap">
-              Scarica il workbook ↓
-            </a>
-          </div>
-
-          <div className="mt-10 max-w-xl mx-auto bg-white/8 border border-white/15 rounded-2xl p-5 text-sm text-white/65 leading-relaxed text-left">
-            <p className="font-semibold text-white/85 mb-1">Tieni d'occhio la tua email</p>
-            Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi in arrivo, controlla nello spam. Il link Zoom arriva la mattina del 29 agosto, non prima.
+          <div className="mt-10 max-w-xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-5 text-sm text-white/75 leading-relaxed text-left">
+            <p className="font-semibold text-white mb-2">Tieni d'occhio la tua email</p>
+            Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi, controlla SPAM e PROMOZIONI — le email di conferma finiscono spesso lì. Il link Zoom arriva la mattina del 29 agosto, non prima.
           </div>
         </div>
       </section>
