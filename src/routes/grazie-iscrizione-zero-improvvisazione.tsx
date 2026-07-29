@@ -167,47 +167,6 @@ function GrazieZeroImprovvisazione() {
         </div>
       </section>
 
-      {/* SEGUICI SU INSTAGRAM */}
-      <section className="py-16 md:py-20 relative overflow-hidden" style={{ backgroundColor: "#4B6380" }} data-cursor-light>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute w-[500px] h-[500px] rounded-full" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
-          <div className="absolute w-[400px] h-[400px] rounded-full" style={{ background: "#0c2330", opacity: 0.2, filter: "blur(80px)", bottom: "-10%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
-        </div>
-        <div className="container-narrow relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4">Rimani aggiornato</p>
-          <h2 className="h-display font-bold text-white leading-[1.1] mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
-            Seguici su <em style={{ color: "#C4D9DC" }}>Instagram</em>
-          </h2>
-          <p className="text-sm md:text-base text-white/70 leading-relaxed max-w-xl mb-8">
-            Nei giorni prima della masterclass pubblicheremo contenuti per prepararti. Seguici per non perderti nulla.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a href="https://instagram.com/andreabonomo_mktg" target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl px-5 py-4 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"/>
-              </svg>
-              <div>
-                <p className="text-white font-semibold text-sm">Andrea Bonomo</p>
-                <p className="text-white/60 text-xs">@andreabonomo_mktg</p>
-              </div>
-            </a>
-            <a href="#" className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl px-5 py-4 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"/>
-              </svg>
-              <div>
-                <p className="text-white font-semibold text-sm">Davide Angiolillo</p>
-                <p className="text-white/60 text-xs">@[handle da aggiungere]</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* FOOTER SEMPLICE */}
       <footer style={{ backgroundColor: "#1B2F52" }} className="text-white">
