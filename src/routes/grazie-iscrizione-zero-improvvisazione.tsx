@@ -43,9 +43,12 @@ function GrazieZeroImprovvisazione() {
         <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", bottom: "-10%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
 
         <div className="container-narrow relative text-center" style={{ zIndex: 1 }}>
-          <div className="inline-flex items-center gap-2 border border-white/20 bg-white/8 text-white text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(52,211,153,0.9)" }} />
-            Iscrizione confermata
+          <div className="flex flex-col items-center gap-3 mb-8">
+            <div className="inline-flex items-center gap-2 border border-white/20 bg-white/8 text-white text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(52,211,153,0.9)" }} />
+              Iscrizione confermata
+            </div>
+            <p className="text-white/70 text-sm font-medium">Non chiudere questa pagina. Leggi qui sotto.</p>
           </div>
 
           <h1 className="h-display font-bold" style={{ fontSize: "clamp(3.5rem, 10vw, 7rem)", lineHeight: 1.0 }}>
@@ -62,7 +65,7 @@ function GrazieZeroImprovvisazione() {
 
           <div className="mt-10 max-w-xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-5 text-sm text-white/75 leading-relaxed text-left">
             <p className="font-semibold text-white mb-2">Tieni d'occhio la tua email</p>
-            Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi, controlla SPAM e PROMOZIONI — le email di conferma finiscono spesso lì. Il link Zoom arriva la mattina del 29 agosto, non prima.
+            Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi, controlla SPAM e PROMOZIONI: le email di conferma finiscono spesso lì. Il link Zoom arriva la mattina del 29 agosto, non prima.
           </div>
         </div>
       </section>
@@ -97,7 +100,7 @@ function GrazieZeroImprovvisazione() {
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <div className="inline-flex items-center gap-1.5 border border-emerald-200 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-5 self-start">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
-                    Passo 01 — Fallo adesso
+                    Passo 01 · Fallo adesso
                   </div>
                   <h3 className="font-bold text-foreground/90 text-xl md:text-2xl leading-snug mb-3">
                     Scarica il workbook e tienilo aperto durante la diretta
