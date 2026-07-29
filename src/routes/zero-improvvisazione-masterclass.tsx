@@ -1319,7 +1319,7 @@ function ZeroImprovvisazioneMasterclass() {
         </div>
         <div className="container-narrow relative z-10 flex flex-col" style={{ minHeight: "900px" }}>
           <div className="mt-auto pb-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Chi siamo</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Chi ti guiderà durante la masterclass?</p>
             <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-8">
               Chi siamo e perché{" "}
               <em style={{ color: "#C4D9DC" }}>possiamo parlare di questo</em>
