@@ -956,9 +956,10 @@ function ZeroImprovvisazioneMasterclass() {
           </div>
 
           <div className="mt-16 text-center">
-            <p className="text-white/50 text-xs font-semibold uppercase tracking-[0.18em] mb-2">Riconoscibile?</p>
-            <p className="text-white font-bold text-xl md:text-2xl">Forse il tuo calendario in questo momento</p>
-            <p className="text-white/55 text-sm mt-1">così ti mette ansia ogni volta che lo guardi.</p>
+            <h2 className="h-display font-bold text-white text-2xl md:text-3xl lg:text-4xl leading-snug">
+              Il tuo calendario è più o meno così,{" "}
+              <em style={{ color: "#C4D9DC" }}>in questo momento?</em>
+            </h2>
           </div>
           <ChaosCalendar />
         </div>
