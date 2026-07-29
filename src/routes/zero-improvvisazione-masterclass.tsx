@@ -644,7 +644,7 @@ function ChaosCalendar() {
   useEffect(() => {
     if (!started) return;
     if (revealedCount >= totalCells) return;
-    const id = setTimeout(() => setRevealedCount(c => c + 1), 12);
+    const id = setTimeout(() => setRevealedCount(c => c + 1), 28);
     return () => clearTimeout(id);
   }, [started, revealedCount, totalCells]);
 
