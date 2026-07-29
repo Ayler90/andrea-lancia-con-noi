@@ -574,7 +574,7 @@ const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string
     days: [0,0,0,0,0,0,0, 0,0,1,0,0,0,0, 0,0,0,0,0,0,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,0],
   },
   {
-    name: "FEB", label: "Panico totale", note: "Lancio improvvisato", badge: "🔥",
+    name: "FEB", label: "Panico totale", note: "Lancio improvvisato", badge: "😱",
     days: [2,2,2,0,2,2,0, 2,2,2,2,0,2,2, 0,2,2,2,2,2,0, 2,2,0,2,2,2,0, 2,2,2,0,0,0,0],
   },
   {
@@ -594,7 +594,7 @@ const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string
     days: [0,0,1,0,1,0,0, 0,1,0,0,0,1,0, 0,0,0,1,0,0,0, 0,1,1,0,0,0,0, 0,0,0,0,0,0,0],
   },
   {
-    name: "LUG", label: "Panico a metà mese", note: "Lancio improvvisato", badge: "🔥",
+    name: "LUG", label: "Panico a metà mese", note: "Lancio improvvisato", badge: "😱",
     days: [0,0,0,1,0,0,0, 0,0,0,0,0,0,0, 2,2,2,2,2,0,0, 2,2,2,2,0,0,0, 0,0,0,0,0,0,0],
   },
   {
@@ -602,7 +602,7 @@ const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string
     days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
   },
   {
-    name: "SET", label: "Tutto insieme", note: "Di corsa, di nuovo", badge: "🔥",
+    name: "SET", label: "Tutto insieme", note: "Di corsa, di nuovo", badge: "😱",
     days: [2,2,2,2,2,0,0, 2,2,2,2,2,2,0, 0,2,2,2,2,2,2, 2,2,2,2,2,0,0, 0,2,2,2,0,0,0],
   },
   {
@@ -610,7 +610,7 @@ const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string
     days: [0,1,0,0,1,0,0, 0,0,1,0,0,0,0, 1,0,0,0,1,0,0, 0,0,0,1,0,0,0, 0,0,0,0,0,0,0],
   },
   {
-    name: "NOV", label: "Rush finale", note: "Black Friday", badge: "🔥",
+    name: "NOV", label: "Rush finale", note: "Black Friday", badge: "😱",
     days: [0,0,2,2,2,0,0, 2,2,2,2,2,0,2, 2,0,2,2,2,2,0, 2,2,2,0,2,2,2, 0,0,2,2,2,0,0],
   },
   {
@@ -1035,6 +1035,11 @@ function ZeroImprovvisazioneMasterclass() {
             <p className="text-sm text-white font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
           </div>
 
+          <div className="mt-16 text-center">
+            <p className="text-white/50 text-xs font-semibold uppercase tracking-[0.18em] mb-2">Riconoscibile?</p>
+            <p className="text-white font-bold text-xl md:text-2xl">Forse il tuo calendario in questo momento</p>
+            <p className="text-white/55 text-sm mt-1">così ti mette ansia ogni volta che lo guardi.</p>
+          </div>
           <ChaosCalendar />
         </div>
       </section>
