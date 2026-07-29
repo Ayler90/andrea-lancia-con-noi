@@ -1279,7 +1279,7 @@ function ZeroImprovvisazioneMasterclass() {
                   Quante volte sei uscito da una formazione con la testa piena di spunti, convinto che questa volta avresti davvero messo tutto in pratica, e invece dopo due giorni eri già nel solito loop? Noi lo sappiamo benissimo. Per questo abbiamo costruito questo workbook: non come un bonus qualsiasi, ma come lo strumento che ti accompagna durante la diretta e ti resta in mano dopo.
                 </p>
                 <p className="text-sm md:text-base text-foreground/65 leading-relaxed mb-6">
-                  Lo compili sezione per sezione mentre siamo in diretta con te. Quando esci dalla mattinata hai già scritto <strong>chi è il tuo cliente, quali offerte hai e in che ordine lanciarle, come far crescere la tua lista e come pianificare i prossimi 12 mesi</strong>. Non appunti sparsi. Un piano vero, adattato al tuo business. Sai già cosa fare lunedì mattina. <strong>È una liberazione.</strong>
+                  Lo compili sezione per sezione mentre siamo in diretta con te. Quando esci dalla mattinata hai già scritto <strong>chi è il tuo cliente, quali offerte hai e in che ordine lanciarle, come far crescere la tua lista e come pianificare i prossimi 12 mesi</strong>. Non appunti sparsi. Un piano vero, adattato al tuo business. Sai già cosa fare il giorno dopo della masterclass. <strong>È una liberazione.</strong>
                 </p>
                 <ul className="space-y-2.5 mb-6">
                   {[
