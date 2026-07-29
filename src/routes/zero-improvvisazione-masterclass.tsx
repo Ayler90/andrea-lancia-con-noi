@@ -610,24 +610,25 @@ const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string
 ];
 
 function ChaosCalendar() {
+  const visibleMonths = CHAOS_MONTHS.slice(0, 8);
   return (
-    <div className="mt-14" style={{ position: "relative", left: "50%", width: "108vw", transform: "translateX(-50%)" }}>
-      <div className="flex gap-[6px] px-6">
-        {CHAOS_MONTHS.map(m => {
+    <div className="mt-14 overflow-x-auto" style={{ position: "relative", left: "50%", width: "min(108vw, 108vw)", transform: "translateX(-50%)" }}>
+      <div className="flex gap-[6px] px-6" style={{ minWidth: "max(108vw, 680px)" }}>
+        {visibleMonths.map(m => {
           const isPanic = m.days.filter(d => d === 2).length > 10;
           return (
             <div key={m.name} className="flex-1 min-w-0">
               {/* Annotation above panic months */}
               <div className="h-7 flex items-end justify-center mb-1">
                 {m.badge && (
-                  <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.08em] text-orange-300/80 bg-orange-400/10 border border-orange-400/20 rounded-full px-1.5 py-0.5">
+                  <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.08em] text-orange-300/80 bg-orange-400/10 border border-orange-400/20 rounded-full px-1.5 py-0.5 whitespace-nowrap">
                     {m.badge} {m.note}
                   </span>
                 )}
               </div>
 
               {/* Month name */}
-              <p className={`text-[10px] font-bold uppercase tracking-[0.14em] text-center mb-1.5 ${isPanic ? "text-orange-300" : "text-white/70"}`}>
+              <p className={`text-[10px] font-bold uppercase tracking-[0.14em] text-center mb-1.5 whitespace-nowrap ${isPanic ? "text-orange-300" : "text-white/70"}`}>
                 {m.name}
               </p>
 
@@ -649,7 +650,7 @@ function ChaosCalendar() {
               </div>
 
               {/* Label below */}
-              <p className={`text-[9px] text-center mt-2 leading-tight ${isPanic ? "text-orange-200/80" : "text-white/55"}`}>
+              <p className={`text-[9px] text-center mt-2 leading-tight whitespace-nowrap ${isPanic ? "text-orange-200/80" : "text-white/55"}`}>
                 {m.label}
               </p>
             </div>
@@ -901,7 +902,7 @@ function ZeroImprovvisazioneMasterclass() {
           <div className="grid md:grid-cols-[1fr_420px] gap-10 md:gap-20 items-center">
 
             {/* COLONNA SINISTRA */}
-            <div>
+            <div className="text-center sm:text-left">
               <div className="inline-flex items-center gap-2 border border-[#4B6380]/25 bg-[#4B6380]/6 text-[#4B6380] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-6">
                 🗓 29 agosto · ore 10:00 · Masterclass gratuita · Posti limitati
               </div>
@@ -916,12 +917,8 @@ function ZeroImprovvisazioneMasterclass() {
                 <strong>Lanci Senza Stress</strong> è la masterclass gratuita in cui <strong>Andrea Bonomo</strong> e <strong>Davide Angiolillo</strong> ti guidano a costruire il tuo <strong>piano lanci dall'inizio alla fine</strong>: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
               </p>
 
-              <p className="mt-3 font-bold text-[#4B6380] text-sm md:text-base">
-                Sabato 29 agosto · ore 10:00 · Zoom · Gratuito
-              </p>
-
-              <div className="mt-7 flex flex-col sm:flex-row items-start gap-3">
-                <div className="flex flex-col items-start gap-1">
+              <div className="mt-7 flex flex-col items-center sm:items-start sm:flex-row gap-3">
+                <div className="flex flex-col items-center sm:items-start gap-1">
                   <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
                     Voglio il mio posto →
                   </button>
@@ -932,7 +929,7 @@ function ZeroImprovvisazioneMasterclass() {
                 </button>
               </div>
 
-              <div className="mt-7 flex flex-wrap gap-2.5">
+              <div className="mt-7 flex flex-wrap justify-center sm:justify-start gap-2.5">
                 {[
                   { icon: "🎓", text: "Masterclass gratuita" },
                   { icon: "💻", text: "Su Zoom" },
