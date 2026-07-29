@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import posthog from "posthog-js";
 import andreaFavicon from "@/assets/Foto profilo IG - Favicon.jpg";
 import davideFoto from "@/assets/Davide foto profilo.jpg";
+import copertingWorkbook from "@/assets/Copertina workbook masterclass.png";
 
 export const Route = createFileRoute("/zero-improvvisazione-masterclass")({
   component: ZeroImprovvisazioneMasterclass,
@@ -1247,37 +1248,60 @@ function ZeroImprovvisazioneMasterclass() {
             Il workbook che compili{" "}
             <em className="text-[#4B6380]">in diretta con noi</em>
           </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
-            <div>
-              <p className="text-sm md:text-base text-foreground/70 leading-relaxed mb-6">
-                Iscrivendoti alla masterclass gratuita <strong>scarichi subito il workbook</strong>. Lo compili in diretta con noi, sezione per sezione, adattato al tuo business specifico. <strong>Alla fine hai uno schema già fatto e pronto da usare.</strong>
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Sezione target per ogni tua offerta",
-                  "Mappa delle offerte con ordine di lancio",
-                  "Piano dell'anno con contenuti per ogni fase",
-                ].map(item => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                    <CheckIcon />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl bg-white border border-[#4B6380]/15 p-8 flex flex-col items-center gap-4 shadow-sm text-center">
-              <div className="relative">
-                <div className="text-5xl" style={{ animation: "thought-float 3s ease-in-out infinite" }}>📋</div>
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-12 h-4 blur-xl rounded-full pointer-events-none" style={{ backgroundColor: "rgba(21,102,134,0.3)" }} />
+          <div className="max-w-4xl mx-auto rounded-3xl bg-white border border-[#4B6380]/12 overflow-hidden" style={{ boxShadow: "0 4px 40px rgba(21,102,134,0.10)" }}>
+            <div className="grid md:grid-cols-[1fr_1.2fr] gap-0">
+
+              {/* SINISTRA — copertina inclinata */}
+              <div className="bg-[#EEF3F5] flex items-center justify-center p-10 md:p-12">
+                <div className="relative">
+                  <img
+                    src={copertingWorkbook}
+                    alt="Copertina workbook masterclass"
+                    className="w-full max-w-[220px] rounded-xl object-cover"
+                    style={{
+                      transform: "rotate(-4deg)",
+                      boxShadow: "8px 16px 40px rgba(21,102,134,0.22), 2px 4px 12px rgba(21,102,134,0.12)",
+                    }}
+                  />
+                </div>
               </div>
-              <div>
-                <p className="font-bold text-foreground/85 text-lg mb-1">Il tuo workbook</p>
-                <p className="text-sm text-foreground/50">Scaricabile subito dopo l'iscrizione</p>
+
+              {/* DESTRA — testo */}
+              <div className="p-8 md:p-10 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-1.5 border border-emerald-200 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-5 self-start">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+                  Incluso con l'iscrizione
+                </div>
+                <h3 className="font-bold text-foreground/90 text-xl md:text-2xl leading-snug mb-4">
+                  Un workbook che compili <em className="text-[#4B6380]">in tempo reale</em>, mentre siamo in diretta.
+                </h3>
+                <p className="text-sm md:text-base text-foreground/65 leading-relaxed mb-4">
+                  Non è un documento da leggere dopo. Lo apri prima della masterclass, lo tieni davanti a te durante la diretta e lo compili sezione per sezione mentre Andrea e Davide ti guidano. Ogni parte segue l'ordine della masterclass: target, offerte, ecosistema, freebie, calendario lanci.
+                </p>
+                <p className="text-sm md:text-base text-foreground/65 leading-relaxed mb-6">
+                  Alla fine della mattinata non esci con appunti sparsi. <strong>Esci con un piano già scritto, adattato al tuo business specifico</strong>, pronto da usare dal giorno dopo.
+                </p>
+                <ul className="space-y-2.5 mb-6">
+                  {[
+                    "Target definito per ogni offerta",
+                    "Mappa delle offerte e ordine di lancio",
+                    "Calendario lanci per i prossimi 12 mesi",
+                    "Struttura freebie e funnel di acquisizione",
+                  ].map(item => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/75">
+                      <CheckIcon />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 self-start"
+                  onClick={() => { trackCta("workbook-iscriviti"); scrollToSection("form"); }}
+                >
+                  Voglio il mio posto →
+                </button>
               </div>
-              <div className="inline-flex items-center gap-1.5 border border-emerald-200 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
-                Disponibile subito
-              </div>
+
             </div>
           </div>
         </div>
