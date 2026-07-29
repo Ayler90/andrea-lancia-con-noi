@@ -1328,7 +1328,7 @@ function ZeroImprovvisazioneMasterclass() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="rounded-2xl overflow-hidden bg-[#EEF3F5] border border-[#4B6380]/15">
-              <img src={andreaChiSono} alt="Andrea Bonomo" className="w-full object-cover" style={{ maxHeight: 260 }} />
+              <img src={andreaChiSono} alt="Andrea Bonomo" className="w-full object-cover object-top" style={{ maxHeight: 260 }} />
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div>
@@ -1344,7 +1344,7 @@ function ZeroImprovvisazioneMasterclass() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden bg-[#EEF3F5] border border-[#4B6380]/15">
-              <img src={davideChiSono} alt="Davide Angiolillo" className="w-full object-cover" style={{ maxHeight: 260 }} />
+              <img src={davideChiSono} alt="Davide Angiolillo" className="w-full object-cover object-top" style={{ maxHeight: 260 }} />
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div>
