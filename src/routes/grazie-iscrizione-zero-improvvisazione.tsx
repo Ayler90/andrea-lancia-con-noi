@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import React, { useEffect } from "react";
 import posthog from "posthog-js";
+import copertingWorkbook from "@/assets/Copertina workbook masterclass.png";
 
 export const Route = createFileRoute("/grazie-iscrizione-zero-improvvisazione")({
   component: GrazieZeroImprovvisazione,
@@ -68,7 +69,7 @@ function GrazieZeroImprovvisazione() {
 
       {/* STEPS — 3 passi da fare */}
       <section className="py-16 md:py-24 bg-[#EEF3F5]">
-        <div className="container-narrow max-w-3xl mx-auto">
+        <div className="container-narrow max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Cosa fare adesso</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-14">
             Tre cose da fare{" "}
@@ -76,9 +77,61 @@ function GrazieZeroImprovvisazione() {
           </h2>
 
           <div className="flex flex-col gap-6">
-            {/* Step 1: Calendario */}
+
+            {/* Step 1: Workbook — grande, immagine sinistra + testo destra */}
+            <div id="step-workbook" className="bg-white rounded-3xl border border-[#4B6380]/12 overflow-hidden" style={{ boxShadow: "0 4px 40px rgba(21,102,134,0.10)" }}>
+              <div className="grid md:grid-cols-[1fr_1.4fr]">
+                {/* Copertina */}
+                <div className="bg-[#EEF3F5] flex items-center justify-center p-8 md:p-12">
+                  <img
+                    src={copertingWorkbook}
+                    alt="Copertina workbook masterclass"
+                    className="w-full max-w-[240px] rounded-xl object-cover"
+                    style={{
+                      transform: "rotate(-4deg)",
+                      boxShadow: "8px 16px 40px rgba(21,102,134,0.22), 2px 4px 12px rgba(21,102,134,0.12)",
+                    }}
+                  />
+                </div>
+                {/* Testo */}
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-1.5 border border-emerald-200 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-5 self-start">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" style={{ boxShadow: "0 0 5px rgba(52,211,153,0.8)" }} />
+                    Passo 01 — Fallo adesso
+                  </div>
+                  <h3 className="font-bold text-foreground/90 text-xl md:text-2xl leading-snug mb-3">
+                    Scarica il workbook e tienilo aperto durante la diretta
+                  </h3>
+                  <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-5">
+                    Lo compiliamo insieme sezione per sezione durante la mattinata. Senza workbook perdi l'80% del valore: alla fine della diretta esci con un piano vero già scritto, adattato al tuo business. Stampalo o aprilo su un secondo schermo.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    {[
+                      "Target definito per ogni tua offerta",
+                      "Mappa delle offerte e ordine di lancio",
+                      "Calendario lanci per i prossimi 12 mesi",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/75">
+                        <CheckIcon />{item}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href="https://docs.google.com/document/d/1CeoHFyWylrmRn65gBMjINacUVAzSRt6aSd-5ilW0cGU/edit?usp=sharing"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 self-start inline-flex"
+                  >
+                    Scarica il workbook →
+                  </a>
+                  <p className="text-xs text-foreground/40 mt-3">Consiglio: carta e penna vicino aiutano.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2: Calendario */}
             <div className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>01</div>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>02</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🗓</span>
@@ -89,33 +142,6 @@ function GrazieZeroImprovvisazione() {
                   Aggiungi a Google Calendar →
                 </a>
                 <p className="text-xs text-foreground/40 mt-3">Sabato 29 agosto · ore 10:00 · Zoom</p>
-              </div>
-            </div>
-
-            {/* Step 2: Workbook */}
-            <div id="step-workbook" className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>02</div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xl">📋</span>
-                  <h3 className="font-bold text-lg text-foreground/90">Scarica il workbook</h3>
-                </div>
-                <p className="text-sm text-foreground/60 leading-relaxed mb-4">Scaricalo adesso e stampalo (o aprilo su un secondo schermo) prima della diretta. Lo compili insieme a noi sezione per sezione. Senza workbook perdi l'80% del valore della mattinata.</p>
-                <ul className="space-y-2 mb-5">
-                  {[
-                    "La sezione target per ogni tua offerta",
-                    "La mappa delle offerte con l'ordine di lancio",
-                    "Il piano dell'anno e il piano contenuti per ogni fase",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-foreground/75">
-                      <CheckIcon />{item}
-                    </li>
-                  ))}
-                </ul>
-                <a href="https://docs.google.com/document/d/1CeoHFyWylrmRn65gBMjINacUVAzSRt6aSd-5ilW0cGU/edit?usp=sharing" target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
-                  Scarica il workbook →
-                </a>
-                <p className="text-xs text-foreground/40 mt-3">Consiglio: carta e penna vicino aiutano.</p>
               </div>
             </div>
 
@@ -134,6 +160,7 @@ function GrazieZeroImprovvisazione() {
                 <p className="text-xs text-foreground/40 mt-3">Ci vuole meno di 2 minuti.</p>
               </div>
             </div>
+
           </div>
         </div>
       </section>
