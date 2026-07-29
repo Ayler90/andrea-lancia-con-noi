@@ -1322,16 +1322,16 @@ function ZeroImprovvisazioneMasterclass() {
             Il workbook che compili{" "}
             <em className="text-[#4B6380]">in diretta con noi</em>
           </h2>
-          <div className="max-w-4xl mx-auto rounded-3xl bg-white border border-[#4B6380]/12 overflow-hidden" style={{ boxShadow: "0 4px 40px rgba(21,102,134,0.10)" }}>
-            <div className="grid md:grid-cols-[1fr_1.2fr] gap-0">
+          <div className="max-w-5xl mx-auto rounded-3xl bg-white border border-[#4B6380]/12 overflow-hidden" style={{ boxShadow: "0 4px 40px rgba(21,102,134,0.10)" }}>
+            <div className="grid md:grid-cols-[1fr_1.3fr] gap-0">
 
               {/* SINISTRA — copertina inclinata */}
-              <div className="bg-[#EEF3F5] flex items-center justify-center p-10 md:p-12">
-                <div className="relative">
+              <div className="bg-[#EEF3F5] flex items-center justify-center p-8 md:p-14">
+                <div className="relative w-full flex justify-center">
                   <img
                     src={copertingWorkbook}
                     alt="Copertina workbook masterclass"
-                    className="w-full max-w-[220px] rounded-xl object-cover"
+                    className="w-full max-w-[300px] rounded-xl object-cover"
                     style={{
                       transform: "rotate(-4deg)",
                       boxShadow: "8px 16px 40px rgba(21,102,134,0.22), 2px 4px 12px rgba(21,102,134,0.12)",
