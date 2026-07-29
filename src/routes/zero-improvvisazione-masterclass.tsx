@@ -1313,7 +1313,7 @@ function ZeroImprovvisazioneMasterclass() {
 
       {/* CHI SIAMO */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="px-3 md:px-4">
+        <div className="px-6 md:px-12">
           {/* Grande riquadro con immagine di sfondo */}
           <div className="relative overflow-hidden rounded-3xl flex flex-col" style={{ minHeight: "780px" }}>
             <img src={andreadaveSfondo} alt="" className="absolute inset-0 w-full h-full object-cover" />
