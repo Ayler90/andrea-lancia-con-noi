@@ -631,7 +631,7 @@ function ChaosCalendar() {
             >
               <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">{m.name}</p>
               <span className="text-2xl leading-none">{revealed ? m.emoji : ""}</span>
-              <p className={`text-[9px] leading-tight text-center ${text}`} style={{ minHeight: 36 }}>
+              <p className="text-[11px] leading-snug text-center text-white/85" style={{ minHeight: 36 }}>
                 {revealed ? m.thought : ""}
               </p>
             </div>
