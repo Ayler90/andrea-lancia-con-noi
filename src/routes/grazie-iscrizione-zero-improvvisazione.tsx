@@ -129,35 +129,37 @@ function GrazieZeroImprovvisazione() {
               </div>
             </div>
 
-            {/* Step 2: Calendario */}
-            <div className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>02</div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xl">🗓</span>
-                  <h3 className="font-bold text-lg text-foreground/90">Salva la data in calendario</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Step 2: Calendario */}
+              <div className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+                <div className="w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>02</div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">🗓</span>
+                    <h3 className="font-bold text-lg text-foreground/90">Salva la data in calendario</h3>
+                  </div>
+                  <p className="text-sm text-foreground/60 leading-relaxed mb-4">Aggiungi subito la masterclass al tuo calendario per non dimenticarti. Il link Zoom arriva via email la mattina del 29 agosto.</p>
+                  <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
+                    Aggiungi a Google Calendar →
+                  </a>
+                  <p className="text-xs text-foreground/40 mt-3">Sabato 29 agosto · ore 10:00 · Zoom</p>
                 </div>
-                <p className="text-sm text-foreground/60 leading-relaxed mb-4">Aggiungi subito la masterclass al tuo calendario per non dimenticarti. Il link Zoom arriva via email la mattina del 29 agosto.</p>
-                <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 inline-flex">
-                  Aggiungi a Google Calendar →
-                </a>
-                <p className="text-xs text-foreground/40 mt-3">Sabato 29 agosto · ore 10:00 · Zoom</p>
               </div>
-            </div>
 
-            {/* Step 3: Questionario */}
-            <div className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 md:gap-8 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>03</div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xl">✍️</span>
-                  <h3 className="font-bold text-lg text-foreground/90">Rispondi al questionario</h3>
+              {/* Step 3: Questionario */}
+              <div className="bg-white rounded-2xl border border-[#4B6380]/15 p-6 md:p-8 flex gap-5 items-start" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
+                <div className="w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-sm text-white" style={{ backgroundColor: "#4B6380" }}>03</div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">✍️</span>
+                    <h3 className="font-bold text-lg text-foreground/90">Rispondi al questionario</h3>
+                  </div>
+                  <p className="text-sm text-foreground/60 leading-relaxed mb-4">Due minuti, anonimo. Quello che scrivi ci aiuta a impostare la diretta sulla situazione reale di chi partecipa. Rispondi come ti viene, senza pensarci troppo.</p>
+                  <a href="#" className="pill border border-[#4B6380]/30 text-[#4B6380] hover:bg-[#4B6380]/5 inline-flex">
+                    Compila il questionario →
+                  </a>
+                  <p className="text-xs text-foreground/40 mt-3">Ci vuole meno di 2 minuti.</p>
                 </div>
-                <p className="text-sm text-foreground/60 leading-relaxed mb-4">Due minuti, anonimo. Quello che scrivi ci aiuta a impostare la diretta sulla situazione reale di chi partecipa. Rispondi come ti viene, senza pensarci troppo.</p>
-                <a href="#" className="pill border border-[#4B6380]/30 text-[#4B6380] hover:bg-[#4B6380]/5 inline-flex">
-                  Compila il questionario →
-                </a>
-                <p className="text-xs text-foreground/40 mt-3">Ci vuole meno di 2 minuti.</p>
               </div>
             </div>
 
