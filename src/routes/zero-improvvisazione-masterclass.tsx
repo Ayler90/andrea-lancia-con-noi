@@ -863,14 +863,14 @@ function scrollToSection(id: string) {
 
 const BAR_CONTENT = ({ onClick }: { onClick: () => void }) => (
   <div
-    className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 px-8 py-3.5"
+    className="flex flex-col items-center sm:flex-row sm:justify-center gap-3 sm:gap-8 px-8 py-3.5 text-center sm:text-left"
     style={{
       background: "rgba(10,26,35,0.92)",
       backdropFilter: "blur(14px)",
       borderTop: "1px solid rgba(196,217,220,0.12)",
     }}
   >
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/80">
+    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1 text-sm text-white/80">
       <span className="font-semibold text-white">Lanci Senza Stress</span>
       <span className="text-white/40 hidden sm:inline">·</span>
       <span>🗓 29 agosto · ore 10:00</span>
