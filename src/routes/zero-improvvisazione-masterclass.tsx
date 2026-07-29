@@ -6,6 +6,7 @@ import davideFoto from "@/assets/Davide foto profilo.jpg";
 import copertingWorkbook from "@/assets/Copertina workbook masterclass.png";
 import andreaChiSono from "@/assets/Andrea chi sono.png";
 import davideChiSono from "@/assets/Davide chi sono.png";
+import andreadaveSfondo from "@/assets/Andrea e Dave immagine sfondo.png";
 import recBB1 from "@/assets/Recensioni Business Blueprint 1.jpg";
 import recBB2 from "@/assets/Recensioni Business Blueprint 2.png";
 import recBB3 from "@/assets/Recensioni Business Blueprint3.png";
@@ -1310,43 +1311,44 @@ function ZeroImprovvisazioneMasterclass() {
         </div>
       </section>
 
-      {/* CHI SIAMO — sfondo bianco */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Chi siamo</p>
-          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
+      {/* CHI SIAMO — sfondo immagine */}
+      <section className="py-16 md:py-20 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={andreadaveSfondo} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: "rgba(27,47,82,0.55)" }} />
+        </div>
+        <div className="container-narrow relative z-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4 text-center">Chi siamo</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-12">
             Chi siamo e perché{" "}
-            <em className="text-[#4B6380]">possiamo parlare di questo</em>
+            <em style={{ color: "#C4D9DC" }}>possiamo parlare di questo</em>
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="rounded-2xl overflow-hidden bg-[#EEF3F5] border border-[#4B6380]/15">
-              <img src={andreaChiSono} alt="Andrea Bonomo" className="w-full object-cover" style={{ maxHeight: 260, objectPosition: "center 15%" }} />
+
+            {/* DAVIDE — sinistra */}
+            <div className="rounded-2xl overflow-hidden bg-white/10 backdrop-blur border border-white/20">
+              <img src={davideChiSono} alt="Davide Angiolillo" className="w-full object-cover object-top" style={{ maxHeight: 280 }} />
               <div className="p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <div>
-                    <p className="font-bold text-foreground/85 text-lg">Andrea Bonomo</p>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Funnel & Launch Strategist</span>
-                  </div>
-                </div>
-                <p className="text-sm text-foreground/65 leading-relaxed">Negli ultimi anni ho lavorato con <strong>oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong>senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
-                <div className="mt-4 flex items-center gap-2 bg-white border border-[#4B6380]/10 rounded-xl px-4 py-2.5 w-fit">
+                <p className="font-bold text-white text-lg">Davide Angiolillo</p>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C4D9DC] bg-white/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-3">Esperto di Target & Offerte</span>
+                <p className="text-sm text-white/65 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
+              </div>
+            </div>
+
+            {/* ANDREA — destra */}
+            <div className="rounded-2xl overflow-hidden bg-white/10 backdrop-blur border border-white/20">
+              <img src={andreaChiSono} alt="Andrea Bonomo" className="w-full object-cover" style={{ maxHeight: 280, objectPosition: "center 15%" }} />
+              <div className="p-6">
+                <p className="font-bold text-white text-lg">Andrea Bonomo</p>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C4D9DC] bg-white/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-3">Funnel & Launch Strategist</span>
+                <p className="text-sm text-white/75 leading-relaxed">Negli ultimi anni ho lavorato con <strong className="text-white">oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong className="text-white">senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
+                <div className="mt-4 flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 w-fit">
                   <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
-                  <span className="text-xs text-foreground/55 font-medium">4.9 · 50+ recensioni su Google</span>
+                  <span className="text-xs text-white/60 font-medium">4.9 · 50+ recensioni su Google</span>
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden bg-[#EEF3F5] border border-[#4B6380]/15">
-              <img src={davideChiSono} alt="Davide Angiolillo" className="w-full object-cover object-top" style={{ maxHeight: 260 }} />
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <div>
-                    <p className="font-bold text-foreground/85 text-lg">Davide Angiolillo</p>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#C4D9DC]/80 px-2 py-0.5 rounded-full">Esperto di Target & Offerte</span>
-                  </div>
-                </div>
-                <p className="text-sm text-foreground/50 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
