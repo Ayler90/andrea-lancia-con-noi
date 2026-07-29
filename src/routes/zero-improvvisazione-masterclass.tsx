@@ -972,7 +972,7 @@ function ZeroImprovvisazioneMasterclass() {
                 emoji: "🎯",
                 delay: "0s",
                 title: "Non hai ben chiaro a chi ti stai rivolgendo",
-                desc: <>Parli a tutti e non parli a nessuno. Ogni lancio ricomincia con le stesse domande: chi è il mio cliente ideale? Cosa gli interessa davvero? <strong>Senza una risposta stabile, ogni campagna è un tentativo</strong> e non una certezza.</>,
+                desc: <>Parli a tutti e non parli a nessuno. Ogni lancio ricomincia con le stesse domande: chi è il mio cliente ideale? Cosa gli interessa davvero? <strong>Se non lo identifichi chiaramente, ti ritrovi a sperare che le tue offerte vengano acquistate.</strong></>,
               },
               {
                 emoji: "📦",
