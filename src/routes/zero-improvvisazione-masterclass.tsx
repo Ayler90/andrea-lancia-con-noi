@@ -1273,13 +1273,13 @@ function ZeroImprovvisazioneMasterclass() {
                   Incluso con l'iscrizione
                 </div>
                 <h3 className="font-bold text-foreground/90 text-xl md:text-2xl leading-snug mb-4">
-                  Un workbook che compili <em className="text-[#4B6380]">in tempo reale</em>, mentre siamo in diretta.
+                  Il regalo che ti facciamo per l'iscrizione alla masterclass.
                 </h3>
                 <p className="text-sm md:text-base text-foreground/65 leading-relaxed mb-4">
-                  Non è un documento da leggere dopo. Lo apri prima della masterclass, lo tieni davanti a te durante la diretta e lo compili sezione per sezione mentre Andrea e Davide ti guidano. Ogni parte segue l'ordine della masterclass: target, offerte, ecosistema, freebie, calendario lanci.
+                  Lo abbiamo creato per darti una linea guida concreta da seguire durante la diretta, ma soprattutto dopo. Perché succede spesso: esci da una masterclass con un sacco di idee in testa, sei carico, vuoi fare tutto — e poi le cose restano lì, senza diventare niente.
                 </p>
                 <p className="text-sm md:text-base text-foreground/65 leading-relaxed mb-6">
-                  Alla fine della mattinata non esci con appunti sparsi. <strong>Esci con un piano già scritto, adattato al tuo business specifico</strong>, pronto da usare dal giorno dopo.
+                  Con questo workbook hai una <strong>direzione chiara su offerte, pubblico, lanci e funnel</strong>. Non ti perdi più, non rimandi più. Sai esattamente cosa fare e quando farlo. <strong>È una liberazione.</strong>
                 </p>
                 <ul className="space-y-2.5 mb-6">
                   {[
