@@ -53,7 +53,7 @@ function GrazieZeroImprovvisazione() {
           </h1>
 
           <p className="text-white/90 text-base md:text-lg mt-6 max-w-xl mx-auto leading-relaxed">
-            Hai fatto un passo importante. Non uno di quei "mi ci metto domani" che restano nel cassetto, uno vero. Il 29 agosto costruiamo insieme il tuo piano lanci e lo porti a casa già scritto, adattato al tuo business.
+            Lascia che ti diciamo subito una cosa: hai fatto un passo molto, molto importante. Se sei qui è perché vuoi capire come programmare i tuoi lanci, i tuoi funnel, organizzare le tue offerte e definire, finalmente, il tuo ecosistema. E nella masterclass del 29 agosto lo faremo insieme, in diretta.
           </p>
 
           <p className="font-semibold text-white/70 text-sm mt-4">
