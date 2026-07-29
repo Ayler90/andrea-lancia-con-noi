@@ -1109,51 +1109,142 @@ function ZeroImprovvisazioneMasterclass() {
           </h2>
           <p className="text-white/60 text-sm md:text-base mb-12 max-w-xl mx-auto">Quattro elementi concreti, già scritti e adattati al tuo business, pronti da usare dal giorno dopo.</p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+          <div className="grid sm:grid-cols-2 gap-4">
+
             {/* Card 1 — Target */}
-            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
-              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
-                  <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-                  <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
-                  <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-8 flex flex-col items-center text-center gap-5">
+              <div className="w-full flex items-center justify-center" style={{ height: 140 }}>
+                <svg viewBox="0 0 160 140" width="160" height="140">
+                  {/* pulsing rings */}
+                  {[60,46,32].map((r, i) => (
+                    <circle key={r} cx="80" cy="70" r={r} fill="none" stroke="white"
+                      strokeWidth="1.2" opacity={[0.12,0.22,0.38][i]}
+                      style={{ animation: `thought-float ${4 + i}s ease-in-out ${i * 0.4}s infinite` }} />
+                  ))}
+                  {/* inner filled circles */}
+                  <circle cx="80" cy="70" r={22} fill="rgba(255,255,255,0.10)" />
+                  <circle cx="80" cy="70" r={10} fill="rgba(255,255,255,0.22)" />
+                  <circle cx="80" cy="70" r={4} fill="white" />
+                  {/* crosshair lines */}
+                  {[[80,10,80,42],[80,98,80,130],[10,70,42,70],[118,70,150,70]].map(([x1,y1,x2,y2],i) => (
+                    <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="white" strokeWidth="1" strokeDasharray="3 4" opacity="0.3" />
+                  ))}
+                  {/* floating person dots */}
+                  {[[130,30,5],[28,108,3.5],[138,100,4]].map(([cx,cy,r],i) => (
+                    <circle key={i} cx={cx} cy={cy} r={r} fill="white" opacity="0.45"
+                      style={{ animation: `thought-float ${3 + i * 0.7}s ease-in-out ${i * 0.6}s infinite` }} />
+                  ))}
+                  {/* label */}
+                  <text x="80" y="128" textAnchor="middle" fill="white" fontSize="9" opacity="0.4" fontFamily="sans-serif">cliente ideale</text>
                 </svg>
               </div>
-              <p className="text-white font-semibold text-sm leading-snug">Il target definito per ogni tua offerta</p>
+              <h3 className="text-white font-bold text-lg leading-snug">Il tuo target definito</h3>
+              <p className="text-white/60 text-sm leading-relaxed">Sai esattamente a chi ti rivolgi per ogni offerta. Ogni lancio parla alla persona giusta e smetti di urlare nel vuoto.</p>
             </div>
 
             {/* Card 2 — Mappa offerte */}
-            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
-              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
-                  <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-                  <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-8 flex flex-col items-center text-center gap-5">
+              <div className="w-full flex items-center justify-center" style={{ height: 140 }}>
+                <svg viewBox="0 0 200 140" width="200" height="140">
+                  {/* pyramid of offer blocks */}
+                  {[
+                    { x: 70, y: 10, w: 60, h: 28, label: "Offerta principale", delay: "0s" },
+                    { x: 50, y: 52, w: 100, h: 28, label: "Upsell / continuità", delay: "0.15s" },
+                    { x: 28, y: 94, w: 144, h: 28, label: "Entry point", delay: "0.3s" },
+                  ].map((b, i) => (
+                    <g key={i} style={{ animation: `thought-float ${3.5 + i * 0.5}s ease-in-out ${b.delay} infinite` }}>
+                      <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="6"
+                        fill={`rgba(255,255,255,${0.08 + i * 0.06})`} stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+                      <text x={b.x + b.w / 2} y={b.y + 18} textAnchor="middle" fill="white"
+                        fontSize="8.5" opacity="0.75" fontFamily="sans-serif">{b.label}</text>
+                    </g>
+                  ))}
+                  {/* arrows between blocks */}
+                  {[[100,40,100,50],[100,82,100,92]].map(([x1,y1,x2,y2],i) => (
+                    <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="white" strokeWidth="1.2" opacity="0.35"
+                      markerEnd="url(#arr)" />
+                  ))}
+                  <defs>
+                    <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,255,255,0.35)" />
+                    </marker>
+                  </defs>
                 </svg>
               </div>
-              <p className="text-white font-semibold text-sm leading-snug">La mappa delle offerte con l'ordine in cui lanciarle</p>
+              <h3 className="text-white font-bold text-lg leading-snug">La mappa delle tue offerte</h3>
+              <p className="text-white/60 text-sm leading-relaxed">Hai un ecosistema chiaro: qual è il punto di ingresso, cosa vendi dopo e come le offerte si collegano tra loro nel tempo.</p>
             </div>
 
-            {/* Card 3 — Piano dell'anno */}
-            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
-              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
-                  <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                  <line x1="8" y1="14" x2="8" y2="14" strokeWidth="2.5"/><line x1="12" y1="14" x2="12" y2="14" strokeWidth="2.5"/><line x1="16" y1="14" x2="16" y2="14" strokeWidth="2.5"/>
+            {/* Card 3 — Piano anno */}
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-8 flex flex-col items-center text-center gap-5">
+              <div className="w-full flex items-center justify-center" style={{ height: 140 }}>
+                <svg viewBox="0 0 200 140" width="200" height="140">
+                  {/* calendar grid */}
+                  <rect x="20" y="16" width="160" height="108" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+                  <rect x="20" y="16" width="160" height="26" rx="8" fill="rgba(255,255,255,0.10)" />
+                  <text x="100" y="34" textAnchor="middle" fill="white" fontSize="9" opacity="0.7" fontFamily="sans-serif">Piano lanci 12 mesi</text>
+                  {/* month blocks */}
+                  {[0,1,2,3,4,5,6,7,8,9,10,11].map(i => {
+                    const col = i % 6; const row = Math.floor(i / 6);
+                    const x = 28 + col * 25; const y = 52 + row * 34;
+                    const isLaunch = [1,3,6,9].includes(i);
+                    const isMicro = [0,4,7,10].includes(i);
+                    return (
+                      <g key={i} style={{ animation: isLaunch ? `thought-float 3s ease-in-out ${i*0.2}s infinite` : "none" }}>
+                        <rect x={x} y={y} width="18" height="22" rx="3"
+                          fill={isLaunch ? "rgba(255,255,255,0.30)" : isMicro ? "rgba(255,255,255,0.14)" : "rgba(255,255,255,0.05)"}
+                          stroke={isLaunch ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.15)"} strokeWidth="0.8" />
+                        {isLaunch && <text x={x+9} y={y+14} textAnchor="middle" fill="white" fontSize="6" opacity="0.9" fontFamily="sans-serif">L</text>}
+                        {isMicro && <text x={x+9} y={y+14} textAnchor="middle" fill="white" fontSize="6" opacity="0.55" fontFamily="sans-serif">m</text>}
+                      </g>
+                    );
+                  })}
                 </svg>
               </div>
-              <p className="text-white font-semibold text-sm leading-snug">Il piano dell'anno: grandi lanci, micro lanci e funnel evergreen</p>
+              <h3 className="text-white font-bold text-lg leading-snug">Il piano dell'anno intero</h3>
+              <p className="text-white/60 text-sm leading-relaxed">Grandi lanci, micro lanci e funnel evergreen già posizionati nel calendario. Entrate più costanti, senza dover improvvisare ogni volta.</p>
             </div>
 
-            {/* Card 4 — Email / logica cliente */}
-            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
-              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
-                  <line x1="16" y1="17" x2="20" y2="17"/><polyline points="18,15 20,17 18,19"/>
+            {/* Card 4 — Email flow */}
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-8 flex flex-col items-center text-center gap-5">
+              <div className="w-full flex items-center justify-center" style={{ height: 140 }}>
+                <svg viewBox="0 0 200 140" width="200" height="140">
+                  {/* nodes */}
+                  {[
+                    { cx: 34, cy: 70, label: "Lead", r: 18 },
+                    { cx: 100, cy: 40, label: "Offerta A", r: 20 },
+                    { cx: 100, cy: 100, label: "Offerta B", r: 20 },
+                    { cx: 168, cy: 70, label: "Premium", r: 18 },
+                  ].map((n, i) => (
+                    <g key={i} style={{ animation: `thought-float ${3.2 + i * 0.4}s ease-in-out ${i * 0.35}s infinite` }}>
+                      <circle cx={n.cx} cy={n.cy} r={n.r}
+                        fill={i === 3 ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.10)"}
+                        stroke="rgba(255,255,255,0.35)" strokeWidth="1.2" />
+                      <text x={n.cx} y={n.cy + 3.5} textAnchor="middle" fill="white" fontSize="7.5" opacity="0.8" fontFamily="sans-serif">{n.label}</text>
+                    </g>
+                  ))}
+                  {/* arrows */}
+                  {[
+                    [52,64,80,46],
+                    [52,76,80,94],
+                    [120,44,148,64],
+                    [120,96,148,76],
+                  ].map(([x1,y1,x2,y2],i) => (
+                    <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+                      stroke="white" strokeWidth="1.2" opacity="0.3" strokeDasharray="4 3"
+                      style={{ animation: `thought-float ${2.5 + i*0.3}s ease-in-out ${i*0.5}s infinite` }} />
+                  ))}
+                  {/* email envelope */}
+                  <g style={{ animation: "thought-float 4s ease-in-out 0.8s infinite" }}>
+                    <rect x="88" y="62" width="24" height="16" rx="2" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+                    <polyline points="88,62 100,72 112,62" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+                  </g>
                 </svg>
               </div>
-              <p className="text-white font-semibold text-sm leading-snug">La logica per portare i clienti da un'offerta all'altra con l'email</p>
+              <h3 className="text-white font-bold text-lg leading-snug">La logica email di progressione</h3>
+              <p className="text-white/60 text-sm leading-relaxed">Sai come portare ogni cliente da un'offerta alla successiva con l'email. Il business vende anche quando non sei attivo.</p>
             </div>
+
           </div>
 
           <div className="mt-12 flex justify-center">
