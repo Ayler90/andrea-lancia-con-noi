@@ -401,7 +401,7 @@ function Programma() {
         <div className="mt-16 flex flex-col items-center gap-2">
           <button
             className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap"
-            onClick={() => { trackCta("programma-iscriviti"); scrollToSection("form"); }}
+            onClick={() => { posthog.capture("zero_improv_cta_click", { cta_label: "programma-iscriviti" }); scrollToSection("form"); }}
           >
             Voglio il mio posto →
           </button>
@@ -594,8 +594,8 @@ const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string
     days: [0,0,1,0,1,0,0, 0,1,0,0,0,1,0, 0,0,0,1,0,0,0, 0,1,1,0,0,0,0, 0,0,0,0,0,0,0],
   },
   {
-    name: "LUG", label: "Ferie forzate", note: "Zero entrate",
-    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
+    name: "LUG", label: "Panico a metà mese", note: "Lancio improvvisato", badge: "🔥",
+    days: [0,0,0,1,0,0,0, 0,0,0,0,0,0,0, 2,2,2,2,2,0,0, 2,2,2,2,0,0,0, 0,0,0,0,0,0,0],
   },
   {
     name: "AGO", label: "Silenzio totale",
@@ -621,8 +621,37 @@ const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string
 
 function ChaosCalendar() {
   const visibleMonths = CHAOS_MONTHS.slice(0, 8);
+  const totalCells = visibleMonths.reduce((acc, m) => acc + m.days.length, 0);
+
+  // revealedCount: how many cells (in reading order) are "revealed"
+  const [revealedCount, setRevealedCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Start animation when section enters viewport
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [started]);
+
+  // Animate cells one by one — fast reveal (12ms per cell)
+  useEffect(() => {
+    if (!started) return;
+    if (revealedCount >= totalCells) return;
+    const id = setTimeout(() => setRevealedCount(c => c + 1), 12);
+    return () => clearTimeout(id);
+  }, [started, revealedCount, totalCells]);
+
+  let cellIndex = 0;
+
   return (
-    <div className="mt-14 overflow-x-auto" style={{ position: "relative", left: "50%", width: "min(108vw, 108vw)", transform: "translateX(-50%)" }}>
+    <div ref={ref} className="mt-14 overflow-x-auto" style={{ position: "relative", left: "50%", width: "min(108vw, 108vw)", transform: "translateX(-50%)" }}>
       <div className="flex gap-[6px] px-6" style={{ minWidth: "max(108vw, 680px)" }}>
         {visibleMonths.map(m => {
           const isPanic = m.days.filter(d => d === 2).length > 10;
@@ -644,19 +673,26 @@ function ChaosCalendar() {
 
               {/* Day grid 5×7 */}
               <div className="grid grid-cols-7 gap-[2px]">
-                {m.days.map((d, i) => (
-                  <div
-                    key={i}
-                    className="rounded-[2px]"
-                    style={{
-                      aspectRatio: "1",
-                      backgroundColor:
-                        d === 2 ? "rgba(251,146,60,0.80)"
-                        : d === 1 ? "rgba(196,217,220,0.30)"
-                        : "rgba(255,255,255,0.05)",
-                    }}
-                  />
-                ))}
+                {m.days.map((d, i) => {
+                  const idx = cellIndex++;
+                  const revealed = idx < revealedCount;
+                  const bg = revealed
+                    ? d === 2 ? "rgba(251,146,60,0.80)"
+                      : d === 1 ? "rgba(196,217,220,0.30)"
+                      : "rgba(255,255,255,0.05)"
+                    : "rgba(255,255,255,0.03)";
+                  return (
+                    <div
+                      key={i}
+                      className="rounded-[2px]"
+                      style={{
+                        aspectRatio: "1",
+                        backgroundColor: bg,
+                        transition: revealed ? "background-color 0.18s ease" : "none",
+                      }}
+                    />
+                  );
+                })}
               </div>
 
               {/* Label below */}
