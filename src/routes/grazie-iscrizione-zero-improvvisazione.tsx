@@ -43,19 +43,16 @@ function GrazieZeroImprovvisazione() {
         <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", bottom: "-10%", right: "-5%", animation: "orb-drift-2 28s ease-in-out infinite" }} />
 
         <div className="container-narrow relative text-center" style={{ zIndex: 1 }}>
-          <div className="flex flex-col items-center gap-3 mb-8">
-            <div className="inline-flex items-center gap-2 border border-white/20 bg-white/8 text-white text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(52,211,153,0.9)" }} />
-              Iscrizione confermata
-            </div>
-            <p className="text-white/70 text-sm font-medium">Non chiudere questa pagina. Leggi qui sotto.</p>
+          <div className="inline-flex items-center gap-2 border border-white/20 bg-white/8 text-white text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(52,211,153,0.9)" }} />
+            Iscrizione confermata · Non chiudere questa pagina. Leggi qui sotto.
           </div>
 
           <h1 className="h-display font-bold" style={{ fontSize: "clamp(3.5rem, 10vw, 7rem)", lineHeight: 1.0 }}>
             Ci sei! 🎉
           </h1>
 
-          <p className="text-white/90 text-base md:text-lg mt-6 max-w-xl mx-auto leading-relaxed">
+          <p className="text-white/90 text-base md:text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
             Lascia che ti diciamo subito una cosa: hai fatto un passo molto, molto importante. Se sei qui è perché vuoi capire come programmare i tuoi lanci, i tuoi funnel, organizzare le tue offerte e definire, finalmente, il tuo ecosistema. E nella masterclass del 29 agosto lo faremo insieme, in diretta.
           </p>
 
@@ -63,7 +60,7 @@ function GrazieZeroImprovvisazione() {
             Sabato 29 agosto · ore 10:00 · su Zoom
           </p>
 
-          <div className="mt-10 max-w-xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-5 text-sm text-white/75 leading-relaxed text-left">
+          <div className="mt-10 max-w-2xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-5 text-sm text-white/75 leading-relaxed text-left">
             <p className="font-semibold text-white mb-2">Tieni d'occhio la tua email</p>
             Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi, controlla in SPAM e in PROMOZIONI: le email di conferma finiscono spesso lì. Il link Zoom arriva la mattina del 29 agosto, non prima.
           </div>
