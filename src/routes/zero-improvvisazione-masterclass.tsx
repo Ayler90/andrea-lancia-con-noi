@@ -1011,7 +1011,7 @@ function ZeroImprovvisazioneMasterclass() {
       {/* PER CHI È — sfondo #EEF3F5 */}
       <section className="py-16 md:py-20 bg-[#EEF3F5]">
         <div className="container-narrow">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Per chi è</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Per chi è la masterclass del 29 agosto?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Lanci Senza Stress è{" "}
             <em className="text-[#4B6380]">perfetto per te</em> se:
