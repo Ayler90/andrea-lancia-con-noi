@@ -319,7 +319,7 @@ function Programma() {
       <div className="container-narrow">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Il programma</p>
         <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-          Cosa costruiamo insieme <em className="text-[#4B6380]">in questa masterclass?</em>
+          Cosa costruiamo insieme, <em className="text-[#4B6380]">in diretta</em>, nella masterclass?
         </h2>
 
         <div>
