@@ -397,6 +397,16 @@ function Programma() {
             );
           })}
         </div>
+
+        <div className="mt-16 flex flex-col items-center gap-2">
+          <button
+            className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap"
+            onClick={() => { trackCta("programma-iscriviti"); scrollToSection("form"); }}
+          >
+            Voglio il mio posto →
+          </button>
+          <p className="text-sm text-[#4B6380] font-medium mt-2">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+        </div>
       </div>
     </section>
   );
@@ -918,11 +928,13 @@ function ZeroImprovvisazioneMasterclass() {
               </p>
 
               <div className="mt-7 flex flex-col items-center sm:items-start sm:flex-row gap-3">
-                <div className="flex flex-col items-center sm:items-start gap-1">
+                <div className="flex flex-col items-center sm:items-start gap-3">
                   <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
                     Voglio il mio posto →
                   </button>
-                  <p className="text-sm text-white font-medium mt-1 pl-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+                  <div className="inline-flex items-center gap-2 border border-[#4B6380]/25 bg-[#4B6380]/6 text-[#4B6380] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full">
+                    🗓 29 agosto · ore 10:00 · Masterclass gratuita · Posti limitati
+                  </div>
                 </div>
                 <button className="cta-ghost whitespace-nowrap" onClick={() => scrollToSection("programma")}>
                   Scopri il programma ↓
@@ -983,7 +995,7 @@ function ZeroImprovvisazioneMasterclass() {
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
-            <p className="text-sm text-white font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+            <p className="text-sm text-white font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
           </div>
 
           <ChaosCalendar />
@@ -1260,7 +1272,7 @@ function ZeroImprovvisazioneMasterclass() {
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
-            <p className="text-sm text-white font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+            <p className="text-sm text-white font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
           </div>
         </div>
       </section>
@@ -1325,7 +1337,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
-                <p className="text-sm text-foreground/70 font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+                <p className="text-sm text-foreground/70 font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
               </div>
 
             </div>
@@ -1432,7 +1444,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
-                <p className="text-sm text-foreground/70 font-medium mt-1">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+                <p className="text-sm text-foreground/70 font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
                 <p className="text-xs text-foreground/40">Niente spam. Ricevi solo l'email con il link Zoom.</p>
                 <div className="border-t border-[#4B6380]/10 pt-4 text-xs text-foreground/45 leading-relaxed">
                   Se alla fine ti presentiamo Business Blueprint e non fa per te, non cambia niente. Porti a casa il piano e lo usi da solo.
