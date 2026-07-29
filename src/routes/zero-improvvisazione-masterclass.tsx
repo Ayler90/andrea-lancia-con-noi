@@ -621,7 +621,8 @@ function ChaosCalendar() {
           return (
             <div
               key={m.name}
-              className="flex-1 min-w-0 rounded-xl flex flex-col items-center gap-2 p-3 transition-all duration-500"
+              className="rounded-xl flex flex-col items-center gap-2 p-3 transition-all duration-500 flex-shrink-0 md:flex-1"
+              style={{ width: "clamp(110px, 28vw, 160px)" }}
               style={{
                 backgroundColor: bg,
                 border: `1px solid ${border}`,
@@ -630,8 +631,8 @@ function ChaosCalendar() {
               }}
             >
               <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">{m.name}</p>
-              <span className="text-2xl leading-none">{revealed ? m.emoji : ""}</span>
-              <p className="text-[11px] leading-snug text-center text-white/85" style={{ minHeight: 36 }}>
+              <span className="text-3xl leading-none">{revealed ? m.emoji : ""}</span>
+              <p className="text-[11px] md:text-[11px] leading-snug text-center text-white/85" style={{ minHeight: 40 }}>
                 {revealed ? m.thought : ""}
               </p>
             </div>
