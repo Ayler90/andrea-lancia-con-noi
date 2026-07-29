@@ -1094,40 +1094,61 @@ function ZeroImprovvisazioneMasterclass() {
           <div className="absolute w-[600px] h-[600px] rounded-full" style={{ background: "#6C9FA8", opacity: 0.3, filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
           <div className="absolute w-[500px] h-[500px] rounded-full" style={{ background: "#0c2330", opacity: 0.25, filter: "blur(100px)", bottom: "-15%", right: "5%", animation: "orb-drift-2 34s ease-in-out infinite" }} />
         </div>
-        <div className="container-narrow relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-10">Il risultato</p>
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
-            <div>
-              <h2 className="h-display font-bold text-white leading-[1.1]" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
-                Alla fine della masterclass{" "}
-                <em style={{ color: "#C4D9DC" }}>hai in mano:</em>
-              </h2>
-              <div className="mt-8 rounded-2xl overflow-hidden border border-white/15" style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.25)" }}>
-                <div className="aspect-[4/3] bg-white/10 flex flex-col items-center justify-center gap-3 text-white/30">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
-                  </svg>
-                  <span className="text-sm font-medium">Preview workbook · placeholder</span>
-                </div>
+        <div className="container-narrow relative text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-4">Il risultato</p>
+          <h2 className="h-display font-bold text-white leading-[1.1] mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+            Alla fine della masterclass{" "}
+            <em style={{ color: "#C4D9DC" }}>hai in mano:</em>
+          </h2>
+          <p className="text-white/60 text-sm md:text-base mb-12 max-w-xl mx-auto">Quattro elementi concreti, già scritti e adattati al tuo business, pronti da usare dal giorno dopo.</p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+            {/* Card 1 — Target */}
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
+                  <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                  <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+                  <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+                </svg>
               </div>
+              <p className="text-white font-semibold text-sm leading-snug">Il target definito per ogni tua offerta</p>
             </div>
-            <ul className="space-y-4">
-              {[
-                "Il target definito per ogni tua offerta",
-                "La mappa delle offerte con l'ordine in cui lanciarle",
-                "Il piano dell'anno: grandi lanci, micro lanci e funnel evergreen",
-                "Il piano dei contenuti per ogni fase di lancio",
-                "La logica per portare i clienti da un'offerta all'altra con l'email",
-              ].map(item => (
-                <li key={item} className="flex items-start gap-3 text-sm md:text-base text-white/80 leading-relaxed">
-                  <CheckIcon color="white" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+
+            {/* Card 2 — Mappa offerte */}
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
+                  <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                  <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+              </div>
+              <p className="text-white font-semibold text-sm leading-snug">La mappa delle offerte con l'ordine in cui lanciarle</p>
+            </div>
+
+            {/* Card 3 — Piano dell'anno */}
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  <line x1="8" y1="14" x2="8" y2="14" strokeWidth="2.5"/><line x1="12" y1="14" x2="12" y2="14" strokeWidth="2.5"/><line x1="16" y1="14" x2="16" y2="14" strokeWidth="2.5"/>
+                </svg>
+              </div>
+              <p className="text-white font-semibold text-sm leading-snug">Il piano dell'anno: grandi lanci, micro lanci e funnel evergreen</p>
+            </div>
+
+            {/* Card 4 — Email / logica cliente */}
+            <div className="bg-white/10 border border-white/15 rounded-2xl p-6 flex flex-col gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" opacity="0.85">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
+                  <line x1="16" y1="17" x2="20" y2="17"/><polyline points="18,15 20,17 18,19"/>
+                </svg>
+              </div>
+              <p className="text-white font-semibold text-sm leading-snug">La logica per portare i clienti da un'offerta all'altra con l'email</p>
+            </div>
           </div>
+
           <div className="mt-12 flex justify-center">
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
