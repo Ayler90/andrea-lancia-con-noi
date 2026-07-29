@@ -1325,28 +1325,22 @@ function ZeroImprovvisazioneMasterclass() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-            {/* DAVIDE — sinistra */}
-            <div className="rounded-2xl overflow-hidden bg-white/10 backdrop-blur border border-white/20">
-              <img src={davideChiSono} alt="Davide Angiolillo" className="w-full object-cover object-top" style={{ maxHeight: 280 }} />
-              <div className="p-6">
-                <p className="font-bold text-white text-lg">Davide Angiolillo</p>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C4D9DC] bg-white/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-3">Esperto di Target & Offerte</span>
-                <p className="text-sm text-white/65 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
+            {/* ANDREA — sinistra */}
+            <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.22)" }}>
+              <p className="font-bold text-white text-lg">Andrea Bonomo</p>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C4D9DC] bg-white/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-3">Funnel & Launch Strategist</span>
+              <p className="text-sm text-white/75 leading-relaxed">Negli ultimi anni ho lavorato con <strong className="text-white">oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong className="text-white">senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
+              <div className="mt-4 flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 w-fit">
+                <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
+                <span className="text-xs text-white/60 font-medium">4.9 · 50+ recensioni su Google</span>
               </div>
             </div>
 
-            {/* ANDREA — destra */}
-            <div className="rounded-2xl overflow-hidden bg-white/10 backdrop-blur border border-white/20">
-              <img src={andreaChiSono} alt="Andrea Bonomo" className="w-full object-cover" style={{ maxHeight: 280, objectPosition: "center 15%" }} />
-              <div className="p-6">
-                <p className="font-bold text-white text-lg">Andrea Bonomo</p>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C4D9DC] bg-white/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-3">Funnel & Launch Strategist</span>
-                <p className="text-sm text-white/75 leading-relaxed">Negli ultimi anni ho lavorato con <strong className="text-white">oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong className="text-white">senza finire ogni volta in burnout e con l'acqua alla gola</strong>. Lavoro su contenuti, email e creando il percorso migliore per trasformare un'idea in un'offerta che porta vendite.</p>
-                <div className="mt-4 flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 w-fit">
-                  <span className="text-amber-400 text-sm tracking-tighter">★★★★★</span>
-                  <span className="text-xs text-white/60 font-medium">4.9 · 50+ recensioni su Google</span>
-                </div>
-              </div>
+            {/* DAVIDE — destra */}
+            <div className="rounded-2xl p-6" style={{ backgroundColor: "rgba(196,217,220,0.12)", border: "1px solid rgba(196,217,220,0.22)" }}>
+              <p className="font-bold text-white text-lg">Davide Angiolillo</p>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C4D9DC] bg-white/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-3">Esperto di Target & Offerte</span>
+              <p className="text-sm text-white/65 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
             </div>
 
           </div>
