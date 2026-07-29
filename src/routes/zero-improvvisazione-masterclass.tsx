@@ -927,14 +927,15 @@ function ZeroImprovvisazioneMasterclass() {
                 <strong>Lanci Senza Stress</strong> è la masterclass gratuita in cui <strong>Andrea Bonomo</strong> e <strong>Davide Angiolillo</strong> ti guidano a costruire il tuo <strong>piano lanci dall'inizio alla fine</strong>: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
               </p>
 
+              <p className="mt-3 font-bold text-[#4B6380] text-sm md:text-base">
+                Sabato 29 agosto · ore 10:00 · Zoom · Gratuito
+              </p>
+
               <div className="mt-7 flex flex-col items-center sm:items-start sm:flex-row gap-3">
-                <div className="flex flex-col items-center sm:items-start gap-3">
+                <div className="flex flex-col items-center sm:items-start">
                   <button className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("hero-iscriviti"); scrollToSection("form"); }}>
                     Voglio il mio posto →
                   </button>
-                  <div className="inline-flex items-center gap-2 border border-[#4B6380]/25 bg-[#4B6380]/6 text-[#4B6380] text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full">
-                    🗓 29 agosto · ore 10:00 · Masterclass gratuita · Posti limitati
-                  </div>
                 </div>
                 <button className="cta-ghost whitespace-nowrap" onClick={() => scrollToSection("programma")}>
                   Scopri il programma ↓
