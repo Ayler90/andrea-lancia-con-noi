@@ -1251,10 +1251,6 @@ function ZeroImprovvisazioneMasterclass() {
                       <path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,255,255,0.4)" />
                     </marker>
                   </defs>
-                  {/* side labels */}
-                  <text x="15" y="33" fill="white" fontSize="7" opacity="0.35" fontFamily="sans-serif">100%</text>
-                  <text x="15" y="69" fill="white" fontSize="7" opacity="0.35" fontFamily="sans-serif">40%</text>
-                  <text x="15" y="105" fill="white" fontSize="7" opacity="0.35" fontFamily="sans-serif">15%</text>
                 </svg>
               </div>
               <h3 className="text-white font-bold text-lg leading-snug">Il funnel di progressione tra offerte</h3>
