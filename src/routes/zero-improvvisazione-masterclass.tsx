@@ -567,157 +567,76 @@ function CountdownBanner() {
   );
 }
 
-// 0 = giorno vuoto, 1 = un po' di lavoro, 2 = panico/sovraccarico
-const CHAOS_MONTHS: { name: string; label: string; note?: string; badge?: string; days: number[] }[] = [
-  {
-    name: "GEN", label: "In attesa di qualcosa",
-    days: [0,0,0,0,0,0,0, 0,0,1,0,0,0,0, 0,0,0,0,0,0,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "FEB", label: "Panico totale", note: "Lancio improvvisato", badge: "😱",
-    days: [2,2,2,0,2,2,0, 2,2,2,2,0,2,2, 0,2,2,2,2,2,0, 2,2,0,2,2,2,0, 2,2,2,0,0,0,0],
-  },
-  {
-    name: "MAR", label: "Esausto, in recupero",
-    days: [0,1,0,0,1,0,0, 0,0,1,1,0,0,0, 0,1,0,0,0,1,0, 0,0,0,1,0,0,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "APR", label: "Nessun cliente", note: "Nessun funnel attivo",
-    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,1,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "MAG", label: "Silenzio",
-    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,1,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "GIU", label: "Qualcosa arriva",
-    days: [0,0,1,0,1,0,0, 0,1,0,0,0,1,0, 0,0,0,1,0,0,0, 0,1,1,0,0,0,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "LUG", label: "Panico a metà mese", note: "Lancio improvvisato", badge: "😱",
-    days: [0,0,0,1,0,0,0, 0,0,0,0,0,0,0, 2,2,2,2,2,0,0, 2,2,2,2,0,0,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "AGO", label: "Silenzio totale",
-    days: [0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "SET", label: "Tutto insieme", note: "Di corsa, di nuovo", badge: "😱",
-    days: [2,2,2,2,2,0,0, 2,2,2,2,2,2,0, 0,2,2,2,2,2,2, 2,2,2,2,2,0,0, 0,2,2,2,0,0,0],
-  },
-  {
-    name: "OTT", label: "In recupero",
-    days: [0,1,0,0,1,0,0, 0,0,1,0,0,0,0, 1,0,0,0,1,0,0, 0,0,0,1,0,0,0, 0,0,0,0,0,0,0],
-  },
-  {
-    name: "NOV", label: "Rush finale", note: "Black Friday", badge: "😱",
-    days: [0,0,2,2,2,0,0, 2,2,2,2,2,0,2, 2,0,2,2,2,2,0, 2,2,2,0,2,2,2, 0,0,2,2,2,0,0],
-  },
-  {
-    name: "DIC", label: "Stanco morto",
-    days: [0,0,0,0,0,0,0, 0,0,1,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0],
-  },
+const CHAOS_MONTHS: { name: string; emoji: string; thought: string; vibe: "dead" | "meh" | "panic" }[] = [
+  { name: "GEN", emoji: "😶", thought: "Ok, nuovo anno. Da dove comincio?", vibe: "meh" },
+  { name: "FEB", emoji: "😱", thought: "Ho fatto un lancio improvvisato. Non dormivo da 3 giorni.", vibe: "panic" },
+  { name: "MAR", emoji: "🥴", thought: "Ok, che faccio a marzo?", vibe: "meh" },
+  { name: "APR", emoji: "😶‍🌫️", thought: "Aprile è già a metà e non ho ancora niente.", vibe: "dead" },
+  { name: "MAG", emoji: "🙄", thought: "Magari a maggio mi organizzo.", vibe: "dead" },
+  { name: "GIU", emoji: "😬", thought: "Giugno è già arrivato, faccio un lancio? Dovrei?", vibe: "meh" },
+  { name: "LUG", emoji: "😱", thought: "Lancio improvvisato di luglio. Perché ogni volta?", vibe: "panic" },
+  { name: "AGO", emoji: "😴", thought: "Agosto non conta. Tanto non compra nessuno.", vibe: "dead" },
+  { name: "SET", emoji: "😱", thought: "Settembre: tutto in una volta. Di corsa, di nuovo.", vibe: "panic" },
+  { name: "OTT", emoji: "😮‍💨", thought: "Ok mi riprendo. Forse.", vibe: "meh" },
+  { name: "NOV", emoji: "😱", thought: "Black Friday. Cosa faccio? Uno sconto? Quanto?!", vibe: "panic" },
+  { name: "DIC", emoji: "💀", thought: "Stanco morto. L'anno prossimo mi organizzo.", vibe: "dead" },
 ];
 
 function ChaosCalendar() {
-  const visibleMonths = CHAOS_MONTHS.slice(0, 8);
-  const totalCells = visibleMonths.reduce((acc, m) => acc + m.days.length, 0);
-
-  // revealedCount: how many cells (in reading order) are "revealed"
   const [revealedCount, setRevealedCount] = useState(0);
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Start animation when section enters viewport
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, [started]);
 
-  // Animate cells one by one — fast reveal (12ms per cell)
+  // Reveal one month every ~420ms for a dramatic left-to-right appearance
   useEffect(() => {
     if (!started) return;
-    if (revealedCount >= totalCells) return;
-    const id = setTimeout(() => setRevealedCount(c => c + 1), 28);
+    if (revealedCount >= CHAOS_MONTHS.length) return;
+    const id = setTimeout(() => setRevealedCount(c => c + 1), 420);
     return () => clearTimeout(id);
-  }, [started, revealedCount, totalCells]);
+  }, [started, revealedCount]);
 
-  let cellIndex = 0;
+  const vibeStyle = (vibe: string) => {
+    if (vibe === "panic") return { bg: "rgba(251,100,50,0.15)", border: "rgba(251,120,60,0.35)", text: "text-orange-200" };
+    if (vibe === "dead") return { bg: "rgba(255,255,255,0.04)", border: "rgba(255,255,255,0.08)", text: "text-white/35" };
+    return { bg: "rgba(196,217,220,0.10)", border: "rgba(196,217,220,0.20)", text: "text-white/60" };
+  };
 
   return (
-    <div ref={ref} className="mt-14 overflow-x-auto" style={{ position: "relative", left: "50%", width: "min(108vw, 108vw)", transform: "translateX(-50%)" }}>
-      <div className="flex gap-[6px] px-6" style={{ minWidth: "max(108vw, 680px)" }}>
-        {visibleMonths.map(m => {
-          const isPanic = m.days.filter(d => d === 2).length > 10;
+    <div ref={ref} className="mt-14 overflow-x-auto" style={{ position: "relative", left: "50%", width: "min(116vw, 116vw)", transform: "translateX(-50%)" }}>
+      <div className="flex gap-3 px-6 pb-2" style={{ minWidth: "max(116vw, 900px)" }}>
+        {CHAOS_MONTHS.map((m, i) => {
+          const revealed = i < revealedCount;
+          const { bg, border, text } = vibeStyle(m.vibe);
           return (
-            <div key={m.name} className="flex-1 min-w-0">
-              {/* Annotation above panic months */}
-              <div className="h-7 flex items-end justify-center mb-1">
-                {m.badge && (
-                  <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.08em] text-orange-300/80 bg-orange-400/10 border border-orange-400/20 rounded-full px-1.5 py-0.5 whitespace-nowrap">
-                    {m.badge} {m.note}
-                  </span>
-                )}
-              </div>
-
-              {/* Month name */}
-              <p className={`text-[10px] font-bold uppercase tracking-[0.14em] text-center mb-1.5 whitespace-nowrap ${isPanic ? "text-orange-300" : "text-white/70"}`}>
-                {m.name}
-              </p>
-
-              {/* Day grid 5×7 */}
-              <div className="grid grid-cols-7 gap-[2px]">
-                {m.days.map((d, i) => {
-                  const idx = cellIndex++;
-                  const revealed = idx < revealedCount;
-                  const bg = revealed
-                    ? d === 2 ? "rgba(251,146,60,0.80)"
-                      : d === 1 ? "rgba(196,217,220,0.30)"
-                      : "rgba(255,255,255,0.05)"
-                    : "rgba(255,255,255,0.03)";
-                  return (
-                    <div
-                      key={i}
-                      className="rounded-[2px]"
-                      style={{
-                        aspectRatio: "1",
-                        backgroundColor: bg,
-                        transition: revealed ? "background-color 0.18s ease" : "none",
-                      }}
-                    />
-                  );
-                })}
-              </div>
-
-              {/* Label below */}
-              <p className={`text-[9px] text-center mt-2 leading-tight whitespace-nowrap ${isPanic ? "text-orange-200/80" : "text-white/55"}`}>
-                {m.label}
+            <div
+              key={m.name}
+              className="flex-1 min-w-0 rounded-xl flex flex-col items-center gap-2 p-3 transition-all duration-500"
+              style={{
+                backgroundColor: bg,
+                border: `1px solid ${border}`,
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0)" : "translateY(8px)",
+              }}
+            >
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">{m.name}</p>
+              <span className="text-2xl leading-none">{revealed ? m.emoji : ""}</span>
+              <p className={`text-[9px] leading-tight text-center ${text}`} style={{ minHeight: 36 }}>
+                {revealed ? m.thought : ""}
               </p>
             </div>
           );
         })}
-      </div>
-
-      {/* Legend */}
-      <div className="flex items-center justify-center gap-5 mt-5 px-6">
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(255,255,255,0.05)" }} />
-          <span className="text-[9px] text-white/60 uppercase tracking-[0.1em]">Nessuna attività</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(196,217,220,0.30)" }} />
-          <span className="text-[9px] text-white/60 uppercase tracking-[0.1em]">Qualcosa</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-[2px]" style={{ backgroundColor: "rgba(251,146,60,0.80)" }} />
-          <span className="text-[9px] text-white/60 uppercase tracking-[0.1em]">Panico / sovraccarico</span>
-        </div>
       </div>
     </div>
   );
