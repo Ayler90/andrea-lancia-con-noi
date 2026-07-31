@@ -638,9 +638,9 @@ function ChaosCalendar() {
 
   return (
     <div ref={ref} className="mt-14">
-      {/* Mobile: breakout a 100vw per uscire dal container-narrow, card larghe */}
+      {/* Mobile: breakout a 100vw, nessun padding laterale, card larghe ~200px */}
       <div className="md:hidden overflow-x-auto" style={{ position: "relative", left: "50%", width: "100vw", transform: "translateX(-50%)" }}>
-        <div className="flex gap-2 pb-2" style={{ minWidth: 1440, paddingLeft: 12, paddingRight: 12 }}>
+        <div className="flex gap-2 pb-2" style={{ minWidth: 2488 }}>
           {months}
         </div>
       </div>
@@ -652,7 +652,7 @@ function ChaosCalendar() {
       </div>
     </div>
   );
-
+}
 
 const QUIZ_QUESTIONS = [
   {
