@@ -9,30 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ZeroImprovvisazioneMasterclassRouteImport } from './routes/zero-improvvisazione-masterclass'
 import { Route as ScaricaCalendarioLancioRouteImport } from './routes/scarica-calendario-lancio'
-import { Route as GrazieIscrizioneZeroImprovvisazioneRouteImport } from './routes/grazie-iscrizione-zero-improvvisazione'
+import { Route as GrazieIscrizioneDaCaosASistemaRouteImport } from './routes/grazie-iscrizione-da-caos-a-sistema'
 import { Route as GrazieConsulenzaStrategicaRouteImport } from './routes/grazie-consulenza-strategica'
 import { Route as EasyMailPackRouteImport } from './routes/easy-mail-pack'
+import { Route as DaCaosASistemaMasterclassRouteImport } from './routes/da-caos-a-sistema-masterclass'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as ConsulenzaStrategicaRouteImport } from './routes/consulenza-strategica'
 import { Route as IndexRouteImport } from './routes/index'
 
-const ZeroImprovvisazioneMasterclassRoute =
-  ZeroImprovvisazioneMasterclassRouteImport.update({
-    id: '/zero-improvvisazione-masterclass',
-    path: '/zero-improvvisazione-masterclass',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ScaricaCalendarioLancioRoute = ScaricaCalendarioLancioRouteImport.update({
   id: '/scarica-calendario-lancio',
   path: '/scarica-calendario-lancio',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GrazieIscrizioneZeroImprovvisazioneRoute =
-  GrazieIscrizioneZeroImprovvisazioneRouteImport.update({
-    id: '/grazie-iscrizione-zero-improvvisazione',
-    path: '/grazie-iscrizione-zero-improvvisazione',
+const GrazieIscrizioneDaCaosASistemaRoute =
+  GrazieIscrizioneDaCaosASistemaRouteImport.update({
+    id: '/grazie-iscrizione-da-caos-a-sistema',
+    path: '/grazie-iscrizione-da-caos-a-sistema',
     getParentRoute: () => rootRouteImport,
   } as any)
 const GrazieConsulenzaStrategicaRoute =
@@ -46,6 +40,12 @@ const EasyMailPackRoute = EasyMailPackRouteImport.update({
   path: '/easy-mail-pack',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DaCaosASistemaMasterclassRoute =
+  DaCaosASistemaMasterclassRouteImport.update({
+    id: '/da-caos-a-sistema-masterclass',
+    path: '/da-caos-a-sistema-masterclass',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CookiePolicyRoute = CookiePolicyRouteImport.update({
   id: '/cookie-policy',
   path: '/cookie-policy',
@@ -66,32 +66,32 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
+  '/da-caos-a-sistema-masterclass': typeof DaCaosASistemaMasterclassRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
-  '/grazie-iscrizione-zero-improvvisazione': typeof GrazieIscrizioneZeroImprovvisazioneRoute
+  '/grazie-iscrizione-da-caos-a-sistema': typeof GrazieIscrizioneDaCaosASistemaRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
-  '/zero-improvvisazione-masterclass': typeof ZeroImprovvisazioneMasterclassRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
+  '/da-caos-a-sistema-masterclass': typeof DaCaosASistemaMasterclassRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
-  '/grazie-iscrizione-zero-improvvisazione': typeof GrazieIscrizioneZeroImprovvisazioneRoute
+  '/grazie-iscrizione-da-caos-a-sistema': typeof GrazieIscrizioneDaCaosASistemaRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
-  '/zero-improvvisazione-masterclass': typeof ZeroImprovvisazioneMasterclassRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/consulenza-strategica': typeof ConsulenzaStrategicaRoute
   '/cookie-policy': typeof CookiePolicyRoute
+  '/da-caos-a-sistema-masterclass': typeof DaCaosASistemaMasterclassRoute
   '/easy-mail-pack': typeof EasyMailPackRoute
   '/grazie-consulenza-strategica': typeof GrazieConsulenzaStrategicaRoute
-  '/grazie-iscrizione-zero-improvvisazione': typeof GrazieIscrizioneZeroImprovvisazioneRoute
+  '/grazie-iscrizione-da-caos-a-sistema': typeof GrazieIscrizioneDaCaosASistemaRoute
   '/scarica-calendario-lancio': typeof ScaricaCalendarioLancioRoute
-  '/zero-improvvisazione-masterclass': typeof ZeroImprovvisazioneMasterclassRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,53 +99,46 @@ export interface FileRouteTypes {
     | '/'
     | '/consulenza-strategica'
     | '/cookie-policy'
+    | '/da-caos-a-sistema-masterclass'
     | '/easy-mail-pack'
     | '/grazie-consulenza-strategica'
-    | '/grazie-iscrizione-zero-improvvisazione'
+    | '/grazie-iscrizione-da-caos-a-sistema'
     | '/scarica-calendario-lancio'
-    | '/zero-improvvisazione-masterclass'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/consulenza-strategica'
     | '/cookie-policy'
+    | '/da-caos-a-sistema-masterclass'
     | '/easy-mail-pack'
     | '/grazie-consulenza-strategica'
-    | '/grazie-iscrizione-zero-improvvisazione'
+    | '/grazie-iscrizione-da-caos-a-sistema'
     | '/scarica-calendario-lancio'
-    | '/zero-improvvisazione-masterclass'
   id:
     | '__root__'
     | '/'
     | '/consulenza-strategica'
     | '/cookie-policy'
+    | '/da-caos-a-sistema-masterclass'
     | '/easy-mail-pack'
     | '/grazie-consulenza-strategica'
-    | '/grazie-iscrizione-zero-improvvisazione'
+    | '/grazie-iscrizione-da-caos-a-sistema'
     | '/scarica-calendario-lancio'
-    | '/zero-improvvisazione-masterclass'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ConsulenzaStrategicaRoute: typeof ConsulenzaStrategicaRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
+  DaCaosASistemaMasterclassRoute: typeof DaCaosASistemaMasterclassRoute
   EasyMailPackRoute: typeof EasyMailPackRoute
   GrazieConsulenzaStrategicaRoute: typeof GrazieConsulenzaStrategicaRoute
-  GrazieIscrizioneZeroImprovvisazioneRoute: typeof GrazieIscrizioneZeroImprovvisazioneRoute
+  GrazieIscrizioneDaCaosASistemaRoute: typeof GrazieIscrizioneDaCaosASistemaRoute
   ScaricaCalendarioLancioRoute: typeof ScaricaCalendarioLancioRoute
-  ZeroImprovvisazioneMasterclassRoute: typeof ZeroImprovvisazioneMasterclassRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/zero-improvvisazione-masterclass': {
-      id: '/zero-improvvisazione-masterclass'
-      path: '/zero-improvvisazione-masterclass'
-      fullPath: '/zero-improvvisazione-masterclass'
-      preLoaderRoute: typeof ZeroImprovvisazioneMasterclassRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/scarica-calendario-lancio': {
       id: '/scarica-calendario-lancio'
       path: '/scarica-calendario-lancio'
@@ -153,11 +146,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScaricaCalendarioLancioRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/grazie-iscrizione-zero-improvvisazione': {
-      id: '/grazie-iscrizione-zero-improvvisazione'
-      path: '/grazie-iscrizione-zero-improvvisazione'
-      fullPath: '/grazie-iscrizione-zero-improvvisazione'
-      preLoaderRoute: typeof GrazieIscrizioneZeroImprovvisazioneRouteImport
+    '/grazie-iscrizione-da-caos-a-sistema': {
+      id: '/grazie-iscrizione-da-caos-a-sistema'
+      path: '/grazie-iscrizione-da-caos-a-sistema'
+      fullPath: '/grazie-iscrizione-da-caos-a-sistema'
+      preLoaderRoute: typeof GrazieIscrizioneDaCaosASistemaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/grazie-consulenza-strategica': {
@@ -172,6 +165,13 @@ declare module '@tanstack/react-router' {
       path: '/easy-mail-pack'
       fullPath: '/easy-mail-pack'
       preLoaderRoute: typeof EasyMailPackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/da-caos-a-sistema-masterclass': {
+      id: '/da-caos-a-sistema-masterclass'
+      path: '/da-caos-a-sistema-masterclass'
+      fullPath: '/da-caos-a-sistema-masterclass'
+      preLoaderRoute: typeof DaCaosASistemaMasterclassRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookie-policy': {
@@ -202,12 +202,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ConsulenzaStrategicaRoute: ConsulenzaStrategicaRoute,
   CookiePolicyRoute: CookiePolicyRoute,
+  DaCaosASistemaMasterclassRoute: DaCaosASistemaMasterclassRoute,
   EasyMailPackRoute: EasyMailPackRoute,
   GrazieConsulenzaStrategicaRoute: GrazieConsulenzaStrategicaRoute,
-  GrazieIscrizioneZeroImprovvisazioneRoute:
-    GrazieIscrizioneZeroImprovvisazioneRoute,
+  GrazieIscrizioneDaCaosASistemaRoute: GrazieIscrizioneDaCaosASistemaRoute,
   ScaricaCalendarioLancioRoute: ScaricaCalendarioLancioRoute,
-  ZeroImprovvisazioneMasterclassRoute: ZeroImprovvisazioneMasterclassRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
