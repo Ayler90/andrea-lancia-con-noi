@@ -613,36 +613,46 @@ function ChaosCalendar() {
     return { bg: "rgba(196,217,220,0.10)", border: "rgba(196,217,220,0.20)", text: "text-white/60" };
   };
 
+  const months = CHAOS_MONTHS.map((m, i) => {
+    const revealed = i < revealedCount;
+    const { bg, border } = vibeStyle(m.vibe);
+    return (
+      <div
+        key={m.name}
+        className="rounded-xl flex flex-col items-center gap-2 p-3 transition-all duration-500 flex-shrink-0 flex-1"
+        style={{
+          backgroundColor: bg,
+          border: `1px solid ${border}`,
+          opacity: revealed ? 1 : 0,
+          transform: revealed ? "translateY(0)" : "translateY(8px)",
+        }}
+      >
+        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">{m.name}</p>
+        <span className="text-3xl leading-none">{revealed ? m.emoji : "\u00a0"}</span>
+        <p className="text-[11px] leading-snug text-center text-white/85" style={{ minHeight: 44 }}>
+          {revealed ? m.thought : ""}
+        </p>
+      </div>
+    );
+  });
+
   return (
-    <div ref={ref} className="mt-14 w-full overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" as const }}>
-      <div className="flex gap-3 pb-2" style={{ minWidth: 900, paddingLeft: 16, paddingRight: 16 }}>
-        {CHAOS_MONTHS.map((m, i) => {
-          const revealed = i < revealedCount;
-          const { bg, border } = vibeStyle(m.vibe);
-          return (
-            <div
-              key={m.name}
-              className="rounded-xl flex flex-col items-center gap-2 p-3 transition-all duration-500 flex-1"
-              style={{
-                minWidth: 88,
-                backgroundColor: bg,
-                border: `1px solid ${border}`,
-                opacity: revealed ? 1 : 0,
-                transform: revealed ? "translateY(0)" : "translateY(8px)",
-              }}
-            >
-              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">{m.name}</p>
-              <span className="text-3xl leading-none">{revealed ? m.emoji : " "}</span>
-              <p className="text-[11px] leading-snug text-center text-white/85" style={{ minHeight: 44 }}>
-                {revealed ? m.thought : ""}
-              </p>
-            </div>
-          );
-        })}
+    <div ref={ref} className="mt-14">
+      {/* Mobile: scroll edge-to-edge, riquadri larghi */}
+      <div className="md:hidden overflow-x-auto">
+        <div className="flex gap-2 pb-2" style={{ minWidth: 1100 }}>
+          {months}
+        </div>
+      </div>
+      {/* Desktop: breakout a 116vw */}
+      <div className="hidden md:block overflow-x-auto" style={{ position: "relative", left: "50%", width: "116vw", transform: "translateX(-50%)" }}>
+        <div className="flex gap-3 px-6 pb-2" style={{ minWidth: "max(116vw, 900px)" }}>
+          {months}
+        </div>
       </div>
     </div>
   );
-}
+
 
 const QUIZ_QUESTIONS = [
   {
