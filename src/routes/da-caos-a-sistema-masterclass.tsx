@@ -17,12 +17,12 @@ import recBB7 from "@/assets/Recensioni Business Blueprint7.png";
 import recBB8 from "@/assets/Recensioni Business Blueprint8.jpg";
 import recBB9 from "@/assets/Recensioni Business Blueprint9.jpg";
 
-export const Route = createFileRoute("/zero-improvvisazione-masterclass")({
+export const Route = createFileRoute("/da-caos-a-sistema-masterclass")({
   component: ZeroImprovvisazioneMasterclass,
   head: () => ({
     meta: [
       { name: "robots", content: "noindex, nofollow" },
-      { title: "Lanci Senza Stress – Masterclass Gratuita | Andrea Bonomo" },
+      { title: "Da Caos a Sistema – Masterclass Gratuita | Andrea Bonomo" },
       { name: "description", content: "La masterclass gratuita con Andrea Bonomo e Davide Angiolillo per costruire il tuo piano lanci per i prossimi 12 mesi." },
     ],
   }),
@@ -402,7 +402,7 @@ function Programma() {
         <div className="mt-16 flex flex-col items-center gap-2">
           <button
             className="pill bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5 whitespace-nowrap"
-            onClick={() => { posthog.capture("zero_improv_cta_click", { cta_label: "programma-iscriviti" }); scrollToSection("form"); }}
+            onClick={() => { posthog.capture("da_caos_a_sistema_cta_click", { cta_label: "programma-iscriviti" }); scrollToSection("form"); }}
           >
             Voglio il mio posto →
           </button>
@@ -441,7 +441,7 @@ function MailerLiteForm() {
         body,
         mode: "no-cors",
       });
-      window.location.href = "/grazie-iscrizione-zero-improvvisazione";
+      window.location.href = "/grazie-iscrizione-da-caos-a-sistema";
     } catch {
       setSubmitting(false);
     }
@@ -792,7 +792,7 @@ const BAR_CONTENT = ({ onClick }: { onClick: () => void }) => (
     }}
   >
     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1 text-sm text-white/80">
-      <span className="font-semibold text-white">Lanci Senza Stress</span>
+      <span className="font-semibold text-white">Da Caos a Sistema</span>
       <span className="text-white/40 hidden sm:inline">·</span>
       <span>🗓 29 agosto · ore 10:00</span>
       <span className="text-white/40 hidden sm:inline">·</span>
@@ -832,7 +832,7 @@ function StickyBar() {
   }, []);
 
   const handleClick = () => {
-    posthog.capture("zero_improv_cta_click", { cta_label: "sticky-bar" });
+    posthog.capture("da_caos_a_sistema_cta_click", { cta_label: "sticky-bar" });
     scrollToSection("form");
   };
 
@@ -850,7 +850,7 @@ function StickyBar() {
 
 function ZeroImprovvisazioneMasterclass() {
   function trackCta(label: string) {
-    posthog.capture("zero_improv_cta_click", { cta_label: label });
+    posthog.capture("da_caos_a_sistema_cta_click", { cta_label: label });
   }
 
   return (
@@ -881,7 +881,7 @@ function ZeroImprovvisazioneMasterclass() {
               </h1>
 
               <p className="mt-5 text-sm md:text-base text-foreground/65 leading-relaxed">
-                <strong>Lanci Senza Stress</strong> è la masterclass gratuita in cui <strong>Andrea Bonomo</strong> e <strong>Davide Angiolillo</strong> ti guidano a costruire il tuo <strong>piano lanci dall'inizio alla fine</strong>: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
+                <strong>Da Caos a Sistema</strong> è la masterclass gratuita in cui <strong>Andrea Bonomo</strong> e <strong>Davide Angiolillo</strong> ti guidano a costruire il tuo <strong>piano lanci dall'inizio alla fine</strong>: quale offerta lanciare, a chi, quando, con quali contenuti e come portare i tuoi clienti da un'offerta all'altra nel tempo.
               </p>
 
               <p className="mt-3 font-bold text-[#4B6380] text-sm md:text-base">
@@ -1027,7 +1027,7 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Per chi è la masterclass del 29 agosto?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Lanci Senza Stress è{" "}
+            Da Caos a Sistema è{" "}
             <em className="text-[#4B6380]">perfetto per te</em> se:
           </h2>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
@@ -1435,7 +1435,7 @@ function ZeroImprovvisazioneMasterclass() {
 
       {/* ANCHOR per sticky bar — la barra si "ancora" qui prima del footer */}
       <div id="sticky-bar-anchor">
-        <BAR_CONTENT onClick={() => { posthog.capture("zero_improv_cta_click", { cta_label: "sticky-bar-docked" }); scrollToSection("form"); }} />
+        <BAR_CONTENT onClick={() => { posthog.capture("da_caos_a_sistema_cta_click", { cta_label: "sticky-bar-docked" }); scrollToSection("form"); }} />
       </div>
 
       {/* FOOTER SEMPLICE */}

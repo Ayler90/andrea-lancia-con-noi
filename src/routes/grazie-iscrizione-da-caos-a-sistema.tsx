@@ -3,19 +3,19 @@ import React, { useEffect } from "react";
 import posthog from "posthog-js";
 import copertingWorkbook from "@/assets/Copertina workbook masterclass.png";
 
-export const Route = createFileRoute("/grazie-iscrizione-zero-improvvisazione")({
-  component: GrazieZeroImprovvisazione,
+export const Route = createFileRoute("/grazie-iscrizione-da-caos-a-sistema")({
+  component: GrazieDaChaosSistema,
   head: () => ({
     meta: [
       { name: "robots", content: "noindex, nofollow" },
-      { title: "Ci sei! – Lanci Senza Stress | Andrea Bonomo" },
+      { title: "Ci sei! – Da Caos a Sistema | Andrea Bonomo" },
     ],
   }),
 });
 
 const CALENDAR_URL =
   "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-  "&text=Lanci+Senza+Stress+%E2%80%93+Masterclass+Gratuita" +
+  "&text=Da+Chaos+a+Sistema+%E2%80%93+Masterclass+Gratuita" +
   "&dates=20260829T080000Z%2F20260829T100000Z" +
   "&details=Masterclass+gratuita+con+Andrea+Bonomo+e+Davide+Angiolillo.+Il+link+Zoom+arriva+via+email+la+mattina+stessa." +
   "&location=Zoom";
@@ -29,9 +29,9 @@ function CheckIcon() {
   );
 }
 
-function GrazieZeroImprovvisazione() {
+function GrazieDaChaosSistema() {
   useEffect(() => {
-    posthog.capture("lead_masterclass", { source: "grazie-iscrizione-zero-improvvisazione" });
+    posthog.capture("lead_masterclass", { source: "grazie-iscrizione-da-caos-a-sistema" });
   }, []);
 
   return (
