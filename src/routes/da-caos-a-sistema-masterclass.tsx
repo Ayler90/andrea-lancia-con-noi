@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import posthog from "posthog-js";
 import andreaFavicon from "@/assets/Foto profilo IG - Favicon.jpg";
 import davideFoto from "@/assets/Davide foto profilo.jpg";
-import copertingWorkbook from "@/assets/Copertina workbook masterclass.png";
+import copertingWorkbook from "@/assets/copertina da caos a sistema workbook.png";
 import andreaChiSono from "@/assets/Andrea chi sono.png";
 import davideChiSono from "@/assets/Davide chi sono.png";
 import andreadaveSfondo from "@/assets/Andrea e Dave immagine sfondo.png";

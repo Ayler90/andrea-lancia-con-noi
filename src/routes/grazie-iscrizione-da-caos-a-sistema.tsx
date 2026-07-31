@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import React, { useEffect } from "react";
 import posthog from "posthog-js";
-import copertingWorkbook from "@/assets/Copertina workbook masterclass.png";
+import copertingWorkbook from "@/assets/copertina da caos a sistema workbook.png";
 
 export const Route = createFileRoute("/grazie-iscrizione-da-caos-a-sistema")({
   component: GrazieDaChaosSistema,
