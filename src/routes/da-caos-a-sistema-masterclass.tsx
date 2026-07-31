@@ -614,17 +614,17 @@ function ChaosCalendar() {
   };
 
   return (
-    <div ref={ref} className="mt-14 overflow-x-auto" style={{ position: "relative", left: "50%", width: "min(116vw, 116vw)", transform: "translateX(-50%)" }}>
-      <div className="flex gap-3 px-6 pb-2" style={{ minWidth: "max(116vw, 900px)" }}>
+    <div ref={ref} className="mt-14 w-full overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" as const }}>
+      <div className="flex gap-3 pb-2" style={{ minWidth: 900, paddingLeft: 16, paddingRight: 16 }}>
         {CHAOS_MONTHS.map((m, i) => {
           const revealed = i < revealedCount;
-          const { bg, border, text } = vibeStyle(m.vibe);
+          const { bg, border } = vibeStyle(m.vibe);
           return (
             <div
               key={m.name}
-              className="rounded-xl flex flex-col items-center gap-2 p-3 transition-all duration-500 flex-shrink-0 md:flex-1"
-              style={{ width: "clamp(110px, 28vw, 160px)" }}
+              className="rounded-xl flex flex-col items-center gap-2 p-3 transition-all duration-500 flex-1"
               style={{
+                minWidth: 88,
                 backgroundColor: bg,
                 border: `1px solid ${border}`,
                 opacity: revealed ? 1 : 0,
@@ -632,8 +632,8 @@ function ChaosCalendar() {
               }}
             >
               <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">{m.name}</p>
-              <span className="text-3xl leading-none">{revealed ? m.emoji : ""}</span>
-              <p className="text-[11px] md:text-[11px] leading-snug text-center text-white/85" style={{ minHeight: 40 }}>
+              <span className="text-3xl leading-none">{revealed ? m.emoji : " "}</span>
+              <p className="text-[11px] leading-snug text-center text-white/85" style={{ minHeight: 44 }}>
                 {revealed ? m.thought : ""}
               </p>
             </div>
@@ -797,7 +797,7 @@ const BAR_CONTENT = ({ onClick }: { onClick: () => void }) => (
       <span>🗓 29 agosto · ore 10:00</span>
       <span className="text-white/40 hidden sm:inline">·</span>
       <span>Gratuita</span>
-      <span className="text-white/40 hidden sm:inline">·</span>
+      <span className="text-white/40">·</span>
       <span>100 posti disponibili</span>
     </div>
     <button
@@ -812,6 +812,16 @@ const BAR_CONTENT = ({ onClick }: { onClick: () => void }) => (
 function StickyBar() {
   const [visible, setVisible] = useState(false);
   const [docked, setDocked] = useState(false);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    if (visible && !docked) {
+      const t = setTimeout(() => setShown(true), 10);
+      return () => clearTimeout(t);
+    } else {
+      setShown(false);
+    }
+  }, [visible, docked]);
 
   useEffect(() => {
     const hero = document.getElementById("hero-section");
@@ -836,13 +846,18 @@ function StickyBar() {
     scrollToSection("form");
   };
 
-  if (!visible) return null;
-
-  // When footer anchor is visible, the bar is rendered statically inside it (not fixed)
-  if (docked) return null;
+  if (!visible && !shown) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50">
+    <div
+      className="fixed bottom-0 left-0 right-0 z-50"
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown ? "translateY(0)" : "translateY(100%)",
+        transition: "opacity 0.3s ease, transform 0.3s ease",
+        pointerEvents: shown ? "auto" : "none",
+      }}
+    >
       <BAR_CONTENT onClick={handleClick} />
     </div>
   );
