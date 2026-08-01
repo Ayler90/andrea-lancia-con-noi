@@ -216,7 +216,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "Cosa succede dopo che prenoto?",
-    a: "Dopo aver scelto giorno e ora, ricevi un link per effettuare il pagamento (€150) e un link al questionario da compilare prima della call. Il questionario mi serve per capire la tua situazione e arrivare preparato sul tuo caso specifico.",
+    a: "Dopo aver scelto giorno e ora, ricevi un link per effettuare il pagamento (€200) e un link al questionario da compilare prima della call. Il questionario mi serve per capire la tua situazione e arrivare preparato sul tuo caso specifico.",
   },
   {
     q: "Cosa devo preparare per la call?",
@@ -260,7 +260,7 @@ function FaqAccordion() {
 
 const STEPS = [
   { n: "01", title: "Prenota il tuo slot", desc: "Scegli giorno e ora direttamente dal calendario qui sotto. Ci vuole meno di un minuto." },
-  { n: "02", title: "Effettua il pagamento", desc: "Dopo la prenotazione ricevi il link per pagare €150. Il pagamento conferma ufficialmente la tua sessione." },
+  { n: "02", title: "Effettua il pagamento", desc: "Dopo la prenotazione ricevi il link per pagare €200. Il pagamento conferma ufficialmente la tua sessione." },
   { n: "03", title: "Compila il questionario", desc: "Ricevi un breve questionario in cui mi racconti la tua situazione e il problema da affrontare. Piu dettagli dai, piu valore ottieni dalla call." },
   { n: "04", title: "La call", desc: "60 minuti in videochiamata 1:1 con me. Analizziamo il problema, troviamo soluzioni concrete e usciamo con un piano d'azione chiaro." },
   { n: "05", title: "Recap scritto e registrazione", desc: "Dopo la call ricevi la registrazione completa della videochiamata e un recap scritto con il piano d'azione, cosi puoi rileggere e riascoltare tutto con calma." },
@@ -387,7 +387,7 @@ function ConsulenzaStrategica() {
             {[
               { icon: "⏱", text: "60 minuti" },
               { icon: "💬", text: "1:1 con me" },
-              { icon: "💶", text: "€150 una tantum" },
+              { icon: "💶", text: "€200 una tantum" },
               { icon: "📅", text: "Scegli tu giorno e ora" },
             ].map(chip => (
               <div key={chip.text} className="inline-flex items-center gap-2 border border-[#156686]/15 bg-[#156686]/5 px-4 py-2 rounded-full text-sm text-foreground/75 font-medium">
@@ -399,7 +399,7 @@ function ConsulenzaStrategica() {
             {[
               { icon: "⏱", text: "60 minuti" },
               { icon: "💬", text: "1:1 con me" },
-              { icon: "💶", text: "€150 una tantum" },
+              { icon: "💶", text: "€200 una tantum" },
               { icon: "📅", text: "Scegli tu giorno e ora" },
             ].map((chip) => (
               <div key={chip.text} className="flex items-center gap-1.5 text-sm text-foreground/65 font-medium">
@@ -640,7 +640,7 @@ function ConsulenzaStrategica() {
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center text-white mb-3">
             Prenota la tua <em style={{ color: "#C4D9DC" }}>Consulenza Strategica</em>
           </h2>
-          <p className="text-center text-white/60 text-sm mb-10">60 minuti · €150 · 1:1 con me</p>
+          <p className="text-center text-white/60 text-sm mb-10">60 minuti · €200 · 1:1 con me</p>
 
           <CalEmbed />
 
