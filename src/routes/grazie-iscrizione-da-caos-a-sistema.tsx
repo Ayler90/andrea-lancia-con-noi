@@ -17,7 +17,7 @@ const CALENDAR_URL =
   "https://calendar.google.com/calendar/render?action=TEMPLATE" +
   "&text=Da+Caos+a+Sistema+%E2%80%93+Masterclass+Gratuita" +
   "&dates=20260829T080000Z%2F20260829T100000Z" +
-  "&details=Masterclass+gratuita+con+Andrea+Bonomo+e+Davide+Angiolillo.+Il+link+Zoom+arriva+via+email+la+mattina+stessa." +
+  "&details=Masterclass+gratuita+con+Andrea+Bonomo+e+Davide+Angiolillo.+Il+link+Zoom+arriva+via+email+la+mattina+stessa.%0A%0A%F0%9F%93%8C+Workbook+da+scaricare+e+compilare+prima+della+diretta%3A+https%3A%2F%2Fdocs.google.com%2Fdocument%2Fd%2F1CeoHFyWylrmRn65gBMjINacUVAzSRt6aSd-5ilW0cGU%2Fedit%3Fusp%3Dsharing" +
   "&location=Zoom";
 
 function CheckIcon() {
