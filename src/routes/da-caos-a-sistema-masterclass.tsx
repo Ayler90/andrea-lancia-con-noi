@@ -823,13 +823,17 @@ function StickyBar() {
   const [visible, setVisible] = useState(false);
   const [docked, setDocked] = useState(false);
   const [shown, setShown] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (visible && !docked) {
+      setMounted(true);
       const t = setTimeout(() => setShown(true), 10);
       return () => clearTimeout(t);
     } else {
       setShown(false);
+      const t = setTimeout(() => setMounted(false), 320);
+      return () => clearTimeout(t);
     }
   }, [visible, docked]);
 
@@ -856,7 +860,7 @@ function StickyBar() {
     scrollToSection("form");
   };
 
-  if (!visible && !shown) return null;
+  if (!mounted) return null;
 
   return (
     <div
