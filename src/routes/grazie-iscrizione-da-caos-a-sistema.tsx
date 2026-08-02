@@ -32,7 +32,7 @@ function CheckIcon() {
 function GrazieDaChaosSistema() {
   useEffect(() => {
     posthog.capture("lead_masterclass", { source: "grazie-iscrizione-da-caos-a-sistema" });
-    document.title = "Ci sei! – Da Caos A Sistema | Andrea Bonomo - Funnel e Launch Strategist";
+    document.title = "Ci sei! - Da Caos A Sistema - Andrea Bonomo - Funnel e Launch Strategist";
     return () => { document.title = "Andrea Bonomo - Funnel e Launch Strategist"; };
   }, []);
 
