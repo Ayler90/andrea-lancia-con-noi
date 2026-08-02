@@ -6,7 +6,7 @@ import davideFoto from "@/assets/Davide foto profilo.jpg";
 import copertingWorkbook from "@/assets/copertina da caos a sistema workbook.png";
 import andreaChiSono from "@/assets/Andrea chi sono.png";
 import davideChiSono from "@/assets/Davide chi sono.png";
-import andreadaveSfondo from "@/assets/Andrea e Dave immagine sfondo.png";
+import andreadaveSfondo from "@/assets/Immagine chi siamo.png";
 import recBB1 from "@/assets/Recensioni Business Blueprint 1.jpg";
 import recBB2 from "@/assets/Recensioni Business Blueprint 2.png";
 import recBB3 from "@/assets/Recensioni Business Blueprint3.png";
@@ -996,7 +996,7 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Quanto sarebbe liberatorio sapere esattamente cosa e quando farlo?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-6">
-            Ma fai fatica a farlo perché hai{" "}
+            Ma non riesci ad avere un sistema di offerte e lanci perché hai{" "}
             <em className="text-[#4B6380]">uno di questi problemi qui sotto.</em>
           </h2>
           <p className="text-foreground/70 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
