@@ -102,10 +102,10 @@ function GrazieDaChaosSistema() {
                     Passo 01 · Fallo adesso
                   </div>
                   <h3 className="font-bold text-foreground/90 text-xl md:text-2xl leading-snug mb-3">
-                    Scarica il workbook e tienilo aperto durante la diretta
+                    Scarica il workbook e inizia a compilarlo già da ora
                   </h3>
                   <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-5">
-                    Lo compiliamo insieme sezione per sezione durante la mattinata. Senza workbook perdi l'80% del valore: alla fine della diretta esci con un piano vero già scritto, adattato al tuo business. Stampalo o aprilo su un secondo schermo.
+                    Le prime sezioni le compili da solo, prima della diretta: ti servono per mappare la tua situazione di partenza. Il resto lo completiamo insieme, sezione per sezione, durante la mattinata. Senza workbook perdi l'80% del valore: alla fine della diretta esci con un piano vero già scritto, adattato al tuo business. Stampalo o aprilo su un secondo schermo.
                   </p>
                   <p className="text-sm text-foreground/60 leading-relaxed mb-6">
                     Una volta cliccato sul pulsante si aprirà il Workbook in formato Google Doc. Clicca su "File", poi "Crea una copia", per salvarlo sul tuo Drive e modificarlo.
