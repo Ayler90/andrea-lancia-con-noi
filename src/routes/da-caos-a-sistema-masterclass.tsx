@@ -47,7 +47,7 @@ export const Route = createFileRoute("/da-caos-a-sistema-masterclass")({
   head: () => ({
     meta: [
       { name: "robots", content: "noindex, nofollow" },
-      { title: "Da Caos a Sistema – Masterclass Gratuita | Andrea Bonomo" },
+      { title: "Da Caos A Sistema" },
       { name: "description", content: "La masterclass gratuita con Andrea Bonomo e Davide Angiolillo per costruire il tuo piano lanci per i prossimi 12 mesi." },
     ],
   }),
