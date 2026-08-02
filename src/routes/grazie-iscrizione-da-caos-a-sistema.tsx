@@ -149,7 +149,7 @@ function GrazieDaChaosSistema() {
                     <h3 className="font-bold text-lg text-foreground/90">Rispondi al questionario</h3>
                   </div>
                   <p className="text-sm text-foreground/60 leading-relaxed mb-4">Due minuti, anonimo. Quello che scrivi ci aiuta a impostare la diretta sulla situazione reale di chi partecipa. Rispondi come ti viene, senza pensarci troppo.</p>
-                  <a href="#" className="pill border border-[#4B6380]/30 text-[#4B6380] hover:bg-[#4B6380]/5 inline-flex">
+                  <a href="https://forms.gle/76EEcww2CRhtTT9J6" target="_blank" rel="noreferrer" className="pill border border-[#4B6380]/30 text-[#4B6380] hover:bg-[#4B6380]/5 inline-flex">
                     Compila il questionario →
                   </a>
                   <p className="text-xs text-foreground/40 mt-3">Ci vuole meno di 2 minuti.</p>
