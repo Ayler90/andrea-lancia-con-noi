@@ -105,7 +105,7 @@ function GrazieDaChaosSistema() {
                     Scarica il workbook e inizia a compilarlo già da ora
                   </h3>
                   <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-5">
-                    Le prime sezioni le compili da solo, prima della diretta: ti servono per mappare la tua situazione di partenza. Il resto lo completiamo insieme, sezione per sezione, durante la mattinata. Senza workbook perdi l'80% del valore: alla fine della diretta esci con un piano vero già scritto, adattato al tuo business. Stampalo o aprilo su un secondo schermo.
+                    Compila le prime sezioni prima della masterclass: ti serviranno per avere chiaro dove ti trovi, in questo momento. Il resto lo completiamo insieme, sezione per sezione, durante la mattinata. Mi raccomando, scaricalo sul serio il workbook. Senza, ti perdi l'80% del valore della masterclass. Alla fine della diretta esci con un piano pronto, adattato al tuo business! Stampalo o aprilo su un secondo schermo.
                   </p>
                   <p className="text-sm text-foreground/60 leading-relaxed mb-6">
                     Una volta cliccato sul pulsante si aprirà il Workbook in formato Google Doc. Clicca su "File", poi "Crea una copia", per salvarlo sul tuo Drive e modificarlo.
