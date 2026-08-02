@@ -16,6 +16,31 @@ import recBB6 from "@/assets/Recensioni Business Blueprint6.jpg";
 import recBB7 from "@/assets/Recensioni Business Blueprint7.png";
 import recBB8 from "@/assets/Recensioni Business Blueprint8.jpg";
 import recBB9 from "@/assets/Recensioni Business Blueprint9.jpg";
+import recG1  from "@/assets/Recensione Google My Business.png";
+import recG2  from "@/assets/Recensione Google My Business 2.png";
+import recG3  from "@/assets/Recensione Google My Business 3.png";
+import recG4  from "@/assets/Recensione Google My Business 4.png";
+import recG5  from "@/assets/Recensione Google My Business 5.png";
+import recG6  from "@/assets/Recensione Google My Business 6.png";
+import recG7  from "@/assets/Recensione Google My Business 7.png";
+import recG8  from "@/assets/Recensione Google My Business 8.png";
+import recG9  from "@/assets/Recensione Google My Business 9.png";
+import recG10 from "@/assets/Recensione Google My Business 10.png";
+import recG11 from "@/assets/Recensione Google My Business 11.png";
+import recG12 from "@/assets/Recensione Google My Business 12.png";
+import recG13 from "@/assets/Recensione Google My Business 13.png";
+import recF1  from "@/assets/Feedback di vendita.jpg";
+import recF2  from "@/assets/Feedback di vendita 2.jpg";
+import recF3  from "@/assets/Feedback di vendita 3.jpg";
+import recF4  from "@/assets/Feedback di vendita 4.jpg";
+import recF5  from "@/assets/Feedback di vendita 5.png";
+import recF6  from "@/assets/Feedback di vendita 6.png";
+import recF7  from "@/assets/Feedback di vendita 7.png";
+import recF8  from "@/assets/Feedback di vendita 8.png";
+import recF9  from "@/assets/Feedback di vendita 9.png";
+import recF10 from "@/assets/Feedback di vendita 10.png";
+import recF11 from "@/assets/Feedback di vendita 11.png";
+import recF12 from "@/assets/Feedback di vendita 12.png";
 
 export const Route = createFileRoute("/da-caos-a-sistema-masterclass")({
   component: ZeroImprovvisazioneMasterclass,
@@ -1275,8 +1300,8 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Durante la masterclass compileremo il workbook su offerte, lanci, funnel ed ecosistema.</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Il workbook che compili{" "}
-            <em className="text-[#4B6380]">in diretta con noi</em>
+            Dopo la masterclass torni a casa con un piano fatto e finito{" "}
+            <em className="text-[#4B6380]">per il 2027</em>
           </h2>
           <div className="max-w-5xl mx-auto rounded-3xl bg-white border border-[#4B6380]/12 overflow-hidden" style={{ boxShadow: "0 4px 40px rgba(21,102,134,0.10)" }}>
             <div className="grid md:grid-cols-[1fr_1.3fr] gap-0">
@@ -1385,11 +1410,11 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Alcune parole dei nostri studenti/clienti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Cosa dicono le persone che hanno lavorato{" "}
+            Che risultati hanno avuto i professionisti che hanno lavorato{" "}
             <em className="text-[#4B6380]">con noi?</em>
           </h2>
           <div className="columns-2 md:columns-3 gap-4 max-w-5xl mx-auto">
-            {[recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9].map((src, i) => (
+            {[recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9, recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13, recF1, recF2, recF3, recF4, recF5, recF6, recF7, recF8, recF9, recF10, recF11, recF12].map((src, i) => (
               <div key={i} className="break-inside-avoid mb-4">
                 <img src={src} alt={`Recensione ${i + 1}`} className="w-full rounded-2xl" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.1)" }} />
               </div>
