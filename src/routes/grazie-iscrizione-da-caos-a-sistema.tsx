@@ -6,9 +6,9 @@ import copertingWorkbook from "@/assets/copertina da caos a sistema workbook.png
 export const Route = createFileRoute("/grazie-iscrizione-da-caos-a-sistema")({
   component: GrazieDaChaosSistema,
   head: () => ({
+    title: "Grazie per l'iscrizione - Andrea Bonomo - Funnel e Launch Strategist",
     meta: [
       { name: "robots", content: "noindex, nofollow" },
-      { title: "Ci sei! – Da Caos a Sistema | Andrea Bonomo" },
     ],
   }),
 });
@@ -32,8 +32,6 @@ function CheckIcon() {
 function GrazieDaChaosSistema() {
   useEffect(() => {
     posthog.capture("lead_masterclass", { source: "grazie-iscrizione-da-caos-a-sistema" });
-    document.title = "Grazie per l'iscrizione - Andrea Bonomo - Funnel e Launch Strategist";
-    return () => { document.title = "Andrea Bonomo - Funnel e Launch Strategist"; };
   }, []);
 
   return (

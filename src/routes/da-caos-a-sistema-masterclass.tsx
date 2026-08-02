@@ -904,11 +904,6 @@ function StickyBar() {
 }
 
 function ZeroImprovvisazioneMasterclass() {
-  useEffect(() => {
-    document.title = "Da Caos A Sistema - Andrea Bonomo - Funnel e Launch Strategist";
-    return () => { document.title = "Andrea Bonomo - Funnel e Launch Strategist"; };
-  }, []);
-
   function trackCta(label: string) {
     posthog.capture("da_caos_a_sistema_cta_click", { cta_label: label });
   }
