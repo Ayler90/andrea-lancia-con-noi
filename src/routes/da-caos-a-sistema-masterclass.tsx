@@ -1361,10 +1361,6 @@ function ZeroImprovvisazioneMasterclass() {
                     <p className="font-bold text-[#1B2F52] text-base">Andrea Bonomo</p>
                     <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#4B6380]/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-2">Funnel & Launch Strategist</span>
                     <p className="text-xs text-[#1B2F52]/75 leading-relaxed">Negli ultimi anni ho lavorato con <strong className="text-[#1B2F52]">oltre 100 coach, consulenti, formatori e creator</strong> per costruire sistemi di lancio e funnel evergreen che generano vendite <strong className="text-[#1B2F52]">senza finire ogni volta in burnout e con l'acqua alla gola</strong>.</p>
-                    <div className="mt-3 flex items-center gap-2 bg-white/50 border border-[#4B6380]/20 rounded-xl px-3 py-1.5 w-fit">
-                      <span className="text-amber-500 text-xs tracking-tighter">★★★★★</span>
-                      <span className="text-xs text-[#1B2F52]/70 font-medium">4.9 · 50+ recensioni su Google</span>
-                    </div>
                   </div>
 
                   {/* DAVIDE — destra */}
