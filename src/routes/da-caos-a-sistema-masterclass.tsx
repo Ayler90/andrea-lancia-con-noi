@@ -921,10 +921,11 @@ function ZeroImprovvisazioneMasterclass() {
 
       {/* HERO */}
       <section id="hero-section" className="relative overflow-hidden pt-16 pb-28 md:pt-24 md:pb-36">
-        <img src={headerAndreaDavide} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" style={{ zIndex: 0 }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(255,255,255,0.82)", zIndex: 1 }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ top: "-10%", left: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ top: "5%", right: "-5%", zIndex: 0, animation: "orb-drift-2 28s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#4B6380]/20 blur-3xl pointer-events-none" style={{ bottom: "-10%", right: "-8%", zIndex: 0, animation: "orb-drift-1 22s ease-in-out infinite", willChange: "transform", isolation: "isolate" }} />
 
-        <div className="container-narrow relative" style={{ zIndex: 2, maxWidth: 1260 }}>
+        <div className="container-narrow relative" style={{ zIndex: 1, maxWidth: 1260 }}>
           <div className="grid md:grid-cols-[1fr_420px] gap-10 md:gap-20 items-center">
 
             {/* COLONNA SINISTRA */}
