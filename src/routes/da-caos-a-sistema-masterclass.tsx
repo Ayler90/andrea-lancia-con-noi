@@ -933,8 +933,8 @@ function ZeroImprovvisazioneMasterclass() {
 
               <h1 className="h-display font-bold" style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}>
                 Pianifica i prossimi 12 mesi di{" "}
-                <em className="text-[#4B6380]">lanci e funnel</em>{" "}
-                delle tue offerte in una mattinata.
+                <em className="text-[#4B6380]">lanci e offerte</em>,{" "}
+                in una mattinata.
               </h1>
 
               <p className="mt-5 text-sm md:text-base text-foreground/65 leading-relaxed">
