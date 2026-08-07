@@ -7,6 +7,7 @@ import copertingWorkbook from "@/assets/copertina da caos a sistema workbook.png
 import andreaChiSono from "@/assets/Andrea chi sono.png";
 import davideChiSono from "@/assets/Davide chi sono.png";
 import andreadaveSfondo from "@/assets/Immagine chi siamo.png";
+import chiSiamoMobile from "@/assets/Chi siamo - mobile.png";
 import headerAndreaDavide from "@/assets/Immagine header andrea e davide (1).png";
 import recBB1 from "@/assets/Recensioni Business Blueprint 1.jpg";
 import recBB2 from "@/assets/Recensioni Business Blueprint 2.png";
@@ -1373,7 +1374,8 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="px-6 md:px-12">
           {/* Grande riquadro con immagine di sfondo */}
           <div className="relative overflow-hidden rounded-3xl flex flex-col" style={{ minHeight: "780px" }}>
-            <img src={andreadaveSfondo} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={andreadaveSfondo} alt="" className="absolute inset-0 w-full h-full object-cover hidden md:block" />
+            <img src={chiSiamoMobile} alt="" className="absolute inset-0 w-full h-full object-cover md:hidden" />
             <div className="absolute inset-0" style={{ background: "rgba(27,47,82,0.32)" }} />
             <div className="relative z-10 flex flex-col h-full" style={{ minHeight: "780px" }}>
               <div className="mt-auto pb-10 px-8 md:px-12">
