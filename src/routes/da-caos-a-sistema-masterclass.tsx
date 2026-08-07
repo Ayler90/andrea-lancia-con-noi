@@ -1466,7 +1466,7 @@ function ZeroImprovvisazioneMasterclass() {
                 <p className="text-sm text-foreground/70 font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
                 <p className="text-xs text-foreground/40">Niente spam. Ricevi solo l'email con il link Zoom.</p>
                 <div className="border-t border-[#4B6380]/10 pt-4 text-xs text-foreground/45 leading-relaxed">
-                  Se alla fine ti presentiamo Business Blueprint e non fa per te, non cambia niente. Porti a casa il piano e lo usi da solo.
+                  Alla fine della masterclass ti presenteremo Business Blueprint, il nostro mentoring annuale. Se il percorso non fa per te non c'è alcun problema: ti sei portata a casa un piano fatto e finito per il 2027.
                 </div>
               </div>
             </div>
