@@ -996,8 +996,8 @@ function ZeroImprovvisazioneMasterclass() {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-10">Ora ti trovi qui</p>
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
             <h2 className="h-display font-bold text-white leading-[1.1]" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
-              Stai gestendo ogni tuo lancio e funnel{" "}
-              <em style={{ color: "#C4D9DC" }}>in emergenza e senza un piano?</em>
+              Stai gestendo ogni tuo lancio e creando offerte{" "}
+              <em style={{ color: "#C4D9DC" }}>senza un piano preciso?</em>
             </h2>
             <div className="space-y-5 text-sm md:text-base text-white/75 leading-relaxed">
               <p>Hai un'offerta da lanciare ma <strong className="text-white/90">non sai da dove iniziare</strong>: non sai quando farlo, come comunicarlo, quante email mandare né cosa pubblicare sui social. Allora rimandi, aspetti il momento giusto, e il momento giusto non arriva mai.</p>
