@@ -42,6 +42,8 @@ import recF9  from "@/assets/Feedback di vendita 9.png";
 import recF10 from "@/assets/Feedback di vendita 10.png";
 import recF11 from "@/assets/Feedback di vendita 11.png";
 import recF12 from "@/assets/Feedback di vendita 12.png";
+import recExtra1 from "@/assets/Screenshot 2026-08-05 170115.png";
+import recExtra2 from "@/assets/Screenshot 2026-08-05 170041.png";
 
 export const Route = createFileRoute("/da-caos-a-sistema-masterclass")({
   component: ZeroImprovvisazioneMasterclass,
@@ -1033,7 +1035,7 @@ function ZeroImprovvisazioneMasterclass() {
             Lo so. In questo momento <strong>il tuo business va un po' a braccio.</strong><br /><br />
             Fai un lancio e poi speri che le cose vadano bene perché <strong>buona parte dei guadagni dipendono da questo.</strong><br /><br />
             Stessa cosa per le tue offerte: ti trovi ad averne parecchie per accontentare tutti i potenziali clienti che arrivano (e passi quasi più tempo a fare preventivi che altro).<br /><br />
-            I 4 riquadri qui sotto sintetizzano bene quello che vive il <strong>90% dei liberi professionisti e imprenditori</strong> che hanno un business online e si sentono sfiancati dalla sua gestione.
+            I 4 riquadri qui sotto sintetizzano bene quello che vive il <strong>90% delle libere professioniste e imprenditrici</strong> che hanno un business online e si sentono sfiancate dalla sua gestione.
           </p>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
@@ -1083,7 +1085,7 @@ function ZeroImprovvisazioneMasterclass() {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Per chi è la masterclass del 29 agosto?</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
             Da Caos a Sistema è{" "}
-            <em className="text-[#4B6380]">perfetto per te</em> se:
+            <em className="text-[#4B6380]">perfetta per te</em> se:
           </h2>
           <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
@@ -1392,8 +1394,8 @@ function ZeroImprovvisazioneMasterclass() {
                   {/* DAVIDE — destra */}
                   <div className="rounded-2xl p-4" style={{ backgroundColor: "#C4D9DC", border: "1px solid #A8C8CC" }}>
                     <p className="font-bold text-[#1B2F52] text-base">Davide Angiolillo</p>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#4B6380]/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-2">Esperto di Target & Offerte</span>
-                    <p className="text-xs text-[#1B2F52]/65 leading-relaxed italic">[Credenziali, clienti ed esperienza di Davide: da aggiungere]</p>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4B6380] bg-[#4B6380]/10 px-2 py-0.5 rounded-full inline-block mt-1 mb-2">Consulente strategico di Branding, Business e Comunicazione</span>
+                    <p className="text-xs text-[#1B2F52]/65 leading-relaxed">Faccio squadra con i miei clienti per rendere il loro Brand strategico e funzionale: dal posizionamento alla comunicazione, dalla strategia alle offerte alla fidelizzazione del cliente. Il tutto valorizzando emozioni ed esperienze.</p>
                   </div>
 
                 </div>
@@ -1411,11 +1413,11 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Alcune parole dei nostri studenti/clienti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-12">
-            Che risultati hanno avuto i professionisti che hanno lavorato{" "}
+            Che risultati hanno avuto le professioniste che hanno lavorato{" "}
             <em className="text-[#4B6380]">con noi?</em>
           </h2>
           <div className="columns-2 md:columns-3 gap-4 max-w-5xl mx-auto">
-            {[recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9, recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13, recF1, recF2, recF3, recF4, recF5, recF6, recF7, recF8, recF9, recF10, recF11, recF12].map((src, i) => (
+            {[recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9, recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13, recF1, recF2, recF3, recF4, recF5, recF6, recF7, recF8, recF9, recF10, recF11, recF12, recExtra1, recExtra2].map((src, i) => (
               <div key={i} className="break-inside-avoid mb-4">
                 <img src={src} alt={`Recensione ${i + 1}`} className="w-full rounded-2xl" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.1)" }} />
               </div>
@@ -1478,7 +1480,7 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow max-w-4xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Domande frequenti</p>
           <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-10">
-            Hai qualche domanda? <em className="text-[#4B6380]">Ho le risposte.</em>
+            Hai qualche domanda? <em className="text-[#4B6380]">Abbiamo le risposte.</em>
           </h2>
           <FaqAccordion />
         </div>
