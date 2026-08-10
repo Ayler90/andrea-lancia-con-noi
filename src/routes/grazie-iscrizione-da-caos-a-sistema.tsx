@@ -60,7 +60,19 @@ function GrazieDaChaosSistema() {
             Sabato 29 agosto · ore 10:00 · su Zoom
           </p>
 
-          <div className="mt-10 max-w-2xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-5 text-sm text-white/75 leading-relaxed text-left">
+          <div className="mt-10 max-w-3xl mx-auto rounded-2xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.3)" }}>
+            <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+              <iframe
+                src="https://www.youtube.com/embed/nzCoI7eUNOU"
+                title="Video di ringraziamento"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
+              />
+            </div>
+          </div>
+
+          <div className="mt-6 max-w-2xl mx-auto bg-white/10 border border-white/20 rounded-2xl p-5 text-sm text-white/75 leading-relaxed text-left">
             <p className="font-semibold text-white mb-2">Tieni d'occhio la tua email</p>
             Nelle prossime ore ricevi un'email con tutti i dettagli. Se non la trovi, controlla in SPAM e in PROMOZIONI: le email di conferma finiscono spesso lì. Il link Zoom arriva la mattina del 29 agosto, non prima.
           </div>
