@@ -435,7 +435,7 @@ function Programma() {
           >
             Voglio il mio posto →
           </button>
-          <p className="text-sm text-[#4B6380] font-medium mt-2">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+          <p className="bar-original text-sm text-[#4B6380] font-medium mt-2 text-center">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
         </div>
       </div>
     </section>
@@ -894,7 +894,7 @@ function ZeroImprovvisazioneMasterclass() {
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("problema-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
-            <p className="text-sm text-white font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+            <p className="bar-original text-sm text-white font-medium mt-3 text-center">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
           </div>
 
           <div className="mt-16 text-center">
@@ -1177,7 +1177,7 @@ function ZeroImprovvisazioneMasterclass() {
             <button className="pill bg-white text-[#4B6380] hover:-translate-y-0.5 whitespace-nowrap" onClick={() => { trackCta("risultato-iscriviti"); scrollToSection("form"); }}>
               Voglio il mio posto →
             </button>
-            <p className="text-sm text-white font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+            <p className="bar-original text-sm text-white font-medium mt-3 text-center">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
           </div>
         </div>
       </section>
@@ -1243,7 +1243,7 @@ function ZeroImprovvisazioneMasterclass() {
                   >
                     Voglio il mio posto →
                   </button>
-                  <p className="text-sm text-foreground/70 font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+                  <p className="bar-original text-sm text-foreground/70 font-medium mt-3 text-center">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
                 </div>
               </div>
 
@@ -1348,7 +1348,7 @@ function ZeroImprovvisazioneMasterclass() {
                 >
                   Voglio il mio posto →
                 </button>
-                <p className="text-sm text-foreground/70 font-medium mt-3">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
+                <p className="bar-original text-sm text-foreground/70 font-medium mt-3 text-center">🔴 Masterclass Gratuita · 29 Agosto · In diretta</p>
                 <p className="text-xs text-foreground/40">Niente spam. Ricevi solo l'email con il link Zoom.</p>
                 <div className="border-t border-[#4B6380]/10 pt-4 text-xs text-foreground/45 leading-relaxed">
                   Alla fine della masterclass ti presenteremo Business Blueprint, il nostro mentoring annuale. Se il percorso non fa per te non c'è alcun problema: ti sei portata a casa un piano fatto e finito per il 2027.
