@@ -582,7 +582,7 @@ function CountdownBanner() {
   const { days, hours, minutes, seconds } = useCountdown();
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
-    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white whitespace-nowrap overflow-hidden" style={{ backgroundColor: "#4B6380", lineHeight: "1.4" }}>
+    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white whitespace-nowrap overflow-hidden" style={{ backgroundColor: "#4B6380", lineHeight: "1.4", fontSize: "0.875rem" }}>
       <span className="opacity-80">Le iscrizioni si chiudono tra </span>
       <span className="font-bold tabular-nums">
         <span style={{ display: "inline-block", minWidth: "2.5ch" }}>{days}g</span>
@@ -693,7 +693,7 @@ function scrollToSection(id: string) {
 
 const BAR_CONTENT = ({ onClick }: { onClick: () => void }) => (
   <div
-    className="flex flex-col items-center sm:flex-row sm:justify-center gap-3 sm:gap-8 px-8 py-3.5 text-center sm:text-left"
+    className="bar-original flex flex-col items-center sm:flex-row sm:justify-center gap-3 sm:gap-8 px-8 py-3.5 text-center sm:text-left"
     style={{
       background: "rgba(10,26,35,0.92)",
       backdropFilter: "blur(14px)",
@@ -788,6 +788,9 @@ function ZeroImprovvisazioneMasterclass() {
         .masterclass-page .text-sm { font-size: 1rem !important; }
         .masterclass-page .text-base { font-size: 1.125rem !important; }
         .masterclass-page .text-xs { font-size: 0.8125rem !important; }
+        .masterclass-page .bar-original .text-sm { font-size: 0.875rem !important; }
+        .masterclass-page .bar-original .text-base { font-size: 1rem !important; }
+        .masterclass-page .bar-original .text-xs { font-size: 0.75rem !important; }
       `}</style>
       <StickyBar />
       {/* BANNER */}
