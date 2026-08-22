@@ -698,6 +698,7 @@ const BAR_CONTENT = ({ onClick }: { onClick: () => void }) => (
       background: "rgba(10,26,35,0.92)",
       backdropFilter: "blur(14px)",
       borderTop: "1px solid rgba(196,217,220,0.12)",
+      fontSize: "0.875rem",
     }}
   >
     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1 text-sm text-white/80">
