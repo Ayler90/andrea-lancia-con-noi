@@ -582,7 +582,7 @@ function CountdownBanner() {
   const { days, hours, minutes, seconds } = useCountdown();
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
-    <div className="w-full py-2.5 px-4 text-center text-sm font-semibold text-white whitespace-nowrap overflow-hidden" style={{ backgroundColor: "#4B6380", lineHeight: "1.4", fontSize: "0.875rem" }}>
+    <div className="bar-original w-full py-2.5 px-4 text-center text-sm font-semibold text-white whitespace-nowrap overflow-hidden" style={{ backgroundColor: "#4B6380", lineHeight: "1.4", fontSize: "0.875rem" }}>
       <span className="opacity-80">Le iscrizioni si chiudono tra </span>
       <span className="font-bold tabular-nums">
         <span style={{ display: "inline-block", minWidth: "2.5ch" }}>{days}g</span>
