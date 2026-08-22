@@ -777,6 +777,61 @@ function StickyBar() {
   );
 }
 
+const ALL_RECENSIONI = [recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9, recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13, recF1, recF2, recF3, recF4, recF5, recF6, recF7, recF8, recF9, recF10, recF11, recF12, recExtra1, recExtra2];
+
+function RecensioniGallery() {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!selected) return;
+    const close = (e: KeyboardEvent) => { if (e.key === "Escape") setSelected(null); };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [selected]);
+
+  return (
+    <>
+      <div className="columns-2 md:columns-3 gap-4 max-w-5xl mx-auto">
+        {ALL_RECENSIONI.map((src, i) => (
+          <div key={i} className="break-inside-avoid mb-4">
+            <img
+              src={src}
+              alt={`Recensione ${i + 1}`}
+              className="w-full rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]"
+              style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.1)" }}
+              onClick={() => setSelected(src)}
+            />
+          </div>
+        ))}
+      </div>
+
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.85)" }}
+          onClick={() => setSelected(null)}
+        >
+          <button
+            onClick={() => setSelected(null)}
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-white font-bold text-xl"
+            style={{ backgroundColor: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" }}
+            aria-label="Chiudi"
+          >
+            ×
+          </button>
+          <img
+            src={selected}
+            alt="Recensione"
+            className="max-w-full max-h-[90vh] rounded-2xl"
+            style={{ boxShadow: "0 8px 60px rgba(0,0,0,0.5)" }}
+            onClick={e => e.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
+  );
+}
+
 function ZeroImprovvisazioneMasterclass() {
   function trackCta(label: string) {
     posthog.capture("da_caos_a_sistema_cta_click", { cta_label: label });
@@ -1301,13 +1356,7 @@ function ZeroImprovvisazioneMasterclass() {
             Che risultati hanno avuto le professioniste che hanno lavorato{" "}
             <em className="text-[#4B6380]">con noi?</em>
           </h2>
-          <div className="columns-2 md:columns-3 gap-4 max-w-5xl mx-auto">
-            {[recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9, recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13, recF1, recF2, recF3, recF4, recF5, recF6, recF7, recF8, recF9, recF10, recF11, recF12, recExtra1, recExtra2].map((src, i) => (
-              <div key={i} className="break-inside-avoid mb-4">
-                <img src={src} alt={`Recensione ${i + 1}`} className="w-full rounded-2xl" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.1)" }} />
-              </div>
-            ))}
-          </div>
+          <RecensioniGallery />
         </div>
       </section>
 
