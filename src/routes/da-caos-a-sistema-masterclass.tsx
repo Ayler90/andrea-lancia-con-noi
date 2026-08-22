@@ -782,7 +782,12 @@ function ZeroImprovvisazioneMasterclass() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="masterclass-page min-h-screen bg-background flex flex-col">
+      <style>{`
+        .masterclass-page .text-sm { font-size: 1rem !important; }
+        .masterclass-page .text-base { font-size: 1.125rem !important; }
+        .masterclass-page .text-xs { font-size: 0.8125rem !important; }
+      `}</style>
       <StickyBar />
       {/* BANNER */}
       <CountdownBanner />
