@@ -75,7 +75,7 @@ function CrossIcon() {
   );
 }
 
-const CANDIDATURA_LINK = "https://forms.gle/XkYLh6Znr36mN7KJ8";
+const CANDIDATURA_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSe9R25qZjHWhzLhenhKI46-LKBEQGJLO-y3vMpm9i9pUeGXjQ/viewform?usp=dialog";
 
 const ALL_RECENSIONI = [recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9, recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13, recF1, recF2, recF3, recF4, recF5, recF6, recF7, recF8, recF9, recF10, recF11, recF12, recExtra1, recExtra2];
 
