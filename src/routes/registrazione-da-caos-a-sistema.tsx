@@ -114,7 +114,7 @@ function RegistrazioneDaCaosASistema() {
                 <div>
                   <div className="inline-flex items-center gap-2 border border-amber-400/40 bg-amber-400/10 text-amber-300 text-[11px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded-full mb-4">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" style={{ boxShadow: "0 0 6px rgba(251,191,36,0.9)" }} />
-                    Percorso esclusivo - solo 4 posti disponibili
+                    Percorso esclusivo - solo 5 posti disponibili
                   </div>
                   <h3 className="h-display font-bold text-white" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
                     Business Blueprint
@@ -245,7 +245,7 @@ function RegistrazioneDaCaosASistema() {
                   >
                     Candidati al percorso
                   </a>
-                  <p className="text-white/30 text-xs">650€/mese · 12 mesi · 4 posti</p>
+                  <p className="text-white/30 text-xs">650€/mese · 12 mesi · 5 posti</p>
                 </div>
               </div>
 
@@ -294,7 +294,7 @@ function RegistrazioneDaCaosASistema() {
           {/* Note finali - 2 card (rimossa "Inizio") */}
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { emoji: "👥", titolo: "Solo 4 posti", testo: "Non è una trovata di marketing. Con più persone non riusciremmo a dare il livello di attenzione che questo percorso richiede." },
+              { emoji: "👥", titolo: "Solo 5 posti", testo: "Non è una trovata di marketing. Con più persone non riusciremmo a dare il livello di attenzione che questo percorso richiede." },
               { emoji: "💬", titolo: "Candidatura, non acquisto diretto", testo: "Ti scriviamo entro 3-4 giorni, poi c'è una call conoscitiva gratuita. Nessun impegno finche non sei pronta." },
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 border border-[#4B6380]/10" style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.06)" }}>
