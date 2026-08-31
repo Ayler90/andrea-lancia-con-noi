@@ -1,11 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import recBB1 from "@/assets/Recensioni Business Blueprint 1.jpg";
+import recBB2 from "@/assets/Recensioni Business Blueprint 2.png";
+import recBB3 from "@/assets/Recensioni Business Blueprint3.png";
+import recBB4 from "@/assets/Recensioni Business Blueprint4.png";
+import recBB5 from "@/assets/Recensioni Business Blueprint5.png";
+import recBB6 from "@/assets/Recensioni Business Blueprint6.jpg";
+import recBB7 from "@/assets/Recensioni Business Blueprint7.png";
+import recBB8 from "@/assets/Recensioni Business Blueprint8.jpg";
+import recBB9 from "@/assets/Recensioni Business Blueprint9.jpg";
+import recG1  from "@/assets/Recensioni Google 1.png";
+import recG2  from "@/assets/Recensioni Google 2.png";
+import recG3  from "@/assets/Recensioni Google 3.png";
+import recG4  from "@/assets/Recensioni Google 4.png";
+import recG5  from "@/assets/Recensioni Google 5.png";
+import recG6  from "@/assets/Recensioni Google 6.png";
+import recG7  from "@/assets/Recensioni Google 7.png";
+import recG8  from "@/assets/Recensioni Google 8.png";
+import recG9  from "@/assets/Recensioni Google 9.png";
+import recG10 from "@/assets/Recensioni Google 10.png";
+import recG11 from "@/assets/Recensioni Google 11.png";
+import recG12 from "@/assets/Recensioni Google 12.png";
+import recG13 from "@/assets/Recensioni Google 13.png";
+import recF1  from "@/assets/Feedback di vendita.jpg";
+import recF2  from "@/assets/Feedback di vendita 2.jpg";
+import recF3  from "@/assets/Feedback di vendita 3.jpg";
+import recF4  from "@/assets/Feedback di vendita 4.jpg";
+import recF5  from "@/assets/Feedback di vendita 5.jpg";
+import recF6  from "@/assets/Feedback di vendita 6.jpg";
+import recF7  from "@/assets/Feedback di vendita 7.jpg";
+import recF8  from "@/assets/Feedback di vendita 8.jpg";
+import recF9  from "@/assets/Feedback di vendita 9.jpg";
+import recF10 from "@/assets/Feedback di vendita 10.png";
+import recF11 from "@/assets/Feedback di vendita 11.png";
+import recF12 from "@/assets/Feedback di vendita 12.png";
+import recExtra1 from "@/assets/Screenshot 2026-08-05 170115.png";
+import recExtra2 from "@/assets/Screenshot 2026-08-05 170041.png";
 
 export const Route = createFileRoute("/registrazione-da-caos-a-sistema")({
   component: RegistrazioneDaCaosASistema,
   head: () => ({
-    title: "Registrazione - Da Caos A Sistema | Andrea Bonomo",
-    meta: [{ name: "robots", content: "noindex, nofollow" }],
+    title: "Registrazione - Da Caos A Sistema - Andrea Bonomo - Funnel e Launch Strategist",
+    meta: [
+      { name: "robots", content: "noindex, nofollow" },
+      { name: "description", content: "Rivedi la registrazione completa della masterclass Da Caos a Sistema con Andrea Bonomo e Davide Angiolillo. Disponibile fino a domenica 6 settembre." },
+    ],
   }),
 });
 
@@ -37,6 +76,61 @@ function CrossIcon() {
 }
 
 const CANDIDATURA_LINK = "https://forms.gle/XkYLh6Znr36mN7KJ8";
+
+const ALL_RECENSIONI = [recBB1, recBB2, recBB3, recBB4, recBB5, recBB6, recBB7, recBB8, recBB9, recG1, recG2, recG3, recG4, recG5, recG6, recG7, recG8, recG9, recG10, recG11, recG12, recG13, recF1, recF2, recF3, recF4, recF5, recF6, recF7, recF8, recF9, recF10, recF11, recF12, recExtra1, recExtra2];
+
+function RecensioniGallery() {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!selected) return;
+    const close = (e: KeyboardEvent) => { if (e.key === "Escape") setSelected(null); };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [selected]);
+
+  return (
+    <>
+      <div className="columns-2 md:columns-3 gap-4 max-w-5xl mx-auto">
+        {ALL_RECENSIONI.map((src, i) => (
+          <div key={i} className="break-inside-avoid mb-4">
+            <img
+              src={src}
+              alt={`Recensione ${i + 1}`}
+              className="w-full rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]"
+              style={{ boxShadow: "0 2px 16px rgba(21,102,134,0.1)" }}
+              onClick={() => setSelected(src)}
+            />
+          </div>
+        ))}
+      </div>
+
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.85)" }}
+          onClick={() => setSelected(null)}
+        >
+          <button
+            onClick={() => setSelected(null)}
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-white font-bold text-xl"
+            style={{ backgroundColor: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" }}
+            aria-label="Chiudi"
+          >
+            x
+          </button>
+          <img
+            src={selected}
+            alt="Recensione"
+            className="max-w-full max-h-[90vh] rounded-2xl"
+            style={{ boxShadow: "0 8px 60px rgba(0,0,0,0.5)" }}
+            onClick={e => e.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
+  );
+}
 
 function RegistrazioneDaCaosASistema() {
   return (
@@ -305,6 +399,21 @@ function RegistrazioneDaCaosASistema() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* RECENSIONI */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="container-narrow">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4B6380] mb-4 text-center">Cosa dicono di noi</p>
+          <h2 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl text-center mb-4">
+            Chi ha già lavorato{" "}
+            <em className="text-[#4B6380]">con noi</em>
+          </h2>
+          <p className="text-center text-foreground/55 text-base leading-relaxed max-w-xl mx-auto mb-14">
+            Clicca su una recensione per ingrandirla.
+          </p>
+          <RecensioniGallery />
         </div>
       </section>
 
