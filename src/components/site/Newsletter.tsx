@@ -51,7 +51,7 @@ const ML_FORM_HTML = `
 </div>
 `;
 
-const PREVIEW_URL = "https://preview.mailerlite.io/emails/webview/17207/188806471623902309";
+const PREVIEW_URL = "https://preview.mailerlite.io/emails/webview/17207/199587486287005339?signature=9ba4fa96824ce652fc1c53e353dba4898ac9422babad292ca8bc1cc0c88aa0d8";
 
 function NewsletterPreviewModal({ onClose }: { onClose: () => void }) {
   const [open, setOpen] = useState(false);
