@@ -160,9 +160,7 @@ export function Footer() {
           <p>© 2026 Andrea Bonomo - P.IVA 04815800232</p>
           <div className="flex gap-5">
             <a
-              href="https://www.iubenda.com/privacy-policy/31182601"
-              target="_blank"
-              rel="noreferrer"
+              href="/privacy-policy"
               className="hover:text-white/70 transition-colors"
             >
               Privacy Policy

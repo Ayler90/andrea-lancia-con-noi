@@ -25,7 +25,7 @@ const ML_FORM_HTML = `
           </div>
           <div class="ml-form-embedPermissions">
             <div class="ml-form-embedPermissionsContent default privacy-policy">
-              <p>Iscrivendoti accetti la <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank">Privacy Policy</a> del sito. Puoi disiscriverti quando vuoi, dal link che trovi alla fine di ogni email.</p>
+              <p>Iscrivendoti accetti la <a href="/privacy-policy">Privacy Policy</a> del sito. Puoi disiscriverti quando vuoi, dal link che trovi alla fine di ogni email.</p>
             </div>
           </div>
           <input type="hidden" name="ml-submit" value="1">

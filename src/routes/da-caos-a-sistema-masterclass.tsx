@@ -521,7 +521,7 @@ function MailerLiteForm() {
       {/* Privacy */}
       <div style={{ marginBottom: 16, fontSize: 13, color: "rgba(21,102,134,0.65)", lineHeight: "1.5" }}>
         Iscrivendoti accetti la{" "}
-        <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer" style={{ color: "#4B6380", textDecoration: "underline" }}>
+        <a href="/privacy-policy" style={{ color: "#4B6380", textDecoration: "underline" }}>
           Privacy Policy
         </a>{" "}
         del sito. Puoi disiscriverti quando vuoi, dal link che trovi alla fine di ogni email.
@@ -1428,7 +1428,7 @@ function ZeroImprovvisazioneMasterclass() {
         <div className="container-narrow py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <p>Andrea Bonomo · P.IVA 04815800232</p>
           <div className="flex gap-5">
-            <a href="https://www.iubenda.com/privacy-policy/31182601" target="_blank" rel="noreferrer" className="hover:text-white/80 transition-colors">Privacy Policy</a>
+            <a href="/privacy-policy" className="hover:text-white/80 transition-colors">Privacy Policy</a>
             <a href="/cookie-policy" className="hover:text-white/80 transition-colors">Cookie Policy</a>
           </div>
         </div>
