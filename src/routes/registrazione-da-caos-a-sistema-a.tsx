@@ -37,7 +37,7 @@ import recF12 from "@/assets/Feedback di vendita 12.png";
 import recExtra1 from "@/assets/Screenshot 2026-08-05 170115.png";
 import recExtra2 from "@/assets/Screenshot 2026-08-05 170041.png";
 
-export const Route = createFileRoute("/registrazione-da-caos-a-sistema")({
+export const Route = createFileRoute("/registrazione-da-caos-a-sistema-a")({
   component: RegistrazioneDaCaosASistema,
   head: () => ({
     title: "Registrazione - Da Caos A Sistema - Andrea Bonomo - Funnel e Launch Strategist",
