@@ -54,12 +54,12 @@ function PrivacyPolicy() {
           <h1 className="h-display font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
             Privacy <em className="text-[#156686]">Policy</em>
           </h1>
-          <p className="text-foreground/55 text-sm mb-14">Ultima modifica: 27 settembre 2026</p>
+          <p className="text-foreground/55 text-sm mb-14">Ultima modifica: 13 ottobre 2026</p>
 
           <div className="prose-like">
 
             <p className="text-foreground/80 leading-relaxed text-sm md:text-base mb-10">
-              Questa Privacy Policy è resa ai sensi dell'art. 13 del Regolamento (UE) 2016/679 ("GDPR") e si applica esclusivamente al trattamento dei Dati Personali raccolti attraverso il sito web www.andreabonomo.it. La presente informativa descrive le modalità di raccolta, utilizzo, conservazione e protezione dei Dati Personali degli utenti che accedono e utilizzano il Sito, nonché i diritti riconosciuti agli Interessati dalla normativa applicabile in materia di protezione dei dati personali. La Privacy Policy potrà essere soggetta ad aggiornamenti, modifiche o integrazioni, anche in conseguenza di modifiche normative o dell'evoluzione dei servizi offerti tramite il Sito. Ogni aggiornamento sarà pubblicato tempestivamente su questa pagina e diventerà efficace dalla data di pubblicazione. La presente Privacy Policy deve essere letta congiuntamente alla Cookie Policy e agli eventuali ulteriori documenti informativi richiamati o resi disponibili durante la navigazione o l'utilizzo dei servizi.
+              Questa Privacy Policy è resa ai sensi dell'art. 13 del Regolamento (UE) 2016/679 ("GDPR") e si applica al trattamento dei Dati Personali raccolti attraverso il sito web www.andreabonomo.it e attraverso i canali collegati gestiti dal Titolare, inclusi i messaggi diretti del profilo Instagram @andreabonomo_mktg. La presente informativa descrive le modalità di raccolta, utilizzo, conservazione e protezione dei Dati Personali degli utenti che accedono e utilizzano il Sito, nonché i diritti riconosciuti agli Interessati dalla normativa applicabile in materia di protezione dei dati personali. La Privacy Policy potrà essere soggetta ad aggiornamenti, modifiche o integrazioni, anche in conseguenza di modifiche normative o dell'evoluzione dei servizi offerti tramite il Sito. Ogni aggiornamento sarà pubblicato tempestivamente su questa pagina e diventerà efficace dalla data di pubblicazione. La presente Privacy Policy deve essere letta congiuntamente alla Cookie Policy e agli eventuali ulteriori documenti informativi richiamati o resi disponibili durante la navigazione o l'utilizzo dei servizi.
             </p>
 
             <Section title="Titolare del Trattamento">
@@ -128,6 +128,7 @@ function PrivacyPolicy() {
 
               <SubSection title="5) Newsletter">
                 <p>I dati personali forniti dall'Interessato saranno trattati per l'invio di newsletter contenenti comunicazioni informative e promozionali. Per l'invio della newsletter, il Titolare tratta nome (se fornito) e indirizzo email, tramite il servizio MailerLite.</p>
+                <p>Le email inviate dal Titolare contengono un pixel di tracciamento (cosiddetto tracking pixel), cioè una piccola immagine invisibile che registra se e quando l'Interessato apre l'email, insieme ad alcuni dati tecnici (orario di apertura, tipo di dispositivo, programma di posta utilizzato e indirizzo IP). Vengono inoltre registrati i clic sui link contenuti nelle email. Questi dati servono a capire quali contenuti interessano di più, a migliorare le comunicazioni successive e a inviare di nuovo alcune comunicazioni a chi non le ha aperte. Il tracciamento delle aperture e dei clic fa parte del consenso prestato con l'iscrizione alla newsletter. L'Interessato può revocare in qualsiasi momento il consenso al solo tracciamento, continuando a ricevere la newsletter, scrivendo all'indirizzo email del Titolare indicato in questa Privacy Policy; oppure può revocare il consenso alla newsletter nel suo insieme tramite il link di cancellazione presente in calce a ogni email.</p>
                 <p><Label>Base giuridica:</Label> consenso esplicito e libero dell'Interessato (art. 6.1 lett. a GDPR). L'iscrizione è facoltativa e il mancato conferimento dei dati non pregiudica l'utilizzo degli altri servizi del sito.</p>
                 <p><Label>Periodo di conservazione:</Label> fino a revoca del consenso, esercitabile in qualsiasi momento tramite il link di cancellazione presente in calce a ogni newsletter o tramite richiesta diretta al Titolare.</p>
               </SubSection>
@@ -151,6 +152,13 @@ function PrivacyPolicy() {
                 <Ul items={["Esecuzione del contratto (art. 6.1 lett. b GDPR), per completare l'acquisto.", "Obbligo legale (art. 6.1 lett. c GDPR), per gli adempimenti fiscali e contabili."]} />
                 <p><Label>Periodo di conservazione:</Label> per il tempo necessario all'esecuzione del contratto e, successivamente, per un periodo massimo di 10 anni, in conformità agli obblighi di legge in materia fiscale e contabile.</p>
               </SubSection>
+
+              <SubSection title="9) Richiesta di contenuti gratuiti tramite messaggi diretti Instagram">
+                <p>Quando l'Interessato scrive una parola chiave al profilo Instagram del Titolare (@andreabonomo_mktg) in un messaggio diretto, in risposta a una storia o in un commento, riceve un messaggio automatico che gli propone un contenuto gratuito (ad esempio la Guida Gratuita ai Lanci) insieme all'iscrizione alla newsletter. Se l'Interessato accetta, la conversazione automatica gli chiede indirizzo email e nome e, prima dell'invio del contenuto, gli chiede di prestare il consenso e di prendere visione della presente Privacy Policy tramite un apposito pulsante. In caso di consenso, l'indirizzo email e il nome vengono iscritti alla newsletter del Titolare.</p>
+                <p><Label>Dati trattati:</Label> nome utente e identificativo del profilo Instagram, contenuto dei messaggi scambiati nella conversazione automatica, indirizzo email, nome, scelta espressa sul consenso, data e ora dell'interazione.</p>
+                <p><Label>Base giuridica:</Label> consenso dell'Interessato (art. 6.1 lett. a GDPR), espresso nella conversazione. Il conferimento dei dati è facoltativo: chi non fornisce i dati o non presta il consenso non riceve il contenuto tramite questo canale e non viene iscritto alla newsletter.</p>
+                <p><Label>Periodo di conservazione:</Label> i dati della conversazione sono conservati nella piattaforma di automazione per il tempo necessario a gestire la richiesta e comunque non oltre 12 mesi dall'ultima interazione. L'indirizzo email e il nome iscritti alla newsletter seguono il periodo di conservazione indicato al punto 5.</p>
+              </SubSection>
             </Section>
 
             <Section title="Comunicazione dei Dati">
@@ -173,8 +181,11 @@ function PrivacyPolicy() {
                 "Notion Labs, Inc. (gestione operativa del rapporto con il cliente dopo la firma del contratto)",
                 "Google LLC (Google Drive, per la condivisione di materiali con il cliente dopo la firma del contratto)",
                 "Cybot A/S (Cookiebot, gestione del banner e delle preferenze cookie)",
+                "Zernio Software SL (automazione dei messaggi diretti Instagram)",
+                "Hetzner Online GmbH (server su cui è installato il software di automazione n8n del Titolare)",
               ]} />
               <p>Tali soggetti, ove necessario, sono nominati Responsabili del Trattamento ai sensi dell'art. 28 GDPR. L'elenco aggiornato può essere richiesto in qualsiasi momento al Titolare.</p>
+              <p><Label>Titolari autonomi:</Label> Meta Platforms Ireland Limited, per i messaggi scambiati tramite Instagram. Meta tratta i dati delle conversazioni in qualità di titolare autonomo, secondo la propria informativa privacy.</p>
               <p><Label>Soggetti destinatari per obblighi di legge</Label>, quali autorità amministrative, fiscali o giudiziarie, quando la comunicazione sia obbligatoria per legge.</p>
               <p>I Dati Personali non saranno oggetto di diffusione indiscriminata né di comunicazione a soggetti terzi per finalità diverse da quelle indicate nella presente informativa, salvo espresso consenso dell'Interessato o specifico obbligo di legge.</p>
             </Section>
@@ -198,10 +209,10 @@ function PrivacyPolicy() {
               </SubSection>
 
               <SubSection title="Newsletter - MailerLite">
-                <p>Il Titolare utilizza MailerLite, servizio fornito da MailerLite Limited (società di diritto irlandese) per gli utenti dello Spazio Economico Europeo, per la gestione delle newsletter e delle comunicazioni informative via email, nonché per l'analisi statistica dell'interazione con le newsletter (tasso di apertura, clic sui link).</p>
-                <p><Label>Dati trattati:</Label> nome, indirizzo email.</p>
+                <p>Il Titolare utilizza MailerLite, servizio fornito da MailerLite Limited (società di diritto irlandese) per gli utenti dello Spazio Economico Europeo, per la gestione delle newsletter e delle comunicazioni informative via email, nonché per l'analisi dell'interazione con le newsletter tramite un pixel di tracciamento delle aperture e la registrazione dei clic sui link, come descritto al punto 5 della sezione "Finalità del Trattamento".</p>
+                <p><Label>Dati trattati:</Label> nome, indirizzo email, dati di apertura delle email (data e ora, tipo di dispositivo, programma di posta, indirizzo IP), clic sui link contenuti nelle email (link cliccato, data e ora).</p>
                 <p><Label>Base giuridica:</Label> consenso dell'Interessato (art. 6.1 lett. a GDPR).</p>
-                <p><Label>Modalità di disiscrizione:</Label> l'Interessato può revocare il consenso in qualsiasi momento cliccando sull'apposito link presente in calce a ciascuna email.</p>
+                <p><Label>Modalità di disiscrizione e revoca del tracciamento:</Label> l'Interessato può revocare il consenso alla newsletter in qualsiasi momento cliccando sull'apposito link presente in calce a ciascuna email. Può inoltre revocare il consenso al solo tracciamento delle aperture e dei clic, continuando a ricevere la newsletter, scrivendo all'indirizzo email del Titolare.</p>
                 <p><Label>Luogo del trattamento:</Label> Unione Europea. Per gli account con sede nello Spazio Economico Europeo, MailerLite tratta i dati esclusivamente su infrastruttura Google Cloud situata in UE, senza trasferimento verso Paesi extra-UE.</p>
               </SubSection>
 
@@ -245,11 +256,28 @@ function PrivacyPolicy() {
 
               <SubSection title="Piattaforma di checkout - Systeme.io">
                 <p>Il Titolare utilizza Systeme.io, servizio fornito da ITACWT Limited (società di diritto irlandese, con sede a Dublino), come piattaforma di checkout per la vendita di corsi e percorsi digitali offerti tramite il Sito. Al momento dell'acquisto, l'Utente viene indirizzato alla pagina di pagamento gestita da Systeme.io, che raccoglie i Dati Personali necessari a completare l'ordine e seleziona, in base alla scelta dell'Utente, il processore di pagamento (PayPal o Stripe) tramite cui la transazione viene effettivamente elaborata.</p>
+                <p>Systeme.io è utilizzato anche per l'invio delle email di servizio legate ai corsi acquistati, ad esempio le credenziali di accesso all'area riservata. Queste email possono contenere un pixel tecnico che rileva l'apertura del messaggio, utilizzato esclusivamente per finalità tecniche e di sicurezza legate all'accesso all'account, come previsto dalle Linee guida del Garante per la protezione dei dati personali sull'utilizzo dei tracking pixel nelle email (provvedimento n. 284 del 17 aprile 2026).</p>
                 <p><Label>Dati raccolti:</Label> nome e cognome, indirizzo e-mail, indirizzo di fatturazione, dati relativi all'ordine.</p>
                 <p><Label>Base giuridica:</Label></p>
                 <Ul items={["Esecuzione del contratto (art. 6.1 lett. b GDPR), per completare l'acquisto.", "Obbligo legale (art. 6.1 lett. c GDPR), per gli adempimenti fiscali e contabili."]} />
                 <p><Label>Periodo di conservazione:</Label> per il tempo necessario alla gestione dell'ordine e, successivamente, per un periodo massimo di 10 anni, in conformità agli obblighi di legge in materia fiscale.</p>
                 <p><Label>Luogo del trattamento:</Label> Unione Europea. I server di Systeme.io sono ospitati su infrastruttura Amazon Web Services situata in Irlanda; i dati non vengono trasferiti al di fuori dell'Unione Europea.</p>
+              </SubSection>
+
+              <SubSection title="Automazione dei messaggi Instagram - Zernio">
+                <p>Il Titolare utilizza Zernio, servizio fornito da ZERNIO SOFTWARE SL (società di diritto spagnolo, con sede a Palamós, Girona, Spagna), per gestire in modo automatico le conversazioni nei messaggi diretti del profilo Instagram del Titolare descritte al punto 9 della sezione "Finalità del Trattamento".</p>
+                <p><Label>Dati trattati:</Label> nome utente e identificativo del profilo Instagram, contenuto dei messaggi della conversazione automatica, indirizzo email, nome, scelta espressa sul consenso, data e ora dell'interazione.</p>
+                <p><Label>Base giuridica:</Label> consenso dell'Interessato (art. 6.1 lett. a GDPR).</p>
+                <p><Label>Ruolo:</Label> Responsabile del Trattamento ai sensi dell'art. 28 GDPR, in base all'accordo sul trattamento dei dati incluso nei termini di servizio di Zernio. L'elenco dei sub-responsabili di Zernio è disponibile su trust.zernio.com.</p>
+                <p><Label>Luogo del trattamento:</Label> Unione Europea. Zernio dichiara di conservare e trattare i dati in Europa.</p>
+              </SubSection>
+
+              <SubSection title="Automazione dei processi interni - n8n su server Hetzner">
+                <p>Il Titolare utilizza n8n, software di automazione installato su un server riservato al Titolare (installazione self-hosted), per trasferire al servizio di newsletter MailerLite l'indirizzo email e il nome raccolti tramite i messaggi diretti Instagram. Il software n8n non invia questi dati alla società che lo sviluppa. Il server è fornito da Hetzner Online GmbH (società di diritto tedesco, con sede a Gunzenhausen, Germania), che opera come fornitore dell'infrastruttura.</p>
+                <p><Label>Dati trattati:</Label> indirizzo email e nome, per il solo tempo necessario al trasferimento verso MailerLite, oltre ai registri tecnici di esecuzione delle automazioni.</p>
+                <p><Label>Base giuridica:</Label> consenso dell'Interessato (art. 6.1 lett. a GDPR), prestato per l'iscrizione alla newsletter.</p>
+                <p><Label>Ruolo:</Label> Hetzner Online GmbH è Responsabile del Trattamento ai sensi dell'art. 28 GDPR, in base all'accordo sul trattamento dei dati concluso con il Titolare.</p>
+                <p><Label>Luogo del trattamento:</Label> Germania (Unione Europea). I dati non vengono trasferiti al di fuori dell'Unione Europea.</p>
               </SubSection>
 
               <SubSection title="Gestione dei pagamenti - PayPal">
@@ -315,7 +343,7 @@ function PrivacyPolicy() {
 
             <Section title="Luogo del Trattamento e trasferimento dei Dati all'estero">
               <p>I Dati Personali sono trattati presso la sede operativa del Titolare e in ogni altro luogo in cui si trovano i soggetti coinvolti nel trattamento. Il trattamento può essere effettuato direttamente dal Titolare oppure tramite soggetti terzi che forniscono servizi tecnici, organizzativi, informatici o amministrativi connessi alla gestione del Sito. Tali soggetti possono operare sia all'interno dello Spazio Economico Europeo (SEE) sia, ove necessario, in Paesi situati al di fuori del SEE, inclusi gli Stati Uniti, utilizzati dai fornitori delle piattaforme digitali impiegate dal Titolare (a titolo esemplificativo: Vercel, GitHub, Meta Platforms, PostHog, PayPal, Stripe, e i restanti fornitori elencati nella sezione "Tecnologie utilizzate" di questo documento).</p>
-              <p>Qualora il trasferimento dei Dati Personali avvenga verso Paesi terzi che non garantiscono un livello di protezione adeguato secondo la Commissione Europea, il Titolare adotterà tutte le misure necessarie a garantire un livello di tutela adeguato e conforme agli artt. 44 e seguenti del GDPR, inclusa l'adozione delle Clausole Contrattuali Standard (SCCs) o ulteriori garanzie appropriate. L'Interessato può richiedere ulteriori informazioni in merito ai trasferimenti internazionali di dati contattando il Titolare.</p>
+              <p>Qualora il trasferimento dei Dati Personali avvenga verso Paesi terzi che non garantiscono un livello di protezione adeguato secondo la Commissione Europea, il Titolare adotterà tutte le misure necessarie a garantire un livello di tutela adeguato e conforme agli artt. 44 e seguenti del GDPR, inclusa l'adozione delle Clausole Contrattuali Standard (SCCs) o ulteriori garanzie appropriate. L'Interessato può richiedere ulteriori informazioni in merito ai trasferimenti internazionali di dati contattando il Titolare. I dati raccolti tramite i messaggi diretti Instagram sono trattati da Zernio e dal server Hetzner all'interno dell'Unione Europea.</p>
             </Section>
 
             <Section title="Tecnologie Digitali e Utilizzo di Sistemi di Intelligenza Artificiale">
