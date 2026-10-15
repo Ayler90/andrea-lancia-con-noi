@@ -29,6 +29,12 @@ const ML_FORM_HTML = `
             </div>
           </div>
           <input type="hidden" name="ml-submit" value="1">
+          <div style="margin: 14px 0 4px; display: flex; align-items: flex-start; gap: 10px;">
+            <input type="checkbox" id="ml-tracking-consent" style="margin-top: 3px; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; accent-color: #C4D9DC;">
+            <label for="ml-tracking-consent" style="font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.5; cursor: pointer;">Voglio iscrivermi alla newsletter e accetto che venga misurata l'apertura delle email.</label>
+          </div>
+          <p id="ml-tracking-error" style="display:none; font-size:12px; color:#f87171; margin: 2px 0 4px 26px;">Spunta la casella per iscriverti.</p>
+          <p style="font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 4px 0 16px 26px;">Le email contengono un piccolo pixel che registra quando le apri (orario, dispositivo, indirizzo IP) e i clic sui link: mi serve per capire cosa ti interessa. Dal link in fondo a ogni email puoi togliere solo il tracciamento e continuare a ricevere tutto, oppure cancellarti. <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.5); text-decoration: underline;">Informativa privacy</a></p>
           <div class="ml-form-embedSubmit">
             <button type="submit" class="primary">Voglio iscrivermi alla newsletter!</button>
             <button disabled="disabled" style="display:none" type="button" class="loading">
@@ -163,11 +169,14 @@ export function Newsletter() {
     const handleSubmit = (e: Event) => {
       const nameInput  = document.querySelector('#mlb2-41923213 input[name="fields[name]"]')  as HTMLInputElement | null;
       const emailInput = document.querySelector('#mlb2-41923213 input[name="fields[email]"]') as HTMLInputElement | null;
+      const consentCheckbox = document.getElementById("ml-tracking-consent") as HTMLInputElement | null;
+      const consentError    = document.getElementById("ml-tracking-error")   as HTMLElement | null;
 
-      const nameEmpty  = !nameInput?.value?.trim();
-      const emailEmpty = !emailInput?.value?.trim();
+      const nameEmpty      = !nameInput?.value?.trim();
+      const emailEmpty     = !emailInput?.value?.trim();
+      const consentChecked = consentCheckbox?.checked ?? false;
 
-      if (nameEmpty || emailEmpty) {
+      if (nameEmpty || emailEmpty || !consentChecked) {
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -179,14 +188,34 @@ export function Newsletter() {
           emailInput.classList.add("field-error");
           emailInput.addEventListener("input", () => emailInput.classList.remove("field-error"), { once: true });
         }
+        if (!consentChecked && consentError) {
+          consentError.style.display = "block";
+          consentCheckbox?.addEventListener("change", () => { consentError.style.display = "none"; }, { once: true });
+        }
 
-        if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-        setShowTooltip(false);
-        requestAnimationFrame(() => {
-          setShowTooltip(true);
-          hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
-        });
+        if (nameEmpty || emailEmpty) {
+          if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+          setShowTooltip(false);
+          requestAnimationFrame(() => {
+            setShowTooltip(true);
+            hideTimerRef.current = setTimeout(() => setShowTooltip(false), 3000);
+          });
+        }
       } else {
+        if (consentError) consentError.style.display = "none";
+
+        // Inject consent timestamp into form before submit
+        const form = document.querySelector("#mlb2-41923213 form") as HTMLFormElement | null;
+        let consentDateInput = document.getElementById("ml-consent-date-hidden") as HTMLInputElement | null;
+        if (!consentDateInput && form) {
+          consentDateInput = document.createElement("input");
+          consentDateInput.type = "hidden";
+          consentDateInput.id   = "ml-consent-date-hidden";
+          consentDateInput.name = "fields[consent_data_tracking_giorno_e_ora]";
+          form.appendChild(consentDateInput);
+        }
+        if (consentDateInput) consentDateInput.value = new Date().toLocaleString("it-IT");
+
         // Generate a shared event_id for Pixel + CAPI deduplication
         const eventId = crypto.randomUUID();
         (window as any).__ml_lead_event_id = eventId;
